@@ -49,7 +49,7 @@
 
   <script>
     // 🟠 SET YOUR CDN URL HERE
-    var url = "https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/truck/index.html";
+    var url = "https://quantil.jsdelivr.net/gh/matheveryday25/math@main/truck/index.html";
 
     var ORIGINAL_TEXT = "⛶ Fullscreen";
     var ERROR_TEXT    = "Not Found!";
@@ -117,7 +117,7 @@
       position: absolute;
       top: 50%; left: 50%;
       margin-top: -185px; margin-left: -150px;
-      background-image: url("https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/truck/TemplateData/ub.png");
+      background-image: url("https://quantil.jsdelivr.net/gh/matheveryday25/math/truck/TemplateData/ub.png");
       background-repeat: no-repeat;
       box-shadow: 1px 1px 5px #141414;
     }
@@ -195,7 +195,7 @@
     }
   </style>
 
-  <script src="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/truck/Build/UnityLoader.js"></script>
+  <script src="https://quantil.jsdelivr.net/gh/matheveryday25/math/truck/Build/UnityLoader.js"></script>
   <script>
     window.mergedBlobUrls = {};
 
@@ -269,21 +269,21 @@
     })();
 
     window.addEventListener("load", function () {
-      fetch("https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/truck/Build/indian_truck_gd_2_0_1.json")
+      fetch("https://quantil.jsdelivr.net/gh/matheveryday25/math/truck/Build/indian_truck_gd_2_0_1.json")
         .then(r => r.json())
         .then(config => {
           return Promise.all([
-            mergeFiles(getParts("https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/truck/Build/indian_truck_gd_2_0_1.data.unityweb", 1, 2)),
-            mergeFiles(getParts("https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/truck/Build/indian_truck_gd_2_0_1.wasm.code.unityweb", 1, 1)),
-            mergeFiles(getParts("https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/truck/Build/indian_truck_gd_2_0_1.wasm.framework.unityweb", 1, 1))
+            mergeFiles(getParts("https://quantil.jsdelivr.net/gh/matheveryday25/math/truck/Build/indian_truck_gd_2_0_1.data.unityweb", 1, 2)),
+            mergeFiles(getParts("https://quantil.jsdelivr.net/gh/matheveryday25/math/truck/Build/indian_truck_gd_2_0_1.wasm.code.unityweb", 1, 1)),
+            mergeFiles(getParts("https://quantil.jsdelivr.net/gh/matheveryday25/math/truck/Build/indian_truck_gd_2_0_1.wasm.framework.unityweb", 1, 1))
           ]).then(([dataUrl, wasmCodeUrl, wasmFrameworkUrl]) => {
             window.mergedBlobUrls["indian_truck_gd_2_0_1.data.unityweb"] = dataUrl;
             window.mergedBlobUrls["indian_truck_gd_2_0_1.wasm.code.unityweb"] = wasmCodeUrl;
             window.mergedBlobUrls["indian_truck_gd_2_0_1.wasm.framework.unityweb"] = wasmFrameworkUrl;
 
-            config.dataUrl = "https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/truck/Build/indian_truck_gd_2_0_1.data.unityweb";
-            config.wasmCodeUrl = "https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/truck/Build/indian_truck_gd_2_0_1.wasm.code.unityweb";
-            config.wasmFrameworkUrl = "https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/truck/Build/indian_truck_gd_2_0_1.wasm.framework.unityweb";
+            config.dataUrl = "https://quantil.jsdelivr.net/gh/matheveryday25/math/truck/Build/indian_truck_gd_2_0_1.data.unityweb";
+            config.wasmCodeUrl = "https://quantil.jsdelivr.net/gh/matheveryday25/math/truck/Build/indian_truck_gd_2_0_1.wasm.code.unityweb";
+            config.wasmFrameworkUrl = "https://quantil.jsdelivr.net/gh/matheveryday25/math/truck/Build/indian_truck_gd_2_0_1.wasm.framework.unityweb";
 
             let blob = new Blob([JSON.stringify(config)], { type: "application/json" });
             let blobUrl = URL.createObjectURL(blob);

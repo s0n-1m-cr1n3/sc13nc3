@@ -49,7 +49,7 @@
 
   <script>
     // 🟠 SET YOUR CDN URL HERE
-    var url = "https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/gorilla/index.html";
+    var url = "https://quantil.jsdelivr.net/gh/matheveryday25/math@main/gorilla/index.html";
 
     var ORIGINAL_TEXT = "⛶ Fullscreen";
     var ERROR_TEXT    = "Not Found!";
@@ -93,12 +93,12 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <base href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/gorilla/">
+    <base href="https://quantil.jsdelivr.net/gh/matheveryday25/math@main/gorilla/">
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Flying Gorilla - UNBL0CKEDZ0NE</title>
-    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/gorilla/TemplateData/favicon.ico">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/gorilla/TemplateData/style.css">
+    <link rel="shortcut icon" href="https://quantil.jsdelivr.net/gh/matheveryday25/math@main/gorilla/TemplateData/favicon.ico">
+    <link rel="stylesheet" href="https://quantil.jsdelivr.net/gh/matheveryday25/math@main/gorilla/TemplateData/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
     <style>
       body { background-color: #231f20; margin: 0; padding: 0; overflow: hidden; }
@@ -215,18 +215,18 @@
 
       (async () => {
         const [dataUrl, wasmUrl] = await Promise.all([
-          mergeFiles(getParts("https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/gorilla/Build/vb.data", 1, 2)),
-          mergeFiles(getParts("https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/gorilla/Build/vb.wasm", 1, 2)),
+          mergeFiles(getParts("https://quantil.jsdelivr.net/gh/matheveryday25/math@main/gorilla/Build/vb.data", 1, 2)),
+          mergeFiles(getParts("https://quantil.jsdelivr.net/gh/matheveryday25/math@main/gorilla/Build/vb.wasm", 1, 2)),
         ]);
 
         const canvas = document.querySelector("#unity-canvas");
         const loadingBar = document.querySelector("#unity-loading-bar");
 
-        const loaderUrl = "https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/gorilla/Build/vb.loader.js";
+        const loaderUrl = "https://quantil.jsdelivr.net/gh/matheveryday25/math@main/gorilla/Build/vb.loader.js";
         const config = {
           arguments: [],
           dataUrl: dataUrl,
-          frameworkUrl: "https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/gorilla/Build/vb.framework.js",
+          frameworkUrl: "https://quantil.jsdelivr.net/gh/matheveryday25/math@main/gorilla/Build/vb.framework.js",
           codeUrl: wasmUrl,
           streamingAssetsUrl: "StreamingAssets",
           companyName: "UNBL0CKEDZ0NE",
