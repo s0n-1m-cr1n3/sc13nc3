@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fullscreen Button</title>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+  <style>
+    #fullscreenButton {
+      position: fixed;
+      bottom: 12px;
+      right: 12px;
+      background-color: #111;
+      color: #fff;
+      border: 2px solid #ff9900;
+      font-size: 12px;
+      font-family: 'Audiowide', sans-serif;
+      padding: 8px 14px;
+      cursor: pointer;
+      border-radius: 8px;
+      letter-spacing: 1px;
+      box-shadow: 0 0 10px #ff9900;
+      transition: all 0.3s ease;
+      z-index: 9999;
+    }
+    .fireInside {
+      background-image: linear-gradient(270deg, red, orange, yellow);
+      background-size: 300% 300%;
+      animation: fireInside 3s linear infinite;
+      color: #fff;
+      text-shadow: 0 0 8px rgba(255,255,255,0.7);
+      box-shadow: inset 0 0 10px rgba(255,165,0,0.4), 0 0 14px #ff9900;
+    }
+    @keyframes fireInside {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body>
+
+  <button
+    id="fullscreenButton"
+    onclick="openPage()"
+    onmouseover="this.classList.add('fireInside')"
+    onmouseout="this.classList.remove('fireInside')">
+    ⛶ Fullscreen
+  </button>
+
+  <script>
+    // 🟠 SET YOUR CDN URL HERE
+    var url = "https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/friday/index.html";
+
+    var ORIGINAL_TEXT = "⛶ Fullscreen";
+    var ERROR_TEXT    = "Not Found!";
+    var POPUP_TEXT    = "Allow Popups!";
+
+    function setTemp(text, ms) {
+      var btn = document.getElementById("fullscreenButton");
+      btn.innerText = text;
+      btn.classList.add("fireInside");
+      setTimeout(function() {
+        btn.innerText = ORIGINAL_TEXT;
+        btn.classList.remove("fireInside");
+      }, ms || 3500);
+    }
+
+    function openPage() {
+      fetch(url + "?t=" + Date.now())
+        .then(function(r) {
+          if (!r.ok) throw new Error("not found");
+          return r.text();
+        })
+        .then(function(html) {
+          var win = window.open("about:blank", "_blank");
+          if (!win) { setTemp(POPUP_TEXT, 4500); return; }
+          win.document.open();
+          win.document.write(html);
+          win.document.close();
+          document.getElementById("fullscreenButton").innerText = "Opened!";
+          setTimeout(function() {
+            document.getElementById("fullscreenButton").innerText = ORIGINAL_TEXT;
+          }, 3000);
+        })
+        .catch(function() {
+          setTemp(ERROR_TEXT);
+        });
+    }
+  </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<base href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/friday/">
+	<meta charset="utf-8">
+	<title>Friday Night Funkin - UNBL0CKEDZ0NE</title>
+	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="shortcut icon" type="image/png" href="favicon.png">
+	<script type="text/javascript" src="Funkin.js"></script>
+	<script>
+		window.addEventListener ("touchmove", function (event) { event.preventDefault (); }, { capture: false, passive: false });
+		if (typeof window.devicePixelRatio != 'undefined' && window.devicePixelRatio > 2) {
+			var meta = document.getElementById ("viewport");
+			meta.setAttribute ('content', 'width=device-width, initial-scale=' + (2 / window.devicePixelRatio) + ', user-scalable=no');
+		}
+	</script>
+	<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
+	<style>
+		html,body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+		#openfl-content { background: #000000; width: 100%; height: 100%; }
+		#copyright-banner {
+			position: fixed;
+			top: 0; left: 0; right: 0;
+			z-index: 99999;
+			background: linear-gradient(90deg, #111, #1a1a1a);
+			border-bottom: 2px solid #ff9900;
+			box-shadow: 0 0 16px #ff9900;
+			color: #fff;
+			font-family: 'Pixelify Sans', sans-serif;
+			font-size: 13px;
+			text-align: center;
+			padding: 12px 20px;
+			letter-spacing: 1px;
+			animation: fadeOut 0.6s ease 4.4s forwards;
+		}
+		#copyright-banner span {
+			color: #ff9900;
+			text-shadow: 0 0 8px #ff9900;
+		}
+		#copyright-timer { display: none; }
+		@keyframes fadeOut {
+			to { opacity: 0; pointer-events: none; transform: translateY(-100%); }
+		}
+		@font-face {
+			font-family: '5by7';
+			src: url('assets/fonts/5by7.eot?#iefix') format('embedded-opentype'),
+			url('assets/fonts/5by7.woff') format('woff'),
+			url('assets/fonts/5by7.ttf') format('truetype'),
+			url('assets/fonts/5by7.svg#5by7') format('svg');
+			font-weight: normal; font-style: normal;
+		}
+		@font-face {
+			font-family: '5by7 Bold';
+			src: url('assets/fonts/5by7_b.eot?#iefix') format('embedded-opentype'),
+			url('assets/fonts/5by7_b.woff') format('woff'),
+			url('assets/fonts/5by7_b.ttf') format('truetype'),
+			url('assets/fonts/5by7_b.svg#5by7%20Bold') format('svg');
+			font-weight: normal; font-style: normal;
+		}
+		@font-face {
+			font-family: 'DS-Digital';
+			src: url('assets/fonts/DS-DIGI.eot?#iefix') format('embedded-opentype'),
+			url('assets/fonts/DS-DIGI.TTF') format('truetype');
+			font-weight: normal; font-style: normal;
+		}
+		@font-face {
+			font-family: 'DS-Digital Bold';
+			src: url('assets/fonts/DS-DIGIB.eot?#iefix') format('embedded-opentype'),
+			url('assets/fonts/DS-DIGIB.TTF') format('truetype');
+			font-weight: normal; font-style: normal;
+		}
+		@font-face {
+			font-family: 'DS-Digital Italic';
+			src: url('assets/fonts/DS-DIGII.eot?#iefix') format('embedded-opentype'),
+			url('assets/fonts/DS-DIGII.TTF') format('truetype');
+			font-weight: normal; font-style: normal;
+		}
+		@font-face {
+			font-family: 'DS-Digital Bold Italic';
+			src: url('assets/fonts/DS-DIGIT.eot?#iefix') format('embedded-opentype'),
+			url('assets/fonts/DS-DIGIT.TTF') format('truetype');
+			font-weight: normal; font-style: normal;
+		}
+		@font-face {
+			font-family: 'Inconsolata Black';
+			src: url('assets/fonts/Inconsolata-Black.eot?#iefix') format('embedded-opentype'),
+			url('assets/fonts/Inconsolata-Black.woff') format('woff'),
+			url('assets/fonts/Inconsolata-Black.ttf') format('truetype'),
+			url('assets/fonts/Inconsolata-Black.svg#Inconsolata%20Black') format('svg');
+			font-weight: normal; font-style: normal;
+		}
+		@font-face {
+			font-family: 'Inconsolata Bold';
+			src: url('assets/fonts/Inconsolata-Bold.eot?#iefix') format('embedded-opentype'),
+			url('assets/fonts/Inconsolata-Bold.woff') format('woff'),
+			url('assets/fonts/Inconsolata-Bold.ttf') format('truetype'),
+			url('assets/fonts/Inconsolata-Bold.svg#Inconsolata%20Bold') format('svg');
+			font-weight: normal; font-style: normal;
+		}
+		@font-face {
+			font-family: 'Inconsolata ExtraBold';
+			src: url('assets/fonts/Inconsolata-ExtraBold.eot?#iefix') format('embedded-opentype'),
+			url('assets/fonts/Inconsolata-ExtraBold.woff') format('woff'),
+			url('assets/fonts/Inconsolata-ExtraBold.ttf') format('truetype'),
+			url('assets/fonts/Inconsolata-ExtraBold.svg#Inconsolata%20ExtraBold') format('svg');
+			font-weight: normal; font-style: normal;
+		}
+		@font-face {
+			font-family: 'Inconsolata ExtraLight';
+			src: url('assets/fonts/Inconsolata-ExtraLight.eot?#iefix') format('embedded-opentype'),
+			url('assets/fonts/Inconsolata-ExtraLight.woff') format('woff'),
+			url('assets/fonts/Inconsolata-ExtraLight.ttf') format('truetype'),
+			url('assets/fonts/Inconsolata-ExtraLight.svg#Inconsolata%20ExtraLight') format('svg');
+			font-weight: normal; font-style: normal;
+		}
+		@font-face {
+			font-family: 'Inconsolata Medium';
+			src: url('assets/fonts/Inconsolata-Medium.eot?#iefix') format('embedded-opentype'),
+			url('assets/fonts/Inconsolata-Medium.woff') format('woff'),
+			url('assets/fonts/Inconsolata-Medium.ttf') format('truetype'),
+			url('assets/fonts/Inconsolata-Medium.svg#Inconsolata%20Medium') format('svg');
+			font-weight: normal; font-style: normal;
+		}
+		@font-face {
+			font-family: 'Inconsolata Regular';
+			src: url('assets/fonts/Inconsolata-Regular.eot?#iefix') format('embedded-opentype'),
+			url('assets/fonts/Inconsolata-Regular.woff') format('woff'),
+			url('assets/fonts/Inconsolata-Regular.ttf') format('truetype'),
+			url('assets/fonts/Inconsolata-Regular.svg#Inconsolata%20Regular') format('svg');
+			font-weight: normal; font-style: normal;
+		}
+		@font-face {
+			font-family: 'Inconsolata SemiBold';
+			src: url('assets/fonts/Inconsolata-SemiBold.eot?#iefix') format('embedded-opentype'),
+			url('assets/fonts/Inconsolata-SemiBold.woff') format('woff'),
+			url('assets/fonts/Inconsolata-SemiBold.ttf') format('truetype'),
+			url('assets/fonts/Inconsolata-SemiBold.svg#Inconsolata%20SemiBold') format('svg');
+			font-weight: normal; font-style: normal;
+		}
+		@font-face {
+			font-family: 'Pixel Arial 11 Bold';
+			src: url('assets/fonts/pixel.eot?#iefix') format('embedded-opentype'),
+			url('assets/fonts/pixel.woff') format('woff'),
+			url('assets/fonts/pixel.otf') format('truetype');
+			font-weight: normal; font-style: normal;
+		}
+		@font-face {
+			font-family: 'Quantico-Bold';
+			src: url('assets/fonts/Quantico-Bold.eot?#iefix') format('embedded-opentype'),
+			url('assets/fonts/Quantico-Bold.woff') format('woff'),
+			url('assets/fonts/Quantico-Bold.ttf') format('truetype'),
+			url('assets/fonts/Quantico-Bold.svg#Quantico-Bold') format('svg');
+			font-weight: normal; font-style: normal;
+		}
+		@font-face {
+			font-family: 'Quantico-BoldItalic';
+			src: url('assets/fonts/Quantico-BoldItalic.eot?#iefix') format('embedded-opentype'),
+			url('assets/fonts/Quantico-BoldItalic.woff') format('woff'),
+			url('assets/fonts/Quantico-BoldItalic.ttf') format('truetype'),
+			url('assets/fonts/Quantico-BoldItalic.svg#Quantico-BoldItalic') format('svg');
+			font-weight: normal; font-style: normal;
+		}
+		@font-face {
+			font-family: 'Quantico-Italic';
+			src: url('assets/fonts/Quantico-Italic.eot?#iefix') format('embedded-opentype'),
+			url('assets/fonts/Quantico-Italic.woff') format('woff'),
+			url('assets/fonts/Quantico-Italic.ttf') format('truetype'),
+			url('assets/fonts/Quantico-Italic.svg#Quantico-Italic') format('svg');
+			font-weight: normal; font-style: normal;
+		}
+		@font-face {
+			font-family: 'Quantico';
+			src: url('assets/fonts/Quantico-Regular.eot?#iefix') format('embedded-opentype'),
+			url('assets/fonts/Quantico-Regular.woff') format('woff'),
+			url('assets/fonts/Quantico-Regular.ttf') format('truetype'),
+			url('assets/fonts/Quantico-Regular.svg#Quantico') format('svg');
+			font-weight: normal; font-style: normal;
+		}
+		@font-face {
+			font-family: 'VCR OSD Mono';
+			src: url('assets/fonts/vcr.eot?#iefix') format('embedded-opentype'),
+			url('assets/fonts/vcr.woff') format('woff'),
+			url('assets/fonts/vcr.ttf') format('truetype'),
+			url('assets/fonts/vcr.svg#VCR%20OSD%20Mono') format('svg');
+			font-weight: normal; font-style: normal;
+		}
+		@font-face {
+			font-family: 'Nokia Cellphone FC Small';
+			src: url('flixel/fonts/nokiafc22.eot?#iefix') format('embedded-opentype'),
+			url('flixel/fonts/nokiafc22.woff') format('woff'),
+			url('flixel/fonts/nokiafc22.ttf') format('truetype'),
+			url('flixel/fonts/nokiafc22.svg#Nokia%20Cellphone%20FC%20Small') format('svg');
+			font-weight: normal; font-style: normal;
+		}
+		@font-face {
+			font-family: 'Monsterrat';
+			src: url('flixel/fonts/monsterrat.eot?#iefix') format('embedded-opentype'),
+			url('flixel/fonts/monsterrat.woff') format('woff'),
+			url('flixel/fonts/monsterrat.ttf') format('truetype'),
+			url('flixel/fonts/monsterrat.svg#Monsterrat') format('svg');
+			font-weight: normal; font-style: normal;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- Copyright Banner -->
+	<div id="copyright-banner">
+		I own <span>THESE GAME ASSETS</span> — If you steal from here, you will receive a <span>copyright strike!</span> &nbsp;—&nbsp; <span>UNBL0CKEDZ0NE</span>
+		<span id="copyright-timer">5</span>
+	</div>
+
+	<script>
+		var count = 5;
+		var timerEl = document.getElementById("copyright-timer");
+		var bannerEl = document.getElementById("copyright-banner");
+		var interval = setInterval(function() {
+			count--;
+			if (timerEl) timerEl.innerText = count;
+			if (count <= 0) {
+				clearInterval(interval);
+				setTimeout(function() {
+					if (bannerEl) bannerEl.remove();
+				}, 600);
+			}
+		}, 1000);
+	</script>
+
+	<noscript>This webpage makes extensive use of JavaScript. Please enable JavaScript in your web browser to view this page.</noscript>
+
+	<div id="openfl-content"></div>
+
+	<script type="text/javascript">
+		lime.embed ("Funkin", "openfl-content", 1280, 720, { parameters: {} });
+	</script>
+
+</body>
+</html>
+<!-- 
+Play a G4mes Website with stuff for every blocker! - 🎮 UNBL0CKEDZ0NE 💻.
+Our G4mes Doc with 2K G4mes 🎮! - https://docs.google.com/document/d/1JBhyNwurO02JYGBzx0p58B9e74qcphEKN8bI-i2dCcc/preview
+Discord with Links 👾! - https://discord.gg/v66D3fn4kD
+Our Tiktok 🔗 - https://www.tiktok.com/@unbl0ckedz0ne
+Our Youtube 🔗 - https://www.youtube.com/@unblockedzonegames
+Note Last Updated 🔄️ - March 21 2026
+-->

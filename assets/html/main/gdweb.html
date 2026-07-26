@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fullscreen Button</title>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+  <style>
+    #fullscreenButton {
+      position: fixed;
+      bottom: 12px;
+      right: 12px;
+      background-color: #111;
+      color: #fff;
+      border: 2px solid #ff9900;
+      font-size: 12px;
+      font-family: 'Audiowide', sans-serif;
+      padding: 8px 14px;
+      cursor: pointer;
+      border-radius: 8px;
+      letter-spacing: 1px;
+      box-shadow: 0 0 10px #ff9900;
+      transition: all 0.3s ease;
+      z-index: 9999;
+    }
+    .fireInside {
+      background-image: linear-gradient(270deg, red, orange, yellow);
+      background-size: 300% 300%;
+      animation: fireInside 3s linear infinite;
+      color: #fff;
+      text-shadow: 0 0 8px rgba(255,255,255,0.7);
+      box-shadow: inset 0 0 10px rgba(255,165,0,0.4), 0 0 14px #ff9900;
+    }
+    @keyframes fireInside {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body>
+
+  <button
+    id="fullscreenButton"
+    onclick="openPage()"
+    onmouseover="this.classList.add('fireInside')"
+    onmouseout="this.classList.remove('fireInside')">
+    ⛶ Fullscreen
+  </button>
+
+  <script>
+    // 🟠 SET YOUR CDN URL HERE
+    var url = "https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/fullscreen/gweb.html";
+
+    var ORIGINAL_TEXT = "⛶ Fullscreen";
+    var ERROR_TEXT    = "Not Found!";
+    var POPUP_TEXT    = "Allow Popups!";
+
+    function setTemp(text, ms) {
+      var btn = document.getElementById("fullscreenButton");
+      btn.innerText = text;
+      btn.classList.add("fireInside");
+      setTimeout(function() {
+        btn.innerText = ORIGINAL_TEXT;
+        btn.classList.remove("fireInside");
+      }, ms || 3500);
+    }
+
+    function openPage() {
+      fetch(url + "?t=" + Date.now())
+        .then(function(r) {
+          if (!r.ok) throw new Error("not found");
+          return r.text();
+        })
+        .then(function(html) {
+          var win = window.open("about:blank", "_blank");
+          if (!win) { setTemp(POPUP_TEXT, 4500); return; }
+          win.document.open();
+          win.document.write(html);
+          win.document.close();
+          document.getElementById("fullscreenButton").innerText = "Opened!";
+          setTimeout(function() {
+            document.getElementById("fullscreenButton").innerText = ORIGINAL_TEXT;
+          }, 3000);
+        })
+        .catch(function() {
+          setTemp(ERROR_TEXT);
+        });
+    }
+  </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Web Dashers</title>
+    
+    <base href="https://cdn.jsdelivr.net/gh/web-dashers/web-dashers.github.io@latest/">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="assets/style.css">
+
+    <!-- Core Game Libraries -->
+    <script src="assets/scripts/libs/phaser.min.js"></script>
+    <script src="assets/scripts/libs/pako.min.js"></script>
+    
+    <!-- Game Data & API -->
+    <script src="assets/scripts/game/allObjects.js?latest"></script>
+    <script src="assets/scripts/game/allLevels.js"></script>
+    <script src="assets/scripts/utils/cache-manager.js"></script>
+    <script src="assets/scripts/api/GDapiWrapper.js"></script>
+    
+    <!-- Game Engine Logic -->
+    <script>window._gdProxyUrl = "https://gd-proxy.gmdc.workers.dev";</script>
+    <script defer src="assets/scripts/utils/config.js"></script>
+    <script defer src="assets/scripts/core/triggers.js"></script>
+    <script defer src="assets/scripts/core/level.js?latest"></script>
+    <script defer src="assets/scripts/core/player.js"></script>
+    <script defer src="assets/scripts/core/audio.js"></script>
+    <script defer src="assets/scripts/core/loading-screen.js"></script>
+    <script defer src="assets/scripts/core/game-scene.js?latest"></script>
+    <script defer src="assets/scripts/core/main.js"></script>
+
+    <script>
+        // Fix for window resizing and disabling right-click context menu
+        new ResizeObserver(() => {
+            window.dispatchEvent(new Event('resize'));
+        }).observe(document.documentElement);
+
+        document.oncontextmenu = (e) => e.preventDefault();
+    </script>
+</head>
+<body>
+    <!-- The game canvas will be injected here by main.js -->
+</body>
+</html>
+<!-- 
+Play a G4mes Website with stuff for every blocker! - 🎮 UNBL0CKEDZ0NE 💻.
+Our G4mes Doc with 2K G4mes 🎮! - https://docs.google.com/document/d/1JBhyNwurO02JYGBzx0p58B9e74qcphEKN8bI-i2dCcc/preview
+Discord with Links 👾! - https://discord.gg/v66D3fn4kD
+Our Tiktok 🔗 - https://www.tiktok.com/@unbl0ckedz0ne
+Our Youtube 🔗 - https://www.youtube.com/@unblockedzonegames
+Note Last Updated 🔄️ - March 21 2026
+-->

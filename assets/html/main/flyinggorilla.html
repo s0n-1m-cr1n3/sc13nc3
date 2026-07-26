@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fullscreen Button</title>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+  <style>
+    #fullscreenButton {
+      position: fixed;
+      bottom: 12px;
+      right: 12px;
+      background-color: #111;
+      color: #fff;
+      border: 2px solid #ff9900;
+      font-size: 12px;
+      font-family: 'Audiowide', sans-serif;
+      padding: 8px 14px;
+      cursor: pointer;
+      border-radius: 8px;
+      letter-spacing: 1px;
+      box-shadow: 0 0 10px #ff9900;
+      transition: all 0.3s ease;
+      z-index: 9999;
+    }
+    .fireInside {
+      background-image: linear-gradient(270deg, red, orange, yellow);
+      background-size: 300% 300%;
+      animation: fireInside 3s linear infinite;
+      color: #fff;
+      text-shadow: 0 0 8px rgba(255,255,255,0.7);
+      box-shadow: inset 0 0 10px rgba(255,165,0,0.4), 0 0 14px #ff9900;
+    }
+    @keyframes fireInside {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body>
+
+  <button
+    id="fullscreenButton"
+    onclick="openPage()"
+    onmouseover="this.classList.add('fireInside')"
+    onmouseout="this.classList.remove('fireInside')">
+    ⛶ Fullscreen
+  </button>
+
+  <script>
+    // 🟠 SET YOUR CDN URL HERE
+    var url = "https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/gorilla/index.html";
+
+    var ORIGINAL_TEXT = "⛶ Fullscreen";
+    var ERROR_TEXT    = "Not Found!";
+    var POPUP_TEXT    = "Allow Popups!";
+
+    function setTemp(text, ms) {
+      var btn = document.getElementById("fullscreenButton");
+      btn.innerText = text;
+      btn.classList.add("fireInside");
+      setTimeout(function() {
+        btn.innerText = ORIGINAL_TEXT;
+        btn.classList.remove("fireInside");
+      }, ms || 3500);
+    }
+
+    function openPage() {
+      fetch(url + "?t=" + Date.now())
+        .then(function(r) {
+          if (!r.ok) throw new Error("not found");
+          return r.text();
+        })
+        .then(function(html) {
+          var win = window.open("about:blank", "_blank");
+          if (!win) { setTemp(POPUP_TEXT, 4500); return; }
+          win.document.open();
+          win.document.write(html);
+          win.document.close();
+          document.getElementById("fullscreenButton").innerText = "Opened!";
+          setTimeout(function() {
+            document.getElementById("fullscreenButton").innerText = ORIGINAL_TEXT;
+          }, 3000);
+        })
+        .catch(function() {
+          setTemp(ERROR_TEXT);
+        });
+    }
+  </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <base href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/gorilla/">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Flying Gorilla - UNBL0CKEDZ0NE</title>
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/gorilla/TemplateData/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/gorilla/TemplateData/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
+    <style>
+      body { background-color: #231f20; margin: 0; padding: 0; overflow: hidden; }
+      #unity-container { width: 100%; height: 100%; position: absolute; }
+      #loading-text { color: white; font-size: 48px; font-family: cursive; text-align: center; margin-top: 20px; }
+      #copyright-banner {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 99999;
+        background: linear-gradient(90deg, #111, #1a1a1a);
+        border-bottom: 2px solid #ff9900;
+        box-shadow: 0 0 16px #ff9900;
+        color: #fff;
+        font-family: 'Pixelify Sans', sans-serif;
+        font-size: 13px;
+        text-align: center;
+        padding: 12px 20px;
+        letter-spacing: 1px;
+        animation: fadeOut 0.6s ease 4.4s forwards;
+      }
+      #copyright-banner span {
+        color: #ff9900;
+        text-shadow: 0 0 8px #ff9900;
+      }
+      #copyright-timer { display: none; }
+      @keyframes fadeOut {
+        to { opacity: 0; pointer-events: none; transform: translateY(-100%); }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Copyright Banner -->
+    <div id="copyright-banner">
+      I own <span>THESE GAME ASSETS</span> — If you steal from here, you will receive a <span>copyright strike!</span> &nbsp;—&nbsp; <span>UNBL0CKEDZ0NE</span>
+      <span id="copyright-timer">5</span>
+    </div>
+
+    <script>
+      var count = 5;
+      var timerEl = document.getElementById("copyright-timer");
+      var bannerEl = document.getElementById("copyright-banner");
+      var interval = setInterval(function() {
+        count--;
+        if (timerEl) timerEl.innerText = count;
+        if (count <= 0) {
+          clearInterval(interval);
+          setTimeout(function() {
+            if (bannerEl) bannerEl.remove();
+          }, 600);
+        }
+      }, 1000);
+    </script>
+
+    <div id="loading-text">LOADING... 0.00 MB / 70.87 MB</div>
+
+    <div id="unity-container">
+      <canvas id="unity-canvas" width="960" height="540" tabindex="-1"></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="unity-warning"></div>
+    </div>
+
+    <script>
+      const loadingText = document.querySelector("#loading-text");
+      const progressBarFull = document.querySelector("#unity-progress-bar-full");
+      let loadedBytes = 0;
+      const mbTotal = '70.87';
+
+      async function fetchWithProgress(url) {
+        const response = await fetch(url);
+        const reader = response.body.getReader();
+        let chunks = [];
+        let received = 0;
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          received += value.length;
+          loadedBytes += value.length;
+          chunks.push(value);
+
+          let mbDone = (loadedBytes / (1024 * 1024)).toFixed(2);
+          loadingText.textContent = `LOADING... ${mbDone} MB / ${mbTotal} MB`;
+          progressBarFull.style.width = Math.min((loadedBytes / (70.87 * 1024 * 1024)) * 100, 100) + "%";
+        }
+
+        let fullBuffer = new Uint8Array(received);
+        let offset = 0;
+        for (let chunk of chunks) {
+          fullBuffer.set(chunk, offset);
+          offset += chunk.length;
+        }
+        return fullBuffer.buffer;
+      }
+
+      async function mergeFiles(fileParts) {
+        const buffers = await Promise.all(fileParts.map(part => fetchWithProgress(part)));
+        const mergedBlob = new Blob(buffers);
+        return URL.createObjectURL(mergedBlob);
+      }
+
+      function getParts(file, start, end) {
+        let parts = [];
+        for (let i = start; i <= end; i++) {
+          parts.push(file + ".part" + i);
+        }
+        return parts;
+      }
+
+      (async () => {
+        const [dataUrl, wasmUrl] = await Promise.all([
+          mergeFiles(getParts("https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/gorilla/Build/vb.data", 1, 2)),
+          mergeFiles(getParts("https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/gorilla/Build/vb.wasm", 1, 2)),
+        ]);
+
+        const canvas = document.querySelector("#unity-canvas");
+        const loadingBar = document.querySelector("#unity-loading-bar");
+
+        const loaderUrl = "https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/gorilla/Build/vb.loader.js";
+        const config = {
+          arguments: [],
+          dataUrl: dataUrl,
+          frameworkUrl: "https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/gorilla/Build/vb.framework.js",
+          codeUrl: wasmUrl,
+          streamingAssetsUrl: "StreamingAssets",
+          companyName: "UNBL0CKEDZ0NE",
+          productName: "Flying Gorilla",
+          productVersion: "1.0",
+        };
+
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+          var meta = document.createElement('meta');
+          meta.name = 'viewport';
+          meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+          document.getElementsByTagName('head')[0].appendChild(meta);
+        }
+
+        const script = document.createElement("script");
+        script.src = loaderUrl;
+        script.onload = () => {
+          createUnityInstance(canvas, config, (progress) => {
+            progressBarFull.style.width = 100 * progress + "%";
+          }).then((unityInstance) => {
+            loadingBar.style.display = "none";
+            loadingText.remove();
+          }).catch((message) => {
+            alert("Unity Error: " + message);
+          });
+        };
+        document.body.appendChild(script);
+      })();
+    </script>
+  </body>
+</html>
+<!-- 
+Play a G4mes Website with stuff for every blocker! - 🎮 UNBL0CKEDZ0NE 💻.
+Our G4mes Doc with 2K G4mes 🎮! - https://docs.google.com/document/d/1JBhyNwurO02JYGBzx0p58B9e74qcphEKN8bI-i2dCcc/preview
+Discord with Links 👾! - https://discord.gg/v66D3fn4kD
+Our Tiktok 🔗 - https://www.tiktok.com/@unbl0ckedz0ne
+Our Youtube 🔗 - https://www.youtube.com/@unblockedzonegames
+Note Last Updated 🔄️ - March 21 2026
+-->

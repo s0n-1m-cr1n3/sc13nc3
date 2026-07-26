@@ -1,0 +1,181 @@
+<html lang="en-us"><head>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
+<style>
+  /* Forces dark background and completely hides scrollbars globally */
+  html, body, #unity-container, #loading-cover {
+    background-color: #111111 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+  }
+
+  #copyright-banner {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 99999;
+    background: linear-gradient(90deg, #111, #1a1a1a);
+    border-bottom: 2px solid #ff9900;
+    box-shadow: 0 0 16px #ff9900;
+    color: #fff;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 13px;
+    text-align: center;
+    padding: 12px 20px;
+    letter-spacing: 1px;
+    animation: fadeOut 0.6s ease 4.4s forwards;
+  }
+  #copyright-banner span {
+    color: #ff9900;
+    text-shadow: 0 0 8px #ff9900;
+  }
+  #copyright-timer {
+    display: none;
+  }
+  @keyframes fadeOut {
+    to { opacity: 0; pointer-events: none; transform: translateY(-100%); }
+  }
+</style>
+</head><body class="dark" style="background-color: #111111 !important; overflow: hidden !important; margin: 0 !important;">
+
+<!-- Copyright Banner -->
+<div id="copyright-banner">
+  I own <span>THESE GAME ASSETS</span> — If you steal from here, you will receive a <span>copyright strike!</span> &nbsp;—&nbsp; <span>UNBL0CKEDZ0NE</span>
+  <span id="copyright-timer">5</span>
+</div>
+
+<script>
+  var count = 5;
+  var timerEl = document.getElementById("copyright-timer");
+  var bannerEl = document.getElementById("copyright-banner");
+  var interval = setInterval(function() {
+    count--;
+    if (timerEl) timerEl.innerText = count;
+    if (count <= 0) {
+      clearInterval(interval);
+      setTimeout(function() {
+        if (bannerEl) bannerEl.remove();
+      }, 600);
+    }
+  }, 1000);
+</script>
+
+<module>
+<moduleprefs title="">
+<content type="html"><!--[CDATA[
+
+<!DOCTYPE html-->
+
+  
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Time Shooter 3 SWAT</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/swat/style.css">
+    
+    <!-- Inline override inside the module to drop margins and hide nested scrollbars -->
+    <style>
+      html, body, #unity-container, #loading-cover { 
+        background-color: #111111 !important; 
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+    </style>
+  
+  
+    <div id="unity-container" class="unity-desktop" style="background-color: #111111 !important; overflow: hidden !important;">
+      <canvas id="unity-canvas" style="background: #111111 url(&quot;https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/UBbannerDarken.png&quot;) center center / cover; cursor: default;" width="2004" height="1744"></canvas>
+    </div>
+    <div id="loading-cover" style="display: none; background-color: #111111 !important; overflow: hidden !important;">
+      <div id="unity-loading-bar">
+        <div id="unity-logo"><img src="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/UNBL0CKEDZ0NE%20in%20Text.png"></div>
+        <div id="unity-progress-bar-empty" style="">
+          <div id="unity-progress-bar-full" style="width: 100%;"></div>
+        </div>
+        <div class="spinner" style="display: none;"></div>
+      </div>
+    </div>
+    <div id="unity-fullscreen-button" style="display: none;"></div>
+    <script id="gamedistribution-jssdk" src=""></script><script>
+      const hideFullScreenButton = "1";
+      const buildUrl = "https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/swat";
+      const loaderUrl = buildUrl + "/ts3.loader.js";
+      const config = {
+        dataUrl: buildUrl + "/ts3.data",
+        frameworkUrl: buildUrl + "/ts3.framework.js",
+        codeUrl: buildUrl + "/ts3.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "GoGoMan",
+        productName: "Time Shooter SWAT",
+        productVersion: "0.03",
+      };
+
+      const container = document.querySelector("#unity-container");
+      const canvas = document.querySelector("#unity-canvas");
+      const loadingCover = document.querySelector("#loading-cover");
+      const progressBarEmpty = document.querySelector("#unity-progress-bar-empty");
+      const progressBarFull = document.querySelector("#unity-progress-bar-full");
+      const fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      const spinner = document.querySelector('.spinner');
+
+      const canFullscreen = (function() {
+        for (const key of [
+            'exitFullscreen',
+            'webkitExitFullscreen',
+            'webkitCancelFullScreen',
+            'mozCancelFullScreen',
+            'msExitFullscreen',
+          ]) {
+          if (key in document) {
+            return true;
+          }
+        }
+        return false;
+      }());
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        container.className = "unity-mobile";
+        config.devicePixelRatio = 1;
+      }
+      canvas.style.background = "#111111 url('" + buildUrl + "/ts3.jpg') center / cover";
+      loadingCover.style.display = "";
+
+      const script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          spinner.style.display = "none";
+          progressBarEmpty.style.display = "";
+          progressBarFull.style.width = `${100 * progress}%`;
+        }).then((unityInstance) => {
+          loadingCover.style.display = "none";
+          if (canFullscreen) {
+            if (!hideFullScreenButton) {
+              fullscreenButton.style.display = "";
+            }
+            fullscreenButton.onclick = () => {
+              unityInstance.SetFullscreen(1);
+            };
+          }
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+    </script>
+  
+
+
+]]&gt;</content>
+</moduleprefs></module><script src="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/swat/ts3.loader.js"></script>
+<script src="blob:https://1774430629-atari-embeds.googleusercontent.com/fd218883-e68a-4aa7-bfc2-0a300c9f7f51"></script></body></html>
+<!-- 
+Play a G4mes Website with stuff for every blocker! - 🎮 UNBL0CKEDZ0NE 💻.
+Our G4mes Doc with 2K G4mes 🎮! - https://docs.google.com/document/d/1JBhyNwurO02JYGBzx0p58B9e74qcphEKN8bI-i2dCcc/preview
+Discord with Links 👾! - https://discord.gg/v66D3fn4kD
+Our Tiktok 🔗 - https://www.tiktok.com/@unbl0ckedz0ne
+Our Youtube 🔗 - https://www.youtube.com/@unblockedzonegames
+Note Last Updated 🔄️ - March 21 2026
+-->
