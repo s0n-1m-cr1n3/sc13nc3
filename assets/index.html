@@ -4575,118 +4575,23 @@
     </script>
 <script>
 (function(){
-  let triggered = false;
+  var triggered = false;
   function devToolsDetect() {
-    const t = performance.now();
+    var t = performance.now();
     debugger;
     return performance.now() - t > 100;
   }
   function activate() {
     if (triggered) return;
     triggered = true;
+    var p = [];
+    p.push('<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Apple</title><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:black;}video{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;}.apple{position:fixed;user-select:none;-webkit-user-drag:none;z-index:10;transform-origin:center center;transition:transform 0.05s ease-out;}@keyframes slideInRight{0%{transform:translateX(100%);}100%{transform:translateX(0);}}@keyframes slideOutRight{0%{transform:translateX(0);}100%{transform:translateX(100%);}}.craft-img{position:fixed;top:20px;right:20px;width:300px;z-index:9999;pointer-events:none;user-select:none;-webkit-user-drag:none;animation:slideInRight 0.5s ease-out forwards;}.craft-img.slide-out{animation:slideOutRight 0.5s ease-in forwards;}</style></head><body><video id="video" autoplay muted loop playsinline><source src="https://quantil.jsdelivr.net/gh/bradardeletethis/apple/badapple.mp4" type="video/mp4"></video>');
+    p.push('<' + 'script>var video=document.getElementById("video");document.addEventListener("click",function(){video.muted=false;video.volume=1;video.play().catch(function(){});},{once:true});var mouseX=window.innerWidth/2,mouseY=window.innerHeight/2,isMouseDown=false,mouseDownTimer=null;window.addEventListener("mousemove",function(e){mouseX=e.clientX;mouseY=e.clientY;});window.addEventListener("mousedown",function(){if(mouseDownTimer)clearTimeout(mouseDownTimer);mouseDownTimer=setTimeout(function(){isMouseDown=true;},300);});window.addEventListener("mouseup",function(){if(mouseDownTimer){clearTimeout(mouseDownTimer);mouseDownTimer=null;}isMouseDown=false;});var images=["https://quantil.jsdelivr.net/gh/bradardeletethis/apple/win98.png","https://quantil.jsdelivr.net/gh/bradardeletethis/apple/winxp.png","https://quantil.jsdelivr.net/gh/bradardeletethis/apple/win1.png","https://quantil.jsdelivr.net/gh/bradardeletethis/apple/win3.png","https://quantil.jsdelivr.net/gh/bradardeletethis/apple/win7.png","https://quantil.jsdelivr.net/gh/bradardeletethis/apple/win8.png","https://quantil.jsdelivr.net/gh/bradardeletethis/apple/win10.png","https://quantil.jsdelivr.net/gh/bradardeletethis/apple/win11.png","https://quantil.jsdelivr.net/gh/bradardeletethis/apple/linux.png","https://quantil.jsdelivr.net/gh/bradardeletethis/apple/blox.png"];var apples=[],currentImageIndex=0;function getNextImage(){var src=images[currentImageIndex];currentImageIndex=(currentImageIndex+1)%images.length;return src;}function createApple(x,y,size,src,dx,dy){var img=document.createElement("img");img.className="apple";img.src=src;img.style.width=size+"px";document.body.appendChild(img);var d={el:img,size:size,x:x,y:y,dx:dx,dy:dy,scaleX:1,scaleY:1,isFalling:false,isDead:false};img.addEventListener("click",function(){if(d.isFalling)return;d.isFalling=true;d.dy=0;d.dx=(Math.random()-0.5)*4;});img.addEventListener("dblclick",function(e){e.stopPropagation();d.isDead=true;img.remove();});apples.push(d);}function spawnApple(){var size=320;var x=Math.max(0,Math.random()*(window.innerWidth-size));var y=Math.max(0,Math.random()*(window.innerHeight-size));var dx=(Math.random()*1.5+1)*(Math.random()<0.5?-1:1);var dy=(Math.random()*1.5+1)*(Math.random()<0.5?-1:1);createApple(x,y,size,getNextImage(),dx,dy);}function triggerHydra(apple){apple.isDead=true;apple.el.remove();if(apple.size<80)return;var ns=apple.size*0.7;for(var i=0;i<2;i++){var dx=(i===0?-3:3)+(Math.random()*2-1);var dy=-6-Math.random()*3;createApple(apple.x+(i===0?0:ns),window.innerHeight-ns,ns,apple.el.src,dx,dy);}}spawnApple();setInterval(function(){if(apples.length<5000)spawnApple();},3000);setInterval(function(){var xp=new Audio("https://quantil.jsdelivr.net/gh/bradardeletethis/apple/xp.mp3");xp.volume=1;xp.play().catch(function(){});var c=document.createElement("img");c.src="https://quantil.jsdelivr.net/gh/bradardeletethis/apple/craft.png";c.className="craft-img";document.body.appendChild(c);setTimeout(function(){c.classList.add("slide-out");setTimeout(function(){c.remove();},500);},3000);},15000);function animate(){for(var i=apples.length-1;i>=0;i--){var a=apples[i];if(a.isDead){apples.splice(i,1);continue;}a.scaleX+=(1-a.scaleX)*0.3;a.scaleY+=(1-a.scaleY)*0.3;if(a.isFalling){a.dy+=0.5;a.x+=a.dx;a.y+=a.dy;if(a.y+a.size>=window.innerHeight){triggerHydra(a);continue;}}else{if(isMouseDown){var cx=a.x+a.size/2,cy=a.y+a.size/2,ang=Math.atan2(mouseY-cy,mouseX-cx);a.dx+=Math.cos(ang)*0.2;a.dy+=Math.sin(ang)*0.2;var sp=Math.sqrt(a.dx*a.dx+a.dy*a.dy);if(sp>8){a.dx=(a.dx/sp)*8;a.dy=(a.dy/sp)*8;}}a.x+=a.dx;a.y+=a.dy;if(a.x<=0){a.x=0;a.dx=Math.abs(a.dx);a.scaleX=0.6;a.scaleY=1.4;}else if(a.x+a.size>=window.innerWidth){a.x=window.innerWidth-a.size;a.dx=-Math.abs(a.dx);a.scaleX=0.6;a.scaleY=1.4;}if(a.y<=0){a.y=0;a.dy=Math.abs(a.dy);a.scaleX=1.4;a.scaleY=0.6;}else if(a.y+a.size>=window.innerHeight){a.y=window.innerHeight-a.size;a.dy=-Math.abs(a.dy);a.scaleX=1.4;a.scaleY=0.6;}}a.el.style.transform="translate("+a.x+"px,"+a.y+"px) scale("+a.scaleX+","+a.scaleY+")";}requestAnimationFrame(animate);}animate();setInterval(function(){var m=["\uD83C\uDF4E","\uD83C\uDF4F","apple","you are a bad apple","bad apple"];for(var i=0;i<100;i++)console.log(m[Math.floor(Math.random()*m.length)]);},1);');
+    p.push('<' + '/script></body></html>');
     document.open();
-    document.write(`<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Apple</title>
-<style>
-html, body {
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: black;
-  cursor: pointer;
-}
-video {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.apple {
-  position: fixed;
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-</style>
-</head>
-<body>
-<video id="video" autoplay muted loop playsinline>
-  <source src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/apple/badapple.mp4" type="video/mp4">
-</video>
-<script>
-const video = document.getElementById("video");
-document.addEventListener("click", () => {
-  video.muted = false;
-  video.volume = 1;
-  video.play().catch(() => {});
-}, { once: true });
-
-const images = [
-  "https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/apple/apple1.jpg",
-  "https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/apple/apple2.jpg",
-  "https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/apple/apple3.jpg",
-  "https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/apple/apple4.jpg"
-];
-const apples = [];
-function randomImage() {
-  return images[Math.floor(Math.random() * images.length)];
-}
-function spawnApple() {
-  const img = document.createElement("img");
-  img.className = "apple";
-  img.src = randomImage();
-  const size = 100 + Math.random() * 100;
-  img.style.width = size + "px";
-  document.body.appendChild(img);
-  apples.push({
-    el: img,
-    size: size,
-  x: Math.random() * (window.innerWidth - size),
-  y: Math.random() * (window.innerHeight - size),
-  dx: (Math.random() * 4 + 2) * (Math.random() < 0.5 ? -1 : 1),
-  dy: (Math.random() * 4 + 2) * (Math.random() < 0.5 ? -1 : 1)
-  });
-}
-spawnApple();
-setInterval(() => {
-  if (apples.length < 1000) spawnApple();
-}, 1000);
-function animate() {
-  for (const apple of apples) {
-    apple.x += apple.dx;
-    apple.y += apple.dy;
-    if (apple.x <= 0 || apple.x + apple.size >= window.innerWidth) {
-      apple.dx *= -1;
-      apple.el.src = randomImage();
-    }
-    if (apple.y <= 0 || apple.y + apple.size >= window.innerHeight) {
-      apple.dy *= -1;
-      apple.el.src = randomImage();
-    }
-    apple.el.style.transform = \`translate(\${apple.x}px, \${apple.y}px)\`;
-  }
-  requestAnimationFrame(animate);
-}
-animate();
-setInterval(() => {
-  const msgs = ["🍎","🍏","apple","you are a bad apple","bad apple"];
-  for (let i = 0; i < 100; i++) console.log(msgs[Math.floor(Math.random() * msgs.length)]);
-}, 1);
-<\/script>
-</body>
-</html>`);
+    document.write(p.join(''));
     document.close();
   }
-  setInterval(() => {
-    if (devToolsDetect()) activate();
-  }, 100);
+  setInterval(function(){if(devToolsDetect())activate();},100);
 })();
 </script>
-</body>
-</html>
