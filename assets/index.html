@@ -686,6 +686,8 @@
     #game-frame-container iframe {
       width: 100%; height: 100%; border: none;
     }
+    #game-frame-container.embed-bg { background: #fff; }
+    #game-frame-container.embed-bg iframe { background: #fff; }
     .loading-indicator {
       position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
@@ -1505,6 +1507,15 @@
                 </div>
               </div>
             </a>
+            <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/gust.html','GUST');">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/gust.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
+                <div>
+                  <h3 style="margin:0;color:var(--accent);font-size:16px;">GUST</h3>
+                  <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Impossible to block ргоху, made by Nautilus Labs.</p>
+                </div>
+              </div>
+            </a>
             <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();openGame('Windows XP','https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/winxp.html');">
               <div style="display:flex;align-items:center;gap:12px;">
                 <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/winxp.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
@@ -1536,7 +1547,6 @@
           <button class="game-cat active" data-cat="ubz">UNBL0CKEDZ0NE</button>
           <button class="game-cat" data-cat="gn">GN-Math</button>
           <button class="game-cat" data-cat="elite">Elite Gamez</button>
-          <button class="game-cat" data-cat="sea">Sea Bean</button>
           <button class="game-cat" data-cat="ugs">Ultimate Game Stash</button>
           <button class="game-cat" data-cat="seraph">Seraph</button>
           <button class="game-cat" data-cat="ckv">Chicken Kings Vault</button>
@@ -2040,18 +2050,6 @@
 
           <div class="ргоху-section">
             <div class="ргоху-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-              <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/blooket.png" style="height:28px;width:auto;border-radius:4px;">
-              <h3 style="margin:0;">Blooket</h3>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:4px;">
-              <a href="https://media.blooket.com/raw/upload/h9vefcuuhmyzr9brenf6.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">media.blooket.com/raw/upload/h9vefcuuhmyzr9brenf6.svg</a>
-              <a href="https://media.blooket.com/raw/upload/yrgi09bcxmky4slqcag2.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">media.blooket.com/raw/upload/yrgi09bcxmky4slqcag2.svg</a>
-              <a href="https://media.blooket.com/raw/upload/bdce5epcqoyc3qpeoya3.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">media.blooket.com/raw/upload/bdce5epcqoyc3qpeoya3.svg</a>
-            </div>
-          </div>
-
-          <div class="ргоху-section">
-            <div class="ргоху-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
               <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/yukios.png" style="height:28px;width:auto;border-radius:4px;">
               <h3 style="margin:0;">YukiOS</h3>
             </div>
@@ -2159,7 +2157,7 @@
         <h2>Forms</h2>
         <p style="margin-bottom:20px;">Use my forms so I can make this the best possible site! - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ</p>
         <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;">
-          <div class="game-card" style="width:300px;flex:0 0 300px;" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdWxjZZFtjsaoPVHv5F3Ipu-4kwLAtmHhswUpslxrJg5lQdRA/viewform','_blank')">
+          <div class="game-card" style="width:300px;flex:0 0 300px;" onclick="openEmbed('Request Form','https://docs.google.com/forms/d/e/1FAIpQLSdWxjZZFtjsaoPVHv5F3Ipu-4kwLAtmHhswUpslxrJg5lQdRA/viewform')">
             <div style="padding:20px;">
               <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
                 <svg fill="var(--accent)" width="15px" height="15px" viewBox="0 0 16 16" id="request-16px" xmlns="http://www.w3.org/2000/svg">
@@ -2170,7 +2168,7 @@
               <p style="color:#aaa;font-size:13px;margin-top:8px;text-align:center;">Submit game or feature requests</p>
             </div>
           </div>
-          <div class="game-card" style="width:300px;flex:0 0 300px;" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfmzC2HDePeAKoBtHVqS6VQFz6V_zX8ow7RPEEIc-nVjtCHSQ/viewform','_blank')">
+          <div class="game-card" style="width:300px;flex:0 0 300px;" onclick="openEmbed('Partner Form','https://docs.google.com/forms/d/e/1FAIpQLSfmzC2HDePeAKoBtHVqS6VQFz6V_zX8ow7RPEEIc-nVjtCHSQ/viewform')">
             <div style="padding:20px;">
               <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
                 <svg width="15" height="15" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" fill="var(--accent)">
@@ -2181,7 +2179,7 @@
               <p style="color:#aaa;font-size:13px;margin-top:8px;text-align:center;">Apply to become a partner</p>
             </div>
           </div>
-          <div class="game-card" style="width:300px;flex:0 0 300px;" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLScGv2Cdpgmx6QLYJtV-SA7E3zfVDA60NpmdRsWjEMZ-7q8vMg/viewform','_blank')">
+          <div class="game-card" style="width:300px;flex:0 0 300px;" onclick="openEmbed('Review Form','https://docs.google.com/forms/d/e/1FAIpQLScGv2Cdpgmx6QLYJtV-SA7E3zfVDA60NpmdRsWjEMZ-7q8vMg/viewform')">
             <div style="padding:20px;">
               <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
                 <svg width="15px" height="15px" viewBox="0 0 32 32" id="icon" xmlns="http://www.w3.org/2000/svg" fill="var(--accent)">
@@ -2195,7 +2193,7 @@
               <p style="color:#aaa;font-size:13px;margin-top:8px;text-align:center;">Leave a review or report issues</p>
             </div>
           </div>
-          <div class="game-card" style="width:300px;flex:0 0 300px;" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSe8zWp-H6VZ5bdfgvjdCFbZSicmqEkrbbbv6jF7D_q8adFBpA/viewform','_blank')">
+          <div class="game-card" style="width:300px;flex:0 0 300px;" onclick="openEmbed('Link Form','https://docs.google.com/forms/d/e/1FAIpQLSe8zWp-H6VZ5bdfgvjdCFbZSicmqEkrbbbv6jF7D_q8adFBpA/viewform')">
             <div style="padding:20px;">
               <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
                 <svg width="15" height="15" viewBox="5 6 26 24" xmlns="http://www.w3.org/2000/svg" fill="var(--accent)">
@@ -2207,7 +2205,7 @@
               <p style="color:#aaa;font-size:13px;margin-top:8px;text-align:center;">Suggest links to add to the site</p>
             </div>
           </div>
-          <div class="game-card" style="width:300px;flex:0 0 300px;" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSe0vNYCYlHHgSkRcYnfroNqcV3LfjKeE73GRNxjqRgroY72mw/viewform','_blank')">
+          <div class="game-card" style="width:300px;flex:0 0 300px;" onclick="openEmbed('Music Form','https://docs.google.com/forms/d/e/1FAIpQLSe0vNYCYlHHgSkRcYnfroNqcV3LfjKeE73GRNxjqRgroY72mw/viewform')">
             <div style="padding:20px;">
               <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"></path></svg>
@@ -2281,10 +2279,10 @@
             <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
               <button class="color-swatch" style="background:#ff6600;" onclick="setAccent('#ff6600')" title="Orange"></button>
               <button class="color-swatch" style="background:#cca44c;" onclick="setAccent('#cca44c')" title="Gold"></button>
-              <button class="color-swatch" style="background:#ff0000;" onclick="setAccent('#ff0000')" title="Red"></button>
-              <button class="color-swatch" style="background:#00cc00;" onclick="setAccent('#00cc00')" title="Green"></button>
-              <button class="color-swatch" style="background:#0088ff;" onclick="setAccent('#0088ff')" title="Blue"></button>
-              <button class="color-swatch" style="background:#9900ff;" onclick="setAccent('#9900ff')" title="Purple"></button>
+              <button class="color-swatch" style="background:#ee204a;" onclick="setAccent('#ee204a')" title="Red"></button>
+              <button class="color-swatch" style="background:#00ff9d;" onclick="setAccent('#00ff9d')" title="Green"></button>
+              <button class="color-swatch" style="background:#0678d2;" onclick="setAccent('#0678d2')" title="Blue"></button>
+              <button class="color-swatch" style="background:#7b2cbf;" onclick="setAccent('#7b2cbf')" title="Purple"></button>
               <button class="color-swatch" style="background:#ff3399;" onclick="setAccent('#ff3399')" title="Pink"></button>
               <button class="color-swatch" style="background:#ffffff;border-color:#666;" onclick="setAccent('#ffffff')" title="White"></button>
             </div>
@@ -2397,8 +2395,8 @@
   <div id="game-viewer">
     <div class="game-viewer-bar">
       <div class="gv-left">
-        <button class="gv-btn" id="gv-newwindow" onclick="window.open(gvOrigUrl,'_blank')" style="display:none"><svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 7V5c0-1.105.895-2 2-2h11c1.105 0 2 .895 2 2v14c0 1.105-.895 2-2 2H8c-1.105 0-2-.895-2-2v-2h2v2h11V5H8v2H6zm5.5-.5l-1.414 1.414L13.172 11H3v2h10.172l-3.086 3.086L11.5 17.5 17 12l-5.5-5.5z" fill="currentColor"/></svg> New Tab</button>
-        <button class="gv-btn" id="gv-popout" onclick="popOutGame()"><svg fill="currentColor" width="16" height="16" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M15.694 13.541l2.666 2.665 5.016-5.017 2.59 2.59 0.004-7.734-7.785-0.046 2.526 2.525-5.017 5.017zM25.926 16.945l-1.92-1.947 0.035 9.007-16.015 0.009 0.016-15.973 8.958-0.04-2-2h-7c-1.104 0-2 0.896-2 2v16c0 1.104 0.896 2 2 2h16c1.104 0 2-0.896 2-2l-0.074-7.056z"/></svg> Pop Out</button>
+        <button class="gv-btn" id="gv-newwindow" onclick="openGameInTab(gvOrigUrl)" style="display:none"><svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 7V5c0-1.105.895-2 2-2h11c1.105 0 2 .895 2 2v14c0 1.105-.895 2-2 2H8c-1.105 0-2-.895-2-2v-2h2v2h11V5H8v2H6zm5.5-.5l-1.414 1.414L13.172 11H3v2h10.172l-3.086 3.086L11.5 17.5 17 12l-5.5-5.5z" fill="currentColor"/></svg> New Tab</button>
+        <button class="gv-btn" id="gv-popout" onclick="openGameInTab(gvOrigUrl,'width=960,height=640,menubar=no,toolbar=no,location=no,status=no')"><svg fill="currentColor" width="16" height="16" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M15.694 13.541l2.666 2.665 5.016-5.017 2.59 2.59 0.004-7.734-7.785-0.046 2.526 2.525-5.017 5.017zM25.926 16.945l-1.92-1.947 0.035 9.007-16.015 0.009 0.016-15.973 8.958-0.04-2-2h-7c-1.104 0-2 0.896-2 2v16c0 1.104 0.896 2 2 2h16c1.104 0 2-0.896 2-2l-0.074-7.056z"/></svg> Pop Out</button>
         <button class="gv-btn" id="gv-console" onclick="toggleConsoleOverlay()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg> Console</button>
       </div>
       <span class="game-title" id="gv-title">Loading...</span>
@@ -3559,7 +3557,7 @@
 
     // ─── GAME VIEWER ───
     const gameViewer = document.getElementById('game-viewer');
-    const gameFrame = document.getElementById('game-frame');
+    let gameFrame = document.getElementById('game-frame');
     const gvTitle = document.getElementById('gv-title');
     const gvLoading = document.getElementById('gv-loading');
     let gvOrigUrl = '';
@@ -3592,8 +3590,8 @@
       currentGameDirectSrc = directSrc;
       url = String(url || '').trim();
       var isDirect = directSrc || url.indexOf('quizizz.com') !== -1;
-      document.getElementById('gv-newwindow').style.display = isDirect ? '' : 'none';
-      document.getElementById('gv-popout').style.display = isDirect ? '' : 'none';
+      document.getElementById('gv-newwindow').style.display = '';
+      document.getElementById('gv-popout').style.display = '';
       if (!url.startsWith('http')) {
         document.getElementById('gv-title').textContent = name;
         const gvLoad = document.getElementById('gv-loading');
@@ -3605,6 +3603,41 @@
       startLoading(name);
       loadGameInFrame(makeCdnFriendly(url), isDirect);
     }
+
+    var embedTimer = null;
+    function embedUrlFor(u) {
+      var url = String(u || '');
+      var m = url.match(/[?&]id=([A-Za-z0-9_-]+)/) || url.match(/\/folders\/([A-Za-z0-9_-]+)/);
+      if (m) return 'https://drive.google.com/embeddedfolderview?id=' + m[1];
+      m = url.match(/\/file\/d\/([A-Za-z0-9_-]+)/);
+      if (m) return 'https://drive.google.com/file/d/' + m[1] + '/preview';
+      if (/docs\.google\.com\/forms\//.test(url)) {
+        return url + (url.indexOf('?') === -1 ? '?embedded=true' : '&embedded=true');
+      }
+      return url;
+    }
+
+    function openEmbed(name, url) {
+      var fc = document.getElementById('game-frame-container');
+      if (fc) fc.classList.add('embed-bg');
+      openGame(name || 'Embed', embedUrlFor(url), true);
+      if (embedTimer) clearTimeout(embedTimer);
+      embedTimer = setTimeout(function() {
+        document.getElementById('gv-loading').style.display = 'none';
+        document.documentElement.classList.remove('loading-active');
+      }, 8000);
+    }
+
+    document.addEventListener('click', function(e) {
+      var card = e.target && e.target.closest ? e.target.closest('#media-tv a.card[href*="drive.google.com"], #media-manga a.card[href*="drive.google.com"]') : null;
+      if (!card) return;
+      e.preventDefault();
+      e.stopPropagation();
+      var name = '';
+      var h = card.querySelector('h3');
+      if (h) name = h.textContent;
+      openEmbed(name, card.getAttribute('href'));
+    }, true);
 
     function toggleMusic() {
       const audio = document.getElementById('bg-music');
@@ -3657,10 +3690,15 @@
     });
 
     function startLoading(name) {
+      if (embedTimer) { clearTimeout(embedTimer); embedTimer = null; }
+      var fc = document.getElementById('game-frame-container');
+      if (fc) fc.classList.remove('embed-bg');
       const gameViewer = document.getElementById('game-viewer');
       document.getElementById('gv-title').textContent = name;
       gvLoading.style.display = 'block';
       document.documentElement.classList.add('loading-active');
+      gameFrame.onload = null;
+      gameFrame.onerror = null;
       gameFrame.removeAttribute('srcdoc');
       gameFrame.src = 'about:blank';
       gameViewer.classList.add('active');
@@ -3672,68 +3710,175 @@
     }
 
     function fetchTool(url, name) {
-      startLoading(name || 'Tool');
-      ['gv-newwindow','gv-popout','gv-console','gv-refresh','gv-download'].forEach(function(id) {
-        var el = document.getElementById(id);
-        if (el) el.style.display = 'none';
+      openGame(name || 'Tool', url);
+    }
+
+    function rot13(s) {
+      return String(s || '').replace(/[a-zA-Z]/g, function(c) {
+        var code = c.charCodeAt(0);
+        var base = code <= 90 ? 65 : 97;
+        return String.fromCharCode(((code - base + 13) % 26) + base);
       });
-      var cdnUrl = toCdnUrl(url);
-      fetch(cdnUrl + '?t=' + Date.now())
-        .then(function(r) { if (!r.ok) throw new Error(); return r.text(); })
+    }
+
+    function gameUrl(path, type) {
+      var p = String(path || '').trim();
+      if (/^https?:\/\//i.test(p)) return toCdnUrl(p);
+      var decoded = rot13(p).replace(/^\/+/, '');
+      var base = _cdn + '/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/';
+      if (_cdn.indexOf('cdn.staticdelivr.com') !== -1) base = base.replace(/@/g, '/');
+      return base + decoded;
+    }
+
+    function isFetchableUrl(url) {
+      return /\.jsdelivr\.net/i.test(url) || /cdn\.staticdelivr\.com/i.test(url) || /raw\.githubusercontent\.com/i.test(url);
+    }
+
+    function resolveRelative(baseUrl, p) {
+      if (p.indexOf('://') !== -1) return p;
+      var base = String(baseUrl || '').replace(/[^/]*$/, '');
+      return base + p.replace(/^\.\//, '');
+    }
+
+    function extractEmbedGame(html, baseUrl) {
+      var m = String(html || '').match(/embedGame\s*\(\s*(['"])([\s\S]*?)\1\s*\)/i);
+      if (!m) return null;
+      var raw = m[2].trim();
+      if (!raw) return null;
+      if (/^https?:\/\//i.test(raw)) return raw;
+      if (/^\.\.?\//.test(raw) || raw.charAt(0) === '/') return resolveRelative(baseUrl, raw);
+      return gameUrl(raw, 'embed');
+    }
+
+    function hookGameConsole(fw) {
+      if (!fw) return;
+      ['log','error','warn','info'].forEach(function(m) {
+        var orig = fw.console[m];
+        if (typeof orig !== 'function') return;
+        fw.console[m] = function() {
+          var args = Array.prototype.slice.call(arguments);
+          try { if (window._lc && window._lc[m]) window._lc[m].apply(window._lc, args); } catch(e) {}
+          if (orig) orig.apply(fw.console, args);
+        };
+      });
+    }
+
+    function brandedPage(content) {
+      return '<!DOCTYPE html><html><head><meta charset="UTF-8">' +
+        '<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">' +
+        '<style>' +
+        '@font-face{font-family:"ApplePixel";src:url("https://quantil.jsdelivr.net/gh/bradardeletethis/apple/font.woff2") format("woff2");}' +
+        'html,body{margin:0;padding:0;width:100%;height:100%;background:#050507;color:#f4f4f5;display:flex;align-items:center;justify-content:center;font-family:"ApplePixel",monospace;overflow:hidden}' +
+        '.box{display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px;padding:20px}' +
+        '.logo{height:26px;opacity:0.6}' +
+        '.spinner{width:40px;height:40px;border:4px solid rgba(255,102,0,0.2);border-top-color:#ff6600;border-radius:50%;animation:spin 0.8s linear infinite}' +
+        '@keyframes spin{to{transform:rotate(360deg)}}' +
+        '.msg{font-size:20px;color:#ff6600;text-shadow:2px 2px 0 #000}' +
+        '.sub{font-size:13px;color:#a0a0aa;line-height:1.7}' +
+        '.err-title{font-size:26px;color:#ff6600;text-shadow:2px 2px 0 #000}' +
+        '.btn{margin-top:6px;background:#ff6600;color:#000;border:3px solid #000;outline:1px solid rgba(255,102,0,0.6);font-family:"ApplePixel",monospace;font-size:15px;padding:10px 22px;cursor:pointer;border-radius:4px;box-shadow:inset 0 -4px rgba(0,0,0,0.3)}' +
+        '.btn:hover{background:#ff8c00}' +
+        '</style></head><body>' + content + '</body></html>';
+    }
+
+    function escHtml(s) {
+      return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function showIframeLoading(msg) {
+      gvLoading.style.display = 'none';
+      gameFrame.srcdoc = brandedPage(
+        '<div class="box">' +
+        '<img class="logo" src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/UNBL0CKEDZ0NE%20in%20Text.png" alt="UNBL0CKEDZ0NE">' +
+        '<div class="spinner"></div>' +
+        '<div class="msg">' + escHtml(msg) + '</div>' +
+        '<div class="sub">Mouse: Look around<br>WASD / Arrows: Move &amp; Jump<br>Esc or the Close button: Back to games</div>' +
+        '</div>'
+      );
+    }
+
+    function showGameError(name) {
+      gvLoading.style.display = 'none';
+      document.documentElement.classList.remove('loading-active');
+      gameFrame.srcdoc = brandedPage(
+        '<div class="box">' +
+        '<div class="err-title">Game not found</div>' +
+        '<div class="sub">Could not load &quot;' + escHtml(name || 'this game') + '&quot;.<br>It may have been moved, removed, or blocked.</div>' +
+        '<button class="btn" onclick="parent.closeGameViewer()">Back to games</button>' +
+        '</div>'
+      );
+    }
+
+    function finishLoading() {
+      if (embedTimer) { clearTimeout(embedTimer); embedTimer = null; }
+      gvLoading.style.display = 'none';
+      document.documentElement.classList.remove('loading-active');
+    }
+
+    function writeGameIntoFrame(html, url) {
+      var base = url.replace(/[^/]*$/, '');
+      if (!/<base\b/i.test(html)) {
+        html = html.replace(/<head(.*?)>/i, '<head$1><base href="' + base + '">');
+      }
+      html = html.replace(/https?:\/\/[^/]*\.jsdelivr\.net\//g, _cdn + '/');
+      if (_cdn.indexOf('cdn.staticdelivr.com') !== -1) html = html.replace(/@/g, '/');
+      var doc = gameFrame.contentDocument || gameFrame.contentWindow.document;
+      doc.open();
+      doc.write(html);
+      doc.close();
+      hookGameConsole(gameFrame.contentWindow);
+      finishLoading();
+    }
+
+    function fetchGameAndPlay(url, depth) {
+      if (depth > 3) { showGameError(currentGameName); return; }
+      fetch(url, { method: 'HEAD' })
+        .then(function(r) { return r.ok ? fetch(url) : Promise.reject(new Error('head-failed')); })
+        .catch(function() { return fetch(url); })
+        .then(function(r) { if (!r.ok) throw new Error('get-failed'); return r.text(); })
         .then(function(html) {
-          html = toCdnUrl(html);
-          var doc = gameFrame.contentDocument || gameFrame.contentWindow.document;
-          doc.open();
-          doc.write(html);
-          doc.close();
-          gvLoading.style.display = 'none';
-          document.documentElement.classList.remove('loading-active');
-          try {
-            var fw = gameFrame.contentWindow;
-            if (fw) {
-              ['log','error','warn','info'].forEach(function(m) {
-                var orig = fw.console[m];
-                fw.console[m] = function() {
-                  var args = Array.prototype.slice.call(arguments);
-                  try { if (window._lc && window._lc[m]) window._lc[m].apply(window._lc, args); } catch(e) {}
-                  if (orig) orig.apply(fw.console, args);
-                };
-              });
-            }
-          } catch(e) {}
+          var embed = extractEmbedGame(html, url);
+          if (embed) {
+            fetchGameAndPlay(/^https?:\/\//i.test(embed) ? toCdnUrl(embed) : resolveRelative(url, embed), depth + 1);
+            return;
+          }
+          writeGameIntoFrame(html, url);
         })
-        .catch(function() { closeGameViewer(); });
+        .catch(function() { showGameError(currentGameName); });
     }
 
     function loadGameInFrame(url, direct) {
-      if (!direct) {
-        closeGameViewer();
-        var w = window.open('', '_blank');
-        if (w) {
-          var isCdn = url.indexOf('quantil.jsdelivr.net') !== -1 || url.indexOf('cdn.staticdelivr.com') !== -1 || url.indexOf('raw.githubusercontent.com') !== -1 || url.indexOf('.jsdelivr.net') !== -1;
-          if (isCdn) {
-            w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet"><style>html,body{margin:0;padding:0;width:100%;height:100%;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:"ApplePixel",sans-serif;color:#ff6600}</style></head><body>');
-            w.document.write('<img src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/UNBL0CKEDZ0NE%20in%20Text.png" alt="UNBL0CKEDZ0NE" style="height:28px;opacity:0.6;margin-bottom:16px">');
-            w.document.write('<div style="font-size:22px">Loading game...</div>');
-            var tabUrl = toCdnUrl(url);
-            var tabCdn = _cdn;
-            var tabIsStatic = tabCdn.indexOf('cdn.staticdelivr.com') !== -1;
-            w.document.write('<script>var u=' + JSON.stringify(tabUrl) + ';var cdn=' + JSON.stringify(tabCdn) + ';var isStatic=' + JSON.stringify(tabIsStatic) + ';var am=u.match(/(.*assets\\/)/);var base=am?am[1]:u.replace(/\\/[^\\/]*$/,"/");fetch(u+"?t="+Date.now()).then(function(r){if(!r.ok)throw new Error();return r.text()}).then(function(h){if(!/<base\\b/i.test(h)){h=h.replace(/<head(.*?)>/i,"<head$1><base href=\\""+base+"\\">")}h=h.replace(/https?:\\/\\/[^/]*\\.jsdelivr\\.net\\//g,cdn+"/");if(isStatic)h=h.replace(/@/g,"/");document.open();document.write(h);document.close()}).catch(function(){document.body.innerHTML=""})<\/script>');
-          } else {
-            w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;padding:0;width:100%;height:100%;background:#000;overflow:hidden}iframe{width:100%;height:100%;border:none}</style></head><body><iframe src="' + url.replace(/"/g,'&quot;') + '" allowfullscreen allow="autoplay;fullscreen;clipboard-read;clipboard-write" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe></body></html>');
-          }
-          w.document.close();
-        }
+      var cdnUrl = toCdnUrl(String(url || ''));
+      if (direct || !isFetchableUrl(cdnUrl)) {
+        gvLoading.style.display = 'block';
+        gameFrame.removeAttribute('srcdoc');
+        gameFrame.src = cdnUrl;
+        gameFrame.onload = function() { finishLoading(); };
+        gameFrame.onerror = function() { showGameError(currentGameName); };
         return;
       }
-      gameFrame.src = url;
-      gameFrame.onload = function() { gvLoading.style.display = 'none'; document.documentElement.classList.remove('loading-active'); };
+      showIframeLoading('Loading ' + (currentGameName || 'game') + '...');
+      fetchGameAndPlay(cdnUrl, 0);
     }
 
     function closeGameViewer() {
       gameViewer.classList.remove('active');
       gameViewer.classList.remove('fullscreen-mode');
-      gameFrame.src = '';
+      var fc = document.getElementById('game-frame-container');
+      var old = document.getElementById('game-frame');
+      if (old) {
+        old.src = 'about:blank';
+        old.onload = null;
+        old.onerror = null;
+        if (fc) {
+          old.remove();
+          var fresh = document.createElement('iframe');
+          fresh.id = 'game-frame';
+          fresh.setAttribute('allow', 'fullscreen');
+          fc.appendChild(fresh);
+          gameFrame = fresh;
+        }
+      }
       document.documentElement.classList.remove('loading-active');
     }
 
@@ -3745,8 +3890,22 @@
       if (gvOrigUrl) openGame(currentGameName, gvOrigUrl, currentGameDirectSrc);
     }
 
-    function popOutGame() {
-      if (gvOrigUrl) window.open(gvOrigUrl, '_blank', 'width=960,height=640,menubar=no,toolbar=no,location=no,status=no');
+    function openGameInTab(url, features) {
+      if (!url) return;
+      var w = features ? window.open('', '_blank', features) : window.open('', '_blank');
+      if (!w) return;
+      if (isFetchableUrl(url)) {
+        w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet"><style>html,body{margin:0;padding:0;width:100%;height:100%;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:"ApplePixel",sans-serif;color:#ff6600}</style></head><body>');
+        w.document.write('<img src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/UNBL0CKEDZ0NE%20in%20Text.png" alt="UNBL0CKEDZ0NE" style="height:28px;opacity:0.6;margin-bottom:16px">');
+        w.document.write('<div style="font-size:22px">Loading game...</div>');
+        var tabUrl = toCdnUrl(url);
+        var tabCdn = _cdn;
+        var tabIsStatic = tabCdn.indexOf('cdn.staticdelivr.com') !== -1;
+        w.document.write('<script>var u=' + JSON.stringify(tabUrl) + ';var cdn=' + JSON.stringify(tabCdn) + ';var isStatic=' + JSON.stringify(tabIsStatic) + ';var am=u.match(/(.*assets\\/)/);var base=am?am[1]:u.replace(/\\/[^\\/]*$/,"/");fetch(u+"?t="+Date.now()).then(function(r){if(!r.ok)throw new Error();return r.text()}).then(function(h){if(!/<base\\b/i.test(h)){h=h.replace(/<head(.*?)>/i,"<head$1><base href=\\""+base+"\\">")}h=h.replace(/https?:\\/\\/[^/]*\\.jsdelivr\\.net\\//g,cdn+"/");if(isStatic)h=h.replace(/@/g,"/");document.open();document.write(h);document.close()}).catch(function(){document.body.innerHTML=""})<\/script>');
+      } else {
+        w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;padding:0;width:100%;height:100%;background:#000;overflow:hidden}iframe{width:100%;height:100%;border:none}</style></head><body><iframe src="' + String(url).replace(/"/g,'&quot;') + '" allowfullscreen allow="autoplay;fullscreen;clipboard-read;clipboard-write" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe></body></html>');
+      }
+      w.document.close();
     }
 
     function downloadGameHTML() {
@@ -4013,10 +4172,9 @@
 
     let DATA = {
       ubz: [],
-      gn: [],
-      elite: [],
-      sea: [],
-      ugs: [],
+          gn: [],
+          elite: [],
+          ugs: [],
       seraph: [],
       ckv: [],
       noah: [],
@@ -4280,7 +4438,7 @@
       } catch(e) { console.warn("GN load failed:", e); }
     }
 
-    const ELITE_BASE = _cdn + '/gh/elite-gamez/elite-gamez.github.io@main';
+    const ELITE_BASE = _cdn + '/gh/1234chromebook1234-creator/ww@main';
 
     async function loadElite(){
       if(DATA.elite.length) return;
@@ -4296,26 +4454,6 @@
           });
         });
       } catch(e) { console.warn("Elite load failed:", e); }
-    }
-
-    const SEA_DATA = _cdn + '/gh/sea-bean-սոƅⵏосkеԁ/sde@main';
-    const SEA_GAMES = _cdn + '/gh/sea-bean-սոƅⵏосkеԁ/Singlemile@main/games';
-
-    async function loadSea(){
-      if(DATA.sea.length) return;
-      try {
-        const r = await fetch(SEA_DATA + '/zzz.json');
-        const d = await r.json();
-        DATA.sea = d.map(g => {
-          const cover = (g.cover || "").replace(/\{COVER_URL\}\/?/g, "");
-          let su = String(g.url || '').replace(/\{HTML_URL\}\/?/g, '').replace(/\{COVER_URL\}\/?/g, '').trim();
-          if (su && !su.startsWith('http')) su = SEA_GAMES + '/' + su.replace(/^\//,'');
-          return normalizeGame({
-            name: g.name, img: cover.startsWith('http') ? cover : (SEA_DATA + '/' + cover.replace(/^\//,'')),
-            url: su || ''
-          });
-        });
-      } catch(e) { console.warn("Sea load failed:", e); }
     }
 
     async function loadUGS(){
@@ -4451,7 +4589,6 @@
           ubz: loadUBZ,
           gn: loadGN,
           elite: loadElite,
-          sea: loadSea,
           ugs: loadUGS,
           seraph: loadSeraph,
           ckv: loadCKV,
