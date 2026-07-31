@@ -9,23 +9,34 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luna-object-viewer/luna-object-viewer.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luna-data-grid/luna-data-grid.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luna-dom-viewer/luna-dom-viewer.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/luna-console/luna-console.css">
-  <script src="https://cdn.jsdelivr.net/gh/luminsdk/script@latest/lumin.min.js"></script>
+  <link rel="preconnect" href="https://quantil.jsdelivr.net">
+  <link rel="stylesheet" href="https://quantil.jsdelivr.net/npm/luna-object-viewer/luna-object-viewer.css">
+  <link rel="stylesheet" href="https://quantil.jsdelivr.net/npm/luna-data-grid/luna-data-grid.css">
+  <link rel="stylesheet" href="https://quantil.jsdelivr.net/npm/luna-dom-viewer/luna-dom-viewer.css">
+  <link rel="stylesheet" href="https://quantil.jsdelivr.net/npm/luna-console/luna-console.css">
+  <script src="https://quantil.jsdelivr.net/gh/luminsdk/script@latest/lumin.min.js"></script>
   <style>
+    @font-face{font-family:'ApplePixel';src:url('https://quantil.jsdelivr.net/gh/bradardeletethis/apple/font.woff2') format('woff2');font-weight:400;font-style:normal;}
     :root{
       --accent:#ff6600;
       --accent-glow:rgba(255,102,0,0.5);
       --accent-glow-strong:rgba(255,102,0,0.8);
       --accent-glow-soft:rgba(255,102,0,0.15);
-      --bg-alpha:rgba(15,8,0,0.75);
+      --bg-alpha:rgba(16,16,20,0.75);
+      --beez-gold:#ff6600;
+      --beez-gold-bright:#ff8c00;
+      --beez-gold-dark:#cc5200;
+      --beez-border:rgba(255,102,0,0.35);
+      --beez-glow:rgba(255,102,0,0.25);
+      --beez-bg:rgba(16,16,20,0.82);
+      --beez-bg-solid:rgba(10,10,12,0.85);
+      --beez-mute:#a0a0aa;
+      --beez-main:#f4f4f5;
+      --transiton-speed:0.35s;
     }
     *{box-sizing:border-box;margin:0;padding:0}
     *::-webkit-scrollbar{display:none}
-    html,body{height:100%;font-family:'Pixelify Sans',monospace,sans-serif;background:#050001;color:var(--accent);overflow:hidden;scrollbar-width:none;-ms-overflow-style:none;cursor:var(--cursor-default);}
+    html,body{height:100%;font-family:'ApplePixel',monospace,sans-serif;background:#050001;color:var(--accent);overflow:hidden;scrollbar-width:none;-ms-overflow-style:none;cursor:var(--cursor-default);}
     a,button,.sidebar-btn,.card,.game-card,.play-btn,.partner-card a,.media-cat,.game-cat,.gv-btn,.link-item a{cursor:var(--cursor-link);}
     .loading-cursor{cursor:var(--cursor-wait);}
     html.loading-active{cursor:var(--cursor-wait)!important;}html.loading-active *{cursor:var(--cursor-wait)!important;}
@@ -69,7 +80,7 @@
     #loading-timer {
       position: fixed; top: 16px; right: 16px;
       color: rgba(255,102,0,0.35);
-      font-family: "Pixelify Sans", monospace; font-size: 14px; font-weight: 400;
+      font-family: "ApplePixel", monospace; font-size: 14px; font-weight: 400;
       z-index: 10000;
     }
 
@@ -154,7 +165,7 @@
       box-shadow: inset 0 0 0 1px var(--accent);
       color: var(--accent); width: 24px; height: 24px;
       display: flex; align-items: center; justify-content: center;
-      cursor: pointer; font-size: 12px; font-family: "Pixelify Sans", sans-serif;
+      cursor: pointer; font-size: 12px; font-family: "ApplePixel", sans-serif;
     }
     #console-close:hover {
       background: var(--accent); color: #000;
@@ -182,7 +193,7 @@
     }
     #floating-logo {
       display: none; align-items: center; gap: 6px;
-      font-family: "Pixelify Sans", sans-serif; font-size: 12px; color: rgba(255,102,0,0.4);
+      font-family: "ApplePixel", sans-serif; font-size: 12px; color: rgba(255,102,0,0.4);
       pointer-events: none;
     }
     #floating-logo.visible { display: flex; }
@@ -201,7 +212,7 @@
     }
     .sidebar-btn {
       background: transparent; border: none; color: var(--accent);
-      font-family: "Pixelify Sans", sans-serif; font-size: 13px; font-weight: 600;
+      font-family: "ApplePixel", sans-serif; font-size: 13px; font-weight: 600;
       padding: 10px 14px; cursor: pointer;
       transition: all 0.25s cubic-bezier(0.4,0,0.2,1); text-align: center; white-space: nowrap;
       display: flex; align-items: center; gap: 6px;
@@ -297,7 +308,7 @@
     .search-bar input {
       width: 100%; background: rgba(8, 4, 0, 0.8);
       border: 2px solid var(--accent); color: var(--accent);
-      font-family: "Pixelify Sans", sans-serif; font-size: 18px;
+      font-family: "ApplePixel", sans-serif; font-size: 18px;
       padding: 14px 20px; border-radius: 8px; outline: none;
     }
     .search-bar input::placeholder { color: #ff8c00; opacity: 0.6; }
@@ -313,7 +324,7 @@
       position: relative; display: inline-block; border: none; background: none;
       cursor: pointer; transition: transform 0.2s ease; text-decoration: none;
     }
-    .game-btn:hover { transform: scale(1.08); .overlay span { font-family: 'Pixelify Sans', sans-serif; } }
+    .game-btn:hover { transform: scale(1.08); .overlay span { font-family: 'ApplePixel', sans-serif; } }
     .game-btn img {
       width: 180px; height: 180px; object-fit: cover;
       border-radius: 14px; box-shadow: 0 4px 14px rgba(0,0,0,0.3); display: block;
@@ -334,7 +345,7 @@
     .settings-input {
       width: 100%; background: rgba(8, 4, 0, 0.8);
       border: 2px solid var(--accent); color: var(--accent);
-      font-family: "Pixelify Sans", sans-serif; font-size: 15px;
+      font-family: "ApplePixel", sans-serif; font-size: 15px;
       padding: 10px 14px; border-radius: 8px; outline: none; box-sizing: border-box;
     }
     .settings-input::placeholder { color: #ff8c00; opacity: 0.6; }
@@ -348,7 +359,7 @@
     }
     .game-cat {
       background: transparent; border: 2px solid var(--accent); color: var(--accent);
-      font-family: "Pixelify Sans", sans-serif; font-size: 13px; font-weight: 600;
+      font-family: "ApplePixel", sans-serif; font-size: 13px; font-weight: 600;
       padding: 8px 14px; cursor: pointer; border-radius: 6px;
       transition: all 0.2s;
     }
@@ -362,7 +373,7 @@
     }
     .media-cat {
       background: transparent; border: 2px solid var(--accent); color: var(--accent);
-      font-family: "Pixelify Sans", sans-serif; font-size: 13px; font-weight: 600;
+      font-family: "ApplePixel", sans-serif; font-size: 13px; font-weight: 600;
       padding: 8px 14px; cursor: pointer; border-radius: 6px;
       transition: all 0.2s;
     }
@@ -393,7 +404,6 @@
     .game-card img {
       width: 100%; height: 140px; object-fit: cover;
       border-bottom: 2px solid var(--accent); display: block;
-      background: rgba(255,102,0,0.1);
     }
     .game-card h3 {
       font-size: 15px; padding: 10px 8px; text-align: center;
@@ -410,17 +420,17 @@
     }
     .game-card.big { grid-column: span 2; }
     .game-card.big img { height: 180px; }
-    .proxy-section {
+    .ргоху-section {
       background: rgba(8,4,0,0.9); border: 2px solid var(--accent);
       border-radius: 10px; padding: 16px;
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    .proxy-section:hover {
+    .ргоху-section:hover {
       transform: translateY(-3px);
       box-shadow: 0 0 20px rgba(255,102,0,0.4);
       border-color: #ff8c00;
     }
-    .proxy-links-glow a { text-shadow: 0 0 6px var(--accent-glow), 0 0 12px var(--accent-glow-strong); }
+    .ргоху-links-glow a { text-shadow: 0 0 6px var(--accent-glow), 0 0 12px var(--accent-glow-strong); }
 
     .card-grid {
       display: grid;
@@ -439,7 +449,7 @@
       border-color: #ff8c00;
     }
     .card-img {
-      width: 100%; height: 140px; background: rgba(255,102,0,0.1);
+      width: 100%; height: 140px;
       display: flex; align-items: center; justify-content: center;
       font-size: 48px; border-bottom: 2px solid var(--accent);
     }
@@ -519,7 +529,7 @@
     .form-group input, .form-group textarea, .form-group select {
       width: 100%; background: rgba(0, 0, 0, 0.6);
       border: 2px solid var(--accent); color: var(--accent);
-      font-family: "Pixelify Sans", sans-serif; font-size: 16px;
+      font-family: "ApplePixel", sans-serif; font-size: 16px;
       padding: 12px; border-radius: 6px; outline: none;
     }
     .form-group input::placeholder, .form-group textarea::placeholder {
@@ -531,7 +541,7 @@
     .form-group textarea { resize: vertical; min-height: 120px; }
     .submit-btn {
       background: var(--accent); color: #000000;
-      font-family: "Pixelify Sans", sans-serif; font-size: 18px;
+      font-family: "ApplePixel", sans-serif; font-size: 18px;
       font-weight: 700; padding: 14px 32px; border: none;
       border-radius: 6px; cursor: pointer; width: 100%;
       transition: all 0.2s;
@@ -644,7 +654,7 @@
     .game-viewer-bar .gv-right { display: flex; align-items: center; gap: 8px; margin-left: auto; }
     .game-viewer-bar .gv-btn {
       background: transparent; border: 2px solid var(--accent);
-      color: var(--accent); font-family: "Pixelify Sans", sans-serif;
+      color: var(--accent); font-family: "ApplePixel", sans-serif;
       font-size: 14px; font-weight: 600; padding: 6px 14px;
       border-radius: 6px; cursor: pointer; transition: all 0.2s;
       display: flex; align-items: center; gap: 6px;
@@ -655,7 +665,7 @@
     }
     .settings-btn {
       background: transparent; border: 2px solid var(--accent);
-      color: var(--accent); font-family: "Pixelify Sans", sans-serif;
+      color: var(--accent); font-family: "ApplePixel", sans-serif;
       font-size: 14px; font-weight: 600; padding: 8px 18px;
       border-radius: 6px; cursor: pointer; transition: all 0.2s;
     }
@@ -664,7 +674,7 @@
       box-shadow: 0 0 12px rgba(255,102,0,0.4);
     }
     .color-swatch {
-      width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--accent);
+      width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--accent);
       cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; padding: 0;
     }
     .color-swatch:hover {
@@ -689,6 +699,157 @@
       border-radius: 50%; animation: spin 0.8s linear infinite;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── BEEZ-STYLE PIXEL GOLD THEME ─── */
+    html,body{background:#050507;color:#f4f4f5;}
+    #loading-screen{background:#050507;}
+    #loading-screen .blockScreen-svg g{stroke:var(--accent)!important;}
+    #loading-screen .loading-stripe{background:var(--accent);}
+    #loading-screen .loading-system-msg{color:var(--accent);}
+    #loading-timer{color:rgba(255,102,0,0.35);}
+
+    *::-webkit-scrollbar{display:block;width:12px;height:12px;}
+    *::-webkit-scrollbar-track{background:#0d0d10;border-left:2px solid var(--beez-border);}
+    *::-webkit-scrollbar-thumb{background:var(--accent);border:2px solid #000;border-radius:2px;box-shadow:inset 0 -3px rgba(0,0,0,0.35);}
+    *::-webkit-scrollbar-thumb:hover{background:var(--beez-gold-bright);}
+    *{scrollbar-width:thin;scrollbar-color:var(--accent) #0d0d10;}
+
+    #sidebar{background:rgba(10,10,12,0.85);border-top:3px solid var(--beez-border);}
+    #sidebar.left-sidebar{border-right:3px solid var(--beez-border);}
+    #sidebar.right-sidebar{border-left:3px solid var(--beez-border);}
+    .sidebar-nav{
+      background:var(--beez-bg-solid);
+      border:3px solid var(--beez-border);
+      outline:2px solid #000;
+      border-radius:4px;
+      box-shadow:inset 0 -4px rgba(0,0,0,0.45),0 0 20px var(--beez-glow);
+    }
+    #sidebar.left-sidebar .sidebar-nav,#sidebar.right-sidebar .sidebar-nav{border-radius:4px;}
+    .sidebar-btn{color:var(--accent);}
+    .sidebar-btn:hover,.sidebar-btn.active{background:var(--accent);color:#000;box-shadow:inset 0 -3px rgba(0,0,0,0.2);}
+    .sidebar-btn + .sidebar-btn::before{background:rgba(255,102,0,0.35);}
+    .sidebar-btn:first-child,.sidebar-btn:last-child,
+    .sidebar-btn:hover:first-child,.sidebar-btn:hover:last-child,
+    .sidebar-btn.active:first-child,.sidebar-btn.active:last-child{border-radius:4px;}
+    #sidebar.left-sidebar .sidebar-btn:first-child,#sidebar.left-sidebar .sidebar-btn:last-child,
+    #sidebar.left-sidebar .sidebar-btn:hover:first-child,#sidebar.left-sidebar .sidebar-btn:hover:last-child,
+    #sidebar.left-sidebar .sidebar-btn.active:first-child,#sidebar.left-sidebar .sidebar-btn.active:last-child,
+    #sidebar.right-sidebar .sidebar-btn:first-child,#sidebar.right-sidebar .sidebar-btn:last-child,
+    #sidebar.right-sidebar .sidebar-btn:hover:first-child,#sidebar.right-sidebar .sidebar-btn:hover:last-child,
+    #sidebar.right-sidebar .sidebar-btn.active:first-child,#sidebar.right-sidebar .sidebar-btn.active:last-child{border-radius:4px;}
+    #sidebar.left-sidebar .sidebar-btn:first-child:last-child,#sidebar.right-sidebar .sidebar-btn:first-child:last-child{border-radius:4px;}
+
+    .tab-content h2{text-shadow:2px 2px 0px #000;}
+    .tab-content p{color:#a8a8b0;}
+    .day-name{color:var(--accent);text-shadow:4px 4px 0px #000,0 0 20px rgba(255,102,0,0.4);}
+    .full-date{color:var(--beez-mute);text-shadow:2px 2px 0px #000;}
+    #welcome-heading{text-shadow:2px 2px 0px #000;}
+
+    .search-bar input,.settings-input,.form-group input,.form-group textarea,.form-group select{
+      border-width:3px;border-radius:4px;outline:2px solid #000;
+      background:var(--beez-bg-solid);
+      color:#f4f4f5;
+      box-shadow:inset 0 -3px rgba(0,0,0,0.35);
+    }
+    .search-bar input:focus,.settings-input:focus,.form-group input:focus,.form-group textarea:focus,.form-group select:focus{
+      border-color:var(--accent);box-shadow:inset 0 -3px rgba(0,0,0,0.35),0 0 14px var(--beez-glow);
+    }
+    .search-bar input::placeholder,.settings-input::placeholder,.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,102,0,0.6);}
+    select.settings-input{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ff6600' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    }
+    select.settings-input option{background:#0f0f12;color:var(--accent);}
+
+    .game-btn img{
+      border-radius:4px;border:3px solid var(--beez-border);outline:2px solid #000;
+      box-shadow:inset 0 -3px rgba(0,0,0,0.3),0 4px 12px rgba(0,0,0,0.4);
+    }
+    .game-btn:hover img{border-color:var(--accent);box-shadow:inset 0 -3px rgba(0,0,0,0.3),0 0 16px var(--beez-glow);}
+    .game-btn .overlay{border-radius:4px;}
+    .game-btn:hover .overlay{background:rgba(0,0,0,0.65);}
+
+    .game-card,.card,.partner-card,.form-container,.ргоху-section,.link-item,.tool-item{
+      background:var(--beez-bg);
+      border-radius:4px;border-width:3px;outline:2px solid #000;
+      box-shadow:inset 0 0 12px var(--accent-glow-soft),0 4px 12px rgba(0,0,0,0.35);
+    }
+    .game-card:hover,.card:hover,.partner-card:hover,.ргоху-section:hover,.link-item:hover{
+      border-color:var(--accent);
+      box-shadow:inset 0 0 16px rgba(255,102,0,0.15),0 8px 20px rgba(0,0,0,0.5);
+    }
+    .game-card img,.card-img{border-bottom-width:3px;}
+    .game-card h3,.card h3,.partner-card h3{color:var(--accent);text-shadow:1px 1px 0px #000;}
+    .card p,.partner-card p,.link-item .link-desc{color:var(--beez-mute);}
+    .card-tag{border-radius:2px;border:2px solid #000;box-shadow:inset 0 -2px rgba(0,0,0,0.25);}
+    .ргоху-section p[style*="color:#ff8c00"]{color:var(--beez-gold-bright)!important;}
+    .ргоху-section img{border-radius:4px!important;}
+
+    .link-item{border-radius:4px;}
+    .link-item:hover{background:var(--accent-glow-soft);border-color:var(--accent);box-shadow:0 0 15px var(--beez-glow);}
+
+    .game-cat,.media-cat,.gv-btn,.settings-btn,.partner-card a,.social-btn{
+      border-radius:4px;border-width:3px;outline:1px solid #000;
+      box-shadow:inset 0 -3px rgba(0,0,0,0.3);
+    }
+    .game-cat:hover,.game-cat.active,.media-cat:hover,.media-cat.active,.gv-btn:hover,.settings-btn:hover,.partner-card a:hover{
+      background:var(--accent);color:#000;box-shadow:inset 0 -3px rgba(0,0,0,0.2),0 0 12px var(--beez-glow);
+    }
+    .social-btn{background:var(--accent-glow-soft);border-color:var(--beez-border);}
+    .social-btn:hover{background:var(--accent);color:#000;box-shadow:inset 0 -3px rgba(0,0,0,0.2),0 0 12px var(--beez-glow);}
+
+    .play-btn,.submit-btn,.link-item a{
+      border-radius:4px;border:3px solid #000;outline:1px solid rgba(255,102,0,0.6);
+      background:var(--accent);color:#000;
+      box-shadow:inset 0 -4px rgba(0,0,0,0.3);
+    }
+    .game-card .play-btn:hover,.submit-btn:hover,.link-item a:hover{background:var(--beez-gold-bright);}
+
+    .game-viewer-bar{background:rgba(10,10,12,0.95);border-bottom-width:3px;}
+    .game-viewer-bar .game-title{text-shadow:2px 2px 0px #000;}
+    .loading-indicator .spinner{border-color:rgba(255,102,0,0.2);}
+
+    .color-swatch{border-radius:2px;border-width:3px;outline:2px solid #000;}
+    .color-swatch:hover{box-shadow:0 0 10px var(--beez-glow);}
+    #cloak-preview{border-color:rgba(255,102,0,0.35)!important;border-radius:4px!important;}
+
+    #quote{color:var(--accent);text-shadow:1px 1px 0px #000;}
+    footer{color:var(--beez-mute);}
+    #floating-logo{color:rgba(255,102,0,0.4);}
+    #floating-logo img{opacity:0.4;}
+
+    .luna-console-theme-dark .luna-console-log-item{border-bottom-color:rgba(255,102,0,0.15)!important;}
+
+    /* ─── BOOT SCREEN ─── */
+    #boot-screen{
+      position:fixed;top:0;left:0;width:100vw;height:100vh;
+      background-color:#050507;
+      display:flex;flex-direction:column;justify-content:center;align-items:center;
+      z-index:9998;
+      transition:opacity 0.35s ease-in-out;
+    }
+    #boot-screen.hidden{display:none;}
+    .boot-logo-container{
+      width:320px;max-width:80vw;
+      display:flex;justify-content:center;align-items:center;
+    }
+    .boot-logo-container img{
+      max-width:100%;height:auto;
+      filter:drop-shadow(0 0 12px rgba(255,102,0,0.35));
+    }
+    .pixel-progress-container{
+      width:320px;max-width:80vw;height:18px;
+      background:#1e1e24;border:4px solid #0f0f12;outline:2px solid #55555a;
+      margin-top:36px;position:relative;
+    }
+    .pixel-progress-bar{
+      height:100%;width:0%;background:var(--accent);
+      box-shadow:inset 0 -4px rgba(0,0,0,0.25);
+    }
+    .boot-loader-container{position:absolute;bottom:40px;right:40px;text-align:right;}
+    .boot-loader-container .boot-text{
+      font-family:'ApplePixel',monospace;font-size:16px;color:var(--accent);
+      text-shadow:2px 2px 0px #000;letter-spacing:1px;
+    }
   </style>
 <base target="_blank">
 </head>
@@ -767,6 +928,19 @@
       </div>
     </div>
     </div>
+
+  <div id="boot-screen" class="hidden">
+    <div class="boot-logo-container">
+      <img src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/UNBL0CKEDZ0NE%20in%20Text.png" alt="UNBL0CKEDZ0NE" id="boot-logo">
+    </div>
+    <div class="pixel-progress-container">
+      <div class="pixel-progress-bar" id="boot-progress"></div>
+    </div>
+    <div class="boot-loader-container">
+      <div class="boot-text">Loading... Please Wait</div>
+    </div>
+  </div>
+
   <canvas id="bg-canvas"></canvas>
   <canvas id="topography-canvas"></canvas>
   <canvas id="matrix-canvas"></canvas>
@@ -800,7 +974,7 @@
           <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><span class="sidebar-label">Home</span>
         </button>
         <button class="sidebar-btn" data-tab="games">
-          <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg></span><span class="sidebar-label">Games</span>
+          <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg></span><span class="sidebar-label">G4m3s</span>
         </button>
         <button class="sidebar-btn" data-tab="tools">
           <span class="icon"><svg width="24" height="24" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M12.1,2A9.8,9.8,0,0,0,6.7,3.6L13.1,10a2.1,2.1,0,0,1,.2,3,2.1,2.1,0,0,1-3-.2L3.7,6.4A9.84,9.84,0,0,0,2,12.1,10.14,10.14,0,0,0,12.1,22.2a10.9,10.9,0,0,0,2.6-.3l6.7,6.7a5,5,0,0,0,7.1-7.1l-6.7-6.7a10.9,10.9,0,0,0,.3-2.6A10,10,0,0,0,12.1,2Zm8,10.1a7.61,7.61,0,0,1-.3,2.1l-.3,1.1.8.8L27,22.8a2.88,2.88,0,0,1,.9,2.1A2.72,2.72,0,0,1,27,27a2.9,2.9,0,0,1-4.2,0l-6.7-6.7-.8-.8-1.1.3a7.61,7.61,0,0,1-2.1.3,8.27,8.27,0,0,1-5.7-2.3A7.63,7.63,0,0,1,4,12.1a8.33,8.33,0,0,1,.3-2.2l4.4,4.4a4.14,4.14,0,0,0,5.9.2,4.14,4.14,0,0,0-.2-5.9L10,4.2a6.45,6.45,0,0,1,2-.3,8.27,8.27,0,0,1,5.7,2.3A8.49,8.49,0,0,1,20.1,12.1Z" fill="currentColor"/></svg></span><span class="sidebar-label">Tools</span>
@@ -811,8 +985,8 @@
         <button class="sidebar-btn" data-tab="media">
           <span class="icon"><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5,18 C3.34314575,18 2,16.6568542 2,15 L2,7 C2,5.34314575 3.34314575,4 5,4 L19,4 C20.6568542,4 22,5.34314575 22,7 L22,15 C22,16.6568542 20.6568542,18 19,18 L15,18 C15.5522847,18 16,18.4477153 16,19 C16,19.5522847 15.5522847,20 15,20 L9,20 C8.44771525,20 8,19.5522847 8,19 C8,18.4477153 8.44771525,18 9,18 L5,18 Z M19,6 L5,6 C4.44771525,6 4,6.44771525 4,7 L4,15 C4,15.5522847 4.44771525,16 5,16 L19,16 C19.5522847,16 20,15.5522847 20,15 L20,7 C20,6.44771525 19.5522847,6 19,6 Z" fill="currentColor"/></svg></span><span class="sidebar-label">Media</span>
         </button>
-        <button class="sidebar-btn" data-tab="proxy">
-          <span class="icon"><svg width="24" height="24" viewBox="5 6 26 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.6,24.32l-2.46,2.44a4,4,0,0,1-5.62,0,3.92,3.92,0,0,1,0-5.55l4.69-4.65a4,4,0,0,1,5.62,0,3.86,3.86,0,0,1,1,1.71A2,2,0,0,0,21.1,18l1.29-1.28a5.89,5.89,0,0,0-1.15-1.62,6,6,0,0,0-8.44,0L8.1,19.79a5.91,5.91,0,0,0,0,8.39,6,6,0,0,0,8.44,0l3.65-3.62c-.17,0-.33,0-.5,0A8,8,0,0,1,17.6,24.32Z" fill="currentColor"/><path d="M28.61,7.82a6,6,0,0,0-8.44,0l-3.65,3.62c.17,0,.33,0,.49,0h0a8,8,0,0,1,2.1.28l2.46-2.44a4,4,0,0,1,5.62,0,3.92,3.92,0,0,1,0,5.55l-4.69,4.65a4,4,0,0,1-5.62,0,3.86,3.86,0,0,1-1-1.71,2,2,0,0,0-.28.23l-1.29,1.28a5.89,5.89,0,0,0,1.15,1.62,6,6,0,0,0,8.44,0l4.69-4.65a5.92,5.92,0,0,0,0-8.39Z" fill="currentColor"/></svg></span><span class="sidebar-label">Proxies</span>
+        <button class="sidebar-btn" data-tab="ргоху">
+          <span class="icon"><svg width="24" height="24" viewBox="5 6 26 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.6,24.32l-2.46,2.44a4,4,0,0,1-5.62,0,3.92,3.92,0,0,1,0-5.55l4.69-4.65a4,4,0,0,1,5.62,0,3.86,3.86,0,0,1,1,1.71A2,2,0,0,0,21.1,18l1.29-1.28a5.89,5.89,0,0,0-1.15-1.62,6,6,0,0,0-8.44,0L8.1,19.79a5.91,5.91,0,0,0,0,8.39,6,6,0,0,0,8.44,0l3.65-3.62c-.17,0-.33,0-.5,0A8,8,0,0,1,17.6,24.32Z" fill="currentColor"/><path d="M28.61,7.82a6,6,0,0,0-8.44,0l-3.65,3.62c.17,0,.33,0,.49,0h0a8,8,0,0,1,2.1.28l2.46-2.44a4,4,0,0,1,5.62,0,3.92,3.92,0,0,1,0,5.55l-4.69,4.65a4,4,0,0,1-5.62,0,3.86,3.86,0,0,1-1-1.71,2,2,0,0,0-.28.23l-1.29,1.28a5.89,5.89,0,0,0,1.15,1.62,6,6,0,0,0,8.44,0l4.69-4.65a5.92,5.92,0,0,0,0-8.39Z" fill="currentColor"/></svg></span><span class="sidebar-label">Ргохіеʂ</span>
         </button>
         <button class="sidebar-btn" data-tab="forms">
           <span class="icon"><svg width="24" height="24" viewBox="-2 -2 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5.72 14.456l1.761-.508 10.603-10.73a.456.456 0 0 0-.003-.64l-.635-.642a.443.443 0 0 0-.632-.003L6.239 12.635l-.52 1.82zM18.703.664l.635.643c.876.887.884 2.318.016 3.196L8.428 15.561l-3.764 1.084a.901.901 0 0 1-1.11-.623.915.915 0 0 1-.002-.506l1.095-3.84L15.544.647a2.215 2.215 0 0 1 3.159.016zM7.184 1.817c.496 0 .898.407.898.909a.903.903 0 0 1-.898.909H3.592c-.992 0-1.796.814-1.796 1.817v10.906c0 1.004.804 1.818 1.796 1.818h10.776c.992 0 1.797-.814 1.797-1.818v-3.635c0-.502.402-.909.898-.909s.898.407.898.91v3.634c0 2.008-1.609 3.636-3.593 3.636H3.592C1.608 19.994 0 18.366 0 16.358V5.452c0-2.007 1.608-3.635 3.592-3.635h3.592z" fill="currentColor"/></svg></span><span class="sidebar-label">Forms</span>
@@ -864,18 +1038,18 @@
           </button>
         </div>
         <div class="quote-section">
-          <div id="quote">There is Currently 175 G4mes! - ʊռɮʟօƈӄɛɖʐօռɛ</div>
+          <div id="quote">There is Currently 175 G4mes! - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ</div>
         </div>
         <div class="social-links">
-          <a href="https://www.tiktok.com/@unblockedzone" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"></path></svg><span class="social-label">TikTok</span></a>
-          <a href="https://www.youtube.com/@realunblockedzone" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.7 3.5 12 3.5 12 3.5s-7.7 0-9.4.6A3 3 0 0 0 .5 6.2C0 7.9 0 12 0 12s0 4.1.5 5.8a3 3 0 0 0 2.1 2.1c1.7.6 9.4.6 9.4.6s7.7 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 16.1 24 12 24 12s0-4.1-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z" fill="currentColor" stroke="none"></path></svg><span class="social-label">YouTube</span></a>
+          <a href="https://www.tiktok.com/@սոƅⵏосkеԁzone" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"></path></svg><span class="social-label">TikTok</span></a>
+          <a href="https://www.youtube.com/@realսոƅⵏосkеԁzone" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.7 3.5 12 3.5 12 3.5s-7.7 0-9.4.6A3 3 0 0 0 .5 6.2C0 7.9 0 12 0 12s0 4.1.5 5.8a3 3 0 0 0 2.1 2.1c1.7.6 9.4.6 9.4.6s7.7 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 16.1 24 12 24 12s0-4.1-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z" fill="currentColor" stroke="none"></path></svg><span class="social-label">YouTube</span></a>
           <a href="https://discord.gg/v66D3fn4kD" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z" fill="currentColor" stroke="none"></path></svg><span class="social-label">Discord</span></a>
         </div>
       </div>
 
       <div class="tab-content" id="media">
         <h2>Media</h2>
-        <p>I am not responsible if you get in trouble for watching movies or listening to music! - ʊռɮʟօƈӄɛɖʐօռɛ</p>
+        <p>I am not responsible if you get in trouble for watching movies or listening to music! - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ</p>
         <div class="media-section" id="media-movies" style="display:none">
           <div class="search-bar">
             <input type="text" id="movie-search" placeholder="Search movies...">
@@ -1275,74 +1449,74 @@
 
       <div class="tab-content" id="tools">
         <h2>Tools</h2>
-        <p>Useful browser tools and utilities. - ʊռɮʟօƈӄɛɖʐօռɛ</p>
+        <p>These tools are from multiple sources! - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ</p>
         <div style="display:grid;gap:12px;">
-          <a href="#" class="proxy-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/runner.html','Code Editor');">
+          <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/runner.html','Code Editor');">
             <div style="display:flex;align-items:center;gap:12px;">
-              <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/vscode.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;background:rgba(255,102,0,.1);padding:6px;">
+              <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/vscode.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
               <div>
                 <h3 style="margin:0;color:var(--accent);font-size:16px;">Code Editor</h3>
                 <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Write and run code in your browser</p>
               </div>
             </div>
           </a>
-          <a href="#" class="proxy-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/embed.html','HTML Embedder');">
+          <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/embed.html','HTML Embedder');">
             <div style="display:flex;align-items:center;gap:12px;">
-              <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/embed.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;background:rgba(255,102,0,.1);padding:6px;">
+              <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/embed.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
               <div>
                 <h3 style="margin:0;color:var(--accent);font-size:16px;">HTML Embedder</h3>
                 <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Embed any webpage as HTML</p>
               </div>
             </div>
           </a>
-          <a href="#" class="proxy-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/embed2.html','Website Embedder');">
+          <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/embed2.html','Website Embedder');">
             <div style="display:flex;align-items:center;gap:12px;">
-              <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/aboutblank.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;background:rgba(255,102,0,.1);padding:6px;">
+              <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/aboutblank.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
               <div>
                 <h3 style="margin:0;color:var(--accent);font-size:16px;">Website Embedder</h3>
                 <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Embed websites in about:blank</p>
               </div>
             </div>
           </a>
-          <a href="#" class="proxy-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/history.html','History Flooder');">
+          <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/history.html','History Flooder');">
             <div style="display:flex;align-items:center;gap:12px;">
-              <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/history.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;background:rgba(255,102,0,.1);padding:6px;">
+              <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/history.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
               <div>
                 <h3 style="margin:0;color:var(--accent);font-size:16px;">History Flooder</h3>
                 <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Flood your browser history</p>
               </div>
             </div>
           </a>
-            <a href="#" class="proxy-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/share.html','Screen Sharer');">
+            <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/share.html','Screen Sharer');">
               <div style="display:flex;align-items:center;gap:12px;">
-                <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/screen.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;background:rgba(255,102,0,.1);padding:6px;">
+                <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/screen.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
                 <div>
                   <h3 style="margin:0;color:var(--accent);font-size:16px;">Screen Sharer</h3>
                   <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Share your screen easily</p>
                 </div>
               </div>
             </a>
-            <a href="#" class="proxy-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/mp3.html','MP3/MP4 Player');">
+            <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/mp3.html','MP3/MP4 Player');">
               <div style="display:flex;align-items:center;gap:12px;">
-                <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/mp3.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;background:rgba(255,102,0,.1);padding:6px;">
+                <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/mp3.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
                 <div>
                   <h3 style="margin:0;color:var(--accent);font-size:16px;">MP3/MP4 Player</h3>
                   <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Play audio and video files</p>
                 </div>
               </div>
             </a>
-            <a href="#" class="proxy-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();openGame('Windows XP','https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/winxp.html');">
+            <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();openGame('Windows XP','https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/winxp.html');">
               <div style="display:flex;align-items:center;gap:12px;">
-                <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/winxp.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;background:rgba(255,102,0,.1);padding:6px;">
+                <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/winxp.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
                 <div>
                   <h3 style="margin:0;color:var(--accent);font-size:16px;">Windows XP</h3>
                   <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Experience Windows XP in your browser</p>
                 </div>
               </div>
             </a>
-            <a href="#" class="proxy-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();openGame('Cloudmoon','https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/cloudmoon.html');">
+            <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();openGame('Cloudmoon','https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/cloudmoon.html');">
               <div style="display:flex;align-items:center;gap:12px;">
-                <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/cloudmoon.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;background:rgba(255,102,0,.1);padding:6px;">
+                <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/cloudmoon.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
                 <div>
                   <h3 style="margin:0;color:var(--accent);font-size:16px;">Cloudmoon</h3>
                   <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Browse the web with Cloudmoon</p>
@@ -1353,10 +1527,10 @@
       </div>
 
       <div class="tab-content" id="games">
-        <h2>Games</h2>
+        <h2>G4m3s</h2>
         <p>Play 7.5K G4mes from Multiple Sources!</p>
         <div class="search-bar">
-          <input type="text" id="game-search" placeholder="Search games...">
+          <input type="text" id="game-search" placeholder="Search g4m3s...">
         </div>
         <div class="game-categories">
           <button class="game-cat active" data-cat="ubz">UNBL0CKEDZ0NE</button>
@@ -1370,23 +1544,23 @@
           <button class="game-cat" data-cat="lumin">Lumin SDK</button>
           <button class="game-cat" data-cat="all">All</button>
         </div>
-        <div id="game-count" style="text-align:center;color:#ff8c00;margin-bottom:10px;font-size:14px;">0 games</div>
+        <div id="game-count" style="text-align:center;color:#ff8c00;margin-bottom:10px;font-size:14px;">0 g4m3s</div>
         <div id="game-grid"></div>
       </div>
 
 
 
-      <div class="tab-content" id="proxy">
+      <div class="tab-content" id="ргоху">
         <h2>Proxy Links</h2>
-        <p>These links do get updated so don't worry. - ʊռɮʟօƈӄɛɖʐօռɛ</p>
+        <p>These links do get updated so don't worry. - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ</p>
         <div style="display:flex;flex-direction:column;gap:24px;margin-top:16px;">
 
-          <div class="proxy-section" style="border-color:rgba(255,102,0,0.6);box-shadow:0 0 25px rgba(255,102,0,0.15);">
-            <div class="proxy-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div class="ргоху-section" style="border-color:rgba(255,102,0,0.6);box-shadow:0 0 25px rgba(255,102,0,0.15);">
+            <div class="ргоху-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
               <img src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/UNBL0CKEDZ0NE%20in%20Text.png" style="height:28px;width:auto;border-radius:4px;">
               <h3 style="margin:0;">UNBL0CKEDZ0NE</h3>
             </div>
-            <div class="proxy-links-glow" style="display:flex;flex-direction:column;gap:4px;">
+            <div class="ргоху-links-glow" style="display:flex;flex-direction:column;gap:4px;">
 
               <details style="margin-bottom:12px;">
                 <summary style="color:var(--accent);font-weight:bold;font-size:15px;cursor:pointer;padding:8px 0;">Old Links</summary>
@@ -1394,7 +1568,7 @@
 
                   <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">@latest Links</div>
                   <a href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
-                  <a href="https://quantil.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
+                  <a href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
                   <a href="https://gcore.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
                   <a href="https://originfastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
                   <a href="https://fastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
@@ -1405,7 +1579,7 @@
 
                   <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">@main Links</div>
                   <a href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
-                  <a href="https://quantil.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
+                  <a href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
                   <a href="https://gcore.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
                   <a href="https://originfastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
                   <a href="https://fastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
@@ -1418,7 +1592,7 @@
 
                   <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">@master Links</div>
                   <a href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
-                  <a href="https://quantil.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
+                  <a href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
                   <a href="https://gcore.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
                   <a href="https://originfastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
                   <a href="https://fastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
@@ -1431,7 +1605,7 @@
 
                   <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">No @ Links</div>
                   <a href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
-                  <a href="https://quantil.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
+                  <a href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
                   <a href="https://gcore.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
                   <a href="https://originfastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
                   <a href="https://fastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
@@ -1445,7 +1619,7 @@
                   <a href="https://fastly.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
                   <a href="https://testingcf.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
                   <a href="https://gcore.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
-                  <a href="https://quantil.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
+                  <a href="https://cdn.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
                   <a href="https://originfastly.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
                   <a href="https://jsd.onmicrosoft.cn/combine/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/combine/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
                   <a href="https://cdn.jsdmirror.com/combine/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/combine/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
@@ -1455,7 +1629,7 @@
                   <a href="https://fastly.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
                   <a href="https://testingcf.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
                   <a href="https://gcore.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
-                  <a href="https://quantil.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
+                  <a href="https://cdn.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
                   <a href="https://originfastly.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
                   <a href="https://jsd.onmicrosoft.cn/combine/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/combine/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
                   <a href="https://cdn.jsdmirror.com/combine/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/combine/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
@@ -1465,7 +1639,7 @@
                   <a href="https://fastly.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
                   <a href="https://testingcf.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
                   <a href="https://gcore.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
-                  <a href="https://quantil.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
+                  <a href="https://cdn.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
                   <a href="https://originfastly.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
                   <a href="https://jsd.onmicrosoft.cn/combine/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/combine/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
                   <a href="https://cdn.jsdmirror.com/combine/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/combine/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
@@ -1475,7 +1649,7 @@
                   <a href="https://fastly.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
                   <a href="https://testingcf.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
                   <a href="https://gcore.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
-                  <a href="https://quantil.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
+                  <a href="https://cdn.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
                   <a href="https://originfastly.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/combine/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
                   <a href="https://jsd.onmicrosoft.cn/combine/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/combine/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
                   <a href="https://cdn.jsdmirror.com/combine/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/combine/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
@@ -1501,7 +1675,7 @@
                   <a href="https://fastly.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg</a>
                   <a href="https://testingcf.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg</a>
                   <a href="https://gcore.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg</a>
-                  <a href="https://quantil.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg</a>
+                  <a href="https://cdn.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg</a>
                   <a href="https://originfastly.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg</a>
                   <a href="https://jsd.onmicrosoft.cn/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/npm/ubzone@1.0.0/assets/index.svg</a>
                   <a href="https://cdn.jsdmirror.com/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/npm/ubzone@1.0.0/assets/index.svg</a>
@@ -1515,7 +1689,7 @@
                   <a href="https://fastly.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg</a>
                   <a href="https://testingcf.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg</a>
                   <a href="https://gcore.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg</a>
-                  <a href="https://quantil.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg</a>
+                  <a href="https://cdn.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg</a>
                   <a href="https://originfastly.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg</a>
                   <a href="https://jsd.onmicrosoft.cn/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/npm/ubzone@2.0.0/assets/index.svg</a>
                   <a href="https://cdn.jsdmirror.com/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/npm/ubzone@2.0.0/assets/index.svg</a>
@@ -1529,7 +1703,7 @@
                   <a href="https://fastly.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg</a>
                   <a href="https://testingcf.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg</a>
                   <a href="https://gcore.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg</a>
-                  <a href="https://quantil.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg</a>
+                  <a href="https://cdn.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg</a>
                   <a href="https://originfastly.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg</a>
                   <a href="https://jsd.onmicrosoft.cn/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/npm/ubzone@3.0.0/assets/index.svg</a>
                   <a href="https://cdn.jsdmirror.com/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/npm/ubzone@3.0.0/assets/index.svg</a>
@@ -1540,7 +1714,7 @@
                   <a href="https://fastly.jsdelivr.net/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/npm/ubzone@latest/assets/index.svg</a>
                   <a href="https://testingcf.jsdelivr.net/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/npm/ubzone@latest/assets/index.svg</a>
                   <a href="https://gcore.jsdelivr.net/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/npm/ubzone@latest/assets/index.svg</a>
-                  <a href="https://quantil.jsdelivr.net/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/npm/ubzone@latest/assets/index.svg</a>
+                  <a href="https://cdn.jsdelivr.net/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/npm/ubzone@latest/assets/index.svg</a>
                   <a href="https://originfastly.jsdelivr.net/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/npm/ubzone@latest/assets/index.svg</a>
                   <a href="https://jsd.onmicrosoft.cn/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/npm/ubzone@latest/assets/index.svg</a>
                   <a href="https://cdn.jsdmirror.com/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/npm/ubzone@latest/assets/index.svg</a>
@@ -1551,7 +1725,7 @@
                   <a href="https://fastly.jsdelivr.net/combine/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/combine/npm/ubzone@1.0.0/assets/index.svg</a>
                   <a href="https://testingcf.jsdelivr.net/combine/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/combine/npm/ubzone@1.0.0/assets/index.svg</a>
                   <a href="https://gcore.jsdelivr.net/combine/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/combine/npm/ubzone@1.0.0/assets/index.svg</a>
-                  <a href="https://quantil.jsdelivr.net/combine/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/combine/npm/ubzone@1.0.0/assets/index.svg</a>
+                  <a href="https://cdn.jsdelivr.net/combine/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/npm/ubzone@1.0.0/assets/index.svg</a>
                   <a href="https://originfastly.jsdelivr.net/combine/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/combine/npm/ubzone@1.0.0/assets/index.svg</a>
                   <a href="https://jsd.onmicrosoft.cn/combine/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/combine/npm/ubzone@1.0.0/assets/index.svg</a>
                   <a href="https://cdn.jsdmirror.com/combine/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/combine/npm/ubzone@1.0.0/assets/index.svg</a>
@@ -1562,7 +1736,7 @@
                   <a href="https://fastly.jsdelivr.net/combine/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/combine/npm/ubzone@2.0.0/assets/index.svg</a>
                   <a href="https://testingcf.jsdelivr.net/combine/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/combine/npm/ubzone@2.0.0/assets/index.svg</a>
                   <a href="https://gcore.jsdelivr.net/combine/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/combine/npm/ubzone@2.0.0/assets/index.svg</a>
-                  <a href="https://quantil.jsdelivr.net/combine/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/combine/npm/ubzone@2.0.0/assets/index.svg</a>
+                  <a href="https://cdn.jsdelivr.net/combine/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/npm/ubzone@2.0.0/assets/index.svg</a>
                   <a href="https://originfastly.jsdelivr.net/combine/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/combine/npm/ubzone@2.0.0/assets/index.svg</a>
                   <a href="https://jsd.onmicrosoft.cn/combine/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/combine/npm/ubzone@2.0.0/assets/index.svg</a>
                   <a href="https://cdn.staticdelivr.com/combine/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.staticdelivr.com/combine/npm/ubzone@2.0.0/assets/index.svg</a>
@@ -1572,7 +1746,7 @@
                   <a href="https://fastly.jsdelivr.net/combine/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/combine/npm/ubzone@3.0.0/assets/index.svg</a>
                   <a href="https://testingcf.jsdelivr.net/combine/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/combine/npm/ubzone@3.0.0/assets/index.svg</a>
                   <a href="https://gcore.jsdelivr.net/combine/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/combine/npm/ubzone@3.0.0/assets/index.svg</a>
-                  <a href="https://quantil.jsdelivr.net/combine/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/combine/npm/ubzone@3.0.0/assets/index.svg</a>
+                  <a href="https://cdn.jsdelivr.net/combine/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/npm/ubzone@3.0.0/assets/index.svg</a>
                   <a href="https://originfastly.jsdelivr.net/combine/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/combine/npm/ubzone@3.0.0/assets/index.svg</a>
                   <a href="https://jsd.onmicrosoft.cn/combine/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/combine/npm/ubzone@3.0.0/assets/index.svg</a>
                   <a href="https://cdn.staticdelivr.com/combine/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.staticdelivr.com/combine/npm/ubzone@3.0.0/assets/index.svg</a>
@@ -1582,7 +1756,7 @@
                   <a href="https://fastly.jsdelivr.net/combine/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/combine/npm/ubzone@latest/assets/index.svg</a>
                   <a href="https://testingcf.jsdelivr.net/combine/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/combine/npm/ubzone@latest/assets/index.svg</a>
                   <a href="https://gcore.jsdelivr.net/combine/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/combine/npm/ubzone@latest/assets/index.svg</a>
-                  <a href="https://quantil.jsdelivr.net/combine/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/combine/npm/ubzone@latest/assets/index.svg</a>
+                  <a href="https://cdn.jsdelivr.net/combine/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/npm/ubzone@latest/assets/index.svg</a>
                   <a href="https://originfastly.jsdelivr.net/combine/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/combine/npm/ubzone@latest/assets/index.svg</a>
                   <a href="https://jsd.onmicrosoft.cn/combine/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/combine/npm/ubzone@latest/assets/index.svg</a>
                   <a href="https://cdn.staticdelivr.com/combine/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.staticdelivr.com/combine/npm/ubzone@latest/assets/index.svg</a>
@@ -1592,7 +1766,7 @@
                   <a href="https://fastly.jsdelivr.net/combine/npm/ubzone/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/combine/npm/ubzone/assets/index.svg</a>
                   <a href="https://testingcf.jsdelivr.net/combine/npm/ubzone/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/combine/npm/ubzone/assets/index.svg</a>
                   <a href="https://gcore.jsdelivr.net/combine/npm/ubzone/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/combine/npm/ubzone/assets/index.svg</a>
-                  <a href="https://quantil.jsdelivr.net/combine/npm/ubzone/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/combine/npm/ubzone/assets/index.svg</a>
+                  <a href="https://cdn.jsdelivr.net/combine/npm/ubzone/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/npm/ubzone/assets/index.svg</a>
                   <a href="https://originfastly.jsdelivr.net/combine/npm/ubzone/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/combine/npm/ubzone/assets/index.svg</a>
                   <a href="https://jsd.onmicrosoft.cn/combine/npm/ubzone/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/combine/npm/ubzone/assets/index.svg</a>
                   <a href="https://cdn.staticdelivr.com/combine/npm/ubzone/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.staticdelivr.com/combine/npm/ubzone/assets/index.svg</a>
@@ -1610,7 +1784,7 @@
 
                   <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">@main Links</div>
                   <a href="https://cdn.jsdelivr.net/gh/googleaccountuser/myfirstrepo@main/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/googleaccountuser/myfirstrepo@main/windows10background.svg</a>
-                  <a href="https://quantil.jsdelivr.net/gh/googleaccountuser/myfirstrepo@main/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/gh/googleaccountuser/myfirstrepo@main/windows10background.svg</a>
+                  <a href="https://cdn.jsdelivr.net/gh/googleaccountuser/myfirstrepo@main/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/googleaccountuser/myfirstrepo@main/windows10background.svg</a>
                   <a href="https://gcore.jsdelivr.net/gh/googleaccountuser/myfirstrepo@main/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/gh/googleaccountuser/myfirstrepo@main/windows10background.svg</a>
                   <a href="https://originfastly.jsdelivr.net/gh/googleaccountuser/myfirstrepo@main/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/gh/googleaccountuser/myfirstrepo@main/windows10background.svg</a>
                   <a href="https://fastly.jsdelivr.net/gh/googleaccountuser/myfirstrepo@main/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/gh/googleaccountuser/myfirstrepo@main/windows10background.svg</a>
@@ -1623,7 +1797,7 @@
 
                   <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">@master Links</div>
                   <a href="https://cdn.jsdelivr.net/gh/googleaccountuser/myfirstrepo@master/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/googleaccountuser/myfirstrepo@master/windows10background.svg</a>
-                  <a href="https://quantil.jsdelivr.net/gh/googleaccountuser/myfirstrepo@master/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/gh/googleaccountuser/myfirstrepo@master/windows10background.svg</a>
+                  <a href="https://cdn.jsdelivr.net/gh/googleaccountuser/myfirstrepo@master/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/googleaccountuser/myfirstrepo@master/windows10background.svg</a>
                   <a href="https://gcore.jsdelivr.net/gh/googleaccountuser/myfirstrepo@master/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/gh/googleaccountuser/myfirstrepo@master/windows10background.svg</a>
                   <a href="https://originfastly.jsdelivr.net/gh/googleaccountuser/myfirstrepo@master/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/gh/googleaccountuser/myfirstrepo@master/windows10background.svg</a>
                   <a href="https://fastly.jsdelivr.net/gh/googleaccountuser/myfirstrepo@master/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/gh/googleaccountuser/myfirstrepo@master/windows10background.svg</a>
@@ -1636,7 +1810,7 @@
 
                   <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">No @ Links</div>
                   <a href="https://cdn.jsdelivr.net/gh/googleaccountuser/myfirstrepo/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/googleaccountuser/myfirstrepo/windows10background.svg</a>
-                  <a href="https://quantil.jsdelivr.net/gh/googleaccountuser/myfirstrepo/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/gh/googleaccountuser/myfirstrepo/windows10background.svg</a>
+                  <a href="https://cdn.jsdelivr.net/gh/googleaccountuser/myfirstrepo/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/googleaccountuser/myfirstrepo/windows10background.svg</a>
                   <a href="https://gcore.jsdelivr.net/gh/googleaccountuser/myfirstrepo/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/gh/googleaccountuser/myfirstrepo/windows10background.svg</a>
                   <a href="https://originfastly.jsdelivr.net/gh/googleaccountuser/myfirstrepo/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/gh/googleaccountuser/myfirstrepo/windows10background.svg</a>
                   <a href="https://fastly.jsdelivr.net/gh/googleaccountuser/myfirstrepo/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/gh/googleaccountuser/myfirstrepo/windows10background.svg</a>
@@ -1647,44 +1821,44 @@
 
                   <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">@latest with /combine Links</div>
                   <a href="https://cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg</a>
-                  <a href="https://quantil.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg</a>
+                  <a href="https://cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg</a>
                   <a href="https://fastly.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg</a>
                   <a href="https://testingcf.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg</a>
                   <a href="https://gcore.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg</a>
-                  <a href="https://quantil.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg</a>
+                  <a href="https://cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg</a>
                   <a href="https://originfastly.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg</a>
                   <a href="https://jsd.onmicrosoft.cn/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg</a>
                   <a href="https://cdn.jsdmirror.com/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/combine/gh/googleaccountuser/myfirstrepo@latest/windows10background.svg</a>
 
                   <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">@main with /combine Links</div>
                   <a href="https://cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg</a>
-                  <a href="https://quantil.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg</a>
+                  <a href="https://cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg</a>
                   <a href="https://fastly.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg</a>
                   <a href="https://testingcf.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg</a>
                   <a href="https://gcore.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg</a>
-                  <a href="https://quantil.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg</a>
+                  <a href="https://cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg</a>
                   <a href="https://originfastly.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg</a>
                   <a href="https://jsd.onmicrosoft.cn/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg</a>
                   <a href="https://cdn.jsdmirror.com/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/combine/gh/googleaccountuser/myfirstrepo@main/windows10background.svg</a>
 
                   <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">@master with /combine Links</div>
                   <a href="https://cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg</a>
-                  <a href="https://quantil.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg</a>
+                  <a href="https://cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg</a>
                   <a href="https://fastly.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg</a>
                   <a href="https://testingcf.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg</a>
                   <a href="https://gcore.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg</a>
-                  <a href="https://quantil.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg</a>
+                  <a href="https://cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg</a>
                   <a href="https://originfastly.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg</a>
                   <a href="https://jsd.onmicrosoft.cn/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg</a>
                   <a href="https://cdn.jsdmirror.com/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/combine/gh/googleaccountuser/myfirstrepo@master/windows10background.svg</a>
 
                   <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">No @ with /combine Links</div>
                   <a href="https://cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg</a>
-                  <a href="https://quantil.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg</a>
+                  <a href="https://cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg</a>
                   <a href="https://fastly.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg</a>
                   <a href="https://testingcf.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg</a>
                   <a href="https://gcore.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg</a>
-                  <a href="https://quantil.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg</a>
+                  <a href="https://cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg</a>
                   <a href="https://originfastly.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg</a>
                   <a href="https://jsd.onmicrosoft.cn/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg</a>
                   <a href="https://cdn.jsdmirror.com/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/combine/gh/googleaccountuser/myfirstrepo/windows10background.svg</a>
@@ -1715,13 +1889,6 @@
                   <a href="https://quizizz-static.s3-accelerate.amazonaws.com/_media/art/c209b332-83b6-47ad-8054-b59dbbcfd6e4-v2" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quizizz-static.s3-accelerate.amazonaws.com/_media/art/c209b332...</a>
                   <a href="https://quizizz-static.s3-accelerate.amazonaws.com/_media/music/899ac2ce-f4a6-48fe-9dba-69d3a3e9a30e-v2" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quizizz-static.s3-accelerate.amazonaws.com/_media/music/899ac2ce...</a>
 
-                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">Blooket Links</div>
-                  <a href="https://media.blooket.com/raw/upload/tkfe6mwijkkamggbfsmz.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">media.blooket.com/raw/upload/tkfe6mwijkkamggbfsmz.svg</a>
-                  <a href="https://media.blooket.com/raw/upload/wrclspo9h2bmmzjjvb7i.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">media.blooket.com/raw/upload/wrclspo9h2bmmzjjvb7i.svg</a>
-                  <a href="https://media.blooket.com/raw/upload/u98zlqgffbumixij5dd1.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">media.blooket.com/raw/upload/u98zlqgffbumixij5dd1.svg</a>
-                  <a href="https://media.blooket.com/raw/upload/ekyslok2wn9rzy0t4ope.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">media.blooket.com/raw/upload/ekyslok2wn9rzy0t4ope.svg</a>
-                  <a href="https://media.blooket.com/raw/upload/u2fpnro2j61bneqeyatc.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">media.blooket.com/raw/upload/u2fpnro2j61bneqeyatc.svg</a>
-                  <a href="https://media.blooket.com/raw/upload/ntsqful9brr6smiutenw.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">media.blooket.com/raw/upload/ntsqful9brr6smiutenw.svg</a>
 
                   <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">Google Script Links</div>
                   <a href="https://script.google.com/macros/s/AKfycbwzhebr4w3Eedwa1T_vnORztDUY-aSKSnLsOsvR-raY64Y2CMtPivD1Zvy800PpTFuL/exec" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">script.google.com/macros/s/AKfycbwzhebr4...</a>
@@ -1750,8 +1917,8 @@
             </div>
           </div>
 
-          <div class="proxy-section">
-            <div class="proxy-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div class="ргоху-section">
+            <div class="ргоху-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
               <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/fern.png" style="height:28px;width:auto;border-radius:4px;">
               <h3 style="margin:0;">Fern</h3>
             </div>
@@ -1790,8 +1957,8 @@
             </div>
           </div>
 
-          <div class="proxy-section">
-            <div class="proxy-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div class="ргоху-section">
+            <div class="ргоху-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
               <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/gn-math.png" style="height:28px;width:auto;border-radius:4px;">
               <h3 style="margin:0;">GN-Math</h3>
             </div>
@@ -1811,8 +1978,8 @@
             </div>
           </div>
 
-          <div class="proxy-section">
-            <div class="proxy-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div class="ргоху-section">
+            <div class="ргоху-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
               <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/nike.png" style="height:28px;width:auto;border-radius:4px;">
               <h3 style="margin:0;">NikeHub</h3>
             </div>
@@ -1831,7 +1998,7 @@
               <a href="https://cdn.jsdelivr.net/gh/chillguyaQ-cmd/github.com@main/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/chillguyaQ-cmd/github.com@main/index.svg</a>
               <a href="https://cdn.jsdelivr.net/gh/chillguyaQ-cmd/github.com@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/chillguyaQ-cmd/github.com@latest/index.svg</a>
               <a href="https://cdn.jsdelivr.net/gh/avaisadev/how-to-use-linux@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/avaisadev/how-to-use-linux@latest/index.svg</a>
-              <a href="https://quantil.jsdelivr.net/gh/avaisadev/how-to-use-linux@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/gh/avaisadev/how-to-use-linux@latest/index.svg</a>
+              <a href="https://cdn.jsdelivr.net/gh/avaisadev/how-to-use-linux@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/avaisadev/how-to-use-linux@latest/index.svg</a>
               <a href="https://gcore.jsdelivr.net/gh/avaisadev/how-to-use-linux@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/gh/avaisadev/how-to-use-linux@latest/index.svg</a>
               <a href="https://originfastly.jsdelivr.net/gh/avaisadev/how-to-use-linux@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/gh/avaisadev/how-to-use-linux@latest/index.svg</a>
               <a href="https://fastly.jsdelivr.net/gh/avaisadev/how-to-use-linux@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/gh/avaisadev/how-to-use-linux@latest/index.svg</a>
@@ -1840,7 +2007,7 @@
               <a href="https://cdn.statically.io/gh/avaisadev/how-to-use-linux@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.statically.io/gh/avaisadev/how-to-use-linux@latest/index.svg</a>
               <a href="https://raw.githubusercontent.com/avaisadev/how-to-use-linux/latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.githubusercontent.com/avaisadev/how-to-use-linux/latest/index.svg</a>
               <a href="https://cdn.jsdelivr.net/gh/avaisadev/github@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/avaisadev/github@latest/index.svg</a>
-              <a href="https://quantil.jsdelivr.net/gh/avaisadev/github@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/gh/avaisadev/github@latest/index.svg</a>
+              <a href="https://cdn.jsdelivr.net/gh/avaisadev/github@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/avaisadev/github@latest/index.svg</a>
               <a href="https://gcore.jsdelivr.net/gh/avaisadev/github@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/gh/avaisadev/github@latest/index.svg</a>
               <a href="https://originfastly.jsdelivr.net/gh/avaisadev/github@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/gh/avaisadev/github@latest/index.svg</a>
               <a href="https://fastly.jsdelivr.net/gh/avaisadev/github@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/gh/avaisadev/github@latest/index.svg</a>
@@ -1849,7 +2016,7 @@
               <a href="https://cdn.statically.io/gh/avaisadev/github@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.statically.io/gh/avaisadev/github@latest/index.svg</a>
               <a href="https://raw.githubusercontent.com/avaisadev/github/latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.githubusercontent.com/avaisadev/github/latest/index.svg</a>
               <a href="https://cdn.jsdelivr.net/gh/avaisadev/github.com@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/avaisadev/github.com@latest/index.svg</a>
-              <a href="https://quantil.jsdelivr.net/gh/avaisadev/github.com@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/gh/avaisadev/github.com@latest/index.svg</a>
+              <a href="https://cdn.jsdelivr.net/gh/avaisadev/github.com@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/avaisadev/github.com@latest/index.svg</a>
               <a href="https://gcore.jsdelivr.net/gh/avaisadev/github.com@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/gh/avaisadev/github.com@latest/index.svg</a>
               <a href="https://originfastly.jsdelivr.net/gh/avaisadev/github.com@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/gh/avaisadev/github.com@latest/index.svg</a>
               <a href="https://fastly.jsdelivr.net/gh/avaisadev/github.com@latest/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/gh/avaisadev/github.com@latest/index.svg</a>
@@ -1860,8 +2027,8 @@
             </div>
           </div>
 
-          <div class="proxy-section">
-            <div class="proxy-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div class="ргоху-section">
+            <div class="ргоху-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
               <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/duck.png" style="height:28px;width:auto;border-radius:4px;">
               <h3 style="margin:0;">DuckMath</h3>
             </div>
@@ -1871,8 +2038,8 @@
             </div>
           </div>
 
-          <div class="proxy-section">
-            <div class="proxy-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div class="ргоху-section">
+            <div class="ргоху-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
               <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/blooket.png" style="height:28px;width:auto;border-radius:4px;">
               <h3 style="margin:0;">Blooket</h3>
             </div>
@@ -1883,14 +2050,14 @@
             </div>
           </div>
 
-          <div class="proxy-section">
-            <div class="proxy-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div class="ргоху-section">
+            <div class="ргоху-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
               <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/yukios.png" style="height:28px;width:auto;border-radius:4px;">
               <h3 style="margin:0;">YukiOS</h3>
             </div>
             <div style="display:flex;flex-direction:column;gap:4px;">
               <a href="https://cdn.jsdelivr.net/gh/reeyuki/YukiOsSingleHtml@main/yukios.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/reeyuki/YukiOsSingleHtml@main/yukios.svg</a>
-              <a href="https://quantil.jsdelivr.net/gh/reeyuki/YukiOsSingleHtml@main/yukios.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/gh/reeyuki/YukiOsSingleHtml@main/yukios.svg</a>
+              <a href="https://cdn.jsdelivr.net/gh/reeyuki/YukiOsSingleHtml@main/yukios.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/reeyuki/YukiOsSingleHtml@main/yukios.svg</a>
               <a href="https://originfastly.jsdelivr.net/gh/reeyuki/YukiOsSingleHtml@main/yukios.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/gh/reeyuki/YukiOsSingleHtml@main/yukios.svg</a>
               <a href="https://gcore.jsdelivr.net/gh/reeyuki/YukiOsSingleHtml@main/yukios.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/gh/reeyuki/YukiOsSingleHtml@main/yukios.svg</a>
               <a href="https://esm.sh/gh/reeyuki/YukiOsSingleHtml@main/yukios.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/gh/reeyuki/YukiOsSingleHtml@main/yukios.svg</a>
@@ -1899,8 +2066,8 @@
             </div>
           </div>
 
-          <div class="proxy-section">
-            <div class="proxy-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div class="ргоху-section">
+            <div class="ргоху-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
               <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/melonsoda.png" style="height:28px;width:auto;border-radius:4px;">
               <h3 style="margin:0;">Melon Soda</h3>
             </div>
@@ -1908,18 +2075,18 @@
               <a href="https://cdn.statically.io/gh/linuxfandudeguy/classwork-chemistry@a0d07aeb0448f123dc4e632b57fd9dcb226d7dbb/ixl.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.statically.io/gh/linuxfandudeguy/classwork-chemistry@a0d07aeb...</a>
               <a href="https://assets.editor.p5js.org/69f62565e047d647146aca73/3db16b06-191d-4255-ba83-3b3a976e634f.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">assets.editor.p5js.org/69f62565e047d647146aca73/3db16b06-191d-4255-ba83-3b3a976e634f.svg</a>
               <a href="https://meronsooda.netlify.app/" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">meronsooda.netlify.app</a>
-              <a href="https://raw.githack.com/linuxfandudeguy/melonsoda/main/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.githack.com/linuxfandudeguy/melonsoda/main/index.html</a>
+              <a href="https://raw.gitᏂасk.com/linuxfandudeguy/melonsoda/main/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.gitᏂасk.com/linuxfandudeguy/melonsoda/main/index.html</a>
               <a href="https://unpkg.com/melonsoda@1.0.0/offline/selfupdating.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/melonsoda@1.0.0/offline/selfupdating.html</a>
               <a href="https://cdn.jsdelivr.net/gh/linuxfandudeguy/classwork-chemistry@main/ixl.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/linuxfandudeguy/classwork-chemistry@main/ixl.svg</a>
               <a href="https://fastly.jsdelivr.net/gh/linuxfandudeguy/classwork-chemistry@main/ixl.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/gh/linuxfandudeguy/classwork-chemistry@main/ixl.svg</a>
               <a href="https://gcore.jsdelivr.net/gh/linuxfandudeguy/classwork-chemistry@main/ixl.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/gh/linuxfandudeguy/classwork-chemistry@main/ixl.svg</a>
-              <a href="https://quantil.jsdelivr.net/gh/linuxfandudeguy/classwork-chemistry@main/ixl.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">quantil.jsdelivr.net/gh/linuxfandudeguy/classwork-chemistry@main/ixl.svg</a>
+              <a href="https://cdn.jsdelivr.net/gh/linuxfandudeguy/classwork-chemistry@main/ixl.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/linuxfandudeguy/classwork-chemistry@main/ixl.svg</a>
               <a href="https://originfastly.jsdelivr.net/gh/linuxfandudeguy/classwork-chemistry@main/ixl.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/gh/linuxfandudeguy/classwork-chemistry@main/ixl.svg</a>
               <a href="https://testingcf.jsdelivr.net/gh/linuxfandudeguy/classwork-chemistry@main/ixl.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/gh/linuxfandudeguy/classwork-chemistry@main/ixl.svg</a>
               <a href="https://learn-french-easy.wasmer.app/offline/selfupdating.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">learn-french-easy.wasmer.app/offline/selfupdating.html</a>
               <a href="https://educational-algebra-study-tutor.edgeone.app/offline/selfupdating.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">educational-algebra-study-tutor.edgeone.app/offline/selfupdating.html</a>
               <a href="https://k12-algebra-tutoring-edu-us-resources.pages.dev/offline/selfupdating.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">k12-algebra-tutoring-edu-us-resources.pages.dev/offline/selfupdating.html</a>
-              <a href="https://rawcdn.githack.com/linuxfandudeguy/classwork-chemistry/a0d07aeb0448f123dc4e632b57fd9dcb226d7dbb/ixl.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">rawcdn.githack.com/linuxfandudeguy/classwork-chemistry/a0d07aeb...</a>
+              <a href="https://rawcdn.gitᏂасk.com/linuxfandudeguy/classwork-chemistry/a0d07aeb0448f123dc4e632b57fd9dcb226d7dbb/ixl.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">rawcdn.gitᏂасk.com/linuxfandudeguy/classwork-chemistry/a0d07aeb...</a>
               <a href="https://esm.sh/melonsoda@1.0.0/offline/selfupdating.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/melonsoda@1.0.0/offline/selfupdating.html</a>
               <a href="https://m3lon-ela-testprep.w3spaces.com/" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">m3lon-ela-testprep.w3spaces.com</a>
               <a href="https://free-french-resources.web.app/offline/selfupdating.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">free-french-resources.web.app/offline/selfupdating.html</a>
@@ -1935,7 +2102,7 @@
 
       <div class="tab-content" id="partners">
         <h2>Partners</h2>
-        <p>Shoutout to these people, they have good sites. - ʊռɮʟօƈӄɛɖʐօռɛ</p>
+        <p>Shoutout to these people, they have good sites. - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ</p>
         <div class="partner-grid">
           <div class="partner-card">
             <img class="partner-img" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/epik.png" alt="Ale's Epik Games" loading="lazy">
@@ -1958,7 +2125,7 @@
           <div class="partner-card">
             <img class="partner-img" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/nike.png" alt="nikehub" loading="lazy">
             <h3>nikehub</h3>
-            <p>A advanced unblocked games Discord server that provides "educational" games and a friendly community!</p>
+            <p>A advanced սոƅⵏосkеԁ g4m3s Discord server that provides "educational" g4m3s and a friendly community!</p>
             <a href="https://nikehub.org/" target="_blank">Visit Site</a>
           </div>
           <div class="partner-card">
@@ -1976,13 +2143,13 @@
           <div class="partner-card">
             <img class="partner-img" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/yukios.png" alt="YukiOS" loading="lazy">
             <h3>YukiOS</h3>
-            <p>A desktop OS inside your browser<br>Yuki OS • 30+ apps • 3600+ games • emulators</p>
+            <p>A desktop OS inside your browser<br>Yuki OS • 30+ apps • 3600+ g4m3s • emulators</p>
             <a href="https://yukios.netlify.app/" target="_blank">Visit Site</a>
           </div>
           <div class="partner-card">
             <img class="partner-img" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/ink.png" alt="Ink Network" loading="lazy">
             <h3>Ink Network</h3>
-            <p>Unblocked Media Site For School! Games & Proxies, Books & Manga, Anime & Movie & TV Shows, Useful Tools & More, Active Community, and Updates Often/Always New Things being Added!</p>
+            <p>Սոƅⵏосkеԁ Media Site For School! G4m3s & Proxies, Books & Manga, Anime & Movie & TV Shows, Useful Tools & More, Active Community, and Updates Often/Always New Things being Added!</p>
             <a href="https://sites.google.com/view/inkinkmath/home" target="_blank">Visit Site</a>
           </div>
         </div>
@@ -1990,7 +2157,7 @@
 
       <div class="tab-content" id="forms">
         <h2>Forms</h2>
-        <p style="margin-bottom:20px;">Use my forms so I can make this the best possible site! - ʊռɮʟօƈӄɛɖʐօռɛ</p>
+        <p style="margin-bottom:20px;">Use my forms so I can make this the best possible site! - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ</p>
         <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;">
           <div class="game-card" style="width:300px;flex:0 0 300px;" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdWxjZZFtjsaoPVHv5F3Ipu-4kwLAtmHhswUpslxrJg5lQdRA/viewform','_blank')">
             <div style="padding:20px;">
@@ -2112,9 +2279,9 @@
             <h3>Accent Color</h3>
             <p style="color:#aaa;font-size:13px;margin-top:8px;">Choose a site accent color:</p>
             <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
-              <button class="color-swatch" style="background:#ff0000;" onclick="setAccent('#ff0000')" title="Red"></button>
               <button class="color-swatch" style="background:#ff6600;" onclick="setAccent('#ff6600')" title="Orange"></button>
-              <button class="color-swatch" style="background:#ffcc00;" onclick="setAccent('#ffcc00')" title="Yellow"></button>
+              <button class="color-swatch" style="background:#cca44c;" onclick="setAccent('#cca44c')" title="Gold"></button>
+              <button class="color-swatch" style="background:#ff0000;" onclick="setAccent('#ff0000')" title="Red"></button>
               <button class="color-swatch" style="background:#00cc00;" onclick="setAccent('#00cc00')" title="Green"></button>
               <button class="color-swatch" style="background:#0088ff;" onclick="setAccent('#0088ff')" title="Blue"></button>
               <button class="color-swatch" style="background:#9900ff;" onclick="setAccent('#9900ff')" title="Purple"></button>
@@ -2184,9 +2351,8 @@
           </div>
           <div class="game-card" style="padding:20px;">
             <h3>CDN Mirror</h3>
-            <p style="color:#aaa;font-size:13px;margin-top:8px;">CDN to use for fetching games:</p>
+            <p style="color:#aaa;font-size:13px;margin-top:8px;">CDN to use for fetching g4m3s:</p>
             <select id="cdn-select" class="settings-input" onchange="setCDN(this.value)" style="margin-top:6px;">
-              <option value="https://cdn.jsdelivr.net">cdn.jsdelivr.net</option>
               <option value="https://quantil.jsdelivr.net" selected>quantil.jsdelivr.net</option>
               <option value="https://gcore.jsdelivr.net">gcore.jsdelivr.net</option>
               <option value="https://originfastly.jsdelivr.net">originfastly.jsdelivr.net</option>
@@ -2202,7 +2368,7 @@
           <div class="game-card" style="padding:20px;">
             <h3>Music</h3>
             <p style="color:#aaa;font-size:13px;margin-top:8px;">Play music on startup:</p>
-            <label style="display:flex;align-items:center;gap:10px;margin-top:6px;cursor:pointer;color:var(--accent);font-family:'Pixelify Sans',sans-serif;font-size:14px;">
+            <label style="display:flex;align-items:center;gap:10px;margin-top:6px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
               <input type="checkbox" id="music-startup-check" onchange="setMusicOnStartup(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
               Enabled
             </label>
@@ -2216,7 +2382,7 @@
               <option value="right">Right Side</option>
             </select>
             <p style="color:#aaa;font-size:13px;margin-top:12px;">Icons only (no labels):</p>
-            <label style="display:flex;align-items:center;gap:10px;margin-top:6px;cursor:pointer;color:var(--accent);font-family:'Pixelify Sans',sans-serif;font-size:14px;">
+            <label style="display:flex;align-items:center;gap:10px;margin-top:6px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
               <input type="checkbox" id="sidebar-icons-only" onchange="setSidebarIconsOnly(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
               Icons Only
             </label>
@@ -3237,7 +3403,25 @@
         clearInterval(timerInterval);
         timerEl.style.display = 'none';
         loadingScreen.classList.add('hidden');
-        setTimeout(() => { loadingScreen.style.display = 'none'; mainContent.classList.add('visible'); }, 500);
+        var bootScreen = document.getElementById('boot-screen');
+        var bootProgress = document.getElementById('boot-progress');
+        setTimeout(function() {
+          loadingScreen.style.display = 'none';
+          bootScreen.classList.remove('hidden');
+          bootProgress.style.width = '0%';
+          var bootStart = Date.now();
+          var bootInterval = setInterval(function() {
+            var p = Math.min(100, (Date.now() - bootStart) / 20);
+            bootProgress.style.width = p + '%';
+            if (p >= 100) {
+              clearInterval(bootInterval);
+              setTimeout(function() {
+                bootScreen.classList.add('hidden');
+                mainContent.classList.add('visible');
+              }, 250);
+            }
+          }, 30);
+        }, 500);
         var bgAudio = window.bgAudio = document.getElementById('bg-music');
         var trackList = window.trackList = [
           'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/oobe.mp3',
@@ -3318,27 +3502,27 @@
 
     // Quote Rotator
     const quotes = [
-      "If you see this quote, I broke my code - ʊռɮʟօƈӄɛɖʐօռɛ",
-      "There is Currently 175 G4mes! - ʊռɮʟօƈӄɛɖʐօռɛ",
+      "If you see this quote, I broke my code - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ",
+      "There is Currently 175 G4mes! - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ",
       "I goon my life away to femboy h***ai - classroomspot",
-      "Press Ctrl Shift W to close all windows. - ʊռɮʟօƈӄɛɖʐօռɛ",
+      "Press Ctrl Shift W to close all windows. - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ",
       "Rattler is kinda good, if you know, you know. - UberMint64",
       "fortnite  please  🍕🍕🍕🍕 - Matias 12/11/24",
       "the site got leaked again - UberMint64",
-      "If you rub an magnet next to a Chromebook, it will turn off. - ʊռɮʟօƈӄɛɖʐօռɛ",
-      "Ctrl Shift T brings back that window. - ʊռɮʟօƈӄɛɖʐօռɛ",
-      "rub your Chromebook for good luck - ʊռɮʟօƈӄɛɖʐօռɛ",
+      "If you rub an magnet next to a Chromebook, it will turn off. - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ",
+      "Ctrl Shift T brings back that window. - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ",
+      "rub your Chromebook for good luck - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ",
       "Delete System32 for storage - muffled",
       "Why Partner with me? - muffled",
-      "its not my fault if you block this link. - ʊռɮʟօƈӄɛɖʐօռɛ",
-      "Join the Discord, follow the TikTok, and subscribe to the YouTube! - ʊռɮʟօƈӄɛɖʐօռɛ",
-      "Use Scratch to listen to music! - ʊռɮʟօƈӄɛɖʐօռɛ",
-      "UberMint64 has 64 in his name. (SM64 Reference?) - ʊռɮʟօƈӄɛɖʐօռɛ",
-      "Use my forms so I can make this the best possible site! - ʊռɮʟօƈӄɛɖʐօռɛ",
-      "I hope these quotes are in order - ʊռɮʟօƈӄɛɖʐօռɛ",
+      "its not my fault if you block this link. - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ",
+      "Join the Discord, follow the TikTok, and subscribe to the YouTube! - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ",
+      "Use Scratch to listen to music! - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ",
+      "UberMint64 has 64 in his name. (SM64 Reference?) - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ",
+      "Use my forms so I can make this the best possible site! - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ",
+      "I hope these quotes are in order - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ",
       "To eat, you must put food in your mouth. - UberMint64",
-      "Shoutout to UberMint64- ʊռɮʟօƈӄɛɖʐօռɛ",
-      "You should add a bunch of games from other game sites to look like you site is superior - Isaiah",
+      "Shoutout to UberMint64- ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ",
+      "You should add a bunch of g4m3s from other game sites to look like you site is superior - Isaiah",
       "Pepsi man - jaedon",
       "chicken war - Henry",
       "this is for dis site - muffled_lemon (btw they are not muffled)",
@@ -3526,9 +3710,9 @@
         closeGameViewer();
         var w = window.open('', '_blank');
         if (w) {
-          var isCdn = url.indexOf('cdn.jsdelivr.net') !== -1 || url.indexOf('cdn.staticdelivr.com') !== -1 || url.indexOf('raw.githubusercontent.com') !== -1 || url.indexOf('.jsdelivr.net') !== -1;
+          var isCdn = url.indexOf('quantil.jsdelivr.net') !== -1 || url.indexOf('cdn.staticdelivr.com') !== -1 || url.indexOf('raw.githubusercontent.com') !== -1 || url.indexOf('.jsdelivr.net') !== -1;
           if (isCdn) {
-            w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet"><style>html,body{margin:0;padding:0;width:100%;height:100%;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:"Pixelify Sans",sans-serif;color:#ff6600}</style></head><body>');
+            w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet"><style>html,body{margin:0;padding:0;width:100%;height:100%;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:"ApplePixel",sans-serif;color:#ff6600}</style></head><body>');
             w.document.write('<img src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/UNBL0CKEDZ0NE%20in%20Text.png" alt="UNBL0CKEDZ0NE" style="height:28px;opacity:0.6;margin-bottom:16px">');
             w.document.write('<div style="font-size:22px">Loading game...</div>');
             var tabUrl = toCdnUrl(url);
@@ -3601,6 +3785,11 @@
       document.documentElement.style.setProperty('--accent-glow', glow);
       document.documentElement.style.setProperty('--accent-glow-strong', strong);
       document.documentElement.style.setProperty('--accent-glow-soft', soft);
+      document.documentElement.style.setProperty('--beez-gold', color);
+      document.documentElement.style.setProperty('--beez-gold-bright', '#' + [r,g,b].map(function(c){ return Math.round(c + (255-c)*0.2).toString(16).padStart(2,'0'); }).join(''));
+      document.documentElement.style.setProperty('--beez-gold-dark', '#' + [r,g,b].map(function(c){ return Math.round(c*0.8).toString(16).padStart(2,'0'); }).join(''));
+      document.documentElement.style.setProperty('--beez-border', 'rgba(' + r + ',' + g + ',' + b + ',0.35)');
+      document.documentElement.style.setProperty('--beez-glow', 'rgba(' + r + ',' + g + ',' + b + ',0.25)');
       var style = document.getElementById('accent-override');
       if (!style) {
         style = document.createElement('style');
@@ -3615,10 +3804,9 @@
         '.tab-content p,footer,.card p,.link-item .link-desc,.partner-card p,.settings-label,.tool-item p[style*="color:#ff8c00"],.settings-input{color:' + color + '!important}' +
         '.search-bar input::placeholder,.settings-input::placeholder,.form-group input::placeholder,.form-group textarea::placeholder{color:' + color + '!important;opacity:0.6!important}' +
         '.search-bar input:focus,.settings-input:focus,.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:' + color + '!important;box-shadow:0 0 20px ' + glow + '!important}' +
-        '.game-card:hover,.partner-card:hover,.media-cat:hover,.card:hover,.proxy-section:hover{border-color:' + color + '!important;box-shadow:0 0 25px ' + glow + '!important}' +
+        '.game-card:hover,.partner-card:hover,.media-cat:hover,.card:hover,.ргоху-section:hover{border-color:' + color + '!important;box-shadow:0 0 25px ' + glow + '!important}' +
         '.game-card .overlay{background:' + soft + '!important}' +
         '.game-btn:hover .overlay{background:' + glow + '!important}' +
-        '.game-card img,.card-img{background:' + soft + '!important}' +
         '.link-item:hover{background:' + accentBg + '!important;border-color:' + color + '!important;box-shadow:0 0 15px ' + glow + '!important}' +
         '.link-item a:hover{background:' + color + '!important;box-shadow:0 0 10px ' + glow + '!important}' +
         '.partner-card a{color:' + color + '!important}' +
@@ -3633,14 +3821,14 @@
         '.game-viewer-bar .gv-btn:hover{background:' + color + '!important;color:#000!important}' +
         '.game-card .play-btn:hover{background:' + color + '!important}' +
         '#cloak-preview{border-color:' + glow + '!important}' +
-        '.proxy-section{border-color:' + glow + '!important;box-shadow:0 0 25px ' + soft + '!important}' +
-        '#game-count,.proxy-section div[style*="color:#ff8c00"]{color:' + color + '!important}' +
+        '.ргоху-section{border-color:' + glow + '!important;box-shadow:0 0 25px ' + soft + '!important}' +
+        '#game-count,.ргоху-section div[style*="color:#ff8c00"]{color:' + color + '!important}' +
         '.spinner{border-color:' + soft + '!important;border-top-color:' + color + '!important;border-right-color:' + color + '!important}' +
         '.media-cat:hover,.media-cat.active,.game-cat:hover,.game-cat.active{background:' + color + '!important;box-shadow:0 0 12px ' + glow + '!important}' +
         '.settings-input{border-color:' + color + '!important}' +
         '#quote{text-shadow:0 0 12px ' + glow + '!important}' +
         'select.settings-input{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22' + encodeURIComponent(color) + '%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpolyline points=%226 9 12 15 18 9%22%3E%3C/polyline%3E%3C/svg%3E")!important}';
-      document.querySelectorAll('.proxy-section div[style*="color:#ff8c00"]').forEach(function(el) {
+      document.querySelectorAll('.ргоху-section div[style*="color:#ff8c00"]').forEach(function(el) {
         el.style.color = color;
       });
       document.querySelectorAll('.tool-item p[style*="color:#ff8c00"]').forEach(function(el) {
@@ -3649,7 +3837,8 @@
       document.querySelectorAll('[style*="background:rgba(255,102,0,.1)"],[style*="background:rgba(255,102,0,0.1)"]').forEach(function(el) {
         el.style.background = soft;
       });
-      localStorage.setItem('accentColor', color);
+      localStorage.setItem('accentColorV2', color);
+      localStorage.removeItem('accentColor');
       if (wavesInitialized) { stopWaves(); startWaves(); }
       if (globeInitialized) { stopGlobe(); startGlobe(); }
       if (dotsInitialized) { stopDots(); startDots(); }
@@ -3732,7 +3921,7 @@
     }
 
     // Load saved settings
-    var savedAccent = localStorage.getItem('accentColor');
+    var savedAccent = localStorage.getItem('accentColorV2');
     if (savedAccent) setAccent(savedAccent);
     var savedTheme = localStorage.getItem('loadingTheme') || 'lightspeed';
     setLoadingTheme(savedTheme);
@@ -3762,7 +3951,7 @@
       var s = document.createElement('style');
       s.id = 'custom-cursor-style';
       document.head.appendChild(s);
-      s.textContent = 'a,button,.sidebar-btn,.card,.game-card,.play-btn,.partner-card a,.media-cat,.game-cat,.gv-btn,.link-item a,input,select,label,.settings-btn,.color-swatch,.submit-btn,.social-btn,.game-btn,.gv-btn,.partner-card,.proxy-section,.form-group input,.form-group textarea,.form-group select,.sidebar-btn,.link-item a,.media-cat,.game-cat{ cursor:url("' + escaped + '") 16 16, auto!important; }a,button,.sidebar-btn,.card,.game-card,.play-btn,.partner-card a,.media-cat,.game-cat,.gv-btn,.link-item a{ cursor:url("' + escaped + '") 16 16, pointer!important; }.loading-cursor{ cursor:url("' + escaped + '") 16 16, wait!important; }html.loading-active{ cursor:url("' + escaped + '") 16 16, wait!important; }html.loading-active *{ cursor:url("' + escaped + '") 16 16, wait!important; }';
+      s.textContent = 'a,button,.sidebar-btn,.card,.game-card,.play-btn,.partner-card a,.media-cat,.game-cat,.gv-btn,.link-item a,input,select,label,.settings-btn,.color-swatch,.submit-btn,.social-btn,.game-btn,.gv-btn,.partner-card,.ргоху-section,.form-group input,.form-group textarea,.form-group select,.sidebar-btn,.link-item a,.media-cat,.game-cat{ cursor:url("' + escaped + '") 16 16, auto!important; }a,button,.sidebar-btn,.card,.game-card,.play-btn,.partner-card a,.media-cat,.game-cat,.gv-btn,.link-item a{ cursor:url("' + escaped + '") 16 16, pointer!important; }.loading-cursor{ cursor:url("' + escaped + '") 16 16, wait!important; }html.loading-active{ cursor:url("' + escaped + '") 16 16, wait!important; }html.loading-active *{ cursor:url("' + escaped + '") 16 16, wait!important; }';
     }
 
     function handleCursorUpload(e) {
@@ -3942,7 +4131,7 @@
         normalizeGame({name:"Grow a Garden",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/growagarden.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/growagarden.html"}),
         normalizeGame({name:"GTA Mods",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/gtamods.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/gtamods.html"}),
         normalizeGame({name:"Gun Spin",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/gunspin.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/spin.html"}),
-        normalizeGame({name:"Hacked Impossible Quiz",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/impossiblequizhacked.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/hackedimpossiblequiz.html"}),
+        normalizeGame({name:"Hacked Impossible Quiz",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/impossiblequizᏂасked.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/Ꮒасkedimpossiblequiz.html"}),
         normalizeGame({name:"Hollow Knight Silksong",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/hollowknightsilksong.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/hollowknightsilksong.html"}),
         normalizeGame({name:"Hollow Knight",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/hollowknight.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/hollowknight.html"}),
         normalizeGame({name:"Imagine Math Facts",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/imaginemathfacts.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/imaginemathfacts.html"}),
@@ -4109,8 +4298,8 @@
       } catch(e) { console.warn("Elite load failed:", e); }
     }
 
-    const SEA_DATA = _cdn + '/gh/sea-bean-unblocked/sde@main';
-    const SEA_GAMES = _cdn + '/gh/sea-bean-unblocked/Singlemile@main/games';
+    const SEA_DATA = _cdn + '/gh/sea-bean-սոƅⵏосkеԁ/sde@main';
+    const SEA_GAMES = _cdn + '/gh/sea-bean-սոƅⵏосkеԁ/Singlemile@main/games';
 
     async function loadSea(){
       if(DATA.sea.length) return;
@@ -4330,7 +4519,7 @@
 
     function updateGameCount(){
       const activeCat = document.querySelector(".game-cat.active")?.dataset.cat;
-      gameCount.textContent = FILTERED.length + " games";
+      gameCount.textContent = FILTERED.length + " g4m3s";
     }
 
     // Initialize with UBZ games
@@ -4379,7 +4568,7 @@
       });
     }
 
-    // Fetch movie names from Drive page titles (client-side, bypasses server bot blocking)
+    // Fetch movie names from Drive page titles (client-side, ƅураʂʂеʂ server bot blocking)
     var _moviesFetched = false;
     function fetchMovieNames() {
       if (_moviesFetched) return;
@@ -4534,18 +4723,18 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
   <script>!function(){"use strict";var r=.5*(Math.sqrt(3)-1),e=(3-Math.sqrt(3))/6,t=1/6,a=(Math.sqrt(5)-1)/4,o=(5-Math.sqrt(5))/20;function i(r){var e;e="function"==typeof r?r:r?function(){var r=0,e=0,t=0,a=1,o=(i=4022871197,function(r){r=r.toString();for(var e=0;e<r.length;e++){var t=.02519603282416938*(i+=r.charCodeAt(e));t-=i=t>>>0,i=(t*=i)>>>0,i+=4294967296*(t-=i)}return 2.3283064365386963e-10*(i>>>0)});var i;r=o(" "),e=o(" "),t=o(" ");for(var n=0;n<arguments.length;n++)(r-=o(arguments[n]))<0&&(r+=1),(e-=o(arguments[n]))<0&&(e+=1),(t-=o(arguments[n]))<0&&(t+=1);return o=null,function(){var o=2091639*r+2.3283064365386963e-10*a;return r=e,e=t,t=o-(a=0|o)}}(r):Math.random,this.p=n(e),this.perm=new Uint8Array(512),this.permMod12=new Uint8Array(512);for(var t=0;t<512;t++)this.perm[t]=this.p[255&t],this.permMod12[t]=this.perm[t]%12}function n(r){var e,t=new Uint8Array(256);for(e=0;e<256;e++)t[e]=e;for(e=0;e<255;e++){var a=e+~~(r()*(256-e)),o=t[e];t[e]=t[a],t[a]=o}return t}i.prototype={grad3:new Float32Array([1,1,0,-1,1,0,1,-1,0,-1,-1,0,1,0,1,-1,0,1,1,0,-1,-1,0,-1,0,1,1,0,-1,1,0,1,-1,0,-1,-1]),grad4:new Float32Array([0,1,1,1,0,1,1,-1,0,1,-1,1,0,1,-1,-1,0,-1,1,1,0,-1,1,-1,0,-1,-1,1,0,-1,-1,-1,1,0,1,1,1,0,1,-1,1,0,-1,1,1,0,-1,-1,-1,0,1,1,-1,0,1,-1,-1,0,-1,1,-1,0,-1,-1,1,1,0,1,1,1,0,-1,1,-1,0,1,1,-1,0,-1,-1,1,0,1,-1,1,0,-1,-1,-1,0,1,-1,-1,0,-1,1,1,1,0,1,1,-1,0,1,-1,1,0,1,-1,-1,0,-1,1,1,0,-1,1,-1,0,-1,-1,1,0,-1,-1,-1,0]),noise2D:function(t,a){var o,i,n=this.permMod12,f=this.perm,s=this.grad3,v=0,h=0,l=0,u=(t+a)*r,d=Math.floor(t+u),p=Math.floor(a+u),M=(d+p)*e,m=t-(d-M),c=a-(p-M);m>c?(o=1,i=0):(o=0,i=1);var y=m-o+e,w=c-i+e,g=m-1+2*e,A=c-1+2*e,x=255&d,q=255&p,D=.5-m*m-c*c;if(D>=0){var S=3*n[x+f[q]];v=(D*=D)*D*(s[S]*m+s[S+1]*c)}var U=.5-y*y-w*w;if(U>=0){var b=3*n[x+o+f[q+i]];h=(U*=U)*U*(s[b]*y+s[b+1]*w)}var F=.5-g*g-A*A;if(F>=0){var N=3*n[x+1+f[q+1]];l=(F*=F)*F*(s[N]*g+s[N+1]*A)}return 70*(v+h+l)},noise3D:function(r,e,a){var o,i,n,f,s,v,h,l,u,d,p=this.permMod12,M=this.perm,m=this.grad3,c=(r+e+a)*(1/3),y=Math.floor(r+c),w=Math.floor(e+c),g=Math.floor(a+c),A=(y+w+g)*t,x=r-(y-A),q=e-(w-A),D=a-(g-A);x>=q?q>=D?(s=1,v=0,h=0,l=1,u=1,d=0):x>=D?(s=1,v=0,h=0,l=1,u=0,d=1):(s=0,v=0,h=1,l=1,u=0,d=1):q<D?(s=0,v=0,h=1,l=0,u=1,d=1):x<D?(s=0,v=1,h=0,l=0,u=1,d=1):(s=0,v=1,h=0,l=1,u=1,d=0);var S=x-s+t,U=q-v+t,b=D-h+t,F=x-l+2*t,N=q-u+2*t,C=D-d+2*t,P=x-1+.5,T=q-1+.5,_=D-1+.5,j=255&y,k=255&w,z=255&g,B=.6-x*x-q*q-D*D;if(B<0)o=0;else{var E=3*p[j+M[k+M[z]]];o=(B*=B)*B*(m[E]*x+m[E+1]*q+m[E+2]*D)}var G=.6-S*S-U*U-b*b;if(G<0)i=0;else{var H=3*p[j+s+M[k+v+M[z+h]]];i=(G*=G)*G*(m[H]*S+m[H+1]*U+m[H+2]*b)}var I=.6-F*F-N*N-C*C;if(I<0)n=0;else{var J=3*p[j+l+M[k+u+M[z+d]]];n=(I*=I)*I*(m[J]*F+m[J+1]*N+m[J+2]*C)}var K=.6-P*P-T*T-_*_;if(K<0)f=0;else{var L=3*p[j+1+M[k+1+M[z+1]]];f=(K*=K)*K*(m[L]*P+m[L+1]*T+m[L+2]*_)}return 32*(o+i+n+f)},noise4D:function(r,e,t,i){var n,f,s,v,h,l,u,d,p,M,m,c,y,w,g,A,x,q=this.perm,D=this.grad4,S=(r+e+t+i)*a,U=Math.floor(r+S),b=Math.floor(e+S),F=Math.floor(t+S),N=Math.floor(i+S),C=(U+b+F+N)*o,P=r-(U-C),T=e-(b-C),_=t-(F-C),j=i-(N-C),k=0,z=0,B=0,E=0;P>T?k++:z++,P>_?k++:B++,P>j?k++:E++,T>_?z++:B++,T>j?z++:E++,_>j?B++:E++;var G=P-(l=k>=3?1:0)+o,H=T-(u=z>=3?1:0)+o,I=_-(d=B>=3?1:0)+o,J=j-(p=E>=3?1:0)+o,K=P-(M=k>=2?1:0)+2*o,L=T-(m=z>=2?1:0)+2*o,O=_-(c=B>=2?1:0)+2*o,Q=j-(y=E>=2?1:0)+2*o,R=P-(w=k>=1?1:0)+3*o,V=T-(g=z>=1?1:0)+3*o,W=_-(A=B>=1?1:0)+3*o,X=j-(x=E>=1?1:0)+3*o,Y=P-1+4*o,Z=T-1+4*o,$=_-1+4*o,rr=j-1+4*o,er=255&U,tr=255&b,ar=255&F,or=255&N,ir=.6-P*P-T*T-_*_-j*j;if(ir<0)n=0;else{var nr=q[er+q[tr+q[ar+q[or]]]]%32*4;n=(ir*=ir)*ir*(D[nr]*P+D[nr+1]*T+D[nr+2]*_+D[nr+3]*j)}var fr=.6-G*G-H*H-I*I-J*J;if(fr<0)f=0;else{var sr=q[er+l+q[tr+u+q[ar+d+q[or+p]]]]%32*4;f=(fr*=fr)*fr*(D[sr]*G+D[sr+1]*H+D[sr+2]*I+D[sr+3]*J)}var vr=.6-K*K-L*L-O*O-Q*Q;if(vr<0)s=0;else{var hr=q[er+M+q[tr+m+q[ar+c+q[or+y]]]]%32*4;s=(vr*=vr)*vr*(D[hr]*K+D[hr+1]*L+D[hr+2]*O+D[hr+3]*Q)}var lr=.6-R*R-V*V-W*W-X*X;if(lr<0)v=0;else{var ur=q[er+w+q[tr+g+q[ar+A+q[or+x]]]]%32*4;v=(lr*=lr)*lr*(D[ur]*R+D[ur+1]*V+D[ur+2]*W+D[ur+3]*X)}var dr=.6-Y*Y-Z*Z-$*$-rr*rr;if(dr<0)h=0;else{var pr=q[er+1+q[tr+1+q[ar+1+q[or+1]]]]%32*4;h=(dr*=dr)*dr*(D[pr]*Y+D[pr+1]*Z+D[pr+2]*$+D[pr+3]*rr)}return 27*(n+f+s+v+h)}},i._buildPermutationTable=n,"undefined"!=typeof define&&define.amd&&define(function(){return i}),"undefined"!=typeof exports?exports.SimplexNoise=i:"undefined"!=typeof window&&(window.SimplexNoise=i),"undefined"!=typeof module&&(module.exports=i)}();</script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.waves.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.globe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.dots.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.halo.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.fog.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.clouds.min.js"></script>
+  <script src="https://quantil.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.waves.min.js"></script>
+  <script src="https://quantil.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.globe.min.js"></script>
+  <script src="https://quantil.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.dots.min.js"></script>
+  <script src="https://quantil.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.halo.min.js"></script>
+  <script src="https://quantil.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.fog.min.js"></script>
+  <script src="https://quantil.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.clouds.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
   <script type="module">import{ShaderArt}from'https://esm.sh/shader-art';ShaderArt.register();</script>
-  <script src="https://cdn.jsdelivr.net/npm/luna-object-viewer/luna-object-viewer.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/luna-data-grid/luna-data-grid.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/luna-dom-viewer/luna-dom-viewer.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/luna-console/luna-console.js"></script>
+  <script src="https://quantil.jsdelivr.net/npm/luna-object-viewer/luna-object-viewer.js"></script>
+  <script src="https://quantil.jsdelivr.net/npm/luna-data-grid/luna-data-grid.js"></script>
+  <script src="https://quantil.jsdelivr.net/npm/luna-dom-viewer/luna-dom-viewer.js"></script>
+  <script src="https://quantil.jsdelivr.net/npm/luna-console/luna-console.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var container = document.getElementById('luna-console');
