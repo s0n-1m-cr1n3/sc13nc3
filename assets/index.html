@@ -14,7 +14,6 @@
   <link rel="stylesheet" href="https://quantil.jsdelivr.net/npm/luna-data-grid/luna-data-grid.css">
   <link rel="stylesheet" href="https://quantil.jsdelivr.net/npm/luna-dom-viewer/luna-dom-viewer.css">
   <link rel="stylesheet" href="https://quantil.jsdelivr.net/npm/luna-console/luna-console.css">
-  <script src="https://quantil.jsdelivr.net/gh/luminsdk/script@latest/lumin.min.js"></script>
   <style>
     @font-face{font-family:'ApplePixel';src:url('https://quantil.jsdelivr.net/gh/bradardeletethis/apple/font.woff2') format('woff2');font-weight:400;font-style:normal;}
     :root{
@@ -2196,9 +2195,9 @@
           <div class="game-card" style="width:300px;flex:0 0 300px;" onclick="openEmbed('Link Form','https://docs.google.com/forms/d/e/1FAIpQLSe8zWp-H6VZ5bdfgvjdCFbZSicmqEkrbbbv6jF7D_q8adFBpA/viewform')">
             <div style="padding:20px;">
               <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
-                <svg width="15" height="15" viewBox="5 6 26 24" xmlns="http://www.w3.org/2000/svg" fill="var(--accent)">
-                  <path d="M17.6,24.32l-2.46,2.44a4,4,0,0,1-5.62,0,3.92,3.92,0,0,1,0-5.55l4.69-4.65a4,4,0,0,1,5.62,0,3.86,3.86,0,0,1,1,1.71A2,2,0,0,0,21.1,18l1.29-1.28a5.89,5.89,0,0,0-1.15-1.62,6,6,0,0,0-8.44,0L8.1,19.79a5.91,5.91,0,0,0,0,8.39,6,6,0,0,0,8.44,0l3.65-3.62c-.17,0-.33,0-.5,0A8,8,0,0,1,17.6,24.32Z" fill="currentColor"/>
-                  <path d="M28.61,7.82a6,6,0,0,0-8.44,0l-3.65,3.62c.17,0,.33,0,.49,0h0a8,8,0,0,1,2.1.28l2.46-2.44a4,4,0,0,1,5.62,0,3.92,3.92,0,0,1,0,5.55l-4.69,4.65a4,4,0,0,1-5.62,0,3.86,3.86,0,0,1-1-1.71,2,2,0,0,0-.28.23l-1.29,1.28a5.89,5.89,0,0,0,1.15,1.62,6,6,0,0,0,8.44,0l4.69-4.65a5.92,5.92,0,0,0,0-8.39Z" fill="currentColor"/>
+                <svg width="15" height="15" viewBox="5 6 26 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17.6,24.32l-2.46,2.44a4,4,0,0,1-5.62,0,3.92,3.92,0,0,1,0-5.55l4.69-4.65a4,4,0,0,1,5.62,0,3.86,3.86,0,0,1,1,1.71A2,2,0,0,0,21.1,18l1.29-1.28a5.89,5.89,0,0,0-1.15-1.62,6,6,0,0,0-8.44,0L8.1,19.79a5.91,5.91,0,0,0,0,8.39,6,6,0,0,0,8.44,0l3.65-3.62c-.17,0-.33,0-.5,0A8,8,0,0,1,17.6,24.32Z" fill="var(--accent)"/>
+                  <path d="M28.61,7.82a6,6,0,0,0-8.44,0l-3.65,3.62c.17,0,.33,0,.49,0h0a8,8,0,0,1,2.1.28l2.46-2.44a4,4,0,0,1,5.62,0,3.92,3.92,0,0,1,0,5.55l-4.69,4.65a4,4,0,0,1-5.62,0,3.86,3.86,0,0,1-1-1.71,2,2,0,0,0-.28.23l-1.29,1.28a5.89,5.89,0,0,0,1.15,1.62,6,6,0,0,0,8.44,0l4.69-4.65a5.92,5.92,0,0,0,0-8.39Z" fill="var(--accent)"/>
                 </svg>
                 <h3 style="font-size:20px;">Link Form</h3>
               </div>
@@ -2295,7 +2294,11 @@
           </div>
           <div class="game-card" style="padding:20px;">
             <h3>Loading Screen</h3>
-            <p style="color:#aaa;font-size:13px;margin-top:8px;">Theme:</p>
+            <label style="display:flex;align-items:center;gap:10px;margin-top:8px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
+              <input type="checkbox" id="loading-screen-enabled-check" onchange="setStartupBlockScreen(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
+              Show block screen on startup
+            </label>
+            <p style="color:#aaa;font-size:13px;margin-top:12px;">Theme:</p>
             <select id="loading-theme-select" class="settings-input" onchange="setLoadingTheme(this.value)" style="margin-top:6px;">
               <option value="lightspeed">Lightspeed</option>
               <option value="goguardian">GoGuardian</option>
@@ -2364,11 +2367,15 @@
             </select>
           </div>
           <div class="game-card" style="padding:20px;">
-            <h3>Music</h3>
-            <p style="color:#aaa;font-size:13px;margin-top:8px;">Play music on startup:</p>
-            <label style="display:flex;align-items:center;gap:10px;margin-top:6px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
+            <h3>Startup Options</h3>
+            <p style="color:#aaa;font-size:13px;margin-top:8px;">What happens when the site loads:</p>
+            <label style="display:flex;align-items:center;gap:10px;margin-top:10px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
               <input type="checkbox" id="music-startup-check" onchange="setMusicOnStartup(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
-              Enabled
+              Music on startup
+            </label>
+            <label style="display:flex;align-items:center;gap:10px;margin-top:8px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
+              <input type="checkbox" id="startup-loading-check" onchange="setStartupLoadingScreen(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
+              Loading screen on startup
             </label>
           </div>
           <div class="game-card" style="padding:20px;">
@@ -2465,6 +2472,20 @@
     }
     function setMusicOnStartup(enabled) {
       localStorage.setItem('musicOnStartup', enabled ? '1' : '0');
+    }
+    function getStartupLoadingScreen() {
+      var v = localStorage.getItem('startupLoadingScreen');
+      return v === null ? true : v === '1';
+    }
+    function setStartupLoadingScreen(enabled) {
+      localStorage.setItem('startupLoadingScreen', enabled ? '1' : '0');
+    }
+    function getStartupBlockScreen() {
+      var v = localStorage.getItem('startupBlockScreen');
+      return v === null ? true : v === '1';
+    }
+    function setStartupBlockScreen(enabled) {
+      localStorage.setItem('startupBlockScreen', enabled ? '1' : '0');
     }
 
     window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
@@ -3377,10 +3398,14 @@
       }
     })();
 
-    // Restore music startup setting
+    // Restore startup options
     (function() {
       var cb = document.getElementById('music-startup-check');
       if (cb) cb.checked = getMusicOnStartup();
+      var lc = document.getElementById('startup-loading-check');
+      if (lc) lc.checked = getStartupLoadingScreen();
+      var lc2 = document.getElementById('loading-screen-enabled-check');
+      if (lc2) lc2.checked = getStartupBlockScreen();
     })();
 
     // Loading Timer & Screen
@@ -3390,74 +3415,97 @@
     const loadingScreen = document.getElementById('loading-screen');
     const mainContent = document.getElementById('main-content');
 
+    function startStartupMusic() {
+      var bgAudio = window.bgAudio = document.getElementById('bg-music');
+      var trackList = window.trackList = [
+        'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/oobe.mp3',
+        'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/far.mp3',
+        'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/chirp.mp3',
+        'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/strad.mp3',
+        'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/wait.mp3',
+        'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/dog.mp3',
+        'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/cat.mp3'
+      ];
+      window.playRandomTrack = function() {
+        var next;
+        do { next = trackList[Math.floor(Math.random() * trackList.length)]; }
+        while (next === bgAudio.src && trackList.length > 1);
+        bgAudio.muted = false;
+        bgAudio.src = next;
+        bgAudio.play();
+      };
+      if (getMusicOnStartup()) {
+        bgAudio.volume = 0;
+        bgAudio.onended = window.playRandomTrack;
+        bgAudio.src = trackList[Math.floor(Math.random() * trackList.length)];
+        var playPromise = bgAudio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(function() {
+            document.addEventListener('click', function firstClick() {
+              playRandomTrack();
+              document.removeEventListener('click', firstClick);
+            }, { once: true });
+          });
+        }
+        var fadeInterval = setInterval(function() {
+          if (bgAudio.volume >= 0.5) { clearInterval(fadeInterval); return; }
+          bgAudio.volume = Math.min(bgAudio.volume + 0.05, 0.5);
+        }, 200);
+      } else {
+        bgAudio.volume = 0.5;
+        bgAudio.muted = true;
+        bgAudio.src = trackList[Math.floor(Math.random() * trackList.length)];
+      }
+    }
+
+    function runBootProgress() {
+      var bootScreen = document.getElementById('boot-screen');
+      var bootProgress = document.getElementById('boot-progress');
+      bootScreen.classList.remove('hidden');
+      bootProgress.style.width = '0%';
+      var bootStart = Date.now();
+      var bootInterval = setInterval(function() {
+        var p = Math.min(100, (Date.now() - bootStart) / 20);
+        bootProgress.style.width = p + '%';
+        if (p >= 100) {
+          clearInterval(bootInterval);
+          setTimeout(function() {
+            bootScreen.classList.add('hidden');
+            mainContent.classList.add('visible');
+          }, 250);
+        }
+      }, 30);
+    }
 
     const startTime = Date.now();
-    const timerInterval = setInterval(() => {
-      const elapsed = Date.now() - startTime;
-      const remaining = Math.max(0, totalLoadTime - elapsed);
-      const seconds = (remaining / 1000).toFixed(2);
-      timerEl.textContent = seconds + 's';
-      if (remaining <= 0) {
-        clearInterval(timerInterval);
-        timerEl.style.display = 'none';
-        loadingScreen.classList.add('hidden');
-        var bootScreen = document.getElementById('boot-screen');
-        var bootProgress = document.getElementById('boot-progress');
-        setTimeout(function() {
-          loadingScreen.style.display = 'none';
-          bootScreen.classList.remove('hidden');
-          bootProgress.style.width = '0%';
-          var bootStart = Date.now();
-          var bootInterval = setInterval(function() {
-            var p = Math.min(100, (Date.now() - bootStart) / 20);
-            bootProgress.style.width = p + '%';
-            if (p >= 100) {
-              clearInterval(bootInterval);
-              setTimeout(function() {
-                bootScreen.classList.add('hidden');
-                mainContent.classList.add('visible');
-              }, 250);
-            }
-          }, 30);
-        }, 500);
-        var bgAudio = window.bgAudio = document.getElementById('bg-music');
-        var trackList = window.trackList = [
-          'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/oobe.mp3',
-          'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/far.mp3',
-          'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/chirp.mp3',
-          'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/strad.mp3',
-          'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/wait.mp3',
-          'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/dog.mp3',
-          'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/cat.mp3'
-        ];
-        window.playRandomTrack = function() {
-          var next;
-          do { next = trackList[Math.floor(Math.random() * trackList.length)]; }
-          while (next === bgAudio.src && trackList.length > 1);
-          bgAudio.src = next;
-          bgAudio.play();
-        };
-        if (getMusicOnStartup()) {
-          bgAudio.volume = 0;
-          bgAudio.onended = window.playRandomTrack;
-          bgAudio.src = trackList[Math.floor(Math.random() * trackList.length)];
-          var playPromise = bgAudio.play();
-          if (playPromise !== undefined) {
-            playPromise.catch(function() {
-              document.addEventListener('click', function firstClick() {
-                playRandomTrack();
-                document.removeEventListener('click', firstClick);
-              }, { once: true });
-            });
-          }
-          var fadeInterval = setInterval(function() {
-            if (bgAudio.volume >= 0.5) { clearInterval(fadeInterval); return; }
-            bgAudio.volume = Math.min(bgAudio.volume + 0.05, 0.5);
-          }, 200);
+    if (!getStartupLoadingScreen()) {
+      timerEl.style.display = 'none';
+      loadingScreen.style.display = 'none';
+      mainContent.classList.add('visible');
+      startStartupMusic();
+    } else if (!getStartupBlockScreen()) {
+      timerEl.style.display = 'none';
+      loadingScreen.style.display = 'none';
+      runBootProgress();
+      startStartupMusic();
+    } else {
+      const timerInterval = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        const remaining = Math.max(0, totalLoadTime - elapsed);
+        const seconds = (remaining / 1000).toFixed(2);
+        timerEl.textContent = seconds + 's';
+        if (remaining <= 0) {
+          clearInterval(timerInterval);
+          timerEl.style.display = 'none';
+          loadingScreen.classList.add('hidden');
+          setTimeout(function() {
+            loadingScreen.style.display = 'none';
+            runBootProgress();
+          }, 500);
+          startStartupMusic();
         }
-
-      }
-    }, 50);
+      }, 50);
+    }
 
     // Tab Switching
     function switchTab(tabId) {
@@ -3643,6 +3691,8 @@
       const audio = document.getElementById('bg-music');
       const icon = document.getElementById('music-icon');
       if (audio.paused) {
+        audio.muted = false;
+        if (!audio.volume) audio.volume = 0.5;
         audio.play();
         icon.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>';
       } else {
@@ -4353,8 +4403,8 @@
         normalizeGame({name:"Wave Road 3D",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/waveroad3d.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/gdwave3d.html"}),
         normalizeGame({name:"Who's Your Daddy",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/whosyourdaddy.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/whosyourdaddy.html"}),
         normalizeGame({name:"Wrestle Bros",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/wrestlebros.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/wrestlebros.html"}),
-        normalizeGame({name:"Where's Baldi",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/whereisbaldi.png",url:"https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/wheresbaldi/index.html"}),
-        normalizeGame({name:"Baldi's Creepy Run",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/baldicreepyrun.png",url:"https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/baldicreepyrun/index.html"})
+        normalizeGame({name:"Where's Baldi",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/whereisbaldi.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/wheresbaldi.html"}),
+        normalizeGame({name:"Baldi's Creepy Run",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/baldicreepyrun.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/baldicreepyrun.html"})
       ];
 
       // mark CDN games — they open in new tab (non-direct) unless still on Quizizz
@@ -4513,62 +4563,39 @@
       } catch(e) { console.warn("CKV load failed:", e); }
     }
 
-    // ─── Lumin SDK loader ───
+    // ─── Lumin loader ───
 
-    function formatZoneId(id) {
-      return id.replace(/^cl/, '').replace(/([a-z])([A-Z])/g, '$1 $2').replace(/[_-]+/g, ' ').replace(/\b\w/g, c => c.toUpperCase()).trim() || id;
-    }
-
-    async function loadLumin() {
+    async function loadLumin(){
       if (DATA.lumin.length) return;
-      const games = [];
       const fallback = _cdn + "/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/fallback.png";
-
-      // 1. Load from Lumin SDK
-      if (typeof Lumin !== 'undefined') {
-        try {
-          await Lumin.init({ headless: true });
-          const pages = 5;
-          for (let p = 1; p <= pages; p++) {
-            try {
-              const result = await Lumin.getGames({ page: p, limit: 48 });
-              if (result && result.games) {
-                for (const g of result.games) {
-                  let img = fallback;
-                  try {
-                    if (g.image_token) img = await Lumin.getImageUrl(g.image_token);
-                  } catch(e) {}
-                  games.push(normalizeGame({
-                    name: g.name,
-                    img,
-                    url: 'lumin:' + g.id
-                  }));
-                }
-              }
-            } catch(e) { /* skip failed page */ }
-          }
-        } catch(e) { console.warn("Lumin SDK init failed:", e); }
-      }
-
-      // 2. Load from zonesv2 (fallback)
+      const htmlBase = _cdn + '/gh/freebuisness/html@main';
+      const coverBase = _cdn + '/gh/freebuisness/covers@main';
+      const games = [];
       try {
-        const zoneText = await fetch(_cdn + '/gh/NoseyGames/data@main/zonesv2.js').then(r => r.text());
-        const zoneIds = zoneText.match(/'([^']+)'/g);
-        if (zoneIds) {
-          zoneIds.forEach(m => {
-            const cleanId = m.replace(/'/g, '').trim();
-            if (cleanId && !cleanId.includes('.txt')) {
-              games.push(normalizeGame({
-                name: formatZoneId(cleanId),
-                img: fallback,
-                url: _cdn + `/gh/freebuisness/html@main/${cleanId}`
-              }));
+        const zoneData = await fetch(_cdn + '/gh/freebuisness/assets@main/zones.json?t=' + Date.now()).then(r => r.json());
+        if (Array.isArray(zoneData)) {
+          for (const z of zoneData) {
+            if (!z || typeof z !== 'object') continue;
+            let url = String(z.url || '').trim();
+            if (!url) continue;
+            url = url.replace(/\{HTML_URL\}/g, htmlBase).replace(/\{COVER_URL\}/g, coverBase);
+            if (!url.startsWith(_cdn) || url.includes('{')) continue;
+            let img = String(z.cover || '').trim();
+            if (img) {
+              img = img.replace(/\{HTML_URL\}/g, htmlBase).replace(/\{COVER_URL\}/g, coverBase);
+              if (!img.startsWith('http')) img = fallback;
+            } else {
+              img = fallback;
             }
-          });
+            games.push(normalizeGame({
+              name: String(z.name || '').trim() || 'Zone ' + z.id,
+              img,
+              url
+            }));
+          }
         }
-      } catch(e) { console.warn("zonesv2 load failed:", e); }
+      } catch(e) { console.warn("Lumin data load failed:", e); }
 
-      // Deduplicate by URL
       const seen = new Set();
       DATA.lumin = games.filter(g => {
         const key = g.url;
@@ -4627,28 +4654,49 @@
       renderGames();
     };
 
+    function naturalCompare(a, b) {
+      return String(a).localeCompare(String(b), undefined, { numeric: true, sensitivity: 'base' });
+    }
+
     function renderGames(){
       const fallback = "https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/fallback.png";
       const activeCat = document.querySelector(".game-cat.active").dataset.cat;
 
       gameGrid.innerHTML = "";
-      FILTERED.filter(g => g && g.name && g.url && g.url !== '#').forEach((g,i) => {
+      const pool = FILTERED.filter(g => g && g.name && g.url && g.url !== '#');
+
+      if (window.__rndInt) { clearInterval(window.__rndInt); window.__rndInt = null; }
+      const rCard = document.createElement('div');
+      rCard.className = 'game-card';
+      const rImgs = pool.map(g => g.img).filter(Boolean);
+      rCard.innerHTML = '<img alt="Random"><h3>Random Game</h3><div class="play-btn">Play</div>';
+      const rImg = rCard.querySelector('img');
+      let rIdx = -1;
+      const rStep = function() {
+        rIdx = (rIdx + 1) % (rImgs.length || 1);
+        rImg.src = rImgs[rIdx] || fallback;
+      };
+      rStep();
+      if (rImgs.length > 1) {
+        rImg.onerror = function() { this.onerror = null; this.src = fallback; };
+        window.__rndInt = setInterval(rStep, 700);
+      }
+      rCard.querySelector('.play-btn').onclick = () => {
+        const pick = pool.length ? pool[Math.floor(Math.random() * pool.length)] : null;
+        if (!pick) return;
+        openGame(pick.name, pick.url, !!pick._ubz);
+      };
+      gameGrid.appendChild(rCard);
+
+      pool.sort((x, y) => naturalCompare(x.name, y.name)).forEach((g,i) => {
         const card = document.createElement('div');
         card.className = 'game-card';
         card.innerHTML = `
           <img loading="lazy" decoding="async" crossorigin="anonymous" src="${g.img || fallback}" onerror="this.onerror=null;this.src='${fallback}'">
           <h3>${g.name.replace(/</g,'&lt;')}</h3>
           <div class="play-btn">Play</div>`;
-        const isLumin = g.url.startsWith('lumin:');
-        card.querySelector('.play-btn').onclick = async () => {
-          let playUrl = g.url;
-          if (isLumin) {
-            try {
-              const result = await Lumin.getGameUrl(g.url.slice(6));
-              if (result && result.url) playUrl = result.url;
-            } catch(e) { console.warn('Lumin play failed:', e); }
-          }
-          openGame(g.name, playUrl, isLumin || !!g._ubz);
+        card.querySelector('.play-btn').onclick = () => {
+          openGame(g.name, g.url, !!g._ubz);
         };
         gameGrid.appendChild(card);
       });
