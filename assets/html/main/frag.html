@@ -96,7 +96,7 @@
 <!DOCTYPE html-->
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/testamalame/xh677z@main/TemplateData/style.css">
+<link rel="stylesheet" href="https://quantil.jsdelivr.net/gh/testamalame/xh677z@main/TemplateData/style.css">
 <script>
     const overlayBackgroundColor = "";
     const progressBarFillColor = "";
@@ -148,7 +148,7 @@ var mergedFileCache = {};
 async function downloadAndMergeParts(fileName, partCount) {
     var parts = [], totalLoaded = 0;
     for (var i = 0; i < partCount; i++) {
-        var resp = await fetch("https://cdn.jsdelivr.net/gh/testamalame/xh677z@main/Build/parts/" + fileName + ".part" + i);
+        var resp = await fetch("https://quantil.jsdelivr.net/gh/testamalame/xh677z@main/Build/parts/" + fileName + ".part" + i);
         if (!resp.ok) throw new Error("Part hata: " + fileName + ".part" + i + " (" + resp.status + ")");
         var ab = await resp.arrayBuffer();
         parts.push(new Uint8Array(ab));
@@ -227,14 +227,14 @@ window.XMLHttpRequest = function PatchedXHR() {
 // ================================================================
 // OYUN KODU
 // ================================================================
-const buildUrl = "https://cdn.jsdelivr.net/gh/testamalame/xh677z@main/Build";
+const buildUrl = "https://quantil.jsdelivr.net/gh/testamalame/xh677z@main/Build";
 const loaderUrl = buildUrl + "/command3VKWithoutLTO.loader.js";
 const config = {
     dataUrl: buildUrl + "/command3VKWithoutLTO.data.br",
     workerUrl: buildUrl + "/command3VKWithoutLTO.data.br",
     frameworkUrl: buildUrl + "/command3VKWithoutLTO.framework.js",
     codeUrl: buildUrl + "/command3VKWithoutLTO.wasm.br",
-    streamingAssetsUrl: "https://cdn.jsdelivr.net/gh/testamalame/xh677z@main/StreamingAssets",
+    streamingAssetsUrl: "https://quantil.jsdelivr.net/gh/testamalame/xh677z@main/StreamingAssets",
     companyName: "FullHp Ltd",
     productName: "FRAGEN",
     productVersion: "2.2.0",
