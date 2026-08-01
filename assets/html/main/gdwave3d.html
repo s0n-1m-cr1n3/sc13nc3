@@ -326,7 +326,7 @@
             <div class="progress-bar" id="progress-bar" style="width: 29%;"></div>
         </div>
         <canvas id="unity-canvas" data-pixel-art="" style="width: 860px; height: 537px;"></canvas>
-        <script src="https://cdn.jsdelivr.net/gh/emrsdahclassroom/dashdas@main/Build/WaveRoad3D_V47.loader.js"></script>
+        <script src="https://quantil.jsdelivr.net/gh/emrsdahclassroom/dashdas@main/Build/WaveRoad3D_V47.loader.js"></script>
         <script>
             // Multi-language support for orientation messages
             var orientationMessages = {
@@ -393,7 +393,7 @@
             // ===== CHUNKED DATA FILE LOADING =====
             // jsDelivr CDN 20MB limit - dosya 4 parçaya bölündü (her biri max 8MB)
             var DATA_CHUNK_COUNT = 4;
-            var DATA_CHUNK_BASE_URL = "https://cdn.jsdelivr.net/gh/emrsdahclassroom/dashdas@main/Build/WaveRoad3D_V47.data.unityweb.part";
+            var DATA_CHUNK_BASE_URL = "https://quantil.jsdelivr.net/gh/emrsdahclassroom/dashdas@main/Build/WaveRoad3D_V47.data.unityweb.part";
             
             // Parçaları birleştirip Blob URL oluştur
             async function loadChunkedDataFile(onProgress) {
@@ -623,8 +623,8 @@
                     // Unity config - birleştirilmiş data blob URL'i kullan
                     var config = {
                         dataUrl: dataBlobUrl, // Blob URL kullan
-                        frameworkUrl: "https://cdn.jsdelivr.net/gh/emrsdahclassroom/dashdas@main/Build/WaveRoad3D_V47.framework.js.unityweb",
-                        codeUrl: "https://cdn.jsdelivr.net/gh/emrsdahclassroom/dashdas@main/Build/WaveRoad3D_V47.wasm.unityweb",
+                        frameworkUrl: "https://quantil.jsdelivr.net/gh/emrsdahclassroom/dashdas@main/Build/WaveRoad3D_V47.framework.js.unityweb",
+                        codeUrl: "https://quantil.jsdelivr.net/gh/emrsdahclassroom/dashdas@main/Build/WaveRoad3D_V47.wasm.unityweb",
                         streamingAssetsUrl: "StreamingAssets",
                         companyName: "GameVGames",
                         productName: "Wave Road 3D",
@@ -664,7 +664,7 @@
         </script>
 
         <!--RHM API-->
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/emrsdahclassroom/dashdas@main/js/api.js"></script>
+        <script type="text/javascript" src="https://quantil.jsdelivr.net/gh/emrsdahclassroom/dashdas@main/js/api.js"></script>
     </div>
 ]]&gt;</content>
 </module>

@@ -65,7 +65,7 @@
   <canvas id="unity-canvas" width="1078" height="711" style="cursor: default;"></canvas>
 
   <!-- Loader CDN -->
-  <script src="https://cdn.jsdelivr.net/gh/kelsimsk/ugil@main/Build/ultrakill.loader.js"></script>
+  <script src="https://quantil.jsdelivr.net/gh/kelsimsk/ugil@main/Build/ultrakill.loader.js"></script>
 
   <script>
     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
@@ -82,7 +82,7 @@
     async function mergeParts(baseName, totalParts, progressWeight) {
       const parts = [];
       for (let i = 0; i < totalParts; i++) {
-        const url = `https://cdn.jsdelivr.net/gh/kelsimsk/ugil@main/Build/${baseName}.part${i}`;
+        const url = `https://quantil.jsdelivr.net/gh/kelsimsk/ugil@main/Build/${baseName}.part${i}`;
         const res = await fetch(url);
         if (!res.ok) throw new Error(`Part ${i} yüklenemedi: ${url}`);
         const buf = await res.arrayBuffer();
@@ -105,7 +105,7 @@
 
         createUnityInstance(document.querySelector("#unity-canvas"), {
           dataUrl: dataUrl,
-          frameworkUrl: "https://cdn.jsdelivr.net/gh/kelsimsk/ugil@main/Build/ultrakill.framework.js.unityweb",
+          frameworkUrl: "https://quantil.jsdelivr.net/gh/kelsimsk/ugil@main/Build/ultrakill.framework.js.unityweb",
           codeUrl: wasmUrl,
           streamingAssetsUrl: "StreamingAssets",
           companyName: "Hakita",
