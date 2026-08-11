@@ -8,7 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAOCAYAAAAmL5yKAAAAAXNSR0IArs4c6QAAAhBJREFUOE9tk89rE1EQx78Tf0A22tg2W4qHVqPVtol3Dyq24M2r7B48WS9F0KNQ0CLoP9CbCJ6zvSiKIlY02ggFr2tvmjbVKGSTIs22iSk7MvM21VIfebz3yHw/7/tmZunW1aN8ZXIbIAYR4mE2zAAhATCB5RwRmOU/AiLCk9I+UGfJZuIQRBItYfFgAZhgESoknuCEgZEF6nxMsdzsb/Xjc8s2LlRsLMiqM2IgMvtcch1565cCqVM6xHKz1xjFfGNU3Rm/DOtAUoXNdjMGROAogpMpw8lU1BX9XjysgPn6KXiN0zsvSB20MDt5W2GzCw/QbIUqFqAAXLtiHLQ/9LC836uP6DQWgBtnp3Axe073xS+LmCs9BHYAK3DttRjwPs2i8YIT8Oon/3GQxL1LM3q+8+o+QnHAXQerCtAntIpHNNeFehZekP1bBQApyQEzwraIJaGSSIZjV+Da34yD1rterV0hOAYvOK6A/OAYcoPjusrwfyxjaeUTykFZIU5mDe7Ad+Ng622fAdSG4QXDuHl+GhMjF3Y56R6e+y/xqPRYxa5dNQ423/SbHNSGUKgN4en1wn/F6qS6jJlnd1Xs2FWtEG0u2FpGP+yBH6ZxZmxqF0AbKh5h+BNfV18gZ20gb20YB+HrAemzbvX23q4AaWX5mVXbW5uNQNcup9md2B8LSWO77byXlog/MNMrXnEbfwCrwRQID/CEeAAAAABJRU5ErkJggg==">
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Pacifico&family=Roboto&family=Open+Sans:wght@300;600&family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://quantil.jsdelivr.net">
   <link rel="stylesheet" href="https://quantil.jsdelivr.net/npm/luna-object-viewer/luna-object-viewer.css">
   <link rel="stylesheet" href="https://quantil.jsdelivr.net/npm/luna-data-grid/luna-data-grid.css">
@@ -862,6 +862,30 @@
       font-family:'ApplePixel',monospace;font-size:16px;color:var(--accent);
       text-shadow:2px 2px 0px #000;letter-spacing:1px;
     }
+    #setup-wizard{position:fixed;inset:0;z-index:20000;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.82);backdrop-filter:blur(6px);}
+    .setup-card{position:relative;width:min(540px,92vw);background:#0d0d0f;border:2px solid var(--accent);border-radius:14px;box-shadow:0 0 40px var(--accent-glow);padding:26px;font-family:'ApplePixel',sans-serif;}
+    .setup-header{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+    .setup-logo{width:36px;height:36px;border-radius:8px;background:var(--accent);color:#000;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:bold;flex-shrink:0;}
+    .setup-title{font-size:20px;color:var(--accent);margin:0;flex:1;}
+    .setup-dots{display:flex;gap:6px;}
+    .setup-dots span{width:8px;height:8px;border-radius:50%;background:#333;transition:background .2s;}
+    .setup-dots span.on{background:var(--accent);box-shadow:0 0 8px var(--accent-glow);}
+    .setup-step{display:none;}
+    .setup-step.active{display:block;animation:setupFadeIn .25s ease;}
+    .setup-step h3{color:var(--accent);margin:0 0 10px;font-size:18px;}
+    .setup-step p{color:#bbb;font-size:13px;line-height:1.6;margin:0 0 16px;}
+    .setup-step label{display:flex;align-items:center;gap:10px;color:var(--accent);font-size:14px;margin-top:12px;cursor:pointer;}
+    .setup-step label input{width:18px;height:18px;accent-color:var(--accent);cursor:pointer;}
+    .setup-swatches{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 16px;}
+    .setup-actions{display:flex;justify-content:space-between;gap:10px;margin-top:22px;}
+    .setup-btn{background:var(--accent);color:#000;border:none;border-radius:8px;padding:10px 22px;font-family:'ApplePixel',sans-serif;font-size:14px;font-weight:bold;cursor:pointer;}
+    .setup-btn:hover{box-shadow:0 0 14px var(--accent-glow);}
+    .setup-btn-ghost{background:transparent;color:#aaa;border:1px solid #444;border-radius:8px;padding:10px 22px;font-family:'ApplePixel',sans-serif;font-size:14px;cursor:pointer;}
+    .setup-btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+    .setup-skip{position:absolute;bottom:16px;right:20px;background:transparent;color:#666;border:none;font-family:'ApplePixel',sans-serif;font-size:12px;cursor:pointer;text-decoration:underline;}
+    .setup-skip:hover{color:#aaa;}
+    .setup-disclaimer{background:rgba(255,102,0,0.08);border:1px solid var(--accent);border-radius:8px;padding:10px 12px;font-size:12px;line-height:1.5;color:#ccc;margin-top:4px;}
+    @keyframes setupFadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
   </style>
 <base target="_blank">
 </head>
@@ -903,14 +927,14 @@
         <div class="padding-wrapper">
           <div class="newGrid_container shadow-container">
             <div class="row top-logo">
-              <img src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/idk/securly.png" alt="Logo">
+              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/idk/securly.png" alt="Logo">
             </div>
             <h1 class="text-center heading" id="sc-heading">Looks like this page isn't allowed</h1>
             <div class="schlblockMessage mt-0 text-center" id="sc-message">This page has been blocked.</div>
             <div class="row content-row">
               <div class="col-md-7 text-center">
                 <div class="lhs-img-container">
-                  <img src="https://www.securly.com/app/images/blocking-animation.gif" alt="Blocking animation">
+                  <img loading="lazy" decoding="async" src="https://www.securly.com/app/images/blocking-animation.gif" alt="Blocking animation">
                 </div>
               </div>
               <div class="col-md-5">
@@ -967,7 +991,7 @@
                   <button type="button" id="signin" name="signin" class="btn btn-primary btn-block btnlogin" data-loading-text="Please wait" aria-label="Sign In" tabindex="0">Sign In</button>
                 </form>
                 <button title="Sign in with Google" class="btn btn-primary btn-block google" data-code2="" aria-label="Sign in with Google" tabindex="0">
-                  <img src="https://cdn.classlink.com/production/framework/assets/images/lp-login/btn_google.png" alt="">
+                  <img loading="lazy" decoding="async" src="https://cdn.classlink.com/production/framework/assets/images/lp-login/btn_google.png" alt="">
                   <span>Sign in with Google</span>
                 </button>
               </div>
@@ -1004,8 +1028,8 @@
               <div class="lp-login-footer-bullet footer-bullet"><span class="dot"></span></div><a href="#" target="_blank" class="lp-login-footer-link footer-link last" rel="noopener noreferrer">Privacy<span class="fa fa-external-link footer-link-icon"></span></a>
             </div>
             <div class="footer-applink-container">
-              <a href="#" target="_blank" aria-label="Download on the Apple App Store" rel="noopener noreferrer"><img src="https://cdn.classlink.com/production/launchpad/img/login/appstore-new.png" alt="Download on the Apple App Store" class="footer-applink-1"></a>
-              <a href="#" target="_blank" aria-label="Get it on Google Play" rel="noopener noreferrer"><img src="https://cdn.classlink.com/production/launchpad/img/login/google-play-store.png" alt="Get it on Google Play" class="footer-applink-2"></a>
+              <a href="#" target="_blank" aria-label="Download on the Apple App Store" rel="noopener noreferrer"><img loading="lazy" decoding="async" src="https://cdn.classlink.com/production/launchpad/img/login/appstore-new.png" alt="Download on the Apple App Store" class="footer-applink-1"></a>
+              <a href="#" target="_blank" aria-label="Get it on Google Play" rel="noopener noreferrer"><img loading="lazy" decoding="async" src="https://cdn.classlink.com/production/launchpad/img/login/google-play-store.png" alt="Get it on Google Play" class="footer-applink-2"></a>
             </div>
           </div>
         </div>
@@ -1015,7 +1039,7 @@
 
   <div id="boot-screen" class="hidden">
     <div class="boot-logo-container">
-      <img src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/UNBL0CKEDZ0NE%20in%20Text.png" alt="UNBL0CKEDZ0NE" id="boot-logo">
+      <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/UNBL0CKEDZ0NE%20in%20Text.png" alt="UNBL0CKEDZ0NE" id="boot-logo">
     </div>
     <div class="pixel-progress-container">
       <div class="pixel-progress-bar" id="boot-progress"></div>
@@ -1045,7 +1069,7 @@
   <div id="retro-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden;"></div>
 
   <div id="floating-logo" class="visible">
-    brought to you by <img src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/UNBL0CKEDZ0NE%20in%20Text.png" alt="UNBL0CKEDZ0NE">
+    brought to you by <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/UNBL0CKEDZ0NE%20in%20Text.png" alt="UNBL0CKEDZ0NE">
   </div>
   <div id="console-overlay">
     <button id="console-close" onclick="toggleConsoleOverlay()">✕</button>
@@ -1101,23 +1125,23 @@
         </div>
         <div class="games-section">
           <button class="game-btn" onclick="openGame('Friday Night Funkin (FNF)','https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnf.html')">
-            <img src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/8.png" alt="Friday Night Funkin" loading="lazy">
+            <img loading="lazy" src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/8.png" alt="Friday Night Funkin">
             <div class="overlay"><span>Friday Night Funkin</span></div>
           </button>
           <button class="game-btn" onclick="openGame('1v1.LOL','https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/1v1.html')">
-            <img src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/7.png" alt="1v1.LOL" loading="lazy">
+            <img loading="lazy" src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/7.png" alt="1v1.LOL">
             <div class="overlay"><span>1v1.LOL</span></div>
           </button>
           <button class="game-btn" onclick="openGame('Retro Bowl','https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/retrobowl.html')">
-            <img src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/3.png" alt="Retro Bowl" loading="lazy">
+            <img loading="lazy" src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/3.png" alt="Retro Bowl">
             <div class="overlay"><span>Retro Bowl</span></div>
           </button>
           <button class="game-btn" onclick="openGame('Space Waves','https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/spacewaves.html')">
-            <img src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/4.png" alt="Space Waves" loading="lazy">
+            <img loading="lazy" src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/4.png" alt="Space Waves">
             <div class="overlay"><span>Space Waves</span></div>
           </button>
           <button class="game-btn" onclick="openGame('GDWEB+ (Updated!)','https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/gdweb.html')">
-            <img src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/5.png" alt="GDWEB+" loading="lazy">
+            <img loading="lazy" src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/5.png" alt="GDWEB+">
             <div class="overlay"><span>GDWEB+</span></div>
           </button>
         </div>
@@ -1158,223 +1182,223 @@
           </div>
           <div class="card-grid">
             <a href="https://drive.google.com/drive/u/0/folders/1OwoKydzUQUUp6n-Nh7CCAQXGLfchU8Ta" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/adventure.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/adventure.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Adventure Time</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1ujarzaX_90FGOiRC15OmXOAgwSbdI_kA" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/boondocks.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/boondocks.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Boondocks</h3></div>
             </a>
             <a href="https://drive.google.com/drive/u/0/folders/1j_K1YV4w_sHAzwEAaUMl-qSk4qjrYSJ_" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/cuphead.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/cuphead.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>The Cuphead Show</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1Yini_uXuxwQzlYqOX447QK2GQis52bxa" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/cleveland.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/cleveland.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>The Cleveland Show</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1e9CWTpbDCwyLLbKZNr4lgDAvJmf7TwOo" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/invincible.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/invincible.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Invincible</h3></div>
             </a>
             <a href="https://drive.google.com/drive/u/0/folders/1fU-FrVZ12bAZYxtxrofKkEQg2kMrIjm3" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/gravity.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/gravity.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Gravity Falls</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1ySajy4O8tRbVd_vlGCk9uyMxYHFUH-Hy" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/rickandmorty.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/rickandmorty.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Rick and Morty</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/166tNe4UUWgYROWK4DwhtZKxgrpFZZAm5" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/note.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/note.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Death Note</h3></div>
             </a>
             <a href="https://drive.google.com/drive/u/0/folders/1QpqcZWVMlzIru0g8xf5olhMeY75YKJkk" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/spongebob.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/spongebob.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>SpongeBob SquarePants</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1Zs2H3Nxl-yQHm21RJNbh2bIAesJ5ouY9" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/squid.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/squid.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Squid Game</h3></div>
             </a>
             <a href="https://drive.google.com/drive/u/0/folders/1IYfB0oASMroneHQn8KansvGRnNIcYnFd" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/power.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/power.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>The Powerpuff Girls</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1OXgcS7q8GexG3oOHxSMDuNYfUo-BMVxq" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/gumball.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/gumball.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Gumball (Season 1)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1VJlXHKRS2qokKTcZLwlF9_zeSNcAi0rU" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/gumball2.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/gumball2.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Gumball (Season 2)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1jhdpF65hUXwCRjOZKqquWB4z8L1ZpII7" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/gumball3.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/gumball3.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Gumball (Season 3)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1DO4mX1SM8_xwqpSGkyJ7k_iHrrPbhL9J" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/gumball4.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/gumball4.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Gumball (Season 4)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1W6TZs3tyU4wPqhFystx3cz0M7w6pzLbP" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/gumball5.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/gumball5.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Gumball (Season 5)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1pZE3vZHVmt7REai0Q1Dz3hJM9feupEVa" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/gumball6.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/gumball6.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Gumball (Season 6)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1uxszC0gNTvkWicUU-TAUfCdGy7I8g0_y" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/jjk.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/jjk.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Jujutsu Kaisen (Season 1)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1a59lEnayevGMXtPyVn52II3rdorI6aBG" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/jjk2.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/jjk2.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Jujutsu Kaisen (Season 2)</h3></div>
             </a>
             <a href="https://drive.google.com/file/d/1-gxJrcv5Ob2lnX1bu-nI2rniRg0p_Mmt/view" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/dbzsuper.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/dbzsuper.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Dragon Ball Super</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1AFenSrIJO_Voh_z4rE25jA1qFMiMS2a5" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/solo.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/solo.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Solo Leveling</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1v8BMG58ZRYNIWSgIxxHezBSCc11XIBIv?usp=share_link" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/mha.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/mha.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>MHA (Season 1)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1hsHIuM_1TjMEMQQDobvz4xw_qi45SVCY" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/mha2.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/mha2.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>MHA (Season 2)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1cnArp_7jQz70PwBTiRLJO5_xrYVGgTGl?usp=share_link" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/mha3.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/mha3.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>MHA (Season 3)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1_JqpVKIvQG14ANk8wBLfq_Rg69mPnZwf?usp=share_link" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/mha4.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/mha4.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>MHA (Season 4)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1fml71A9f4FzAQwq9FDYyv25vAFoHhsWE?usp=share_link" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/mha5.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/mha5.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>MHA (Season 5)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/11BmJJ1cswuNAYeoDcYl9dFW1QngvClVT?usp=share_link" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/mha6.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/mha6.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>MHA (Season 6)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1GxLXe6eFM6DGTNFpwf-rZhiDL_tCkf8E" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/mha7.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/mha7.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>MHA (Season 6 Continued)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1-mMJE-niE3RaDu_VUt2upo-tAWdLTvb1?usp=drive_link" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/mha8.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/mha8.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>MHA (Season 7)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1idzqcZUju0ADDEWnm1D9AC344rIFiGRN" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/cobra.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/cobra.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Cobra Kai</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1RUZj9WQzdEBYYLeKhD_Y9GRcZbNZMSEy" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/chris.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/chris.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Everybody Hate Chris</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1-6hBb-KZsUoc7ErXnaw2udeQv9u1THRJ" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/ted.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/ted.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Ted</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1E4EvbTu2EBJiVp0s-PPIumrJfzZR-9N4" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/dex.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/dex.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Dexter</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1EvDzzcMmYt8Wol75Ip5PtEfu78USEHH-" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/park.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/park.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>South Park</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1GXdePJtLSaixLV4XkbsyF6nVxhskTIow" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/dex2.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/dex2.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Dexter Resurrection</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1ZGPUs3433E9KdIAjRnOH3gfEXaq1rmcw" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/bad.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/bad.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Breaking Bad</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1KYg4AKv3in9mibQwMaH3btDCySKFH21g?usp=share_link" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/dbz.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/dbz.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Dragon Ball (Episodes 1-15)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/18J68L-9TtPvI2mT_bPmdvR0WtsMyRuVb?usp=share_link" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/dbz2.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/dbz2.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Dragon Ball (Episodes 15-112)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1cMoDq7rvEImI3AoFVLJiOWVn8lVhmUDe?usp=share_link" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/dbz3.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/dbz3.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Dragon Ball (Episodes 113-153)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1rP-9hf3sCdcxIRK36VWZuX7HJAG4g6Pz?usp=sharing" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/hello.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/hello.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Hello Kitty</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1y6JO2IeWSvQlpuQjQKJQNHZLN6NgAqIR" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/td.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/td.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>TD Drama</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1mi3LQFKyR5vf1ow7_CtB1dejebU4RU2N?usp=share_link" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/gt.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/gt.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Dragon Ball GT (Season 1)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1u-ZvJKlgtjPUu_WClZnDA-Nbmu5hDLyL" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/gt2.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/gt2.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Dragon Ball GT (Season 2)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1WlMgS79Vtaabkh0qRneAuBPip387t5MT" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/gt3.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/gt3.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Dragon Ball GT (Season 3)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1cKosVBoj92b1F5CmvycrHvu4Fgfj6RUB?usp=sharing" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/american.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/american.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>American Dad</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1DdwOFAilBai2kDZVmRDCoNkqxTu6_E_5" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/steven.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/steven.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Steven Universe</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1ZtFBjPAE-qVzdHJ3EKnvlBFNhux5m3Hi" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/simpsons.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/simpsons.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>The Simpsons</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/171edneN1aUZioCLPzxoXlORjcgaAs0sZ" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/heights.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/heights.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Legends of Chaimberlain Heights</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1SIvo_3pKpUesX4ZDY2Y7Z59kXe632XWe?usp=sharing" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/onepiece.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/onepiece.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>One Piece (Live Action)</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1VdoAVMV9ojCefzkVMsXB3ms5TCEcgxoC?usp=sharing" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/onepiece2.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/onepiece2.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>One Piece</h3></div>
             </a>
             <a href="https://drive.google.com/drive/u/0/folders/1RUQMqskS3ybzT6w5WQGouH9EBd5pEcTh" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/pjmasks.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/pjmasks.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>PJ Masks</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1RfLGrTx9ryNevMomfrJh_3Rb6nHBiIqo?usp=sharing" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/trash.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/trash.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Hazbin Hotel</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1pdu3zkAPeF4o-tyPe-HsKhAiIZxBrqKS?usp=sharing" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/naruto.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/naruto.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Naruto</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/1UABFLoCQG6DEdQkJwbbUPqYulGLsSiw2?usp=sharing" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/welcome.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/welcome.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Welcome to Derry</h3></div>
             </a>
             <a href="https://drive.google.com/drive/folders/11W6C-Jqv9iQVasqjfiaYz77puax1UTjH?usp=sharing" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/family.png" style="width:100%;height:100%;object-fit:cover;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/shows/family.png" style="width:100%;height:100%;object-fit:cover;"></div>
               <div class="card-info"><h3>Family Guy</h3></div>
             </a>
           </div>
@@ -1402,127 +1426,127 @@
           </div>
           <div class="card-grid">
             <a href="https://drive.google.com/drive/folders/12tApujIKnQjaSlTRchrO0AZ8WhvhaNtl" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/solo.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/solo.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>Solo Leveling</h3>
               </div>
             </a>
             <a href="https://drive.google.com/drive/folders/1LNhG5Hjk4p9eJqvt0ooEpyAqnQRzJwYE" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/note.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/note.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>Death Note</h3>
               </div>
             </a>
             <a href="https://drive.google.com/drive/folders/14Ri_EP2Q6HxWJQbU97ZEAjSc9MfTmKI3" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/berserk.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/berserk.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>Berserk</h3>
               </div>
             </a>
             <a href="https://drive.google.com/drive/folders/1GZKLsvSvgvHfM3CXg4DrCh4d0tGb0NLX" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/spy.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/spy.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>Spy X Family</h3>
               </div>
             </a>
             <a href="https://drive.google.com/drive/folders/1IMqZo3XL_Go8PYa8i5iMH-3w5kEE-fTC" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/kingdom.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/kingdom.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>Kingdom Hearts</h3>
               </div>
             </a>
             <a href="https://drive.google.com/drive/folders/1uiqdQByTMfGeeQV8ut3o0BYuZu52CR7i" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/drstone.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/drstone.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>Dr. Stone</h3>
               </div>
             </a>
             <a href="https://drive.google.com/drive/folders/1DiPmxSEnK8mffjlJv-Mrka-Pg_qw5Zlj" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/zelda.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/zelda.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>The Legend of Zelda</h3>
               </div>
             </a>
             <a href="https://drive.google.com/drive/u/0/folders/1OqoLf9E0z6e2MRD2g3UNKP3hE9puC4ts" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/fullmetal.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/fullmetal.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>Fullmetal Alchemist</h3>
               </div>
             </a>
             <a href="https://drive.google.com/drive/folders/1n7qvsviHVecx08qMxI0bTRzpO3WmAEjG" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/yasha.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/yasha.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>Inuyasha</h3>
               </div>
             </a>
             <a href="https://drive.google.com/drive/folders/1psqilwlG-rU_MRv5rn-ac-8UqNnQDor1" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/mha2.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/mha2.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>My Hero Academia (Chapters 377-384)</h3>
               </div>
             </a>
             <a href="https://drive.google.com/drive/u/0/folders/1u-a-NGgGUHD-h5RBtVkYnp8TwJosaJIe" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/dan.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/dan.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>Dandadan</h3>
               </div>
             </a>
             <a href="https://drive.google.com/drive/folders/1QKSJxCrNtvP7Li3lLz0GhuTV7WrbXMiS" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/pokemon.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/pokemon.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>Pokémon Adventures</h3>
               </div>
             </a>
             <a href="https://drive.google.com/drive/folders/1hcGBwfdgJchkPlZMX55YF52aZRNdbXW9" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/bluelock.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/bluelock.png" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>Blue Lock</h3>
               </div>
             </a>
             <a href="https://drive.google.com/drive/folders/1TZ6z_ePBI2zt12Kqv0I2AYegGR6LjOrp" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/dbz.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/dbz.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>Dragon Ball</h3>
               </div>
             </a>
             <a href="https://drive.google.com/drive/folders/1iSzHqkCiW5S44-_97x_6x_pTTMJrPrMH" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/dbz2.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/dbz2.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>Dragon Ball Super (Color)</h3>
               </div>
             </a>
             <a href="https://drive.google.com/drive/folders/1hyV1oaf6Cj-DiwYljSNt10xHOnAxjila" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/dbz3.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/dbz3.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>Dragon Ball Super</h3>
               </div>
             </a>
             <a href="https://drive.google.com/drive/folders/1JYZKlpyw20ghU7LHLs6ECUISE9SDZ7_D" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/jjk.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/jjk.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>Jujutsu Kaisen</h3>
               </div>
             </a>
             <a href="https://drive.google.com/drive/u/0/folders/1dHK5v5NZNiDvlQ9VK06AAPFNngnkkQCZ" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/naruto.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/naruto.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>Naruto</h3>
               </div>
             </a>
             <a href="https://drive.google.com/drive/folders/1Rl63s8mf0P41xy-bVNamLoEz7xAkf-nL" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/sonic.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/sonic.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>Sonic the Hedgehog</h3>
               </div>
             </a>
             <a href="https://drive.google.com/drive/folders/1ilEix-RfR10sBDAejkvzVubhCr_bSagf" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/sonic2.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/sonic2.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>Sonic the Hedgehog IDW</h3>
               </div>
             </a>
             <a href="https://drive.google.com/drive/u/0/folders/1WN7L9-wnnM0-QDZFrsAyjq6ok-n2DsHL" target="_blank" class="card">
-              <div class="card-img"><img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/soul.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
+              <div class="card-img"><img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/manga/soul.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>
               <div class="card-info">
                 <h3>Soul Eater</h3>
               </div>
@@ -1537,7 +1561,7 @@
         <div style="display:grid;gap:12px;">
           <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/runner.html','Code Editor');">
             <div style="display:flex;align-items:center;gap:12px;">
-              <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/vscode.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
+              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/vscode.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
               <div>
                 <h3 style="margin:0;color:var(--accent);font-size:16px;">Code Editor</h3>
                 <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Write and run code in your browser</p>
@@ -1546,7 +1570,7 @@
           </a>
           <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/embed.html','HTML Embedder');">
             <div style="display:flex;align-items:center;gap:12px;">
-              <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/embed.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
+              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/embed.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
               <div>
                 <h3 style="margin:0;color:var(--accent);font-size:16px;">HTML Embedder</h3>
                 <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Embed any webpage as HTML</p>
@@ -1555,7 +1579,7 @@
           </a>
           <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/embed2.html','Website Embedder');">
             <div style="display:flex;align-items:center;gap:12px;">
-              <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/aboutblank.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
+              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/aboutblank.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
               <div>
                 <h3 style="margin:0;color:var(--accent);font-size:16px;">Website Embedder</h3>
                 <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Embed websites in about:blank</p>
@@ -1564,7 +1588,7 @@
           </a>
           <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/history.html','History Flooder');">
             <div style="display:flex;align-items:center;gap:12px;">
-              <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/history.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
+              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/history.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
               <div>
                 <h3 style="margin:0;color:var(--accent);font-size:16px;">History Flooder</h3>
                 <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Flood your browser history</p>
@@ -1573,7 +1597,7 @@
           </a>
             <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/share.html','Screen Sharer');">
               <div style="display:flex;align-items:center;gap:12px;">
-                <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/screen.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
+                <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/screen.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
                 <div>
                   <h3 style="margin:0;color:var(--accent);font-size:16px;">Screen Sharer</h3>
                   <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Share your screen easily</p>
@@ -1582,7 +1606,7 @@
             </a>
             <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/mp3.html','MP3/MP4 Player');">
               <div style="display:flex;align-items:center;gap:12px;">
-                <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/mp3.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
+                <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/mp3.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
                 <div>
                   <h3 style="margin:0;color:var(--accent);font-size:16px;">MP3/MP4 Player</h3>
                   <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Play audio and video files</p>
@@ -1591,16 +1615,25 @@
             </a>
             <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/gust.html','GUST');">
               <div style="display:flex;align-items:center;gap:12px;">
-                <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/gust.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
+                <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/gust.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
                 <div>
                   <h3 style="margin:0;color:var(--accent);font-size:16px;">GUST</h3>
                   <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Impossible to block ргоху, made by Nautilus Labs.</p>
                 </div>
               </div>
             </a>
+            <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/funds.html','Evil Spotify');">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/evil.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
+                <div>
+                  <h3 style="margin:0;color:var(--accent);font-size:16px;">Evil Spotify</h3>
+                  <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">made by @idlefunds on d1scоrd</p>
+                </div>
+              </div>
+            </a>
             <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();openGame('Windows XP','https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/winxp.html');">
               <div style="display:flex;align-items:center;gap:12px;">
-                <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/winxp.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
+                <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/winxp.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
                 <div>
                   <h3 style="margin:0;color:var(--accent);font-size:16px;">Windows XP</h3>
                   <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Experience Windows XP in your browser</p>
@@ -1609,7 +1642,7 @@
             </a>
             <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();openGame('Cloudmoon','https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/cloudmoon.html');">
               <div style="display:flex;align-items:center;gap:12px;">
-                <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/cloudmoon.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
+                <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/cloudmoon.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
                 <div>
                   <h3 style="margin:0;color:var(--accent);font-size:16px;">Cloudmoon</h3>
                   <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Browse the web with Cloudmoon</p>
@@ -1649,7 +1682,7 @@
 
           <div class="ргоху-section" style="border-color:rgba(255,102,0,0.6);box-shadow:0 0 25px rgba(255,102,0,0.15);">
             <div class="ргоху-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-              <img src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/UNBL0CKEDZ0NE%20in%20Text.png" style="height:28px;width:auto;border-radius:4px;">
+              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/UNBL0CKEDZ0NE%20in%20Text.png" style="height:28px;width:auto;border-radius:4px;">
               <h3 style="margin:0;">UNBL0CKEDZ0NE</h3>
             </div>
             <div class="ргоху-links-glow" style="display:flex;flex-direction:column;gap:4px;">
@@ -2011,7 +2044,7 @@
 
           <div class="ргоху-section">
             <div class="ргоху-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-              <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/fern.png" style="height:28px;width:auto;border-radius:4px;">
+              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/fern.png" style="height:28px;width:auto;border-radius:4px;">
               <h3 style="margin:0;">Fern</h3>
             </div>
             <div style="display:flex;flex-direction:column;gap:4px;">
@@ -2051,7 +2084,7 @@
 
           <div class="ргоху-section">
             <div class="ргоху-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-              <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/gn-math.png" style="height:28px;width:auto;border-radius:4px;">
+              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/gn-math.png" style="height:28px;width:auto;border-radius:4px;">
               <h3 style="margin:0;">GN-Math</h3>
             </div>
             <div style="display:flex;flex-direction:column;gap:4px;">
@@ -2072,7 +2105,7 @@
 
           <div class="ргоху-section">
             <div class="ргоху-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-              <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/nike.png" style="height:28px;width:auto;border-radius:4px;">
+              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/nike.png" style="height:28px;width:auto;border-radius:4px;">
               <h3 style="margin:0;">NikeHub</h3>
             </div>
             <div style="display:flex;flex-direction:column;gap:4px;">
@@ -2121,7 +2154,7 @@
 
           <div class="ргоху-section">
             <div class="ргоху-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-              <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/duck.png" style="height:28px;width:auto;border-radius:4px;">
+              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/duck.png" style="height:28px;width:auto;border-radius:4px;">
               <h3 style="margin:0;">DuckMath</h3>
             </div>
             <div style="display:flex;flex-direction:column;gap:4px;">
@@ -2132,7 +2165,7 @@
 
           <div class="ргоху-section">
             <div class="ргоху-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-              <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/yukios.png" style="height:28px;width:auto;border-radius:4px;">
+              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/yukios.png" style="height:28px;width:auto;border-radius:4px;">
               <h3 style="margin:0;">YukiOS</h3>
             </div>
             <div style="display:flex;flex-direction:column;gap:4px;">
@@ -2148,7 +2181,7 @@
 
           <div class="ргоху-section">
             <div class="ргоху-section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-              <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/melonsoda.png" style="height:28px;width:auto;border-radius:4px;">
+              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/melonsoda.png" style="height:28px;width:auto;border-radius:4px;">
               <h3 style="margin:0;">Melon Soda</h3>
             </div>
             <div style="display:flex;flex-direction:column;gap:4px;">
@@ -2476,6 +2509,11 @@
               Icons Only
             </label>
           </div>
+          <div class="game-card" style="padding:20px;">
+            <h3>First-Time Setup</h3>
+            <p style="color:#aaa;font-size:13px;margin-top:8px;">Reopen the setup wizard to reconfigure your preferences.</p>
+            <button class="settings-btn" style="margin-top:12px;" onclick="rerunSetup()">Re-run Setup</button>
+          </div>
         </div>
       </div>
 
@@ -2504,6 +2542,97 @@
         Loading game...
       </div>
       <iframe id="game-frame" allow="fullscreen"></iframe>
+    </div>
+  </div>
+
+  <!-- ─── FIRST-TIME SETUP WIZARD ─── -->
+  <div id="setup-wizard" class="loading-cursor">
+    <div class="setup-card">
+      <div class="setup-header">
+        <div class="setup-logo">◆</div>
+        <h2 class="setup-title">Quick Setup</h2>
+        <div class="setup-dots" id="setup-dots"></div>
+      </div>
+      <div class="setup-body">
+        <div class="setup-step" data-step="1">
+          <h3>Welcome</h3>
+          <p>This is your personal portal. Take a minute to set it up your way — everything here can be changed anytime in Settings.</p>
+          <div class="setup-disclaimer">Disclaimer: We are not responsible for any trouble/consequences that you might receive for using ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ.</div>
+          <div class="setup-actions">
+            <button class="setup-btn" onclick="setupGo(2)">Get Started</button>
+          </div>
+        </div>
+        <div class="setup-step" data-step="2">
+          <h3>Tab Cloak</h3>
+          <p>Disguise the tab title and icon so it blends in while you're here.</p>
+          <select id="setup-cloak-select" class="settings-input" onchange="applyCloakPreset(this.value)"></select>
+          <div class="setup-actions">
+            <button class="setup-btn-ghost" onclick="setupGo(1)">Back</button>
+            <button class="setup-btn" onclick="setupGo(3)">Continue</button>
+          </div>
+        </div>
+        <div class="setup-step" data-step="3">
+          <h3>Block Screen</h3>
+          <p>If you're on a school device, the startup block screen makes this site look like it's been blocked.</p>
+          <label>
+            <input type="checkbox" id="setup-block-check" onchange="setStartupBlockScreen(this.checked)">
+            Show block screen on startup
+          </label>
+          <p style="margin-top:14px;">Theme:</p>
+          <select id="setup-theme-select" class="settings-input" onchange="setLoadingTheme(this.value)">
+            <option value="lightspeed">Lightspeed</option>
+            <option value="goguardian">GoGuardian</option>
+            <option value="securly">Securly</option>
+            <option value="classlink">ClassLink</option>
+          </select>
+          <div class="setup-actions">
+            <button class="setup-btn-ghost" onclick="setupGo(2)">Back</button>
+            <button class="setup-btn" onclick="setupGo(4)">Continue</button>
+          </div>
+        </div>
+        <div class="setup-step" data-step="4">
+          <h3>Appearance</h3>
+          <p>Pick an accent color and a background effect.</p>
+          <div class="setup-swatches">
+            <button class="color-swatch" style="background:#ff6600;" onclick="setAccent('#ff6600')" title="Orange"></button>
+            <button class="color-swatch" style="background:#cca44c;" onclick="setAccent('#cca44c')" title="Gold"></button>
+            <button class="color-swatch" style="background:#ee204a;" onclick="setAccent('#ee204a')" title="Red"></button>
+            <button class="color-swatch" style="background:#00ff9d;" onclick="setAccent('#00ff9d')" title="Green"></button>
+            <button class="color-swatch" style="background:#0678d2;" onclick="setAccent('#0678d2')" title="Blue"></button>
+            <button class="color-swatch" style="background:#7b2cbf;" onclick="setAccent('#7b2cbf')" title="Purple"></button>
+            <button class="color-swatch" style="background:#ff3399;" onclick="setAccent('#ff3399')" title="Pink"></button>
+            <button class="color-swatch" style="background:#ffffff;border-color:#666;" onclick="setAccent('#ffffff')" title="White"></button>
+          </div>
+          <p>Background:</p>
+          <select id="setup-bg-select" class="settings-input" onchange="setBackground(this.value)"></select>
+          <div class="setup-actions">
+            <button class="setup-btn-ghost" onclick="setupGo(3)">Back</button>
+            <button class="setup-btn" onclick="setupGo(5)">Continue</button>
+          </div>
+        </div>
+        <div class="setup-step" data-step="5">
+          <h3>Sidebar &amp; Sound</h3>
+          <p>Where should the navigation bar live, and do you want startup music?</p>
+          <select id="setup-sidebar-select" class="settings-input" onchange="setSidebarPosition(this.value)">
+            <option value="bottom">Bottom</option>
+            <option value="left">Left Side</option>
+            <option value="right">Right Side</option>
+          </select>
+          <label>
+            <input type="checkbox" id="setup-icons-check" onchange="setSidebarIconsOnly(this.checked)">
+            Icons only (no labels)
+          </label>
+          <label>
+            <input type="checkbox" id="setup-music-check" onchange="setMusicOnStartup(this.checked)">
+            Music on startup
+          </label>
+          <div class="setup-actions">
+            <button class="setup-btn-ghost" onclick="setupGo(4)">Back</button>
+            <button class="setup-btn" onclick="finishSetup()">Finish</button>
+          </div>
+        </div>
+      </div>
+      <button class="setup-skip" onclick="skipSetup()">Skip setup</button>
     </div>
   </div>
 
@@ -2582,7 +2711,7 @@
     }
 
     function initParticles() {
-      particles = Array.from({ length: targetParticleCount }, () => {
+      particles = Array.from({ length: adaptiveCount }, () => {
         const p = {
           x: Math.random()*W, y: Math.random()*H,
           r: Math.random()*2.2+0.3, baseR: 0,
@@ -2619,20 +2748,58 @@
     function spawnRing(x, y) { rings.push({ x, y, r: 0, op: .5, speed: 1.5+Math.random() }); }
 
     let frame = 0, ringTimer = 0;
+    let refreshRate = 60, targetFrame = 1000 / 60, lastFrameT = 0;
+    let adaptiveCount = targetParticleCount;
+    let avgFrameTime = 0;
+
+    (function detectRefresh() {
+      let last = performance.now(), n = 0;
+      function tick(now) {
+        n++;
+        if (now - last >= 1000) {
+          refreshRate = Math.max(30, Math.round(n * 1000 / (now - last)));
+          targetFrame = 1000 / refreshRate;
+          return;
+        }
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    })();
+
     canvas.addEventListener('click', e => spawnRing(e.clientX, e.clientY));
     window.addEventListener('resize', resize);
     resize();
 
-    function animate() {
+    function animate(now) {
       frame++;
+      if (canvas.style.display === 'none' || document.hidden) {
+        lastFrameT = now;
+        requestAnimationFrame(animate);
+        return;
+      }
+      if (!lastFrameT) lastFrameT = now || performance.now();
+      const frameT = (now || performance.now()) - lastFrameT;
+      const dt = Math.min(100, frameT);
+      lastFrameT = now || performance.now();
+      const ts = dt / targetFrame;
+      avgFrameTime = avgFrameTime ? avgFrameTime * .9 + frameT * .1 : frameT;
+      if (frame % 60 === 0) {
+        if (avgFrameTime > targetFrame * 1.25 && adaptiveCount > 60) {
+          adaptiveCount = Math.max(60, Math.floor(adaptiveCount * .8));
+          initParticles();
+        } else if (avgFrameTime < targetFrame * .6 && adaptiveCount < targetParticleCount) {
+          adaptiveCount = Math.min(targetParticleCount, Math.ceil(adaptiveCount * 1.25));
+          initParticles();
+        }
+      }
       ctx.clearRect(0, 0, W, H);
       if (typeof accentHue === 'undefined') accentHue = 24;
       const baseH = accentHue;
 
       rings = rings.filter(r => r.op > .01);
       rings.forEach(ring => {
-        ring.r += ring.speed;
-        ring.op *= .96;
+        ring.r += ring.speed * ts;
+        ring.op *= Math.pow(.96, ts);
         ctx.beginPath();
         ctx.arc(ring.x, ring.y, ring.r, 0, Math.PI*2);
         ctx.strokeStyle = `hsla(${baseH},100%,60%,${ring.op * glowMultiplier})`;
@@ -2640,11 +2807,11 @@
         ctx.stroke();
       });
 
-      ringTimer++;
+      ringTimer += ts;
       if (ringTimer > 480) { ringTimer = 0; spawnRing(Math.random()*W, Math.random()*H); }
 
       embers.forEach((e, i) => {
-        e.life++; e.x += e.dx + Math.sin(e.life*.04)*.3; e.y += e.dy;
+        e.life += ts; e.x += (e.dx + Math.sin(e.life*.04)*.3)*ts; e.y += e.dy*ts;
         const progress = e.life / e.maxLife;
         e.op = progress < .2 ? (progress/.2)*e.maxOp : progress > .7 ? e.maxOp*(1-(progress-.7)/.3) : e.maxOp;
         e.op *= glowMultiplier;
@@ -2674,11 +2841,11 @@
       }
 
       particles.forEach(p => {
-        p.phase += p.phaseSpeed; p.pulse += p.pulseSpeed;
-        p.x += p.dx + Math.sin(p.phase)*.15*p.depth; p.y += p.dy + Math.cos(p.phase*.7)*.1*p.depth;
+        p.phase += p.phaseSpeed * ts; p.pulse += p.pulseSpeed * ts;
+        p.x += (p.dx + Math.sin(p.phase)*.15*p.depth)*ts; p.y += (p.dy + Math.cos(p.phase*.7)*.1*p.depth)*ts;
         if (p.x < 0) p.x = W; if (p.x > W) p.x = 0; if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
         const mdx = p.x-mouse.x, mdy = p.y-mouse.y; const mdist2 = mdx*mdx+mdy*mdy;
-        if (mdist2 < 14400) { const mdist = Math.sqrt(mdist2); const force = (1-mdist/120)*1.8; p.x += (mdx/mdist)*force; p.y += (mdy/mdist)*force; }
+        if (mdist2 < 14400) { const mdist = Math.sqrt(mdist2); const force = (1-mdist/120)*1.8; p.x += (mdx/mdist)*force*ts; p.y += (mdy/mdist)*force*ts; }
         const pulseFactor = 1 + Math.sin(p.pulse)*.25;
         const drawR = p.baseR * pulseFactor * (.5+p.depth*.8);
         const h = baseH;
@@ -3493,7 +3660,8 @@
     })();
 
     // Loading Timer & Screen
-    document.getElementById('loading-hostname').textContent = window.location.hostname;
+    var loadingHostnameEl = document.getElementById('loading-hostname');
+    if (loadingHostnameEl) loadingHostnameEl.textContent = window.location.hostname;
     const totalLoadTime = 5000;
     const timerEl = document.getElementById('loading-timer');
     const loadingScreen = document.getElementById('loading-screen');
@@ -4030,7 +4198,7 @@
       if (!w) return;
       if (isFetchableUrl(url)) {
         w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet"><style>html,body{margin:0;padding:0;width:100%;height:100%;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:"ApplePixel",sans-serif;color:#ff6600}</style></head><body>');
-        w.document.write('<img src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/UNBL0CKEDZ0NE%20in%20Text.png" alt="UNBL0CKEDZ0NE" style="height:28px;opacity:0.6;margin-bottom:16px">');
+        w.document.write('<img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/UNBL0CKEDZ0NE%20in%20Text.png" alt="UNBL0CKEDZ0NE" style="height:28px;opacity:0.6;margin-bottom:16px">');
         w.document.write('<div style="font-size:22px">Loading game...</div>');
         var tabUrl = toCdnUrl(url);
         var tabCdn = _cdn;
@@ -4989,10 +5157,100 @@
       }
     })();
 
+    /* ─── FIRST-TIME SETUP WIZARD ─── */
+    (function() {
+      var setupKey = 'setupComplete';
+
+      function buildCloakOptions() {
+        var sel = document.getElementById('setup-cloak-select');
+        if (!sel || typeof cloakPresets === 'undefined') return;
+        sel.innerHTML = '';
+        var order = ['classroom','drive','docs','gmail','youtube','google','newtab','calendar','sites','slides','sheets','khanacademy','quizlet','duolingo','wikipedia','clipchamp'];
+        order.forEach(function(k) {
+          if (!cloakPresets[k]) return;
+          var o = document.createElement('option');
+          o.value = k;
+          o.textContent = cloakPresets[k].title;
+          sel.appendChild(o);
+        });
+      }
+
+      function buildBackgroundOptions() {
+        var sel = document.getElementById('setup-bg-select');
+        var src = document.getElementById('bg-select');
+        if (sel && src) sel.innerHTML = src.innerHTML;
+      }
+
+      function updateSetupDots() {
+        var dots = document.getElementById('setup-dots');
+        if (!dots) return;
+        var active = document.querySelector('.setup-step.active');
+        var idx = active ? parseInt(active.getAttribute('data-step'), 10) : 1;
+        dots.innerHTML = '';
+        for (var i = 1; i <= 5; i++) {
+          var s = document.createElement('span');
+          if (i <= idx) s.className = 'on';
+          dots.appendChild(s);
+        }
+      }
+
+      window.setupGo = function(n) {
+        document.querySelectorAll('.setup-step').forEach(function(el) { el.classList.remove('active'); });
+        var el = document.querySelector('.setup-step[data-step="' + n + '"]');
+        if (el) el.classList.add('active');
+        updateSetupDots();
+      };
+
+      window.showSetupWizard = function() {
+        var w = document.getElementById('setup-wizard');
+        if (!w) return;
+        w.style.display = 'flex';
+        setupGo(1);
+        var preset = localStorage.getItem('cloakPreset') || 'classroom';
+        var sel = document.getElementById('setup-cloak-select');
+        if (sel && cloakPresets[preset]) sel.value = preset;
+        document.getElementById('setup-block-check').checked = getStartupBlockScreen();
+        document.getElementById('setup-theme-select').value = localStorage.getItem('loadingTheme') || 'lightspeed';
+        var bg = document.getElementById('setup-bg-select');
+        if (bg) bg.value = localStorage.getItem('bgMode') || 'starfield';
+        var sp = document.getElementById('setup-sidebar-select');
+        if (sp) sp.value = localStorage.getItem('sidebarPosition') || 'bottom';
+        document.getElementById('setup-icons-check').checked = localStorage.getItem('sidebarIconsOnly') === '1';
+        document.getElementById('setup-music-check').checked = getMusicOnStartup();
+      };
+
+      window.finishSetup = function() {
+        localStorage.setItem(setupKey, '1');
+        document.getElementById('setup-wizard').style.display = 'none';
+      };
+
+      window.skipSetup = function() {
+        localStorage.setItem(setupKey, '1');
+        document.getElementById('setup-wizard').style.display = 'none';
+      };
+
+      window.rerunSetup = function() {
+        localStorage.removeItem(setupKey);
+        showSetupWizard();
+      };
+
+      (function init() {
+        buildCloakOptions();
+        buildBackgroundOptions();
+        if (localStorage.getItem(setupKey) === '1') return;
+        var check = setInterval(function() {
+          var mc = document.getElementById('main-content');
+          if (mc && mc.classList.contains('visible')) {
+            clearInterval(check);
+            setTimeout(showSetupWizard, 600);
+          }
+        }, 200);
+      })();
+    })();
+
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-  <script>!function(){"use strict";var r=.5*(Math.sqrt(3)-1),e=(3-Math.sqrt(3))/6,t=1/6,a=(Math.sqrt(5)-1)/4,o=(5-Math.sqrt(5))/20;function i(r){var e;e="function"==typeof r?r:r?function(){var r=0,e=0,t=0,a=1,o=(i=4022871197,function(r){r=r.toString();for(var e=0;e<r.length;e++){var t=.02519603282416938*(i+=r.charCodeAt(e));t-=i=t>>>0,i=(t*=i)>>>0,i+=4294967296*(t-=i)}return 2.3283064365386963e-10*(i>>>0)});var i;r=o(" "),e=o(" "),t=o(" ");for(var n=0;n<arguments.length;n++)(r-=o(arguments[n]))<0&&(r+=1),(e-=o(arguments[n]))<0&&(e+=1),(t-=o(arguments[n]))<0&&(t+=1);return o=null,function(){var o=2091639*r+2.3283064365386963e-10*a;return r=e,e=t,t=o-(a=0|o)}}(r):Math.random,this.p=n(e),this.perm=new Uint8Array(512),this.permMod12=new Uint8Array(512);for(var t=0;t<512;t++)this.perm[t]=this.p[255&t],this.permMod12[t]=this.perm[t]%12}function n(r){var e,t=new Uint8Array(256);for(e=0;e<256;e++)t[e]=e;for(e=0;e<255;e++){var a=e+~~(r()*(256-e)),o=t[e];t[e]=t[a],t[a]=o}return t}i.prototype={grad3:new Float32Array([1,1,0,-1,1,0,1,-1,0,-1,-1,0,1,0,1,-1,0,1,1,0,-1,-1,0,-1,0,1,1,0,-1,1,0,1,-1,0,-1,-1]),grad4:new Float32Array([0,1,1,1,0,1,1,-1,0,1,-1,1,0,1,-1,-1,0,-1,1,1,0,-1,1,-1,0,-1,-1,1,0,-1,-1,-1,1,0,1,1,1,0,1,-1,1,0,-1,1,1,0,-1,-1,-1,0,1,1,-1,0,1,-1,-1,0,-1,1,-1,0,-1,-1,1,1,0,1,1,1,0,-1,1,-1,0,1,1,-1,0,-1,-1,1,0,1,-1,1,0,-1,-1,-1,0,1,-1,-1,0,-1,1,1,1,0,1,1,-1,0,1,-1,1,0,1,-1,-1,0,-1,1,1,0,-1,1,-1,0,-1,-1,1,0,-1,-1,-1,0]),noise2D:function(t,a){var o,i,n=this.permMod12,f=this.perm,s=this.grad3,v=0,h=0,l=0,u=(t+a)*r,d=Math.floor(t+u),p=Math.floor(a+u),M=(d+p)*e,m=t-(d-M),c=a-(p-M);m>c?(o=1,i=0):(o=0,i=1);var y=m-o+e,w=c-i+e,g=m-1+2*e,A=c-1+2*e,x=255&d,q=255&p,D=.5-m*m-c*c;if(D>=0){var S=3*n[x+f[q]];v=(D*=D)*D*(s[S]*m+s[S+1]*c)}var U=.5-y*y-w*w;if(U>=0){var b=3*n[x+o+f[q+i]];h=(U*=U)*U*(s[b]*y+s[b+1]*w)}var F=.5-g*g-A*A;if(F>=0){var N=3*n[x+1+f[q+1]];l=(F*=F)*F*(s[N]*g+s[N+1]*A)}return 70*(v+h+l)},noise3D:function(r,e,a){var o,i,n,f,s,v,h,l,u,d,p=this.permMod12,M=this.perm,m=this.grad3,c=(r+e+a)*(1/3),y=Math.floor(r+c),w=Math.floor(e+c),g=Math.floor(a+c),A=(y+w+g)*t,x=r-(y-A),q=e-(w-A),D=a-(g-A);x>=q?q>=D?(s=1,v=0,h=0,l=1,u=1,d=0):x>=D?(s=1,v=0,h=0,l=1,u=0,d=1):(s=0,v=0,h=1,l=1,u=0,d=1):q<D?(s=0,v=0,h=1,l=0,u=1,d=1):x<D?(s=0,v=1,h=0,l=0,u=1,d=1):(s=0,v=1,h=0,l=1,u=1,d=0);var S=x-s+t,U=q-v+t,b=D-h+t,F=x-l+2*t,N=q-u+2*t,C=D-d+2*t,P=x-1+.5,T=q-1+.5,_=D-1+.5,j=255&y,k=255&w,z=255&g,B=.6-x*x-q*q-D*D;if(B<0)o=0;else{var E=3*p[j+M[k+M[z]]];o=(B*=B)*B*(m[E]*x+m[E+1]*q+m[E+2]*D)}var G=.6-S*S-U*U-b*b;if(G<0)i=0;else{var H=3*p[j+s+M[k+v+M[z+h]]];i=(G*=G)*G*(m[H]*S+m[H+1]*U+m[H+2]*b)}var I=.6-F*F-N*N-C*C;if(I<0)n=0;else{var J=3*p[j+l+M[k+u+M[z+d]]];n=(I*=I)*I*(m[J]*F+m[J+1]*N+m[J+2]*C)}var K=.6-P*P-T*T-_*_;if(K<0)f=0;else{var L=3*p[j+1+M[k+1+M[z+1]]];f=(K*=K)*K*(m[L]*P+m[L+1]*T+m[L+2]*_)}return 32*(o+i+n+f)},noise4D:function(r,e,t,i){var n,f,s,v,h,l,u,d,p,M,m,c,y,w,g,A,x,q=this.perm,D=this.grad4,S=(r+e+t+i)*a,U=Math.floor(r+S),b=Math.floor(e+S),F=Math.floor(t+S),N=Math.floor(i+S),C=(U+b+F+N)*o,P=r-(U-C),T=e-(b-C),_=t-(F-C),j=i-(N-C),k=0,z=0,B=0,E=0;P>T?k++:z++,P>_?k++:B++,P>j?k++:E++,T>_?z++:B++,T>j?z++:E++,_>j?B++:E++;var G=P-(l=k>=3?1:0)+o,H=T-(u=z>=3?1:0)+o,I=_-(d=B>=3?1:0)+o,J=j-(p=E>=3?1:0)+o,K=P-(M=k>=2?1:0)+2*o,L=T-(m=z>=2?1:0)+2*o,O=_-(c=B>=2?1:0)+2*o,Q=j-(y=E>=2?1:0)+2*o,R=P-(w=k>=1?1:0)+3*o,V=T-(g=z>=1?1:0)+3*o,W=_-(A=B>=1?1:0)+3*o,X=j-(x=E>=1?1:0)+3*o,Y=P-1+4*o,Z=T-1+4*o,$=_-1+4*o,rr=j-1+4*o,er=255&U,tr=255&b,ar=255&F,or=255&N,ir=.6-P*P-T*T-_*_-j*j;if(ir<0)n=0;else{var nr=q[er+q[tr+q[ar+q[or]]]]%32*4;n=(ir*=ir)*ir*(D[nr]*P+D[nr+1]*T+D[nr+2]*_+D[nr+3]*j)}var fr=.6-G*G-H*H-I*I-J*J;if(fr<0)f=0;else{var sr=q[er+l+q[tr+u+q[ar+d+q[or+p]]]]%32*4;f=(fr*=fr)*fr*(D[sr]*G+D[sr+1]*H+D[sr+2]*I+D[sr+3]*J)}var vr=.6-K*K-L*L-O*O-Q*Q;if(vr<0)s=0;else{var hr=q[er+M+q[tr+m+q[ar+c+q[or+y]]]]%32*4;s=(vr*=vr)*vr*(D[hr]*K+D[hr+1]*L+D[hr+2]*O+D[hr+3]*Q)}var lr=.6-R*R-V*V-W*W-X*X;if(lr<0)v=0;else{var ur=q[er+w+q[tr+g+q[ar+A+q[or+x]]]]%32*4;v=(lr*=lr)*lr*(D[ur]*R+D[ur+1]*V+D[ur+2]*W+D[ur+3]*X)}var dr=.6-Y*Y-Z*Z-$*$-rr*rr;if(dr<0)h=0;else{var pr=q[er+1+q[tr+1+q[ar+1+q[or+1]]]]%32*4;h=(dr*=dr)*dr*(D[pr]*Y+D[pr+1]*Z+D[pr+2]*$+D[pr+3]*rr)}return 27*(n+f+s+v+h)}},i._buildPermutationTable=n,"undefined"!=typeof define&&define.amd&&define(function(){return i}),"undefined"!=typeof exports?exports.SimplexNoise=i:"undefined"!=typeof window&&(window.SimplexNoise=i),"undefined"!=typeof module&&(module.exports=i)}();</script>
   <script src="https://quantil.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.waves.min.js"></script>
   <script src="https://quantil.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.globe.min.js"></script>
   <script src="https://quantil.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.dots.min.js"></script>
