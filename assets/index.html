@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Cross-Origin-Embedder-Policy" content="unsafe-none">
   <title>Home - Classroom</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAOCAYAAAAmL5yKAAAAAXNSR0IArs4c6QAAAhBJREFUOE9tk89rE1EQx78Tf0A22tg2W4qHVqPVtol3Dyq24M2r7B48WS9F0KNQ0CLoP9CbCJ6zvSiKIlY02ggFr2tvmjbVKGSTIs22iSk7MvM21VIfebz3yHw/7/tmZunW1aN8ZXIbIAYR4mE2zAAhATCB5RwRmOU/AiLCk9I+UGfJZuIQRBItYfFgAZhgESoknuCEgZEF6nxMsdzsb/Xjc8s2LlRsLMiqM2IgMvtcch1565cCqVM6xHKz1xjFfGNU3Rm/DOtAUoXNdjMGROAogpMpw8lU1BX9XjysgPn6KXiN0zsvSB20MDt5W2GzCw/QbIUqFqAAXLtiHLQ/9LC836uP6DQWgBtnp3Axe073xS+LmCs9BHYAK3DttRjwPs2i8YIT8Oon/3GQxL1LM3q+8+o+QnHAXQerCtAntIpHNNeFehZekP1bBQApyQEzwraIJaGSSIZjV+Da34yD1rterV0hOAYvOK6A/OAYcoPjusrwfyxjaeUTykFZIU5mDe7Ad+Ng622fAdSG4QXDuHl+GhMjF3Y56R6e+y/xqPRYxa5dNQ423/SbHNSGUKgN4en1wn/F6qS6jJlnd1Xs2FWtEG0u2FpGP+yBH6ZxZmxqF0AbKh5h+BNfV18gZ20gb20YB+HrAemzbvX23q4AaWX5mVXbW5uNQNcup9md2B8LSWO77byXlog/MNMrXnEbfwCrwRQID/CEeAAAAABJRU5ErkJggg==">
+  <link rel="icon" id="page-favicon" type="image/svg+xml" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAOCAYAAAAmL5yKAAAAAXNSR0IArs4c6QAAAhBJREFUOE9tk89rE1EQx78Tf0A22tg2W4qHVqPVtol3Dyq24M2r7B48WS9F0KNQ0CLoP9CbCJ6zvSiKIlY02ggFr2tvmjbVKGSTIs22iSk7MvM21VIfebz3yHw/7/tmZunW1aN8ZXIbIAYR4mE2zAAhATCB5RwRmOU/AiLCk9I+UGfJZuIQRBItYfFgAZhgESoknuCEgZEF6nxMsdzsb/Xjc8s2LlRsLMiqM2IgMvtcch1565cCqVM6xHKz1xjFfGNU3Rm/DOtAUoXNdjMGROAogpMpw8lU1BX9XjysgPn6KXiN0zsvSB20MDt5W2GzCw/QbIUqFqAAXLtiHLQ/9LC836uP6DQWgBtnp3Axe073xS+LmCs9BHYAK3DttRjwPs2i8YIT8Oon/3GQxL1LM3q+8+o+QnHAXQerCtAntIpHNNeFehZekP1bBQApyQEzwraIJaGSSIZjV+Da34yD1rterV0hOAYvOK6A/OAYcoPjusrwfyxjaeUTykFZIU5mDe7Ad+Ng622fAdSG4QXDuHl+GhMjF3Y56R6e+y/xqPRYxa5dNQ423/SbHNSGUKgN4en1wn/F6qS6jJlnd1Xs2FWtEG0u2FpGP+yBH6ZxZmxqF0AbKh5h+BNfV18gZ20gb20YB+HrAemzbvX23q4AaWX5mVXbW5uNQNcup9md2B8LSWO77byXlog/MNMrXnEbfwCrwRQID/CEeAAAAABJRU5ErkJggg==">
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
@@ -156,7 +156,8 @@
       pointer-events: none;
     }
     #floating-logo {
-      position: fixed; bottom: 24px; right: 16px; z-index: 99;
+      position: absolute; top: 50%; right: 16px; transform: translateY(-50%); z-index: 10;
+      pointer-events: none;
     }
     #console-overlay {
       position: fixed; bottom: 0; left: 0; width: 100%; height: 50%;
@@ -207,7 +208,7 @@
       pointer-events: none;
     }
     #floating-logo.visible { display: flex; }
-    #floating-logo img { height: 24px; width: auto; opacity: 0.4; display: block; }
+    #floating-logo img { height: 24px; width: auto; opacity: 1; display: block; }
     .sidebar-divider {
       display: none;
     }
@@ -826,8 +827,8 @@
 
     #quote{color:var(--accent);text-shadow:1px 1px 0px #000;}
     footer{color:var(--beez-mute);}
-    #floating-logo{color:rgba(255,102,0,0.4);}
-    #floating-logo img{opacity:0.4;}
+    #floating-logo{color:rgba(255,102,0,1);}
+    #floating-logo img{opacity:1;}
 
     .luna-console-theme-dark .luna-console-log-item{border-bottom-color:rgba(255,102,0,0.15)!important;}
 
@@ -1069,10 +1070,9 @@
   <div id="clouds-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></div>
   <div id="tunnel-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></div>
   <div id="noise-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></div>
+  <div id="custom-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;background-size:cover;background-position:center;background-repeat:no-repeat;pointer-events:none;"></div>
 
-  <div id="floating-logo" class="visible">
-    brought to you by <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/UNBL0CKEDZ0NE%20in%20Text.png" alt="UNBL0CKEDZ0NE">
-  </div>
+
   <div id="console-overlay">
     <button id="console-close" onclick="toggleConsoleOverlay()">✕</button>
     <div id="luna-console"></div>
@@ -1098,8 +1098,8 @@
         <button class="sidebar-btn" data-tab="ргоху">
           <span class="icon"><svg width="24" height="24" viewBox="5 6 26 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.6,24.32l-2.46,2.44a4,4,0,0,1-5.62,0,3.92,3.92,0,0,1,0-5.55l4.69-4.65a4,4,0,0,1,5.62,0,3.86,3.86,0,0,1,1,1.71A2,2,0,0,0,21.1,18l1.29-1.28a5.89,5.89,0,0,0-1.15-1.62,6,6,0,0,0-8.44,0L8.1,19.79a5.91,5.91,0,0,0,0,8.39,6,6,0,0,0,8.44,0l3.65-3.62c-.17,0-.33,0-.5,0A8,8,0,0,1,17.6,24.32Z" fill="currentColor"/><path d="M28.61,7.82a6,6,0,0,0-8.44,0l-3.65,3.62c.17,0,.33,0,.49,0h0a8,8,0,0,1,2.1.28l2.46-2.44a4,4,0,0,1,5.62,0,3.92,3.92,0,0,1,0,5.55l-4.69,4.65a4,4,0,0,1-5.62,0,3.86,3.86,0,0,1-1-1.71,2,2,0,0,0-.28.23l-1.29,1.28a5.89,5.89,0,0,0,1.15,1.62,6,6,0,0,0,8.44,0l4.69-4.65a5.92,5.92,0,0,0,0-8.39Z" fill="currentColor"/></svg></span><span class="sidebar-label">Ргохіеʂ</span>
         </button>
-        <button class="sidebar-btn" data-tab="forms">
-          <span class="icon"><svg width="24" height="24" viewBox="-2 -2 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5.72 14.456l1.761-.508 10.603-10.73a.456.456 0 0 0-.003-.64l-.635-.642a.443.443 0 0 0-.632-.003L6.239 12.635l-.52 1.82zM18.703.664l.635.643c.876.887.884 2.318.016 3.196L8.428 15.561l-3.764 1.084a.901.901 0 0 1-1.11-.623.915.915 0 0 1-.002-.506l1.095-3.84L15.544.647a2.215 2.215 0 0 1 3.159.016zM7.184 1.817c.496 0 .898.407.898.909a.903.903 0 0 1-.898.909H3.592c-.992 0-1.796.814-1.796 1.817v10.906c0 1.004.804 1.818 1.796 1.818h10.776c.992 0 1.797-.814 1.797-1.818v-3.635c0-.502.402-.909.898-.909s.898.407.898.91v3.634c0 2.008-1.609 3.636-3.593 3.636H3.592C1.608 19.994 0 18.366 0 16.358V5.452c0-2.007 1.608-3.635 3.592-3.635h3.592z" fill="currentColor"/></svg></span><span class="sidebar-label">Forms</span>
+        <button class="sidebar-btn" data-tab="requests">
+          <span class="icon"><svg width="24" height="24" viewBox="-2 -2 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5.72 14.456l1.761-.508 10.603-10.73a.456.456 0 0 0-.003-.64l-.635-.642a.443.443 0 0 0-.632-.003L6.239 12.635l-.52 1.82zM18.703.664l.635.643c.876.887.884 2.318.016 3.196L8.428 15.561l-3.764 1.084a.901.901 0 0 1-1.11-.623.915.915 0 0 1-.002-.506l1.095-3.84L15.544.647a2.215 2.215 0 0 1 3.159.016zM7.184 1.817c.496 0 .898.407.898.909a.903.903 0 0 1-.898.909H3.592c-.992 0-1.796.814-1.796 1.817v10.906c0 1.004.804 1.818 1.796 1.818h10.776c.992 0 1.797-.814 1.797-1.818v-3.635c0-.502.402-.909.898-.909s.898.407.898.91v3.634c0 2.008-1.609 3.636-3.593 3.636H3.592C1.608 19.994 0 18.366 0 16.358V5.452c0-2.007 1.608-3.635 3.592-3.635h3.592z" fill="currentColor"/></svg></span><span class="sidebar-label">Requests</span>
         </button>
         <button class="sidebar-btn" data-tab="settings">
           <span class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M12.22 2h-.44a2 2 0 00-2 2v.18a2 2 0 01-1 1.73l-.43.25a2 2 0 01-2 0l-.15-.08a2 2 0 00-2.73.73l-.22.38a2 2 0 00.73 2.73l.15.1a2 2 0 011 1.72v.51a2 2 0 01-1 1.74l-.15.09a2 2 0 00-.73 2.73l.22.38a2 2 0 002.73.73l.15-.08a2 2 0 012 0l.43.25a2 2 0 011 1.73V20a2 2 0 002 2h.44a2 2 0 002-2v-.18a2 2 0 011-1.73l.43-.25a2 2 0 012 0l.15.08a2 2 0 002.73-.73l.22-.39a2 2 0 00-.73-2.73l-.15-.08a2 2 0 01-1-1.74v-.5a2 2 0 011-1.74l.15-.09a2 2 0 00.73-2.73l-.22-.38a2 2 0 00-2.73-.73l-.15.08a2 2 0 01-2 0l-.43-.25a2 2 0 01-1-1.73V4a2 2 0 00-2-2z" /><circle cx="12" cy="12" r="3" /></svg></span><span class="sidebar-label">Settings</span>
@@ -1112,6 +1112,9 @@
         </button>
       </nav>
       <audio id="bg-music" preload="auto"></audio>
+      <div id="floating-logo" class="visible">
+        <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/UNBL0CKEDZ0NE%20in%20Text.png" alt="UNBL0CKEDZ0NE">
+      </div>
     </aside>
 
     <main id="content-area">
@@ -1158,8 +1161,7 @@
       </div>
 
       <div class="tab-content" id="media">
-        <h2>Media</h2>
-        <p>I am not responsible if you get in trouble for watching movies or listening to music! - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ</p>
+
         <div class="media-section" id="media-movies" style="display:none">
           <div class="search-bar">
             <input type="text" id="movie-search" placeholder="Search movies...">
@@ -1558,8 +1560,7 @@
       </div>
 
       <div class="tab-content" id="tools">
-        <h2>Tools</h2>
-        <p>These tools are from multiple sources! - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ</p>
+
         <div style="display:grid;gap:12px;">
           <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/runner.html','Code Editor');">
             <div style="display:flex;align-items:center;gap:12px;">
@@ -1655,8 +1656,7 @@
       </div>
 
       <div class="tab-content" id="games">
-        <h2>G4m3s</h2>
-        <p>Play 7.5K G4mes from Multiple Sources!</p>
+
         <div class="search-bar">
           <input type="text" id="game-search" placeholder="Search g4m3s...">
         </div>
@@ -1678,8 +1678,7 @@
 
 
       <div class="tab-content" id="ргоху">
-        <h2>Proxy Links</h2>
-        <p>These links do get updated so don't worry. - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ</p>
+
         <div style="display:flex;flex-direction:column;gap:24px;margin-top:16px;">
 
           <div class="ргоху-section" style="border-color:rgba(255,102,0,0.6);box-shadow:0 0 25px rgba(255,102,0,0.15);">
@@ -2216,8 +2215,7 @@
       </div>
 
       <div class="tab-content" id="partners">
-        <h2>Partners</h2>
-        <p>Shoutout to these people, they have good sites. - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ</p>
+
         <div class="partner-grid">
           <div class="partner-card">
             <img class="partner-img" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/epik.png" alt="Ale's Epik Games" loading="lazy">
@@ -2270,73 +2268,15 @@
         </div>
       </div>
 
-      <div class="tab-content" id="forms">
-        <h2>Forms</h2>
-        <p style="margin-bottom:20px;">Use my forms so I can make this the best possible site! - ᴜɴʙʟᴏᴄᴋᴇᴅᴢᴏɴᴇ</p>
-        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;">
-          <div class="game-card" style="width:300px;flex:0 0 300px;" onclick="openEmbed('Request Form','https://docs.google.com/forms/d/e/1FAIpQLSdWxjZZFtjsaoPVHv5F3Ipu-4kwLAtmHhswUpslxrJg5lQdRA/viewform')">
-            <div style="padding:20px;">
-              <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
-                <svg fill="var(--accent)" width="15px" height="15px" viewBox="0 0 16 16" id="request-16px" xmlns="http://www.w3.org/2000/svg">
-                  <path id="Path_49" data-name="Path 49" d="M30.5,16a.489.489,0,0,1-.191-.038A.5.5,0,0,1,30,15.5V13h-.5A2.5,2.5,0,0,1,27,10.5v-8A2.5,2.5,0,0,1,29.5,0h11A2.5,2.5,0,0,1,43,2.5v8A2.5,2.5,0,0,1,40.5,13H33.707l-2.853,2.854A.5.5,0,0,1,30.5,16Zm-1-15A1.5,1.5,0,0,0,28,2.5v8A1.5,1.5,0,0,0,29.5,12h1a.5.5,0,0,1,.5.5v1.793l2.146-2.147A.5.5,0,0,1,33.5,12h7A1.5,1.5,0,0,0,42,10.5v-8A1.5,1.5,0,0,0,40.5,1ZM36,9a1,1,0,1,0-1,1A1,1,0,0,0,36,9Zm1-4a2,2,0,0,0-4,0,.5.5,0,0,0,1,0,1,1,0,1,1,1,1,.5.5,0,0,0,0,1A2,2,0,0,0,37,5Z" transform="translate(-27)"/>
-                </svg>
-                <h3 style="font-size:20px;">Request Form</h3>
-              </div>
-              <p style="color:#aaa;font-size:13px;margin-top:8px;text-align:center;">Submit game or feature requests</p>
-            </div>
-          </div>
-          <div class="game-card" style="width:300px;flex:0 0 300px;" onclick="openEmbed('Partner Form','https://docs.google.com/forms/d/e/1FAIpQLSfmzC2HDePeAKoBtHVqS6VQFz6V_zX8ow7RPEEIc-nVjtCHSQ/viewform')">
-            <div style="padding:20px;">
-              <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
-                <svg width="15" height="15" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" fill="var(--accent)">
-                  <path d="M4,16 L15,16.001 C16.0538182,16.001 16.9181157,16.8164855 16.9945109,17.8516842 L17,18.001 L17,20.5 C16.999,24.7 12.713,26 9.5,26 C6.35126,26 2.1710504,24.75148 2.00510151,20.7485328 L2,20.5 L2,18 C2,16.9461818 2.81639669,16.0818843 3.85080841,16.0054891 L4,16 Z M17.22,16.001 L24,16 C25.0538182,16 25.9181157,16.8163967 25.9945109,17.8508084 L26,18 L26,20 C25.999,23.759 22.57,25 20,25 C18.942,25 17.741,24.785 16.691,24.275 C17.4432667,23.3808667 17.9315867,22.2428222 17.9933526,20.8112714 L18,20.5 L18,18.001 C18,17.2991818 17.7512397,16.6601736 17.3461307,16.1500909 L17.22,16.001 L24,16 L17.22,16.001 Z M9.5,3 C12.537,3 15,5.463 15,8.5 C15,11.537 12.537,14 9.5,14 C6.463,14 4,11.537 4,8.5 C4,5.463 6.463,3 9.5,3 Z M20.5,5 C22.985,5 25,7.015 25,9.5 C25,11.985 22.985,14 20.5,14 C18.015,14 16,11.985 16,9.5 C16,7.015 18.015,5 20.5,5 Z"/>
-                </svg>
-                <h3 style="font-size:20px;">Partner Form</h3>
-              </div>
-              <p style="color:#aaa;font-size:13px;margin-top:8px;text-align:center;">Apply to become a partner</p>
-            </div>
-          </div>
-          <div class="game-card" style="width:300px;flex:0 0 300px;" onclick="openEmbed('Review Form','https://docs.google.com/forms/d/e/1FAIpQLScGv2Cdpgmx6QLYJtV-SA7E3zfVDA60NpmdRsWjEMZ-7q8vMg/viewform')">
-            <div style="padding:20px;">
-              <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
-                <svg width="15px" height="15px" viewBox="0 0 32 32" id="icon" xmlns="http://www.w3.org/2000/svg" fill="var(--accent)">
-                  <rect x="18" y="26" width="8" height="2"/>
-                  <rect x="18" y="22" width="12" height="2"/>
-                  <rect x="18" y="18" width="12" height="2"/>
-                  <polygon points="20.549 11.217 16 2 11.451 11.217 1.28 12.695 8.64 19.87 6.902 30 14 26.269 14 24.009 9.559 26.344 10.611 20.208 10.789 19.171 10.036 18.438 5.578 14.091 11.739 13.196 12.779 13.045 13.245 12.102 16 6.519 18.755 12.102 19.221 13.045 20.261 13.196 27.715 14.281 28 12.3 20.549 11.217"/>
-                </svg>
-                <h3 style="font-size:20px;">Review Form</h3>
-              </div>
-              <p style="color:#aaa;font-size:13px;margin-top:8px;text-align:center;">Leave a review or report issues</p>
-            </div>
-          </div>
-          <div class="game-card" style="width:300px;flex:0 0 300px;" onclick="openEmbed('Link Form','https://docs.google.com/forms/d/e/1FAIpQLSe8zWp-H6VZ5bdfgvjdCFbZSicmqEkrbbbv6jF7D_q8adFBpA/viewform')">
-            <div style="padding:20px;">
-              <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
-                <svg width="15" height="15" viewBox="5 6 26 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M17.6,24.32l-2.46,2.44a4,4,0,0,1-5.62,0,3.92,3.92,0,0,1,0-5.55l4.69-4.65a4,4,0,0,1,5.62,0,3.86,3.86,0,0,1,1,1.71A2,2,0,0,0,21.1,18l1.29-1.28a5.89,5.89,0,0,0-1.15-1.62,6,6,0,0,0-8.44,0L8.1,19.79a5.91,5.91,0,0,0,0,8.39,6,6,0,0,0,8.44,0l3.65-3.62c-.17,0-.33,0-.5,0A8,8,0,0,1,17.6,24.32Z" fill="var(--accent)"/>
-                  <path d="M28.61,7.82a6,6,0,0,0-8.44,0l-3.65,3.62c.17,0,.33,0,.49,0h0a8,8,0,0,1,2.1.28l2.46-2.44a4,4,0,0,1,5.62,0,3.92,3.92,0,0,1,0,5.55l-4.69,4.65a4,4,0,0,1-5.62,0,3.86,3.86,0,0,1-1-1.71,2,2,0,0,0-.28.23l-1.29,1.28a5.89,5.89,0,0,0,1.15,1.62,6,6,0,0,0,8.44,0l4.69-4.65a5.92,5.92,0,0,0,0-8.39Z" fill="var(--accent)"/>
-                </svg>
-                <h3 style="font-size:20px;">Link Form</h3>
-              </div>
-              <p style="color:#aaa;font-size:13px;margin-top:8px;text-align:center;">Suggest links to add to the site</p>
-            </div>
-          </div>
-          <div class="game-card" style="width:300px;flex:0 0 300px;" onclick="openEmbed('Music Form','https://docs.google.com/forms/d/e/1FAIpQLSe0vNYCYlHHgSkRcYnfroNqcV3LfjKeE73GRNxjqRgroY72mw/viewform')">
-            <div style="padding:20px;">
-              <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"></path></svg>
-                <h3 style="font-size:20px;">Music Form</h3>
-              </div>
-              <p style="color:#aaa;font-size:13px;margin-top:8px;text-align:center;">Submit music recommendations</p>
-            </div>
-          </div>
+      <div class="tab-content" id="requests">
+
+        <div style="background:#fff;border-radius:8px;padding:4px;">
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdWxjZZFtjsaoPVHv5F3Ipu-4kwLAtmHhswUpslxrJg5lQdRA/viewform?embedded=true" style="width:100%;height:700px;border:none;border-radius:4px;" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
       </div>
 
       <div class="tab-content" id="settings">
-        <h2>Settings</h2>
-        <p style="margin-bottom:20px;">Site configuration and information</p>
+
         <div class="games-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
           <div class="game-card" style="padding:20px;">
             <h3>Cache</h3>
@@ -2350,7 +2290,7 @@
             <p style="color:#aaa;font-size:13px;margin-top:10px;">Or upload an image:</p>
             <input type="file" id="cursor-file-input" accept="image/png,image/gif,image/jpeg,image/webp,image/cur,image/x-icon" style="display:none" onchange="handleCursorUpload(event)">
             <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;">
-              <button class="settings-btn" onclick="document.getElementById('cursor-file-input').click()">📁 Upload</button>
+              <button class="settings-btn" onclick="document.getElementById('cursor-file-input').click()">Upload</button>
               <button class="settings-btn" onclick="applyCustomCursor()">Apply URL</button>
               <button class="settings-btn" onclick="resetCustomCursor()">Reset</button>
             </div>
@@ -2459,8 +2399,15 @@
               <option value="clouds">Clouds</option>
               <option value="tunnel">Tunnel</option>
               <option value="noise">Noise</option>
+              <option value="custom">Custom Image</option>
 
             </select>
+            <div id="custom-wallpaper-ui" style="display:none;margin-top:12px;">
+              <label for="wallpaper-file" style="display:inline-block;padding:8px 16px;background:#333;color:#fff;border-radius:6px;cursor:pointer;font-size:13px;margin-bottom:8px;">Choose Image</label>
+              <input type="file" id="wallpaper-file" accept="image/*" style="display:none;" onchange="handleWallpaperFile(this)">
+              <input type="text" id="wallpaper-url" class="settings-input" placeholder="Or paste image URL..." style="width:100%;margin-top:6px;" onchange="handleWallpaperUrl(this.value)">
+              <button onclick="clearCustomWallpaper()" style="margin-top:8px;padding:6px 12px;background:#c62828;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:12px;font-family:'ApplePixel',sans-serif;">Remove Wallpaper</button>
+            </div>
           </div>
           <div class="game-card" style="padding:20px;">
             <h3>CDN Mirror</h3>
@@ -2695,24 +2642,45 @@
       var frames = { normal: [b+'normal1.png', b+'normal2.png'], link: [b+'link1.png', b+'link2.png'], wait: [b+'wait1.png', b+'wait2.png'] };
       var fb = 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/';
       var idx = 0;
+      var tetoInterval = null;
+      var tetoStyle = null;
       function buildS() {
         var def = 'url('+frames.normal[idx]+') 16 16, url('+fb+'arrow.png) 16 16, auto';
         var link = 'url('+frames.link[idx]+') 16 16, url('+fb+'hand.png) 16 16, pointer';
         var wait = 'url('+frames.wait[idx]+') 16 16, auto';
         return { def: def, link: link, wait: wait };
       }
-      var cursors = buildS();
-      document.documentElement.style.cursor = cursors.def;
-      var s = document.createElement('style');
-      s.id = 'teto-cursor-style';
-      document.head.appendChild(s);
-      s.textContent = 'a,button,.sidebar-btn,.card,.game-card,.play-btn,.partner-card a,.media-cat,.game-cat,.gv-btn,.link-item a{ cursor:'+cursors.link+'!important; }.loading-cursor{ cursor:'+cursors.wait+'!important; }html.loading-active{ cursor:'+cursors.wait+'!important; }html.loading-active *{ cursor:'+cursors.wait+'!important; }';
-      setInterval(function() {
-        idx = 1 - idx;
-        cursors = buildS();
+      function applyTeto() {
+        var cursors = buildS();
         document.documentElement.style.cursor = cursors.def;
-        s.textContent = 'a,button,.sidebar-btn,.card,.game-card,.play-btn,.partner-card a,.media-cat,.game-cat,.gv-btn,.link-item a{ cursor:'+cursors.link+'!important; }.loading-cursor{ cursor:'+cursors.wait+'!important; }html.loading-active{ cursor:'+cursors.wait+'!important; }html.loading-active *{ cursor:'+cursors.wait+'!important; }';
-      }, 500);
+        if (!tetoStyle) {
+          tetoStyle = document.createElement('style');
+          tetoStyle.id = 'teto-cursor-style';
+          document.head.appendChild(tetoStyle);
+        }
+        tetoStyle.textContent = 'a,button,.sidebar-btn,.card,.game-card,.play-btn,.partner-card a,.media-cat,.game-cat,.gv-btn,.link-item a{ cursor:'+cursors.link+'!important; }.loading-cursor{ cursor:'+cursors.wait+'!important; }html.loading-active{ cursor:'+cursors.wait+'!important; }html.loading-active *{ cursor:'+cursors.wait+'!important; }';
+      }
+      window.startTetoCursor = function() {
+        if (tetoInterval) return;
+        applyTeto();
+        idx = 0;
+        tetoInterval = setInterval(function() {
+          idx = 1 - idx;
+          applyTeto();
+        }, 500);
+      };
+      window.stopTetoCursor = function() {
+        if (tetoInterval) { clearInterval(tetoInterval); tetoInterval = null; }
+        var ts = document.getElementById('teto-cursor-style');
+        if (ts) ts.remove();
+        tetoStyle = null;
+        document.documentElement.style.cursor = '';
+      };
+      var hasActive = false;
+      try { hasActive = !!localStorage.getItem('activeCursor'); } catch(e) {}
+      if (!hasActive) {
+        window.startTetoCursor();
+      }
     })();
 
     function getMusicOnStartup() {
@@ -3215,6 +3183,7 @@
       const cBg = document.getElementById('clouds-bg');
       const tuBg = document.getElementById('tunnel-bg');
       const noBg = document.getElementById('noise-bg');
+      const cuBg = document.getElementById('custom-bg');
       // Hide all
       bgCanvas.style.display = 'none';
       sfBg.style.display = 'none';
@@ -3227,6 +3196,10 @@
       cBg.style.display = 'none';
       tuBg.style.display = 'none';
       noBg.style.display = 'none';
+      cuBg.style.display = 'none';
+      // Toggle custom wallpaper UI
+      var customUI = document.getElementById('custom-wallpaper-ui');
+      if (customUI) customUI.style.display = mode === 'custom' ? 'block' : 'none';
       if (starfieldInitialized) { Starfield.cleanup(); starfieldInitialized = false; }
       if (topographyInitialized) { stopTopography(); topographyInitialized = false; }
       if (matrixInitialized) { stopMatrix(); matrixInitialized = false; }
@@ -3270,6 +3243,8 @@
         if (!noiseInitialized) { startNoise(); noiseInitialized = true; }
       } else if (mode === 'lines') {
         bgCanvas.style.display = 'block';
+      } else if (mode === 'custom') {
+        cuBg.style.display = 'block';
       } else {
         bgCanvas.style.display = 'block';
       }
@@ -3284,7 +3259,46 @@
           setBackground(saved);
         }
       }
+      var savedWallpaper = localStorage.getItem('customWallpaper');
+      if (savedWallpaper) {
+        var cuBg = document.getElementById('custom-bg');
+        if (cuBg) cuBg.style.backgroundImage = 'url(' + savedWallpaper + ')';
+      }
     });
+
+    /* ─── CUSTOM WALLPAPER ─── */
+    function handleWallpaperFile(input) {
+      var file = input.files && input.files[0];
+      if (!file) return;
+      if (file.size > 10 * 1024 * 1024) { alert('Image too large (max 10 MB).'); return; }
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var dataUrl = e.target.result;
+        localStorage.setItem('customWallpaper', dataUrl);
+        var cuBg = document.getElementById('custom-bg');
+        if (cuBg) cuBg.style.backgroundImage = 'url(' + dataUrl + ')';
+        setBackground('custom');
+        document.getElementById('bg-select').value = 'custom';
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function handleWallpaperUrl(url) {
+      if (!url) return;
+      localStorage.setItem('customWallpaper', url);
+      var cuBg = document.getElementById('custom-bg');
+      if (cuBg) cuBg.style.backgroundImage = 'url(' + url + ')';
+      setBackground('custom');
+      document.getElementById('bg-select').value = 'custom';
+    }
+
+    function clearCustomWallpaper() {
+      localStorage.removeItem('customWallpaper');
+      var cuBg = document.getElementById('custom-bg');
+      if (cuBg) cuBg.style.backgroundImage = '';
+      setBackground('starfield');
+      document.getElementById('bg-select').value = 'starfield';
+    }
 
     /* Sidebar settings */
     function setSidebarPosition(pos) {
@@ -3543,7 +3557,7 @@
       document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
       document.getElementById('floating-logo').classList.add('visible');
       if (tabId === 'settings') {
-        var cur = localStorage.getItem('customCursor');
+        var cur = localStorage.getItem('activeCursor');
         if (cur) document.getElementById('cursor-url-input').value = cur;
       }
       var welcomeEl = document.getElementById('welcome-heading');
@@ -4163,16 +4177,18 @@
     function applyCustomCursor() {
       var url = document.getElementById('cursor-url-input').value.trim();
       if (!url) return;
-      localStorage.setItem('customCursor', url);
       setCustomCursor(url);
+      try { localStorage.setItem('activeCursor', url); } catch(e) {}
     }
 
     function resetCustomCursor() {
+      localStorage.removeItem('activeCursor');
       localStorage.removeItem('customCursor');
       var s = document.getElementById('custom-cursor-style');
       if (s) s.remove();
       document.getElementById('cursor-url-input').value = '';
       document.documentElement.style.cursor = '';
+      if (typeof window.startTetoCursor === 'function') window.startTetoCursor();
     }
 
     function setCustomCursor(url) {
@@ -4180,6 +4196,7 @@
       if (old) old.remove();
       var tetoStyle = document.getElementById('teto-cursor-style');
       if (tetoStyle) tetoStyle.remove();
+      if (typeof window.stopTetoCursor === 'function') window.stopTetoCursor();
       var escaped = url.replace(/"/g,'\\"');
       document.documentElement.style.cursor = 'url("' + escaped + '") 16 16, auto';
       var s = document.createElement('style');
@@ -4194,18 +4211,19 @@
       var reader = new FileReader();
       reader.onload = function(ev) {
         var dataUrl = ev.target.result;
-        localStorage.setItem('customCursor', dataUrl);
         setCustomCursor(dataUrl);
+        try { localStorage.setItem('activeCursor', dataUrl); } catch(err) {}
         document.getElementById('cursor-url-input').value = '';
       };
       reader.readAsDataURL(file);
     }
 
     (function(){
-      var saved = localStorage.getItem('customCursor');
+      var saved = localStorage.getItem('activeCursor') || localStorage.getItem('customCursor');
       if (saved) {
-        setCustomCursor(saved);
+        localStorage.setItem('activeCursor', saved);
         localStorage.removeItem('customCursor');
+        setCustomCursor(saved);
       }
     })();
 
@@ -4367,7 +4385,6 @@
         normalizeGame({name:"Hacked Impossible Quiz",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/impossiblequizᏂасked.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/Ꮒасkedimpossiblequiz.html"}),
         normalizeGame({name:"Hollow Knight Silksong",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/hollowknightsilksong.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/hollowknightsilksong.html"}),
         normalizeGame({name:"Hollow Knight",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/hollowknight.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/hollowknight.html"}),
-        normalizeGame({name:"Imagine Math Facts",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/imaginemathfacts.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/imaginemathfacts.html"}),
         normalizeGame({name:"Impossible Quiz",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/impossiblequiz.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/impossiblequiz.html"}),
         normalizeGame({name:"Indian Truck Driving",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/indiantruckdriving.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/indiantruckdriving.html"}),
         normalizeGame({name:"Infinite Craft",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/infinitecraft.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/infinite.html"}),
@@ -4845,16 +4862,25 @@
     };
 
     function setFavicon(url) {
-      document.querySelectorAll('link[rel*="icon"]').forEach(function(el) { el.remove(); });
       var t = 'image/x-icon';
       if (url.startsWith('data:image/svg')) t = 'image/svg+xml';
       else if (url.startsWith('data:image/png')) t = 'image/png';
       else if (url.startsWith('data:image/gif')) t = 'image/gif';
       else if (url.endsWith('.svg')) t = 'image/svg+xml';
       else if (url.endsWith('.png')) t = 'image/png';
-      var link = document.createElement('link');
-      link.type = t; link.rel = 'icon'; link.href = url;
-      document.head.appendChild(link);
+      var existing = document.getElementById('page-favicon');
+      if (existing) {
+        existing.type = t;
+        existing.href = url;
+      } else {
+        document.querySelectorAll('link[rel*="icon"]').forEach(function(el) { el.remove(); });
+        var link = document.createElement('link');
+        link.id = 'page-favicon';
+        link.type = t;
+        link.rel = 'icon';
+        link.href = url;
+        document.head.appendChild(link);
+      }
     }
 
     function updateCloakPreview(icon, title) {
@@ -4911,7 +4937,7 @@
     document.getElementById('cloak-preset').addEventListener('change', function() { applyCloakPreset(this.value); });
 
     // Apply saved cloak on load
-    (function() {
+    function _restoreCloak() {
       var savedPreset = null, savedTitle = null, savedFavicon = null;
       try { savedPreset = localStorage.getItem('cloakPreset'); } catch(e) {}
       try { savedTitle = localStorage.getItem('cloakCustomTitle'); } catch(e) {}
@@ -4927,7 +4953,10 @@
       } else {
         applyCloakPreset('classroom');
       }
-    })();
+    }
+    _restoreCloak();
+    document.addEventListener('DOMContentLoaded', _restoreCloak);
+    window.addEventListener('load', _restoreCloak);
 
     /* ─── FIRST-TIME SETUP WIZARD ─── */
     (function() {
@@ -5034,7 +5063,12 @@
       if (cdnSel) cdnSel.value = _cdn;
       setBackground('starfield');
       localStorage.removeItem('bgMode');
+      localStorage.removeItem('customWallpaper');
       document.getElementById('bg-select').value = 'starfield';
+      var customUI2 = document.getElementById('custom-wallpaper-ui');
+      if (customUI2) customUI2.style.display = 'none';
+      var cuBg2 = document.getElementById('custom-bg');
+      if (cuBg2) cuBg2.style.backgroundImage = '';
       var blockChk = document.getElementById('loading-screen-enabled-check');
       if (blockChk) blockChk.checked = true;
       var loadChk = document.getElementById('startup-loading-check');
