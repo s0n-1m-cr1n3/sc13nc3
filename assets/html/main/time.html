@@ -10,56 +10,9 @@
     height: 100% !important;
     overflow: hidden !important;
   }
-
-  #copyright-banner {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 99999;
-    background: linear-gradient(90deg, #111, #1a1a1a);
-    border-bottom: 2px solid #ff9900;
-    box-shadow: 0 0 16px #ff9900;
-    color: #fff;
-    font-family: 'Pixelify Sans', sans-serif;
-    font-size: 13px;
-    text-align: center;
-    padding: 12px 20px;
-    letter-spacing: 1px;
-    animation: fadeOut 0.6s ease 4.4s forwards;
-  }
-  #copyright-banner span {
-    color: #ff9900;
-    text-shadow: 0 0 8px #ff9900;
-  }
-  #copyright-timer {
-    display: none;
-  }
-  @keyframes fadeOut {
-    to { opacity: 0; pointer-events: none; transform: translateY(-100%); }
-  }
+}
 </style>
 </head><body class="dark" style="background-color: #111111 !important; overflow: hidden !important; margin: 0 !important;">
-
-<!-- Copyright Banner -->
-<div id="copyright-banner">
-  I own <span>THESE GAME ASSETS</span> — If you steal from here, you will receive a <span>copyright strike!</span> &nbsp;—&nbsp; <span>UNBL0CKEDZ0NE</span>
-  <span id="copyright-timer">5</span>
-</div>
-
-<script>
-  var count = 5;
-  var timerEl = document.getElementById("copyright-timer");
-  var bannerEl = document.getElementById("copyright-banner");
-  var interval = setInterval(function() {
-    count--;
-    if (timerEl) timerEl.innerText = count;
-    if (count <= 0) {
-      clearInterval(interval);
-      setTimeout(function() {
-        if (bannerEl) bannerEl.remove();
-      }, 600);
-    }
-  }, 1000);
-</script>
 
 <module>
 <moduleprefs title="">
@@ -166,7 +119,6 @@
       document.body.appendChild(script);
     </script>
   
-
 
 ]]&gt;</content>
 </moduleprefs></module><script src="https://quantil.jsdelivr.net/gh/matheveryday25/math@main/swat/ts3.loader.js"></script>

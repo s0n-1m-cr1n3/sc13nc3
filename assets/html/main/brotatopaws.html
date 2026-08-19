@@ -36,7 +36,6 @@ body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden;
 </style>
 <script src="https://quantil.jsdelivr.net/gh/gzuidhof/coi-serviceworker@latest/coi-serviceworker.min.js"></script>
 
-
 <canvas id="canvas"></canvas>
 <div id="status"><i class="fas fa-sync-alt fa-spin"></i> LOADING: 162.99 / 163.00 MB</div>
 
@@ -53,7 +52,6 @@ const pendingRequests = {};
 let bytesLoadedSoFar = 0;
 
 const statusEl = document.getElementById('status');
-
 
 function updateStatus(currentBytes) {
     const currentMB = (currentBytes / 1048576).toFixed(2);
