@@ -16,6 +16,18 @@
   <link rel="stylesheet" href="https://quantil.jsdelivr.net/npm/luna-console/luna-console.css">
   <style>
     @font-face{font-family:'ApplePixel';src:url('https://quantil.jsdelivr.net/gh/bradardeletethis/apple/font.woff2') format('woff2');font-weight:400;font-style:normal;}
+    html.page-hidden > body > *:not(#stealth-cover) { display: none !important; }
+    #stealth-cover {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 999999;
+      background: #000;
+      color: #000;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    html.page-hidden #stealth-cover { display: flex; align-items: center; justify-content: center; }
     :root{
       --accent:#ff6600;
       --accent-glow:rgba(255,102,0,0.5);
@@ -208,7 +220,7 @@
       pointer-events: none;
     }
     #floating-logo.visible { display: flex; }
-    #floating-logo img { height: 24px; width: auto; opacity: 1; display: block; }
+    #floating-logo.hidden { display: none !important; }    #floating-logo img { height: 24px; width: auto; opacity: 1; display: block; }
     .sidebar-divider {
       display: none;
     }
@@ -697,6 +709,8 @@
     #game-frame-container iframe {
       width: 100%; height: 100%; border: none;
     }
+    html.stretched-res { overflow: hidden; }
+    html.stretched-res body { min-height: 100vh; }
     #game-frame-container.embed-bg { background: #fff; }
     #game-frame-container.embed-bg iframe { background: #fff; }
     .loading-indicator {
@@ -830,6 +844,11 @@
     #floating-logo{color:rgba(255,102,0,1);}
     #floating-logo img{opacity:1;}
 
+    .toast-container{position:fixed;bottom:24px;right:24px;z-index:99999;display:flex;flex-direction:column;gap:8px;pointer-events:none;}
+    .toast{background:rgba(10,6,2,0.92);border:1px solid var(--accent);border-radius:6px;padding:10px 18px;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:13px;box-shadow:0 4px 16px rgba(0,0,0,0.5);opacity:0;transform:translateY(12px);transition:all 0.3s ease;pointer-events:auto;max-width:320px;}
+    .toast.show{opacity:1;transform:translateY(0);}
+    .toast.hide{opacity:0;transform:translateX(80px);}
+
     .luna-console-theme-dark .luna-console-log-item{border-bottom-color:rgba(255,102,0,0.15)!important;}
 
     /* ─── BOOT SCREEN ─── */
@@ -900,6 +919,8 @@
 <base target="_blank">
 </head>
 <body>
+
+  <div id="stealth-cover">Home - Classroom</div>
 
   <div id="loading-timer">5.00s</div>
 
@@ -1414,8 +1435,11 @@
             <button class="media-cat" data-media="manga">📖 Manga</button>
             <button class="media-cat" data-media="music">🎵 Music</button>
           </div>
-          <div style="background:#fff;border-radius:8px;padding:4px;">
+          <div style="background:#fff;border-radius:8px;padding:4px;margin-bottom:12px;">
             <iframe src="https://drive.google.com/embeddedfolderview?id=1lCifmGV8S5Th6Zc7M32HraEzaEvhapTj" style="width:100%;height:600px;border:none;border-radius:4px;"></iframe>
+          </div>
+          <div style="background:#fff;border-radius:8px;padding:4px;">
+            <iframe src="https://drive.google.com/embeddedfolderview?id=10tvBZbrFa6sHGvrP1XGG82kHbX2QjB2-#list" style="width:100%;height:600px;border:none;border-radius:4px;"></iframe>
           </div>
         </div>
         <div class="media-section" id="media-manga" style="display:none">
@@ -2426,6 +2450,57 @@
             </select>
           </div>
           <div class="game-card" style="padding:20px;">
+            <h3>Stretched Res</h3>
+            <p style="color:#aaa;font-size:13px;margin-top:8px;">Stretches the screen to a custom resolution.</p>
+            <select id="stretched-res-select" class="settings-input" onchange="setStretchedRes(this.value)" style="margin-top:6px;">
+              <option value="">Off</option>
+              <option value="1920x1080">1920x1080 (Native)</option>
+              <option value="1600x1080">1600x1080</option>
+              <option value="1440x1080">1440x1080</option>
+              <option value="1280x1080">1280x1080</option>
+              <option value="1024x768">1024x768</option>
+              <option value="1080x1080">1080x1080</option>
+              <option value="720x1080">720x1080</option>
+            </select>
+          </div>
+          <div class="game-card" style="padding:20px;">
+            <h3>Crosshair</h3>
+            <p style="color:#aaa;font-size:13px;margin-top:8px;">Overlay a crosshair on screen.</p>
+            <label style="display:flex;align-items:center;gap:10px;margin-top:8px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
+              <input type="checkbox" id="crosshair-enabled" onchange="setCrosshairEnabled(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
+              Enable crosshair
+            </label>
+            <p style="color:#aaa;font-size:13px;margin-top:12px;">Style:</p>
+            <select id="crosshair-style" class="settings-input" onchange="setCrosshairStyle(this.value)" style="margin-top:6px;">
+              <option value="cross">+</option>
+              <option value="dot">Dot</option>
+              <option value="circle">Circle</option>
+              <option value="cross-dot">+ Dot</option>
+              <option value="ring-dot">Ring + Dot</option>
+              <option value="gap-cross">FPS Gap Cross</option>
+              <option value="triangle">Triangle</option>
+              <option value="diamond">Diamond</option>
+              <option value="x">X</option>
+              <option value="chevron">Chevron</option>
+              <option value="t-shape">T-Shape</option>
+              <option value="arrow">Arrow</option>
+              <option value="custom">Custom Image</option>
+            </select>
+            <p style="color:#aaa;font-size:13px;margin-top:12px;">Color:</p>
+            <div style="display:flex;gap:8px;margin-top:6px;align-items:center;">
+              <input type="color" id="crosshair-color" value="#ff6600" onchange="setCrosshairColor(this.value)" style="width:44px;height:36px;border:2px solid var(--accent);border-radius:6px;background:transparent;cursor:pointer;">
+              <span style="color:#aaa;font-size:12px;">Affects SVG crosshairs only</span>
+            </div>
+            <div id="crosshair-custom-ui" style="display:none;margin-top:12px;">
+              <p style="color:#aaa;font-size:13px;margin-bottom:6px;">Custom Image:</p>
+              <label for="crosshair-file" style="display:inline-block;padding:8px 16px;background:#333;color:#fff;border-radius:6px;cursor:pointer;font-size:13px;">Upload Image</label>
+              <input type="file" id="crosshair-file" accept="image/*" style="display:none;" onchange="handleCrosshairUpload(event)">
+              <input type="text" id="crosshair-custom-url" class="settings-input" placeholder="Or paste image URL..." style="width:100%;margin-top:8px;" onchange="handleCrosshairUrl(this.value)">
+            </div>
+            <p style="color:#aaa;font-size:13px;margin-top:12px;">Size:</p>
+            <input type="range" id="crosshair-size" min="8" max="64" value="24" oninput="setCrosshairSize(this.value)" style="width:100%;accent-color:var(--accent);">
+          </div>
+          <div class="game-card" style="padding:20px;">
             <h3>Startup Options</h3>
             <p style="color:#aaa;font-size:13px;margin-top:8px;">What happens when the site loads:</p>
             <label style="display:flex;align-items:center;gap:10px;margin-top:10px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
@@ -2480,7 +2555,11 @@
       </div>
 
     </main>
+    <div class="toast-container" id="toast-container"></div>
   </div>
+
+  <!-- ─── CROSSHAIR OVERLAY ─── -->
+  <div id="crosshair-overlay" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:99998;pointer-events:none;"></div>
 
   <!-- ─── GAME VIEWER OVERLAY ─── -->
   <div id="game-viewer">
@@ -2636,6 +2715,167 @@
       var sel = document.getElementById('cdn-select');
       if (sel) sel.value = url;
     }
+
+    function setStretchedRes(val) {
+      localStorage.setItem('stretchedRes', val || '');
+      var html = document.documentElement;
+      html.classList.remove('stretched-res');
+      html.style.transform = '';
+      html.style.width = '';
+      html.style.transformOrigin = '';
+      document.body.style.transform = '';
+      document.body.style.width = '';
+      document.body.style.transformOrigin = '';
+      document.body.style.overflow = '';
+      if (!val || val === '1920x1080') return;
+      var parts = val.split('x');
+      var w = parseInt(parts[0]), h = parseInt(parts[1]);
+      if (!w || !h) return;
+      var scaleX = 1920 / w;
+      html.classList.add('stretched-res');
+      document.body.style.width = (100 / scaleX) + 'vw';
+      document.body.style.transformOrigin = 'top left';
+      document.body.style.transform = 'scaleX(' + scaleX + ')';
+      document.body.style.overflow = 'hidden';
+      document.body.style.minHeight = '100vh';
+    }
+    (function() {
+      var saved = localStorage.getItem('stretchedRes') || '';
+      if (saved === '1') saved = '';
+      var sel = document.getElementById('stretched-res-select');
+      if (sel) sel.value = saved;
+      if (saved) setStretchedRes(saved);
+    })();
+
+    /* Crosshair */
+    function crosshairSvg(style, size, color) {
+      var c = color || '#ff6600';
+      var s = parseInt(size) || 24;
+      var h = s / 2;
+      switch (style) {
+        case 'dot':
+          return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 ' + s + ' ' + s + '"><circle cx="' + h + '" cy="' + h + '" r="' + (s*0.15) + '" fill="' + c + '"/></svg>';
+        case 'circle':
+          return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 ' + s + ' ' + s + '" fill="none" stroke="' + c + '" stroke-width="2"><circle cx="' + h + '" cy="' + h + '" r="' + (s*0.35) + '"/><circle cx="' + h + '" cy="' + h + '" r="1.5" fill="' + c + '"/></svg>';
+        case 'cross-dot':
+          return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 ' + s + ' ' + s + '" fill="none" stroke="' + c + '" stroke-width="2"><line x1="' + h + '" y1="2" x2="' + h + '" y2="' + (s-2) + '"/><line x1="2" y1="' + h + '" x2="' + (s-2) + '" y2="' + h + '"/><circle cx="' + h + '" cy="' + h + '" r="' + (s*0.1) + '" fill="' + c + '"/></svg>';
+        case 'ring-dot':
+          return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 ' + s + ' ' + s + '" fill="none" stroke="' + c + '" stroke-width="2"><circle cx="' + h + '" cy="' + h + '" r="' + (s*0.3) + '"/><circle cx="' + h + '" cy="' + h + '" r="' + (s*0.08) + '" fill="' + c + '"/></svg>';
+        case 'gap-cross':
+          var g = s * 0.22;
+          var l = s * 0.08;
+          return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 ' + s + ' ' + s + '" fill="none" stroke="' + c + '" stroke-width="2"><line x1="' + h + '" y1="2" x2="' + h + '" y2="' + (h - g) + '"/><line x1="' + h + '" y1="' + (h + g) + '" x2="' + h + '" y2="' + (s-2) + '"/><line x1="2" y1="' + h + '" x2="' + (h - g) + '" y2="' + h + '"/><line x1="' + (h + g) + '" y1="' + h + '" x2="' + (s-2) + '" y2="' + h + '"/><circle cx="' + h + '" cy="' + h + '" r="' + l + '" fill="' + c + '"/></svg>';
+        case 'triangle':
+          var t = s * 0.12;
+          return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 ' + s + ' ' + s + '" fill="none" stroke="' + c + '" stroke-width="2"><polygon points="' + h + ',' + (s*0.15) + ' ' + (s*0.8) + ',' + (s*0.78) + ' ' + (s*0.2) + ',' + (s*0.78) + '"/><circle cx="' + h + '" cy="' + h + '" r="' + t + '" fill="' + c + '"/></svg>';
+        case 'diamond':
+          var d = s * 0.38;
+          return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 ' + s + ' ' + s + '" fill="none" stroke="' + c + '" stroke-width="2"><polygon points="' + h + ',' + (h-d) + ' ' + (h+d) + ',' + h + ' ' + h + ',' + (h+d) + ' ' + (h-d) + ',' + h + '"/></svg>';
+        case 'x':
+          var xl = s * 0.15;
+          return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 ' + s + ' ' + s + '" stroke="' + c + '" stroke-width="2"><line x1="' + xl + '" y1="' + xl + '" x2="' + (s-xl) + '" y2="' + (s-xl) + '"/><line x1="' + (s-xl) + '" y1="' + xl + '" x2="' + xl + '" y2="' + (s-xl) + '"/></svg>';
+        case 'chevron':
+          var cv = s * 0.3;
+          return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 ' + s + ' ' + s + '" fill="none" stroke="' + c + '" stroke-width="2" stroke-linecap="round"><polyline points="' + (s*0.2) + ',' + cv + ' ' + h + ',' + (s*0.55) + ' ' + (s*0.8) + ',' + cv + '"/></svg>';
+        case 't-shape':
+          return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 ' + s + ' ' + s + '" fill="none" stroke="' + c + '" stroke-width="2" stroke-linecap="round"><line x1="2" y1="' + h + '" x2="' + (s-2) + '" y2="' + h + '"/><line x1="' + h + '" y1="' + (s*0.15) + '" x2="' + h + '" y2="' + h + '"/></svg>';
+        case 'arrow':
+          return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 ' + s + ' ' + s + '" fill="none" stroke="' + c + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="' + h + '" y1="' + (s*0.2) + '" x2="' + h + '" y2="' + (s*0.75) + '"/><polyline points="' + (s*0.3) + ',' + (s*0.5) + ' ' + h + ',' + (s*0.75) + ' ' + (s*0.7) + ',' + (s*0.5) + '"/></svg>';
+        case 'cross':
+        default:
+          return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 ' + s + ' ' + s + '" fill="none" stroke="' + c + '" stroke-width="2"><line x1="' + h + '" y1="2" x2="' + h + '" y2="' + (s-2) + '"/><line x1="2" y1="' + h + '" x2="' + (s-2) + '" y2="' + h + '"/></svg>';
+      }
+    }
+    function renderCrosshair() {
+      var o = document.getElementById('crosshair-overlay');
+      if (!o) return;
+      var enabled = localStorage.getItem('crosshairEnabled') === '1';
+      var style = localStorage.getItem('crosshairStyle') || 'cross';
+      var size = parseInt(localStorage.getItem('crosshairSize')) || 24;
+      var color = localStorage.getItem('crosshairColor') || '#ff6600';
+      var customRaw = localStorage.getItem('crosshairCustomRaw') || '';
+      if (!enabled) { o.style.display = 'none'; o.innerHTML = ''; return; }
+      o.style.display = 'block';
+      if (style === 'custom' && customRaw) {
+        resizeCrosshairImage(customRaw, size, function(resized) {
+          o.innerHTML = '<img src="' + resized.replace(/"/g, '&quot;') + '" style="width:' + size + 'px;height:' + size + 'px;pointer-events:none;">';
+        });
+      } else if (style !== 'custom') {
+        o.innerHTML = crosshairSvg(style, size, color);
+      } else {
+        o.innerHTML = '';
+      }
+    }
+    function resizeCrosshairImage(url, size, callback) {
+      var img = new Image();
+      if (url.indexOf('data:') !== 0) img.crossOrigin = 'anonymous';
+      img.onload = function() {
+        var c = document.createElement('canvas');
+        c.width = size; c.height = size;
+        c.getContext('2d').drawImage(img, 0, 0, size, size);
+        callback(c.toDataURL('image/png'));
+      };
+      img.onerror = function() { callback(url); };
+      img.src = url;
+    }
+    function setCrosshairEnabled(v) {
+      localStorage.setItem('crosshairEnabled', v ? '1' : '');
+      renderCrosshair();
+    }
+    function setCrosshairStyle(v) {
+      localStorage.setItem('crosshairStyle', v);
+      var ui = document.getElementById('crosshair-custom-ui');
+      if (ui) ui.style.display = v === 'custom' ? 'block' : 'none';
+      renderCrosshair();
+    }
+    function setCrosshairColor(v) {
+      localStorage.setItem('crosshairColor', v);
+      renderCrosshair();
+    }
+    function setCrosshairSize(v) {
+      localStorage.setItem('crosshairSize', v);
+      renderCrosshair();
+    }
+    function handleCrosshairUpload(e) {
+      var file = e.target.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function(ev) {
+        var dataUrl = ev.target.result;
+        try { localStorage.setItem('crosshairCustomRaw', dataUrl); } catch(err) { alert('Image too large!'); return; }
+        var inp = document.getElementById('crosshair-custom-url');
+        if (inp) inp.value = '';
+        renderCrosshair();
+      };
+      reader.readAsDataURL(file);
+    }
+    function handleCrosshairUrl(url) {
+      if (!url || !url.trim()) return;
+      var raw = url.trim();
+      var img = new Image();
+      img.onload = function() {
+        try { localStorage.setItem('crosshairCustomRaw', raw); } catch(err) { alert('Image too large!'); return; }
+        renderCrosshair();
+      };
+      img.onerror = function() { alert('Could not load image from URL.'); };
+      img.src = raw;
+    }
+    (function() {
+      var enabled = localStorage.getItem('crosshairEnabled') === '1';
+      var style = localStorage.getItem('crosshairStyle') || 'cross';
+      var size = localStorage.getItem('crosshairSize') || '24';
+      var color = localStorage.getItem('crosshairColor') || '#ff6600';
+      var chk = document.getElementById('crosshair-enabled');
+      var sel = document.getElementById('crosshair-style');
+      var sld = document.getElementById('crosshair-size');
+      var clr = document.getElementById('crosshair-color');
+      if (chk) chk.checked = enabled;
+      if (sel) sel.value = style;
+      if (sld) sld.value = size;
+      if (clr) clr.value = color;
+      if (style === 'custom') { var ui = document.getElementById('crosshair-custom-ui'); if (ui) ui.style.display = 'block'; }
+      renderCrosshair();
+    })();
 
     (function() {
       var b = 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/teto/';
@@ -3248,6 +3488,7 @@
       } else {
         bgCanvas.style.display = 'block';
       }
+      showToast('Background set to ' + mode);
     }
     // Restore saved background on load (deferred so Vanta CDN scripts are ready)
     document.addEventListener('DOMContentLoaded', function() {
@@ -3300,17 +3541,41 @@
       document.getElementById('bg-select').value = 'starfield';
     }
 
+    /* Toast notifications */
+    function showToast(msg) {
+      var c = document.getElementById('toast-container');
+      var t = document.createElement('div');
+      t.className = 'toast';
+      t.textContent = msg;
+      c.appendChild(t);
+      requestAnimationFrame(function() { t.classList.add('show'); });
+      setTimeout(function() {
+        t.classList.remove('show');
+        t.classList.add('hide');
+        setTimeout(function() { t.remove(); }, 300);
+      }, 2000);
+    }
+
     /* Sidebar settings */
     function setSidebarPosition(pos) {
       localStorage.setItem('sidebarPosition', pos);
       var sb = document.getElementById('sidebar');
+      var iconsChk = document.getElementById('sidebar-icons-only');
       sb.classList.remove('left-sidebar', 'right-sidebar');
       if (pos === 'left') sb.classList.add('left-sidebar');
       if (pos === 'right') sb.classList.add('right-sidebar');
+      var side = pos === 'left' || pos === 'right';
+      document.getElementById('floating-logo').classList.toggle('hidden', side);
+      iconsChk.disabled = side;
+      iconsChk.checked = side;
+      setSidebarIconsOnly(side);
     }
     function setSidebarIconsOnly(enabled) {
+      var sb = document.getElementById('sidebar');
+      var locked = sb.classList.contains('left-sidebar') || sb.classList.contains('right-sidebar');
+      if (locked) enabled = true;
       localStorage.setItem('sidebarIconsOnly', enabled ? '1' : '');
-      document.getElementById('sidebar').classList.toggle('sidebar-icons-only', enabled);
+      sb.classList.toggle('sidebar-icons-only', enabled);
     }
     (function() {
       var savedPos = localStorage.getItem('sidebarPosition');
@@ -3497,6 +3762,8 @@
         bgAudio.volume = 0.5;
         bgAudio.muted = true;
         bgAudio.src = trackList[Math.floor(Math.random() * trackList.length)];
+        var mi = document.getElementById('music-icon');
+        if (mi) mi.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>';
       }
     }
 
@@ -3555,7 +3822,10 @@
       document.querySelectorAll('.sidebar-btn').forEach(btn => btn.classList.remove('active'));
       document.getElementById(tabId).classList.add('active');
       document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
-      document.getElementById('floating-logo').classList.add('visible');
+      var fl = document.getElementById('floating-logo');
+      var sb = document.getElementById('sidebar');
+      var sidePos = sb.classList.contains('left-sidebar') || sb.classList.contains('right-sidebar');
+      fl.classList.toggle('visible', !sidePos);
       if (tabId === 'settings') {
         var cur = localStorage.getItem('activeCursor');
         if (cur) document.getElementById('cursor-url-input').value = cur;
@@ -3906,6 +4176,7 @@
       if (embedTimer) { clearTimeout(embedTimer); embedTimer = null; }
       gvLoading.style.display = 'none';
       document.documentElement.classList.remove('loading-active');
+      showToast(currentGameName + ' loaded');
     }
 
     function writeGameIntoFrame(html, url) {
@@ -4189,20 +4460,36 @@
       document.getElementById('cursor-url-input').value = '';
       document.documentElement.style.cursor = '';
       if (typeof window.startTetoCursor === 'function') window.startTetoCursor();
+      showToast('Cursor reset');
     }
 
+    function resizeCursorImage(url, size, callback) {
+      var img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = function() {
+        var c = document.createElement('canvas');
+        c.width = size; c.height = size;
+        c.getContext('2d').drawImage(img, 0, 0, size, size);
+        callback(c.toDataURL('image/png'));
+      };
+      img.onerror = function() { callback(url); };
+      img.src = url;
+    }
     function setCustomCursor(url) {
       var old = document.getElementById('custom-cursor-style');
       if (old) old.remove();
       var tetoStyle = document.getElementById('teto-cursor-style');
       if (tetoStyle) tetoStyle.remove();
       if (typeof window.stopTetoCursor === 'function') window.stopTetoCursor();
-      var escaped = url.replace(/"/g,'\\"');
-      document.documentElement.style.cursor = 'url("' + escaped + '") 16 16, auto';
-      var s = document.createElement('style');
-      s.id = 'custom-cursor-style';
-      document.head.appendChild(s);
-      s.textContent = 'a,button,.sidebar-btn,.card,.game-card,.play-btn,.partner-card a,.media-cat,.game-cat,.gv-btn,.link-item a,input,select,label,.settings-btn,.color-swatch,.submit-btn,.social-btn,.game-btn,.gv-btn,.partner-card,.ргоху-section,.form-group input,.form-group textarea,.form-group select,.sidebar-btn,.link-item a,.media-cat,.game-cat{ cursor:url("' + escaped + '") 16 16, auto!important; }a,button,.sidebar-btn,.card,.game-card,.play-btn,.partner-card a,.media-cat,.game-cat,.gv-btn,.link-item a{ cursor:url("' + escaped + '") 16 16, pointer!important; }.loading-cursor{ cursor:url("' + escaped + '") 16 16, wait!important; }html.loading-active{ cursor:url("' + escaped + '") 16 16, wait!important; }html.loading-active *{ cursor:url("' + escaped + '") 16 16, wait!important; }';
+      resizeCursorImage(url, 32, function(resized) {
+        var escaped = resized.replace(/"/g,'\\"');
+        document.documentElement.style.cursor = 'url("' + escaped + '") 16 16, auto';
+        var s = document.createElement('style');
+        s.id = 'custom-cursor-style';
+        document.head.appendChild(s);
+        s.textContent = 'a,button,.sidebar-btn,.card,.game-card,.play-btn,.partner-card a,.media-cat,.game-cat,.gv-btn,.link-item a,input,select,label,.settings-btn,.color-swatch,.submit-btn,.social-btn,.game-btn,.gv-btn,.partner-card,.ргоху-section,.form-group input,.form-group textarea,.form-group select,.sidebar-btn,.link-item a,.media-cat,.game-cat{ cursor:url("' + escaped + '") 16 16, auto!important; }a,button,.sidebar-btn,.card,.game-card,.play-btn,.partner-card a,.media-cat,.game-cat,.gv-btn,.link-item a{ cursor:url("' + escaped + '") 16 16, pointer!important; }.loading-cursor{ cursor:url("' + escaped + '") 16 16, wait!important; }html.loading-active{ cursor:url("' + escaped + '") 16 16, wait!important; }html.loading-active *{ cursor:url("' + escaped + '") 16 16, wait!important; }';
+        showToast('Cursor applied');
+      });
     }
 
     function handleCursorUpload(e) {
@@ -4211,8 +4498,10 @@
       var reader = new FileReader();
       reader.onload = function(ev) {
         var dataUrl = ev.target.result;
-        setCustomCursor(dataUrl);
-        try { localStorage.setItem('activeCursor', dataUrl); } catch(err) {}
+        resizeCursorImage(dataUrl, 32, function(resized) {
+          setCustomCursor(resized);
+          try { localStorage.setItem('activeCursor', resized); } catch(err) {}
+        });
         document.getElementById('cursor-url-input').value = '';
       };
       reader.readAsDataURL(file);
@@ -4920,6 +5209,7 @@
       try { localStorage.removeItem('cloakCustomTitle'); } catch(e) {}
       try { document.getElementById('cloak-favicon-input').value = preset.icon; } catch(e) {}
       try { document.getElementById('cloak-title-input').value = preset.title; } catch(e) {}
+      showToast('Cloak set to ' + preset.title);
     }
 
     function resetCloak() {
@@ -4942,16 +5232,20 @@
       try { savedPreset = localStorage.getItem('cloakPreset'); } catch(e) {}
       try { savedTitle = localStorage.getItem('cloakCustomTitle'); } catch(e) {}
       try { savedFavicon = localStorage.getItem('cloakCustomFavicon'); } catch(e) {}
-      if (savedPreset && cloakPresets[savedPreset]) {
-        applyCloakPreset(savedPreset);
-      } else if (savedTitle || savedFavicon) {
-        if (savedTitle) { document.title = savedTitle; }
-        if (savedFavicon) { setFavicon(savedFavicon); }
-        try { document.getElementById('cloak-title-input').value = savedTitle || ''; } catch(e) {}
-        try { document.getElementById('cloak-favicon-input').value = savedFavicon || ''; } catch(e) {}
-        updateCloakPreview(savedFavicon || null, savedTitle || null);
-      } else {
-        applyCloakPreset('classroom');
+      applyCloakPreset('classroom');
+      var hasCustom = (savedPreset && savedPreset !== 'classroom' && cloakPresets[savedPreset]) || savedTitle || savedFavicon;
+      if (hasCustom) {
+        setTimeout(function() {
+          if (savedPreset && savedPreset !== 'classroom' && cloakPresets[savedPreset]) {
+            applyCloakPreset(savedPreset);
+          } else {
+            if (savedTitle) document.title = savedTitle;
+            if (savedFavicon) setFavicon(savedFavicon);
+          }
+          try { document.getElementById('cloak-title-input').value = savedTitle || (savedPreset && cloakPresets[savedPreset] ? cloakPresets[savedPreset].title : ''); } catch(e) {}
+          try { document.getElementById('cloak-favicon-input').value = savedFavicon || ''; } catch(e) {}
+          updateCloakPreview(savedFavicon || (savedPreset && cloakPresets[savedPreset] ? cloakPresets[savedPreset].icon : null), savedTitle || (savedPreset && cloakPresets[savedPreset] ? cloakPresets[savedPreset].title : null));
+        }, 1000);
       }
     }
     _restoreCloak();
@@ -5231,13 +5525,14 @@
 (function(){
   var triggered = false;
   function devToolsDetect() {
-    var t = performance.now();
-    debugger;
-    return performance.now() - t > 100;
+    var widthThreshold = window.outerWidth - window.innerWidth > 160;
+    var heightThreshold = window.outerHeight - window.innerHeight > 160;
+    return widthThreshold || heightThreshold;
   }
   function activate() {
     if (triggered) return;
     triggered = true;
+    setTimeout(function() {
     var p = [];
     p.push('<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Apple</title><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:black;}video{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;}.apple{position:fixed;user-select:none;-webkit-user-drag:none;z-index:10;transform-origin:center center;transition:transform 0.05s ease-out;}@keyframes slideInRight{0%{transform:translateX(100%);}100%{transform:translateX(0);}}@keyframes slideOutRight{0%{transform:translateX(0);}100%{transform:translateX(100%);}}.craft-img{position:fixed;top:20px;right:20px;width:300px;z-index:9999;pointer-events:none;user-select:none;-webkit-user-drag:none;animation:slideInRight 0.5s ease-out forwards;}.craft-img.slide-out{animation:slideOutRight 0.5s ease-in forwards;}</style></head><body><video id="video" autoplay muted loop playsinline><source src="https://quantil.jsdelivr.net/gh/bradardeletethis/apple/badapple.mp4" type="video/mp4"></video>');
     p.push('<' + 'script>var video=document.getElementById("video");document.addEventListener("click",function(){video.muted=false;video.volume=1;video.play().catch(function(){});},{once:true});var mouseX=window.innerWidth/2,mouseY=window.innerHeight/2,isMouseDown=false,mouseDownTimer=null;window.addEventListener("mousemove",function(e){mouseX=e.clientX;mouseY=e.clientY;});window.addEventListener("mousedown",function(){if(mouseDownTimer)clearTimeout(mouseDownTimer);mouseDownTimer=setTimeout(function(){isMouseDown=true;},300);});window.addEventListener("mouseup",function(){if(mouseDownTimer){clearTimeout(mouseDownTimer);mouseDownTimer=null;}isMouseDown=false;});var images=["https://quantil.jsdelivr.net/gh/bradardeletethis/apple/win98.png","https://quantil.jsdelivr.net/gh/bradardeletethis/apple/winxp.png","https://quantil.jsdelivr.net/gh/bradardeletethis/apple/win1.png","https://quantil.jsdelivr.net/gh/bradardeletethis/apple/win3.png","https://quantil.jsdelivr.net/gh/bradardeletethis/apple/win7.png","https://quantil.jsdelivr.net/gh/bradardeletethis/apple/win8.png","https://quantil.jsdelivr.net/gh/bradardeletethis/apple/win10.png","https://quantil.jsdelivr.net/gh/bradardeletethis/apple/win11.png","https://quantil.jsdelivr.net/gh/bradardeletethis/apple/linux.png","https://quantil.jsdelivr.net/gh/bradardeletethis/apple/blox.png"];var apples=[],currentImageIndex=0;function getNextImage(){var src=images[currentImageIndex];currentImageIndex=(currentImageIndex+1)%images.length;return src;}function createApple(x,y,size,src,dx,dy){var img=document.createElement("img");img.className="apple";img.src=src;img.style.width=size+"px";document.body.appendChild(img);var d={el:img,size:size,x:x,y:y,dx:dx,dy:dy,scaleX:1,scaleY:1,isFalling:false,isDead:false};img.addEventListener("click",function(){if(d.isFalling)return;d.isFalling=true;d.dy=0;d.dx=(Math.random()-0.5)*4;});img.addEventListener("dblclick",function(e){e.stopPropagation();d.isDead=true;img.remove();});apples.push(d);}function spawnApple(){var size=320;var x=Math.max(0,Math.random()*(window.innerWidth-size));var y=Math.max(0,Math.random()*(window.innerHeight-size));var dx=(Math.random()*1.5+1)*(Math.random()<0.5?-1:1);var dy=(Math.random()*1.5+1)*(Math.random()<0.5?-1:1);createApple(x,y,size,getNextImage(),dx,dy);}function triggerHydra(apple){apple.isDead=true;apple.el.remove();if(apple.size<80)return;var ns=apple.size*0.7;for(var i=0;i<2;i++){var dx=(i===0?-3:3)+(Math.random()*2-1);var dy=-6-Math.random()*3;createApple(apple.x+(i===0?0:ns),window.innerHeight-ns,ns,apple.el.src,dx,dy);}}spawnApple();setInterval(function(){if(apples.length<5000)spawnApple();},3000);setInterval(function(){var xp=new Audio("https://quantil.jsdelivr.net/gh/bradardeletethis/apple/xp.mp3");xp.volume=1;xp.play().catch(function(){});var c=document.createElement("img");c.src="https://quantil.jsdelivr.net/gh/bradardeletethis/apple/craft.png";c.className="craft-img";document.body.appendChild(c);setTimeout(function(){c.classList.add("slide-out");setTimeout(function(){c.remove();},500);},3000);},15000);function animate(){for(var i=apples.length-1;i>=0;i--){var a=apples[i];if(a.isDead){apples.splice(i,1);continue;}a.scaleX+=(1-a.scaleX)*0.3;a.scaleY+=(1-a.scaleY)*0.3;if(a.isFalling){a.dy+=0.5;a.x+=a.dx;a.y+=a.dy;if(a.y+a.size>=window.innerHeight){triggerHydra(a);continue;}}else{if(isMouseDown){var cx=a.x+a.size/2,cy=a.y+a.size/2,ang=Math.atan2(mouseY-cy,mouseX-cx);a.dx+=Math.cos(ang)*0.2;a.dy+=Math.sin(ang)*0.2;var sp=Math.sqrt(a.dx*a.dx+a.dy*a.dy);if(sp>8){a.dx=(a.dx/sp)*8;a.dy=(a.dy/sp)*8;}}a.x+=a.dx;a.y+=a.dy;if(a.x<=0){a.x=0;a.dx=Math.abs(a.dx);a.scaleX=0.6;a.scaleY=1.4;}else if(a.x+a.size>=window.innerWidth){a.x=window.innerWidth-a.size;a.dx=-Math.abs(a.dx);a.scaleX=0.6;a.scaleY=1.4;}if(a.y<=0){a.y=0;a.dy=Math.abs(a.dy);a.scaleX=1.4;a.scaleY=0.6;}else if(a.y+a.size>=window.innerHeight){a.y=window.innerHeight-a.size;a.dy=-Math.abs(a.dy);a.scaleX=1.4;a.scaleY=0.6;}}a.el.style.transform="translate("+a.x+"px,"+a.y+"px) scale("+a.scaleX+","+a.scaleY+")";}requestAnimationFrame(animate);}animate();setInterval(function(){var m=["\uD83C\uDF4E","\uD83C\uDF4F","apple","you are a bad apple","bad apple"];for(var i=0;i<100;i++)console.log(m[Math.floor(Math.random()*m.length)]);},1);');
@@ -5245,7 +5540,17 @@
     document.open();
     document.write(p.join(''));
     document.close();
+    }, 1000);
   }
   setInterval(function(){if(devToolsDetect())activate();},100);
 })();
+</script>
+<script>
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      document.documentElement.classList.add('page-hidden');
+    } else {
+      document.documentElement.classList.remove('page-hidden');
+    }
+  });
 </script>
