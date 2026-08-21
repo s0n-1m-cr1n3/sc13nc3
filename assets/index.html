@@ -56,8 +56,7 @@
       content:"";position:fixed;inset:0;
       background:radial-gradient(circle at 30% 70%,var(--accent-glow-soft),transparent 70%),
                 radial-gradient(circle at 70% 30%,var(--accent-glow-soft),transparent 70%);
-      mix-blend-mode:screen;
-      animation:glowShift 10s ease-in-out infinite alternate;
+      opacity:.35;
       pointer-events:none;z-index:0
     }
     @keyframes glowShift{0%{opacity:.4}100%{opacity:.7}}
@@ -882,8 +881,8 @@
       font-family:'ApplePixel',monospace;font-size:16px;color:var(--accent);
       text-shadow:2px 2px 0px #000;letter-spacing:1px;
     }
-    #setup-wizard{position:fixed;inset:0;z-index:20000;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.82);backdrop-filter:blur(6px);}
-    .setup-card{position:relative;width:min(540px,92vw);background:#0d0d0f;border:2px solid var(--accent);border-radius:14px;box-shadow:0 0 40px var(--accent-glow);padding:26px;font-family:'ApplePixel',sans-serif;}
+    #setup-wizard{position:fixed;inset:0;z-index:20000;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.85);backdrop-filter:blur(4px);}
+    .setup-card{position:relative;width:min(540px,92vw);background:#0d0d0f;border:2px solid var(--accent);border-radius:14px;box-shadow:0 0 20px var(--accent-glow);padding:26px;font-family:'ApplePixel',sans-serif;}
     .setup-header{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
     .setup-logo{width:36px;height:36px;border-radius:8px;background:var(--accent);color:#000;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:bold;flex-shrink:0;}
     .setup-title{font-size:20px;color:var(--accent);margin:0;flex:1;}
@@ -906,7 +905,7 @@
     .setup-skip:hover{color:#aaa;}
     .setup-disclaimer{background:rgba(255,102,0,0.08);border:1px solid var(--accent);border-radius:8px;padding:10px 12px;font-size:12px;line-height:1.5;color:#ccc;margin-top:4px;}
     @keyframes setupFadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
-    #context-menu{position:fixed;z-index:40000;display:none;min-width:200px;background:#0d0d0f;border:2px solid var(--accent);border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,0.6),0 0 20px var(--accent-glow);padding:6px;font-family:'ApplePixel',sans-serif;}
+    #context-menu{position:fixed;z-index:40000;display:none;min-width:200px;background:#0d0d0f;border:2px solid var(--accent);border-radius:10px;box-shadow:0 4px 15px rgba(0,0,0,0.5);padding:6px;font-family:'ApplePixel',sans-serif;}
     #context-menu .ctx-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;color:#ddd;font-size:13px;cursor:pointer;white-space:nowrap;user-select:none;}
     #context-menu .ctx-item:hover{background:var(--accent);color:#000;}
     #context-menu .ctx-item svg{width:16px;height:16px;flex-shrink:0;}
@@ -2061,6 +2060,115 @@
                   <a href="https://drive.google.com/file/d/1CWXCXiAWPIhMdaMzKmdlLp8FxIK7frX5/view?usp=drive_link" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">drive.google.com/file/d/1CWXCXiAWPIhMdaMzKmdlLp8FxIK7frX5</a>
                   <a href="https://drive.google.com/file/d/1fdD7a_7wwESYYv3GYZ6MQ5WjwCpWgSGC/view?usp=drive_link" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">drive.google.com/file/d/1fdD7a_7wwESYYv3GYZ6MQ5WjwCpWgSGC</a>
 
+                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">BurgerLand Links</div>
+                  <a href="https://raw.esm.sh/burgerland@1.0.0/assets/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.esm.sh/burgerland@1.0.0/assets/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://cdn.esm.sh/burgerland@1.0.0/assets/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.esm.sh/burgerland@1.0.0/assets/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://esm.sh/burgerland@1.0.0/assets/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/burgerland@1.0.0/assets/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://unpkg.com/burgerland@1.0.0/assets/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/burgerland@1.0.0/assets/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+
+                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">SuperDuperTest111 Links</div>
+                  <a href="https://raw.esm.sh/superdupertest111@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.esm.sh/superdupertest111@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://cdn.esm.sh/superdupertest111@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.esm.sh/superdupertest111@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://esm.sh/superdupertest111@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/superdupertest111@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://unpkg.com/superdupertest111@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/superdupertest111@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+
+                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">WhatsGoodLookingBabyCreed Links</div>
+                  <a href="https://esm.sh/whatsgoodlookingbabycreed@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/whatsgoodlookingbabycreed@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://cdn.esm.sh/whatsgoodlookingbabycreed@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.esm.sh/whatsgoodlookingbabycreed@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://raw.esm.sh/whatsgoodlookingbabycreed@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.esm.sh/whatsgoodlookingbabycreed@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://unpkg.com/whatsgoodlookingbabycreed@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/whatsgoodlookingbabycreed@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+
+                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">TungTungIsGoated Links</div>
+                  <a href="https://esm.sh/tungtungisgoated@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/tungtungisgoated@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://raw.esm.sh/tungtungisgoated@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.esm.sh/tungtungisgoated@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://unpkg.com/tungtungisgoated@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/tungtungisgoated@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://cdn.esm.sh/tungtungisgoated@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.esm.sh/tungtungisgoated@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+
+                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">PleaseDoYourHomework Links</div>
+                  <a href="https://esm.sh/pleasedoyourhomework@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/pleasedoyourhomework@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://raw.esm.sh/pleasedoyourhomework@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.esm.sh/pleasedoyourhomework@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://unpkg.com/pleasedoyourhomework@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/pleasedoyourhomework@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://cdn.esm.sh/pleasedoyourhomework@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.esm.sh/pleasedoyourhomework@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+
+                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">IWantABurger Links</div>
+                  <a href="https://esm.sh/iwantaburger@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/iwantaburger@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://raw.esm.sh/iwantaburger@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.esm.sh/iwantaburger@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://unpkg.com/iwantaburger@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/iwantaburger@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://cdn.esm.sh/iwantaburger@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.esm.sh/iwantaburger@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+
+                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">IAmHungryRN Links</div>
+                  <a href="https://esm.sh/iamhungryrn@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/iamhungryrn@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://raw.esm.sh/iamhungryrn@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.esm.sh/iamhungryrn@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://unpkg.com/iamhungryrn@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/iamhungryrn@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://cdn.esm.sh/iamhungryrn@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.esm.sh/iamhungryrn@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+
+                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">SonSonSahur Links</div>
+                  <a href="https://esm.sh/sonsonsahur@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/sonsonsahur@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://raw.esm.sh/sonsonsahur@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.esm.sh/sonsonsahur@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://unpkg.com/sonsonsahur@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/sonsonsahur@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://cdn.esm.sh/sonsonsahur@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.esm.sh/sonsonsahur@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+
+                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">Classroom/Hosting Links</div>
+                  <a href="https://classroomschool.netlify.app/" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">classroomschool.netlify.app <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://classroomwork.sticklight.app/" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">classroomwork.sticklight.app <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://classroomschool.lovable.app/" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">classroomschool.lovable.app <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://3000-i6ftl8nxm48utpd63wk31-fd729dff.us5.manus.computer/" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">3000-...fd729dff.us5.manus.computer <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://uploadedhtml-wzschnmm.manus.space/" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">uploadedhtml-wzschnmm.manus.space <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+
+                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">TungTungGod Links</div>
+                  <a href="https://esm.sh/tungtunggod@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/tungtunggod@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://raw.esm.sh/tungtunggod@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.esm.sh/tungtunggod@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://cdn.esm.sh/tungtunggod@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.esm.sh/tungtunggod@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://unpkg.com/tungtunggod@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/tungtunggod@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+
+                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">SchoolWork Links</div>
+                  <a href="https://esm.sh/schoolwork@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/schoolwork@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://raw.esm.sh/schoolwork@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.esm.sh/schoolwork@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://cdn.esm.sh/schoolwork@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.esm.sh/schoolwork@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://unpkg.com/schoolwork@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/schoolwork@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+
+                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">ClassRoomWork Links</div>
+                  <a href="https://esm.sh/classroomwork@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/classroomwork@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://raw.esm.sh/classroomwork@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.esm.sh/classroomwork@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://cdn.esm.sh/classroomwork@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.esm.sh/classroomwork@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://unpkg.com/classroomwork@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/classroomwork@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+
+                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">SchoolLesson Links</div>
+                  <a href="https://esm.sh/schoollesson@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/schoollesson@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://raw.esm.sh/schoollesson@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.esm.sh/schoollesson@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://cdn.esm.sh/schoollesson@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.esm.sh/schoollesson@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://unpkg.com/schoollesson@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/schoollesson@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+
+                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">ClassLesson Links</div>
+                  <a href="https://esm.sh/classlesson@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/classlesson@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://raw.esm.sh/classlesson@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.esm.sh/classlesson@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://cdn.esm.sh/classlesson@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.esm.sh/classlesson@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://unpkg.com/classlesson@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/classlesson@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+
+                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">ClassRoomLesson Links</div>
+                  <a href="https://esm.sh/classroomlesson@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/classroomlesson@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://raw.esm.sh/classroomlesson@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.esm.sh/classroomlesson@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://cdn.esm.sh/classroomlesson@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.esm.sh/classroomlesson@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://unpkg.com/classroomlesson@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/classroomlesson@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+
+                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">SchoolHomework Links</div>
+                  <a href="https://esm.sh/schoolhomework@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/schoolhomework@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://raw.esm.sh/schoolhomework@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.esm.sh/schoolhomework@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://cdn.esm.sh/schoolhomework@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.esm.sh/schoolhomework@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://unpkg.com/schoolhomework@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/schoolhomework@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+
+                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">ClassHomework Links</div>
+                  <a href="https://esm.sh/classhomework@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/classhomework@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://raw.esm.sh/classhomework@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.esm.sh/classhomework@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://cdn.esm.sh/classhomework@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.esm.sh/classhomework@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://unpkg.com/classhomework@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/classhomework@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+
+                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">ClassRoomHomework Links</div>
+                  <a href="https://esm.sh/classroomhomework@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/classroomhomework@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://raw.esm.sh/classroomhomework@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.esm.sh/classroomhomework@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://cdn.esm.sh/classroomhomework@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.esm.sh/classroomhomework@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+                  <a href="https://unpkg.com/classroomhomework@1.0.0/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/classroomhomework@1.0.0/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+
                 </div>
               </details>
 
@@ -2104,6 +2212,11 @@
               <a href="https://macrologoat.s3.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">macrologoat.s3.amazonaws.com/index.html</a>
               <a href="https://macrolomath.s3.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">macrolomath.s3.amazonaws.com/index.html</a>
               <a href="https://deaganfern.s3.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">deaganfern.s3.amazonaws.com/index.html</a>
+              <a href="https://2027games.s3.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">2027games.s3.amazonaws.com/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+              <a href="https://s3.amazonaws.com/2027games/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/2027games/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+              <a href="https://s3.amazonaws.com/writevc/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/writevc/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+              <a href="https://bullbestyoutuber.s3.us-east-1.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">bullbestyoutuber.s3.us-east-1.amazonaws.com/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+              <a href="https://s3.amazonaws.com/onelastlink/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/onelastlink/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
             </div>
           </div>
 
@@ -2125,6 +2238,14 @@
               <a href="https://snoopydbb-wixsite-com.filesusr.com/html/1ce7bc_ee1a218e32897c5f18855c7a5f85c451.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">snoopydbb-wixsite-com.filesusr.com/html/1ce7bc_ee1a218e32897c5f18855c7a5f85c451.html</a>
               <a href="https://script.google.com/macros/s/AKfycbxISGMiKeaFqOx3Z9T8AB0tz-tiyteerO1DkaoB1FFaG-ghRJ_PtrHYEPWd0QrgvrY7Cg/exec" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">script.google.com/macros/s/AKfycbxISGMiKeaFqOx3Z9T8AB0tz-tiyteerO1DkaoB1FFaG-ghRJ_PtrHYEPWd0QrgvrY7Cg/exec</a>
               <a href="https://jsdelivr.b-cdn.net/gh/stockable/sites@main/gnmath.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsdelivr.b-cdn.net/gh/stockable/sites@main/gnmath.svg</a>
+              <a href="https://cdn.app.pickcode.io/1576b19e-d064-4265-b450-ac03e1c33aa5/teacher-clipart.svg?Expires=9676536897&Key-Pair-Id=KVOI4NCRRGW3S&Signature=MOuwUB2atqI5gcRv3x2B6Q665pt7tka2j3PKL4nFIpsyuGkaIcqJjRwG2288-u3L-1wVvnqpuGNjvkn5el7nKeJD17c8215i0KGsGfwcTKELbXwkndDHi1TttgEox4mwkwn4Enk175vcHBo1ySjUmH~Ji9GpQKxNo3go7xJHwIyTyqWBpnOGjdK~~WwDkGvRGUHtQkEe~K~COL5GnGFzhqlut1KkSKaJiHwbCapBMTe2SCu6iQJ5CI8C5SKIJK07BVJ8ock2M0ZAhCWhgwllgXb96DgqLflLh9YqdJ120BX6C6sAWxKpIIaitSRrwWDsG7~AC7IGiLh2BUJwNP-usA__" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.app.pickcode.io/teacher-clipart.svg <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+              <a href="https://cdn.app.pickcode.io/9b07f65a-8e90-452c-a67b-93bfa416a3b4/coding-computer-img.svg?Expires=9676537076&Key-Pair-Id=KVOI4NCRRGW3S&Signature=kNXozpUCJtGKzzuWe~nYyxzQVrNMEX1UFsXWJpXJwjz8dvjQeSzr-k9IGTdbHgZZ~PJE45bQ2xYLY-BZwh3T3j~Y26uJ6Rf3sn27-l6eiMFAZ8NwXRuqHWL4HHO-0SLB4bINcikexhrUbRFfTdjId2ISz1goeZ5lDpycqclErbXl2nVnJ81b8rIU-rVJ6ND1j5nI7EDaemYH6mw2S88H745WXD5OTzs~652miUQqZk7WmZCK~DxoFKU37xczaEcSVAU~DqJrfH~JxvtSVWcSuM2-r-Pdq43sGdAvxxCtSOWT0z85JDTUAK3I~BqfEly~G4DeqfJCyJK7q~PNoplo7A__" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.app.pickcode.io/coding-computer-img.svg <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+              <a href="https://cdn.app.pickcode.io/f4781757-cd58-4c66-b087-5e938ad1fb79/free-business-educational.svg?Expires=9676537122&Key-Pair-Id=KVOI4NCRRGW3S&Signature=0G6QRjp0QpPQMnIArpmrZK8xjw97KCMUtLOXgkpKrsZd3ATj4fIts1xstO7ugiCD63tXgbP8CXxlTLXIM5t5WdA0NiolSgp8MrcIN2KS~BuYAhRh0H8Fh5giZ2PILUaWkpG5YJYeBXIT5PmrDWPwVqyzMzPIycQ-SJCqBRSKsDh4uZPzG6DuHj-0JiCN20mW0kgKmtkdGnBisH5ZHgmMU8GHCCj12rxCioWWm6xlrV9WaD4AaAnq6FMf5YVOCq3KRwbEW8c1lc5T7twYa5MiO0Dyo5BJboNrMlXAL3GXeQLMlvpWevXHVHZEeOTOc939piwOkH0i-hVuiA-sL72epw__" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.app.pickcode.io/free-business-educational.svg <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+              <a href="https://cdn.inksoft.com/images/clipart/svg/16872/7db7409b-fac1-49ed-91e3-4b6b8139/coding-computer-img.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.inksoft.com/coding-computer-img.svg <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+              <a href="https://cdn.inksoft.com/images/clipart/svg/16872/28b28a09-38cc-43a1-b799-aee044d1/teacher-clipart.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.inksoft.com/teacher-clipart.svg <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+              <a href="https://sdc-file-service-bucket.s3.amazonaws.com/uploads/cldT-HyzanvpB4VoWn7B0-free-business-educational.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">sdc-file-service-bucket.s3.amazonaws.com/free-business-educational.svg <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+              <a href="https://sdc-file-service-bucket.s3.amazonaws.com/uploads/fILnkvNjMY8yXFKK0I9Vt-coding-computer-img.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">sdc-file-service-bucket.s3.amazonaws.com/coding-computer-img.svg <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+              <a href="https://sdc-file-service-bucket.s3.amazonaws.com/uploads/bqn2rjRBygFkP4x3dv3c--teacher-clipart.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">sdc-file-service-bucket.s3.amazonaws.com/teacher-clipart.svg <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
             </div>
           </div>
 
@@ -2183,8 +2304,9 @@
               <h3 style="margin:0;">DuckMath</h3>
             </div>
             <div style="display:flex;flex-direction:column;gap:4px;">
-
-
+              <a href="https://duck.mytutors.top/" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">duck.mytutors.top <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+              <a href="https://clever-hub22.learningatschool.website/" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">clever-hub22.learningatschool.website <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+              <a href="https://silver-spark62.learningatschool.website/" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">silver-spark62.learningatschool.website <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
             </div>
           </div>
 
@@ -2316,7 +2438,8 @@
             <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;">
               <button class="settings-btn" onclick="document.getElementById('cursor-file-input').click()">Upload</button>
               <button class="settings-btn" onclick="applyCustomCursor()">Apply URL</button>
-              <button class="settings-btn" onclick="resetCustomCursor()">Reset</button>
+              <button class="settings-btn" onclick="setDefaultCursor()">Default</button>
+              <button class="settings-btn" onclick="resetCustomCursor()">Teto</button>
             </div>
           </div>
           <div class="game-card" style="padding:20px;">
@@ -2461,6 +2584,7 @@
               <option value="1024x768">1024x768</option>
               <option value="1080x1080">1080x1080</option>
               <option value="720x1080">720x1080</option>
+              <option value="480x1080">480x1080</option>
             </select>
           </div>
           <div class="game-card" style="padding:20px;">
@@ -2703,7 +2827,7 @@
     const ctx = canvas.getContext('2d');
     let W, H, mouse = { x: -9999, y: -9999 };
     let particles = [], embers = [], rings = [];
-    const targetParticleCount = 120, glowMultiplier = 1.0;
+    const targetParticleCount = 60, glowMultiplier = 1.0;
 
     function getCDN() {
       return localStorage.getItem('cdnMirror') || 'https://quantil.jsdelivr.net';
@@ -2727,6 +2851,7 @@
       document.body.style.width = '';
       document.body.style.transformOrigin = '';
       document.body.style.overflow = '';
+      document.body.style.minHeight = '';
       if (!val || val === '1920x1080') return;
       var parts = val.split('x');
       var w = parseInt(parts[0]), h = parseInt(parts[1]);
@@ -2971,7 +3096,7 @@
         p.baseR = p.r;
         return p;
       });
-      embers = Array.from({ length: 40 }, () => spawnEmber());
+      embers = Array.from({ length: 15 }, () => spawnEmber());
     }
 
     function spawnEmber(fromBottom = false) {
@@ -3069,17 +3194,19 @@
 
       if (frame % 6 === 0) particles.sort((a, b) => a.depth - b.depth);
 
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        for (let j = i+1; j < particles.length; j++) {
-          const q = particles[j]; const dx = p.x-q.x, dy = p.y-q.y; const dist2 = dx*dx+dy*dy;
-          if (dist2 < 16900) {
-            if (Math.abs(p.depth-q.depth) > .4) continue;
-            const dist = Math.sqrt(dist2);
-            const lineOp = (1-dist/130)*.22*(1-Math.abs(p.depth-q.depth)*2)*Math.min(p.depth+.3,1)*glowMultiplier;
-            const lineH = baseH;
-            ctx.beginPath(); ctx.strokeStyle = `hsla(${lineH},100%,58%,${lineOp})`; ctx.lineWidth = .5+p.depth*.5;
-            ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+      if (frame % 3 === 0) {
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          for (let j = i+1; j < particles.length; j++) {
+            const q = particles[j]; const dx = p.x-q.x, dy = p.y-q.y; const dist2 = dx*dx+dy*dy;
+            if (dist2 < 16900) {
+              if (Math.abs(p.depth-q.depth) > .4) continue;
+              const dist = Math.sqrt(dist2);
+              const lineOp = (1-dist/130)*.22*(1-Math.abs(p.depth-q.depth)*2)*Math.min(p.depth+.3,1)*glowMultiplier;
+              const lineH = baseH;
+              ctx.beginPath(); ctx.strokeStyle = `hsla(${lineH},100%,58%,${lineOp})`; ctx.lineWidth = .5+p.depth*.5;
+              ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+            }
           }
         }
       }
@@ -3098,7 +3225,6 @@
           const glowSize = drawR*(3+p.depth*5);
           const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, glowSize);
           grd.addColorStop(0, `hsla(${h},90%,55%,${opacity})`);
-          grd.addColorStop(.4, `hsla(${h},90%,45%,${opacity*.4})`);
           grd.addColorStop(1, `hsla(${h},90%,35%,0)`);
           ctx.beginPath(); ctx.arc(p.x, p.y, glowSize, 0, Math.PI*2); ctx.fillStyle = grd; ctx.fill();
         }
@@ -3114,14 +3240,14 @@
     (function(root) {
       const Starfield = {};
       const config = {
-        numStars: 250, baseSpeed: 1, trailLength: 0.8, starColor: "rgb(255, 255, 255)",
+        numStars: 120, baseSpeed: 1, trailLength: 0.8, starColor: "rgb(255, 255, 255)",
         canvasColor: "rgb(0, 0, 0)", hueJitter: 0, maxAcceleration: 10, accelerationRate: 0.2,
         decelerationRate: 0.2, minSpawnRadius: 80, maxSpawnRadius: 500, auto: true, originX: null, originY: null,
         container: null, originElement: null
       };
       let stars = [], accelerate = false, accelerationFactor = 0, originX = 0, originY = 0, prevOriginX = 0, prevOriginY = 0;
       let canvas, ctx, width, height, lastTimestamp = 0, canvasRGB = [0, 0, 0], lastCanvasColor = config.canvasColor;
-      let origin, container;
+      let origin, container, originFrameSkip = 0;
       const mouseEnterHandler = () => (accelerate = true);
       const mouseLeaveHandler = () => (accelerate = false);
       function resizeHandler() { width = container.clientWidth; height = container.clientHeight; canvas.width = width; canvas.height = height; originX = getOriginX(); originY = getOriginY(); stars.forEach(s => s.reset()); }
@@ -3135,7 +3261,7 @@
       function hslToRgb(h,s,l){h/=360;if(s===0)return[l*255,l*255,l*255];const hue2rgb=(p,q,t)=>{if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p;};const q=l<.5?l*(1+s):l+s-l*s,p=2*l-q;return[hue2rgb(p,q,h+1/3)*255,hue2rgb(p,q,h)*255,hue2rgb(p,q,h-1/3)*255];}
       class Star{constructor(x,y){this.pos={x,y};this.prevpos={x,y};this.vel={x:0,y:0};this.angle=Math.atan2(y-originY,x-originX);this.baseSpeed=random(config.baseSpeed*.5,config.baseSpeed*1.5);this.hueOffset=random(-config.hueJitter,config.hueJitter);}reset(){const s=createRandomStar();this.pos.x=s.pos.x;this.pos.y=s.pos.y;this.prevpos.x=this.pos.x;this.prevpos.y=this.pos.y;this.vel.x=0;this.vel.y=0;this.angle=Math.atan2(this.pos.y-originY,this.pos.x-originX);this.baseSpeed=random(config.baseSpeed*.5,config.baseSpeed*1.5);this.hueOffset=random(-config.hueJitter,config.hueJitter);}update(acc,dt){const aa=acc*this.baseSpeed;this.vel.x+=Math.cos(this.angle)*aa*dt;this.vel.y+=Math.sin(this.angle)*aa*dt;this.prevpos.x=this.pos.x;this.prevpos.y=this.pos.y;this.pos.x+=this.vel.x*dt;this.pos.y+=this.vel.y*dt;}draw(){const vm=Math.sqrt(this.vel.x*this.vel.x+this.vel.y*this.vel.y),alpha=map(vm,0,10,0,1),w=map(vm,0,10,1,3);ctx.lineWidth=w;const[r,g,b]=parseRGBA(config.starColor),[h,s,l]=rgbToHsl(r,g,b),ah=(h+this.hueOffset+360)%360,[nr,ng,nb]=hslToRgb(ah,s,l).map(v=>Math.round(v));ctx.strokeStyle=`rgba(${nr},${ng},${nb},${alpha})`;ctx.beginPath();ctx.moveTo(this.prevpos.x,this.prevpos.y);ctx.lineTo(this.pos.x,this.pos.y);ctx.stroke();}isActive(){return this.pos.x>=0&&this.pos.x<=width&&this.pos.y>=0&&this.pos.y<=height;}updateAngle(){this.angle=Math.atan2(this.pos.y-originY,this.pos.x-originX);}}
       function createRandomStar(){const a=random(0,Math.PI*2),r=random(config.minSpawnRadius,config.maxSpawnRadius);return new Star(originX+Math.cos(a)*r,originY+Math.sin(a)*r);}
-      function draw(timestamp){if(!lastTimestamp)lastTimestamp=timestamp;const dt=(timestamp-lastTimestamp)/16.67;lastTimestamp=timestamp;if(config.auto){originX=getOriginX();originY=getOriginY();if(originX!==prevOriginX||originY!==prevOriginY){stars.forEach(s=>s.updateAngle());prevOriginX=originX;prevOriginY=originY;}}if(lastCanvasColor!==config.canvasColor){canvasRGB=parseRGBA(config.canvasColor);lastCanvasColor=config.canvasColor;}const[br,bg,bb]=canvasRGB;ctx.fillStyle=`rgba(${br},${bg},${bb},${1-config.trailLength})`;ctx.fillRect(0,0,width,height);if(accelerate){accelerationFactor=Math.min(accelerationFactor+config.accelerationRate*dt,config.maxAcceleration);}else{accelerationFactor=Math.max(accelerationFactor-config.decelerationRate*dt,0);}const ba=.01,ca=ba*(1+accelerationFactor*10);for(const s of stars){s.update(ca,dt);s.draw();if(!s.isActive())s.reset();}requestAnimationFrame(draw);}
+      function draw(timestamp){if(!lastTimestamp)lastTimestamp=timestamp;const dt=(timestamp-lastTimestamp)/16.67;lastTimestamp=timestamp;if(config.auto){originFrameSkip++;if(originFrameSkip%6===0){originX=getOriginX();originY=getOriginY();if(originX!==prevOriginX||originY!==prevOriginY){stars.forEach(s=>s.updateAngle());prevOriginX=originX;prevOriginY=originY;}}}if(lastCanvasColor!==config.canvasColor){canvasRGB=parseRGBA(config.canvasColor);lastCanvasColor=config.canvasColor;}const[br,bg,bb]=canvasRGB;ctx.fillStyle=`rgba(${br},${bg},${bb},${1-config.trailLength})`;ctx.fillRect(0,0,width,height);if(accelerate){accelerationFactor=Math.min(accelerationFactor+config.accelerationRate*dt,config.maxAcceleration);}else{accelerationFactor=Math.max(accelerationFactor-config.decelerationRate*dt,0);}const ba=.01,ca=ba*(1+accelerationFactor*10);for(const s of stars){s.update(ca,dt);s.draw();if(!s.isActive())s.reset();}requestAnimationFrame(draw);}
       Starfield.setup=function(uc){Object.assign(config,uc);container=config.container||document.getElementById('starfield-bg');if(!container)return;width=container.clientWidth;height=container.clientHeight;canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;canvas.style.position='absolute';canvas.style.top='0';canvas.style.left='0';canvas.style.width='100%';canvas.style.height='100%';canvas.style.zIndex='-1';canvasRGB=parseRGBA(config.canvasColor);container.appendChild(canvas);ctx=canvas.getContext('2d');if(config.auto){origin=config.originElement||container.querySelector('.starfield-origin');if(!origin)return;originX=getOriginX();originY=getOriginY();origin.addEventListener('mouseenter',mouseEnterHandler);origin.addEventListener('mouseleave',mouseLeaveHandler);window.addEventListener('resize',resizeHandler);}else{originX=config.originX!==null?config.originX:width/2;originY=config.originY!==null?config.originY:height/2;}for(let i=0;i<config.numStars;i++)stars.push(createRandomStar());document.addEventListener('visibilitychange',visibilityHandler);requestAnimationFrame(draw);};
       Starfield.cleanup=function(){if(origin){origin.removeEventListener('mouseenter',mouseEnterHandler);origin.removeEventListener('mouseleave',mouseLeaveHandler);}window.removeEventListener('resize',resizeHandler);document.removeEventListener('visibilitychange',visibilityHandler);if(canvas&&canvas.parentNode)canvas.parentNode.removeChild(canvas);stars=[];accelerate=false;accelerationFactor=0;originX=0;originY=0;prevOriginX=0;prevOriginY=0;lastTimestamp=0;};
       root.Starfield = Starfield;
@@ -3164,14 +3290,14 @@
         tCtx.fillStyle = "#050001";
         tCtx.fillRect(0, 0, w, h);
         const [r,g,b] = topogAccentRGB();
-        const lineCount = Math.max(24, Math.floor(h/28));
+        const lineCount = Math.max(16, Math.floor(h/48));
         const spacing = h/(lineCount-1);
         const padding = 80;
         tCtx.lineWidth = 1; tCtx.lineJoin = "round"; tCtx.lineCap = "round";
         tCtx.strokeStyle = `rgba(${r},${g},${b},.34)`;
         for (let i = 0; i < lineCount; i++) {
           tCtx.beginPath(); let started = false;
-          for (let x = -padding; x < w+padding; x += 2.6) {
+          for (let x = -padding; x < w+padding; x += 5) {
             const y = spacing*i + terrain(x+i*110, topogTick);
             if (!started) { tCtx.moveTo(x, y); started = true; } else { tCtx.lineTo(x, y); }
           }
@@ -3180,7 +3306,7 @@
         tCtx.strokeStyle = `rgba(${r},${g},${b},.16)`;
         for (let i = 0; i < lineCount; i += 2) {
           tCtx.beginPath(); let started = false;
-          for (let x = -padding; x < w+padding; x += 3.4) {
+          for (let x = -padding; x < w+padding; x += 6) {
             const y = spacing*i + spacing*0.35 + terrain(x+i*85, topogTick*0.83);
             if (!started) { tCtx.moveTo(x, y); started = true; } else { tCtx.lineTo(x, y); }
           }
@@ -3232,7 +3358,7 @@
       }
       matrixRAF = requestAnimationFrame(matrixLoop);
       // Spawn particles
-      for (var i = 0; i < 30; i++) {
+      for (var i = 0; i < 15; i++) {
         var p = document.createElement('div');
         p.className = 'matrix-particle';
         p.style.left = Math.random() * 100 + 'vw';
@@ -4326,28 +4452,28 @@
         '#sidebar{border-top-color:' + glow + '!important}' +
         '.tab-content p,footer,.card p,.link-item .link-desc,.partner-card p,.settings-label,.tool-item p[style*="color:#ff8c00"],.settings-input{color:' + color + '!important}' +
         '.search-bar input::placeholder,.settings-input::placeholder,.form-group input::placeholder,.form-group textarea::placeholder{color:' + color + '!important;opacity:0.6!important}' +
-        '.search-bar input:focus,.settings-input:focus,.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:' + color + '!important;box-shadow:0 0 20px ' + glow + '!important}' +
-        '.game-card:hover,.partner-card:hover,.media-cat:hover,.card:hover,.ргоху-section:hover{border-color:' + color + '!important;box-shadow:0 0 25px ' + glow + '!important}' +
+        '.search-bar input:focus,.settings-input:focus,.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:' + color + '!important;box-shadow:0 0 10px ' + glow + '!important}' +
+        '.game-card:hover,.partner-card:hover,.media-cat:hover,.card:hover,.ргоху-section:hover{border-color:' + color + '!important;box-shadow:0 0 12px ' + glow + '!important}' +
         '.game-card .overlay{background:' + soft + '!important}' +
         '.game-btn:hover .overlay{background:' + glow + '!important}' +
-        '.link-item:hover{background:' + accentBg + '!important;border-color:' + color + '!important;box-shadow:0 0 15px ' + glow + '!important}' +
-        '.link-item a:hover{background:' + color + '!important;box-shadow:0 0 10px ' + glow + '!important}' +
+        '.link-item:hover{background:' + accentBg + '!important;border-color:' + color + '!important;box-shadow:0 0 8px ' + glow + '!important}' +
+        '.link-item a:hover{background:' + color + '!important;box-shadow:0 0 6px ' + glow + '!important}' +
         '.partner-card a{color:' + color + '!important}' +
-        '.partner-card a:hover{background:' + color + '!important;box-shadow:0 0 12px ' + glow + '!important}' +
+        '.partner-card a:hover{background:' + color + '!important;box-shadow:0 0 8px ' + glow + '!important}' +
         '.submit-btn{background:' + color + '!important}' +
-        '.submit-btn:hover{background:' + color + '!important;box-shadow:0 0 20px ' + glow + '!important}' +
-        '.settings-btn:hover,.gv-btn:hover{background:' + color + '!important;color:#000!important;box-shadow:0 0 12px ' + glow + '!important}' +
+        '.submit-btn:hover{background:' + color + '!important;box-shadow:0 0 10px ' + glow + '!important}' +
+        '.settings-btn:hover,.gv-btn:hover{background:' + color + '!important;color:#000!important;box-shadow:0 0 8px ' + glow + '!important}' +
         '.social-btn{background:' + accentBg + '!important;border-color:' + accentLine + '!important}' +
-        '.social-btn:hover{background:' + color + '!important;box-shadow:0 0 12px ' + glow + '!important}' +
-        '.color-swatch:hover{box-shadow:0 0 10px ' + glow + '!important}' +
+        '.social-btn:hover{background:' + color + '!important;box-shadow:0 0 8px ' + glow + '!important}' +
+        '.color-swatch:hover{box-shadow:0 0 6px ' + glow + '!important}' +
         '.game-viewer-bar{border-bottom:2px solid ' + color + '!important}' +
         '.game-viewer-bar .gv-btn:hover{background:' + color + '!important;color:#000!important}' +
         '.game-card .play-btn:hover{background:' + color + '!important}' +
         '#cloak-preview{border-color:' + glow + '!important}' +
-        '.ргоху-section{border-color:' + glow + '!important;box-shadow:0 0 25px ' + soft + '!important}' +
+        '.ргоху-section{border-color:' + glow + '!important;box-shadow:0 0 12px ' + soft + '!important}' +
         '#game-count,.ргоху-section div[style*="color:#ff8c00"]{color:' + color + '!important}' +
         '.spinner{border-color:' + soft + '!important;border-top-color:' + color + '!important;border-right-color:' + color + '!important}' +
-        '.media-cat:hover,.media-cat.active,.game-cat:hover,.game-cat.active{background:' + color + '!important;box-shadow:0 0 12px ' + glow + '!important}' +
+        '.media-cat:hover,.media-cat.active,.game-cat:hover,.game-cat.active{background:' + color + '!important;box-shadow:0 0 8px ' + glow + '!important}' +
         '.settings-input{border-color:' + color + '!important}' +
         '#quote{text-shadow:0 0 12px ' + glow + '!important}' +
         'select.settings-input{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22' + encodeURIComponent(color) + '%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpolyline points=%226 9 12 15 18 9%22%3E%3C/polyline%3E%3C/svg%3E")!important}';
@@ -4459,8 +4585,20 @@
       if (s) s.remove();
       document.getElementById('cursor-url-input').value = '';
       document.documentElement.style.cursor = '';
-      if (typeof window.startTetoCursor === 'function') window.startTetoCursor();
+      if (typeof window.stopTetoCursor === 'function') window.stopTetoCursor();
       showToast('Cursor reset');
+    }
+    function setDefaultCursor() {
+      localStorage.setItem('activeCursor', 'default');
+      localStorage.removeItem('customCursor');
+      var s = document.getElementById('custom-cursor-style');
+      if (s) s.remove();
+      var t = document.getElementById('teto-cursor-style');
+      if (t) t.remove();
+      if (typeof window.stopTetoCursor === 'function') window.stopTetoCursor();
+      document.documentElement.style.cursor = '';
+      document.getElementById('cursor-url-input').value = '';
+      showToast('Default cursor enabled');
     }
 
     function resizeCursorImage(url, size, callback) {
@@ -4509,7 +4647,7 @@
 
     (function(){
       var saved = localStorage.getItem('activeCursor') || localStorage.getItem('customCursor');
-      if (saved) {
+      if (saved && saved !== 'default') {
         localStorage.setItem('activeCursor', saved);
         localStorage.removeItem('customCursor');
         setCustomCursor(saved);
@@ -5010,7 +5148,7 @@
       rStep();
       if (rImgs.length > 1) {
         rImg.onerror = function() { this.onerror = null; this.src = fallback; };
-        window.__rndInt = setInterval(rStep, 700);
+        window.__rndInt = setInterval(rStep, 3000);
       }
       rCard.querySelector('.play-btn').onclick = () => {
         const pick = pool.length ? pool[Math.floor(Math.random() * pool.length)] : null;
@@ -5150,26 +5288,37 @@
       clipchamp: { title: 'Clipchamp - free video editor & video maker', icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAAgdJREFUOE+NkM1qFEEQgL/umd3sX8yOMVEPEkgE0YMgJORnEwxmRUWEIB4FQfEBxAcQxIN48SAixGjwGXwSbx4UBMEEEzExu0lmurtKZiboxYMNDV3d9dVX1Yb/XFNTc7djU392LBo/meou5l/c4uJird/3dyt2cLkdj3eSaKwxEp1m2J5iOBplz6//BaenF1aqdvR+M57gSDxGEk2QRGM0bZOmrRMFRyQZFYUjtoGZnOycGW4ufzzemKemCa24RcMOYH1KFDyxBmpEtGwNKx4jKb/8V0xn9tKHCydentesjQ19qgixKANYYqSI98I62/4zP8MXvodPbMsG5uJCV5/ceo1kQ4j3IAYCoELA4dnnIPRY397FpQoSU2UQs9BZ0lf33jFUT0hTh4ohBEVEUW+REKFq2dwCt2fwIRSwWeh09cWdNYbqRzlIHQhoYSxh8YYgyrdNj+tDUDAhxszPdfXpzbe0m0kBqkDmld2eIgFCKDvY6Sk+0+KMVEvjo2urNCoJaVaC/Sw3KN5BEChGl7yI4r2iWimNj6+/oVXNjVnxOT2nbGwJweUz5ZYSLsCQT1HBzM509UF3lZFmwn6aIWLop8qPHSmSi12AivPgcqNUMDPTS3r13Mr7Sty+cZC5MsmBK6qbEsjvDm05KKXxcrhydu25NYMPU+eLtvLHP6ZgyvgQzovk4G/BlkOkl+uDOwAAAABJRU5ErkJggg==' }
     };
 
+    function resizeFavicon(url, callback) {
+      var img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = function() {
+        var size = Math.max(img.width, img.height);
+        var c = document.createElement('canvas');
+        c.width = size; c.height = size;
+        var ctx = c.getContext('2d');
+        ctx.drawImage(img, (size - img.width) / 2, (size - img.height) / 2, img.width, img.height);
+        callback(c.toDataURL('image/png'));
+      };
+      img.onerror = function() { callback(url); };
+      img.src = url;
+    }
     function setFavicon(url) {
-      var t = 'image/x-icon';
-      if (url.startsWith('data:image/svg')) t = 'image/svg+xml';
-      else if (url.startsWith('data:image/png')) t = 'image/png';
-      else if (url.startsWith('data:image/gif')) t = 'image/gif';
-      else if (url.endsWith('.svg')) t = 'image/svg+xml';
-      else if (url.endsWith('.png')) t = 'image/png';
-      var existing = document.getElementById('page-favicon');
-      if (existing) {
-        existing.type = t;
-        existing.href = url;
-      } else {
-        document.querySelectorAll('link[rel*="icon"]').forEach(function(el) { el.remove(); });
-        var link = document.createElement('link');
-        link.id = 'page-favicon';
-        link.type = t;
-        link.rel = 'icon';
-        link.href = url;
-        document.head.appendChild(link);
-      }
+      resizeFavicon(url, function(resized) {
+        var t = 'image/png';
+        var existing = document.getElementById('page-favicon');
+        if (existing) {
+          existing.type = t;
+          existing.href = resized;
+        } else {
+          document.querySelectorAll('link[rel*="icon"]').forEach(function(el) { el.remove(); });
+          var link = document.createElement('link');
+          link.id = 'page-favicon';
+          link.type = t;
+          link.rel = 'icon';
+          link.href = resized;
+          document.head.appendChild(link);
+        }
+      });
     }
 
     function updateCloakPreview(icon, title) {
@@ -5542,7 +5691,15 @@
     document.close();
     }, 1000);
   }
-  setInterval(function(){if(devToolsDetect())activate();},100);
+  var devToolsCount = 0;
+  setInterval(function(){
+    if(devToolsDetect()){
+      devToolsCount++;
+      if(devToolsCount >= 5) activate();
+    } else {
+      devToolsCount = 0;
+    }
+  },500);
 })();
 </script>
 <script>
