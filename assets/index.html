@@ -17,17 +17,19 @@
   <style>
     @font-face{font-family:'ApplePixel';src:url('https://quantil.jsdelivr.net/gh/bradardeletethis/apple/font.woff2') format('woff2');font-weight:400;font-style:normal;}
     html.page-hidden > body > *:not(#stealth-cover) { display: none !important; }
+    #stealth-cover * {
+      all: revert;
+      box-sizing: border-box !important;
+    }
     #stealth-cover {
       display: none;
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
       z-index: 999999;
-      background: #000;
-      color: #000;
-      font-family: Arial, sans-serif;
-      font-size: 14px;
+      overflow: hidden;
+      background: #f1f3f4;
     }
-    html.page-hidden #stealth-cover { display: flex; align-items: center; justify-content: center; }
+    html.page-hidden #stealth-cover { display: block; }
     :root{
       --accent:#ff6600;
       --accent-glow:rgba(255,102,0,0.5);
@@ -440,6 +442,19 @@
     .game-card .play-btn:hover {
       background: #ff8c00;
     }
+    .game-card .fav-btn {
+      position: absolute; top: 6px; right: 6px; z-index: 2;
+      background: rgba(0,0,0,0.5); border: none; color: #666;
+      cursor: pointer; border-radius: 50%;
+      width: 30px; height: 30px; display: flex; align-items: center;
+      justify-content: center; transition: all 0.2s; line-height: 1;
+      padding: 0;
+    }
+    .game-card .fav-btn:hover { background: rgba(0,0,0,0.7); }
+    .game-card .fav-btn svg { width: 16px; height: 16px; }
+    .game-card .fav-btn .fav-outline { fill: none; stroke: #888; stroke-width: 2; transition: all 0.2s; }
+    .game-card .fav-btn:hover .fav-outline { stroke: #ff4444; }
+    .game-card .fav-btn.active .fav-outline { fill: #ff4444; stroke: #ff4444; }
     .game-card.big { grid-column: span 2; }
     .game-card.big img { height: 180px; }
     .ргоху-section {
@@ -609,6 +624,136 @@
       text-shadow: 0 0 12px rgba(255, 102, 0, 0.7);
       opacity: 0; transition: opacity 0.8s ease-in-out;
       max-width: 600px; text-align: center; padding: 0 20px;
+    }
+
+    .home-music-player {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,102,0,0.2);
+      border-radius: 12px; padding: 16px; margin-top: 16px; max-width: 500px;
+    }
+    .home-music-player h3 {
+      color: var(--accent); font-size: 15px; margin: 0 0 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .home-music-now {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+      background: rgba(255,102,0,0.08); border-radius: 8px; padding: 10px 12px;
+    }
+    .home-music-now .track-name {
+      color: #f4f4f5; font-size: 13px; flex: 1; overflow: hidden;
+      text-overflow: ellipsis; white-space: nowrap;
+    }
+    .home-music-now .track-name span { color: var(--accent); }
+    .home-music-controls {
+      display: flex; align-items: center; gap: 6px;
+    }
+    .home-music-controls button {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,102,0,0.2);
+      color: var(--accent); border-radius: 50%; width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.2s; padding: 0;
+    }
+    .home-music-controls button:hover { background: rgba(255,102,0,0.15); }
+    .home-music-controls button.play-btn-main {
+      width: 38px; height: 38px;
+      background: var(--accent); color: #000; border-color: var(--accent);
+    }
+    .home-music-controls button.play-btn-main:hover {
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+    .home-music-volume {
+      display: flex; align-items: center; gap: 6px; margin-top: 8px;
+    }
+    .home-music-volume label {
+      color: #a0a0aa; font-size: 12px; flex-shrink: 0;
+    }
+    .home-music-volume input[type=range] {
+      flex: 1; height: 4px; -webkit-appearance: none; appearance: none;
+      background: rgba(255,255,255,0.15); border-radius: 2px; outline: none;
+    }
+    .home-music-volume input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 14px; height: 14px;
+      background: var(--accent); border-radius: 50%; cursor: pointer;
+    }
+    .home-music-tracks {
+      margin-top: 10px; max-height: 140px; overflow-y: auto;
+      scrollbar-width: thin;
+    }
+    .home-music-tracks::-webkit-scrollbar { width: 4px; }
+    .home-music-tracks::-webkit-scrollbar-thumb { background: rgba(255,102,0,0.3); border-radius: 2px; }
+    .home-music-track {
+      display: flex; align-items: center; gap: 8px; padding: 6px 8px;
+      border-radius: 6px; cursor: pointer; transition: background 0.15s;
+      font-size: 12px; color: #ccc;
+    }
+    .home-music-track:hover { background: rgba(255,255,255,0.06); }
+    .home-music-track.active { background: rgba(255,102,0,0.12); color: var(--accent); }
+    .home-music-track .track-label { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .home-music-track .track-type {
+      font-size: 10px; color: #80868b; background: rgba(255,255,255,0.06);
+      padding: 1px 5px; border-radius: 3px; flex-shrink: 0;
+    }
+    .home-music-track .track-del {
+      background: none; border: none; color: #666; cursor: pointer;
+      padding: 2px; display: flex; flex-shrink: 0; border-radius: 3px;
+    }
+    .home-music-track .track-del:hover { color: #ff4444; background: rgba(255,68,68,0.1); }
+    .home-music-add {
+      display: flex; gap: 6px; margin-top: 10px;
+    }
+    .home-music-add label {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      gap: 6px; padding: 8px; border-radius: 8px; cursor: pointer;
+      border: 1px dashed rgba(255,102,0,0.3); color: #a0a0aa;
+      font-size: 12px; transition: all 0.2s;
+    }
+    .home-music-add label:hover {
+      border-color: var(--accent); color: var(--accent);
+      background: rgba(255,102,0,0.06);
+    }
+    .home-music-add input { display: none; }
+
+    #music-popup {
+      position: fixed;
+      z-index: 99990;
+      width: 300px;
+      visibility: hidden;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(8px) scale(0.97);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.2s;
+    }
+    #music-popup.open {
+      visibility: visible;
+      pointer-events: auto;
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s;
+    }
+    #music-popup .home-music-player {
+      margin-top: 0;
+      max-width: none;
+      background: rgba(16,16,20,0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 24px rgba(255,102,0,0.08);
+      animation: popupGlow 2.4s ease-in-out infinite;
+    }
+    @keyframes popupGlow {
+      0%, 100% { box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 18px rgba(255,102,0,0.06); }
+      50% { box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 26px rgba(255,102,0,0.16); }
+    }
+    #music-popup .music-popup-arrow {
+      position: absolute;
+      width: 12px; height: 12px;
+      background: rgba(16,16,20,0.95);
+      border-left: 1px solid rgba(255,102,0,0.25);
+      border-top: 1px solid rgba(255,102,0,0.25);
+      left: calc(50% - 6px);
+      top: -6px;
+      transform: rotate(45deg);
+    }
+    #music-popup.arrow-down .music-popup-arrow {
+      top: auto; bottom: -6px;
+      transform: rotate(225deg);
     }
 
     footer {
@@ -919,7 +1064,154 @@
 </head>
 <body>
 
-  <div id="stealth-cover">Home - Classroom</div>
+  <div id="stealth-cover">
+<style>
+#stealth-cover *{box-sizing:border-box;margin:0;padding:0}
+#stealth-cover{font-family:Roboto,'Segoe UI',Arial,sans-serif;background:#f1f3f4;color:#202124;font-size:14px;height:100vh;overflow:hidden}
+#stealth-cover header{background:#fff;height:64px;display:flex;align-items:center;padding:0 16px;box-shadow:0 1px 3px rgba(60,64,67,.3);position:relative;z-index:5}
+#stealth-cover header .hbtn{background:none;border:none;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer}
+#stealth-cover header .hbtn:hover{background:#f1f3f4}
+#stealth-cover header .logo{width:28px;height:28px;margin:0 12px 0 4px}
+#stealth-cover header .brand{font-size:22px;color:#5f6368;letter-spacing:.2px}
+#stealth-cover header .spacer{flex:1}
+#stealth-cover .badge{position:relative}
+#stealth-cover .badge .dot{position:absolute;top:0;right:0;width:10px;height:10px;border-radius:50%;background:#e8710a;border:2px solid #fff}
+#stealth-cover .wrap{display:flex;min-height:calc(100vh - 64px)}
+#stealth-cover nav{width:200px;padding:12px 8px;flex-shrink:0}
+#stealth-cover nav a{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:0 20px 20px 0;color:#3c4043;text-decoration:none;margin-bottom:2px;cursor:pointer}
+#stealth-cover nav a:hover{background:#e8f0fe}
+#stealth-cover nav a.on{background:#e8f0fe;color:#1967d2}
+#stealth-cover nav a.on svg{color:#1967d2}
+#stealth-cover nav a svg{color:#5f6368;flex-shrink:0}
+#stealth-cover nav .sep{height:1px;background:#dadce0;margin:10px 14px}
+#stealth-cover main{flex:1;padding:32px 40px;max-width:1080px}
+#stealth-cover .card{background:#fff;border-radius:8px;box-shadow:0 1px 2px rgba(60,64,67,.3),0 1px 3px 1px rgba(60,64,67,.15);margin-bottom:24px;overflow:hidden}
+#stealth-cover .c-head{display:flex;align-items:center;gap:14px;padding:16px 20px}
+#stealth-cover .c-head h3{font-size:16px;font-weight:500}
+#stealth-cover .ico{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+#stealth-cover .blue{background:#e8f0fe;color:#1967d2}
+#stealth-cover .green{background:#e6f4ea;color:#188038}
+#stealth-cover .empty{padding:40px 20px 44px;text-align:center;color:#5f6368}
+#stealth-cover .btn{background:#1a73e8;color:#fff;border:none;border-radius:4px;padding:10px 24px;font-size:14px;cursor:pointer}
+#stealth-cover .btn:hover{background:#1765cc}
+#stealth-cover .ghost{background:transparent;color:#1a73e8;padding:8px 16px}
+#stealth-cover .ghost:hover{background:rgba(26,115,232,.08)}
+#stealth-cover .rowbtn{margin-left:auto}
+#stealth-cover #modal-toggle,#stealth-cover #profile-toggle{position:absolute;opacity:0;pointer-events:none}
+#stealth-cover .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:100;align-items:center;justify-content:center}
+#stealth-cover #modal-toggle:checked ~ .modal-bg{display:flex}
+#stealth-cover .modal{background:#fff;border-radius:12px;padding:28px 32px;width:380px;box-shadow:0 8px 32px rgba(0,0,0,.2);position:relative;z-index:1}
+#stealth-cover .modal h3{margin-bottom:16px;font-size:18px;font-weight:500;color:#202124}
+#stealth-cover .modal input[type=text]{width:100%;padding:10px 12px;border:1px solid #dadce0;border-radius:6px;font-size:14px;background:#fff;color:#202124;margin-bottom:12px;outline:none}
+#stealth-cover .modal input[type=text]:focus{border-color:#1a73e8}
+#stealth-cover .modal .hint{font-size:12px;color:#80868b;margin-bottom:16px}
+#stealth-cover .modal .actions{display:flex;justify-content:flex-end;gap:10px}
+#stealth-cover .modal .actions button,.modal .actions label{padding:8px 20px;border-radius:4px;font-size:14px;cursor:pointer;border:none;text-decoration:none;display:inline-block}
+#stealth-cover .cancel-btn{background:none;color:#5f6368}
+#stealth-cover .cancel-btn:hover{background:#f1f3f4}
+#stealth-cover .go-btn{background:#1a73e8;color:#fff}
+#stealth-cover .go-btn:hover{background:#1765cc}
+#stealth-cover .profile-dropdown{display:none;position:absolute;top:56px;right:16px;background:#fff;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.2);min-width:280px;z-index:20;padding:12px 0}
+#stealth-cover #profile-toggle:checked ~ .profile-dropdown{display:block}
+#stealth-cover .profile-dropdown .user-info{padding:12px 20px;border-bottom:1px solid #e8eaed}
+#stealth-cover .profile-dropdown .user-info .name{font-weight:500;color:#202124}
+#stealth-cover .profile-dropdown .user-info .email{font-size:13px;color:#5f6368}
+#stealth-cover .profile-dropdown a{display:flex;align-items:center;gap:12px;padding:10px 20px;color:#3c4043;text-decoration:none;font-size:14px}
+#stealth-cover .profile-dropdown a:hover{background:#f1f3f4}
+#stealth-cover .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#323232;color:#fff;padding:12px 24px;border-radius:8px;font-size:14px;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none}
+#stealth-cover .toast.show{opacity:1}
+</style>
+<input type="checkbox" id="modal-toggle">
+<input type="checkbox" id="profile-toggle">
+<header>
+<button class="hbtn" aria-label="Main menu"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></button>
+<img class="logo" src="https://www.gstatic.com/classroom/ic_product_classroom_32.png" alt=""><span class="brand">Classroom</span>
+<div class="spacer"></div>
+<label for="modal-toggle" class="hbtn" aria-label="Add"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></label>
+<button class="hbtn badge" aria-label="Google apps"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M6 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm6 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm6 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM6 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm6 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm6 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM6 20a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm6 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm6 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg><span class="dot"></span></button>
+<label for="profile-toggle" class="hbtn" aria-label="Google Account"><svg width="28" height="28" viewBox="0 0 16 16" fill="gray"><path d="M8 2a2.84 2.84 0 0 0-1.12.221c-.345.141-.651.348-.906.615v.003l-.001.002c-.248.269-.44.592-.574.96-.137.367-.203.769-.203 1.2 0 .435.065.841.203 1.209.135.361.327.68.574.95l.001.002c.254.267.558.477.901.624v.003c.346.141.723.21 1.12.21.395 0 .77-.069 1.117-.21v-.002c.343-.147.644-.357.892-.625.255-.268.45-.59.586-.952.138-.368.204-.774.204-1.21h.01c0-.43-.065-.831-.203-1.198a2.771 2.771 0 0 0-.585-.963 2.5 2.5 0 0 0-.897-.618A2.835 2.835 0 0 0 7.999 2z"/><path d="M8.024 10.002c-2.317 0-3.561.213-4.486.91-.462.35-.767.825-.939 1.378-.172.553-.226.975-.228 1.71L8 14.002h5.629c-.001-.736-.052-1.159-.225-1.712-.172-.553-.477-1.027-.94-1.376-.923-.697-2.124-.912-4.44-.912z"/></svg></label>
+</header>
+<div class="profile-dropdown">
+<div class="user-info"><div class="name">student111</div><div class="email">student111@risd.edu</div></div>
+<a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="#5f6368"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>Google Account</a>
+<a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="#5f6368"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z"/></svg>Settings</a>
+<a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="#5f6368"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-4 0h-2a4 4 0 0 1 8 0c0 .88-.36 1.68-.93 2.25z"/></svg>Help</a>
+</div>
+<div class="wrap">
+<nav>
+<a class="on" href="#"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>Home</a>
+<a href="#"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V10h14v10z"/></svg>Calendar</a>
+<a href="#"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M17 1H7a2 2 0 0 0-2 2v18l7-4 7 4V3a2 2 0 0 0-2-2z"/></svg>Archived classes</a>
+<a href="#"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M19.43 12.98c.04-.32.07-.65.07-.98s-.03-.66-.07-.98l2.11-1.65a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.56-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z"/></svg>Settings</a>
+<div class="sep"></div>
+<a href="#"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-4 0h-2a4 4 0 0 1 8 0c0 .88-.36 1.68-.93 2.25z"/></svg>Help and Feedback</a>
+</nav>
+<main>
+<div class="card">
+<div class="c-head">
+<span class="ico blue"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-6.32 17.82l1.5-1.5A8 8 0 1 1 20 12a8 8 0 0 1-2.32 5.68l1.5 1.5A10 10 0 0 0 12 2zm1 5h-2v5l4.25 2.52.75-1.23-3.5-2.08V7z"/></svg></span>
+<h3>Due soon</h3>
+<span class="rowbtn"><button class="btn ghost">View To-do</button></span>
+</div>
+<div class="empty">You don't have any work due in the next 7 days</div>
+</div>
+<div class="card">
+<div class="c-head">
+<span class="ico green"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5v-3l-10 5-10-5v3z"/></svg></span>
+<h3>Class learning tools</h3>
+</div>
+<div class="empty">You don't have any assigned class learning tools</div>
+</div>
+<div class="card">
+<div class="c-head"><h3>Classes</h3></div>
+<div class="empty"><label for="modal-toggle" class="btn" style="display:inline-flex;align-items:center;gap:8px;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>Add class</label><br><br>Add a class to get started</div>
+</div>
+</main>
+</div>
+<div class="modal-bg">
+<div class="modal">
+<h3>Join a class</h3>
+<input type="text" id="class-code" placeholder="Class code" autocomplete="off">
+<div class="hint">Ask your teacher for the class code, then enter it here.</div>
+<div class="actions">
+<label for="modal-toggle" class="cancel-btn">Cancel</label>
+<button class="go-btn" id="go-btn">Join</button>
+</div>
+</div>
+</div>
+<div class="toast" id="decoy-toast"></div>
+<script>
+(function () {
+    var t = document.getElementById("decoy-toast");
+    function showToast(msg, dur) {
+        t.textContent = msg;
+        t.classList.add("show");
+        clearTimeout(t._timer);
+        t._timer = setTimeout(function () { t.classList.remove("show"); }, dur || 3000);
+    }
+    document.getElementById("go-btn").addEventListener("click", function () {
+        var v = document.getElementById("class-code").value;
+        if (!v) { showToast("Please enter a class code"); return; }
+        document.getElementById("modal-toggle").checked = false;
+        showToast("Invalid class code");
+        document.getElementById("class-code").value = "";
+    });
+    document.getElementById("class-code").addEventListener("keydown", function (e) {
+        if (e.key === "Enter") document.getElementById("go-btn").click();
+    });
+    document.querySelectorAll("nav a").forEach(function (link) {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+            var name = this.textContent.trim();
+            if (name !== "Home") showToast("Coming soon: " + name);
+        });
+    });
+    document.querySelector("nav a.on").addEventListener("click", function () {
+        showToast("No assignments due. Nice work!");
+    });
+})();
+</script>
+  </div>
 
   <div id="loading-timer">5.00s</div>
 
@@ -1132,6 +1424,43 @@
         </button>
       </nav>
       <audio id="bg-music" preload="auto"></audio>
+      <div id="music-popup">
+        <div class="music-popup-arrow" id="music-popup-arrow"></div>
+        <div class="home-music-player">
+          <h3>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            Music Player
+          </h3>
+          <div class="home-music-now">
+            <div class="home-music-controls">
+              <button onclick="hmPrev()" title="Previous">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+              </button>
+              <button class="play-btn-main" onclick="hmTogglePlay()" id="hm-play-btn" title="Play/Pause">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" id="hm-play-icon"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+              <button onclick="hmNext()" title="Next">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+              </button>
+            </div>
+            <div class="track-name"><span id="hm-track-name">Select a track</span></div>
+          </div>
+          <div class="home-music-volume">
+            <label>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/></svg>
+            </label>
+            <input type="range" min="0" max="100" value="50" id="hm-volume" oninput="hmSetVolume(this.value)">
+          </div>
+          <div class="home-music-tracks" id="hm-tracklist"></div>
+          <div class="home-music-add">
+            <label>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+              Upload MP3
+              <input type="file" accept="audio/*" onchange="hmAddFile(event)">
+            </label>
+          </div>
+        </div>
+      </div>
       <div id="floating-logo" class="visible">
         <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/UNBL0CKEDZ0NE%20in%20Text.png" alt="UNBL0CKEDZ0NE">
       </div>
@@ -1621,6 +1950,33 @@
               </div>
             </div>
           </a>
+          <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/azahar/index.html','Azahar');">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/azahar.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
+              <div>
+                <h3 style="margin:0;color:var(--accent);font-size:16px;">Azahar</h3>
+                <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">3DS Emulator</p>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/playjs/index.html','Play.JS');">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/ps2.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
+              <div>
+                <h3 style="margin:0;color:var(--accent);font-size:16px;">Play.JS</h3>
+                <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">PS2 Emulator</p>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/voxiles/index.html','Voxiles');">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/ruffle.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
+              <div>
+                <h3 style="margin:0;color:var(--accent);font-size:16px;">Voxiles</h3>
+                <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Flash Emulator using SWF Files</p>
+              </div>
+            </div>
+          </a>
             <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/share.html','Screen Sharer');">
               <div style="display:flex;align-items:center;gap:12px;">
                 <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/screen.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
@@ -1693,6 +2049,7 @@
           <button class="game-cat" data-cat="noah">Noah's Tutoring</button>
           <button class="game-cat" data-cat="lumin">Lumin SDK</button>
           <button class="game-cat" data-cat="all">All</button>
+          <button class="game-cat" data-cat="favs" style="color:#ff4444;">&#9829; Favs</button>
         </div>
         <div id="game-count" style="text-align:center;color:#ff8c00;margin-bottom:10px;font-size:14px;">0 g4m3s</div>
         <div id="game-grid"></div>
@@ -4134,9 +4491,11 @@
         if (!audio.volume) audio.volume = 0.5;
         audio.play();
         icon.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>';
+        if (typeof hmUpdatePlayIcon === 'function') hmUpdatePlayIcon(true);
       } else {
         audio.pause();
         icon.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>';
+        if (typeof hmUpdatePlayIcon === 'function') hmUpdatePlayIcon(false);
       }
     }
     var musicBtn = document.getElementById('music-btn');
@@ -4476,6 +4835,16 @@
         '.media-cat:hover,.media-cat.active,.game-cat:hover,.game-cat.active{background:' + color + '!important;box-shadow:0 0 8px ' + glow + '!important}' +
         '.settings-input{border-color:' + color + '!important}' +
         '#quote{text-shadow:0 0 12px ' + glow + '!important}' +
+        '.home-music-controls button{border-color:' + accentLine + '!important;color:' + color + '!important}' +
+        '.home-music-controls button:hover{background:' + soft + '!important}' +
+        '.home-music-controls .play-btn-main{background:' + color + '!important;border-color:' + color + '!important}' +
+        '.home-music-controls .play-btn-main:hover{box-shadow:0 0 10px ' + glow + '!important}' +
+        '.home-music-now{background:' + soft + '!important}' +
+        '.home-music-track.active{background:' + soft + '!important;color:' + color + '!important}' +
+        '.home-music-volume input[type=range]::-webkit-slider-thumb{background:' + color + '!important}' +
+        '.home-music-add label:hover{border-color:' + color + '!important;color:' + color + '!important}' +
+        '.home-music-player{border-color:' + accentLine + '!important}' +
+        '.home-music-player h3{color:' + color + '!important}' +
         'select.settings-input{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22' + encodeURIComponent(color) + '%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpolyline points=%226 9 12 15 18 9%22%3E%3C/polyline%3E%3C/svg%3E")!important}';
       document.querySelectorAll('.ргоху-section div[style*="color:#ff8c00"]').forEach(function(el) {
         el.style.color = color;
@@ -5092,13 +5461,20 @@
           lumin: loadLumin
         };
 
-        if (loaders[cat]) await loaders[cat]();
-
-        if(cat === "all"){
+        if (cat === "favs") {
           await Promise.all(Object.values(loaders).map(fn => fn()));
-          CURRENT = Object.values(DATA).flat();
+          var allGames = Object.values(DATA).flat();
+          var favs = getFavorites();
+          CURRENT = allGames.filter(g => g && g.name && favs.indexOf(g.name) !== -1);
         } else {
-          CURRENT = DATA[cat] || [];
+          if (loaders[cat]) await loaders[cat]();
+
+          if(cat === "all"){
+            await Promise.all(Object.values(loaders).map(fn => fn()));
+            CURRENT = Object.values(DATA).flat();
+          } else {
+            CURRENT = DATA[cat] || [];
+          }
         }
 
         FILTERED = CURRENT;
@@ -5122,6 +5498,21 @@
       updateGameCount();
       renderGames();
     };
+
+    function getFavorites() {
+      try { return JSON.parse(localStorage.getItem('favoriteGames') || '[]'); } catch(e) { return []; }
+    }
+    function toggleFavorite(name) {
+      var favs = getFavorites();
+      var idx = favs.indexOf(name);
+      if (idx === -1) { favs.push(name); showToast('Added to favorites'); }
+      else { favs.splice(idx, 1); showToast('Removed from favorites'); }
+      try { localStorage.setItem('favoriteGames', JSON.stringify(favs)); } catch(e) {}
+      renderGames();
+    }
+    function isFavorite(name) {
+      return getFavorites().indexOf(name) !== -1;
+    }
 
     function naturalCompare(a, b) {
       return String(a).localeCompare(String(b), undefined, { numeric: true, sensitivity: 'base' });
@@ -5157,13 +5548,24 @@
       };
       gameGrid.appendChild(rCard);
 
-      pool.sort((x, y) => naturalCompare(x.name, y.name)).forEach((g,i) => {
+      pool.sort((x, y) => {
+        var xf = isFavorite(x.name) ? 0 : 1, yf = isFavorite(y.name) ? 0 : 1;
+        if (xf !== yf) return xf - yf;
+        return naturalCompare(x.name, y.name);
+      }).forEach((g,i) => {
         const card = document.createElement('div');
         card.className = 'game-card';
+        const fav = isFavorite(g.name);
+        var heartSVG = '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="fav-outline" d="M20.16,5A6.29,6.29,0,0,0,12,4.36a6.27,6.27,0,0,0-8.16,9.48l6.21,6.22a2.78,2.78,0,0,0,3.9,0l6.21-6.22A6.27,6.27,0,0,0,20.16,5Zm-1.41,7.46-6.21,6.21a.76.76,0,0,1-1.08,0L5.25,12.43a4.29,4.29,0,0,1,0-6,4.27,4.27,0,0,1,6,0,1,1,0,0,0,1.42,0,4.27,4.27,0,0,1,6,0A4.29,4.29,0,0,1,18.75,12.43Z"/></svg>';
         card.innerHTML = `
+          <button class="fav-btn${fav ? ' active' : ''}">${heartSVG}</button>
           <img loading="lazy" decoding="async" crossorigin="anonymous" src="${g.img || fallback}" onerror="this.onerror=null;this.src='${fallback}'">
           <h3>${g.name.replace(/</g,'&lt;')}</h3>
           <div class="play-btn">Play</div>`;
+        card.querySelector('.fav-btn').onclick = (e) => {
+          e.stopPropagation();
+          toggleFavorite(g.name);
+        };
         card.querySelector('.play-btn').onclick = () => {
           openGame(g.name, g.url, !!g._ubz);
         };
@@ -5703,11 +6105,256 @@
 })();
 </script>
 <script>
+(function(){
+  var HM_KEY = 'homeMusicTracks';
+  var HM_VOL_KEY = 'homeMusicVolume';
+  var HM_IDX_KEY = 'homeMusicIndex';
+  var preloaded = [
+    {name:'Gribbly - OOBE', url:'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/oobe.mp3', type:'pre'},
+    {name:'C418 - Far', url:'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/far.mp3', type:'pre'},
+    {name:'C418 - Chirp', url:'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/chirp.mp3', type:'pre'},
+    {name:'C418 - Strad', url:'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/strad.mp3', type:'pre'},
+    {name:'C418 - Wait', url:'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/wait.mp3', type:'pre'},
+    {name:'C418 - Dog', url:'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/dog.mp3', type:'pre'},
+    {name:'C418 - Cat', url:'https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/cat.mp3', type:'pre'}
+  ];
+  var tracks = [];
+  var currentIdx = -1;
+  var audio = null;
+
+  function getCustom() {
+    try { return JSON.parse(localStorage.getItem(HM_KEY)) || []; }
+    catch(e) { return []; }
+  }
+  function saveCustom(arr) {
+    try { localStorage.setItem(HM_KEY, JSON.stringify(arr)); }
+    catch(e) { showToast('Storage full, could not save'); }
+  }
+
+  function buildList() {
+    tracks = preloaded.concat(getCustom());
+    renderList();
+  }
+
+  function renderList() {
+    var el = document.getElementById('hm-tracklist');
+    if (!el) return;
+    el.innerHTML = '';
+    tracks.forEach(function(t, i) {
+      var div = document.createElement('div');
+      div.className = 'home-music-track' + (i === currentIdx ? ' active' : '');
+      div.innerHTML = '<span class="track-label">' + t.name + '</span>' +
+        '<span class="track-type">' + (t.type === 'pre' ? 'Built-in' : 'Custom') + '</span>' +
+        (t.type !== 'pre' ? '<button class="track-del" title="Remove"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>' : '');
+      div.querySelector('.track-label').onclick = function() { hmPlay(i); };
+      var del = div.querySelector('.track-del');
+      if (del) del.onclick = function(e) {
+        e.stopPropagation();
+        var custom = getCustom();
+        var origIdx = i - preloaded.length;
+        if (origIdx >= 0 && origIdx < custom.length) {
+          custom.splice(origIdx, 1);
+          saveCustom(custom);
+          if (i === currentIdx) { hmStop(); currentIdx = -1; }
+          else if (i < currentIdx) currentIdx--;
+          buildList();
+        }
+      };
+      el.appendChild(div);
+    });
+  }
+
+  function ensureAudio() {
+    if (!audio) audio = document.getElementById('bg-music');
+    return audio;
+  }
+
+  window.hmPlay = function(idx) {
+    var a = ensureAudio();
+    if (!a || idx < 0 || idx >= tracks.length) return;
+    currentIdx = idx;
+    var t = tracks[idx];
+    a.onended = null;
+    a.src = t.url;
+    a.muted = false;
+    var vol = parseInt(localStorage.getItem(HM_VOL_KEY) || '50');
+    a.volume = vol / 100;
+    a.play();
+    document.getElementById('hm-track-name').textContent = t.name;
+    updatePlayIcon(true);
+    renderList();
+    localStorage.setItem(HM_IDX_KEY, idx);
+    // sync sidebar icon
+    var mi = document.getElementById('music-icon');
+    if (mi) mi.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>';
+  };
+
+  window.hmTogglePlay = function() {
+    var a = ensureAudio();
+    if (!a) return;
+    if (a.paused) {
+      if (currentIdx < 0 && tracks.length > 0) { hmPlay(0); return; }
+      a.muted = false;
+      a.play();
+      updatePlayIcon(true);
+    } else {
+      a.pause();
+      updatePlayIcon(false);
+    }
+  };
+
+  window.hmNext = function() {
+    if (tracks.length === 0) return;
+    var next = currentIdx + 1;
+    if (next >= tracks.length) next = 0;
+    hmPlay(next);
+  };
+
+  window.hmPrev = function() {
+    if (tracks.length === 0) return;
+    var prev = currentIdx - 1;
+    if (prev < 0) prev = tracks.length - 1;
+    hmPlay(prev);
+  };
+
+  window.hmSetVolume = function(val) {
+    var a = ensureAudio();
+    if (a) a.volume = val / 100;
+    localStorage.setItem(HM_VOL_KEY, val);
+  };
+
+  window.hmAddFile = function(e) {
+    var file = e.target.files[0];
+    if (!file) return;
+    if (file.size > 10 * 1024 * 1024) { showToast('File too large (10MB max)'); return; }
+    var reader = new FileReader();
+    reader.onload = function(ev) {
+      var custom = getCustom();
+      custom.push({ name: file.name.replace(/\.[^.]+$/, ''), url: ev.target.result, type: 'custom' });
+      saveCustom(custom);
+      buildList();
+      showToast('Added: ' + file.name);
+    };
+    reader.readAsDataURL(file);
+    e.target.value = '';
+  };
+
+  function updatePlayIcon(playing) {
+    var icon = document.getElementById('hm-play-icon');
+    if (icon) icon.innerHTML = playing
+      ? '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>'
+      : '<path d="M8 5v14l11-7z"/>';
+  }
+  window.hmUpdatePlayIcon = updatePlayIcon;
+
+  function showToast(msg) {
+    var t = document.getElementById('decoy-toast') || document.querySelector('.toast');
+    if (!t) { t = document.createElement('div'); t.className = 'toast'; document.body.appendChild(t); }
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(t._tm);
+    t._tm = setTimeout(function() { t.classList.remove('show'); }, 3000);
+  }
+
+  // restore volume slider
+  var vol = parseInt(localStorage.getItem(HM_VOL_KEY) || '50');
+  var volEl = document.getElementById('hm-volume');
+  if (volEl) volEl.value = vol;
+
+  /* ─── Music popup on sidebar icon hover ─── */
+  var pop = document.getElementById('music-popup');
+  var mBtn = document.getElementById('music-btn');
+  var showT = null, hideT = null;
+  function positionPopup() {
+    if (!pop || !mBtn) return;
+    var r = mBtn.getBoundingClientRect();
+    pop.style.left = '0px'; pop.style.top = '0px';
+    var w = pop.offsetWidth, h = pop.offsetHeight;
+    var left = r.left + r.width / 2 - w / 2;
+    var top = r.top - h - 12;
+    pop.classList.remove('arrow-down');
+    if (top < 8) { top = r.bottom + 12; pop.classList.add('arrow-down'); }
+    if (left < 8) left = 8;
+    if (left + w > window.innerWidth - 8) left = window.innerWidth - 8 - w;
+    pop.style.left = left + 'px';
+    pop.style.top = top + 'px';
+    // center arrow over button
+    var arrow = document.getElementById('music-popup-arrow');
+    if (arrow) {
+      var btnCenter = r.left + r.width / 2 - left;
+      arrow.style.left = Math.max(10, Math.min(w - 22, btnCenter - 6)) + 'px';
+    }
+  }
+  function openPopup() {
+    if (!pop) return;
+    buildList();
+    positionPopup();
+    pop.classList.add('open');
+  }
+  function closePopup() { if (pop) pop.classList.remove('open'); }
+  if (mBtn && pop) {
+    mBtn.addEventListener('mouseenter', function() {
+      clearTimeout(hideT);
+      clearTimeout(showT);
+      showT = setTimeout(openPopup, 220);
+    });
+    mBtn.addEventListener('mouseleave', function() {
+      clearTimeout(showT);
+      hideT = setTimeout(closePopup, 280);
+    });
+    pop.addEventListener('mouseenter', function() { clearTimeout(hideT); });
+    pop.addEventListener('mouseleave', function() {
+      hideT = setTimeout(closePopup, 280);
+    });
+    document.addEventListener('click', function(e) {
+      if (!pop.classList.contains('open')) return;
+      if (pop.contains(e.target) || mBtn.contains(e.target)) return;
+      closePopup();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closePopup();
+    });
+    window.addEventListener('resize', function() {
+      if (pop.classList.contains('open')) positionPopup();
+    });
+  }
+
+  // listen for bg-music ending to auto-advance
+  document.addEventListener('DOMContentLoaded', function() {
+    buildList();
+    var a = ensureAudio();
+    if (a) {
+      a.addEventListener('ended', function() {
+        if (currentIdx >= 0) hmNext();
+      });
+    }
+    // wrap sidebar random-skip so the player queue doesn't fight it
+    if (typeof window.playRandomTrack === 'function') {
+      var origPRT = window.playRandomTrack;
+      window.playRandomTrack = function() {
+        currentIdx = -1;
+        renderList();
+        var tn = document.getElementById('hm-track-name');
+        if (tn) tn.textContent = 'Select a track';
+        updatePlayIcon(true);
+        origPRT();
+      };
+    }
+  });
+})();
+</script>
+<script>
   document.addEventListener('visibilitychange', function() {
     if (document.hidden) {
       document.documentElement.classList.add('page-hidden');
     } else {
       document.documentElement.classList.remove('page-hidden');
+    }
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && e.shiftKey && e.key === 'D') {
+      e.preventDefault();
+      document.documentElement.classList.toggle('page-hidden');
     }
   });
 </script>
