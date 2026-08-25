@@ -415,6 +415,7 @@
     @media (max-width: 700px) { #game-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 500px) { #game-grid { grid-template-columns: 1fr; } }
     .game-card {
+      position: relative;
       background: rgba(8, 4, 0, 0.9); border: 2px solid var(--accent);
       border-radius: 10px; overflow: hidden;
       transition: transform 0.2s, box-shadow 0.2s;
@@ -455,6 +456,17 @@
     .game-card .fav-btn .fav-outline { fill: none; stroke: #888; stroke-width: 2; transition: all 0.2s; }
     .game-card .fav-btn:hover .fav-outline { stroke: #ff4444; }
     .game-card .fav-btn.active .fav-outline { fill: #ff4444; stroke: #ff4444; }
+    .fav-stash-tag {
+      display: block;
+      font-size: 10px;
+      font-weight: 400;
+      color: #ff8c00;
+      opacity: 0.85;
+      margin-top: 2px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
     .game-card.big { grid-column: span 2; }
     .game-card.big img { height: 180px; }
     .ргоху-section {
@@ -5073,6 +5085,21 @@
     let CURRENT = [];
     let FILTERED = [];
 
+    var STASH_NAMES = {
+      ubz: 'UNBL0CKEDZ0NE',
+      gn: 'GN-Math',
+      elite: 'Elite Gamez',
+      ugs: 'Ultimate Game Stash',
+      seraph: 'Seraph',
+      ckv: 'Chicken Kings Vault',
+      noah: "Noah's Tutoring",
+      lumin: 'Lumin SDK'
+    };
+    function stashLabel(key) { return STASH_NAMES[key] || key || ''; }
+    function tagStash(arr, key) {
+      return (arr || []).map(function(g) { if (g && !g._stash) g._stash = key; return g; });
+    }
+
     function loadUBZ() {
       if(DATA.ubz.length) return;
       DATA.ubz = [
@@ -5463,17 +5490,17 @@
 
         if (cat === "favs") {
           await Promise.all(Object.values(loaders).map(fn => fn()));
-          var allGames = Object.values(DATA).flat();
+          var allGames = Object.keys(DATA).flatMap(k => tagStash(DATA[k], k));
           var favs = getFavorites();
-          CURRENT = allGames.filter(g => g && g.name && favs.indexOf(g.name) !== -1);
+          CURRENT = allGames.filter(g => g && g.name && favs.some(f => f.name === g.name && (!f.stash || !g._stash || f.stash === g._stash)));
         } else {
           if (loaders[cat]) await loaders[cat]();
 
           if(cat === "all"){
             await Promise.all(Object.values(loaders).map(fn => fn()));
-            CURRENT = Object.values(DATA).flat();
+            CURRENT = Object.keys(DATA).flatMap(k => tagStash(DATA[k], k));
           } else {
-            CURRENT = DATA[cat] || [];
+            CURRENT = tagStash(DATA[cat] || [], cat);
           }
         }
 
@@ -5500,18 +5527,31 @@
     };
 
     function getFavorites() {
-      try { return JSON.parse(localStorage.getItem('favoriteGames') || '[]'); } catch(e) { return []; }
+      try {
+        var raw = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+        return raw.map(function(f) { return typeof f === 'string' ? { name: f, stash: '' } : f; });
+      } catch(e) { return []; }
     }
-    function toggleFavorite(name) {
+    function toggleFavorite(game) {
+      var name = game.name, stash = game._stash || '';
       var favs = getFavorites();
-      var idx = favs.indexOf(name);
-      if (idx === -1) { favs.push(name); showToast('Added to favorites'); }
-      else { favs.splice(idx, 1); showToast('Removed from favorites'); }
+      var idx = favs.findIndex(function(f) {
+        return f.name === name && (!f.stash || !stash || f.stash === stash);
+      });
+      if (idx === -1) {
+        favs.push({ name: name, stash: stash });
+        showToast('Favorited: ' + name + (stash ? ' — ' + stashLabel(stash) : ''));
+      } else {
+        favs.splice(idx, 1);
+        showToast('Removed from favorites');
+      }
       try { localStorage.setItem('favoriteGames', JSON.stringify(favs)); } catch(e) {}
       renderGames();
     }
-    function isFavorite(name) {
-      return getFavorites().indexOf(name) !== -1;
+    function isFavorite(name, stash) {
+      return getFavorites().some(function(f) {
+        return f.name === name && (!f.stash || !stash || f.stash === stash);
+      });
     }
 
     function naturalCompare(a, b) {
@@ -5549,22 +5589,25 @@
       gameGrid.appendChild(rCard);
 
       pool.sort((x, y) => {
-        var xf = isFavorite(x.name) ? 0 : 1, yf = isFavorite(y.name) ? 0 : 1;
+        var xf = isFavorite(x.name, x._stash) ? 0 : 1, yf = isFavorite(y.name, y._stash) ? 0 : 1;
         if (xf !== yf) return xf - yf;
         return naturalCompare(x.name, y.name);
       }).forEach((g,i) => {
         const card = document.createElement('div');
         card.className = 'game-card';
-        const fav = isFavorite(g.name);
-        var heartSVG = '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="fav-outline" d="M20.16,5A6.29,6.29,0,0,0,12,4.36a6.27,6.27,0,0,0-8.16,9.48l6.21,6.22a2.78,2.78,0,0,0,3.9,0l6.21-6.22A6.27,6.27,0,0,0,20.16,5Zm-1.41,7.46-6.21,6.21a.76.76,0,0,1-1.08,0L5.25,12.43a4.29,4.29,0,0,1,0-6,4.27,4.27,0,0,1,6,0,1,1,0,0,0,1.42,0,4.27,4.27,0,0,1,6,0A4.29,4.29,0,0,1,18.75,12.43Z"/></svg>';
+        const fav = isFavorite(g.name, g._stash);
+        const showStash = (activeCat === 'favs' || activeCat === 'all') && stashLabel(g._stash);
+        var heartSVG = fav
+          ? '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="fav-solid" fill="#ff4444" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'
+          : '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="fav-outline" d="M20.16,5A6.29,6.29,0,0,0,12,4.36a6.27,6.27,0,0,0-8.16,9.48l6.21,6.22a2.78,2.78,0,0,0,3.9,0l6.21-6.22A6.27,6.27,0,0,0,20.16,5Zm-1.41,7.46-6.21,6.21a.76.76,0,0,1-1.08,0L5.25,12.43a4.29,4.29,0,0,1,0-6,4.27,4.27,0,0,1,6,0,1,1,0,0,0,1.42,0,4.27,4.27,0,0,1,6,0A4.29,4.29,0,0,1,18.75,12.43Z"/></svg>';
         card.innerHTML = `
           <button class="fav-btn${fav ? ' active' : ''}">${heartSVG}</button>
           <img loading="lazy" decoding="async" crossorigin="anonymous" src="${g.img || fallback}" onerror="this.onerror=null;this.src='${fallback}'">
-          <h3>${g.name.replace(/</g,'&lt;')}</h3>
+          <h3>${g.name.replace(/</g,'&lt;')}${showStash ? `<span class="fav-stash-tag">${showStash}</span>` : ''}</h3>
           <div class="play-btn">Play</div>`;
         card.querySelector('.fav-btn').onclick = (e) => {
           e.stopPropagation();
-          toggleFavorite(g.name);
+          toggleFavorite(g);
         };
         card.querySelector('.play-btn').onclick = () => {
           openGame(g.name, g.url, !!g._ubz);
