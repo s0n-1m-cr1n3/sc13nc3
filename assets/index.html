@@ -73,7 +73,7 @@
     html.perf-mode{background:#050001}
     html.perf-mode *{animation:none !important;transition:none !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;filter:none !important;will-change:auto !important;background-attachment:scroll !important;background-image:none !important}
     html.perf-mode img,html.perf-mode picture{display:none !important}
-    html.perf-mode #bg-canvas,html.perf-mode #starfield-bg,html.perf-mode #topography-canvas,html.perf-mode #matrix-canvas,html.perf-mode #waves-bg,html.perf-mode #globe-bg,html.perf-mode #dots-bg,html.perf-mode #fog-bg,html.perf-mode #clouds-bg,html.perf-mode #tunnel-bg,html.perf-mode #noise-bg,html.perf-mode #custom-bg{display:none !important}
+    html.perf-mode #bg-canvas,html.perf-mode #starfield-bg,html.perf-mode #topography-canvas,html.perf-mode #matrix-canvas,html.perf-mode #waves-bg,html.perf-mode #globe-bg,html.perf-mode #dots-bg,html.perf-mode #fog-bg,html.perf-mode #tunnel-bg,html.perf-mode #noise-bg,html.perf-mode #custom-bg{display:none !important}
     a,button,.sidebar-btn,.card,.game-card,.play-btn,.partner-card a,.media-cat,.game-cat,.gv-btn,.link-item a{cursor:var(--cursor-link);}
     .loading-cursor{cursor:var(--cursor-wait);}
     html.loading-active{cursor:var(--cursor-wait)!important;}html.loading-active *{cursor:var(--cursor-wait)!important;}
@@ -1456,7 +1456,6 @@
   <div id="globe-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></div>
   <div id="dots-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></div>
   <div id="fog-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></div>
-  <div id="clouds-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></div>
   <div id="tunnel-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></div>
   <div id="noise-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></div>
   <div id="custom-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;background-size:cover;background-position:center;background-repeat:no-repeat;pointer-events:none;"></div>
@@ -2987,7 +2986,6 @@
               <option value="dots">Dots</option>
               <option value="fog">Fog</option>
               <option value="lines">Lines</option>
-              <option value="clouds">Clouds</option>
               <option value="tunnel">Tunnel</option>
               <option value="noise">Noise</option>
               <option value="custom">Custom Image</option>
@@ -3868,8 +3866,6 @@
     let dotsEffect = null;
     let fogInitialized = false;
     let fogEffect = null;
-    let cloudsInitialized = false;
-    let cloudsEffect = null;
     let tunnelInitialized = false;
     let noiseInitialized = false;
     function initVanta(name, el, opts) {
@@ -3911,13 +3907,6 @@
     }
     function stopFog() {
       if (fogEffect) { try { fogEffect.destroy(); } catch(e) {} fogEffect = null; }
-    }
-    function startClouds() {
-      var c = getAccentHex();
-      cloudsEffect = initVanta('CLOUDS', document.getElementById('clouds-bg'), { backgroundColor: 0x050d1a, skyColor: c, cloudColor: 0xadc2d9, cloudShadowColor: 0x182430, lightColor: 0xffffff, speed: 1 });
-    }
-    function stopClouds() {
-      if (cloudsEffect) { try { cloudsEffect.destroy(); } catch(e) {} cloudsEffect = null; }
     }
 
     function startTunnel() {
@@ -4028,7 +4017,6 @@
       const gBg = document.getElementById('globe-bg');
       const dBg = document.getElementById('dots-bg');
       const fBg = document.getElementById('fog-bg');
-      const cBg = document.getElementById('clouds-bg');
       const tuBg = document.getElementById('tunnel-bg');
       const noBg = document.getElementById('noise-bg');
       const cuBg = document.getElementById('custom-bg');
@@ -4041,7 +4029,6 @@
       gBg.style.display = 'none';
       dBg.style.display = 'none';
       fBg.style.display = 'none';
-      cBg.style.display = 'none';
       tuBg.style.display = 'none';
       noBg.style.display = 'none';
       cuBg.style.display = 'none';
@@ -4055,7 +4042,6 @@
       if (globeInitialized) { stopGlobe(); globeInitialized = false; }
       if (dotsInitialized) { stopDots(); dotsInitialized = false; }
       if (fogInitialized) { stopFog(); fogInitialized = false; }
-      if (cloudsInitialized) { stopClouds(); cloudsInitialized = false; }
       if (tunnelInitialized) { stopTunnel(); tunnelInitialized = false; }
       if (noiseInitialized) { stopNoise(); noiseInitialized = false; }
       // Show selected
@@ -4080,9 +4066,6 @@
       } else if (mode === 'fog') {
         fBg.style.display = 'block';
         if (!fogInitialized) { startFog(); fogInitialized = true; }
-      } else if (mode === 'clouds') {
-        cBg.style.display = 'block';
-        if (!cloudsInitialized) { startClouds(); cloudsInitialized = true; }
       } else if (mode === 'tunnel') {
         tuBg.style.display = 'block';
         if (!tunnelInitialized) { startTunnel(); tunnelInitialized = true; }
@@ -4108,6 +4091,10 @@
         if (sel.querySelector('option[value="' + saved + '"]')) {
           sel.value = saved;
           setBackground(saved);
+        } else {
+          localStorage.setItem('bgMode', 'starfield');
+          sel.value = 'starfield';
+          setBackground('starfield');
         }
       }
       var savedWallpaper = localStorage.getItem('customWallpaper');
@@ -4655,6 +4642,20 @@
     let currentGameName = '';
     let currentGameDirectSrc = false;
 
+    function focusGameFrame() {
+      try { if (gameFrame && gameFrame.contentWindow) { gameFrame.focus(); gameFrame.contentWindow.focus(); } } catch (e) {}
+    }
+    // Restore keyboard input to the game frame when the site/tab regains focus.
+    window.addEventListener('focus', function() {
+      if (gameViewer && gameViewer.classList.contains('active')) setTimeout(focusGameFrame, 0);
+    });
+    // Refocus the game after the loading overlay is dismissed and when its wrapper regains clicks.
+    document.addEventListener('pointerdown', function(e) {
+      var t = e.target;
+      if (!t) return;
+      if (t.closest('#game-frame-container') || t.closest('#game-viewer .game-viewer-bar')) setTimeout(focusGameFrame, 0);
+    }, true);
+
     function toCdnUrl(url) {
       var result = url.replace(/https?:\/\/[^/]*\.jsdelivr\.net\//g, _cdn + '/');
       if (_cdn.indexOf('cdn.staticdelivr.com') !== -1) {
@@ -4966,6 +4967,7 @@ function injectGameAudio(fw, doc) {
       gvLoading.style.display = 'none';
       document.documentElement.classList.remove('loading-active');
       showToast(currentGameName + ' loaded');
+      setTimeout(focusGameFrame, 50);
     }
 
     function writeGameIntoFrame(html, url, targetDoc) {
@@ -4975,6 +4977,11 @@ function injectGameAudio(fw, doc) {
       }
       html = html.replace(/https?:\/\/[^/]*\.jsdelivr\.net\//g, _cdn + '/');
       if (_cdn.indexOf('cdn.staticdelivr.com') !== -1) html = html.replace(/@/g, '/');
+      // Drop the YouTube Playables SDK: without a real host it mutes audio and nulls storage in an iframe.
+      html = html.replace(/<script[^>]*?\bsrc=["'][^"']*ytgame[^"']*\.js[^"']*["'][^>]*>\s*<\/script>/gi, '');
+      var ytStub = '<scr' + 'ipt>(function(){try{if(typeof window.ytgame==="undefined"){window.ytgame={IN_PLAYABLES_ENV:false,system:{isAudioEnabled:function(){return true;},onAudioEnabledChange:function(cb){if(typeof cb==="function"){try{setTimeout(function(){cb(true);},0);}catch(e){}}},getLanguage:function(){return Promise.resolve("en");}},game:{firstFrameReady:function(){},gameReady:function(){},saveData:function(){return Promise.resolve(null);},loadData:function(){return Promise.resolve(null);}},engagement:{sendScore:function(){return Promise.resolve(null);}}};}}catch(e){}})();</scr' + 'ipt>';
+      if (/<head/i.test(html)) html = html.replace(/<head([^>]*)>/i, '<head$1>' + ytStub);
+      else html = ytStub + html;
       if (fpsSpooferOn()) {
         var spoof = '<scr' + 'ipt>(function(){var fps=360;try{var s=parseInt(localStorage.getItem("fpsMax"),10);if(!isNaN(s)&&s>0)fps=Math.min(1000,Math.max(30,Math.round(s)));}catch(e){}try{Object.defineProperty(window.screen,"refreshRate",{configurable:true,get:function(){return fps;}});}catch(e){}if(!window.requestAnimationFrame)return;var queues=[],idByCb={},sched=false,lastReal=null,fakeNow=null,dt=1000/fps,nextId=1,nativeRaf=window.requestAnimationFrame,nativeCaf=window.cancelAnimationFrame;var nowMs=function(){return (window.performance&&performance.now)?performance.now():Date.now();};var work=0;var tick=function(){sched=false;var t=nowMs(),el=t-lastReal;lastReal=t;if(fakeNow===null)fakeNow=lastReal;work=(el>250)?0:(work+el*fps/1000);var ticks=(el>250)?1:Math.min(Math.max(1,Math.round(el/dt)),Math.max(1,Math.min(12,Math.floor(work))));work=Math.max(0,work-ticks);var list=queues.slice();queues.length=0;for(var i=0;i<list.length;i++){delete idByCb[list[i]];}for(var i2=0;i2<ticks;i2++){fakeNow+=dt;for(var k=0;k<list.length;k++){try{list[k](fakeNow);}catch(e){}}}};window.requestAnimationFrame=function(cb){if(typeof cb!=="function")return 0;if(queues.indexOf(cb)!==-1)return idByCb[cb]||0;queues.push(cb);var id=nextId++;idByCb[cb]=id;if(!sched){sched=true;if(lastReal===null)lastReal=nowMs();if(nativeRaf)nativeRaf(tick);}return id;};window.cancelAnimationFrame=function(id){var cb=null;for(var key in idByCb){if(idByCb[key]===id){cb=key;break;}}if(cb!==null){var i3=queues.indexOf(cb);if(i3!==-1)queues.splice(i3,1);delete idByCb[cb];}return nativeCaf?nativeCaf(id):undefined;};})();</scr' + 'ipt>';
         if (/<head/i.test(html)) html = html.replace(/<head([^>]*)>/i, '<head$1>' + spoof);
@@ -5086,7 +5093,10 @@ function injectGameAudio(fw, doc) {
       if (!url || !url.startsWith('http')) return;
       var name = document.getElementById('gv-title').textContent.replace(/[^a-zA-Z0-9_-]/g, '_') || 'game';
       fetch(url).then(function(r){ return r.ok ? r.text() : Promise.reject(); }).then(function(html){
-        var blob = new Blob([html], { type: 'text/html' });
+        var note = 'Downloaded from unblockedzone. join discord.gg/v66D3fn4kD for 100+ links';
+        var water = '\n<script>try{var _n=document.createElement("div");_n.style.cssText="position:fixed;bottom:8px;right:8px;z-index:2147483647;background:rgba(0,0,0,.65);color:#fff;font:11px/1.4 Arial,sans-serif;padding:5px 9px;border-radius:5px;pointer-events:none;max-width:80vw;";_n.textContent=' + JSON.stringify(note) + ';(document.body||document.documentElement).appendChild(_n);}catch(e){}</' + 'script>';
+        if (/<\/body>/i.test(html)) html = html.replace(/<\/body>/i, water + '\n</body>'); else html += water;
+        var blob = new Blob(['<!-- ' + note + ' -->\n' + html], { type: 'text/html' });
         var a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
         a.download = name + '.html';
@@ -5185,7 +5195,6 @@ function injectGameAudio(fw, doc) {
       if (globeInitialized) { stopGlobe(); startGlobe(); }
       if (dotsInitialized) { stopDots(); startDots(); }
       if (fogInitialized) { stopFog(); startFog(); }
-      if (cloudsInitialized) { stopClouds(); startClouds(); }
       if (tunnelInitialized) { stopTunnel(); startTunnel(); }
       if (noiseInitialized) { stopNoise(); startNoise(); }
     }
@@ -5467,8 +5476,7 @@ function injectGameAudio(fw, doc) {
         normalizeGame({name:"Draw Climber",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/drawclimber.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/drawclimber.html"}),
         normalizeGame({name:"Drive in Russia",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/driveinrussia.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/russia.html"}),
         normalizeGame({name:"EaglerCraft 0.3.0 (WASM)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/030.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/wasm030.html"}),
-        normalizeGame({name:"Eaglercraft 1.12",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/eaglercraft112.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/112.html"}),
-        normalizeGame({name:"EaglerCraft 1.12 (WASM)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/112.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/wasm112.html"}),
+        normalizeGame({name:"Eaglercraft 1.12 (WASM)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/112.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/wasm112.html"}),
         normalizeGame({name:"EaglerCraft 1.25 (JS)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/125.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/js125.html"}),
         normalizeGame({name:"EaglerCraft 1.8.8 (JS)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/188.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/js18.html"}),
         normalizeGame({name:"EaglerCraft 1.8.8 (WASM)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/188.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/wasm18.html"}),
@@ -6417,7 +6425,6 @@ function injectGameAudio(fw, doc) {
   <script src="https://quantil.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.globe.min.js"></script>
   <script src="https://quantil.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.dots.min.js"></script>
   <script src="https://quantil.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.fog.min.js"></script>
-  <script src="https://quantil.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.clouds.min.js"></script>
   <script type="module">import{ShaderArt}from'https://esm.sh/shader-art';ShaderArt.register();</script>
   <script src="https://quantil.jsdelivr.net/npm/luna-object-viewer/luna-object-viewer.js"></script>
   <script src="https://quantil.jsdelivr.net/npm/luna-data-grid/luna-data-grid.js"></script>
