@@ -4604,6 +4604,10 @@
       "100% opsec",
       "stop saying the n-word in the discord server",
       "Console - Restarting Quotes ⟳ [ETA - 5s]",
+      "I am israel - funds",
+      "Hey its me its verity - funds",
+      "Femboy clicker is peak WE are all playing ts - funds",
+      "That Milkdud is crackable - funds",
     ];
     const quoteEl = document.getElementById('quote');
     var shown = [];
@@ -4656,8 +4660,20 @@
       if (t.closest('#game-frame-container') || t.closest('#game-viewer .game-viewer-bar')) setTimeout(focusGameFrame, 0);
     }, true);
 
+    function cdnBranch() {
+      if (_cdn.indexOf('cdn.staticdelivr.com') !== -1) return '/main';
+      if (_cdn.indexOf('cdn.statically.io') !== -1) return '@main';
+      return '@latest';
+    }
+
+    function sc13nc3Url() {
+      return _cdn + '/gh/s0n-1m-cr1n3/sc13nc3' + cdnBranch();
+    }
+
     function toCdnUrl(url) {
       var result = url.replace(/https?:\/\/[^/]*\.jsdelivr\.net\//g, _cdn + '/');
+      var m = result.match(/^https?:\/\/[^/]+\/gh\/s0n-1m-cr1n3\/sc13nc3@latest([\/])/);
+      if (m) result = _cdn + '/gh/s0n-1m-cr1n3/sc13nc3' + cdnBranch() + result.slice(m[0].length - 1);
       if (_cdn.indexOf('cdn.staticdelivr.com') !== -1) {
         result = result.replace(/@/g, '/');
       }
@@ -4821,8 +4837,7 @@
       var p = String(path || '').trim();
       if (/^https?:\/\//i.test(p)) return toCdnUrl(p);
       var decoded = rot13(p).replace(/^\/+/, '');
-      var base = _cdn + '/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/';
-      if (_cdn.indexOf('cdn.staticdelivr.com') !== -1) base = base.replace(/@/g, '/');
+      var base = sc13nc3Url() + '/assets/html/';
       return base + decoded;
     }
 
@@ -5726,7 +5741,7 @@ function injectGameAudio(fw, doc) {
             if(f.type === "file" && f.name.startsWith("cl") && f.name.endsWith(".html")){
               games.push(normalizeGame({
                 name: f.name.replace(/^cl/,"").replace(".html",""),
-                img: _cdn + '/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/fallback.png',
+                img: sc13nc3Url() + '/assets/img/fallback.png',
                 url: _cdn + `/gh/${repo}/${f.name}`
               }));
             }
@@ -5775,7 +5790,7 @@ function injectGameAudio(fw, doc) {
 
     async function loadLumin(){
       if (DATA.lumin.length) return;
-      const fallback = _cdn + "/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/fallback.png";
+      const fallback = sc13nc3Url() + "/assets/img/fallback.png";
       const htmlBase = _cdn + '/gh/freebuisness/html@main';
       const coverBase = _cdn + '/gh/freebuisness/covers@main';
       const games = [];
