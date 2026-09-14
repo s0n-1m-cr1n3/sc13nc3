@@ -309,12 +309,8 @@
       width: 1px; background: rgba(var(--accent-rgb),0.25);
     }
     .sidebar-label {
-      max-width: 0; opacity: 0; overflow: hidden; display: inline-block;
-      transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
-      vertical-align: middle; font-size: 13px; margin: 0;
-    }
-    .sidebar-btn:hover .sidebar-label, .sidebar-btn.active .sidebar-label {
-      max-width: none; opacity: 1; white-space: nowrap; margin-left: 6px;
+      max-width: none; opacity: 1; overflow: visible; display: inline-block;
+      white-space: nowrap; vertical-align: middle; font-size: 13px; margin: 0 0 0 6px;
     }
     .sidebar-icons-only .sidebar-label { display: none !important; }
     .sidebar-btn:hover, .sidebar-btn.active {
@@ -1225,6 +1221,28 @@
     .toast.hide{opacity:0;transform:translateX(80px);}
 
     .luna-console-theme-dark .luna-console-log-item{border-bottom-color:rgba(var(--accent-rgb),0.15)!important;}
+
+    /* ─── MIDNIGHT THEME (full dark overhaul) ─── */
+    html.midnight-theme,html.midnight-theme body{background:#000;color:#e6e6e6;}
+    html.midnight-theme #boot-screen{background-color:#000;}
+    html.midnight-theme #loading-screen{background:#000;}
+    html.midnight-theme body::after{opacity:0;}
+    html.midnight-theme .game-card,html.midnight-theme .card,html.midnight-theme .partner-card,html.midnight-theme .form-container,html.midnight-theme .ргоху-section,html.midnight-theme .link-item,html.midnight-theme .tool-item{background:#000;outline-color:#0a0a0a;border-color:#222;}
+    html.midnight-theme .game-card:hover,html.midnight-theme .card:hover,html.midnight-theme .partner-card:hover,html.midnight-theme .ргоху-section:hover,html.midnight-theme .link-item:hover{background:#0c0c0c;border-color:#333;}
+    html.midnight-theme #sidebar{background:rgba(0,0,0,0.85);border-color:#222;}
+    html.midnight-theme .game-viewer-bar{background:#000;}
+    html.midnight-theme .toast{background:#000;border-color:#333;}
+    html.midnight-theme #music-popup{background:#000;}
+    html.midnight-theme .home-music-player{background:#000;border-color:#222;}
+    html.midnight-theme .music-tabpanel{background:#000;border-color:#222;}
+    html.midnight-theme #game-frame-container{background:#000;}
+    html.midnight-theme .toast{background:#000;border-color:#333;}
+    html.midnight-theme .music-tabbar button{color:var(--accent);}
+    html.midnight-theme .music-tabbar button.active{background:var(--accent-glow-soft);color:var(--accent);}
+    html.midnight-theme .card-img,html.midnight-theme .card-img img{background:#000;}
+    html.midnight-theme footer{color:#666;}
+    html.midnight-theme #quote{color:var(--accent);}
+    html.midnight-theme .tab-content p,html.midnight-theme footer,html.midnight-theme .card p,html.midnight-theme .link-item .link-desc,html.midnight-theme .partner-card p,html.midnight-theme .settings-label{color:#cfcfcf!important;}
 
     /* ─── BOOT SCREEN ─── */
     #boot-screen{
@@ -3102,7 +3120,7 @@
       </div>
 
       <div class="tab-content" id="settings">
-        <div style="font-size:13px;color:#fff;font-weight:bold;margin-bottom:12px;">Version 2026.09.11</div>
+        <div style="font-size:13px;color:#fff;font-weight:bold;margin-bottom:12px;">Version 2026.09.14</div>
         <div class="games-grid" style="display:grid;gap:16px;">
           <div class="game-card" style="padding:20px;">
             <div class="settings-card-head">
@@ -3240,6 +3258,12 @@
               <button class="settings-btn" onclick="setAccent(document.getElementById('custom-color-input').value || document.getElementById('custom-color-picker').value)">Apply</button>
             </div>
             <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
+            <p style="color:#aaa;font-size:13px;font-weight:bold;">Theme</p>
+            <select id="theme-select" class="settings-input" onchange="setSiteTheme(this.value)" style="margin-top:6px;">
+              <option value="default">Default</option>
+              <option value="midnight">Midnight</option>
+            </select>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
             <p style="color:#aaa;font-size:13px;font-weight:bold;">Background</p>
             <select id="bg-select" class="settings-input" onchange="setBackground(this.value)" style="margin-top:6px;">
               <option value="starfield">Starfield</option>
@@ -3267,10 +3291,6 @@
               <option value="left">Left Side</option>
               <option value="right">Right Side</option>
             </select>
-            <label style="display:flex;align-items:center;gap:10px;margin-top:12px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
-              <input type="checkbox" id="sidebar-icons-only" onchange="setSidebarIconsOnly(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
-              Icons Only
-            </label>
           </div>
           <div class="game-card" style="padding:20px;">
             <div class="settings-card-head">
@@ -3527,6 +3547,11 @@
             <button class="color-swatch" style="background:#ff3399;" onclick="setAccent('#ff3399')" title="Pink"></button>
             <button class="color-swatch" style="background:#ffffff;border-color:#666;" onclick="setAccent('#ffffff')" title="White"></button>
           </div>
+          <p>Theme:</p>
+          <select id="setup-theme-v2-select" class="settings-input" onchange="setSiteTheme(this.value)">
+            <option value="default">Default</option>
+            <option value="midnight">Midnight</option>
+          </select>
           <p>Background:</p>
           <select id="setup-bg-select" class="settings-input" onchange="setBackground(this.value)"></select>
           <div class="setup-actions">
@@ -3542,10 +3567,6 @@
             <option value="left">Left Side</option>
             <option value="right">Right Side</option>
           </select>
-          <label>
-            <input type="checkbox" id="setup-icons-check" onchange="setSidebarIconsOnly(this.checked)">
-            Icons only (no labels)
-          </label>
           <label>
             <input type="checkbox" id="setup-music-check" onchange="setMusicOnStartup(this.checked)">
             Music on startup
@@ -4880,22 +4901,12 @@
     function setSidebarPosition(pos) {
       localStorage.setItem('sidebarPosition', pos);
       var sb = document.getElementById('sidebar');
-      var iconsChk = document.getElementById('sidebar-icons-only');
       sb.classList.remove('left-sidebar', 'right-sidebar');
       if (pos === 'left') sb.classList.add('left-sidebar');
       if (pos === 'right') sb.classList.add('right-sidebar');
       var side = pos === 'left' || pos === 'right';
       document.getElementById('floating-logo').classList.toggle('hidden', side);
-      iconsChk.disabled = side;
-      iconsChk.checked = side;
-      setSidebarIconsOnly(side);
-    }
-    function setSidebarIconsOnly(enabled) {
-      var sb = document.getElementById('sidebar');
-      var locked = sb.classList.contains('left-sidebar') || sb.classList.contains('right-sidebar');
-      if (locked) enabled = true;
-      localStorage.setItem('sidebarIconsOnly', enabled ? '1' : '');
-      sb.classList.toggle('sidebar-icons-only', enabled);
+      sb.classList.add('sidebar-icons-only');
       if (typeof window.moveSidebarIndicator === 'function') {
         setTimeout(window.moveSidebarIndicator, 260);
       }
@@ -4906,10 +4917,7 @@
         document.getElementById('sidebar-pos-select').value = savedPos;
         setSidebarPosition(savedPos);
       }
-      if (localStorage.getItem('sidebarIconsOnly') === '1') {
-        document.getElementById('sidebar-icons-only').checked = true;
-        document.getElementById('sidebar').classList.add('sidebar-icons-only');
-      }
+      document.getElementById('sidebar').classList.add('sidebar-icons-only');
     })();
 
     // Restore saved CDN on load
@@ -5096,6 +5104,7 @@
       var bootScreen = document.getElementById('boot-screen');
       var bootProgress = document.getElementById('boot-progress');
       var bootText = document.getElementById('boot-text');
+      try { _restoreCloak(); } catch (e0) {}
       bootScreen.classList.remove('hidden');
       bootProgress.style.width = '0%';
       var bootStart = Date.now();
@@ -5119,6 +5128,7 @@
         setTimeout(function() {
           bootScreen.classList.add('hidden');
           mainContent.classList.add('visible');
+          try { _restoreCloak(); } catch (e2) {}
           try { applyAdLayout(localStorage.getItem('adLayout') || 'bottom'); } catch (e3) {}
           try { showAdBlockerNotice(); } catch (e4) {}
         }, 350);
@@ -5147,6 +5157,7 @@
       timerEl.style.display = 'none';
       loadingScreen.style.display = 'none';
       mainContent.classList.add('visible');
+      try { _restoreCloak(); } catch (e2) {}
       try { applyAdLayout(localStorage.getItem('adLayout') || 'bottom'); } catch (e3) {}
       try { showAdBlockerNotice(); } catch (e4) {}
       startStartupMusic();
@@ -5219,7 +5230,8 @@
         if (!ind || !el) return;
         if (!nav.offsetWidth || !nav.offsetHeight) return;
         if (!el.offsetWidth || !el.offsetHeight) return;
-        var vertical = nav.classList.contains('left-sidebar') || nav.classList.contains('right-sidebar');
+        var sbEl = document.getElementById('sidebar');
+        var vertical = sbEl && (sbEl.classList.contains('left-sidebar') || sbEl.classList.contains('right-sidebar'));
         if (vertical) {
           ind.style.width = '100%';
           ind.style.left = '0';
@@ -5405,8 +5417,8 @@
     // Re-arm right after user interaction. Chrome only pops the dialog once the
     // page has "sticky activation" (a real click/key/touch), so refresh the
     // listener at that moment to maximize the chance the guard is armed.
-    ['pointerdown', 'keydown', 'touchstart'].forEach(function (name) {
-      window.addEventListener(name, function () { setTimeout(armAntiClose, 0); });
+    ['pointerdown', 'keydown', 'touchstart', 'pointermove', 'mousemove', 'wheel'].forEach(function (name) {
+      window.addEventListener(name, armAntiClose, { passive: true });
     });
     window.addEventListener('visibilitychange', function () {
       if (document.visibilityState === 'visible') armAntiClose();
@@ -6130,6 +6142,21 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       if (noiseInitialized) { stopNoise(); startNoise(); }
     }
 
+    function setSiteTheme(theme) {
+      var root = document.documentElement;
+      root.classList.toggle('midnight-theme', theme === 'midnight');
+      if (theme === 'midnight') {
+        var saved = localStorage.getItem('accentColorV2') || '#ff6600';
+        if (typeof setAccent === 'function') setAccent(saved);
+        localStorage.setItem('siteTheme', 'midnight');
+      } else {
+        var saved2 = localStorage.getItem('accentColorV2') || '#ff6600';
+        if (typeof setAccent === 'function') setAccent(saved2);
+        localStorage.setItem('siteTheme', 'default');
+      }
+      var sel = document.getElementById('theme-select');
+      if (sel) sel.value = theme;
+    }
     function setLoadingTheme(theme) {
       lsTheme = theme;
       localStorage.setItem('loadingTheme', theme);
@@ -6201,6 +6228,8 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
     // Load saved settings
     var savedAccent = localStorage.getItem('accentColorV2');
     if (savedAccent) setAccent(savedAccent);
+    var savedSiteTheme = localStorage.getItem('siteTheme');
+    if (savedSiteTheme === 'midnight') setSiteTheme('midnight');
     var savedTheme = localStorage.getItem('loadingTheme') || 'lightspeed';
     setLoadingTheme(savedTheme);
 
@@ -6397,13 +6426,10 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
         normalizeGame({name:"Bendy",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/bendy.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/bendy.html"}),
         normalizeGame({name:"Bendy Clicker",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/bendyclicker.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/bendyclicker.html"}),
         normalizeGame({name:"Bhop",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/bhop.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/bhop.html"}),
-        normalizeGame({name:"Bitlife",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/bitlife.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/bitlife.html"}),
-        normalizeGame({name:"Blade Ball",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/bladeball.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/bladeball.html"}),
         normalizeGame({name:"Block Blast",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/blockblast.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/blockblast.html"}),
         normalizeGame({name:"Bloodmoney",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/bloodmoney.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/bloodmoney.html"}),
         normalizeGame({name:"Bloodmoney 2",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/bloodmoney2.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/bloodmoney2.html"}),
         normalizeGame({name:"Bow Masters",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/bowmasters.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/bowmasters.html"}),
-        normalizeGame({name:"Brawl Stars",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/brawlstars.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/brawl.html"}),
         normalizeGame({name:"Brotato New Dawn",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/brotatonewdawn.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/brotatonewdawn.html"}),
         normalizeGame({name:"Brotato Paws",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/brotatopawsandclaws.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/brotatopaws.html"}),
         normalizeGame({name:"Buckshot Roulette",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/buckshotroullete.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/buckshot.html"}),
@@ -6533,6 +6559,7 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
         normalizeGame({name:"Snow Rider 3D",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/snowrider.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/snowrider.html"}),
         normalizeGame({name:"Snowball.IO",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/snowballio.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/snowballio.html"}),
         normalizeGame({name:"Soccer Random",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/soccerrandom.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/soccerrandom.html"}),
+        normalizeGame({name:"Soccer Bros",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/soccerbros.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/soccerbros.html"}),
         normalizeGame({name:"Space Waves",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/spacewaves.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/spacewaves.html"}),
         normalizeGame({name:"Spiral Roll",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/sprialroll.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/sprialroll.html"}),
         normalizeGame({name:"Sprinter",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/sprinter.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/sprinter.html"}),
@@ -6563,8 +6590,7 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
         normalizeGame({name:"Wave Road 3D",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/waveroad3d.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/gdwave3d.html"}),
         normalizeGame({name:"Web Dashers (Updated)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/webdashers.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/webdashers.html"}),
         normalizeGame({name:"Where's Baldi",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/whereisbaldi.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/wheresbaldi.html"}),
-        normalizeGame({name:"Who's Your Daddy",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/whosyourdaddy.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/whosyourdaddy.html"}),
-        normalizeGame({name:"Wrestle Bros",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/wrestlebros.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/wrestlebros.html"})
+        normalizeGame({name:"Who's Your Daddy",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/whosyourdaddy.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/whosyourdaddy.html"})
       ];
 
       // mark CDN games — they open in new tab (non-direct) unless still on Quizizz
@@ -7188,6 +7214,8 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
         var sel = document.getElementById('setup-bg-select');
         var src = document.getElementById('bg-select');
         if (sel && src) sel.innerHTML = src.innerHTML;
+        var tv = document.getElementById('setup-theme-v2-select');
+        if (tv) tv.value = (localStorage.getItem('siteTheme') || 'default');
       }
 
       function updateSetupDots() {
@@ -7224,7 +7252,6 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
         if (bg) bg.value = localStorage.getItem('bgMode') || 'starfield';
         var sp = document.getElementById('setup-sidebar-select');
         if (sp) sp.value = localStorage.getItem('sidebarPosition') || 'bottom';
-        document.getElementById('setup-icons-check').checked = localStorage.getItem('sidebarIconsOnly') === '1';
         document.getElementById('setup-music-check').checked = getMusicOnStartup();
       };
 
@@ -7264,6 +7291,10 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       setAccent('#ff6600');
       localStorage.removeItem('accentColorV2');
       localStorage.removeItem('accentColor');
+      setSiteTheme('default');
+      localStorage.removeItem('siteTheme');
+      var themeSelect = document.getElementById('theme-select');
+      if (themeSelect) themeSelect.value = 'default';
       setLoadingTheme('lightspeed');
       localStorage.removeItem('loadingTheme');
       _cdn = 'https://quantil.jsdelivr.net';
@@ -7287,10 +7318,7 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       localStorage.removeItem('sidebarPosition');
       var posSel = document.getElementById('sidebar-pos-select');
       if (posSel) posSel.value = 'bottom';
-      setSidebarIconsOnly(false);
       localStorage.removeItem('sidebarIconsOnly');
-      var iconsChk = document.getElementById('sidebar-icons-only');
-      if (iconsChk) iconsChk.checked = false;
       setPanicEnabled(false);
       resetPanicSettings();
       var panicChk = document.getElementById('panic-enabled-check');
@@ -7319,7 +7347,7 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
         }
         var jo = {
           app: 'unblockedzone',
-          version: 20260911,
+          version: 20260914,
           exported: new Date().toISOString(),
           settings: data
         };
@@ -7383,6 +7411,9 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
 
       try { if (has('bgMode')) setBackground(get('bgMode')); } catch (e) {}
       try {
+        if (has('siteTheme')) { setSiteTheme(get('siteTheme')); setVal('theme-select', get('siteTheme')); }
+      } catch (e) {}
+      try {
         if (has('customWallpaper')) {
           var cuBg = document.getElementById('custom-bg');
           if (cuBg) cuBg.style.backgroundImage = 'url(' + get('customWallpaper') + ')';
@@ -7406,9 +7437,6 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       try {
         var sp = get('sidebarPosition');
         if (has('sidebarPosition')) { setSidebarPosition(sp); setVal('sidebar-pos-select', sp); }
-      } catch (e) {}
-      try {
-        if (has('sidebarIconsOnly')) { setSidebarIconsOnly(get('sidebarIconsOnly') === '1'); setCheck('sidebar-icons-only', get('sidebarIconsOnly') === '1'); }
       } catch (e) {}
 
       try {
@@ -7945,12 +7973,15 @@ function activate() {
 .lq-dock {
   position: relative;
   overflow: visible;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0);
-  backdrop-filter: blur(4px) saturate(1.1);
-  -webkit-backdrop-filter: blur(4px) saturate(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2);
+  background:
+    radial-gradient(120% 180% at 15% 0%, rgba(255,255,255,0.14), transparent 60%),
+    radial-gradient(120% 180% at 85% 100%, rgba(255,255,255,0.10), transparent 60%),
+    rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px) saturate(1.4);
+  -webkit-backdrop-filter: blur(10px) saturate(1.4);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255,255,255,0.08);
   padding: 14px 34px;
   font-family: inherit;
   font-size: 28px;
