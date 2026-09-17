@@ -34,9 +34,6 @@
   <meta name="twitter:title" content="Home - Classroom">
   <meta name="twitter:description" content="Distribute assignments, and stay connected with your students without the paperwork. You can use it to share resources, track progress, and give real-time feedback all in one.">
   <link rel="icon" id="page-favicon" type="image/svg+xml" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAOCAYAAAAmL5yKAAAAAXNSR0IArs4c6QAAAhBJREFUOE9tk89rE1EQx78Tf0A22tg2W4qHVqPVtol3Dyq24M2r7B48WS9F0KNQ0CLoP9CbCJ6zvSiKIlY02ggFr2tvmjbVKGSTIs22iSk7MvM21VIfebz3yHw/7/tmZunW1aN8ZXIbIAYR4mE2zAAhATCB5RwRmOU/AiLCk9I+UGfJZuIQRBItYfFgAZhgESoknuCEgZEF6nxMsdzsb/Xjc8s2LlRsLMiqM2IgMvtcch1565cCqVM6xHKz1xjFfGNU3Rm/DOtAUoXNdjMGROAogpMpw8lU1BX9XjysgPn6KXiN0zsvSB20MDt5W2GzCw/QbIUqFqAAXLtiHLQ/9LC836uP6DQWgBtnp3Axe073xS+LmCs9BHYAK3DttRjwPs2i8YIT8Oon/3GQxL1LM3q+8+o+QnHAXQerCtAntIpHNNeFehZekP1bBQApyQEzwraIJaGSSIZjV+Da34yD1rterV0hOAYvOK6A/OAYcoPjusrwfyxjaeUTykFZIU5mDe7Ad+Ng622fAdSG4QXDuHl+GhMjF3Y56R6e+y/xqPRYxa5dNQ423/SbHNSGUKgN4en1wn/F6qS6jJlnd1Xs2FWtEG0u2FpGP+yBH6ZxZmxqF0AbKh5h+BNfV18gZ20gb20YB+HrAemzbvX23q4AaWX5mVXbW5uNQNcup9md2B8LSWO77byXlog/MNMrXnEbfwCrwRQID/CEeAAAAABJRU5ErkJggg==">
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://quantil.jsdelivr.net">
   <style>
     @font-face{font-family:'ApplePixel';src:url('https://quantil.jsdelivr.net/gh/bradardeletethis/apple/font.woff2') format('woff2');font-weight:400;font-style:normal;}
@@ -131,25 +128,84 @@
     }
 
     /* GoGuardian theme */
-    .gg-content { display: none; width: 100%; height: 100%; }
-    .gg-content .gg-outer { display: table; width: 100%; height: 100%; }
-    .gg-content .gg-middle { display: table-cell; vertical-align: middle; }
-    .gg-content .gg-inner {
-      max-width: 32em; margin: 0 auto; padding: 0 20px 260px; text-align: center;
-      color: #c7c7c7; font-size: 1.72em; font-weight: 100;
-      background: url('https://blocked.goguardian.com/assets/lock-icon.png') no-repeat center bottom/32% auto;
+    .gg-content { display: none; width: 100%; }
+    #loading-screen.goguardian-theme {
+      background: #c7e5ff;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
-    .gg-content .gg-title {
-      font-family: 'Roboto', sans-serif; font-size: 2.5em; font-weight: 700;
-      color: #00AAD7; margin: 0 0 20px;
-    }
-    .gg-content .gg-message {
-      font-family: 'Roboto', sans-serif; font-weight: 100; color: #c7c7c7;
-    }
-    #loading-screen.goguardian-theme { background: radial-gradient(ellipse at center, #707070 13%, #333333 100%); }
     .goguardian-theme .ls-content { display: none; }
-    .goguardian-theme .gg-content { display: block; }
-    .goguardian-theme #loading-timer { color: rgba(255,255,255,0.3); }
+    .goguardian-theme .gg-content { display: flex; justify-content: center; }
+    .goguardian-theme #loading-timer { color: rgba(0,0,0,0.3); }
+    .goguardian-theme .block-card {
+      background: #FFFFFF; border-radius: 16px; padding: 40px;
+      max-width: 480px; width: 100%; box-sizing: border-box;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1); text-align: center;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .goguardian-theme .block-title { font-size: 16px; font-weight: 600; color: #595959; margin-bottom: 20px; }
+    .goguardian-theme .lock-icon { width: 54px; height: 80px; margin-bottom: 24px; flex-shrink: 0; }
+    .goguardian-theme .block-message {
+      font-size: 24px; font-weight: 600; color: #333333; line-height: 1.4;
+      margin: 0 0 24px; word-wrap: break-word; overflow-wrap: anywhere;
+    }
+    .goguardian-theme .url-section { margin-bottom: 8px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; max-width: 100%; }
+    .goguardian-theme .url-label { font-size: 14px; font-weight: 500; color: #595959; margin-right: 4px; }
+    .goguardian-theme .url-value { font-size: 14px; color: #333333; word-break: break-all; overflow-wrap: anywhere; }
+    .goguardian-theme .bypass-footnote { order: 3; font-size: 12px; color: #595959; margin: 24px 0 0; line-height: 1.4; }
+    .goguardian-theme .bypassCont { order: 2; width: 100%; margin-top: 8px !important; }
+    .goguardian-theme .bypassCont i { display: none; }
+    .goguardian-theme .bypassCont label.bypass-password-label { display: block; font-size: 14px; font-weight: 500; color: #333333; margin-bottom: 4px; text-align: left; }
+    .goguardian-theme .bypassCont button.bypassfilter {
+      background: #0A59A3; background-image: none; color: #FFFFFF; border: none; border-radius: 4px;
+      padding: 12px 24px; font-size: 16px; font-weight: 500; font-family: 'Inter', sans-serif;
+      cursor: pointer; transition: background-color 0.2s ease; display: inline-flex; align-items: center;
+      justify-content: center; gap: 8px; min-width: 200px; max-width: 100%; width: auto; margin-top: 0;
+      position: static; box-shadow: none;
+    }
+    .goguardian-theme .bypassCont button.bypassfilter::after,
+    .goguardian-theme .bypassCont button.bypassfilter::before { content: none !important; display: none !important; }
+    .goguardian-theme .bypassCont button.bypassfilter:hover { background: #084A8A; }
+    .goguardian-theme .bypassCont button.bypassfilter:focus-visible { outline: 2px solid #0A59A3; outline-offset: 2px; }
+    .goguardian-theme .bypassCont input.password {
+      width: 100%; height: 32px; padding: 4px 8px; border: 1px solid #757575; border-radius: 2px;
+      font-size: 14px; color: #262626; margin: 8px 0; transition: border-color 0.2s ease; box-sizing: border-box;
+    }
+    .goguardian-theme .bypassCont input.password:focus-visible { outline: none; border: 2px solid #0A59A3; box-shadow: none; }
+    .goguardian-theme .bypassCont input.password[aria-invalid="true"] { border-color: #D5364A; }
+    .goguardian-theme .bypassCont input.url {
+      width: 100%; padding: 4px 8px; border: 1px solid #757575; border-radius: 2px; font-size: 14px;
+      margin: 8px 0; background-color: #F9FAFB; color: #595959; box-sizing: border-box; cursor: not-allowed; height: 32px;
+    }
+    .goguardian-theme .bypassCont .btn.submitAll {
+      background: #0A59A3; color: #FFFFFF; border: none; border-radius: 4px; padding: 8px 16px; font-size: 16px;
+      font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: background-color 0.2s;
+      display: inline-block; margin: 0; width: fit-content; min-width: 100px; max-width: 100%;
+    }
+    .goguardian-theme .bypassCont .btn.submitAll:hover { background: #1777D0; }
+    .goguardian-theme .bypassCont .btn.submitAll:active { background: #002F6C; }
+    .goguardian-theme .bypassCont .btn.submitAll:disabled { background: #D1D5DB; cursor: not-allowed; opacity: 0.5; }
+    .goguardian-theme .bypassCont .btn.submitAll:focus-visible,
+    .goguardian-theme .bypassCont .btn.cancelBypass:focus-visible { outline: 2px solid #0A59A3; outline-offset: 2px; }
+    .goguardian-theme .bypassCont .btn.cancelBypass {
+      background: #FFFFFF; color: #0A59A3; border: 1px solid #0A59A3; border-radius: 4px; padding: 8px 16px; font-size: 16px;
+      font-weight: 500; font-family: 'Inter', sans-serif; cursor: pointer; transition: background-color 0.2s;
+      display: inline-block; margin: 0; width: fit-content; min-width: 100px; max-width: 100%;
+    }
+    .goguardian-theme .bypassCont .btn.cancelBypass:hover { background: #EEF7FF; }
+    .goguardian-theme .bypassCont .incorrectPassword {
+      display: flex; align-items: flex-start; gap: 8px; margin: 8px 0; font-family: 'Inter', sans-serif;
+      font-size: 12px; font-weight: 500; color: #D5364A !important; text-align: left; line-height: 1.4;
+      background: transparent !important; border: none !important; border-radius: 2px;
+    }
+    .goguardian-theme .bypassCont .incorrectPassword:focus,
+    .goguardian-theme .bypassCont .incorrectPassword:focus-visible { outline: 2px solid #D5364A; outline-offset: 2px; }
+    .goguardian-theme .bypassCont p.incorrectPassword { display: block; padding: 0; }
+    .goguardian-theme .bypassCont:has(input.url) ~ .bypass-footnote { display: none; }
+    @media (max-width: 360px) {
+      #loading-screen.goguardian-theme { justify-content: flex-start; padding: 12px; box-sizing: border-box; }
+      .goguardian-theme .block-card { padding: 24px 16px; }
+      .goguardian-theme .block-message { font-size: 20px; }
+    }
 
     /* Securly theme */
     .sc-content { display: none; width: 100%; max-width: 960px; margin: 0 auto; }
@@ -1548,13 +1604,11 @@
       </div>
     </div>
     <div class="gg-content">
-      <div class="gg-outer">
-        <div class="gg-middle">
-          <div class="gg-inner">
-            <div class="gg-title" id="gg-title">Restricted</div>
-            <div class="gg-message" id="gg-message">This website has been blocked by your administrator.</div>
-          </div>
-        </div>
+      <div class="block-card content">
+        <div class="block-title" id="gg-title">Page Blocked by School Admin</div>
+        <img src="https://blocked.goguardian.com/assets/lock.svg" alt="" class="lock-icon">
+        <h1 class="block-message" id="gg-message">This page has been blocked by your school.</h1>
+        <p class="bypass-footnote">All attempts are logged.</p>
       </div>
     </div>
     <div class="sc-content">
@@ -1788,7 +1842,6 @@
           <div class="day-name" id="dayName">SATURDAY</div>
           <div class="full-date" id="fullDate">MAY 03, 2026</div>
         </div>
-        <h2 id="welcome-heading" style="font-family:'Pacifico',cursive;font-weight:400;font-size:36px;">Welcome!</h2>
         <div class="search-bar" style="position:relative;">
           <input type="text" id="home-search-input" placeholder="Search..." style="padding-right:44px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -2084,10 +2137,10 @@
             <button class="media-cat" data-mtab="other">Spotify Slides</button>
           </div>
           <div class="music-tabpanel" id="media-music-ubz">
-            <iframe src="https://drive.google.com/embeddedfolderview?id=1lCifmGV8S5Th6Zc7M32HraEzaEvhapTj" style="width:100%;height:600px;border:none;border-radius:8px 8px 6px 6px;"></iframe>
+            <iframe loading="lazy" src="https://drive.google.com/embeddedfolderview?id=1lCifmGV8S5Th6Zc7M32HraEzaEvhapTj" style="width:100%;height:600px;border:none;border-radius:8px 8px 6px 6px;"></iframe>
           </div>
           <div class="music-tabpanel" id="media-music-other" style="display:none;">
-            <iframe src="https://drive.google.com/embeddedfolderview?id=10tvBZbrFa6sHGvrP1XGG82kHbX2QjB2-#list" style="width:100%;height:600px;border:none;border-radius:8px 8px 6px 6px;"></iframe>
+            <iframe loading="lazy" src="https://drive.google.com/embeddedfolderview?id=10tvBZbrFa6sHGvrP1XGG82kHbX2QjB2-#list" style="width:100%;height:600px;border:none;border-radius:8px 8px 6px 6px;"></iframe>
           </div>
         </div>
         <div class="media-section" id="media-manga" style="display:none">
@@ -3120,7 +3173,7 @@
       <div class="tab-content" id="requests">
 
         <div style="background:#fff;border-radius:8px;padding:4px;">
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdWxjZZFtjsaoPVHv5F3Ipu-4kwLAtmHhswUpslxrJg5lQdRA/viewform?embedded=true" style="width:100%;height:700px;border:none;border-radius:4px;" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+          <iframe loading="lazy" src="https://docs.google.com/forms/d/e/1FAIpQLSdWxjZZFtjsaoPVHv5F3Ipu-4kwLAtmHhswUpslxrJg5lQdRA/viewform?embedded=true" style="width:100%;height:700px;border:none;border-radius:4px;" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
       </div>
 
@@ -3159,14 +3212,6 @@
               <option value="https://cdn.jsdmirror.com">cdn.jsdmirror.com</option>
               <option value="https://cdn.statically.io">cdn.statically.io</option>
               <option value="https://cdn.staticdelivr.com">cdn.staticdelivr.com</option>
-            </select>
-            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
-            <p style="color:#aaa;font-size:13px;font-weight:bold;">Banner Ads</p>
-            <p style="color:#aaa;font-size:13px;margin-top:4px;">Where to place your 2 ad slots:</p>
-            <select id="ad-layout-select" class="settings-input" onchange="applyAdLayout(this.value)" style="margin-top:6px;">
-              <option value="bottom" selected>Bottom (2 ads)</option>
-              <option value="top">Top (2 ads)</option>
-              <option value="sides">Both Sides (2 ads)</option>
             </select>
             <p style="color:#aaa;font-size:13px;margin-top:10px;">Status: <span id="adb-status">Checking...</span></p>
           </div>
@@ -3614,6 +3659,26 @@
     let particles = [], embers = [], rings = [];
     const targetParticleCount = 40, glowMultiplier = 1.0;
 
+    // Pre-rendered glow sprite, reused instead of calling createRadialGradient
+    // for every particle/ember on every single frame (that allocation is
+    // surprisingly expensive on low-power/integrated GPUs like Chromebooks).
+    // Only regenerated if the accent hue actually changes.
+    let _glowSpriteCache = { hue: null, canvas: null };
+    function getGlowSprite(hue) {
+      if (_glowSpriteCache.hue === hue && _glowSpriteCache.canvas) return _glowSpriteCache.canvas;
+      const size = 128, half = size / 2;
+      const sc = document.createElement('canvas');
+      sc.width = size; sc.height = size;
+      const sctx = sc.getContext('2d');
+      const grd = sctx.createRadialGradient(half, half, 0, half, half, half);
+      grd.addColorStop(0, `hsla(${hue},90%,55%,1)`);
+      grd.addColorStop(1, `hsla(${hue},90%,35%,0)`);
+      sctx.fillStyle = grd;
+      sctx.beginPath(); sctx.arc(half, half, half, 0, Math.PI * 2); sctx.fill();
+      _glowSpriteCache = { hue, canvas: sc };
+      return sc;
+    }
+
     function getCDN() {
       return localStorage.getItem('cdnMirror') || 'https://quantil.jsdelivr.net';
     }
@@ -3625,9 +3690,7 @@
       if (sel) sel.value = url;
     }
 
-    /* ─── BANNER ADS ─── */
-    var AD_URL = 'https://www.profitableratecpmnetwork.com/i74t60zmc3?key=18d632377cd7db65807b7b084b2a1168';
-    var AD_FALLBACK = "If you see this you either have an ad blocker, or it hasn't loaded. (If you do have an ad blocker turn it off pls i need money)";
+    /* ─── BANNER ADS (disabled) ─── */
     function detectAdBlocker(cb) {
       var detected = false;
       var pending = 3;
@@ -3676,8 +3739,7 @@
         'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
         'https://securepubads.g.doubleclick.net/tag/js/gpt.js',
         'https://www.googletagservices.com/tag/js/gpt.js',
-        'https://googleads.g.doubleclick.net/pagead/id',
-        AD_URL
+        'https://googleads.g.doubleclick.net/pagead/id'
       ];
       var probesDone = 0;
       probeUrls.forEach(function(url) {
@@ -3728,63 +3790,26 @@
       });
     }
     function buildAdBox(vertical) {
-      var box = document.createElement('div');
-      box.style.cssText = vertical
-        ? 'flex:0 0 160px;height:600px;border:1px dashed rgba(255,255,255,0.12);border-radius:8px;background:rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;overflow:hidden;padding:4px 0;position:relative;'
-        : 'flex:1 1 320px;min-width:280px;border:1px dashed rgba(255,255,255,0.12);border-radius:8px;background:rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;overflow:hidden;padding:4px 0;position:relative;';
-      var fb = document.createElement('div');
-      fb.textContent = AD_FALLBACK;
-      fb.style.cssText = 'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;font-size:12px;color:#888;padding:0 16px;z-index:0;';
-      var ifr = document.createElement('iframe');
-      ifr.src = AD_URL;
-      ifr.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms');
-      ifr.loading = 'eager';
-      ifr.scrolling = 'no';
-      ifr.title = 'Advertisement';
-      ifr.style.cssText = vertical
-        ? 'width:100%;height:600px;border:none;display:block;background:transparent;position:relative;z-index:1;'
-        : 'width:100%;height:90px;border:none;display:block;background:transparent;position:relative;z-index:1;';
-      box.appendChild(fb);
-      box.appendChild(ifr);
-      return box;
+      // Ads are disabled site-wide — returns nothing, nothing gets appended.
+      return null;
     }
     function fillAdZone(id, vertical, count) {
       var zone = document.getElementById(id);
       if (!zone) return;
       zone.innerHTML = '';
-      for (var i = 0; i < count; i++) zone.appendChild(buildAdBox(vertical));
     }
     function applyAdLayout(mode) {
-      mode = mode || 'bottom';
-      try { localStorage.setItem('adLayout', mode); } catch (e) {}
+      // Ads are disabled site-wide — always keep every ad zone hidden and
+      // empty, regardless of what mode gets requested.
+      try { localStorage.setItem('adLayout', 'off'); } catch (e) {}
       var top = document.getElementById('ad-slot-top');
       var bottom = document.getElementById('ad-slot-bottom');
       var sides = document.getElementById('ad-slot-sides');
-      if (top) top.style.display = 'none';
-      if (bottom) bottom.style.display = 'none';
-      if (sides) sides.style.display = 'none';
+      if (top) { top.style.display = 'none'; top.innerHTML = ''; }
+      if (bottom) { bottom.style.display = 'none'; bottom.innerHTML = ''; }
+      if (sides) { sides.style.display = 'none'; sides.innerHTML = ''; }
       var sel = document.getElementById('ad-layout-select');
-      if (sel) sel.value = mode;
-      if (mode === 'top') {
-        if (top) { fillAdZone('ad-slot-top', false, 2); top.style.display = 'flex'; }
-      } else if (mode === 'sides') {
-        if (sides) {
-          sides.innerHTML = '';
-          var l = buildAdBox(true); l.style.position = 'fixed';
-          l.style.left = '12px'; l.style.top = '50%';
-          l.style.transform = 'translateY(-50%)'; l.style.zIndex = '9000';
-          l.style.boxShadow = '0 0 12px rgba(0,0,0,0.4)';
-          var r = buildAdBox(true); r.style.position = 'fixed';
-          r.style.right = '12px'; r.style.top = '50%';
-          r.style.transform = 'translateY(-50%)'; r.style.zIndex = '9000';
-          r.style.boxShadow = '0 0 12px rgba(0,0,0,0.4)';
-          sides.appendChild(l);
-          sides.appendChild(r);
-          sides.style.display = 'block';
-        }
-      } else {
-        if (bottom) { fillAdZone('ad-slot-bottom', false, 2); bottom.style.display = 'flex'; }
-      }
+      if (sel) sel.value = 'off';
     }
 
     function setStretchedRes(val) {
@@ -4136,10 +4161,10 @@
         e.op *= glowMultiplier;
         if (e.life >= e.maxLife || e.y < -10) { embers[i] = spawnEmber(true); return; }
         const h = baseH;
-        const grd = ctx.createRadialGradient(e.x, e.y, 0, e.x, e.y, e.r*3);
-        grd.addColorStop(0, `hsla(${h},100%,65%,${e.op})`);
-        grd.addColorStop(1, `hsla(${h},100%,45%,0)`);
-        ctx.beginPath(); ctx.arc(e.x, e.y, e.r*3, 0, Math.PI*2); ctx.fillStyle = grd; ctx.fill();
+        const eGlow = e.r * 3 * 2;
+        ctx.globalAlpha = Math.max(0, Math.min(1, e.op));
+        ctx.drawImage(getGlowSprite(h), e.x - eGlow/2, e.y - eGlow/2, eGlow, eGlow);
+        ctx.globalAlpha = 1;
       });
 
       if (frame % 6 === 0) particles.sort((a, b) => a.depth - b.depth);
@@ -4173,10 +4198,9 @@
         const opacity = p.op * pulseFactor * glowMultiplier;
         if (opacity > .05) {
           const glowSize = drawR*(3+p.depth*5);
-          const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, glowSize);
-          grd.addColorStop(0, `hsla(${h},90%,55%,${opacity})`);
-          grd.addColorStop(1, `hsla(${h},90%,35%,0)`);
-          ctx.beginPath(); ctx.arc(p.x, p.y, glowSize, 0, Math.PI*2); ctx.fillStyle = grd; ctx.fill();
+          ctx.globalAlpha = Math.max(0, Math.min(1, opacity));
+          ctx.drawImage(getGlowSprite(h), p.x - glowSize, p.y - glowSize, glowSize*2, glowSize*2);
+          ctx.globalAlpha = 1;
         }
         ctx.beginPath(); ctx.arc(p.x, p.y, drawR, 0, Math.PI*2);
         ctx.fillStyle = `hsla(${h},100%,80%,${Math.min(opacity*1.5,1)})`; ctx.fill();
@@ -4483,12 +4507,14 @@
         var scene=new THREE.Scene();
         var camera=new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000);
         camera.position.z=30;
-        var renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
-        renderer.setSize(innerWidth,innerHeight);
+        var renderer=new THREE.WebGLRenderer({antialias:false,alpha:true});
         renderer.setPixelRatio(Math.min(devicePixelRatio, 1));
+        renderer.setSize(Math.floor(innerWidth*0.6),Math.floor(innerHeight*0.6));
+        renderer.domElement.style.width='100%';
+        renderer.domElement.style.height='100%';
         renderer.setClearColor(0x050001,1);
         el.appendChild(renderer.domElement);
-        var particleCount=1200;
+        var particleCount=450;
         var geometry=new THREE.BufferGeometry();
         var positions=new Float32Array(particleCount*3);
         var colors=new Float32Array(particleCount*3);
@@ -4513,9 +4539,9 @@
         var material=new THREE.PointsMaterial({size:0.15,vertexColors:true,transparent:true,opacity:0.8,blending:THREE.AdditiveBlending});
         var points=new THREE.Points(geometry,material);
         scene.add(points);
-        var ringGeo=new THREE.RingGeometry(2,4.5,64);
+        var ringGeo=new THREE.RingGeometry(2,4.5,48);
         var ringMat=new THREE.MeshBasicMaterial({color:new THREE.Color(r,g,b),transparent:true,opacity:0.1,side:THREE.DoubleSide});
-        for(var ri=0;ri<10;ri++){
+        for(var ri=0;ri<6;ri++){
           var ring=new THREE.Mesh(ringGeo,ringMat.clone());
           ring.position.z=-ri*6;
           ring.material.opacity=0.1-ri*0.008;
@@ -4545,7 +4571,7 @@
         function resizeTunnel(){
           camera.aspect=innerWidth/innerHeight;
           camera.updateProjectionMatrix();
-          renderer.setSize(innerWidth,innerHeight);
+          renderer.setSize(Math.floor(innerWidth*0.6),Math.floor(innerHeight*0.6),false);
         }
         addEventListener('resize',resizeTunnel);
         window._tunnelResize=resizeTunnel;
@@ -4977,8 +5003,12 @@
         var sel = document.getElementById('cdn-select');
         if (sel) { sel.value = cdnSaved; }
       }
-      var adSaved = localStorage.getItem('adLayout');
-      try { applyAdLayout(adSaved || 'bottom'); } catch (e2) {}
+      // Note: ad layout is intentionally NOT applied here. Doing so used to
+      // build the ad iframes immediately, hidden behind the boot screen,
+      // only to be torn down and rebuilt a few seconds later once the boot
+      // screen finished — loading every ad twice on every page load. The
+      // boot-finish / perf-mode paths below build them once, when the page
+      // is actually visible.
     })();
 
     // Restore startup options
@@ -6944,6 +6974,7 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       const pool = FILTERED.filter(g => g && g.name && g.url && g.url !== '#');
 
       if (window.__rndInt) { clearInterval(window.__rndInt); window.__rndInt = null; }
+      if (window.__rndObs) { try { window.__rndObs.disconnect(); } catch(e) {} window.__rndObs = null; }
       const rCard = document.createElement('div');
       rCard.className = 'game-card';
       const rImgs = pool.map(g => g.img).filter(Boolean);
@@ -6957,7 +6988,28 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       rStep();
       if (rImgs.length > 1) {
         rImg.onerror = function() { this.onerror = null; this.src = fallback; };
-        window.__rndInt = setInterval(rStep, 3000);
+        // Only fetch a new random thumbnail while this card is actually
+        // visible on screen — previously this ran on an unconditional
+        // setInterval, silently fetching a fresh image from the CDN every
+        // 3 seconds even while scrolled way out of view.
+        var startRandomRotation = function() {
+          if (!window.__rndInt) window.__rndInt = setInterval(rStep, 3000);
+        };
+        var stopRandomRotation = function() {
+          if (window.__rndInt) { clearInterval(window.__rndInt); window.__rndInt = null; }
+        };
+        if ('IntersectionObserver' in window) {
+          var rObs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) startRandomRotation();
+              else stopRandomRotation();
+            });
+          }, { threshold: 0.1 });
+          rObs.observe(rCard);
+          window.__rndObs = rObs;
+        } else {
+          startRandomRotation();
+        }
       }
       rCard.querySelector('.play-btn').onclick = () => {
         const pick = pool.length ? pool[Math.floor(Math.random() * pool.length)] : null;
