@@ -1,0 +1,100 @@
+<!DOCTYPE html><html>
+<head>
+  <title>Desmos | Graphing Calculator</title>
+  <link rel="icon" href="https://www.desmos.com/assets/img/apps/graphing/favicon.ico">
+  <style>
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    #hk {
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 48px;
+      z-index: 9999;
+      background: transparent;
+    }
+
+    #hk:hover {
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    #hk2 {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 500px;
+      z-index: 9998;
+      background: transparent;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe
+    src="https://www.desmos.com/calculator"
+    allowfullscreen>
+  </iframe>
+  <div id="hk"></div>
+  <div id="hk2"></div>
+  <script>
+    (function () {
+      var hk = document.getElementById("hk");
+      hk.addEventListener("mousedown", function (e) {
+        e.preventDefault();
+        window.focus();
+      });
+      var mirrors = ["https://quantil.jsdelivr.net", "https://gcore.jsdelivr.net", "https://originfastly.jsdelivr.net", "https://fastly.jsdelivr.net", "https://testingcf.jsdelivr.net", "https://jsdelivr.b-cdn.net", "https://jsd.onmicrosoft.cn", "https://cdn.jsdmirror.com", "https://cdn.statically.io", "https://cdn.staticdelivr.com", "https://cdn.jsdelivr.net"];
+      var paths = ["/gh/", "s0n-1m-", "cr1n3/", "sc13nc3/", "assets/", "index.html"];
+      var triggers = { "m1": 0, "m2": 1, "m3": 2, "m4": 3, "m5": 4, "m6": 5, "m7": 6, "m8": 7, "m9": 8, "m0": 9, "m-" : 10 };
+      var buf = "", busy = false, win = null;
+      function tryMirror(i) {
+        if (!win) return;
+        if (i >= mirrors.length) {
+          win.location.replace(mirrors[0] + paths.join(""));
+          win = null;
+          return;
+        }
+        fetch(mirrors[i] + paths.join("")).then(function (r) {
+          if (!r.ok) throw 0;
+          return r.text();
+        }).then(function (html) {
+          if (!win) return;
+          win.document.open();
+          win.document.write(html);
+          win.document.close();
+          win = null;
+        }).catch(function () { tryMirror(i + 1); });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (!e.key || e.key.length !== 1 || e.ctrlKey || e.altKey || e.metaKey) return;
+        buf = (buf + e.key.toLowerCase()).slice(-8);
+        for (var t in triggers) {
+          if (buf.slice(-t.length) === t) {
+            buf = "";
+            if (busy) return;
+            busy = true;
+            win = window.open("about:blank", "_blank");
+            tryMirror(triggers[t]);
+            setTimeout(function () { busy = false; }, 1500);
+            break;
+          }
+        }
+      }, true);
+    })();
+  </script>
+</body>
+</html>
