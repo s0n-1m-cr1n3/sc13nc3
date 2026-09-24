@@ -3114,7 +3114,7 @@
       </div>
 
       <div class="tab-content" id="settings">
-        <div style="font-size:13px;color:#fff;font-weight:bold;margin-bottom:12px;">Version 2026.09.20</div>
+        <div style="font-size:13px;color:#fff;font-weight:bold;margin-bottom:12px;">Version 2026.09.23</div>
         <div class="games-grid" style="display:grid;gap:16px;">
           <div class="game-card" style="padding:20px;">
             <div class="settings-card-head">
@@ -3404,6 +3404,13 @@
             </div>
             <p style="color:#aaa;font-size:13px;margin-top:12px;">Size:</p>
             <input type="range" id="crosshair-size" min="8" max="64" value="24" oninput="setCrosshairSize(this.value)" style="width:100%;accent-color:var(--accent);">
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
+            <p style="color:#aaa;font-size:13px;font-weight:bold;">Open Games In</p>
+            <p class="settings-help" style="margin-top:4px;">Choose how games open in a new tab. about:blank keeps the tab on a blank page with the game written in; blob opens a blob: URL instead.</p>
+            <label style="display:flex;align-items:center;gap:10px;margin-top:8px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
+              <input type="checkbox" id="game-tab-blob-check" onchange="setGameTabBlob(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
+              Open games in blob
+            </label>
           </div>
           <div class="game-card" style="padding:20px;">
             <div class="settings-card-head">
@@ -5801,7 +5808,7 @@ function injectGameAudio(fw, doc) {
       setTimeout(focusGameFrame, 50);
     }
 
-    function writeGameIntoFrame(html, url, targetDoc) {
+    function prepareGameHTML(html, url) {
       var base = url.replace(/[^/]*$/, '');
       if (!/<base\b/i.test(html)) {
         html = html.replace(/<head(.*?)>/i, '<head$1><base href="' + base + '">');
@@ -5818,6 +5825,11 @@ function injectGameAudio(fw, doc) {
         if (/<head/i.test(html)) html = html.replace(/<head([^>]*)>/i, '<head$1>' + spoof);
         else html = spoof + html;
       }
+      return html;
+    }
+
+    function writeGameIntoFrame(html, url, targetDoc) {
+      html = prepareGameHTML(html, url);
       var doc = targetDoc || (gameFrame.contentDocument || gameFrame.contentWindow.document);
       doc.open();
       doc.write(html);
@@ -5836,8 +5848,9 @@ function injectGameAudio(fw, doc) {
       finishLoading();
     }
 
-    function fetchGameAndPlay(url, depth, targetDoc) {
+    function fetchGameAndPlay(url, depth, targetDoc, onHtml) {
       if (depth > 3) {
+        if (onHtml) { onHtml(null, url); return; }
         if (targetDoc) { writeGameIntoFrame(brandedPage('<div class="box"><div class="err-title">Game not found</div><div class="sub">Could not load this game in a new tab.</div></div>'), 'about:blank', targetDoc); return; }
         showGameError(currentGameName);
         return;
@@ -5849,12 +5862,14 @@ function injectGameAudio(fw, doc) {
         .then(function(html) {
           var embed = extractEmbedGame(html, url);
           if (embed) {
-            fetchGameAndPlay(/^https?:\/\//i.test(embed) ? toCdnUrl(embed) : resolveRelative(url, embed), depth + 1, targetDoc);
+            fetchGameAndPlay(/^https?:\/\//i.test(embed) ? toCdnUrl(embed) : resolveRelative(url, embed), depth + 1, targetDoc, onHtml);
             return;
           }
+          if (onHtml) { onHtml(html, url); return; }
           writeGameIntoFrame(html, url, targetDoc);
         })
         .catch(function() {
+          if (onHtml) { onHtml(null, url); return; }
           if (targetDoc) { writeGameIntoFrame(brandedPage('<div class="box"><div class="err-title">Game not found</div><div class="sub">Could not load this game in a new tab.</div></div>'), 'about:blank', targetDoc); return; }
           showGameError(currentGameName);
         });
@@ -5913,8 +5928,12 @@ function injectGameAudio(fw, doc) {
 
     function openGameInTab(url, features) {
       if (!url) return;
+      var useBlob = false;
+      try { useBlob = localStorage.getItem('gameTabMode') === 'blob'; } catch (e) {}
+      if (useBlob) { openGameInBlob(url, features); return; }
       var w = features ? window.open('', '_blank', features) : window.open('', '_blank');
       if (!w) return;
+      try { w.addEventListener('beforeunload', function(e) { e.preventDefault(); e.returnValue = ''; }); } catch (e) {}
       var t = String(document.title || 'unblockedzone').replace(/[<>&"]/g, function(c) { return { '<':'&lt;', '>':'&gt;', '&':'&amp;', '"':'&quot;' }[c]; });
       if (isFetchableUrl(url)) {
         var _oa = localStorage.getItem('accentColorV2') || '#ff6600';
@@ -5928,6 +5947,53 @@ function injectGameAudio(fw, doc) {
         w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + t + '</title><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;padding:0;width:100%;height:100%;background:#000;overflow:hidden}iframe{width:100%;height:100%;border:none}</style></head><body><iframe src="' + String(url).replace(/"/g,'&quot;') + '" allowfullscreen allow="autoplay;fullscreen;clipboard-read;clipboard-write" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe></body></html>');
         w.document.close();
       }
+    }
+
+    function openGameInBlob(url, features) {
+      if (!url) return;
+      var t = String(document.title || 'unblockedzone').replace(/[<>&"]/g, function(c) { return { '<':'&lt;', '>':'&gt;', '&':'&amp;', '"':'&quot;' }[c]; });
+      var _oa = localStorage.getItem('accentColorV2') || '#ff6600';
+      if (!/^#[0-9a-fA-F]{6}$/.test(_oa)) _oa = '#ff6600';
+      var unloadHook = '<scr' + 'ipt>window.addEventListener("beforeunload",function(e){e.preventDefault();e.returnValue="";});</scr' + 'ipt>';
+      var w = features ? window.open('', '_blank', features) : window.open('', '_blank');
+      if (!w) return;
+      w.document.open();
+      w.document.write('<\!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + t + '</title>' +
+        '<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">' +
+        '<style>html,body{margin:0;padding:0;width:100%;height:100%;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:"ApplePixel",sans-serif;color:' + _oa + '}</style>' +
+        '</head><body>' +
+        '<img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/UNBL0CKEDZ0NE%20in%20Text.png" alt="UNBL0CKEDZ0NE" style="height:28px;opacity:0.6;margin-bottom:16px">' +
+        '<div style="font-size:22px">Loading game...</div>' +
+        '</body></html>');
+      w.document.close();
+      var openBlob = function(html) {
+        try {
+          if (!/<body/i.test(html)) html = unloadHook + html;
+          else if (!/<\/body>/i.test(html)) html = html + unloadHook;
+          else html = html.replace(/<\/body>/i, unloadHook + '</body>');
+        } catch (e) { html = (html || '') + unloadHook; }
+        var blob = new Blob([html], { type: 'text/html' });
+        var w2 = URL.createObjectURL(blob);
+        w.location.href = w2;
+      };
+      if (isFetchableUrl(url)) {
+        var _src = toCdnUrl(makeCdnFriendly(String(url || '')));
+        fetchGameAndPlay(_src, 0, null, function(html, finalUrl) {
+          if (!html) {
+            w.document.open();
+            w.document.write('<\!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + t + '</title><style>html,body{margin:0;padding:0;width:100%;height:100%;background:#000;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;color:' + _oa + '}div{text-align:center;font-size:20px}</style></head><body><div>Game not found</div></body></html>' + unloadHook);
+            w.document.close();
+            return;
+          }
+          openBlob(prepareGameHTML(html, finalUrl || _src));
+        });
+      } else {
+        openBlob('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + t + '</title><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;padding:0;width:100%;height:100%;background:#000;overflow:hidden}iframe{width:100%;height:100%;border:none}</style></head><body><iframe src="' + String(url).replace(/"/g,'&quot;') + '" allowfullscreen allow="autoplay;fullscreen;clipboard-read;clipboard-write" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe></body></html>' + unloadHook);
+      }
+    }
+
+    function setGameTabBlob(on) {
+      try { localStorage.setItem('gameTabMode', on ? 'blob' : 'blank'); } catch (e) {}
     }
 
     function downloadGameHTML() {
@@ -7519,6 +7585,10 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
 
       try {
         if (has('perfMode')) { setPerfMode(get('perfMode') === '1'); setCheck('perf-mode-check', get('perfMode') === '1'); }
+      } catch (e) {}
+
+      try {
+        setCheck('game-tab-blob-check', get('gameTabMode') === 'blob');
       } catch (e) {}
 
       try {
