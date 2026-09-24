@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>New Tab</title>
+ <link rel="icon" id="page-favicon" type="image/svg+xml" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAYAAADtc08vAAAAAXNSR0IArs4c6QAAAz1JREFUOE9jZEAD68zMhBX8/EIl7OwCOMXEVP79+fPj+8tXd99euXzqyc6dq723bbuFrIURmXOurTlZztu/gFdBXouVk5OJkYUFLP3v92+G3z9+MHx9/PjW423bphiUlU2G6YMbcH323HZ5P598DhERTkYmJnSHgfn///1j+PPt2/dHO3cuVgkJSQeJwQ24OnNmvWpkZAMrDw/Dl+fP3z/bs2fijz17em7++PFDQkJCiO37d6Z/vLyffr5/z/711y9Gn2XL3oMN2ObpKeq1ffvr7QkJCobZ2fMZ//79eWvZsjTbSZMerQoNZePn4GB1X7z4K8xJV7OyeD5ycKh+/fTjh+ucadcZT9fWxnHJyChpp6c3ILv7xoJF1VKODhWMjAxML48dn64SEV5yuKhITTM2fgG3rLTpl+fPH95eurSW8dLEibVKISGld1aubDQoKuoFGXJt9uxSpaCgLnZBQbCZvz5+Yri3bn2lZnJix4NNm6bK+/pm/fn+neHWsmV9jNfmzOlUi44u+3D7zvXLfb1ejgsWPHiwefMSKQeHaCZYLPz5w/Ds0IH5Ct6+SddmzcrXSEqaAIqZOytXTmK8PGVKlVpsbCsrFxfDrSVLOjUSEysuTpgUpxoVsYBDSIiRgZGR4cfr1z9vrlqVbJiXt/Tehk1TFf18skCuurFkcQ3jqdJSe/X09MW8ioqyn+7ceXh1zpwA6+7uC1dmzMiStLIqZmBh4Xx99ESHRmrSpKMlJTp6Obl7eGRlxD/dv3/vxux5eeBovLt+/Xx5D48EJnZ2hrcXL569tXBhivWECRfQE8PDbdsWyHl4xIOc/+zg4fWybi5BYAOO5Re7a2Wlz+ZVVJBlZGZm+PbixZvnBw/OeXn69BKb/v6rIDWXensTlKOjp3EIi3B+efTwwY1588rMW1tXwxPSuZ6eDOXg4A4eaWl+WOB9vHv30c3589O+vXt3Uys+frawkZHLlydPnjzetq1HNzd3IkpKBHFO1tUFyrq65guoqJgxMDP/e7hpS5dmSlLTlRkziuTc3FM/3r9/7cme3Qst29s3YeQFZP+eamgIYuXllzQsLpwKEj/f1ZXy7/v378b19UvRwwUAV1dp6K1xMBgAAAAASUVORK5CYII=">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body {
+    background: radial-gradient(ellipse at bottom, #35251b 0%, #090a0f 100%);
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    font-family: Roboto,'Segoe UI',Arial,sans-serif;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite alternate;
+  }
+  .version {
+    position: fixed;
+    top: 16px;
+    left: 20px;
+    z-index: 5;
+    font-size: 13px;
+    color: #cfd8e3;
+    letter-spacing: .5px;
+  }
+  .opened {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 12;
+    background: #090a0f;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 500;
+    color: #fff;
+    padding: 24px;
+    flex-direction: column;
+  }
+  .opened img {
+    width: 240px;
+    margin-bottom: 24px;
+  }
+  @keyframes twinkle {
+    0% { opacity: 0.2; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.2); }
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 26px;
+    max-width: 1080px;
+    width: 90%;
+    position: relative;
+    z-index: 2;
+    padding: 24px;
+  }
+  .card {
+    border-radius: 28px;
+    overflow: hidden;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.12);
+    box-shadow: 0 8px 24px rgba(0,0,0,.4);
+    transition: transform .2s, box-shadow .2s;
+    cursor: pointer;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(0,0,0,.55);
+  }
+  .card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+  .card p {
+    padding: 12px 14px;
+    font-size: 14px;
+    text-align: center;
+    color: #cfd8e3;
+  }
+  .pop-bg {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    z-index: 10;
+    align-items: center;
+    justify-content: center;
+  }
+  .pop {
+    background: #151c28;
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 16px;
+    padding: 28px 32px;
+    min-width: 300px;
+    text-align: center;
+    box-shadow: 0 16px 48px rgba(0,0,0,.6);
+  }
+  .pop h3 { font-size: 16px; font-weight: 500; margin-bottom: 6px; }
+  .pop .who { font-size: 13px; color: #9aa7b5; margin-bottom: 22px; }
+  .pop .btns { display: flex; gap: 14px; justify-content: center; }
+  .pop button {
+    padding: 18px 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.2);
+    background: rgba(255,255,255,.06);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background .15s, transform .15s;
+  }
+  .pop button:hover { background: rgba(255,255,255,.16); transform: translateY(-2px); }
+  .pop .close {
+    display: block;
+    margin: 18px auto 0;
+    background: none;
+    border: none;
+    color: #8d99a6;
+    font-size: 13px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="version">v1.0.0 (9/23/2026)</div>
+<div class="opened" id="opened"><img id="opened-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASoAAAAuCAMAAACoAqS/AAAAYFBMVEVHcEwPDg4JCAiPj48+Pj0jIR8nJyUMCwoFAwIDAwEvLCgWFROrq6shISAxLiqampqLZyk/OzRyaFtNSURuTR5mZmX09PTv7+/q6uqVlZVpaWnd3d2FhYRNTU3Gxsaqey864TVfAAAAFnRSTlMAPx7U/nCvLwYSy1P5k/Xp9OG1nvfdUQsM4gAADXVJREFUeNrtW4uSqzgOXTvIT0zzCJhAoP//L1eSDSbp6drqnb21Vb2rvkls+ciPgyXLTM0//i9/WDQAyG+0PxYJAPrnZobN/pgYXs3fZ+q27/Vg35eM2h21PxTTo9nt52ZAZvrPMTWkaf1N8fs07UqYV62op8jan4ns5zj9fM0y4CRq8aeokuD+I/0P6zQ9Gv9GCuxx2hv4KVV6nGMc/Y/NVD3HHf4YVaF5THEd/u7m7OM0LZ037wTG6fFzqgRRtfycYVfjUoL5Q1RZqBac19/1QHmb4rx04o3AYZ2nZ/PT7WH8Lc7z+G9QRU9d2T8Vq3y3/Qc8UNToaZXS7zEnxrg48eM5EfH/jgOyg8g/dsir6hsPtCivVUPrsC9ijqA0xboK9mjNfX9M07oVAs3Vrogtkqn6KFQZBn8FFjnHlOoZ0U4W4FeDoii9fgX+NdiGaol/5YH+drv10rxV5e1VgO0MHVnPCs5WbdiGYkel5DHyq13puYjOVMW4dt4crdkVxQXoC1OnrVRLnKdRY+byVeSXKaQlG/EGLA9Wv4LZA9d3D+ROpymOIN+qsEeSeYpYp8ggDLeSp3UC9omlTnYE3qtgS0KBRpERozgfaj9Ph+zMoIFHoopb48QbhSPfCYy9OX2fvDWybdiwcBMWdp5eHop/VuCx0LWzHEuWUCOEhZc0nz1LuIB3kTywjuyB7ykRRx9TqitW+3UmYbbmmTIBS31Q6+b0sZhF6XIAMiJV5zyheAnaEmP4MdVayUTVdFClR9QnXqVaedUMHeVLYEOK1kHChlO6eRkepMlDTVxcB+4iLPGQxJ4R6knzyasie3mGpm0mHAvzI9EDEfXugXR41SVQwzpRVdyotynbz0hE0CYnoI3y/ZRkc17yNohnsiWlHma0yJbYM7MiJXxcHrTz2haqjNQwopp4ldK7tSBHL6Uhex2WpIlKhAoXUoNWT6of0ERZb3EOQm1lC6+Dxj6EW+hRJWD2CCl5B7pmLwPehJQW0APjmweyS83LFtDoDEZLFTj6PIs8nhx2hhXVWFwOPZaFkbd0ABoOOdRaZMHIJ5CU2/PG9WLYW6JqWjthfG5F1nR/ewNyvEL766CPeYo7yLBdZogT3/F3kF/6WNDYa1WtMe5XLcdaOZzYohauqq9nYHG4rYNylsV16WAgUrdly9Kk64zs006LW5X0WH6A1Dfc/JvjjdnPlGFVh2FFmxSsvJG3Fu3CUcwCzccJ2xOq2iolDFCQYCALzpiiih0I0aS51Glj7EGCK8iNplhVDqSl/TtvZ1PzRPxNh2pHfsscqJ91sDDS/aM6tBXNeAc6A+e5t+8XlXrrjuALPGDnecVbp7J0xFwD+pZiyLpVjtRL5HDFW3BTMsXuOS6Ny3ZunGcKTAIR89aoQ71QFAIZyLATcuDuVfDSompeuXeWBhGxl1oxVWxLt44Z//ZgJYRzhlWKDSCsDAsixnOwig8BDRUZdsWAMo5eB94G54S7ihlkD4wvHmhp8cX/cFNEpFjxKY5+qLPQipfGEydTpNNOCdT6D+RtcRrocTXcB5I5o8pnOz+iwTOTWbqDcc5U0QkIMK5EqJDWSEXIJvgkQHn5NGrh6Fkr7tI9YwrgyhorNYsAlTaJ5j4WXMXHOQfHccf7ZsHNP4qsJjLm6UOE6sGnzzFgQ8//5jv2QHjLvtdtA1vuLXGpgE//rfPm4pZbJ2BFThaUig18Pi3TpmCVoE1RmNdjRDKVBkYSgkV02EcHMiDHc13XT6ymOSBVrPrI/x47H4zC7dhBYESoEI3qkq4b2df1gzo5EMxNuf3SowThNmJQZxuKXfO8A5CrxcuIdURjwDA4xcMDy/lX/E/UzInnxZdj0e+ROBE9qh/k0Eof3kp7pZ/Py3LePvZyH56IKlYTgkWHBvsQTFWccCiqepOomufI2phPN6JKO+I6ZRgePQp9aY6jPqgSYyRnqJy36bq7Ejfn7beh0XviZroymCI3p5vzlAaL56EJ21sWyinls1xJEkXOkxr9T76oQ/KuraOAcMa5BvQ45QMwx7qyfdBF0XODDmtOoJJYAQGEpQQKhXhW4CW3qHpaUzbHbsa0jV6zXyqGSB8UXzwKVdChTe0CaJO5odUereh57MWZm5PB6klxkA87LOTB6Burfboyr/Cd/9k+0r0leHajDsyhXmdUAwdnVEtrshpXiWp0z3wAmuyL2TCdZxtoUu9EZhbtPVJzUBUfDjytMjsgUzWf6SJT9Ui7isRKoZaIixfZlQS6GFIV8ryMd3zbPbe22yIl9ymuD6a8P+CQFpAy4ikPRt/kvqp69UBe2SUmsf9VAHysduISqual8+xwxS01BrbpUG+stpyMOlGomsnxNOVjNauzJQYoMJLQHPuwejt31bQur9KJTBWPnJNxWiWPQZ09EDWeD0g4Wvw1G6dxwHdkdVFXFJEhvZ2qt+Uqo4CONExV2UW8yvIyc6NUgVINVpfcywl2uOKW4iOpgY9pVku+TheqAk2mAa0Sg6w8zoNBSsU3hZRmfYhzV62oukgTtFS0IU6Ps0AZXc3cHFlUpcqTUAtdXPSXuJ5T8BKs4ryiqzGTzXVEB1KH7tqnIP9YTv8zR6rACWPhBNb0koqSrUcJRLT3rgdg3n/HxTBtMqLKc7LxJHXxy91pYjDWjXMUSz7AFKqcCkU4VXpQ0lo64EQxWQTaQssR7BLfnBT5k9iUyPI2QquiphcUvVAcw7pwEdDGaAgh9Vk46EAn8SlVCMxBCVUmUyRuNKcmo2mhvJt0P018R0SuPD9h5TOCDkByPMHplTvVirM+QVTRdRAWalZCW6Zq4ryqiND/yFQdQ+e8MRh0P6/YGQPCshibmCxpHMX1OOp0FF6CFeVfNQUrzohfhtR0MRVCn9tlXJbH4/FxyJooGtbXUJVeEoPnlKegF5IGpMKfJ6p7acRI5Y9TOGFSWmfIiymqHfml0r6jOqoHa8N29FDkJi28qR/0kIM1gMWakuILHGzqsMA55xp0OvNGew1WHMM2Hv9VwEi44dj+zG+Q6CQxfdV0q4nxNVTFlIDusbxu4J1UVYiy4Pg+NY/eUsLUrLm7nDA5kJLUj3MUDgzIsVaJKrZa2MOsd9i0U6Iz882ATHZvhKq4hyKcg6LzU5EkKymkSR0qhNd5FjwgTQMZPJPQkln1EjpEVytBeUSWmxbqUV6YSQ/dyqkEfwj2pFsN+2GJSRSbOSYhaOb3QoxdKkcZFjm1oxy1AWkFKOqROCXss+Fkh9SuJts0zN6wpR7p+FBs1fAD93ytQ6rIej6Go8PSB4KQ/SnzoIXbc5kN0qC14Gkgs+fK5k6Btpri+nuwijdJC6iQtjxcGmIH6Oh0qBOzxqJzHcJ0EkXp8O98CVVTSkAJUZinDEvnd0nDmjJPY6UYpyKL85zsWKnVznZ5V5ElJdlMFTc/ORgZ7MG7ncbgkXhWdaCO8wurInw3rKc34SuNkSlAHcp5FJICYbOfuWkJVoIzteqZh8tWc++76pqFyv7xKuRoH4/Hs/ifJciCtLxDC8QErD5T5imHC6TcBi08izqn9lpROaR3xyOWO59fYT6uUi9guYfu8SoU7U5okZvP2dRF18u0jQg+mBKsnggXqfMCfyaT1PwBJ7Ouqa7SUQhp6Ne+QIK28AZ1r5DMnIWCapy/QooeZE54DogRCssqX0xcgpVeTIa86oOU52BFSi/XAfMgWCyZMEK4lxS2u7dehPXcfO4HDcpdRIHmuKBoMQVCkcW+QglirpAg7FH+BlIGEaymkEIDHje74OV3c8qQq54GPKFFzl7kXw0YjgEzJJRpf11dmROLpeyh/NPWkKPzbxauS1S/Q98htvSYBHUvEFKxntUMPSHGlkHNy0DiAnmbwAEtf6S+wlkY+j5ghhS4LL2nQU94wV8lq/JvgXwDLXKtfwc55RuzF2hq+9pLUha1eZNvJ/LN0v4lE/8tseV1nHnRWnryUnuhLbUYLbSRQkhswZ/0uC0VrMaCJoAXApG/SwxvBUsf6KW1pPO9TmqqoBbadhB9+/nZKv4vPO1nG9xne+/9cCftHT8OC5+upQJAS1r/y5jyPYDUfQ8a+nsLfU+bAT5V78Eb8JS5tWIgKj7xq20+wej23nzeW4e83O+ovquudV2r3L3FFoShkrT6dzFle1zuAPf27u53LCID6D8BS1U76La3iGg9UtW0n8QMUiVFi9C2VaFLVLngkKdPpKq5UwtiiSpvfxdVskWWkvNUzWdLf95YhZW2daodJObBLTikClvv+PWptEcy7omqpms/KwVEFeqcQg0aMlaJX0YVOVN7R6F9hFsFv72VA64b9bhhtLHDvcNmh3SR9pMI4e3TIU2K/K9z3SdCsKAUtbQd0vXZOTC/i6peUXLXEmO0HbDgjQxYdhV+KW2MGLByV+F+J0RL2q69k013D0nbER4LAziE3JUissh7f5NY7z0AIF2KxHG+THkzkoDLB4mJgwAUL0AlwTKEgCr8CLo7BMB6IJ0QEIpW/65dZayUlAl7L1godUpZ9nmv4fsBoRiDH6zSR2MpaVlylbCWtZTe/zYxxtgitD6uc17J7SSkzEL4ZGMuplwvWK79T0jiy/z/f8X5VfJPemmi9NevYtcAAAAASUVORK5CYII=" alt="">Your session is now running in a new tab. You can safely close this tab.</div>
+
+<div class="grid">
+  <!-- Card 1..4: click the image -> popup -> pick about:blank or blob -->
+  <div class="card" data-ab="a1.html" data-bb="b1.html">
+    <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/load/class.png" alt="Asset 1">
+    <p>Classroom</p>
+  </div>
+  <div class="card" data-ab="a2.html" data-bb="b2.html">
+    <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/load/test.png" alt="Asset 2">
+    <p>Desmos Testing</p>
+  </div>
+  <div class="card" data-ab="a3.html" data-bb="b3.html">
+    <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/load/calc.png" alt="Asset 3">
+    <p>Desmos</p>
+  </div>
+  <div class="card" data-direct="c1.html">
+    <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/load/site.png" alt="Asset 4">
+    <p>Site</p>
+  </div>
+</div>
+
+<div class="pop-bg" id="pop-bg">
+  <div class="pop">
+    <h3>Open with…</h3>
+    <div class="who" id="pop-name"></div>
+    <div class="btns">
+      <button id="ab-btn">about:blank</button>
+      <button id="bb-btn">blob</button>
+    </div>
+    <button class="close" id="pop-close">Close</button>
+  </div>
+</div>
+
+<script>
+  for (let i = 0; i < 100; i++) {
+    let s = document.createElement('div');
+    s.className = 'star';
+    s.style.top = Math.random() * 100 + 'vh';
+    s.style.left = Math.random() * 100 + 'vw';
+    s.style.width = s.style.height = (Math.random() * 3 + 1) + 'px';
+    s.style.animationDelay = (Math.random() * 2) + 's';
+    document.body.appendChild(s);
+  }
+
+  window.addEventListener('beforeunload', function (e) {
+    e.preventDefault();
+    e.returnValue = '';
+  });
+
+  var cards = document.querySelectorAll('.card');
+  var bg = document.getElementById('pop-bg');
+  var nameEl = document.getElementById('pop-name');
+  var cur = null;
+
+  function openUrl(file) {
+    if (file && /^(?:AB|BB|IMG|LINK)/i.test(file)) return;
+    var url;
+    if (/^(?:https?:|blob:|about:)/i.test(file)) {
+      url = file;
+    } else {
+      url = window.location.href.replace(/\/[^\/]*$/, '/') + file;
+    }
+    window.open(url, '_blank', 'noopener');
+    document.getElementById('opened').style.display = 'flex';
+  }
+
+  cards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      var direct = card.getAttribute('data-direct');
+      if (direct !== null) {
+        openUrl(direct);
+        return;
+      }
+      cur = card;
+      nameEl.textContent = card.querySelector('p').textContent;
+      document.getElementById('ab-btn').textContent =
+          'about:blank — ' + card.getAttribute('data-ab');
+      document.getElementById('bb-btn').textContent =
+          'blob — ' + card.getAttribute('data-bb');
+      bg.style.display = 'flex';
+    });
+  });
+
+  document.getElementById('ab-btn').addEventListener('click', function () {
+    if (cur) openUrl(cur.getAttribute('data-ab'));
+    bg.style.display = 'none';
+  });
+  document.getElementById('bb-btn').addEventListener('click', function () {
+    if (cur) openUrl(cur.getAttribute('data-bb'));
+    bg.style.display = 'none';
+  });
+  document.getElementById('pop-close').addEventListener('click', function () {
+    bg.style.display = 'none';
+  });
+  bg.addEventListener('click', function (e) {
+    if (e.target === bg) bg.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
