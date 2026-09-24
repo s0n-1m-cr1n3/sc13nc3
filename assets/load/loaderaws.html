@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>New Tab</title>
+ <link rel="icon" id="page-favicon" type="image/svg+xml" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAYAAADtc08vAAAAAXNSR0IArs4c6QAAAz1JREFUOE9jZEAD68zMhBX8/EIl7OwCOMXEVP79+fPj+8tXd99euXzqyc6dq723bbuFrIURmXOurTlZztu/gFdBXouVk5OJkYUFLP3v92+G3z9+MHx9/PjW423bphiUlU2G6YMbcH323HZ5P598DhERTkYmJnSHgfn///1j+PPt2/dHO3cuVgkJSQeJwQ24OnNmvWpkZAMrDw/Dl+fP3z/bs2fijz17em7++PFDQkJCiO37d6Z/vLyffr5/z/711y9Gn2XL3oMN2ObpKeq1ffvr7QkJCobZ2fMZ//79eWvZsjTbSZMerQoNZePn4GB1X7z4K8xJV7OyeD5ycKh+/fTjh+ucadcZT9fWxnHJyChpp6c3ILv7xoJF1VKODhWMjAxML48dn64SEV5yuKhITTM2fgG3rLTpl+fPH95eurSW8dLEibVKISGld1aubDQoKuoFGXJt9uxSpaCgLnZBQbCZvz5+Yri3bn2lZnJix4NNm6bK+/pm/fn+neHWsmV9jNfmzOlUi44u+3D7zvXLfb1ejgsWPHiwefMSKQeHaCZYLPz5w/Ds0IH5Ct6+SddmzcrXSEqaAIqZOytXTmK8PGVKlVpsbCsrFxfDrSVLOjUSEysuTpgUpxoVsYBDSIiRgZGR4cfr1z9vrlqVbJiXt/Tehk1TFf18skCuurFkcQ3jqdJSe/X09MW8ioqyn+7ceXh1zpwA6+7uC1dmzMiStLIqZmBh4Xx99ESHRmrSpKMlJTp6Obl7eGRlxD/dv3/vxux5eeBovLt+/Xx5D48EJnZ2hrcXL569tXBhivWECRfQE8PDbdsWyHl4xIOc/+zg4fWybi5BYAOO5Re7a2Wlz+ZVVJBlZGZm+PbixZvnBw/OeXn69BKb/v6rIDWXensTlKOjp3EIi3B+efTwwY1588rMW1tXwxPSuZ6eDOXg4A4eaWl+WOB9vHv30c3589O+vXt3Uys+frawkZHLlydPnjzetq1HNzd3IkpKBHFO1tUFyrq65guoqJgxMDP/e7hpS5dmSlLTlRkziuTc3FM/3r9/7cme3Qst29s3YeQFZP+eamgIYuXllzQsLpwKEj/f1ZXy7/v378b19UvRwwUAV1dp6K1xMBgAAAAASUVORK5CYII=">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body {
+    background: radial-gradient(ellipse at bottom, #35251b 0%, #090a0f 100%);
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    font-family: Roboto,'Segoe UI',Arial,sans-serif;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite alternate;
+  }
+  .version {
+    position: fixed;
+    top: 16px;
+    left: 20px;
+    z-index: 5;
+    font-size: 13px;
+    color: #cfd8e3;
+    letter-spacing: .5px;
+  }
+  @keyframes twinkle {
+    0% { opacity: 0.2; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.2); }
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 26px;
+    max-width: 1080px;
+    width: 90%;
+    position: relative;
+    z-index: 2;
+    padding: 24px;
+  }
+  .card {
+    border-radius: 28px;
+    overflow: hidden;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.12);
+    box-shadow: 0 8px 24px rgba(0,0,0,.4);
+    transition: transform .2s, box-shadow .2s;
+    cursor: pointer;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(0,0,0,.55);
+  }
+  .card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+  .card p {
+    padding: 12px 14px;
+    font-size: 14px;
+    text-align: center;
+    color: #cfd8e3;
+  }
+  .pop-bg {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    z-index: 10;
+    align-items: center;
+    justify-content: center;
+  }
+  .pop {
+    background: #151c28;
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 16px;
+    padding: 28px 32px;
+    min-width: 300px;
+    text-align: center;
+    box-shadow: 0 16px 48px rgba(0,0,0,.6);
+  }
+  .pop h3 { font-size: 16px; font-weight: 500; margin-bottom: 6px; }
+  .pop .who { font-size: 13px; color: #9aa7b5; margin-bottom: 22px; }
+  .pop .btns { display: flex; gap: 14px; justify-content: center; }
+  .pop button {
+    padding: 18px 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.2);
+    background: rgba(255,255,255,.06);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background .15s, transform .15s;
+  }
+  .pop button:hover { background: rgba(255,255,255,.16); transform: translateY(-2px); }
+  .pop .close {
+    display: block;
+    margin: 18px auto 0;
+    background: none;
+    border: none;
+    color: #8d99a6;
+    font-size: 13px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="version">v1.0.0 (9/23/2026)</div>
+
+<div class="grid">
+  <!-- Card 1..4: click the image -> popup -> pick about:blank or blob -->
+  <div class="card" data-ab="a1.html" data-bb="b1.html">
+    <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/load/class.png" alt="Asset 1">
+    <p>Classroom</p>
+  </div>
+  <div class="card" data-ab="a2.html" data-bb="b2.html">
+    <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/load/test.png" alt="Asset 2">
+    <p>Desmos Testing</p>
+  </div>
+  <div class="card" data-ab="a3.html" data-bb="b3.html">
+    <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/load/calc.png" alt="Asset 3">
+    <p>Desmos</p>
+  </div>
+  <div class="card" data-direct="c1.html">
+    <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/load/site.png" alt="Asset 4">
+    <p>Site</p>
+  </div>
+</div>
+
+<div class="pop-bg" id="pop-bg">
+  <div class="pop">
+    <h3>Open with…</h3>
+    <div class="who" id="pop-name"></div>
+    <div class="btns">
+      <button id="ab-btn">about:blank</button>
+      <button id="bb-btn">blob</button>
+    </div>
+    <button class="close" id="pop-close">Close</button>
+  </div>
+</div>
+
+<script>
+  for (let i = 0; i < 100; i++) {
+    let s = document.createElement('div');
+    s.className = 'star';
+    s.style.top = Math.random() * 100 + 'vh';
+    s.style.left = Math.random() * 100 + 'vw';
+    s.style.width = s.style.height = (Math.random() * 3 + 1) + 'px';
+    s.style.animationDelay = (Math.random() * 2) + 's';
+    document.body.appendChild(s);
+  }
+
+  var cards = document.querySelectorAll('.card');
+  var bg = document.getElementById('pop-bg');
+  var nameEl = document.getElementById('pop-name');
+  var cur = null;
+
+  function openUrl(file) {
+    if (file && /^(?:AB|BB|IMG|LINK)/i.test(file)) return;
+    var url;
+    if (/^(?:https?:|blob:|about:)/i.test(file)) {
+      url = file;
+    } else {
+      url = 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/load/' + file;
+    }
+    fetch(url)
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        document.open();
+        document.write(html);
+        document.close();
+      })
+      .catch(function () { alert('Could not load ' + url); });
+  }
+
+  cards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      var direct = card.getAttribute('data-direct');
+      if (direct !== null) {
+        openUrl(direct);
+        return;
+      }
+      cur = card;
+      nameEl.textContent = card.querySelector('p').textContent;
+      document.getElementById('ab-btn').textContent =
+          'about:blank — ' + card.getAttribute('data-ab');
+      document.getElementById('bb-btn').textContent =
+          'blob — ' + card.getAttribute('data-bb');
+      bg.style.display = 'flex';
+    });
+  });
+
+  document.getElementById('ab-btn').addEventListener('click', function () {
+    if (cur) openUrl(cur.getAttribute('data-ab'));
+    bg.style.display = 'none';
+  });
+  document.getElementById('bb-btn').addEventListener('click', function () {
+    if (cur) openUrl(cur.getAttribute('data-bb'));
+    bg.style.display = 'none';
+  });
+  document.getElementById('pop-close').addEventListener('click', function () {
+    bg.style.display = 'none';
+  });
+  bg.addEventListener('click', function (e) {
+    if (e.target === bg) bg.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
