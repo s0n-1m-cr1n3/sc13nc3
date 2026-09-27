@@ -72,12 +72,17 @@
     }
     *{box-sizing:border-box;margin:0;padding:0}
     *::-webkit-scrollbar{display:none}
-    html,body{height:100%;font-family:'ApplePixel',monospace,sans-serif;background:#050001;color:var(--accent);overflow:hidden;scrollbar-width:none;-ms-overflow-style:none;cursor:var(--cursor-default);}
+    html,body{height:100%;font-family:'ApplePixel',monospace,sans-serif;background:#050001;color:var(--accent);overflow:hidden;scrollbar-width:none;-ms-overflow-style:none;cursor:inherit;}
     html.perf-mode{background:#050001}
     html.perf-mode *{animation:none !important;transition:none !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;filter:none !important;will-change:auto !important;background-attachment:scroll !important;background-image:none !important}
     html.g4mes-open *{animation:none !important;transition:none !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;filter:none !important;will-change:auto !important;background-attachment:scroll !important}
+    html.g4mes-open #content-area{display:none !important}
+    html.g4mes-open #floating-logo,html.g4mes-open .home-music-player{display:none !important}
     html.g4mes-open .loading-indicator .spinner{animation:spin 0.8s linear infinite !important;transition:none !important}
-    html.g4mes-open #g4mes-viewer,#g4mes-viewer.active{background:#000}
+    html.g4mes-open #g4mes-viewer,#g4mes-viewer.active{background:transparent}
+    html.g4mes-open #custom-bg{display:block !important}
+    html.g4mes-open #custom-bg:not(.wallpaper){background-image:url('https://quantil.jsdelivr.net/gh/matheveryday25/math/UBbannerDarken.png') !important;background-size:cover;background-position:center;background-repeat:no-repeat}
+    html.g4mes-open #custom-bg:not(.wallpaper)::after{content:'';position:absolute;inset:0;background:rgb(var(--accent-rgb));mix-blend-mode:color;opacity:0.85}
     html.perf-mode img,html.perf-mode picture{display:none !important}
     html.perf-mode #bg-canvas,html.perf-mode #starfield-bg,html.perf-mode #topography-canvas,html.perf-mode #matrix-canvas,html.perf-mode #waves-bg,html.perf-mode #globe-bg,html.perf-mode #dots-bg,html.perf-mode #fog-bg,html.perf-mode #tunnel-bg,html.perf-mode #noise-bg,html.perf-mode #custom-bg,html.perf-mode #bg-canvas canvas{display:none !important}
     html.perf-mode body::after,html.perf-mode body:after{display:none !important}
@@ -85,9 +90,9 @@
     html.perf-mode #loading-screen,html.perf-mode #boot-screen,html.perf-mode #gv-loading,html.perf-mode .loading-indicator{display:none !important}
     html.perf-mode .sidebar-btn[data-tab="home"],html.perf-mode .sidebar-btn[data-tab="console"],html.perf-mode #music-btn,html.perf-mode #music-popup,html.perf-mode .gv-settings-row,html.perf-mode #gv-console,html.perf-mode .gv-vol{display:none !important}
     html.perf-mode,html.perf-mode *,html.perf-mode a,html.perf-mode button{ cursor:auto !important; }
-    a,button,.sidebar-btn,.card,.g4mes-card,.play-btn,.partner-card a,.media-cat,.g4mes-cat,.gv-btn,.link-item a{cursor:var(--cursor-link);}
-    .loading-cursor{cursor:var(--cursor-wait);}
-    html.loading-active{cursor:var(--cursor-wait)!important;}html.loading-active *{cursor:var(--cursor-wait)!important;}
+    a,button,.sidebar-btn,.card,.g4mes-card,.play-btn,.partner-card a,.media-cat,.g4mes-cat,.gv-btn,.link-item a{cursor:pointer;}
+    .loading-cursor{cursor:wait;}
+    html.loading-active{cursor:wait!important;}html.loading-active *{cursor:wait!important;}
 
     body::after{
       content:"";position:fixed;inset:0;
@@ -514,6 +519,29 @@
     .search-bar input:focus {
       border-color: var(--beez-gold-bright); box-shadow: 0 0 20px rgba(var(--accent-rgb),0.4);
     }
+    .ub-dd {
+      position: absolute; top: 100%; left: 0; right: 0; margin-top: 6px;
+      background: rgba(10, 5, 0, 0.97); border: 2px solid var(--accent);
+      border-radius: 10px; max-height: 60vh; overflow-y: auto; z-index: 9999;
+      display: none; text-align: left;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    }
+    .ub-dd.open { display: block; }
+    .ub-dd-group {
+      padding: 8px 14px 4px; font-size: 11px; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--beez-gold-bright);
+      font-family: 'ApplePixel', sans-serif;
+    }
+    .ub-dd-item {
+      display: flex; align-items: center; gap: 10px; padding: 8px 14px;
+      cursor: pointer; font-size: 14px; font-family: 'ApplePixel', sans-serif;
+      color: var(--accent);
+    }
+    .ub-dd-item .ub-dd-ico { width: 24px; height: 24px; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; }
+    .ub-dd-item .ub-dd-ico svg { width: 20px; height: 20px; display: block; }
+    .ub-dd-item .ub-dd-sub { margin-left: auto; font-size: 11px; color: #999; }
+    .ub-dd-item:hover, .ub-dd-item.hl { background: rgba(var(--accent-rgb), 0.18); }
+    .ub-dd-note { padding: 10px 14px; font-size: 12px; color: #888; font-family: 'ApplePixel', sans-serif; }
 
     .g4mes-section {
       display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
@@ -638,6 +666,8 @@
       border-radius: 10px; overflow: hidden;
       transition: transform 0.2s, box-shadow 0.2s;
       cursor: pointer; text-decoration: none; color: inherit; display: block;
+      content-visibility: auto;
+      contain-intrinsic-size: auto 280px;
     }
     .g4mes-card:hover {
       transform: scale(1.05);
@@ -1025,34 +1055,44 @@
 
     /* ─── g4mes VIEWER OVERLAY ─── */
     #g4mes-viewer {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: min(calc(100vw - 140px), calc((100vh - 200px) * 16 / 9), 1280px);
+      aspect-ratio: 16 / 9;
       z-index: 500; display: none; flex-direction: column;
-      background: rgba(0,0,0,0.6);
+      background: transparent; border: none;
+      border-radius: 18px; overflow: hidden;
     }
     #g4mes-viewer.active { display: flex; }
+    body:has(#sidebar.left-sidebar) #g4mes-viewer { left: calc(50% + 48px); }
+    body:has(#sidebar.right-sidebar) #g4mes-viewer { left: calc(50% - 48px); }
     #g4mes-viewer.fullscreen-mode {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-      z-index: 500;
+      transform: none; aspect-ratio: auto;
+      z-index: 500; border-radius: 0; border: none; box-shadow: none;
     }
+    body:has(#sidebar.left-sidebar) #g4mes-viewer.fullscreen-mode,
+    body:has(#sidebar.right-sidebar) #g4mes-viewer.fullscreen-mode { left: 0; bottom: 0; }
     .g4mes-viewer-bar {
-      display: flex; align-items: center; gap: 8px;
-      background: rgba(8,4,0,0.6); border-bottom: 2px solid var(--accent);
+      display: flex; align-items: center; gap: 8px; order: 2;
+      background: transparent; border: none;
       padding: 6px 12px; min-height: 52px; flex-shrink: 0;
+      border-radius: 16px;
     }
     .g4mes-viewer-bar .gv-left { display: flex; align-items: center; gap: 8px; }
     .g4mes-viewer-bar .g4mes-title {
       position: absolute; left: 50%; transform: translateX(-50%);
       color: var(--accent); font-weight: 700;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-      font-size: 16px; max-width: 40%; text-align: center;
+      font-size: 13px; max-width: 40%; text-align: center;
     }
     .g4mes-viewer-bar .gv-right { display: flex; align-items: center; gap: 8px; margin-left: auto; }
     .g4mes-viewer-bar .gv-btn {
       background: transparent; border: 2px solid var(--accent);
       color: var(--accent); font-family: "ApplePixel", sans-serif;
-      font-size: 14px; font-weight: 600; padding: 6px 14px;
+      font-size: 14px; font-weight: 600; padding: 6px;
       border-radius: 6px; cursor: pointer; transition: all 0.2s;
-      display: flex; align-items: center; gap: 6px;
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; gap: 6px;
     }
     .gv-vol {
       display: inline-flex; align-items: center; gap: 8px;
@@ -1069,7 +1109,7 @@
     .gv-vol-pct {
       min-width: 56px; text-align: right;
       color: var(--accent); font-family: "ApplePixel", sans-serif;
-      font-size: 12px; white-space: nowrap;
+      font-size: 11px; white-space: nowrap;
     }
     .gv-range {
       height: 3px; -webkit-appearance: none; appearance: none;
@@ -1138,10 +1178,12 @@
     @media (min-width: 1600px) { #settings .g4mes-grid { grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); } }
     @media (max-width: 620px) { #settings .g4mes-grid { grid-template-columns: 1fr; } }
     #g4mes-frame-container {
-      flex: 1; position: relative; background: rgba(0,0,0,0.6);
+      flex: 1; position: relative; background: rgba(0,0,0,0.6); order: 1;
+      border: 2px solid rgba(var(--accent-rgb),0.6);
+      border-radius: 16px;
     }
     #g4mes-frame-container iframe {
-      width: 100%; height: 100%; border: none;
+      width: 100%; height: 100%; border: none; border-radius: 14px;
     }
     html.stretched-res { overflow: hidden; }
     html.stretched-res body { min-height: 100vh; }
@@ -1249,7 +1291,6 @@
 
     .g4mes-cat,.media-cat,.gv-btn,.settings-btn,.partner-card a,.social-btn{
       border-radius:4px;border-width:3px;outline:1px solid #000;
-      box-shadow:inset 0 -3px rgba(0,0,0,0.3);
     }
     .g4mes-cat:hover,.g4mes-cat.active,.media-cat:hover,.media-cat.active,.gv-btn:hover,.settings-btn:hover,.partner-card a:hover{
       background:var(--accent);color:#000;box-shadow:inset 0 -3px rgba(0,0,0,0.2),0 0 12px var(--beez-glow);
@@ -1264,8 +1305,8 @@
     }
     .g4mes-card .play-btn:hover,.submit-btn:hover,.link-item a:hover{background:var(--beez-gold-bright);}
 
-    .g4mes-viewer-bar{background:rgba(10,10,12,0.95);border-bottom-width:3px;}
-    .g4mes-viewer-bar .g4mes-title{text-shadow:2px 2px 0px #000;}
+    .g4mes-viewer-bar{background:transparent;border-top-width:3px;border-bottom-width:0;}
+    .g4mes-viewer-bar .g4mes-title{}
     .loading-indicator .spinner{border-color:rgba(var(--accent-rgb),0.2);}
 
     .color-swatch{border-radius:2px;border-width:3px;outline:2px solid #000;}
@@ -1292,7 +1333,7 @@
     html.midnight-theme .g4mes-card,html.midnight-theme .card,html.midnight-theme .partner-card,html.midnight-theme .form-container,html.midnight-theme .ргоху-section,html.midnight-theme .link-item,html.midnight-theme .tool-item{background:#000;outline-color:#0a0a0a;border-color:#222;}
     html.midnight-theme .g4mes-card:hover,html.midnight-theme .card:hover,html.midnight-theme .partner-card:hover,html.midnight-theme .ргоху-section:hover,html.midnight-theme .link-item:hover{background:#0c0c0c;border-color:#333;}
     html.midnight-theme #sidebar{background:rgba(0,0,0,0.85);border-color:#222;}
-    html.midnight-theme .g4mes-viewer-bar{background:#000;}
+    html.midnight-theme .g4mes-viewer-bar{background:transparent;}
     html.midnight-theme .toast{background:#000;border-color:#333;}
     html.midnight-theme #music-popup{background:#000;}
     html.midnight-theme .home-music-player{background:#000;border-color:#222;}
@@ -1372,7 +1413,7 @@
     #context-menu{position:fixed;z-index:40000;display:none;min-width:200px;background:#0d0d0f;border:2px solid var(--accent);border-radius:10px;box-shadow:0 4px 15px rgba(0,0,0,0.5);padding:6px;font-family:'ApplePixel',sans-serif;}
     #context-menu .ctx-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;color:#fff;font-size:13px;cursor:pointer;white-space:nowrap;user-select:none;}
     #context-menu .ctx-item svg,#context-menu .ctx-item svg path,#context-menu .ctx-item svg polyline,#context-menu .ctx-item svg line,#context-menu .ctx-item svg circle,#context-menu .ctx-item svg rect,#context-menu .ctx-item svg use{fill:none!important;stroke:currentColor!important;}
-    #context-menu .ctx-item[onclick*="paste"] svg path,#context-menu .ctx-item[onclick*="selectall"] svg path,#context-menu .ctx-item[onclick*="selectall"] svg rect,#context-menu .ctx-item[onclick*="cleardata"] svg path,#context-menu .ctx-item[onclick*="cleardata"] svg rect,#context-menu .ctx-item[onclick*="copy"] svg path{fill:currentColor!important;stroke:currentColor!important;}
+    #context-menu .ctx-item[onclick*="paste"] svg path,#context-menu .ctx-item[onclick*="selectall"] svg path,#context-menu .ctx-item[onclick*="selectall"] svg rect,#context-menu .ctx-item[onclick*="clearSiteData"] svg path,#context-menu .ctx-item[onclick*="cleardata"] svg path,#context-menu .ctx-item[onclick*="clearSiteData"] svg rect,#context-menu .ctx-item[onclick*="cleardata"] svg rect,#context-menu .ctx-item[onclick*="copy"] svg path,#context-menu .ctx-item[onclick*="ctxGo('back')"] svg path,#context-menu .ctx-item[onclick*="ctxGo('forward')"] svg path{fill:currentColor!important;stroke:currentColor!important;}
     #context-menu .ctx-item:hover{background:var(--accent);color:#000;}
     #context-menu .ctx-item svg{width:16px;height:16px;flex-shrink:0;}
     #context-menu .ctx-item.disabled{opacity:0.4;cursor:default;}
@@ -1415,11 +1456,6 @@
       50%{box-shadow:0 0 24px rgba(var(--accent-rgb),0.55);}
     }
     .play-btn{position:relative;overflow:hidden;}
-    .play-btn::after{
-      content:'';position:absolute;top:0;left:-80%;width:50%;height:100%;
-      background:linear-gradient(120deg,transparent,rgba(255,255,255,0.35),transparent);
-      transform:skewX(-20deg);animation:shine 3.5s ease infinite;
-    }
     @keyframes shine{
       0%{left:-80%;}
       55%,100%{left:130%;}
@@ -1430,6 +1466,7 @@
       50%{transform:translateY(-6px);}
     }
   </style>
+<base target="_blank">
 <base target="_blank">
 </head>
 <body>
@@ -1534,11 +1571,7 @@
   <canvas id="topography-canvas"></canvas>
   <canvas id="matrix-canvas"></canvas>
   <div class="starfield" id="starfield-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;"><div class="starfield-origin"></div></div>
-  <div id="waves-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></div>
-  <div id="globe-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></div>
-  <div id="dots-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></div>
-  <div id="fog-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></div>
-  <div id="tunnel-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></div>
+
   <div id="noise-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></div>
   <div id="custom-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;background-size:cover;background-position:center;background-repeat:no-repeat;pointer-events:none;"></div>
 
@@ -1636,8 +1669,9 @@
         <div class="search-bar" style="position:relative;">
           <input type="text" id="home-search-input" placeholder="Search..." style="padding-right:44px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <div id="home-search-dropdown" class="ub-dd"></div>
         </div>
-        <div class="g4mes-section">
+        <div class="g4mes-section" id="home-g4mes-row">
           <button class="g4mes-btn" onclick="openg4mes('Friday Night Funkin (FNF)','https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnf.html')">
             <img loading="lazy" src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/8.png" alt="Friday Night Funkin">
             <div class="overlay"><span>Friday Night Funkin</span></div>
@@ -1663,8 +1697,8 @@
           <div id="quote"></div>
         </div>
         <div class="social-links">
-          <a href="https://www.tiktok.com/@սոƅⵏосkеԁzone" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"></path></svg><span class="social-label">TikTok</span></a>
-          <a href="https://www.youtube.com/@realսոƅⵏосkеԁzone" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.7 3.5 12 3.5 12 3.5s-7.7 0-9.4.6A3 3 0 0 0 .5 6.2C0 7.9 0 12 0 12s0 4.1.5 5.8a3 3 0 0 0 2.1 2.1c1.7.6 9.4.6 9.4.6s7.7 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 16.1 24 12 24 12s0-4.1-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z" fill="currentColor" stroke="none"></path></svg><span class="social-label">YouTube</span></a>
+          <a href="https://www.tiktok.com/@unblockedzone" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"></path></svg><span class="social-label">TikTok</span></a>
+          <a href="https://www.youtube.com/@realunblockedzone" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.7 3.5 12 3.5 12 3.5s-7.7 0-9.4.6A3 3 0 0 0 .5 6.2C0 7.9 0 12 0 12s0 4.1.5 5.8a3 3 0 0 0 2.1 2.1c1.7.6 9.4.6 9.4.6s7.7 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 16.1 24 12 24 12s0-4.1-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z" fill="currentColor" stroke="none"></path></svg><span class="social-label">YouTube</span></a>
           <a href="https://discord.gg/v66D3fn4kD" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z" fill="currentColor" stroke="none"></path></svg><span class="social-label">Discord</span></a>
         </div>
       </div>
@@ -1672,8 +1706,9 @@
       <div class="tab-content" id="media">
 
         <div class="media-section" id="media-movies" style="display:none">
-          <div class="search-bar">
-            <input type="text" id="movie-search" placeholder="Search movies...">
+          <div class="search-bar" style="position:relative;">
+            <input type="text" id="movie-search" placeholder="Search movies..." style="padding-right:44px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           </div>
           <div class="media-categories">
             <button class="media-cat active" data-media="tv">📺 TV Shows</button>
@@ -1684,8 +1719,9 @@
           <div class="card-grid" id="movie-grid"></div>
         </div>
         <div class="media-section" id="media-tv">
-          <div class="search-bar">
-            <input type="text" placeholder="Search TV shows...">
+          <div class="search-bar" style="position:relative;">
+            <input type="text" placeholder="Search TV shows..." style="padding-right:44px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           </div>
           <div class="media-categories">
             <button class="media-cat active" data-media="tv">📺 TV Shows</button>
@@ -1935,8 +1971,9 @@
           </div>
         </div>
         <div class="media-section" id="media-manga" style="display:none">
-          <div class="search-bar">
-            <input type="text" placeholder="Search manga...">
+          <div class="search-bar" style="position:relative;">
+            <input type="text" placeholder="Search manga..." style="padding-right:44px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           </div>
           <div class="media-categories">
             <button class="media-cat active" data-media="tv">📺 TV Shows</button>
@@ -2077,122 +2114,63 @@
 
       <div class="tab-content" id="tools">
 
-        <div style="display:grid;gap:12px;">
-          <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/runner.html','Code Editor');">
-            <div style="display:flex;align-items:center;gap:12px;">
-              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/vscode.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
-              <div>
-                <h3 style="margin:0;color:var(--accent);font-size:16px;">Code Editor</h3>
-                <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Write and run code in your browser</p>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/embed.html','HTML Embedder');">
-            <div style="display:flex;align-items:center;gap:12px;">
-              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/embed.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
-              <div>
-                <h3 style="margin:0;color:var(--accent);font-size:16px;">HTML Embedder</h3>
-                <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Embed any webpage as HTML</p>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/embed2.html','Website Embedder');">
-            <div style="display:flex;align-items:center;gap:12px;">
-              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/aboutblank.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
-              <div>
-                <h3 style="margin:0;color:var(--accent);font-size:16px;">Website Embedder</h3>
-                <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Embed websites in about:blank</p>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/history.html','History Flooder');">
-            <div style="display:flex;align-items:center;gap:12px;">
-              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/history.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
-              <div>
-                <h3 style="margin:0;color:var(--accent);font-size:16px;">History Flooder</h3>
-                <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Flood your browser history</p>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/azahar/index.html','Azahar');">
-            <div style="display:flex;align-items:center;gap:12px;">
-              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/azahar.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
-              <div>
-                <h3 style="margin:0;color:var(--accent);font-size:16px;">Azahar</h3>
-                <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">3DS Emulator</p>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/playjs/index.html','Play.JS');">
-            <div style="display:flex;align-items:center;gap:12px;">
-              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/ps2.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
-              <div>
-                <h3 style="margin:0;color:var(--accent);font-size:16px;">Play.JS</h3>
-                <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">PS2 Emulator</p>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/voxiles/index.html','Voxiles');">
-            <div style="display:flex;align-items:center;gap:12px;">
-              <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/ruffle.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
-              <div>
-                <h3 style="margin:0;color:var(--accent);font-size:16px;">Voxiles</h3>
-                <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Flash Emulator using SWF Files</p>
-              </div>
-            </div>
-          </a>
-            <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/share.html','Screen Sharer');">
-              <div style="display:flex;align-items:center;gap:12px;">
-                <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/screen.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
-                <div>
-                  <h3 style="margin:0;color:var(--accent);font-size:16px;">Screen Sharer</h3>
-                  <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Share your screen easily</p>
-                </div>
-              </div>
-            </a>
-            <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/mp3.html','MP3/MP4 Player');">
-              <div style="display:flex;align-items:center;gap:12px;">
-                <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/mp3.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
-                <div>
-                  <h3 style="margin:0;color:var(--accent);font-size:16px;">MP3/MP4 Player</h3>
-                  <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Play audio and video files</p>
-                </div>
-              </div>
-            </a>
-            <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/gust.html','GUST');">
-              <div style="display:flex;align-items:center;gap:12px;">
-                <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/gust.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
-                <div>
-                  <h3 style="margin:0;color:var(--accent);font-size:16px;">GUST</h3>
-                  <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Impossible to block ргоху, made by Nautilus Labs.</p>
-                </div>
-              </div>
-            </a>
-            <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();openg4mes('Windows XP','https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/winxp.html');">
-              <div style="display:flex;align-items:center;gap:12px;">
-                <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/winxp.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
-                <div>
-                  <h3 style="margin:0;color:var(--accent);font-size:16px;">Windows XP</h3>
-                  <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Experience Windows XP in your browser</p>
-                </div>
-              </div>
-            </a>
-            <a href="#" class="ргоху-section" style="text-decoration:none;display:block;" onclick="event.preventDefault();openg4mes('Cloudmoon','https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/cloudmoon.html');">
-              <div style="display:flex;align-items:center;gap:12px;">
-                <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/cloudmoon.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;padding:6px;">
-                <div>
-                  <h3 style="margin:0;color:var(--accent);font-size:16px;">Cloudmoon</h3>
-                  <p style="margin:2px 0 0;color:#ff8c00;font-size:12px;">Browse the web with Cloudmoon</p>
-                </div>
-              </div>
-            </a>
-          </div>
+        <div class="g4mes-section" style="display:flex;gap:18px;padding:10px 36px 30px;justify-content:center;flex-wrap:wrap;">
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/runner.html','Code Editor');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/vscode.png" alt="Code Editor">
+            <div class="overlay"><span>Code Editor</span></div>
+          </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/embed.html','HTML Embedder');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/embed.png" alt="HTML Embedder">
+            <div class="overlay"><span>HTML Embedder</span></div>
+          </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/embed2.html','Website Embedder');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/aboutblank.png" alt="Website Embedder">
+            <div class="overlay"><span>Website Embedder</span></div>
+          </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/history.html','History Flooder');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/history.png" alt="History Flooder">
+            <div class="overlay"><span>History Flooder</span></div>
+          </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/azahar/index.html','Azahar');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/azahar.png" alt="Azahar">
+            <div class="overlay"><span>Azahar</span></div>
+          </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/playjs/index.html','Play.JS');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/ps2.png" alt="Play.JS">
+            <div class="overlay"><span>Play.JS</span></div>
+          </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/voxiles/index.html','Voxiles');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/ruffle.png" alt="Voxiles">
+            <div class="overlay"><span>Voxiles</span></div>
+          </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/share.html','Screen Sharer');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/screen.png" alt="Screen Sharer">
+            <div class="overlay"><span>Screen Sharer</span></div>
+          </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/mp3.html','MP3/MP4 Player');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/mp3.png" alt="MP3/MP4 Player">
+            <div class="overlay"><span>MP3/MP4 Player</span></div>
+          </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/gust.html','GUST');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/gust.png" alt="GUST">
+            <div class="overlay"><span>GUST</span></div>
+          </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();openg4mes('Windows XP','https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/winxp.html');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/winxp.png" alt="Windows XP">
+            <div class="overlay"><span>Windows XP</span></div>
+          </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();openg4mes('Cloudmoon','https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/cloudmoon.html');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/cloudmoon.png" alt="Cloudmoon">
+            <div class="overlay"><span>Cloudmoon</span></div>
+          </button>
+        </div>
       </div>
 
       <div class="tab-content" id="g4mes">
 
-        <div class="search-bar">
-          <input type="text" id="g4mes-search" placeholder="Search g4m3s...">
+        <div class="search-bar" style="position:relative;">
+          <input type="text" id="g4mes-search" placeholder="Search g4m3s..." style="padding-right:44px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </div>
         <div class="g4mes-categories">
 <button class="g4mes-cat active" data-cat="ubz"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/ubz.png" alt="UNBL0CKEDZ0NE" title="UNBL0CKEDZ0NE"></button>
@@ -2918,13 +2896,13 @@
         <div class="partner-grid">
           <div class="partner-card">
             <img class="partner-img" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/epik.png" alt="Ale's Epik g4mes" loading="lazy">
-            <h3>Ale's Epik g4mes</h3>
+            <h3>Ale's Epik Gаmеѕ</h3>
             <p>100+ Epik g4mes and tons of apps!</p>
             <a href="https://sites.google.com/view/ales-epik-g4mes" target="_blank">Visit Site</a>
           </div>
           <div class="partner-card">
             <img class="partner-img" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/unite.png" alt="g4mes Unite" loading="lazy">
-            <h3>g4mes Unite</h3>
+            <h3>Gаmеѕ Unite</h3>
             <p>Uniting Others Alike.</p>
             <a href="https://sites.google.com/view/iktkiytktktk-hdhdhdh/" target="_blank">Visit Site</a>
           </div>
@@ -2953,10 +2931,16 @@
             <a href="https://yukios.netlify.app/" target="_blank">Visit Site</a>
           </div>
           <div class="partner-card">
-            <img class="partner-img" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/ink.png" alt="Ink Network" loading="lazy">
+            <img class="partner-img" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/ink.png" alt="Ink Network" loading="lazy">
             <h3>Ink Network</h3>
             <p>Սոƅⵏосkеԁ Media Site For School! G4m3s & Proxies, Books & Manga, Anime & Movie & TV Shows, Useful Tools & More, Active Community, and Updates Often/Always New Things being Added!</p>
             <a href="https://sites.google.com/view/inkinkmath/home" target="_blank">Visit Site</a>
+          </div>
+          <div class="partner-card">
+            <img class="partner-img" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/catclass.png" alt="CatClass" loading="lazy">
+            <h3>CatClass</h3>
+            <p>Pr0xy With Unbl0cked Daily Links</p>
+            <a href="https://catclass.net" target="_blank">Visit Site</a>
           </div>
         </div>
       </div>
@@ -2969,21 +2953,19 @@
       </div>
 
       <div class="tab-content" id="settings">
-        <div style="font-size:13px;color:#fff;font-weight:bold;margin-bottom:12px;">Version 2026.09.25</div>
+        <div style="font-size:13px;color:#fff;font-weight:bold;margin-bottom:12px;">Version 2026.09.27</div>
         <div class="g4mes-grid" style="display:grid;gap:16px;">
           <div class="g4mes-card" style="padding:20px;">
             <div class="settings-card-head">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-              <h3>Cache &amp; Setup</h3>
+              <h3>Other</h3>
             </div>
-            <p class="settings-help" style="margin-top:0;">Fix loading glitches, restore your preferences, back up settings to a file, and pick which CDN mirrors fetch g4mes.</p>
             <div style="display:flex;gap:10px;margin-top:14px;">
               <button class="settings-btn settings-btn-danger" onclick="clearSiteData()">Clear Data</button>
               <button class="settings-btn" onclick="rerunSetup()">Re-run Setup</button>
             </div>
             <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
             <p style="color:#aaa;font-size:13px;font-weight:bold;">Backup Settings</p>
-            <p class="settings-help" style="margin-top:4px;">Save your settings to a .txt file or load a saved one to carry them between devices.</p>
             <div style="display:flex;gap:10px;margin-top:12px;">
               <button class="settings-btn" onclick="exportSettingsTxt()">Save .txt</button>
               <button class="settings-btn" onclick="importSettingsTxt()">Load .txt</button>
@@ -2991,7 +2973,6 @@
             <input type="file" id="settings-file-input" accept=".txt,.json,text/plain,application/json" style="display:none;" onchange="handleSettingsFile(this.files[0])">
             <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
             <p style="color:#aaa;font-size:13px;font-weight:bold;">CDN Mirror</p>
-            <p class="settings-help" style="margin-top:4px;">CDN to use for fetching g4mes. Switch if a g4mes fails to load.</p>
             <select id="cdn-select" class="settings-input" onchange="setCDN(this.value)" style="margin-top:6px;">
               <option value="https://quantil.jsdelivr.net" selected>quantil.jsdelivr.net</option>
               <option value="https://gcore.jsdelivr.net">gcore.jsdelivr.net</option>
@@ -3005,44 +2986,26 @@
               <option value="https://cdn.staticdelivr.com">cdn.staticdelivr.com</option>
             </select>
             <p style="color:#aaa;font-size:13px;margin-top:10px;">Status: <span id="adb-status">Checking...</span></p>
-          </div>
-          <div class="g4mes-card" style="padding:20px;">
-            <div class="settings-card-head">
-              <svg fill="var(--accent)" viewBox="0 0 29.896 29.772" width="18" height="18" xmlns="http://www.w3.org/2000/svg"><g id="launch"><path d="M21.287,18.764c-0.005-0.004-0.011-0.01-0.016-0.016c7.692-7.961,9.384-17.333,8.351-18.381C28.376-0.896,19.121,0.939,11.13,8.471c-0.006-0.006-0.014-0.013-0.021-0.021l-0.002-0.002C9.918,7.244,8.151,7.055,6.956,8.256l-6.245,6.27c-1.194,1.2-0.849,2.589,0.77,3.089l0.8,0.244c1.54,0.475,3.695-0.023,4.93-1.109c0.367,1.27,1.22,2.402,2.283,3.48c1.062,1.076,2.18,1.941,3.439,2.326c-1.1,1.221-1.625,3.367-1.172,4.912l0.235,0.801c0.478,1.625,1.863,1.99,3.079,0.811l6.352-6.162c1.217-1.18,1.052-2.945-0.138-4.152L21.287,18.764z M20.195,5.067c1.203-1.187,3.141-1.175,4.327,0.027c1.187,1.203,1.174,3.14-0.029,4.328c-1.202,1.186-3.14,1.173-4.326-0.029C18.979,8.192,18.993,6.253,20.195,5.067z"/><path d="M7.985,21.719c-0.977-0.988-1.803-2.014-2.361-3.104c-0.145,0.09-0.285,0.189-0.409,0.313c-1.181,1.164-0.931,3.352,0.56,4.861c1.488,1.508,3.673,1.787,4.854,0.623c0.112-0.111,0.2-0.24,0.287-0.369C9.885,23.475,8.918,22.664,7.985,21.719z"/></g></svg>
-              <h3>Launcher</h3>
-            </div>
-            <p class="settings-help" style="margin-top:0;">Open this site in a cloaked about:blank tab so the address bar hides it, or save a local copy to stay alive if this URL gets blocked.</p>
-            <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;">
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
+            <p style="color:#aaa;font-size:13px;font-weight:bold;">Launcher</p>
+            <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;">
               <button class="settings-btn" onclick="openSiteBlank()">Open in about:blank</button>
               <button class="settings-btn" onclick="openSiteBlob()">Open in blob</button>
               <button class="settings-btn" onclick="downloadSiteHTML()">Download HTML</button>
               <button class="settings-btn" onclick="downloadSiteSVG()">Download SVG</button>
             </div>
-          </div>
-          <div class="g4mes-card" style="padding:20px;">
-            <div class="settings-card-head">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 3L10 22L12.0513 15.8461C12.6485 14.0544 14.0544 12.6485 15.846 12.0513L22 10L3 3Z" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/></svg>
-              <h3>Cursor</h3>
-            </div>
-            <p class="settings-help" style="margin-top:0;">Swap the pointer for your own image, or go back to the default or Teto cursor.</p>
-            <p style="color:#aaa;font-size:13px;margin-top:14px;">Cursor image URL:</p>
-            <input type="text" id="cursor-url-input" class="settings-input" placeholder="https://example.com/cursor.png" onchange="document.getElementById('cursor-file-input').value='';">
-            <p style="color:#aaa;font-size:13px;margin-top:10px;">Or upload an image:</p>
-            <input type="file" id="cursor-file-input" accept="image/png,image/gif,image/jpeg,image/webp,image/cur,image/x-icon" style="display:none" onchange="handleCursorUpload(event)">
-            <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;">
-              <button class="settings-btn" onclick="document.getElementById('cursor-file-input').click()">Upload</button>
-              <button class="settings-btn" onclick="applyCustomCursor()">Apply URL</button>
-              <button class="settings-btn" onclick="setDefaultCursor()">Default</button>
-              <button class="settings-btn" onclick="resetCustomCursor()">Teto</button>
-              <button class="settings-btn" onclick="setSystemCursor()">None</button>
-            </div>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
+            <p style="color:#aaa;font-size:13px;font-weight:bold;">Open g4mes In</p>
+            <label style="display:flex;align-items:center;gap:10px;margin-top:8px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
+              <input type="checkbox" id="g4mes-tab-blob-check" onchange="setg4mesTabBlob(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
+              Open g4mes in blob
+            </label>
           </div>
           <div class="g4mes-card" style="padding:20px;">
             <div class="settings-card-head">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-              <h3>Tab Cloak</h3>
+<h3>Cloaking</h3>
             </div>
-            <p class="settings-help" style="margin-top:0;">Mask the tab as another site (name + icon) so it looks like you're doing schoolwork.</p>
             <select id="cloak-preset" class="settings-input" style="margin-top:8px;">
               <option value="">-- Select Preset --</option>
               <option value="classroom">Google Classroom</option>
@@ -3077,19 +3040,32 @@
             </div>
             <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
             <p style="color:#aaa;font-size:13px;font-weight:bold;">Hidden Page Cover</p>
-            <p class="settings-help" style="margin-top:4px;">Shown when you switch away (or press Ctrl+Shift+D): a fake full-screen site image.</p>
             <select id="stealth-cover-preset" class="settings-input" onchange="setStealthCover(this.value)" style="margin-top:8px;">
               <option value="classroom">Google Classroom</option>
               <option value="desmostest">Desmos Testing</option>
               <option value="desmos">Desmos</option>
             </select>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
+            <p style="color:#aaa;font-size:13px;font-weight:bold;">Panic Key</p>
+            <label style="display:flex;align-items:center;gap:10px;margin-top:10px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
+              <input type="checkbox" id="panic-enabled-check" onchange="setPanicEnabled(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
+              Enable panic key
+            </label>
+            <div style="display:flex;gap:8px;margin-top:12px;">
+              <input type="text" id="panic-key-input" class="settings-input" readonly placeholder="Press a key..." onclick="armPanicCapture()" style="flex:1;cursor:pointer;">
+              <button class="settings-btn" id="panic-key-capture-btn" onclick="armPanicCapture()">Set Key</button>
+            </div>
+            <input type="text" id="panic-url-input" class="settings-input" placeholder="Redirect URL (https://www.google.com)" onchange="savePanicSettings()" style="margin-top:12px;">
+            <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;">
+              <button class="settings-btn" onclick="savePanicSettings()">Save</button>
+              <button class="settings-btn" onclick="resetPanicSettings()">Reset</button>
+            </div>
           </div>
           <div class="g4mes-card" style="padding:20px;">
             <div class="settings-card-head">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-              <h3>Appearance &amp; Sidebar</h3>
+              <h3>Appearance</h3>
             </div>
-            <p class="settings-help" style="margin-top:0;">Theme the site: pick an accent color, choose a background, and move the sidebar around.</p>
             <p style="color:#aaa;font-size:13px;margin-top:12px;font-weight:bold;">Accent Color</p>
             <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
               <button class="color-swatch" style="background:#ff6600;" onclick="setAccent('#ff6600')" title="Orange"></button>
@@ -3107,12 +3083,6 @@
               <button class="settings-btn" onclick="setAccent(document.getElementById('custom-color-input').value || document.getElementById('custom-color-picker').value)">Apply</button>
             </div>
             <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
-            <p style="color:#aaa;font-size:13px;font-weight:bold;">Theme</p>
-            <select id="theme-select" class="settings-input" onchange="setSiteTheme(this.value)" style="margin-top:6px;">
-              <option value="default">Default</option>
-              <option value="midnight">Midnight</option>
-            </select>
-            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
             <p style="color:#aaa;font-size:13px;font-weight:bold;">Background</p>
             <select id="bg-select" class="settings-input" onchange="setBackground(this.value)" style="margin-top:6px;">
               <option value="starfield">Starfield</option>
@@ -3126,12 +3096,39 @@
               <option value="tunnel">Tunnel</option>
               <option value="noise">Noise</option>
               <option value="custom">Custom Image</option>
+              <option value="gradient">Gradient</option>
             </select>
             <div id="custom-wallpaper-ui" style="display:none;margin-top:12px;">
               <label for="wallpaper-file" style="display:inline-block;padding:8px 16px;background:#333;color:#fff;border-radius:6px;cursor:pointer;font-size:13px;margin-bottom:8px;">Choose Image</label>
               <input type="file" id="wallpaper-file" accept="image/*" style="display:none;" onchange="handleWallpaperFile(this)">
               <input type="text" id="wallpaper-url" class="settings-input" placeholder="Or paste image URL..." style="width:100%;margin-top:6px;" onchange="handleWallpaperUrl(this.value)">
               <button onclick="clearCustomWallpaper()" style="margin-top:8px;padding:6px 12px;background:#c62828;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:12px;font-family:'ApplePixel',sans-serif;">Remove Wallpaper</button>
+            </div>
+            <div id="gradient-wallpaper-ui" style="display:none;margin-top:12px;">
+              <p style="color:#aaa;font-size:13px;margin-bottom:6px;">Presets</p>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <button onclick="setGradientPreset(['#667eea','#764ba2'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#667eea,#764ba2);" title="Purple"></button>
+                <button onclick="setGradientPreset(['#f953c6','#b91d73'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#f953c6,#b91d73);" title="Neon Pink"></button>
+                <button onclick="setGradientPreset(['#f6d365','#fda085'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#f6d365,#fda085);" title="Sunset"></button>
+                <button onclick="setGradientPreset(['#30cfd0','#330867'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#30cfd0,#330867);" title="Ocean"></button>
+                <button onclick="setGradientPreset(['#a8edea','#fed6e3'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#a8edea,#fed6e3);" title="Mint"></button>
+                <button onclick="setGradientPreset(['#00c6ff','#0072ff'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#00c6ff,#0072ff);" title="Blue"></button>
+                <button onclick="setGradientPreset(['#f8ff00','#3ad59f'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#f8ff00,#3ad59f);" title="Lime"></button>
+                <button onclick="setGradientPreset(['#ff9966','#ff5e62'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#ff9966,#ff5e62);" title="Coral"></button>
+                <button onclick="setGradientPreset(['#7f00ff','#e100ff'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#7f00ff,#e100ff);" title="Electric"></button>
+                <button onclick="setGradientPreset(['#83a4d4','#b6fbff'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#83a4d4,#b6fbff);" title="Ice"></button>
+              </div>
+              <p style="color:#aaa;font-size:13px;margin:10px 0 6px;">Custom</p>
+              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <label style="color:#aaa;font-size:12px;">1</label>
+                <input type="color" id="gradient-c1" value="#667eea" onchange="applyGradientFromInputs()" style="width:40px;height:28px;border:none;background:none;cursor:pointer;padding:0;">
+                <label style="color:#aaa;font-size:12px;">2</label>
+                <input type="color" id="gradient-c2" value="#764ba2" onchange="applyGradientFromInputs()" style="width:40px;height:28px;border:none;background:none;cursor:pointer;padding:0;">
+                <label style="color:#aaa;font-size:12px;margin-left:6px;">Angle</label>
+                <input type="range" id="gradient-angle" min="0" max="360" value="135" oninput="applyGradientFromInputs()" style="width:90px;">
+                <span id="gradient-angle-label" style="color:#aaa;font-size:12px;">135°</span>
+              </div>
+              <button onclick="clearGradientWallpaper()" style="margin-top:8px;padding:6px 12px;background:#c62828;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:12px;font-family:'ApplePixel',sans-serif;">Remove Gradient</button>
             </div>
             <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
             <p style="color:#aaa;font-size:13px;font-weight:bold;">Sidebar</p>
@@ -3140,87 +3137,60 @@
               <option value="left">Left Side</option>
               <option value="right">Right Side</option>
             </select>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
+            <p style="color:#aaa;font-size:13px;font-weight:bold;">Cursor</p>
+            <p style="color:#aaa;font-size:13px;margin-top:12px;">Cursor image URL:</p>
+            <input type="text" id="cursor-url-input" class="settings-input" placeholder="https://example.com/cursor.png" onchange="document.getElementById('cursor-file-input').value='';">
+            <p style="color:#aaa;font-size:13px;margin-top:10px;">Or upload an image:</p>
+            <input type="file" id="cursor-file-input" accept="image/png,image/gif,image/jpeg,image/webp,image/cur,image/x-icon" style="display:none" onchange="handleCursorUpload(event)">
+            <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;">
+              <button class="settings-btn" onclick="document.getElementById('cursor-file-input').click()">Upload</button>
+              <button class="settings-btn" onclick="applyCustomCursor()">Apply URL</button>
+              <button class="settings-btn" onclick="setDefaultCursor()">Wii</button>
+              <button class="settings-btn" onclick="resetCustomCursor()">Teto</button>
+              <button class="settings-btn" onclick="setSystemCursor()">None</button>
+            </div>
           </div>
           <div class="g4mes-card" style="padding:20px;">
             <div class="settings-card-head">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
               <h3>Performance</h3>
             </div>
-            <p class="settings-help" style="margin-top:0;">Squeeze out extra speed: turn off heavy effects and tweak how g4mes report frame rate.</p>
-            <p class="settings-help">Frosted liquid glass dock takes the place of the sidebar buttons (pure CSS, no setup).</p>
-            <label style="display:flex;align-items:center;gap:10px;margin-top:12px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
-              <input type="checkbox" id="liquid-glass-check" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
+            <p style="color:#aaa;font-size:13px;margin-top:12px;font-weight:bold;">Performance</p>
+            <label style="display:flex;align-items:center;gap:10px;margin-top:10px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
+              <input type="checkbox" id="liquid-glass-check" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;flex-shrink:0;">
               Liquid Glass Buttons (made by muffled_lemon)
             </label>
-            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:16px 0;">
-            <p class="settings-help">Disable animated backgrounds and heavy effects for smoother performance on slower devices.</p>
-            <label style="display:flex;align-items:center;gap:10px;margin-top:12px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
+            <label style="display:flex;align-items:center;gap:10px;margin-top:8px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
               <input type="checkbox" id="perf-mode-check" onchange="setPerfMode(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
               Performance Mode
             </label>
-            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:16px 0;">
-            <p class="settings-help">Trick g4mes into thinking your display runs at a higher refresh rate (frame timestamps are spoofed).</p>
-            <label style="display:flex;align-items:center;gap:10px;margin-top:12px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
-              <input type="checkbox" id="fps-spoofer-check" onchange="setFpsSpoofer(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
-              FPS Spoofer
-            </label>
-            <div style="display:flex;align-items:center;gap:10px;margin-top:12px;">
-              <span style="color:#aaa;font-size:13px;">Max FPS</span>
-              <input type="number" id="fps-max-input" class="settings-input" min="30" max="1000" step="1" value="360" onchange="setFpsMax(this.value)" style="width:90px;">
-              <span style="color:#666;font-size:12px;">fps g4mes report (pacing matches the set value)</span>
-            </div>
-          </div>
-          <div class="g4mes-card" style="padding:20px;">
-            <div class="settings-card-head">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.2-8.56"/></svg>
-              <h3>Loading Screen</h3>
-            </div>
-            <p class="settings-help" style="margin-top:0;">Make the site look like a blocked-page or filter screen when it opens, with your own wording.</p>
-            <label style="display:flex;align-items:center;gap:10px;margin-top:12px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
+            <p style="color:#aaa;font-size:13px;font-weight:bold;">Loading Screen</p>
+            <label style="display:flex;align-items:center;gap:10px;margin-top:10px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
               <input type="checkbox" id="loading-screen-enabled-check" onchange="setStartupBlockScreen(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
               Show block screen on startup
             </label>
-            <p style="color:#aaa;font-size:13px;margin-top:12px;">Theme:</p>
+            <p style="color:#aaa;font-size:13px;font-weight:bold;margin-top:12px;">Block Screen Theme</p>
             <select id="loading-theme-select" class="settings-input" onchange="setLoadingTheme(this.value)" style="margin-top:6px;">
               <option value="lightspeed">Lightspeed</option>
               <option value="goguardian">GoGuardian</option>
               <option value="securly">Securly</option>
               <option value="classlink">ClassLink</option>
             </select>
-            <p style="color:#aaa;font-size:13px;margin-top:14px;">Customize text:</p>
-            <div id="ls-text-fields" style="display:flex;flex-direction:column;gap:8px;margin-top:8px;">
-              <input type="text" id="lightspeed-school-name" class="settings-input" placeholder="School Name">
-              <input type="text" id="lightspeed-top-text" class="settings-input" placeholder="Top text (e.g. Oops,)">
-              <input type="text" id="lightspeed-bottom-text" class="settings-input" placeholder="Bottom text">
-              <input type="text" id="lightspeed-system-msg" class="settings-input" placeholder="System message">
-            </div>
-            <div id="gg-text-fields" style="display:none;flex-direction:column;gap:8px;margin-top:8px;">
-              <input type="text" id="gg-title-input" class="settings-input" placeholder="Title (e.g. Restricted)">
-              <input type="text" id="gg-message-input" class="settings-input" placeholder="Message (e.g. This website has been blocked...)">
-            </div>
-            <div id="sc-text-fields" style="display:none;flex-direction:column;gap:8px;margin-top:8px;">
-              <input type="text" id="sc-heading-input" class="settings-input" placeholder="Heading">
-              <input type="text" id="sc-message-input" class="settings-input" placeholder="Message">
-              <input type="text" id="sc-url-input" class="settings-input" placeholder="URL">
-              <input type="text" id="sc-reason-input" class="settings-input" placeholder="Reason">
-              <input type="text" id="sc-policy-input" class="settings-input" placeholder="Policy">
-              <input type="text" id="sc-ip-input" class="settings-input" placeholder="External IP">
-            </div>
-            <button class="settings-btn" onclick="applyLightspeedText()" style="margin-top:8px;">Apply Text</button>
-          </div>
-          <div class="g4mes-card" style="padding:20px;">
-            <div class="settings-card-head">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg>
-              <h3>Gaming Tools</h3>
-            </div>
-            <p class="settings-help" style="margin-top:0;">Tweak how in-g4mes audio, resolution, and crosshairs behave while playing.</p>
-            <p style="color:#aaa;font-size:13px;margin-top:12px;font-weight:bold;">g4mes Volume</p>
-            <div class="gv-settings-row" style="margin-top:6px;">
-              <input type="range" class="gv-range" data-gv-slider min="0" max="10000" value="100" style="flex:1;">
-              <span data-gv-pct style="color:var(--accent);font-weight:bold;min-width:56px;text-align:right;font-family:&quot;ApplePixel&quot;,sans-serif;">100%</span>
-            </div>
             <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
-            <p style="color:#aaa;font-size:13px;font-weight:bold;">Stretched Res</p>
+            <p style="color:#aaa;font-size:13px;font-weight:bold;">Startup Options</p>
+            <label style="display:flex;align-items:center;gap:10px;margin-top:10px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
+              <input type="checkbox" id="music-startup-check" onchange="setMusicOnStartup(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
+              Music on startup
+            </label>
+            <label style="display:flex;align-items:center;gap:10px;margin-top:8px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
+              <input type="checkbox" id="startup-loading-check" onchange="setStartupLoadingScreen(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
+              Loading screen on startup
+            </label>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
+            <p style="color:#aaa;font-size:13px;font-weight:bold;">Gaming Tools</p>
+            <p style="color:#aaa;font-size:13px;font-weight:bold;margin-top:12px;">Stretched Res</p>
             <select id="stretched-res-select" class="settings-input" onchange="setStretchedRes(this.value)" style="margin-top:6px;">
               <option value="">Off</option>
               <option value="1920x1080">1920x1080 (Native)</option>
@@ -3239,25 +3209,16 @@
               Enable crosshair
             </label>
             <p style="color:#aaa;font-size:13px;margin-top:12px;">Style:</p>
-            <select id="crosshair-style" class="settings-input" onchange="setCrosshairStyle(this.value)" style="margin-top:6px;">
-              <option value="cross">+</option>
-              <option value="dot">Dot</option>
-              <option value="circle">Circle</option>
-              <option value="cross-dot">+ Dot</option>
-              <option value="ring-dot">Ring + Dot</option>
-              <option value="gap-cross">FPS Gap Cross</option>
-              <option value="triangle">Triangle</option>
-              <option value="diamond">Diamond</option>
-              <option value="x">X</option>
-              <option value="chevron">Chevron</option>
-              <option value="t-shape">T-Shape</option>
-              <option value="arrow">Arrow</option>
-              <option value="custom">Custom Image</option>
-            </select>
-            <p style="color:#aaa;font-size:13px;margin-top:12px;">Color:</p>
             <div style="display:flex;gap:8px;margin-top:6px;align-items:center;">
-              <input type="color" id="crosshair-color" value="#ff6600" onchange="setCrosshairColor(this.value)" style="width:44px;height:36px;border:2px solid var(--accent);border-radius:6px;background:transparent;cursor:pointer;">
-              <span style="color:#aaa;font-size:12px;">Affects SVG crosshairs only</span>
+              <select id="crosshair-style" class="settings-input" onchange="setCrosshairStyle(this.value)" style="flex:1;">
+                <option value="cross">+</option>
+                <option value="dot">Dot</option>
+                <option value="diamond">Diamond</option>
+                <option value="x">X</option>
+                <option value="chevron">Chevron</option>
+                <option value="custom">Custom Image</option>
+              </select>
+              <input type="color" id="crosshair-color" value="#ff6600" onchange="setCrosshairColor(this.value)" style="width:44px;height:36px;border:2px solid var(--accent);border-radius:6px;background:transparent;cursor:pointer;flex-shrink:0;">
             </div>
             <div id="crosshair-custom-ui" style="display:none;margin-top:12px;">
               <p style="color:#aaa;font-size:13px;margin-bottom:6px;">Custom Image:</p>
@@ -3267,45 +3228,6 @@
             </div>
             <p style="color:#aaa;font-size:13px;margin-top:12px;">Size:</p>
             <input type="range" id="crosshair-size" min="8" max="64" value="24" oninput="setCrosshairSize(this.value)" style="width:100%;accent-color:var(--accent);">
-            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
-            <p style="color:#aaa;font-size:13px;font-weight:bold;">Open g4mes In</p>
-            <p class="settings-help" style="margin-top:4px;">Choose how g4mes open in a new tab. about:blank keeps the tab on a blank page with the g4mes written in; blob opens a blob: URL instead.</p>
-            <label style="display:flex;align-items:center;gap:10px;margin-top:8px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
-              <input type="checkbox" id="g4mes-tab-blob-check" onchange="setg4mesTabBlob(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
-              Open g4mes in blob
-            </label>
-          </div>
-          <div class="g4mes-card" style="padding:20px;">
-            <div class="settings-card-head">
-              <svg fill="var(--accent)" width="18" height="18" viewBox="-3 -2.5 24 24" xmlns="http://www.w3.org/2000/svg" class="jam jam-power"><path d='M12 4.1a.973.973 0 0 1-.617-.898c0-.536.448-.972 1-.972.116 0 .228.02.332.055.001-.003.002-.004.004-.003C15.834 3.658 18 6.708 18 10.252 18 15.082 13.97 19 9 19s-9-3.917-9-8.749C0 6.732 2.137 3.7 5.218 2.31a1.022 1.022 0 0 1 .392-.076c.552 0 1 .435 1 .971a.972.972 0 0 1-.61.896c-2.365 1.092-4 3.436-4 6.15 0 3.758 3.134 6.805 7 6.805s7-3.047 7-6.805c0-2.714-1.635-5.058-4-6.15zM9 0a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0V1a1 1 0 0 1 1-1z' /></svg>
-              <h3>Startup &amp; Panic Key</h3>
-            </div>
-            <p class="settings-help" style="margin-top:0;">Choose what plays when the site opens, and set an instant-switch key that bounces you to another page.</p>
-            <p style="color:#aaa;font-size:13px;margin-top:12px;font-weight:bold;">Startup Options</p>
-            <label style="display:flex;align-items:center;gap:10px;margin-top:10px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
-              <input type="checkbox" id="music-startup-check" onchange="setMusicOnStartup(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
-              Music on startup
-            </label>
-            <label style="display:flex;align-items:center;gap:10px;margin-top:8px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
-              <input type="checkbox" id="startup-loading-check" onchange="setStartupLoadingScreen(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
-              Loading screen on startup
-            </label>
-            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
-            <p style="color:#aaa;font-size:13px;font-weight:bold;">Panic Key</p>
-            <p class="settings-help" style="margin-top:4px;">Press the key to instantly jump to a safe page.</p>
-            <label style="display:flex;align-items:center;gap:10px;margin-top:10px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
-              <input type="checkbox" id="panic-enabled-check" onchange="setPanicEnabled(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
-              Enable panic key
-            </label>
-            <div style="display:flex;gap:8px;margin-top:12px;">
-              <input type="text" id="panic-key-input" class="settings-input" readonly placeholder="Press a key..." onclick="armPanicCapture()" style="flex:1;cursor:pointer;">
-              <button class="settings-btn" id="panic-key-capture-btn" onclick="armPanicCapture()">Set Key</button>
-            </div>
-            <input type="text" id="panic-url-input" class="settings-input" placeholder="Redirect URL (https://www.google.com)" onchange="savePanicSettings()" style="margin-top:12px;">
-            <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;">
-              <button class="settings-btn" onclick="savePanicSettings()">Save</button>
-              <button class="settings-btn" onclick="resetPanicSettings()">Reset</button>
-            </div>
           </div>
         </div>
       </div>
@@ -3323,17 +3245,17 @@
   <div id="g4mes-viewer">
     <div class="g4mes-viewer-bar">
       <div class="gv-left">
-        <button class="gv-btn" id="gv-newwindow" onclick="openg4mesInTab(gvOrigUrl)" style="display:none"><svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 7V5c0-1.105.895-2 2-2h11c1.105 0 2 .895 2 2v14c0 1.105-.895 2-2 2H8c-1.105 0-2-.895-2-2v-2h2v2h11V5H8v2H6zm5.5-.5l-1.414 1.414L13.172 11H3v2h10.172l-3.086 3.086L11.5 17.5 17 12l-5.5-5.5z" fill="currentColor"/></svg> New Tab</button>
-        <button class="gv-btn" id="gv-popout" onclick="openg4mesInTab(gvOrigUrl,'width=960,height=640,menubar=no,toolbar=no,location=no,status=no')"><svg fill="currentColor" width="16" height="16" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M15.694 13.541l2.666 2.665 5.016-5.017 2.59 2.59 0.004-7.734-7.785-0.046 2.526 2.525-5.017 5.017zM25.926 16.945l-1.92-1.947 0.035 9.007-16.015 0.009 0.016-15.973 8.958-0.04-2-2h-7c-1.104 0-2 0.896-2 2v16c0 1.104 0.896 2 2 2h16c1.104 0 2-0.896 2-2l-0.074-7.056z"/></svg> Pop Out</button>
+        <button class="gv-btn" id="gv-newwindow" title="New Tab" onclick="openg4mesInTab(gvOrigUrl)" style="display:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19,2 C20.5976809,2 21.9036609,3.24891996 21.9949073,4.82372721 L22,5 L22,15 C22,16.5976809 20.75108,17.9036609 19.1762728,17.9949073 L19,18 L15,18 L15,16 L19,16 C19.5128358,16 19.9355072,15.6139598 19.9932723,15.1166211 L20,15 L20,6 L4,6 L4,15 C4,15.5128358 4.38604019,15.9355072 4.88337887,15.9932723 L5,16 L9,16 L9,18 L5,18 C3.40231912,18 2.09633912,16.75108 2.00509269,15.1762728 L2,15 L2,5 C2,3.40231912 3.24891996,2.09633912 4.82372721,2.00509269 L5,2 L19,2 Z M12.082,8.003 L12.079,8.002 L12.2335141,8.02742266 L12.2335141,8.02742266 L12.3416665,8.05989459 L12.3416665,8.05989459 L12.4232215,8.09367336 L12.5207088,8.14599545 L12.5207088,8.14599545 L12.5951593,8.19631351 L12.5951593,8.19631351 L12.7071068,8.29289322 L16.7071068,12.2928932 C17.0976311,12.6834175 17.0976311,13.3165825 16.7071068,13.7071068 C16.3466228,14.0675907 15.7793918,14.0953203 15.3871006,13.7902954 L15.2928932,13.7071068 L13,11.414 L13,21 C13,21.5522847 12.5522847,22 12,22 C11.4477153,22 11,21.5522847 11,21 L11,11.416 L8.70710678,13.7071068 C8.34662282,14.0675907 7.77939176,14.0953203 7.38710056,13.7902954 L7.29289322,13.7071068 C6.93240926,13.3466228 6.90467972,12.7793918 7.20970461,12.3871006 L7.29289322,12.2928932 L11.2928932,8.29289322 L11.336853,8.2514958 L11.336853,8.2514958 L11.4046934,8.19633458 L11.4046934,8.19633458 L11.5159379,8.12467117 L11.5769009,8.09365378 L11.5769009,8.09365378 L11.6583496,8.05988586 L11.6583496,8.05988586 L11.734007,8.03584514 L11.734007,8.03584514 L11.8825258,8.00683422 L11.8825258,8.00683422 L11.9667532,8.00054939 L11.9667532,8.00054939 L12.082,8.003 Z"/></svg></button>
+        <button class="gv-btn" id="gv-popout" title="Pop Out" onclick="openg4mesInTab(gvOrigUrl,'width=960,height=640,menubar=no,toolbar=no,location=no,status=no')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></button>
         <span class="gv-vol" title="g4mes volume"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M11 5L6 9H3v6h3l5 4V5z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input type="range" class="gv-range" data-gv-slider min="0" max="10000" value="100"><span class="gv-vol-pct" data-gv-pct>100%</span></span>
       </div>
-      <span class="g4mes-title" id="gv-title">Loading...</span>
+      <span class="g4mes-title" id="gv-title"><span id="gv-title-text">Loading...</span></span>
       <div class="gv-right">
         <button class="gv-btn" id="gv-console" onclick="toggleConsoleOverlay()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></button>
-        <button class="gv-btn" id="gv-refresh" onclick="refreshg4mes()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></button>
-        <button class="gv-btn" id="gv-download" onclick="downloadg4mesHTML()"><svg width="16" height="16" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.50005 1.04999C7.74858 1.04999 7.95005 1.25146 7.95005 1.49999V8.41359L10.1819 6.18179C10.3576 6.00605 10.6425 6.00605 10.8182 6.18179C10.994 6.35753 10.994 6.64245 10.8182 6.81819L7.81825 9.81819C7.64251 9.99392 7.35759 9.99392 7.18185 9.81819L4.18185 6.81819C4.00611 6.64245 4.00611 6.35753 4.18185 6.18179C4.35759 6.00605 4.64251 6.00605 4.81825 6.18179L7.05005 8.41359V1.49999C7.05005 1.25146 7.25152 1.04999 7.50005 1.04999ZM2.5 10C2.77614 10 3 10.2239 3 10.5V12C3 12.5539 3.44565 13 3.99635 13H11.0012C11.5529 13 12 12.5528 12 12V10.5C12 10.2239 12.2239 10 12.5 10C12.7761 10 13 10.2239 13 10.5V12C13 13.1041 12.1062 14 11.0012 14H3.99635C2.89019 14 2 13.103 2 12V10.5C2 10.2239 2.22386 10 2.5 10Z" fill="currentColor"/></svg></button>
-        <button class="gv-btn" onclick="toggleg4mesFullscreen()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
-        <button class="gv-btn" onclick="closeg4mesViewer()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Close</button>
+        <button class="gv-btn" id="gv-refresh" onclick="refreshg4mes()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M21 12C21 16.9706 16.9706 21 12 21C9.69494 21 7.59227 20.1334 6 18.7083L3 16M3 12C3 7.02944 7.02944 3 12 3C14.3051 3 16.4077 3.86656 18 5.29168L21 8M3 21V16M3 16H8M21 3V8M21 8H16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="stroke-width: 2.5;"/></svg></button>
+        <button class="gv-btn" id="gv-download" onclick="downloadg4mesHTML()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><g id="Interface / Download"><path id="Vector" d="M6 21H18M12 3V17M12 17L17 12M12 17L7 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg></button>
+        <button class="gv-btn" onclick="toggleg4mesFullscreen()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M10 10L5 5M5 5L5 10M5 5L10 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 14L19 19M19 19V14M19 19H14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="gv-btn" title="Close" onclick="closeg4mesViewer()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
     </div>
     <div id="g4mes-frame-container">
@@ -3403,11 +3325,6 @@
             <button class="color-swatch" style="background:#ff3399;" onclick="setAccent('#ff3399')" title="Pink"></button>
             <button class="color-swatch" style="background:#ffffff;border-color:#666;" onclick="setAccent('#ffffff')" title="White"></button>
           </div>
-          <p>Theme:</p>
-          <select id="setup-theme-v2-select" class="settings-input" onchange="setSiteTheme(this.value)">
-            <option value="default">Default</option>
-            <option value="midnight">Midnight</option>
-          </select>
           <p>Background:</p>
           <select id="setup-bg-select" class="settings-input" onchange="setBackground(this.value)"></select>
           <div class="setup-actions">
@@ -3429,6 +3346,79 @@
           </label>
           <div class="setup-actions">
             <button class="setup-btn-ghost" onclick="setupGo(4)">Back</button>
+            <button class="setup-btn" onclick="setupGo(6)">Continue</button>
+          </div>
+        </div>
+        <div class="setup-step" data-step="6">
+          <h3>Panic Key</h3>
+          <p>Press a key (or combo) to instantly bounce to a safe URL — great for quick cover.</p>
+          <label>
+            <input type="checkbox" id="setup-panic-check" onchange="setPanicEnabled(this.checked)">
+            Enable panic key
+          </label>
+          <p style="margin-top:14px;">Key:</p>
+          <div style="display:flex;gap:8px;margin-top:6px;">
+            <input type="text" id="setup-panic-key" class="settings-input" readonly placeholder="Press a key..." onclick="armPanicCapture()" style="flex:1;cursor:pointer;">
+            <button class="setup-btn" onclick="armPanicCapture()">Set Key</button>
+          </div>
+          <p style="margin-top:14px;">Redirect URL:</p>
+          <input type="text" id="setup-panic-url" class="settings-input" placeholder="https://www.google.com" style="margin-top:6px;">
+          <div class="setup-actions">
+            <button class="setup-btn-ghost" onclick="setupGo(5)">Back</button>
+            <button class="setup-btn" onclick="var su=document.getElementById('setup-panic-url');if(su){var uv=su.value.trim()||'https://www.google.com';localStorage.setItem('panicUrl',uv);}setupGo(7)">Continue</button>
+          </div>
+        </div>
+        <div class="setup-step" data-step="7">
+          <h3>Hidden Page Cover</h3>
+          <p>Pull up a realistic full-screen cover when you switch away from the tab.</p>
+          <select id="setup-cover-select" class="settings-input" onchange="setStealthCover(this.value)">
+            <option value="classroom">Google Classroom</option>
+            <option value="desmostest">Desmos Testing</option>
+            <option value="desmos">Desmos</option>
+          </select>
+          <div class="setup-actions">
+            <button class="setup-btn-ghost" onclick="setupGo(6)">Back</button>
+            <button class="setup-btn" onclick="setupGo(8)">Continue</button>
+          </div>
+        </div>
+        <div class="setup-step" data-step="8">
+          <h3>Gaming</h3>
+          <p>Set a stretched resolution and enable a crosshair for your games.</p>
+          <select id="setup-stretch-select" class="settings-input" onchange="setStretchedRes(this.value)">
+            <option value="">Off</option>
+            <option value="1920x1080">1920x1080 (Native)</option>
+            <option value="1600x1080">1600x1080</option>
+            <option value="1440x1080">1440x1080</option>
+            <option value="1280x1080">1280x1080</option>
+            <option value="1024x768">1024x768</option>
+            <option value="1080x1080">1080x1080</option>
+            <option value="720x1080">720x1080</option>
+            <option value="480x1080">480x1080</option>
+          </select>
+          <label>
+            <input type="checkbox" id="setup-crosshair-check" onchange="setCrosshairEnabled(this.checked)">
+            Enable crosshair
+          </label>
+          <div class="setup-actions">
+            <button class="setup-btn-ghost" onclick="setupGo(7)">Back</button>
+            <button class="setup-btn" onclick="setupGo(9)">Continue</button>
+          </div>
+        </div>
+        <div class="setup-step" data-step="9">
+          <h3>Cursor</h3>
+          <p>Pick a cursor style for the whole site.</p>
+          <select id="setup-cursor-select" class="settings-input" onchange="setupCursorChoice(this.value)">
+            <option value="default">Wii (Default)</option>
+            <option value="teto">Teto</option>
+            <option value="system">System (None)</option>
+            <option value="custom">Custom Image...</option>
+          </select>
+          <div id="setup-cursor-custom" style="display:none;margin-top:10px;">
+            <input type="text" id="setup-cursor-url" class="settings-input" placeholder="https://example.com/cursor.png">
+            <button class="setup-btn" style="margin-top:8px;" onclick="setupCursorCustom()">Apply URL</button>
+          </div>
+          <div class="setup-actions">
+            <button class="setup-btn-ghost" onclick="setupGo(8)">Back</button>
             <button class="setup-btn" onclick="finishSetup()">Finish</button>
           </div>
         </div>
@@ -3440,13 +3430,12 @@
   <!-- ─── CUSTOM CONTEXT MENU ─── -->
   <div id="context-menu">
     <div class="ctx-title">Navigation</div>
-    <div class="ctx-item" onclick="ctxGo('reload')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> Reload Page</div>
-    <div class="ctx-item" onclick="ctxGo('back')">← Back</div>
-    <div class="ctx-item" onclick="ctxGo('forward')">→ Forward</div>
+    <div class="ctx-item" onclick="ctxGo('reload')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M21 12C21 16.9706 16.9706 21 12 21C9.69494 21 7.59227 20.1334 6 18.7083L3 16M3 12C3 7.02944 7.02944 3 12 3C14.3051 3 16.4077 3.86656 18 5.29168L21 8M3 21V16M3 16H8M21 3V8M21 8H16" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" style="stroke-width: 2.5;"/></svg> Reload Page</div>
+    <div class="ctx-item" onclick="ctxGo('back')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M8.70711 16.2929C9.09763 16.6834 9.09763 17.3166 8.70711 17.7071C8.31658 18.0976 7.68342 18.0976 7.29289 17.7071L2.29289 12.7071C1.90237 12.3166 1.90237 11.6834 2.29289 11.2929L7.29289 6.29289C7.68342 5.90237 8.31658 5.90237 8.70711 6.29289C9.09763 6.68342 9.09763 7.31658 8.70711 7.70711L5.41421 11L21 11C21.5523 11 22 11.4477 22 12C22 12.5523 21.5523 13 21 13L5.41422 13L8.70711 16.2929Z" fill="currentColor"/></svg> Back</div>
+    <div class="ctx-item" onclick="ctxGo('forward')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M16.7071 6.29289C16.3166 5.90237 15.6834 5.90237 15.2929 6.29289C14.9024 6.68342 14.9024 7.31658 15.2929 7.70711L18.5858 11L3 11C2.44772 11 2 11.4477 2 12C2 12.5523 2.44772 13 3 13L18.5858 13L15.2929 16.2929C14.9024 16.6834 14.9024 17.3166 15.2929 17.7071C15.6834 18.0976 16.3166 18.0976 16.7071 17.7071L21.7071 12.7071C22.0976 12.3166 22.0976 11.6834 21.7071 11.2929L16.7071 6.29289Z" fill="currentColor"/></svg> Forward</div>
     <div class="ctx-sep"></div>
     <div class="ctx-title">Edit</div>
     <div class="ctx-item" onclick="ctxEdit('copy')"><svg width="800px" height="800px" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M1 9.50006C1 10.3285 1.67157 11.0001 2.5 11.0001H4L4 10.0001H2.5C2.22386 10.0001 2 9.7762 2 9.50006L2 2.50006C2 2.22392 2.22386 2.00006 2.5 2.00006L9.5 2.00006C9.77614 2.00006 10 2.22392 10 2.50006V4.00002H5.5C4.67158 4.00002 4 4.67159 4 5.50002V12.5C4 13.3284 4.67158 14 5.5 14H12.5C13.3284 14 14 13.3284 14 12.5V5.50002C14 4.67159 13.3284 4.00002 12.5 4.00002H11V2.50006C11 1.67163 10.3284 1.00006 9.5 1.00006H2.5C1.67157 1.00006 1 1.67163 1 2.50006V9.50006ZM5 5.50002C5 5.22388 5.22386 5.00002 5.5 5.00002H12.5C12.7761 5.00002 13 5.22388 13 5.50002V12.5C13 12.7762 12.7761 13 12.5 13H5.5C5.22386 13 5 12.7762 5 12.5V5.50002Z" fill="#000000"/></svg> Copy</div>
-    <div class="ctx-item" onclick="ctxEdit('cut')">✂ Cut</div>
     <div class="ctx-item" onclick="ctxEdit('paste')"><svg width="24px" height="24px" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.962 2.513a.75.75 0 01-.475.949l-.816.272a.25.25 0 00-.171.237V21.25c0 .138.112.25.25.25h14.5a.25.25 0 00.25-.25V3.97a.25.25 0 00-.17-.236l-.817-.272a.75.75 0 01.474-1.424l.816.273A1.75 1.75 0 0121 3.97v17.28A1.75 1.75 0 0119.25 23H4.75A1.75 1.75 0 013 21.25V3.97a1.75 1.75 0 011.197-1.66l.816-.272a.75.75 0 01.949.475z"/><path fill-rule="evenodd" d="M7 1.75C7 .784 7.784 0 8.75 0h6.5C16.216 0 17 .784 17 1.75v1.5A1.75 1.75 0 0115.25 5h-6.5A1.75 1.75 0 017 3.25v-1.5zm1.75-.25a.25.25 0 00-.25.25v1.5c0 .138.112.25.25.25.25h6.5a.25.25 0 00.25-.25v-1.5a.25.25 0 00-.25-.25h-6.5z"/></svg> Paste</div>
     <div class="ctx-item" onclick="ctxEdit('selectall')"><svg fill="#000000" width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M1,7V3A1,1,0,0,1,2,2H6A1,1,0,0,1,6,4H3V7A1,1,0,0,1,1,7ZM2,22H6a1,1,0,0,0,0-2H3V17a1,1,0,0,0-2,0v4A1,1,0,0,0,2,22Zm21-5a1,1,0,0,0-2,0v3H18a1,1,0,0,0,0,2h4a1,1,0,0,0,1-1ZM17,3a1,1,0,0,0,1,1h3V7a1,1,0,0,0,2,0V3a1,1,0,0,0-1-1H18A1,1,0,0,0,17,3ZM10,22h4a1,1,0,0,0,0-2H10a1,1,0,0,0,0,2ZM23,10.5a1,1,0,0,0-2,0v3a1,1,0,0,0,2,0Zm-21,4a1,1,0,0,0,1-1v-3a1,1,0,0,0-2,0v3A1,1,0,0,0,2,14.5ZM10,4h4a1,1,0,0,0,0-2H10a1,1,0,0,0,0,2Z"/></svg> Select All</div>
     <div class="ctx-sep"></div>
@@ -3454,7 +3443,6 @@
     <div class="ctx-item" onclick="ctxTab('settings')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 00-2 2v.18a2 2 0 01-1 1.73l-.43.25a2 2 0 01-2 0l-.15-.08a2 2 0 00-2.73.73l-.22.38a2 2 0 00.73 2.73l.15.1a2 2 0 011 1.72v.51a2 2 0 01-1 1.74l-.15.09a2 2 0 00-.73 2.73l.22.38a2 2 0 002.73.73l.15-.08a2 2 0 012 0l.43.25a2 2 0 011 1.73V20a2 2 0 002 2h.44a2 2 0 002-2v-.18a2 2 0 011-1.73l.43-.25a2 2 0 012 0l.15.08a2 2 0 002.73-.73l.22-.39a2 2 0 00-.73-2.73l-.15-.08a2 2 0 01-1-1.74v-.5a2 2 0 011-1.74l.15-.09a2 2 0 00.73-2.73l-.22-.38a2 2 0 00-2.73-.73l-.15.08a2 2 0 01-2 0l-.43-.25a2 2 0 01-1-1.73V4a2 2 0 00-2-2z" /><circle cx="12" cy="12" r="3" /></svg> Settings</div>
     <div class="ctx-item" onclick="ctxTab('g4mes')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg> Gаmes</div>
     <div class="ctx-item" onclick="ctxTab('console')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg> Console</div>
-    <div class="ctx-item" onclick="clearSiteData()"><svg width="800px" height="800px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">  <path fill="#000000" fill-rule="evenodd" d="M8,16 C12.4183,16 16,12.4183 16,8 C16,3.58172 12.4183,0 8,0 C3.58172,0 0,3.58172 0,8 C0,12.4183 3.58172,16 8,16 Z M4.29289,4.29289 C4.68342,3.90237 5.31658,3.90237 5.70711,4.29289 L8,6.58579 L10.2929,4.29289 C10.6834,3.90237 11.3166,3.90237 11.7071,4.29289 C12.0976,4.68342 12.0976,5.31658 11.7071,5.70711 L9.41421,8 L11.7071,10.2929 C12.0976,10.6834 12.0976,11.3166 11.7071,11.7071 C11.3166,12.0976 10.6834,12.0976 10.2929,11.7071 L8,9.41421 L5.70711,11.7071 C5.31658,12.0976 4.68342,12.0976 4.29289,11.7071 C3.90237,11.3166 3.90237,10.6834 4.29289,10.2929 L6.58579,8 L4.29289,5.70711 C3.90237,5.31658 3.90237,4.68342 4.29289,4.29289 Z"/></svg> Clear Data</div>
   </div>
 
   <script>
@@ -3729,6 +3717,8 @@
     }
     function setCrosshairColor(v) {
       localStorage.setItem('crosshairColor', v);
+      var sl = document.getElementById('crosshair-size');
+      if (sl) sl.style.accentColor = v;
       renderCrosshair();
     }
     function setCrosshairSize(v) {
@@ -3771,6 +3761,7 @@
       if (chk) chk.checked = enabled;
       if (sel) sel.value = style;
       if (sld) sld.value = size;
+      if (sld) sld.style.accentColor = color;
       if (clr) clr.value = color;
       if (style === 'custom') { var ui = document.getElementById('crosshair-custom-ui'); if (ui) ui.style.display = 'block'; }
       renderCrosshair();
@@ -3779,14 +3770,13 @@
     (function() {
       var b = 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/teto/';
       var frames = { normal: [b+'normal1.png', b+'normal2.png'], link: [b+'link1.png', b+'link2.png'], wait: [b+'wait1.png', b+'wait2.png'] };
-      var fb = 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/';
       var idx = 0;
       var tetoInterval = null;
       var tetoStyle = null;
       function buildS() {
-        var def = 'url('+frames.normal[idx]+') 16 16, url('+fb+'arrow.png) 16 16, auto';
-        var link = 'url('+frames.link[idx]+') 16 16, url('+fb+'hand.png) 16 16, pointer';
-        var wait = 'url('+frames.wait[idx]+') 16 16, auto';
+        var def = 'url('+frames.normal[idx]+') 2 2, auto';
+        var link = 'url('+frames.link[idx]+') 2 2, pointer';
+        var wait = 'url('+frames.wait[idx]+') 2 2, wait';
         return { def: def, link: link, wait: wait };
       }
       function applyTeto() {
@@ -3819,6 +3809,8 @@
       try { hasActive = !!localStorage.getItem('activeCursor'); } catch(e) {}
       if (!hasActive) {
         window.startTetoCursor();
+      } else {
+        window.stopTetoCursor();
       }
     })();
 
@@ -4435,21 +4427,23 @@
       const tuBg = document.getElementById('tunnel-bg');
       const noBg = document.getElementById('noise-bg');
       const cuBg = document.getElementById('custom-bg');
-      // Hide all
-      bgCanvas.style.display = 'none';
-      sfBg.style.display = 'none';
-      tCanvas.style.display = 'none';
-      mCanvas.style.display = 'none';
-      wBg.style.display = 'none';
-      gBg.style.display = 'none';
-      dBg.style.display = 'none';
-      fBg.style.display = 'none';
-      tuBg.style.display = 'none';
-      noBg.style.display = 'none';
-      cuBg.style.display = 'none';
+      // Hide all (safely — some elements may have been removed)
+      if (bgCanvas) bgCanvas.style.display = 'none';
+      if (sfBg) sfBg.style.display = 'none';
+      if (tCanvas) tCanvas.style.display = 'none';
+      if (mCanvas) mCanvas.style.display = 'none';
+      if (wBg) wBg.style.display = 'none';
+      if (gBg) gBg.style.display = 'none';
+      if (dBg) dBg.style.display = 'none';
+      if (fBg) fBg.style.display = 'none';
+      if (tuBg) tuBg.style.display = 'none';
+      if (noBg) noBg.style.display = 'none';
+      if (cuBg) cuBg.style.display = 'none';
       // Toggle custom wallpaper UI
       var customUI = document.getElementById('custom-wallpaper-ui');
       if (customUI) customUI.style.display = mode === 'custom' ? 'block' : 'none';
+      var gradUI = document.getElementById('gradient-wallpaper-ui');
+      if (gradUI) gradUI.style.display = mode === 'gradient' ? 'block' : 'none';
       if (starfieldInitialized) { Starfield.cleanup(); starfieldInitialized = false; }
       if (topographyInitialized) { stopTopography(); topographyInitialized = false; }
       if (matrixInitialized) { stopMatrix(); matrixInitialized = false; }
@@ -4470,20 +4464,15 @@
         mCanvas.style.display = 'block';
         if (!matrixInitialized) { startMatrix(); matrixInitialized = true; }
       } else if (mode === 'waves') {
-        wBg.style.display = 'block';
-        if (!wavesInitialized) { startWaves(); wavesInitialized = true; }
+        if (wBg) { wBg.style.display = 'block'; if (!wavesInitialized) { startWaves(); wavesInitialized = true; } }
       } else if (mode === 'globe') {
-        gBg.style.display = 'block';
-        if (!globeInitialized) { startGlobe(); globeInitialized = true; }
+        if (gBg) { gBg.style.display = 'block'; if (!globeInitialized) { startGlobe(); globeInitialized = true; } }
       } else if (mode === 'dots') {
-        dBg.style.display = 'block';
-        if (!dotsInitialized) { startDots(); dotsInitialized = true; }
+        if (dBg) { dBg.style.display = 'block'; if (!dotsInitialized) { startDots(); dotsInitialized = true; } }
       } else if (mode === 'fog') {
-        fBg.style.display = 'block';
-        if (!fogInitialized) { startFog(); fogInitialized = true; }
+        if (fBg) { fBg.style.display = 'block'; if (!fogInitialized) { startFog(); fogInitialized = true; } }
       } else if (mode === 'tunnel') {
-        tuBg.style.display = 'block';
-        if (!tunnelInitialized) { startTunnel(); tunnelInitialized = true; }
+        if (tuBg) { tuBg.style.display = 'block'; if (!tunnelInitialized) { tunnelInitialized = true; } }
       } else if (mode === 'noise') {
         noBg.style.display = 'block';
         if (!noiseInitialized) { startNoise(); noiseInitialized = true; }
@@ -4492,6 +4481,10 @@
         if (window.__linesStart) window.__linesStart();
       } else if (mode === 'custom') {
         cuBg.style.display = 'block';
+      } else if (mode === 'gradient') {
+        cuBg.style.display = 'block';
+        cuBg.style.backgroundImage = getGradientCss() || '';
+        ubSyncWallpaperClass();
       } else if (mode === 'perf-static') {
       } else {
         bgCanvas.style.display = 'block';
@@ -4553,6 +4546,17 @@
         var cuBg = document.getElementById('custom-bg');
         if (cuBg) cuBg.style.backgroundImage = 'url(' + savedWallpaper + ')';
       }
+      try {
+        var _gc1 = document.getElementById('gradient-c1');
+        var _gc2 = document.getElementById('gradient-c2');
+        var _ga = document.getElementById('gradient-angle');
+        var _gal = document.getElementById('gradient-angle-label');
+        if (_gc1) _gc1.value = localStorage.getItem('gradientC1') || '#667eea';
+        if (_gc2) _gc2.value = localStorage.getItem('gradientC2') || '#764ba2';
+        if (_ga) _ga.value = localStorage.getItem('gradientAngle') || '135';
+        if (_gal) _gal.textContent = (_ga ? _ga.value : '135') + '°';
+      } catch (e) {}
+      ubSyncWallpaperClass();
     });
 
     /* ─── PERFORMANCE MODE ─── */
@@ -4660,76 +4664,6 @@
       }
     })();
 
-    /* ─── FPS SPOOFER ─── */
-    function fpsSpooferOn() {
-      try {
-        if (localStorage.getItem('fpsSpoofer') !== null) return localStorage.getItem('fpsSpoofer') === '1';
-        return localStorage.getItem('fpsCounter') === '1';
-      } catch (e) { return false; }
-    }
-    var fpsMaxOverride = null;
-    function hasFpsMax() {
-      try { return localStorage.getItem('fpsMax') !== null; } catch (e) { return false; }
-    }
-    function getFpsMax() {
-      if (fpsMaxOverride !== null) return fpsMaxOverride;
-      var v = 360;
-      try {
-        var s = localStorage.getItem('fpsMax');
-        if (s !== null && !isNaN(+s) && +s > 0) v = Math.min(1000, Math.max(30, Math.round(+s)));
-      } catch (e) {}
-      return v;
-    }
-    function measureRefreshRate(cb) {
-      var gaps = [], last = null, t0 = Date.now();
-      function step(ts) {
-        if (last !== null) { var g = ts - last; if (g > 0 && g < 100) gaps.push(g); }
-        last = ts;
-        if (gaps.length < 8 && Date.now() - t0 < 1500) { requestAnimationFrame(step); return; }
-        var hz = 360;
-        if (gaps.length >= 4) {
-          var s = gaps.slice().sort(function (a, b) { return a - b; });
-          var m = s[Math.floor(s.length / 2)];
-          var r = Math.round(1000 / m);
-          if (r >= 24 && r <= 400) hz = r;
-        }
-        cb(hz);
-      }
-      requestAnimationFrame(function (ts) { step(ts); });
-    }
-    function updateFpsSpoof() {
-      var on = fpsSpooferOn();
-      var v = on ? getFpsMax() : 0;
-      try { Object.defineProperty(window.screen, 'refreshRate', { configurable: true, get: function () { return v; } }); } catch (e) {}
-    }
-    function setFpsSpoofer(on) {
-      on = !!on;
-      try { localStorage.setItem('fpsSpoofer', on ? '1' : '0'); } catch (e) {}
-      var c = document.getElementById('fps-spoofer-check');
-      if (c) c.checked = on;
-      updateFpsSpoof();
-    }
-    function setFpsMax(v) {
-      fpsMaxOverride = null;
-      v = Math.min(1000, Math.max(30, Math.round(+v || 360)));
-      try { localStorage.setItem('fpsMax', '' + v); } catch (e) {}
-      var i = document.getElementById('fps-max-input');
-      if (i) i.value = v;
-      updateFpsSpoof();
-    }
-    (function fpsInit() {
-      var c = document.getElementById('fps-spoofer-check');
-      if (c) c.checked = fpsSpooferOn();
-      var i = document.getElementById('fps-max-input');
-      if (i) i.value = getFpsMax();
-      updateFpsSpoof();
-      if (!hasFpsMax()) {
-        measureRefreshRate(function (hz) {
-          setFpsMax(hz);
-        });
-      }
-    })();
-
     /* ─── CUSTOM WALLPAPER ─── */
     function handleWallpaperFile(input) {
       var file = input.files && input.files[0];
@@ -4741,6 +4675,7 @@
         localStorage.setItem('customWallpaper', dataUrl);
         var cuBg = document.getElementById('custom-bg');
         if (cuBg) cuBg.style.backgroundImage = 'url(' + dataUrl + ')';
+        ubSyncWallpaperClass();
         setBackground('custom');
         document.getElementById('bg-select').value = 'custom';
       };
@@ -4752,14 +4687,70 @@
       localStorage.setItem('customWallpaper', url);
       var cuBg = document.getElementById('custom-bg');
       if (cuBg) cuBg.style.backgroundImage = 'url(' + url + ')';
+      ubSyncWallpaperClass();
       setBackground('custom');
       document.getElementById('bg-select').value = 'custom';
+    }
+
+    function ubSyncWallpaperClass() {
+      var eq = document.getElementById('custom-bg');
+      if (!eq) return;
+      var bg = eq.style.backgroundImage || '';
+      eq.classList.toggle('wallpaper', !!bg && bg !== 'none' && bg !== '');
     }
 
     function clearCustomWallpaper() {
       localStorage.removeItem('customWallpaper');
       var cuBg = document.getElementById('custom-bg');
       if (cuBg) cuBg.style.backgroundImage = '';
+      ubSyncWallpaperClass();
+      setBackground('starfield');
+      document.getElementById('bg-select').value = 'starfield';
+    }
+
+    /* ─── GRADIENT WALLPAPER ─── */
+    function getGradientCss() {
+      var c1 = localStorage.getItem('gradientC1') || '#667eea';
+      var c2 = localStorage.getItem('gradientC2') || '#764ba2';
+      var a = parseInt(localStorage.getItem('gradientAngle'), 10);
+      if (isNaN(a)) a = 135;
+      return 'linear-gradient(' + a + 'deg,' + c1 + ',' + c2 + ')';
+    }
+    function applyGradientFromInputs() {
+      var c1 = document.getElementById('gradient-c1').value;
+      var c2 = document.getElementById('gradient-c2').value;
+      var a = document.getElementById('gradient-angle').value;
+      localStorage.setItem('gradientC1', c1);
+      localStorage.setItem('gradientC2', c2);
+      localStorage.setItem('gradientAngle', a);
+      document.getElementById('gradient-angle-label').textContent = a + '°';
+      var cuBg = document.getElementById('custom-bg');
+      if (cuBg) cuBg.style.backgroundImage = 'linear-gradient(' + a + 'deg,' + c1 + ',' + c2 + ')';
+      ubSyncWallpaperClass();
+      setBackground('gradient');
+      document.getElementById('bg-select').value = 'gradient';
+    }
+    function setGradientPreset(colors) {
+      localStorage.setItem('gradientC1', colors[0]);
+      localStorage.setItem('gradientC2', colors[1]);
+      localStorage.setItem('gradientAngle', '135');
+      document.getElementById('gradient-c1').value = colors[0];
+      document.getElementById('gradient-c2').value = colors[1];
+      document.getElementById('gradient-angle').value = '135';
+      document.getElementById('gradient-angle-label').textContent = '135°';
+      var cuBg = document.getElementById('custom-bg');
+      if (cuBg) cuBg.style.backgroundImage = 'linear-gradient(135deg,' + colors[0] + ',' + colors[1] + ')';
+      ubSyncWallpaperClass();
+      setBackground('gradient');
+      document.getElementById('bg-select').value = 'gradient';
+    }
+    function clearGradientWallpaper() {
+      localStorage.removeItem('gradientC1');
+      localStorage.removeItem('gradientC2');
+      localStorage.removeItem('gradientAngle');
+      var cuBg = document.getElementById('custom-bg');
+      if (cuBg) cuBg.style.backgroundImage = '';
+      ubSyncWallpaperClass();
       setBackground('starfield');
       document.getElementById('bg-select').value = 'starfield';
     }
@@ -4907,6 +4898,8 @@
       localStorage.setItem('panicKey', combo);
       var inp = document.getElementById('panic-key-input');
       if (inp) inp.value = panicKeyLabel(combo);
+      var setupInp = document.getElementById('setup-panic-key');
+      if (setupInp) setupInp.value = panicKeyLabel(combo);
       cancelPanicCapture();
     }
     (function() {
@@ -5077,6 +5070,10 @@
     // Tab Switching
     function switchTab(tabId) {
       if (window.__perfMode && (tabId === 'home' || tabId === 'music' || tabId === 'console')) return;
+      try {
+        var _gv = document.getElementById('g4mes-viewer');
+        if (_gv && _gv.classList.contains('active') && typeof closeg4mesViewer === 'function') closeg4mesViewer();
+      } catch (e) {}
       document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
       document.querySelectorAll('.sidebar-btn').forEach(btn => btn.classList.remove('active'));
       document.getElementById(tabId).classList.add('active');
@@ -5099,9 +5096,20 @@
 
     document.querySelectorAll('.sidebar-btn').forEach(btn => {
       if (btn.dataset.tab === 'console') {
-        btn.addEventListener('click', function() { toggleConsoleOverlay(); });
+        btn.addEventListener('click', function() {
+          try {
+            var _gv = document.getElementById('g4mes-viewer');
+            if (_gv && _gv.classList.contains('active') && typeof closeg4mesViewer === 'function') closeg4mesViewer();
+          } catch (e) {}
+          toggleConsoleOverlay();
+        });
       } else if (btn.dataset.tab === 'music') {
-        // Music button handled by onclick
+        btn.addEventListener('click', function() {
+          try {
+            var _gv = document.getElementById('g4mes-viewer');
+            if (_gv && _gv.classList.contains('active') && typeof closeg4mesViewer === 'function') closeg4mesViewer();
+          } catch (e) {}
+        });
       } else {
         btn.addEventListener('click', () => switchTab(btn.dataset.tab));
       }
@@ -5351,7 +5359,7 @@
       document.getElementById('gv-newwindow').style.display = '';
       document.getElementById('gv-popout').style.display = '';
       if (!url.startsWith('http')) {
-        document.getElementById('gv-title').textContent = name;
+        document.getElementById('gv-title-text').textContent = name;
         const gvLoad = document.getElementById('gv-loading');
         gvLoad.textContent = 'Invalid URL';
         setTimeout(() => { gvLoad.style.display = 'none'; closeg4mesViewer(); }, 2000);
@@ -5458,7 +5466,7 @@
       var fc = document.getElementById('g4mes-frame-container');
       if (fc) fc.classList.remove('embed-bg');
       const g4mesViewer = document.getElementById('g4mes-viewer');
-      document.getElementById('gv-title').textContent = name;
+      document.getElementById('gv-title-text').textContent = name;
       gvLoading.style.display = 'block';
       document.documentElement.classList.add('loading-active');
       g4mesFrame.onload = null;
@@ -5655,13 +5663,8 @@ function injectg4mesAudio(fw, doc) {
       // Drop the YouTube Playables SDK: without a real host it mutes audio and nulls storage in an iframe.
       html = html.replace(/<script[^>]*?\bsrc=["'][^"']*ytg4mes[^"']*\.js[^"']*["'][^>]*>\s*<\/script>/gi, '');
       var ytStub = '<scr' + 'ipt>(function(){try{if(typeof window.ytg4mes==="undefined"){window.ytg4mes={IN_PLAYABLES_ENV:false,system:{isAudioEnabled:function(){return true;},onAudioEnabledChange:function(cb){if(typeof cb==="function"){try{setTimeout(function(){cb(true);},0);}catch(e){}}},getLanguage:function(){return Promise.resolve("en");}},g4mes:{firstFrameReady:function(){},g4mesReady:function(){},saveData:function(){return Promise.resolve(null);},loadData:function(){return Promise.resolve(null);}},engagement:{sendScore:function(){return Promise.resolve(null);}}};}}catch(e){}})();</scr' + 'ipt>';
-      if (/<head/i.test(html)) html = html.replace(/<head([^>]*)>/i, '<head$1>' + ytStub);
+if (/<head/i.test(html)) html = html.replace(/<head([^>]*)>/i, '<head$1>' + ytStub);
       else html = ytStub + html;
-      if (fpsSpooferOn()) {
-        var spoof = '<scr' + 'ipt>(function(){var fps=360;try{var s=parseInt(localStorage.getItem("fpsMax"),10);if(!isNaN(s)&&s>0)fps=Math.min(1000,Math.max(30,Math.round(s)));}catch(e){}var nativeRaf=window.requestAnimationFrame;var finish=function(){try{Object.defineProperty(window.screen,"refreshRate",{configurable:true,get:function(){return fps;}});}catch(e){}if(!nativeRaf)return;var queues=[],idByCb={},sched=false,lastReal=null,fakeNow=null,dt=1000/fps,nextId=1,nativeCaf=window.cancelAnimationFrame;var nowMs=function(){return (window.performance&&performance.now)?performance.now():Date.now();};var work=0;var tick=function(){sched=false;var t=nowMs(),el=t-lastReal;lastReal=t;if(fakeNow===null)fakeNow=lastReal;work=(el>250)?0:(work+el*fps/1000);var ticks=(el>250)?1:Math.min(Math.max(1,Math.round(el/dt)),Math.max(1,Math.min(12,Math.floor(work))));work=Math.max(0,work-ticks);var list=queues.slice();queues.length=0;for(var i=0;i<list.length;i++){delete idByCb[list[i]];}for(var i2=0;i2<ticks;i2++){fakeNow+=dt;for(var k=0;k<list.length;k++){try{list[k](fakeNow);}catch(e){}}}};window.requestAnimationFrame=function(cb){if(typeof cb!=="function")return 0;if(queues.indexOf(cb)!==-1)return idByCb[cb]||0;queues.push(cb);var id=nextId++;idByCb[cb]=id;if(!sched){sched=true;if(lastReal===null)lastReal=nowMs();if(nativeRaf)nativeRaf(tick);}return id;};window.cancelAnimationFrame=function(id){var cb=null;for(var key in idByCb){if(idByCb[key]===id){cb=key;break;}}if(cb!==null){var i3=queues.indexOf(cb);if(i3!==-1)queues.splice(i3,1);delete idByCb[cb];}return nativeCaf?nativeCaf(id):undefined;};};if(typeof nativeRaf==="function"){var G=[],L=null,T0=Date.now();(function(){function step(ts){if(L!==null){var dg=ts-L;if(dg>0&&dg<100)G.push(dg);}L=ts;if(G.length<8&&Date.now()-T0<1500){nativeRaf(step);return;}var real=60;if(G.length>=4){var ss=G.slice().sort(function(a,b){return a-b;});var mm=ss[Math.floor(ss.length/2)];var rr=Math.round(1000/mm);if(rr>=24&&rr<=400)real=rr;}fps=Math.min(fps,real);if(fps<30)fps=30;finish();}nativeRaf(step);})();}else finish();})();</scr' + 'ipt>';
-        if (/<head/i.test(html)) html = html.replace(/<head([^>]*)>/i, '<head$1>' + spoof);
-        else html = spoof + html;
-      }
       return html;
     }
 
@@ -5682,6 +5685,7 @@ function injectg4mesAudio(fw, doc) {
       d2.appendChild(hs);
       hookg4mesConsole(g4mesFrame.contentWindow);
       injectg4mesAudio(g4mesFrame.contentWindow, doc);
+      bindEscClose(g4mesFrame.contentWindow);
       finishLoading();
     }
 
@@ -5718,7 +5722,7 @@ function injectg4mesAudio(fw, doc) {
         gvLoading.style.display = 'block';
         g4mesFrame.removeAttribute('srcdoc');
         g4mesFrame.src = cdnUrl;
-        g4mesFrame.onload = function() { finishLoading(); try { var fw = g4mesFrame.contentWindow; if (fw && fw.document) injectg4mesAudio(fw, fw.document); } catch (e) {} };
+        g4mesFrame.onload = function() { finishLoading(); try { var fw = g4mesFrame.contentWindow; if (fw) bindEscClose(fw); if (fw && fw.document) injectg4mesAudio(fw, fw.document); } catch (e) {} };
         g4mesFrame.onerror = function() { showg4mesError(currentg4mesName); };
         return;
       }
@@ -5747,6 +5751,20 @@ function injectg4mesAudio(fw, doc) {
       }
       document.documentElement.classList.remove('loading-active');
     }
+
+    function bindEscClose(w) {
+      try {
+        w.addEventListener('keydown', function(e) {
+          if (e.key !== 'Escape') return;
+          if (g4mesViewer.classList.contains('active')) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeg4mesViewer();
+          }
+        }, true);
+      } catch (e) {}
+    }
+    bindEscClose(window);
 
     function toggleConsoleOverlay() {
       if (window.__perfMode) return;
@@ -6028,8 +6046,9 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
         '.social-btn{background:' + accentBg + '!important;border-color:' + accentLine + '!important}' +
         '.social-btn:hover{background:' + color + '!important;box-shadow:0 0 8px ' + glow + '!important}' +
         '.color-swatch:hover{box-shadow:0 0 6px ' + glow + '!important}' +
-        '.g4mes-viewer-bar{border-bottom:2px solid ' + color + '!important}' +
+        '.g4mes-viewer-bar{border:none!important}' +
         '.g4mes-viewer-bar .gv-btn:hover{background:' + color + '!important;color:#000!important}' +
+        '#g4mes-frame-container{border-color:' + color + '!important}' +
         '.g4mes-card .play-btn:hover{background:' + color + '!important}' +
         '#cloak-preview{border-color:' + glow + '!important}' +
         '.ргоху-section{border-color:' + glow + '!important;box-shadow:0 0 12px ' + soft + '!important}' +
@@ -6134,12 +6153,120 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       if (theme === 'goguardian') screen.classList.add('goguardian-theme');
       if (theme === 'securly') screen.classList.add('securly-theme');
       if (theme === 'classlink') screen.classList.add('classlink-theme');
-      document.getElementById('ls-text-fields').style.display = theme === 'lightspeed' ? 'flex' : 'none';
-      document.getElementById('gg-text-fields').style.display = theme === 'goguardian' ? 'flex' : 'none';
-      document.getElementById('sc-text-fields').style.display = theme === 'securly' ? 'flex' : 'none';
-      document.getElementById('loading-theme-select').value = theme;
+      var lsF = document.getElementById('ls-text-fields');
+      if (lsF) lsF.style.display = theme === 'lightspeed' ? 'flex' : 'none';
+      var ggF = document.getElementById('gg-text-fields');
+      if (ggF) ggF.style.display = theme === 'goguardian' ? 'flex' : 'none';
+      var scF = document.getElementById('sc-text-fields');
+      if (scF) scF.style.display = theme === 'securly' ? 'flex' : 'none';
+      var ts = document.getElementById('loading-theme-select');
+      if (ts) ts.value = theme;
       loadLightspeedText();
     }
+
+    function applyCustomCursor() {
+      var url = document.getElementById('cursor-url-input').value.trim();
+      if (!url) return;
+      setCustomCursor(url);
+      try { localStorage.setItem('activeCursor', url); } catch(e) {}
+    }
+
+    function resetCustomCursor() {
+      localStorage.removeItem('activeCursor');
+      localStorage.removeItem('customCursor');
+      var s = document.getElementById('custom-cursor-style');
+      if (s) s.remove();
+      document.getElementById('cursor-url-input').value = '';
+      document.documentElement.style.cursor = '';
+      if (typeof window.stopTetoCursor === 'function') window.stopTetoCursor();
+      if (typeof window.startTetoCursor === 'function') window.startTetoCursor();
+      showToast('Teto cursor enabled');
+    }
+    function setSystemCursor() {
+      localStorage.setItem('activeCursor', 'default');
+      localStorage.removeItem('customCursor');
+      var s = document.getElementById('custom-cursor-style');
+      if (s) s.remove();
+      var t = document.getElementById('teto-cursor-style');
+      if (t) t.remove();
+      if (typeof window.stopTetoCursor === 'function') window.stopTetoCursor();
+      document.documentElement.style.cursor = '';
+      document.getElementById('cursor-url-input').value = '';
+      showToast('System cursor enabled');
+    }
+    function setDefaultCursor() {
+      var wiiUrl = 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wiicursor.png';
+      localStorage.setItem('activeCursor', wiiUrl);
+      localStorage.removeItem('customCursor');
+      var s = document.getElementById('custom-cursor-style');
+      if (s) s.remove();
+      var t = document.getElementById('teto-cursor-style');
+      if (t) t.remove();
+      if (typeof window.stopTetoCursor === 'function') window.stopTetoCursor();
+      document.documentElement.style.cursor = '';
+      setCustomCursor(wiiUrl);
+      document.getElementById('cursor-url-input').value = '';
+      showToast('Wii cursor enabled');
+    }
+
+    function resizeCursorImage(url, size, callback) {
+      var img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = function() {
+        var w = img.naturalWidth || img.width;
+        var h = img.naturalHeight || img.height;
+        if (!w || !h) { callback(url); return; }
+        var scale = Math.min(size / w, size / h);
+        var dw = Math.max(1, Math.round(w * scale));
+        var dh = Math.max(1, Math.round(h * scale));
+        var c = document.createElement('canvas');
+        c.width = dw; c.height = dh;
+        c.getContext('2d').drawImage(img, 0, 0, dw, dh);
+        callback(c.toDataURL('image/png'));
+      };
+      img.onerror = function() { callback(url); };
+      img.src = url;
+    }
+    function setCustomCursor(url) {
+      var old = document.getElementById('custom-cursor-style');
+      if (old) old.remove();
+      var tetoStyle = document.getElementById('teto-cursor-style');
+      if (tetoStyle) tetoStyle.remove();
+      if (typeof window.stopTetoCursor === 'function') window.stopTetoCursor();
+      resizeCursorImage(url, 32, function(resized) {
+        var escaped = resized.replace(/"/g,'\\"');
+        document.documentElement.style.cursor = 'url("' + escaped + '") 16 16, auto';
+        var s = document.createElement('style');
+        s.id = 'custom-cursor-style';
+        document.head.appendChild(s);
+        s.textContent = 'a,button,.sidebar-btn,.card,.g4mes-card,.play-btn,.partner-card a,.media-cat,.g4mes-cat,.gv-btn,.link-item a,input,select,label,.settings-btn,.color-swatch,.submit-btn,.social-btn,.g4mes-btn,.gv-btn,.partner-card,.form-group input,.form-group textarea,.form-group select,.sidebar-btn,.link-item a,.media-cat,.g4mes-cat{ cursor:url("' + escaped + '") 16 16, auto!important; }a,button,.sidebar-btn,.card,.g4mes-card,.play-btn,.partner-card a,.media-cat,.g4mes-cat,.gv-btn,.link-item a{ cursor:url("' + escaped + '") 16 16, pointer!important; }.loading-cursor{ cursor:url("' + escaped + '") 16 16, wait!important; }html.loading-active{ cursor:url("' + escaped + '") 16 16, wait!important; }html.loading-active *{ cursor:url("' + escaped + '") 16 16, wait!important; }';
+        showToast('Cursor applied');
+      });
+    }
+
+    function handleCursorUpload(e) {
+      var file = e.target.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function(ev) {
+        var dataUrl = ev.target.result;
+        resizeCursorImage(dataUrl, 32, function(resized) {
+          setCustomCursor(resized);
+          try { localStorage.setItem('activeCursor', resized); } catch(err) {}
+        });
+        document.getElementById('cursor-url-input').value = '';
+      };
+      reader.readAsDataURL(file);
+    }
+
+    (function(){
+      var saved = localStorage.getItem('activeCursor') || localStorage.getItem('customCursor');
+      if (saved && saved !== 'default') {
+        localStorage.setItem('activeCursor', saved);
+        localStorage.removeItem('customCursor');
+        setCustomCursor(saved);
+      }
+    })();
 
     function applyLightspeedText() {
       var fields = {
@@ -6196,114 +6323,9 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
     // Load saved settings
     var savedAccent = localStorage.getItem('accentColorV2');
     if (savedAccent) setAccent(savedAccent);
-    var savedSiteTheme = localStorage.getItem('siteTheme');
-    if (savedSiteTheme === 'midnight') setSiteTheme('midnight');
+    localStorage.removeItem('siteTheme');
     var savedTheme = localStorage.getItem('loadingTheme') || 'lightspeed';
     setLoadingTheme(savedTheme);
-
-    function applyCustomCursor() {
-      var url = document.getElementById('cursor-url-input').value.trim();
-      if (!url) return;
-      setCustomCursor(url);
-      try { localStorage.setItem('activeCursor', url); } catch(e) {}
-    }
-
-    function resetCustomCursor() {
-      localStorage.removeItem('activeCursor');
-      localStorage.removeItem('customCursor');
-      var s = document.getElementById('custom-cursor-style');
-      if (s) s.remove();
-      document.getElementById('cursor-url-input').value = '';
-      document.documentElement.style.cursor = '';
-      if (typeof window.stopTetoCursor === 'function') window.stopTetoCursor();
-      if (typeof window.startTetoCursor === 'function') window.startTetoCursor();
-      showToast('Teto cursor enabled');
-    }
-    function setSystemCursor() {
-      localStorage.setItem('activeCursor', 'default');
-      localStorage.removeItem('customCursor');
-      var s = document.getElementById('custom-cursor-style');
-      if (s) s.remove();
-      var t = document.getElementById('teto-cursor-style');
-      if (t) t.remove();
-      if (typeof window.stopTetoCursor === 'function') window.stopTetoCursor();
-      document.documentElement.style.cursor = '';
-      document.getElementById('cursor-url-input').value = '';
-      showToast('System cursor enabled');
-    }
-    function setDefaultCursor() {
-      var wiiUrl = 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wiicursor.png';
-      localStorage.setItem('activeCursor', wiiUrl);
-      localStorage.removeItem('customCursor');
-      var s = document.getElementById('custom-cursor-style');
-      if (s) s.remove();
-      var t = document.getElementById('teto-cursor-style');
-      if (t) t.remove();
-      if (typeof window.stopTetoCursor === 'function') window.stopTetoCursor();
-      document.documentElement.style.cursor = '';
-      setCustomCursor(wiiUrl);
-      document.getElementById('cursor-url-input').value = '';
-      showToast('Default cursor enabled');
-    }
-
-    function resizeCursorImage(url, size, callback) {
-      var img = new Image();
-      img.crossOrigin = 'anonymous';
-      img.onload = function() {
-        var w = img.naturalWidth || img.width;
-        var h = img.naturalHeight || img.height;
-        if (!w || !h) { callback(url); return; }
-        var scale = Math.min(size / w, size / h);
-        var dw = Math.max(1, Math.round(w * scale));
-        var dh = Math.max(1, Math.round(h * scale));
-        var c = document.createElement('canvas');
-        c.width = dw; c.height = dh;
-        c.getContext('2d').drawImage(img, 0, 0, dw, dh);
-        callback(c.toDataURL('image/png'));
-      };
-      img.onerror = function() { callback(url); };
-      img.src = url;
-    }
-    function setCustomCursor(url) {
-      var old = document.getElementById('custom-cursor-style');
-      if (old) old.remove();
-      var tetoStyle = document.getElementById('teto-cursor-style');
-      if (tetoStyle) tetoStyle.remove();
-      if (typeof window.stopTetoCursor === 'function') window.stopTetoCursor();
-      resizeCursorImage(url, 32, function(resized) {
-        var escaped = resized.replace(/"/g,'\\"');
-        document.documentElement.style.cursor = 'url("' + escaped + '") 16 16, auto';
-        var s = document.createElement('style');
-        s.id = 'custom-cursor-style';
-        document.head.appendChild(s);
-        s.textContent = 'a,button,.sidebar-btn,.card,.g4mes-card,.play-btn,.partner-card a,.media-cat,.g4mes-cat,.gv-btn,.link-item a,input,select,label,.settings-btn,.color-swatch,.submit-btn,.social-btn,.g4mes-btn,.gv-btn,.partner-card,.ргоху-section,.form-group input,.form-group textarea,.form-group select,.sidebar-btn,.link-item a,.media-cat,.g4mes-cat{ cursor:url("' + escaped + '") 16 16, auto!important; }a,button,.sidebar-btn,.card,.g4mes-card,.play-btn,.partner-card a,.media-cat,.g4mes-cat,.gv-btn,.link-item a{ cursor:url("' + escaped + '") 16 16, pointer!important; }.loading-cursor{ cursor:url("' + escaped + '") 16 16, wait!important; }html.loading-active{ cursor:url("' + escaped + '") 16 16, wait!important; }html.loading-active *{ cursor:url("' + escaped + '") 16 16, wait!important; }';
-        showToast('Cursor applied');
-      });
-    }
-
-    function handleCursorUpload(e) {
-      var file = e.target.files[0];
-      if (!file) return;
-      var reader = new FileReader();
-      reader.onload = function(ev) {
-        var dataUrl = ev.target.result;
-        resizeCursorImage(dataUrl, 32, function(resized) {
-          setCustomCursor(resized);
-          try { localStorage.setItem('activeCursor', resized); } catch(err) {}
-        });
-        document.getElementById('cursor-url-input').value = '';
-      };
-      reader.readAsDataURL(file);
-    }
-
-    (function(){
-      var saved = localStorage.getItem('activeCursor') || localStorage.getItem('customCursor');
-      if (saved && saved !== 'default') {
-        localStorage.setItem('activeCursor', saved);
-        localStorage.removeItem('customCursor');
-        setCustomCursor(saved);
-      }
-    })();
 
     function toggleg4mesFullscreen() {
       if (document.fullscreenElement) {
@@ -6541,7 +6563,7 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
         normalizeg4mes({name:"t³ (t cubed)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/t3.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/t3.html"}),
         normalizeg4mes({name:"The Math is Leaking",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/themathisleaking.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/themathisleaking.html"}),
         normalizeg4mes({name:"The Ultimate Baldi's Basic's Decompile",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/baldisbasicsdecompile.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/baldisdecompile.html"}),
-        normalizeg4mes({name:"The World's Hardest g4mes",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/theworldshardestg4mes.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/hardestg4mes.html"}),
+        normalizeg4mes({name:"The World's Hardest Game",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/theworldshardestgame.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/hardestgame.html"}),
         normalizeg4mes({name:"three",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/three.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/three.html"}),
         normalizeg4mes({name:"Time Shooter 3 SWAT",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/timeshooterswat2.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/time.html"}),
         normalizeg4mes({name:"Tomb of Mask",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/tombofmask.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/tombofmask.html"}),
@@ -6550,7 +6572,7 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
         normalizeg4mes({name:"Ultrakill",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/ultrakill.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/ultra.html"}),
         normalizeg4mes({name:"Undertale",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/undertale.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/undertale.html"}),
         normalizeg4mes({name:"Unfair Mario",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/unfairmario.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/unfairmario.html"}),
-        normalizeg4mes({name:"Untitled Goose g4mes",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/untitledgooseg4mes.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/gooseg4mes.html"}),
+        normalizeg4mes({name:"Untitled Goose Game",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/untitledgoosegame.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/goosegame.html"}),
         normalizeg4mes({name:"UvuvwevwevweOnyetenvewveUgwemubwemOssas",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/UvuvwevwevweOnyetenvewveUgwemubwemOssas.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/UvuvwevwevweOnyetenvewveUgwemubwemOssas.html"}),
         normalizeg4mes({name:"UwU Client 1.8.8",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/client188.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/uwu18.html"}),
         normalizeg4mes({name:"Vice City",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/gtavicecity.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/vicecity.html"}),
@@ -6579,7 +6601,7 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       if(DATA.noah.length) return;
       try {
         // Try JSON endpoint first
-        const r = await fetch(NOAH_BASE + '/g4mes.json');
+        const r = await fetch(NOAH_BASE + '/games.json');
         if (r.ok) {
           const d = await r.json();
           DATA.noah = (Array.isArray(d) ? d : (d.g4mes || [])).map(g => normalizeg4mes({
@@ -6593,7 +6615,7 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
 
       // Fallback: load g4mes.js as text and extract array
       try {
-        const r2 = await fetch(NOAH_BASE + '/g4mes.js');
+        const r2 = await fetch(NOAH_BASE + '/games.js');
         const text = await r2.text();
         const g4mesObjects = [];
         const objRegex = /\{([^}]+)\}/g;
@@ -6647,7 +6669,7 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
     async function loadElite(){
       if(DATA.elite.length) return;
       try {
-        const r = await fetch(ELITE_BASE + '/g4mes.json');
+        const r = await fetch(ELITE_BASE + '/games.json');
         const d = await r.json();
         DATA.elite = d.map(g => {
           const eu = String(g.url || '').trim();
@@ -6685,9 +6707,9 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
     async function loadSeraph(){
       if(DATA.seraph.length) return;
       try {
-        const r = await fetch(_cdn + "/gh/DominumNetwork/dominum@main/src/assets/libraries/seraph/g4mes.json");
+        const r = await fetch(_cdn + "/gh/DominumNetwork/dominum@main/src/assets/libraries/seraph/games.json");
         const d = await r.json();
-        const SERAPH_BASE = _cdn + "/gh/a456pur/seraph@main/g4mes/";
+        const SERAPH_BASE = _cdn + "/gh/a456pur/seraph@main/games/";
         DATA.seraph = d.map(g => {
           const si = String(g.img || '').trim();
           return normalizeg4mes({
@@ -6704,7 +6726,7 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
     async function loadCKV(){
       if(DATA.ckv.length) return;
       try {
-        const r = await fetch(CKV_BASE + '/g4mes.json');
+        const r = await fetch(CKV_BASE + '/games.json');
         const d = await r.json();
         DATA.ckv = d.map(g => {
           const cu = String(g.html || '').trim();
@@ -6799,12 +6821,200 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       };
     });
 
+    // ─── Universal home search (games / movies / tv / manga / tools / settings) ───
+    var homeSearchInput = document.getElementById('home-search-input');
+    var homeSearchDD = document.getElementById('home-search-dropdown');
+    var ubVisible = [];
+    var ubActive = -1;
+
+    function ubEnsureAllGames() {
+      const loaders = {
+        ubz: loadUBZ, gn: loadGN, elite: loadElite, ugs: loadUGS,
+        seraph: loadSeraph, ckv: loadCKV, noah: loadNoah, lumin: loadLumin
+      };
+      var anyMissing = false;
+      for (var k in DATA) { if (!DATA[k].length) anyMissing = true; }
+      if (!anyMissing) return Promise.resolve();
+      return Promise.all(Object.keys(loaders).map(function(k) {
+        try { return Promise.resolve(loaders[k]()); } catch (e) { return Promise.resolve(); }
+      }));
+    }
+
+    function ubSearchGames(q) {
+      let out = [];
+      Object.keys(DATA).forEach(k => {
+        (DATA[k] || []).forEach(g => {
+          if (g && g.name && String(g.name).toLowerCase().includes(q)) {
+            out.push({ name: g.name, url: g.url, stash: k, _ubz: !!g._ubz });
+          }
+        });
+      });
+      return out;
+    }
+
+    function ubSearchCards(sel, q) {
+      let out = [];
+      document.querySelectorAll(sel).forEach(card => {
+        const h = card.querySelector('.card-info h3');
+        const nm = h ? h.textContent.trim() : '';
+        if (nm && nm.toLowerCase().includes(q)) out.push({ name: nm, url: card.href, el: card });
+      });
+      return out;
+    }
+
+    function ubSearchTools(q) {
+      let out = [];
+      document.querySelectorAll('#tools .g4mes-btn').forEach(btn => {
+        const s = btn.querySelector('.overlay span');
+        const nm = s ? s.textContent.trim() : '';
+        if (nm && nm.toLowerCase().includes(q)) out.push({ name: nm, btn });
+      });
+      return out;
+    }
+
+    function ubSearchSettings(q) {
+      let out = [];
+      document.querySelectorAll('#settings .g4mes-card').forEach(card => {
+        const head = card.querySelector('.settings-card-head h3');
+        const group = head ? head.textContent.trim() : '';
+        let seen = {};
+        const push = (nm, el) => {
+          nm = String(nm || '').replace(/\s+/g, ' ').trim();
+          if (!nm || !nm.toLowerCase().includes(q)) return;
+          if (seen[nm.toLowerCase()]) return;
+          seen[nm.toLowerCase()] = 1;
+          out.push({ name: nm, el: el, sub: group });
+        };
+        if (head) push(head.textContent, card);
+        card.querySelectorAll('p').forEach(p => push(p.textContent, p));
+        card.querySelectorAll('label').forEach(l => push(l.textContent, l));
+        card.querySelectorAll('.settings-btn').forEach(b => push(b.textContent, b));
+        card.querySelectorAll('.settings-input option, .color-swatch').forEach(o => push(o.textContent || o.title, o));
+      });
+      return out;
+    }
+
+    function ubBuildSearch() {
+      ubVisible = [];
+      ubActive = -1;
+      homeSearchDD.innerHTML = '';
+      const q = homeSearchInput.value.trim().toLowerCase();
+      if (!q) { homeSearchDD.classList.remove('open'); return; }
+
+      if (!Object.keys(DATA).every(k => DATA[k].length)) {
+        const loadRow = document.createElement('div');
+        loadRow.className = 'ub-dd-note';
+        loadRow.textContent = 'Loading g4m3s...';
+        homeSearchDD.appendChild(loadRow);
+        homeSearchDD.classList.add('open');
+        ubEnsureAllGames().then(ubBuildSearch);
+        return;
+      }
+
+      const groups = [
+        ['G4m3s', '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg>', ubSearchGames(q).slice(0, 5), function(gi) {
+          openg4mes(gi.name, gi.url, gi._ubz);
+        }],
+        ['TV Shows', '<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5,18 C3.34314575,18 2,16.6568542 2,15 L2,7 C2,5.34314575 3.34314575,4 5,4 L19,4 C20.6568542,4 22,5.34314575 22,7 L22,15 C22,16.6568542 20.6568542,18 19,18 L15,18 C15.5522847,18 16,18.4477153 16,19 C16,19.5522847 15.5522847,20 15,20 L9,20 C8.44771525,20 8,19.5522847 8,19 C8,18.4477153 8.44771525,18 9,18 L5,18 Z M19,6 L5,6 C4.44771525,6 4,6.44771525 4,7 L4,15 C4,15.5522847 4.44771525,16 5,16 L19,16 C19.5522847,16 20,15.5522847 20,15 L20,7 C20,6.44771525 19.5522847,6 19,6 Z" fill="currentColor"/></svg>', ubSearchCards('#media-tv a.card', q).slice(0, 4), function(ti) {
+          window.open(ti.url, '_blank');
+        }],
+        ['Manga', '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>', ubSearchCards('#media-manga a.card', q).slice(0, 4), function(mi) {
+          window.open(mi.url, '_blank');
+        }],
+        ['Tools', '<svg width="24" height="24" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M12.1,2A9.8,9.8,0,0,0,6.7,3.6L13.1,10a2.1,2.1,0,0,1,.2,3,2.1,2.1,0,0,1-3-.2L3.7,6.4A9.84,9.84,0,0,0,2,12.1,10.14,10.14,0,0,0,12.1,22.2a10.9,10.9,0,0,0,2.6-.3l6.7,6.7a5,5,0,0,0,7.1-7.1l-6.7-6.7a10.9,10.9,0,0,0,.3-2.6A10,10,0,0,0,12.1,2Zm8,10.1a7.61,7.61,0,0,1-.3,2.1l-.3,1.1.8.8L27,22.8a2.88,2.88,0,0,1,.9,2.1A2.72,2.72,0,0,1,27,27a2.9,2.9,0,0,1-4.2,0l-6.7-6.7-.8-.8-1.1.3a7.61,7.61,0,0,1-2.1.3,8.27,8.27,0,0,1-5.7-2.3A7.63,7.63,0,0,1,4,12.1a8.33,8.33,0,0,1,.3-2.2l4.4,4.4a4.14,4.14,0,0,0,5.9.2,4.14,4.14,0,0,0-.2-5.9L10,4.2a6.45,6.45,0,0,1,2-.3,8.27,8.27,0,0,1,5.7,2.3A8.49,8.49,0,0,1,20.1,12.1Z" fill="currentColor"/></svg>', ubSearchTools(q).slice(0, 4), function(ti) {
+          ti.btn.click();
+        }],
+        ['Settings', '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M12.22 2h-.44a2 2 0 00-2 2v.18a2 2 0 01-1 1.73l-.43.25a2 2 0 01-2 0l-.15-.08a2 2 0 00-2.73.73l-.22.38a2 2 0 00.73 2.73l.15.1a2 2 0 011 1.72v.51a2 2 0 01-1 1.74l-.15.09a2 2 0 00-.73 2.73l.22.38a2 2 0 002.73.73l.15-.08a2 2 0 012 0l.43.25a2 2 0 011 1.73V20a2 2 0 002 2h.44a2 2 0 002-2v-.18a2 2 0 011-1.73l.43-.25a2 2 0 012 0l.15.08a2 2 0 002.73-.73l.22-.39a2 2 0 00-.73-2.73l-.15-.08a2 2 0 01-1-1.74v-.5a2 2 0 011-1.74l.15-.09a2 2 0 00.73-2.73l-.22-.38a2 2 0 00-2.73-.73l-.15.08a2 2 0 01-2 0l-.43-.25a2 2 0 01-1-1.73V4a2 2 0 00-2-2z" /><circle cx="12" cy="12" r="3" /></svg>', ubSearchSettings(q).slice(0, 7), function(si) {
+          switchTab('settings');
+          if (si.el) {
+            si.el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            si.el.style.outline = '2px solid var(--accent)';
+            setTimeout(function() { si.el.style.outline = 'none'; }, 1600);
+          }
+        }]
+      ];
+
+      let any = false;
+      groups.forEach(function(pair) {
+        const label = pair[0], ico = pair[1], items = pair[2], fnAct = pair[3];
+        if (!items.length) return;
+        any = true;
+        const gh = document.createElement('div');
+        gh.className = 'ub-dd-group';
+        gh.textContent = label;
+        homeSearchDD.appendChild(gh);
+        items.forEach(function(item) {
+          const row = document.createElement('div');
+          row.className = 'ub-dd-item';
+          const nameEl = document.createElement('span');
+          nameEl.textContent = item.name;
+          const icoEl = document.createElement('span');
+          icoEl.className = 'ub-dd-ico';
+          icoEl.innerHTML = ico;
+          row.appendChild(icoEl);
+          row.appendChild(nameEl);
+          if (item.stash || item.sub) {
+            const subEl = document.createElement('span');
+            subEl.className = 'ub-dd-sub';
+            subEl.textContent = item.sub || stashLabel(item.stash);
+            row.appendChild(subEl);
+          }
+          row.addEventListener('mousedown', function(e) { e.preventDefault(); });
+          row.addEventListener('click', function() { homeSearchDD.classList.remove('open'); fnAct(item); });
+          homeSearchDD.appendChild(row);
+          ubVisible.push({ el: row, act: function() { fnAct(item); } });
+        });
+      });
+      if (!any) {
+        const noRow = document.createElement('div');
+        noRow.className = 'ub-dd-note';
+        noRow.textContent = 'No matches found';
+        homeSearchDD.appendChild(noRow);
+      }
+      homeSearchDD.classList.add('open');
+      ubHighlight(0);
+    }
+
+    function ubHighlight(i) {
+      ubActive = i;
+      ubVisible.forEach(function(v, idx) {
+        v.el.classList.toggle('hl', idx === i);
+      });
+    }
+
+    homeSearchInput.addEventListener('input', ubBuildSearch);
+    homeSearchInput.addEventListener('focus', function() {
+      if (homeSearchDD.children.length) homeSearchDD.classList.add('open');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (homeSearchDD.classList.contains('open') && !homeSearchDD.contains(e.target) && e.target !== homeSearchInput) {
+        homeSearchDD.classList.remove('open');
+      }
+    });
+
     document.getElementById('home-search-input').addEventListener('keydown', function(e) {
       if (e.key === 'Enter') {
+        if (ubVisible.length) {
+          e.preventDefault();
+          ubVisible[ubActive >= 0 ? ubActive : 0].act();
+          homeSearchDD.classList.remove('open');
+          return;
+        }
         switchTab('g4mes');
         g4mesearch.value = this.value;
         g4mesearch.focus();
         g4mesearch.dispatchEvent(new Event('input'));
+      } else if (e.key === 'ArrowDown') {
+        if (!ubVisible.length) return;
+        e.preventDefault();
+        ubHighlight((ubActive + 1) % ubVisible.length);
+      } else if (e.key === 'ArrowUp') {
+        if (!ubVisible.length) return;
+        e.preventDefault();
+        ubHighlight((ubActive - 1 + ubVisible.length) % ubVisible.length);
+      } else if (e.key === 'Escape') {
+        homeSearchDD.classList.remove('open');
       }
     });
 
@@ -6898,6 +7108,11 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
         if (!pick) return;
         openg4mes(pick.name, pick.url, !!pick._ubz);
       };
+      rCard.onclick = () => {
+        const pick = pool.length ? pool[Math.floor(Math.random() * pool.length)] : null;
+        if (!pick) return;
+        openg4mes(pick.name, pick.url, !!pick._ubz);
+      };
       g4mesGrid.appendChild(rCard);
 
       const sorted = pool.slice().sort((x, y) => {
@@ -6917,8 +7132,8 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
           const fav = isFavorite(g.name, g._stash);
           const showStash = (activeCat === 'favs' || activeCat === 'all') && stashLabel(g._stash);
           var heartSVG = fav
-            ? '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="fav-solid" fill="#ff4444" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'
-            : '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="fav-outline" d="M20.16,5A6.29,6.29,0,0,0,12,4.36a6.27,6.27,0,0,0-8.16,9.48l6.21,6.22a2.78,2.78,0,0,0,3.9,0l6.21-6.22A6.27,6.27,0,0,0,20.16,5Zm-1.41,7.46-6.21,6.21a.76.76,0,0,1-1.08,0L5.25,12.43a4.29,4.29,0,0,1,0-6,4.27,4.27,0,0,1,6,0,1,1,0,0,0,1.42,0,4.27,4.27,0,0,1,6,0A4.29,4.29,0,0,1,18.75,12.43Z"/></svg>';
+            ? '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#ff4444" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart w-4 h-4 fav-solid" aria-hidden="true" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" style="stroke-width: 2;"/></svg>'
+            : '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart w-4 h-4 fav-outline" aria-hidden="true" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" style="stroke-width: 2;"/></svg>';
           card.innerHTML = `
             <button class="fav-btn${fav ? ' active' : ''}">${heartSVG}</button>
             <img loading="lazy" decoding="async" crossorigin="anonymous" src="${g.img || fallback}" onerror="this.onerror=null;this.src='${fallback}'">
@@ -6931,6 +7146,10 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
           card.querySelector('.play-btn').onclick = () => {
             openg4mes(g.name, g.url, !!g._ubz);
           };
+          card.addEventListener('click', (e) => {
+            if (e.target.closest('.fav-btn')) return;
+            openg4mes(g.name, g.url, !!g._ubz);
+          });
           g4mesGrid.appendChild(card);
         }
         buildIdx = end;
@@ -6950,6 +7169,43 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
     FILTERED = CURRENT;
     updateg4mesCount();
     renderg4mes();
+    renderHomeG4mes();
+
+    async function renderHomeG4mes() {
+      const wrap = document.getElementById('home-g4mes-row');
+      if (!wrap) return;
+      try {
+        await Promise.all([loadUBZ(), loadGN(), loadElite(), loadSeraph(), loadNoah(), loadLumin()]);
+      } catch(e) { console.warn("home stash load failed:", e); }
+      const all = [];
+      ['ubz', 'gn', 'elite', 'seraph', 'noah', 'lumin'].forEach(function(k) { all.push.apply(all, tagStash(DATA[k], k)); });
+      const pool = all.filter(function(g) { return g && g.name && g.url && g.url !== '#'; });
+      if (!pool.length) return;
+      for (let i = pool.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const t = pool[i]; pool[i] = pool[j]; pool[j] = t;
+      }
+      const picks = pool.slice(0, wrap.querySelectorAll('.g4mes-btn').length || 5);
+      wrap.innerHTML = '';
+      picks.forEach(function(g) {
+        const btn = document.createElement('button');
+        btn.className = 'g4mes-btn';
+        const img = document.createElement('img');
+        img.loading = 'lazy';
+        img.src = g.img || 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/fallback.png';
+        img.alt = g.name;
+        img.onerror = function() { this.onerror = null; this.src = 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/fallback.png'; };
+        const ov = document.createElement('div');
+        ov.className = 'overlay';
+        const sp = document.createElement('span');
+        sp.textContent = g.name;
+        ov.appendChild(sp);
+        btn.appendChild(img);
+        btn.appendChild(ov);
+        btn.addEventListener('click', function() { openg4mes(g.name, g.url, !!g._ubz); });
+        wrap.appendChild(btn);
+      });
+    }
 
     // ─── Media sub-category switching ───
     document.querySelectorAll(".media-cat").forEach(btn => {
@@ -7204,8 +7460,6 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
         var sel = document.getElementById('setup-bg-select');
         var src = document.getElementById('bg-select');
         if (sel && src) sel.innerHTML = src.innerHTML;
-        var tv = document.getElementById('setup-theme-v2-select');
-        if (tv) tv.value = (localStorage.getItem('siteTheme') || 'default');
       }
 
       function updateSetupDots() {
@@ -7214,7 +7468,7 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
         var active = document.querySelector('.setup-step.active');
         var idx = active ? parseInt(active.getAttribute('data-step'), 10) : 1;
         dots.innerHTML = '';
-        for (var i = 1; i <= 5; i++) {
+        for (var i = 1; i <= 9; i++) {
           var s = document.createElement('span');
           if (i <= idx) s.className = 'on';
           dots.appendChild(s);
@@ -7243,6 +7497,36 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
         var sp = document.getElementById('setup-sidebar-select');
         if (sp) sp.value = localStorage.getItem('sidebarPosition') || 'bottom';
         document.getElementById('setup-music-check').checked = getMusicOnStartup();
+        document.getElementById('setup-panic-check').checked = getPanicEnabled();
+        document.getElementById('setup-panic-key').value = panicKeyLabel(getPanicKey());
+        document.getElementById('setup-panic-url').value = getPanicUrl();
+        var cover = document.getElementById('setup-cover-select');
+        if (cover) cover.value = localStorage.getItem('stealthCover') || 'classroom';
+        var stretch = document.getElementById('setup-stretch-select');
+        if (stretch) stretch.value = localStorage.getItem('stretchedRes') || '';
+        document.getElementById('setup-crosshair-check').checked = !!(localStorage.getItem('crosshairEnabled') === '1');
+        var cur = localStorage.getItem('activeCursor');
+        var curSel = document.getElementById('setup-cursor-select');
+        if (curSel) {
+          if (!cur) { curSel.value = 'teto'; var cu = document.getElementById('setup-cursor-custom'); if (cu) cu.style.display = 'none'; }
+          else if (cur === 'default') { curSel.value = 'system'; var cu2 = document.getElementById('setup-cursor-custom'); if (cu2) cu2.style.display = 'none'; }
+          else if (cur === 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wiicursor.png') { curSel.value = 'default'; var cu3 = document.getElementById('setup-cursor-custom'); if (cu3) cu3.style.display = 'none'; }
+          else { curSel.value = 'custom'; var cu4 = document.getElementById('setup-cursor-custom'); if (cu4) cu4.style.display = 'block'; var curl = document.getElementById('setup-cursor-url'); if (curl) curl.value = cur; }
+        }
+      };
+
+      window.setupCursorChoice = function(v) {
+        var cu = document.getElementById('setup-cursor-custom');
+        if (cu) cu.style.display = v === 'custom' ? 'block' : 'none';
+        if (v === 'system') setSystemCursor();
+        else if (v === 'teto') resetCustomCursor();
+        else if (v === 'default') setDefaultCursor();
+      };
+      window.setupCursorCustom = function() {
+        var url = document.getElementById('setup-cursor-url');
+        if (!url || !url.value.trim()) return;
+        document.getElementById('cursor-url-input').value = url.value.trim();
+        applyCustomCursor();
       };
 
       window.finishSetup = function() {
@@ -7293,11 +7577,17 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       setBackground('starfield');
       localStorage.removeItem('bgMode');
       localStorage.removeItem('customWallpaper');
+      localStorage.removeItem('gradientC1');
+      localStorage.removeItem('gradientC2');
+      localStorage.removeItem('gradientAngle');
       document.getElementById('bg-select').value = 'starfield';
       var customUI2 = document.getElementById('custom-wallpaper-ui');
       if (customUI2) customUI2.style.display = 'none';
+      var gradUI2 = document.getElementById('gradient-wallpaper-ui');
+      if (gradUI2) gradUI2.style.display = 'none';
       var cuBg2 = document.getElementById('custom-bg');
       if (cuBg2) cuBg2.style.backgroundImage = '';
+      ubSyncWallpaperClass();
       var blockChk = document.getElementById('loading-screen-enabled-check');
       if (blockChk) blockChk.checked = true;
       var loadChk = document.getElementById('startup-loading-check');
@@ -7313,7 +7603,9 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       resetPanicSettings();
       var panicChk = document.getElementById('panic-enabled-check');
       if (panicChk) panicChk.checked = false;
-      resetCustomCursor();
+      localStorage.removeItem('activeCursor');
+      localStorage.removeItem('customCursor');
+      if (typeof window.startTetoCursor === 'function') window.startTetoCursor();
       resetCloak();
       var cloakSel = document.getElementById('cloak-preset');
       if (cloakSel) cloakSel.value = '';
@@ -7401,13 +7693,19 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
 
       try { if (has('bgMode')) setBackground(get('bgMode')); } catch (e) {}
       try {
-        if (has('siteTheme')) { setSiteTheme(get('siteTheme')); setVal('theme-select', get('siteTheme')); }
-      } catch (e) {}
-      try {
         if (has('customWallpaper')) {
           var cuBg = document.getElementById('custom-bg');
           if (cuBg) cuBg.style.backgroundImage = 'url(' + get('customWallpaper') + ')';
+          ubSyncWallpaperClass();
         }
+      } catch (e) {}
+      try {
+        var _gc1 = document.getElementById('gradient-c1');
+        var _gc2 = document.getElementById('gradient-c2');
+        var _ga = document.getElementById('gradient-angle');
+        if (_gc1) _gc1.value = get('gradientC1') || '#667eea';
+        if (_gc2) _gc2.value = get('gradientC2') || '#764ba2';
+        if (_ga) _ga.value = get('gradientAngle') || '135';
       } catch (e) {}
 
       try { if (has('cdnMirror')) { setCDN(get('cdnMirror')); setVal('cdn-select', get('cdnMirror')); } } catch (e) {}
