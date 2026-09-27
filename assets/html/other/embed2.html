@@ -5,27 +5,38 @@
   <title>Cloaked Website (About:Blank)</title>
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    @font-face{font-family:'ApplePixel';src:url('https://quantil.jsdelivr.net/gh/bradardeletethis/apple/font.woff2') format('woff2');font-weight:400;font-style:normal;}
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #060606;
-      --panel: #0e0e0e;
-      --border: #1e1e1e;
-      --accent: #ff9900;
-      --accent-dim: rgba(255,153,0,0.15);
-      --accent-glow: rgba(255,153,0,0.4);
-      --text: #e8e8e8;
-      --muted: #555;
-      --tab-bg: #111;
-      --tab-active: #1a1a1a;
+      --bg: #050001;
+      --accent: #ff6600;
+      --accent-rgb: 255, 102, 0;
+      --accent-dim: rgba(var(--accent-rgb), 0.15);
+      --accent-glow: rgba(var(--accent-rgb), 0.5);
+      --accent-glow-strong: rgba(var(--accent-rgb), 0.8);
+      --accent-glow-soft: rgba(var(--accent-rgb), 0.15);
+      --panel: rgba(16, 16, 20, 0.85);
+      --border: rgba(var(--accent-rgb), 0.35);
+      --beez-gold: #ff6600;
+      --beez-gold-bright: #ff8c00;
+      --beez-gold-dark: #cc5200;
+      --text: #f4f4f5;
+      --muted: #a0a0aa;
+      --tab-bg: #0a0700;
+      --tab-active: #120b04;
       --header-h: 52px;
       --tab-bar-h: 44px;
     }
 
     body {
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 30% 70%, rgba(var(--accent-rgb), 0.10), transparent 60%),
+        radial-gradient(circle at 70% 30%, rgba(var(--accent-rgb), 0.07), transparent 60%),
+        var(--bg);
       color: var(--text);
-      font-family: 'Lexend', sans-serif;
+      font-family: 'ApplePixel', 'Lexend', sans-serif;
       height: 100vh;
       overflow: hidden;
       display: flex;
@@ -112,12 +123,13 @@
     }
 
     .panel {
-      background: var(--panel);
-      border: 1px solid var(--border);
+      background: rgba(8, 4, 0, 0.9);
+      border: 2px solid var(--accent);
       border-radius: 10px;
       width: 100%;
       max-width: 520px;
       overflow: hidden;
+      box-shadow: 0 0 30px rgba(var(--accent-rgb), 0.25), 0 8px 32px rgba(0, 0, 0, 0.6);
     }
 
     .tab-bar {
@@ -180,6 +192,82 @@
       display: none;
     }
 
+    /* ── EXTRA PANELS ── */
+    .section {
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chip {
+      background: var(--tab-active);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, box-shadow 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+
+    .chip:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 8px var(--accent-glow);
+    }
+
+    .spoof-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .spoof-row .url-input { flex: 1; min-width: 0; }
+
+    .recent-empty {
+      font-size: 11px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+
+    @media (max-width: 560px) {
+      body { overflow-y: auto; }
+      .workspace { padding: 18px 12px; }
+      .panel { max-width: 100%; }
+      .spoof-row { flex-direction: column; }
+    }
+
+    /* ── UB LOOK ── */
+    .btn, .btn-go, header h1, .tab-bar-label, .hint, .section-label {
+      font-family: 'ApplePixel', 'Lexend', sans-serif;
+    }
+
     footer {
       height: 26px;
       background: var(--panel);
@@ -204,6 +292,11 @@
       font-size: 10px;
       color: #888;
     }
+
+    /* ── UB LOOK ── */
+    .btn, .btn-go, header h1, .tab-bar-label, .hint {
+      font-family: 'ApplePixel', 'Lexend', sans-serif;
+    }
   </style>
 </head>
 <body>
@@ -224,9 +317,27 @@
         <span class="tab-bar-label">URL Input</span>
       </div>
       <div class="panel-body">
-        <input class="url-input" id="cwUrl" type="text" placeholder="https://example.com" spellcheck="false" />
-        <div class="err-msg" id="cwErr"></div>
-        <div class="hint">Must include https:// — popup may be blocked by browser</div>
+        <input class="url-input" id="cwUrl" type="text" placeholder="https://example.com" spellcheck="false" aria-label="URL to cloak" />
+        <div class="err-msg" id="cwErr" role="alert" aria-live="assertive"></div>
+        <div class="hint">https:// is auto-added if missing — popup may be blocked by the browser</div>
+
+        <div class="section">
+          <span class="section-label">Quick links</span>
+          <div class="chip-row" id="quickChips"></div>
+        </div>
+
+        <div class="section">
+          <div class="spoof-row">
+            <input class="url-input" id="cwTitle" type="text" placeholder="Tab title (optional)" maxlength="40" aria-label="Spoofed tab title" />
+            <input class="url-input" id="cwFav" type="text" placeholder="Favicon URL (optional)" aria-label="Spoofed favicon URL" />
+          </div>
+        </div>
+
+        <div class="section">
+          <span class="section-label">Recent</span>
+          <div class="chip-row" id="recentChips"></div>
+          <span class="recent-empty" id="recentEmpty" style="display:none;">No recent jumps yet.</span>
+        </div>
       </div>
     </div>
   </div>
@@ -241,29 +352,120 @@
   </footer>
 
   <script>
+    const cwUrlEl = document.getElementById('cwUrl');
+    const cwErr   = document.getElementById('cwErr');
+    const RECENT_KEY = 'ubCloakRecent';
+    const LAST_KEY   = 'ubCloakLast';
+
+    function showErr(msg) {
+      cwErr.textContent = msg;
+      cwErr.style.display = 'block';
+    }
+
+    function clearErr() {
+      cwErr.textContent = '';
+      cwErr.style.display = 'none';
+    }
+
+    function normalizeUrl(raw) {
+      let u = raw.trim();
+      if (!u) return '';
+      if (!/^https?:\/\//i.test(u)) u = 'https://' + u;
+      return u;
+    }
+
+    function loadRecent() {
+      try { return JSON.parse(localStorage.getItem(RECENT_KEY)) || []; } catch (e) { return []; }
+    }
+
+    function saveRecent(list) {
+      try { localStorage.setItem(RECENT_KEY, JSON.stringify(list.slice(0, 6))); } catch (e) {}
+    }
+
+    function remember(url) {
+      const list = loadRecent().filter(u => u !== url);
+      list.unshift(url);
+      saveRecent(list);
+    }
+
+    function makeChip(text, title, onClick) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chip';
+      b.textContent = text;
+      if (title) b.title = title;
+      b.onclick = onClick;
+      return b;
+    }
+
+    function renderChips() {
+      const quick = document.getElementById('quickChips');
+      quick.innerHTML = '';
+      ['google.com','classroom.google.com','youtube.com','github.com','wikipedia.org','coolmathgames.com'].forEach(h => {
+        quick.appendChild(makeChip(h, 'https://' + h, () => {
+          cwUrlEl.value = 'https://' + h;
+          cwUrlEl.focus();
+          cwUrlEl.select();
+        }));
+      });
+
+      const rec = document.getElementById('recentChips');
+      rec.innerHTML = '';
+      const empty = document.getElementById('recentEmpty');
+      const list = loadRecent();
+      empty.style.display = list.length ? 'none' : '';
+      list.forEach(u => {
+        rec.appendChild(makeChip(u.replace(/^https?:\/\//, ''), u, () => {
+          cwUrlEl.value = u;
+          cwUrlEl.focus();
+          cwUrlEl.select();
+        }));
+      });
+    }
+
     function cwGo() {
-      const url = document.getElementById('cwUrl').value.trim();
-      const err = document.getElementById('cwErr');
-      if (!url.startsWith('https://')) {
-        err.textContent = '✕ URL must start with https://';
-        err.style.display = 'block';
-        return;
-      }
-      err.style.display = 'none';
+      const url = normalizeUrl(cwUrlEl.value);
+      if (!url) { showErr('✕ Enter a URL first.'); return; }
+      clearErr();
       const win = window.open('about:blank', '_blank');
-      if (!win) {
-        err.textContent = '✕ Popup blocked — allow popups for this site';
-        err.style.display = 'block';
-        return;
+      if (!win) { showErr('✕ Popup blocked — allow popups for this site'); return; }
+      const doc = win.document;
+      doc.open();
+      doc.write('<!DOCTYPE html><html><head><title>about:blank</title></head><body style="margin:0"><iframe src="' + url + '" style="border:none;width:100vw;height:100vh;"></iframe></body></html>');
+      doc.close();
+      const title = document.getElementById('cwTitle').value.trim();
+      const fav   = document.getElementById('cwFav').value.trim();
+      if (title) win.document.title = title;
+      if (fav) {
+        const link = win.document.createElement('link');
+        link.rel = 'icon';
+        link.href = fav;
+        win.document.head.appendChild(link);
       }
-      win.document.write(
-        '<iframe src="' + url + '" style="border:none;width:100%;height:100vh;"></iframe>'
-      );
+      win.focus();
+      cwUrlEl.value = url;
+      remember(url);
+      renderChips();
     }
 
     document.getElementById('cwUrl').addEventListener('keydown', function(e) {
       if (e.key === 'Enter') cwGo();
     });
+
+    window.addEventListener('beforeunload', () => {
+      try { localStorage.setItem(LAST_KEY, cwUrlEl.value); } catch (e) {}
+    });
+
+    (function init() {
+      try {
+        const d = localStorage.getItem(LAST_KEY);
+        if (d) cwUrlEl.value = d;
+      } catch (e) {}
+      clearErr();
+      renderChips();
+      cwUrlEl.focus();
+      cwUrlEl.select();
+    })();
   </script>
 
 </body>
