@@ -6,27 +6,38 @@
 <title>Screen Sharer — UNBL0CKEDZ0NE</title>
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  @font-face{font-family:'ApplePixel';src:url('https://quantil.jsdelivr.net/gh/bradardeletethis/apple/font.woff2') format('woff2');font-weight:400;font-style:normal;}
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #060606;
-    --panel: #0e0e0e;
-    --border: #1e1e1e;
-    --accent: #ff9900;
-    --accent-dim: rgba(255,153,0,0.12);
-    --accent-glow: rgba(255,153,0,0.4);
-    --text: #e8e8e8;
-    --muted: #555;
-    --tab-bg: #111;
-    --tab-active: #1a1a1a;
+    --bg: #050001;
+    --accent: #ff6600;
+    --accent-rgb: 255, 102, 0;
+    --accent-dim: rgba(var(--accent-rgb), 0.15);
+    --accent-glow: rgba(var(--accent-rgb), 0.5);
+    --accent-glow-strong: rgba(var(--accent-rgb), 0.8);
+    --accent-glow-soft: rgba(var(--accent-rgb), 0.15);
+    --panel: rgba(16, 16, 20, 0.85);
+    --border: rgba(var(--accent-rgb), 0.35);
+    --beez-gold: #ff6600;
+    --beez-gold-bright: #ff8c00;
+    --beez-gold-dark: #cc5200;
+    --text: #f4f4f5;
+    --muted: #a0a0aa;
+    --tab-bg: #0a0700;
+    --tab-active: #120b04;
     --header-h: 52px;
     --tab-bar-h: 44px;
   }
 
   body {
-    background: var(--bg);
+    background:
+      radial-gradient(circle at 30% 70%, rgba(var(--accent-rgb), 0.10), transparent 60%),
+      radial-gradient(circle at 70% 30%, rgba(var(--accent-rgb), 0.07), transparent 60%),
+      var(--bg);
     color: var(--text);
-    font-family: 'Lexend', sans-serif;
+    font-family: 'ApplePixel', 'Lexend', sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -136,7 +147,7 @@
     min-height: 80px;
     border-radius: 8px;
     padding: 12px 14px;
-    background: #0a0a0a;
+    background: #120b04;
     color: var(--text);
     border: 1px solid var(--border);
     font-family: 'JetBrains Mono', monospace;
@@ -227,40 +238,149 @@
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+  /* ── CONNECTION PILL ── */
+  .conn-pill {
+    margin-left: auto;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--muted);
+    background: transparent;
+    white-space: nowrap;
+    transition: color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .conn-pill.connecting {
+    color: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 12px var(--accent-glow);
+    animation: pillPulse 1s ease-in-out infinite;
+  }
+
+  .conn-pill.connected {
+    color: #22c55e;
+    border-color: #22c55e;
+    box-shadow: 0 0 12px rgba(34,197,94,0.5);
+  }
+
+  .conn-pill.failed {
+    color: #f87171;
+    border-color: #f87171;
+    box-shadow: 0 0 12px rgba(248,113,113,0.5);
+  }
+
+  @keyframes pillPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+
+  /* ── BUTTONS EXTRA ── */
+  .btn-danger {
+    border-color: #f87171;
+    color: #f87171;
+  }
+
+  .btn-danger:hover {
+    background: #f87171;
+    color: #000;
+    box-shadow: 0 0 16px rgba(248,113,113,0.5);
+  }
+
+  /* ── FIELD LABELS ── */
+  .field-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  textarea[readonly] { color: var(--muted); font-weight: 500; }
+
+  /* ── TOAST ── */
+  #toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    background: #1a1a1a;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 9px 20px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 0 20px var(--accent-glow);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, transform 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+  }
+
+  @media (max-width: 640px) {
+    .content { padding: 18px 12px; }
+    .col { max-width: 100%; }
+    video { max-height: 34vh; }
+  }
+
+  /* ── UB LOOK ── */
+  .btn, .btn-primary, header h1, .col h2, .hint, .tab, footer span {
+    font-family: 'ApplePixel', 'Lexend', sans-serif;
+  }
 </style>
 </head>
 <body>
 
   <header>
     <h1>⚡ Screen Sharer</h1>
+    <span class="conn-pill" id="connPill" role="status" aria-live="polite">Idle</span>
   </header>
 
-  <div class="tab-bar">
-    <div class="tab active" data-tab="sharer">Host (Sharer)</div>
-    <div class="tab" data-tab="viewer">Viewer</div>
+  <div class="tab-bar" role="tablist" aria-label="Sharer or Viewer">
+    <div class="tab active" data-tab="sharer" role="tab" aria-selected="true">Host (Sharer)</div>
+    <div class="tab" data-tab="viewer" role="tab" aria-selected="false">Viewer</div>
   </div>
 
   <div class="content active" id="sharer">
     <div class="col">
       <h2>Host (Sharer)</h2>
-      <p class="hint">Click "Share Screen" → copy Offer Code → give it to the Viewer. Then paste the Viewer's Answer below.</p>
+      <p class="hint">Click "Share Screen" → copy the Offer Code → send it to the Viewer. Then paste the Viewer's Answer back.</p>
 
       <video id="localPreview" autoplay playsinline muted></video>
 
       <div class="row">
         <button class="btn btn-primary" id="startShareBtn">▶ Share Screen</button>
         <button class="btn" id="stopShareBtn">Stop</button>
+        <button class="btn btn-danger" id="resetHostBtn">Reset</button>
         <button class="btn" id="fsLocal">Fullscreen</button>
       </div>
 
       <hr class="divider">
 
-      <textarea id="localOffer" readonly placeholder="Offer code will appear here…"></textarea>
+      <span class="field-label">Your Offer Code (send to Viewer)</span>
+      <textarea id="localOffer" readonly placeholder="Offer code will appear here…" aria-label="Your offer code"></textarea>
       <div class="row">
-        <button class="btn btn-primary" id="copyOfferBtn">Copy Offer</button>
+        <button class="btn btn-primary" id="copyOfferBtn">Copy</button>
+        <button class="btn" id="refreshOfferBtn">Refresh</button>
       </div>
 
-      <textarea id="remoteAnswer" placeholder="Paste viewer answer code here…"></textarea>
+      <span class="field-label">Viewer's Answer (paste back)</span>
+      <textarea id="remoteAnswer" placeholder="Paste viewer answer code here…" aria-label="Viewer answer"></textarea>
       <div class="row">
         <button class="btn btn-primary" id="applyAnswerBtn">Apply Answer</button>
       </div>
@@ -275,19 +395,23 @@
       <video id="remoteView" autoplay playsinline></video>
 
       <div class="row">
+        <button class="btn btn-danger" id="resetViewerBtn">Reset</button>
         <button class="btn" id="fsRemote">Fullscreen</button>
       </div>
 
       <hr class="divider">
 
-      <textarea id="offerInput" placeholder="Paste host offer code here…"></textarea>
+      <span class="field-label">Host's Offer (paste here)</span>
+      <textarea id="offerInput" placeholder="Paste host offer code here…" aria-label="Host offer"></textarea>
       <div class="row">
         <button class="btn btn-primary" id="connectBtn">Connect</button>
       </div>
 
-      <textarea id="answerOutput" readonly placeholder="Your answer code will appear here…"></textarea>
+      <span class="field-label">Your Answer Code (send to Host)</span>
+      <textarea id="answerOutput" readonly placeholder="Your answer code will appear here…" aria-label="Your answer code"></textarea>
       <div class="row">
-        <button class="btn btn-primary" id="copyAnswerBtn">Copy Answer</button>
+        <button class="btn btn-primary" id="copyAnswerBtn">Copy</button>
+        <button class="btn" id="refreshAnswerBtn">Refresh</button>
       </div>
     </div>
   </div>
@@ -298,65 +422,210 @@
     <span>made by UNBL0CKEDZ0NE</span>
   </footer>
 
+  <div id="toast" role="status" aria-live="polite"></div>
+
 <script>
   const $ = id => document.getElementById(id);
-  let pc, localStream;
+  let pc = null;
+  let localStream = null;
+  let sdpTimer = null;
 
-  // Tabs
-  document.querySelectorAll('.tab').forEach(tab => {
-    tab.onclick = () => {
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
-      tab.classList.add('active');
-      $(tab.dataset.tab).classList.add('active');
+  function showToast(msg, isError = false) {
+    const t = $('toast');
+    if (!t) return;
+    t.textContent = msg;
+    t.style.borderColor = isError ? '#f87171' : 'var(--accent)';
+    t.style.color = isError ? '#f87171' : 'var(--accent)';
+    t.style.boxShadow = isError ? '0 0 20px rgba(248,113,113,0.4)' : '0 0 20px var(--accent-glow)';
+    t.classList.add('show');
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(() => t.classList.remove('show'), 2800);
+  }
+
+  function setConn(state) {
+    const p = $('connPill');
+    const map = {
+      idle:       ['Idle', ''],
+      connecting: ['Connecting', 'connecting'],
+      connected:  ['Connected', 'connected'],
+      failed:     ['Failed', 'failed']
     };
+    const [label, cls] = map[state] || map.idle;
+    p.textContent = label;
+    p.className = 'conn-pill' + (cls ? ' ' + cls : '');
+  }
+
+  function encodeSdp(desc) {
+    try { return btoa(unescape(encodeURIComponent(JSON.stringify(desc)))); } catch (e) { return ''; }
+  }
+
+  function decodeSdp(code) {
+    const json = decodeURIComponent(escape(atob(code.trim())));
+    return JSON.parse(json);
+  }
+
+  function refreshLocalOffer() {
+    if (pc && pc.localDescription) $('localOffer').value = encodeSdp(pc.localDescription);
+  }
+
+  function refreshLocalAnswer() {
+    if (pc && pc.localDescription) $('answerOutput').value = encodeSdp(pc.localDescription);
+  }
+
+  function scheduleSdp() {
+    clearTimeout(sdpTimer);
+    sdpTimer = setTimeout(() => { refreshLocalOffer(); refreshLocalAnswer(); }, 600);
+  }
+
+  function wirePcState(pcObj) {
+    pcObj.onicecandidate = () => scheduleSdp();
+    pcObj.onconnectionstatechange = () => {
+      const s = pcObj.connectionState;
+      if (s === 'connected') setConn('connected');
+      else if (s === 'failed' || s === 'disconnected') setConn('failed');
+      else setConn('connecting');
+    };
+  }
+
+  function teardown() {
+    if (localStream) {
+      localStream.getTracks().forEach(t => t.stop());
+      localStream = null;
+    }
+    if (pc) {
+      try { pc.close(); } catch (e) {}
+      pc = null;
+    }
+    $('localPreview').srcObject = null;
+    $('remoteView').srcObject = null;
+    clearTimeout(sdpTimer);
+    setConn('idle');
+  }
+
+  function copyText(ta) {
+    if (!ta.value.trim()) return showToast('⚠ Nothing to copy yet.', true);
+    const done = () => showToast('✓ Copied to clipboard!');
+    const fail = () => showToast('✕ Copy failed — select & copy manually.', true);
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(ta.value).then(done, fail);
+    } else {
+      ta.select();
+      document.execCommand('copy');
+      done();
+    }
+  }
+
+  // ── Tabs (persisted) ──
+  const savedTab = (() => { try { return localStorage.getItem('ubShareTab') || 'sharer'; } catch (e) { return 'sharer'; } })();
+
+  function switchTab(name) {
+    document.querySelectorAll('.tab').forEach(t => {
+      const on = t.dataset.tab === name;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    document.querySelectorAll('.content').forEach(c => c.classList.toggle('active', c.id === name));
+    try { localStorage.setItem('ubShareTab', name); } catch (e) {}
+  }
+
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.onclick = () => switchTab(tab.dataset.tab);
   });
 
-  // Host (Sharer)
+  // ── Host (Sharer) ──
   $('startShareBtn').onclick = async () => {
-    pc = new RTCPeerConnection();
-    pc.onicecandidate = e => {
-      if (e.candidate) return;
-      $('localOffer').value = btoa(JSON.stringify(pc.localDescription));
-    };
-    localStream = await navigator.mediaDevices.getDisplayMedia({ video: true, audio: true });
-    $('localPreview').srcObject = localStream;
-    localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
-    const offer = await pc.createOffer();
-    await pc.setLocalDescription(offer);
+    if (pc) { showToast('Already hosting — click Reset first.', true); return; }
+    let stream = null;
+    try {
+      stream = await navigator.mediaDevices.getDisplayMedia({ video: true, audio: true });
+    } catch (e) {
+      try {
+        stream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+      } catch (e2) {
+        showToast('✕ Screen sharing unavailable or cancelled.', true);
+        return;
+      }
+    }
+    localStream = stream;
+    $('localPreview').srcObject = stream;
+    pc = new RTCPeerConnection({ iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] });
+    wirePcState(pc);
+    stream.getTracks().forEach(t => pc.addTrack(t, stream));
+    setConn('connecting');
+    try {
+      const offer = await pc.createOffer();
+      await pc.setLocalDescription(offer);
+    } catch (e) {
+      showToast('✕ Could not create the offer.', true);
+      setConn('failed');
+      return;
+    }
+    refreshLocalOffer();
+    showToast('✓ Offer ready — copy & send it to the Viewer');
   };
 
   $('applyAnswerBtn').onclick = async () => {
-    const answer = $('remoteAnswer').value;
-    if (!answer) return alert('Paste answer first');
-    const desc = JSON.parse(atob(answer));
-    await pc.setRemoteDescription(desc);
+    const answer = $('remoteAnswer').value.trim();
+    if (!answer) return showToast('⚠ Paste the viewer answer first.', true);
+    if (!pc) return showToast('⚠ Start sharing first.', true);
+    try {
+      await pc.setRemoteDescription(decodeSdp(answer));
+      showToast('✓ Answer applied — connecting…');
+    } catch (e) {
+      showToast('✕ Answer code is invalid or expired.', true);
+    }
   };
 
-  $('copyOfferBtn').onclick = () => navigator.clipboard.writeText($('localOffer').value);
-  $('stopShareBtn').onclick = () => { localStream?.getTracks().forEach(t => t.stop()); };
+  $('copyOfferBtn').onclick   = () => copyText($('localOffer'));
+  $('refreshOfferBtn').onclick = () => refreshLocalOffer();
+  $('stopShareBtn').onclick = () => {
+    if (localStream) {
+      localStream.getTracks().forEach(t => t.stop());
+      $('localPreview').srcObject = null;
+      showToast('■ Stream stopped — Reset to start fresh');
+    }
+  };
+  $('resetHostBtn').onclick = () => teardown();
 
-  // Viewer
+  // ── Viewer ──
   $('connectBtn').onclick = async () => {
-    pc = new RTCPeerConnection();
-    pc.onicecandidate = e => {
-      if (e.candidate) return;
-      $('answerOutput').value = btoa(JSON.stringify(pc.localDescription));
+    teardown();
+    const offer = $('offerInput').value.trim();
+    if (!offer) return showToast('⚠ Paste the host offer code first.', true);
+    pc = new RTCPeerConnection({ iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] });
+    wirePcState(pc);
+    pc.ontrack = e => {
+      $('remoteView').srcObject = e.streams[0];
+      setConn('connected');
     };
-    pc.ontrack = e => $('remoteView').srcObject = e.streams[0];
-    const offer = $('offerInput').value;
-    if (!offer) return alert('Paste host code first');
-    const desc = JSON.parse(atob(offer));
-    await pc.setRemoteDescription(desc);
-    const answer = await pc.createAnswer();
-    await pc.setLocalDescription(answer);
+    setConn('connecting');
+    try {
+      const desc = decodeSdp(offer);
+      await pc.setRemoteDescription(desc);
+      const answer = await pc.createAnswer();
+      await pc.setLocalDescription(answer);
+    } catch (e) {
+      showToast('✕ Could not connect — check the offer code.', true);
+      setConn('failed');
+      return;
+    }
+    refreshLocalAnswer();
+    showToast('✓ Answer ready — copy & send it to the Host');
   };
 
-  $('copyAnswerBtn').onclick = () => navigator.clipboard.writeText($('answerOutput').value);
+  $('copyAnswerBtn').onclick   = () => copyText($('answerOutput'));
+  $('refreshAnswerBtn').onclick = () => refreshLocalAnswer();
+  $('resetViewerBtn').onclick  = () => teardown();
 
-  // Fullscreen
+  // ── Fullscreen ──
   $('fsLocal').onclick  = () => $('localPreview').requestFullscreen();
   $('fsRemote').onclick = () => $('remoteView').requestFullscreen();
+
+  // ── Init ──
+  (function init() {
+    setConn('idle');
+    switchTab(savedTab);
+  })();
 </script>
 </body>
 </html>

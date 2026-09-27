@@ -6,27 +6,38 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    @font-face{font-family:'ApplePixel';src:url('https://quantil.jsdelivr.net/gh/bradardeletethis/apple/font.woff2') format('woff2');font-weight:400;font-style:normal;}
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #060606;
-      --panel: #0e0e0e;
-      --border: #1e1e1e;
-      --accent: #ff9900;
-      --accent-dim: rgba(255,153,0,0.15);
-      --accent-glow: rgba(255,153,0,0.4);
-      --text: #e8e8e8;
-      --muted: #555;
-      --tab-bg: #111;
-      --tab-active: #1a1a1a;
+      --bg: #050001;
+      --accent: #ff6600;
+      --accent-rgb: 255, 102, 0;
+      --accent-dim: rgba(var(--accent-rgb), 0.15);
+      --accent-glow: rgba(var(--accent-rgb), 0.5);
+      --accent-glow-strong: rgba(var(--accent-rgb), 0.8);
+      --accent-glow-soft: rgba(var(--accent-rgb), 0.15);
+      --panel: rgba(16, 16, 20, 0.85);
+      --border: rgba(var(--accent-rgb), 0.35);
+      --beez-gold: #ff6600;
+      --beez-gold-bright: #ff8c00;
+      --beez-gold-dark: #cc5200;
+      --text: #f4f4f5;
+      --muted: #a0a0aa;
+      --tab-bg: #0a0700;
+      --tab-active: #120b04;
       --header-h: 52px;
       --tab-bar-h: 44px;
     }
 
     body {
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 30% 70%, rgba(var(--accent-rgb), 0.10), transparent 60%),
+        radial-gradient(circle at 70% 30%, rgba(var(--accent-rgb), 0.07), transparent 60%),
+        var(--bg);
       color: var(--text);
-      font-family: 'Lexend', sans-serif;
+      font-family: 'ApplePixel', 'Lexend', sans-serif;
       height: 100vh;
       overflow: hidden;
       display: flex;
@@ -366,6 +377,45 @@
       font-size: 10px;
       color: #888;
     }
+
+    .btn-danger {
+      border-color: #f87171;
+      color: #f87171;
+    }
+
+    .btn-danger:hover {
+      background: #f87171;
+      color: #000;
+      box-shadow: 0 0 16px rgba(248,113,113,0.5);
+    }
+
+    .status-text {
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--muted);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+
+    @media (max-width: 760px) {
+      body { overflow: auto; }
+      .workspace { flex-direction: column; overflow: auto; }
+      .left-panel { width: 100%; border-right: none; border-bottom: 1px solid var(--border); }
+      .right-panel { flex: 1; }
+      .header-actions { gap: 6px; }
+    }
+
+    /* ── UB LOOK ── */
+    .btn, .btn-accent, .preset-btn, header h1, .clear-btn, .section-label, .input-label, .tab-label, .log-bar-label {
+      font-family: 'ApplePixel', 'Lexend', sans-serif;
+    }
   </style>
 </head>
 <body>
@@ -374,6 +424,7 @@
     <h1>⚡ History Flooder v0.3</h1>
     <div class="header-actions">
       <button class="btn" onclick="clearLog()">Clear Log</button>
+      <button class="btn btn-danger" id="stopBtn" onclick="stopNow()" disabled>■ Stop</button>
       <button class="btn btn-accent" id="customRunBtn" onclick="runCustom()">▶ Execute</button>
     </div>
   </header>
@@ -392,7 +443,7 @@
         <!-- Status -->
         <div>
           <div class="section-label">Status</div>
-          <div style="font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--muted);" id="statusText">SYSTEM READY — AWAITING INPUT</div>
+          <div class="status-text" id="statusText" role="status" aria-live="polite">SYSTEM READY — AWAITING INPUT</div>
         </div>
 
         <!-- Progress -->
@@ -517,52 +568,99 @@
     }
 
     let running = false;
+    let stopRequested = false;
     const presetBtns = ['lightBtn','mediumBtn','heavyBtn'].map(id => document.getElementById(id));
     const execBtn = document.getElementById('customRunBtn');
+
+    function stopNow() {
+      stopRequested = true;
+      addLog('Stop requested — finishing current step…', 'info');
+    }
 
     function setAllDisabled(val) {
       presetBtns.forEach(b => b.disabled = val);
       execBtn.disabled = val;
+      document.getElementById('stopBtn').disabled = !val;
+    }
+
+    function sleepResponsive(ms) {
+      return new Promise(resolve => {
+        const start = Date.now();
+        const iv = setInterval(() => {
+          if (stopRequested || Date.now() - start >= ms) { clearInterval(iv); resolve(); }
+        }, 100);
+      });
     }
 
     async function openSequential(count, delayMs, label) {
       if (running) return;
       running = true;
+      stopRequested = false;
       setAllDisabled(true);
+      const startedAt = performance.now();
       setStatus(`RUNNING — ${label} (${count} TABS)`, 'busy');
       addLog(`Launching ${count} tab(s) · ${delayMs}ms delay · mode: ${label}`, 'info');
       const bar = document.getElementById('progressBar');
       bar.style.width = '0%';
+      let opened = 0, blocked = 0, completed = 0;
 
       for (let i = 0; i < count; i++) {
+        if (stopRequested) break;
         const url = randSite();
         const domain = url.replace('https://','').split('/')[0];
         try {
           window.open(url, '_blank');
+          opened++;
           addLog(`Opened: ${domain}`, 'success');
         } catch(e) {
+          blocked++;
           addLog(`Blocked: ${domain}`, 'error');
         }
-        bar.style.width = `${((i + 1) / count) * 100}%`;
-        await new Promise(r => setTimeout(r, delayMs));
+        completed = i + 1;
+        bar.style.width = `${(completed / count) * 100}%`;
+        setStatus(`RUNNING ${completed}/${count} · ${opened} opened · ${blocked} blocked`, 'busy');
+        await sleepResponsive(delayMs);
       }
 
-      addLog(`Complete — ${count} tab(s) processed`, 'info');
-      setStatus(`DONE — ${count} TAB(S) LAUNCHED`, 'done');
+      bar.style.width = `${(completed / count) * 100}%`;
+      const secs = ((performance.now() - startedAt) / 1000).toFixed(1);
+      if (stopRequested) {
+        addLog(`Stopped after ${completed} iteration(s) · ${opened} opened, ${blocked} blocked · ${secs}s`, 'info');
+        setStatus(`STOPPED — ${opened} TAB(S) OPENED`);
+      } else {
+        addLog(`Complete — ${count} tab(s) processed · ${opened} opened, ${blocked} blocked · ${secs}s`, 'info');
+        setStatus(`DONE — ${opened} TAB(S) LAUNCHED`, 'done');
+      }
       setTimeout(() => { bar.style.width = '0%'; }, 1500);
       running = false;
+      stopRequested = false;
       setAllDisabled(false);
     }
 
-    function runPreset(count, delay, label) { openSequential(count, delay, label); }
+    function runPreset(count, delay, label) {
+      if (count > 500 && !confirm(`Launch ${count} tabs? This will take a while.`)) return;
+      openSequential(count, delay, label);
+    }
 
     function runCustom() {
       let count = parseInt(document.getElementById('customCount').value) || 1;
       let delay = parseInt(document.getElementById('customDelay').value) || 800;
       count = Math.min(Math.max(count, 1), 10000);
       delay = Math.min(Math.max(delay, 100), 5000);
+      if (count > 500 && !confirm(`Launch ${count} tabs? This will take a while.`)) return;
       openSequential(count, delay, `CUSTOM`);
     }
+
+    ['customCount','customDelay'].forEach(id => {
+      const el = document.getElementById(id);
+      try {
+        const v = localStorage.getItem('ubHist_' + id);
+        if (v != null) el.value = v;
+      } catch (e) {}
+      el.addEventListener('input', () => {
+        try { localStorage.setItem('ubHist_' + id, el.value); } catch (e) {}
+      });
+    });
   </script>
 
 </body>
