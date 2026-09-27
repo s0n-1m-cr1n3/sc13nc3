@@ -49,7 +49,7 @@ function renderSounds(filter = '') {
                 currentAudios.forEach(a => a.pause());
                 currentAudios = [];
             }
-            const audio = new Audio("quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/sound/"+sound.mp3);
+            const audio = new Audio("https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/sound/"+sound.mp3);
             audio.play();
             currentAudios.push(audio);
             image.classList.add('pressed');
@@ -106,7 +106,7 @@ function rightClickPanel(event, button, sound) {
     
     download.onclick = () => {
         const link = document.createElement('a');
-        link.href = 'quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/sound/'+sound.mp3;
+        link.href = 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/sound/'+sound.mp3;
         link.download = sound.mp3.split("/").pop();
         document.body.appendChild(link);
         link.click();
