@@ -15,6 +15,15 @@
       }
     })();
   </script>
+  <!-- g4mes blob mode auto-detect: match it to how this page is loaded -->
+  <script>
+    (function () {
+      try {
+        var href = location.href;
+        localStorage.setItem('g4mesTabMode', href.indexOf('blob:') === 0 ? 'blob' : 'blank');
+      } catch (e) {}
+    })();
+  </script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1G5FDBHKY0"></script>
   <script>
@@ -34,6 +43,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Home - Classroom">
   <meta name="twitter:description" content="Distribute assignments, and stay connected with your students without the paperwork. You can use it to share resources, track progress, and give real-time feedback all in one.">
+  <meta name="monetag" content="865d0173948d1ee2f7178e3b31fd226f">
   <link rel="icon" id="page-favicon" type="image/svg+xml" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAOCAYAAAAmL5yKAAAAAXNSR0IArs4c6QAAAhBJREFUOE9tk89rE1EQx78Tf0A22tg2W4qHVqPVtol3Dyq24M2r7B48WS9F0KNQ0CLoP9CbCJ6zvSiKIlY02ggFr2tvmjbVKGSTIs22iSk7MvM21VIfebz3yHw/7/tmZunW1aN8ZXIbIAYR4mE2zAAhATCB5RwRmOU/AiLCk9I+UGfJZuIQRBItYfFgAZhgESoknuCEgZEF6nxMsdzsb/Xjc8s2LlRsLMiqM2IgMvtcch1565cCqVM6xHKz1xjFfGNU3Rm/DOtAUoXNdjMGROAogpMpw8lU1BX9XjysgPn6KXiN0zsvSB20MDt5W2GzCw/QbIUqFqAAXLtiHLQ/9LC836uP6DQWgBtnp3Axe073xS+LmCs9BHYAK3DttRjwPs2i8YIT8Oon/3GQxL1LM3q+8+o+QnHAXQerCtAntIpHNNeFehZekP1bBQApyQEzwraIJaGSSIZjV+Da34yD1rterV0hOAYvOK6A/OAYcoPjusrwfyxjaeUTykFZIU5mDe7Ad+Ng622fAdSG4QXDuHl+GhMjF3Y56R6e+y/xqPRYxa5dNQ423/SbHNSGUKgN4en1wn/F6qS6jJlnd1Xs2FWtEG0u2FpGP+yBH6ZxZmxqF0AbKh5h+BNfV18gZ20gb20YB+HrAemzbvX23q4AaWX5mVXbW5uNQNcup9md2B8LSWO77byXlog/MNMrXnEbfwCrwRQID/CEeAAAAABJRU5ErkJggg==">
   <link rel="preconnect" href="https://quantil.jsdelivr.net">
   <style>
@@ -445,7 +455,7 @@
       width: auto; height: auto; max-height: 100vh; top: 50%; bottom: auto;
       transform: translateY(-50%);
       flex-direction: column; padding: 8px 6px; justify-content: center;
-      overflow-y: auto;
+      overflow: visible;
     }
     #sidebar.left-sidebar { left: 12px; right: auto; border: 1px solid rgba(var(--accent-rgb),0.5); }
     #sidebar.right-sidebar { right: 12px; left: auto; border: 1px solid rgba(var(--accent-rgb),0.5); }
@@ -1014,6 +1024,14 @@
     #music-popup.arrow-down .music-popup-arrow {
       top: auto; bottom: -6px;
       transform: rotate(225deg);
+    }
+    #music-popup.arrow-left .music-popup-arrow {
+      top: calc(50% - 6px); left: -6px; right: auto;
+      transform: rotate(135deg);
+    }
+    #music-popup.arrow-right .music-popup-arrow {
+      top: calc(50% - 6px); right: -6px; left: auto;
+      transform: rotate(-45deg);
     }
 
     footer {
@@ -2163,6 +2181,34 @@
             <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/cloudmoon.png" alt="Cloudmoon">
             <div class="overlay"><span>Cloudmoon</span></div>
           </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/something.html','AI from gn-math');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/something.png" alt="AI from gn-math">
+            <div class="overlay"><span>AI from gn-math</span></div>
+          </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/math/math.html','gn-math');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/gnmath.png" alt="gn-math">
+            <div class="overlay"><span>gn-math</span></div>
+          </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/sound/index.html','Soundboard');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/sound.png" alt="Soundboard">
+            <div class="overlay"><span>Soundboard</span></div>
+          </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/dq3j.html','novene');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/novene.png" alt="novene">
+            <div class="overlay"><span>novene</span></div>
+          </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/other/yuki.html','YukiOS');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/yukios.png" alt="YukiOS">
+            <div class="overlay"><span>YukiOS</span></div>
+          </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/mizu.html','mizumath');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/mizu.png" alt="mizumath">
+            <div class="overlay"><span>mizumath</span></div>
+          </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/catclass.html','Cat Class');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/catclass.png" alt="Cat Class">
+            <div class="overlay"><span>Cat Class</span></div>
+          </button>
         </div>
       </div>
 
@@ -2181,7 +2227,7 @@
 <button class="g4mes-cat" data-cat="ckv"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/chicken.png" alt="Chicken Kings Vault" title="Chicken Kings Vault"></button>
 <button class="g4mes-cat" data-cat="noah"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/noah.png" alt="Noah's Tutoring" title="Noah's Tutoring"></button>
 <button class="g4mes-cat" data-cat="lumin"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/lumin.png" alt="Lumin SDK" title="Lumin SDK"></button>
-<button class="g4mes-cat" data-cat="all">All</button>
+        <button class="g4mes-cat" data-cat="all">All</button>
 <button class="g4mes-cat" data-cat="favs" style="color:#ff4444;">&#9829; Favs</button>
         </div>
         <div id="g4mes-count" style="text-align:center;color:#ff8c00;margin-bottom:10px;font-size:14px;">0 g4m3s</div>
@@ -2942,6 +2988,12 @@
             <p>Pr0xy With Unbl0cked Daily Links</p>
             <a href="https://catclass.net" target="_blank">Visit Site</a>
           </div>
+          <div class="partner-card">
+            <img class="partner-img" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/novene.png" alt="novene" loading="lazy">
+            <h3>novene</h3>
+            <p>novene a smooth sleek unblocked games site</p>
+            <a href="https://novene.gmk.cl" target="_blank">Visit Site</a>
+          </div>
         </div>
       </div>
 
@@ -3088,12 +3140,7 @@
               <option value="starfield">Starfield</option>
               <option value="topography">Topography</option>
               <option value="matrix">Matrix</option>
-              <option value="waves">Waves</option>
-              <option value="globe">Globe</option>
-              <option value="dots">Dots</option>
-              <option value="fog">Fog</option>
               <option value="lines">Lines</option>
-              <option value="tunnel">Tunnel</option>
               <option value="noise">Noise</option>
               <option value="custom">Custom Image</option>
               <option value="gradient">Gradient</option>
@@ -4234,157 +4281,7 @@
     let starfieldInitialized = false;
     let topographyInitialized = false;
     let matrixInitialized = false;
-    let wavesInitialized = false;
-    let wavesEffect = null;
-    let globeInitialized = false;
-    let globeEffect = null;
-    let dotsInitialized = false;
-    let dotsEffect = null;
-    let fogInitialized = false;
-    let fogEffect = null;
-    let tunnelInitialized = false;
     let noiseInitialized = false;
-    function initVanta(name, el, opts) {
-      if (typeof VANTA !== 'undefined' && VANTA[name]) {
-        return VANTA[name](Object.assign({ el: el, mouseControls: false, touchControls: false, gyroControls: false, minHeight: 200, minWidth: 200, scale: 0.6, scaleMobile: 0.5 }, opts));
-      }
-      return null;
-    }
-    function ensureVanta(name, el, opts, done) {
-      ensureVantaLib(name).then(function() {
-        if (el && el.style.display !== 'none') {
-          var ef = initVanta(name, el, opts);
-          if (done) done(ef);
-        } else if (done) { done(null); }
-      }).catch(function() { if (done) done(null); });
-    }
-    function getAccentHex() {
-      var hex = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#ff6600';
-      return parseInt(hex.slice(1), 16);
-    }
-    function startWaves() {
-      var el = document.getElementById('waves-bg');
-      ensureVanta('WAVES', el, {
-        color: (function() {
-          var hex = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#ff6600';
-          var r = parseInt(hex.slice(1,3), 16), g = parseInt(hex.slice(3,5), 16), b = parseInt(hex.slice(5,7), 16);
-          return (Math.floor(r * 0.25) << 16) | (Math.floor(g * 0.25) << 8) | Math.floor(b * 0.25);
-        })(),
-        shininess: 30, waveHeight: 15, waveSpeed: 0.6
-      }, function(ef) { wavesEffect = ef; });
-    }
-    function stopWaves() {
-      if (wavesEffect) { try { wavesEffect.destroy(); } catch(e) {} wavesEffect = null; }
-    }
-    function startGlobe() {
-      var el = document.getElementById('globe-bg');
-      ensureVanta('GLOBE', el, { color: getAccentHex(), color2: getAccentHex(), backgroundColor: 0x0b0b0b }, function(ef) { globeEffect = ef; });
-    }
-    function stopGlobe() {
-      if (globeEffect) { try { globeEffect.destroy(); } catch(e) {} globeEffect = null; }
-    }
-    function startDots() {
-      var el = document.getElementById('dots-bg');
-      ensureVanta('DOTS', el, { color: getAccentHex(), backgroundColor: 0x0b0b0b, size: 3, spacing: 35 }, function(ef) { dotsEffect = ef; });
-    }
-    function stopDots() {
-      if (dotsEffect) { try { dotsEffect.destroy(); } catch(e) {} dotsEffect = null; }
-    }
-    function startFog() {
-      var el = document.getElementById('fog-bg');
-      ensureVanta('FOG', el, { highlightColor: getAccentHex(), midtoneColor: getAccentHex(), lowlightColor: 0x0b0b0b, baseColor: 0x0b0b0b, blurFactor: 0.6, speed: 1 }, function(ef) { fogEffect = ef; });
-    }
-    function stopFog() {
-      if (fogEffect) { try { fogEffect.destroy(); } catch(e) {} fogEffect = null; }
-    }
-
-    function startTunnel() {
-      var el = document.getElementById('tunnel-bg');
-      if (!el || el.querySelector('canvas')) return;
-      (function(){
-        var scene=new THREE.Scene();
-        var camera=new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000);
-        camera.position.z=30;
-        var renderer=new THREE.WebGLRenderer({antialias:false,alpha:true});
-        renderer.setPixelRatio(Math.min(devicePixelRatio, 1));
-        renderer.setSize(Math.floor(innerWidth*0.6),Math.floor(innerHeight*0.6));
-        renderer.domElement.style.width='100%';
-        renderer.domElement.style.height='100%';
-        renderer.setClearColor(0x050001,1);
-        el.appendChild(renderer.domElement);
-        var particleCount=450;
-        var geometry=new THREE.BufferGeometry();
-        var positions=new Float32Array(particleCount*3);
-        var colors=new Float32Array(particleCount*3);
-        var sizes=new Float32Array(particleCount);
-        var speeds=new Float32Array(particleCount);
-        var hex=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#ff6600';
-        var r=parseInt(hex.slice(1,3),16)/255,g=parseInt(hex.slice(3,5),16)/255,b=parseInt(hex.slice(5,7),16)/255;
-        for(var i=0;i<particleCount;i++){
-          var theta=Math.random()*Math.PI*2;
-          var radius=3+Math.random()*12;
-          positions[i*3]=Math.cos(theta)*radius;
-          positions[i*3+1]=Math.sin(theta)*radius;
-          positions[i*3+2]=(Math.random()-0.5)*60;
-          var shade=0.5+Math.random()*0.5;
-          colors[i*3]=r*shade;colors[i*3+1]=g*shade;colors[i*3+2]=b*shade;
-          sizes[i]=0.5+Math.random()*1.5;
-          speeds[i]=0.05+Math.random()*0.15;
-        }
-        geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));
-        geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));
-        geometry.setAttribute('size',new THREE.BufferAttribute(sizes,1));
-        var material=new THREE.PointsMaterial({size:0.15,vertexColors:true,transparent:true,opacity:0.8,blending:THREE.AdditiveBlending});
-        var points=new THREE.Points(geometry,material);
-        scene.add(points);
-        var ringGeo=new THREE.RingGeometry(2,4.5,48);
-        var ringMat=new THREE.MeshBasicMaterial({color:new THREE.Color(r,g,b),transparent:true,opacity:0.1,side:THREE.DoubleSide});
-        for(var ri=0;ri<6;ri++){
-          var ring=new THREE.Mesh(ringGeo,ringMat.clone());
-          ring.position.z=-ri*6;
-          ring.material.opacity=0.1-ri*0.008;
-          scene.add(ring);
-        }
-        var lastTun=0;
-        function animateTunnel(ts){
-          if(ts-lastTun<33){ tunnelRafId=requestAnimationFrame(animateTunnel); return; }
-          lastTun=ts;
-          points.rotation.z+=0.001;
-          var pos=geometry.attributes.position.array;
-          for(var i=0;i<particleCount;i++){
-            pos[i*3+2]+=speeds[i];
-            if(pos[i*3+2]>30){
-              pos[i*3+2]=-30;
-              var theta=Math.random()*Math.PI*2;
-              var radius=3+Math.random()*12;
-              pos[i*3]=Math.cos(theta)*radius;
-              pos[i*3+1]=Math.sin(theta)*radius;
-            }
-          }
-          geometry.attributes.position.needsUpdate=true;
-          renderer.render(scene,camera);
-          tunnelRafId=requestAnimationFrame(animateTunnel);
-        }
-        var tunnelRafId=requestAnimationFrame(animateTunnel);
-        function resizeTunnel(){
-          camera.aspect=innerWidth/innerHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(Math.floor(innerWidth*0.6),Math.floor(innerHeight*0.6),false);
-        }
-        addEventListener('resize',resizeTunnel);
-        window._tunnelResize=resizeTunnel;
-        window._tunnelRafFn=function(){return tunnelRafId;};
-        window._tunnelRenderer=renderer;
-      })();
-    }
-    function stopTunnel() {
-      if (window._tunnelRafFn) { cancelAnimationFrame(window._tunnelRafFn()); }
-      if (window._tunnelResize) { removeEventListener('resize', window._tunnelResize); }
-      if (window._tunnelRenderer) { window._tunnelRenderer.dispose(); window._tunnelRenderer = null; }
-      var el = document.getElementById('tunnel-bg');
-      if (el) { el.querySelectorAll('canvas').forEach(function(c){c.remove();}); }
-    }
-
     var _shaderArtPromise = null;
     function ensureShaderArt() {
       if (!_shaderArtPromise) {
@@ -4420,11 +4317,6 @@
       const sfBg = document.getElementById('starfield-bg');
       const tCanvas = document.getElementById('topography-canvas');
       const mCanvas = document.getElementById('matrix-canvas');
-      const wBg = document.getElementById('waves-bg');
-      const gBg = document.getElementById('globe-bg');
-      const dBg = document.getElementById('dots-bg');
-      const fBg = document.getElementById('fog-bg');
-      const tuBg = document.getElementById('tunnel-bg');
       const noBg = document.getElementById('noise-bg');
       const cuBg = document.getElementById('custom-bg');
       // Hide all (safely — some elements may have been removed)
@@ -4432,11 +4324,6 @@
       if (sfBg) sfBg.style.display = 'none';
       if (tCanvas) tCanvas.style.display = 'none';
       if (mCanvas) mCanvas.style.display = 'none';
-      if (wBg) wBg.style.display = 'none';
-      if (gBg) gBg.style.display = 'none';
-      if (dBg) dBg.style.display = 'none';
-      if (fBg) fBg.style.display = 'none';
-      if (tuBg) tuBg.style.display = 'none';
       if (noBg) noBg.style.display = 'none';
       if (cuBg) cuBg.style.display = 'none';
       // Toggle custom wallpaper UI
@@ -4447,11 +4334,6 @@
       if (starfieldInitialized) { Starfield.cleanup(); starfieldInitialized = false; }
       if (topographyInitialized) { stopTopography(); topographyInitialized = false; }
       if (matrixInitialized) { stopMatrix(); matrixInitialized = false; }
-      if (wavesInitialized) { stopWaves(); wavesInitialized = false; }
-      if (globeInitialized) { stopGlobe(); globeInitialized = false; }
-      if (dotsInitialized) { stopDots(); dotsInitialized = false; }
-      if (fogInitialized) { stopFog(); fogInitialized = false; }
-      if (tunnelInitialized) { stopTunnel(); tunnelInitialized = false; }
       if (noiseInitialized) { stopNoise(); noiseInitialized = false; }
       // Show selected
       if (mode === 'starfield') {
@@ -4463,16 +4345,6 @@
       } else if (mode === 'matrix') {
         mCanvas.style.display = 'block';
         if (!matrixInitialized) { startMatrix(); matrixInitialized = true; }
-      } else if (mode === 'waves') {
-        if (wBg) { wBg.style.display = 'block'; if (!wavesInitialized) { startWaves(); wavesInitialized = true; } }
-      } else if (mode === 'globe') {
-        if (gBg) { gBg.style.display = 'block'; if (!globeInitialized) { startGlobe(); globeInitialized = true; } }
-      } else if (mode === 'dots') {
-        if (dBg) { dBg.style.display = 'block'; if (!dotsInitialized) { startDots(); dotsInitialized = true; } }
-      } else if (mode === 'fog') {
-        if (fBg) { fBg.style.display = 'block'; if (!fogInitialized) { startFog(); fogInitialized = true; } }
-      } else if (mode === 'tunnel') {
-        if (tuBg) { tuBg.style.display = 'block'; if (!tunnelInitialized) { tunnelInitialized = true; } }
       } else if (mode === 'noise') {
         noBg.style.display = 'block';
         if (!noiseInitialized) { startNoise(); noiseInitialized = true; }
@@ -6079,11 +5951,6 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       });
       localStorage.setItem('accentColorV2', color);
       localStorage.removeItem('accentColor');
-      if (wavesInitialized) { stopWaves(); startWaves(); }
-      if (globeInitialized) { stopGlobe(); startGlobe(); }
-      if (dotsInitialized) { stopDots(); startDots(); }
-      if (fogInitialized) { stopFog(); startFog(); }
-      if (tunnelInitialized) { stopTunnel(); startTunnel(); }
       if (noiseInitialized) { stopNoise(); startNoise(); }
     }
 
@@ -6363,11 +6230,11 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       });
     }
 
-    let DATA = {
+let DATA = {
       ubz: [],
-          gn: [],
-          elite: [],
-          ugs: [],
+      gn: [],
+      elite: [],
+      ugs: [],
       seraph: [],
       ckv: [],
       noah: [],
@@ -6392,202 +6259,26 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       return (arr || []).map(function(g) { if (g && !g._stash) g._stash = key; return g; });
     }
 
-    function loadUBZ() {
+    async function loadUBZ() {
       if(DATA.ubz.length) return;
-      DATA.ubz = [
-        normalizeg4mes({name:"1v1.LOL",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/1v1lol.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/1v1.html"}),
-        normalizeg4mes({name:"2048",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/2048.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/2048.html"}),
-        normalizeg4mes({name:"-3 (minus 3)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/minus3.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/minus3.html"}),
-        normalizeg4mes({name:"-3 Remastred (minus 3)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/minus3remastred.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/minus3remastred.html"}),
-        normalizeg4mes({name:"8 Ball Pool (Scratch)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/8ballpool.png",url:"https://scratch.mit.edu/projects/1291919322/embed"}),
-        normalizeg4mes({name:"A Dance of Fire and Ice",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/adanceoffireandice.png",url:"https://scratch.mit.edu/projects/511996585/embed"}),
-        normalizeg4mes({name:"Antidisestablishmentarianism",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/antidisestablishmentarianism.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/Antidisestablishmentarianism.html"}),
-        normalizeg4mes({name:"Awesome Tanks 2",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/awesometanks2.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/awesometanks2.html"}),
-        normalizeg4mes({name:"-b (minus b)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/minusb.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/minusb.html"}),
-        normalizeg4mes({name:"Bad Time Simulator",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/badtimesimulator.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/badtime.html"}),
-        normalizeg4mes({name:"Baldi's Basic's",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/baldisbasics.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/baldisbasics.html"}),
-        normalizeg4mes({name:"Baldi's Creepy Run",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/baldicreepyrun.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/baldicreepyrun.html"}),
-        normalizeg4mes({name:"Bank Robbery 2",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/bankrob2.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/bank.html"}),
-        normalizeg4mes({name:"Bart Blast",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/bartblast.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/bartblast.html"}),
-        normalizeg4mes({name:"Baseball Bros",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/baseballbros.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/baseballbros.html"}),
-        normalizeg4mes({name:"Basket Random",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/basketrandom.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/basketrandom.html"}),
-        normalizeg4mes({name:"Basketball Bros",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/basketbros.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/basketbros.html"}),
-        normalizeg4mes({name:"Bee Swarm",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/beeswarm.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/beeswarm.html"}),
-        normalizeg4mes({name:"Bendy",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/bendy.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/bendy.html"}),
-        normalizeg4mes({name:"Bendy Clicker",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/bendyclicker.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/bendyclicker.html"}),
-        normalizeg4mes({name:"Bhop",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/bhop.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/bhop.html"}),
-        normalizeg4mes({name:"Block Blast",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/blockblast.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/blockblast.html"}),
-        normalizeg4mes({name:"Bloodmoney",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/bloodmoney.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/bloodmoney.html"}),
-        normalizeg4mes({name:"Bloodmoney 2",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/bloodmoney2.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/bloodmoney2.html"}),
-        normalizeg4mes({name:"Bow Masters",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/bowmasters.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/bowmasters.html"}),
-        normalizeg4mes({name:"Brotato New Dawn",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/brotatonewdawn.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/brotatonewdawn.html"}),
-        normalizeg4mes({name:"Brotato Paws",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/brotatopawsandclaws.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/brotatopaws.html"}),
-        normalizeg4mes({name:"Buckshot Roulette",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/buckshotroullete.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/buckshot.html"}),
-        normalizeg4mes({name:"BuildNow.GG",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/buildnowgg.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/buildnow.html"}),
-        normalizeg4mes({name:"C.S. 1.6",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/cs16.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/cs.html"}),
-        normalizeg4mes({name:"Caseoh Basic's",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/caseohbasics.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/caseohbasics.html"}),
-        normalizeg4mes({name:"Cat Burglar",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/catburgular.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/catburgular.html"}),
-        normalizeg4mes({name:"CCM Client 1.5.2",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/client152.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/ccm152.html"}),
-        normalizeg4mes({name:"Cheese Champers 3D",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/cheesechompers.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/cheese.html"}),
-        normalizeg4mes({name:"Chicken War",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/chickenwar.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/chicken.html"}),
-        normalizeg4mes({name:"Chrome Dino",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/chromedino.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/chromedino.html"}),
-        normalizeg4mes({name:"Clash Royale",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/clashroyale.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/clash.html"}),
-        normalizeg4mes({name:"Class of 09",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/classof09.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/classof09.html"}),
-        normalizeg4mes({name:"Cluster Rush",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/clusterrush.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/clusterrush.html"}),
-        normalizeg4mes({name:"CoderCraft Client 1.5.2",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/client152.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/codercraft152.html"}),
-        normalizeg4mes({name:"Cookie Clicker",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/cookie.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/cookie.html"}),
-        normalizeg4mes({name:"Crazy Cattle",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/crazycattle3d.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/crazycattle.html"}),
-        normalizeg4mes({name:"Crazy Roll",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/crazyroll3d.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/crazyroll.html"}),
-        normalizeg4mes({name:"Crossy Road",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/crossyroad.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/crossyroad.html"}),
-        normalizeg4mes({name:"Cuphead",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/cuphead.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/cuphead.html"}),
-        normalizeg4mes({name:"Dash.IO",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/dashio.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/dashio.html"}),
-        normalizeg4mes({name:"Draw Climber",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/drawclimber.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/drawclimber.html"}),
-        normalizeg4mes({name:"Drive in Russia",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/driveinrussia.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/russia.html"}),
-        normalizeg4mes({name:"EaglerCraft 0.3.0 (WASM)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/030.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/wasm030.html"}),
-        normalizeg4mes({name:"Eaglercraft 1.12 (WASM)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/112.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/wasm112.html"}),
-        normalizeg4mes({name:"EaglerCraft 1.25 (JS)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/125.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/js125.html"}),
-        normalizeg4mes({name:"EaglerCraft 1.8.8 (JS)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/188.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/js18.html"}),
-        normalizeg4mes({name:"EaglerCraft 1.8.8 (WASM)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/188.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/wasm18.html"}),
-        normalizeg4mes({name:"EaglerCraft Alpha 1.2.6",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/126.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/alpha126.html"}),
-        normalizeg4mes({name:"EaglerCraft Beta 1.3_01 (JS)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/13.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/js13.html"}),
-        normalizeg4mes({name:"EaglerCraft Beta 1.7.3 (JS)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/173.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/js173.html"}),
-        normalizeg4mes({name:"Epstein Clicker",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/BIGEclicker.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/bigeclicker.html"}),
-        normalizeg4mes({name:"Epstein's Basics in Education and Kidnapping",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/jefferyBIGEbasics.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/bigebasics.html"}),
-        normalizeg4mes({name:"Escape Road",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/escaperoad.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/escaperoad.html"}),
-        normalizeg4mes({name:"Escape Road 2",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/escaperoad2.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/escaperoad2.html"}),
-        normalizeg4mes({name:"Escape Road 3",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/escaperoad3.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/escaperoad3.html"}),
-        normalizeg4mes({name:"Femboy Clicker",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/femboyclicker.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/femboyclicker.html"}),
-        normalizeg4mes({name:"Five Night's at Epstein's",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fivenightsatTHEBIGE.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnae.html"}),
-        normalizeg4mes({name:"Flying Gorilla",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/flyinggorilla.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/flyinggorilla.html"}),
-        normalizeg4mes({name:"FNAE Last Breath",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fivenightsatTHEBIGElastbreath.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnaelastbreath.html"}),
-        normalizeg4mes({name:"FNAF (Scratch)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnafscratch.png",url:"https://scratch.mit.edu/projects/1287361673/embed"}),
-        normalizeg4mes({name:"FNF vs BFDI26",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvsbfdi26.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnfbfdi26.html"}),
-        normalizeg4mes({name:"FNF vs Bside",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvsbside.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnfbside.html"}),
-        normalizeg4mes({name:"FNF vs Garcello",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvsgarcello.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnfgarcello.html"}),
-        normalizeg4mes({name:"FNF vs Hex",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvshex.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnfhex.html"}),
-        normalizeg4mes({name:"FNF vs Hit Single Real",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvshitsingle.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnfhitsingle.html"}),
-        normalizeg4mes({name:"FNF vs Indie Cross",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvsindiecross.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnfindiecross.html"}),
-        normalizeg4mes({name:"FNF vs Kapi",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvskapi.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnfkapi.html"}),
-        normalizeg4mes({name:"FNF vs Lullaby",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvslullaby.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnflullaby.html"}),
-        normalizeg4mes({name:"FNF vs Mario",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvsmariomadness.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnfmario.html"}),
-        normalizeg4mes({name:"FNF vs Mid Fight",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvsmidfight.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnfmidfight.html"}),
-        normalizeg4mes({name:"FNF vs Miku",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvsmiku.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnfmiku.html"}),
-        normalizeg4mes({name:"FNF vs Neo",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvsneo.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnfneo.html"}),
-        normalizeg4mes({name:"FNF vs Ourple",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvsourpleguy.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnfourple.html"}),
-        normalizeg4mes({name:"FNF vs Pibby",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvspibby.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnfpibby.html"}),
-        normalizeg4mes({name:"FNF vs QT",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvsqt.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnfqt.html"}),
-        normalizeg4mes({name:"FNF vs Shaggy",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvsshaggy.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnfshaggy.html"}),
-        normalizeg4mes({name:"FNF vs Sky",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvssky.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnfsky.html"}),
-        normalizeg4mes({name:"FNF vs Soft",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvssoft.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnfsoft.html"}),
-        normalizeg4mes({name:"FNF vs Sonic.exe",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvssonicexe.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnfsonicexe.html"}),
-        normalizeg4mes({name:"FNF vs Tails",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvstailsgetstrolled4.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnftails.html"}),
-        normalizeg4mes({name:"FNF vs Tricky",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvstricky.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnftricky.html"}),
-        normalizeg4mes({name:"FNF vs Whitty",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fnfvswhitty.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnfwhitty.html"}),
-        normalizeg4mes({name:"Football Bros",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/footballbros.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/footballbros.html"}),
-        normalizeg4mes({name:"Fragzone",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/frageb.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/frag.html"}),
-        normalizeg4mes({name:"Friday Night Funkin (FNF)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/fridaynightfunkin.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnf.html"}),
-        normalizeg4mes({name:"Fuchsiax Client 1.5.2",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/client152.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/fuchsiax152.html"}),
-        normalizeg4mes({name:"Fuchsiax x Ghost Client 1.5.2",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/client152.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/fuchsiaxghost152.html"}),
-        normalizeg4mes({name:"Gabriel's Awesome School House",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/gabrielsschoolhouse.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/awesomeschoolhouse.html"}),
-        normalizeg4mes({name:"GDWEB (V1)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/gdwebplusversion1.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/gdwebv1.html"}),
-        normalizeg4mes({name:"GDWEB+ (Stable)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/gdwebplus.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/gdweb.html"}),
-        normalizeg4mes({name:"Geometry Dash (Scratch)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/geometrydashscratch.png",url:"https://scratch.mit.edu/projects/1282825077/embed"}),
-        normalizeg4mes({name:"Geometry Dash 3D",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/3dgeometrydash.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/gd3d.html"}),
-        normalizeg4mes({name:"Geometry Dash Breeze",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/geometrydashbreeze.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/breeze.html"}),
-        normalizeg4mes({name:"Geometry Dash Lite",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/geometrydashlite.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/gdlite.html"}),
-        normalizeg4mes({name:"Geometry Dash SubZero",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/geometrydashsubzero.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/gdsubzero.html"}),
-        normalizeg4mes({name:"Geometry Dash Subzero (Scratch)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/geometrydashsubzeroscratch.png",url:"https://scratch.mit.edu/projects/1288073971/embed"}),
-        normalizeg4mes({name:"Geometry Dash World",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/geometrydashroad.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/gdworld.html"}),
-        normalizeg4mes({name:"Google Snake (Scratch)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/googlesnake.png",url:"https://scratch.mit.edu/projects/1283303860/embed"}),
-        normalizeg4mes({name:"Gorilla Tag",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/gorillatag.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/gtag.html"}),
-        normalizeg4mes({name:"Granny",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/granny.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/granny.html"}),
-        normalizeg4mes({name:"Granny 2",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/grannychapter2.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/granny2.html"}),
-        normalizeg4mes({name:"Granny Nightmare",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/grannyhorror.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/grannynightmare.html"}),
-        normalizeg4mes({name:"Granny Online",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/grannymultiplayer.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/grannyonline.html"}),
-        normalizeg4mes({name:"Grow a Garden",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/growagarden.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/growagarden.html"}),
-        normalizeg4mes({name:"GTA Mods",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/gtamods.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/gtamods.html"}),
-        normalizeg4mes({name:"Gun Spin",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/gunspin.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/spin.html"}),
-        normalizeg4mes({name:"Hacked Impossible Quiz",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/impossiblequizhacked.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/Ꮒасkedimpossiblequiz.html"}),
-        normalizeg4mes({name:"Hollow Knight",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/hollowknight.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/hollowknight.html"}),
-        normalizeg4mes({name:"Hollow Knight Silksong",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/hollowknightsilksong.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/hollowknightsilksong.html"}),
-        normalizeg4mes({name:"Impossible Quiz",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/impossiblequiz.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/impossiblequiz.html"}),
-        normalizeg4mes({name:"Indian Truck Driving",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/indiantruckdriving.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/indiantruckdriving.html"}),
-        normalizeg4mes({name:"Infinite Craft",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/infinitecraft.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/infinite.html"}),
-        normalizeg4mes({name:"Jumbo Mario",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/jumbomario.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/jumbomario.html"}),
-        normalizeg4mes({name:"Just Build LOL",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/justbuildlol.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/justbuild.html"}),
-        normalizeg4mes({name:"Kindergarten",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/kindergarten.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/kindergarten.html"}),
-        normalizeg4mes({name:"Kindergarten 2",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/kindergarten2.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/kindergarten2.html"}),
-        normalizeg4mes({name:"Kindergarten 3",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/kindergarten3.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/kindergarten3.html"}),
-        normalizeg4mes({name:"Lethal Ape",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/lethalape.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/lethalape.html"}),
-        normalizeg4mes({name:"Lobotomy Dash",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/lobtomoydash.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/lobotomy.html"}),
-        normalizeg4mes({name:"Memetash",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/memetash.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/memetash.html"}),
-        normalizeg4mes({name:"Minecraft P.E",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/minecraftpocketedition.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/pocketediton.html"}),
-        normalizeg4mes({name:"N0VA Client 1.5.2",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/client152.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/n0va152.html"}),
-        normalizeg4mes({name:"Nebula Client 1.5.2",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/client152.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/nebula152.html"}),
-        normalizeg4mes({name:"NIT Client 1.5.2",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/client152.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/nitclient152.html"}),
-        normalizeg4mes({name:"Nitro Clash",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/nitroclash.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/nitroclash.html"}),
-        normalizeg4mes({name:"Odd Future Client 1.5.2",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/client152.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/oddfuture152.html"}),
-        normalizeg4mes({name:"One Piece Fighting",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/onepiece.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/onepiece.html"}),
-        normalizeg4mes({name:"Oneshot",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/oneshot.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/oneshot.html"}),
-        normalizeg4mes({name:"Orange Roulette",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/orangeroulette.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/orange.html"}),
-        normalizeg4mes({name:"Pi Client 1.8.8",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/client188.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/pi18.html"}),
-        normalizeg4mes({name:"Plague Inc",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/plagueinc.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/plagueinc.html"}),
-        normalizeg4mes({name:"Pneumonoultramicroscopicsilicovolcanoconiosis",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/pneumonoultramicroscopicsilicovolcanoconiosis.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/Pneumonoultramicroscopicsilicovolcanoconiosis.html"}),
-        normalizeg4mes({name:"Poly Track",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/polytrack.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/polytrack.html"}),
-        normalizeg4mes({name:"PreCCM Client 1.5.2",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/client152.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/preccm152.html"}),
-        normalizeg4mes({name:"PVZ",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/PVZ.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/pvz.html"}),
-        normalizeg4mes({name:"R.E.P.O",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/repo.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/repo.html"}),
-        normalizeg4mes({name:"Ragdoll Archers",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/ragdollarchers.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/ragdoll.html"}),
-        normalizeg4mes({name:"Raldi's Crack House",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/raldiscrackhouse.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/raldiscrackhouse.html"}),
-        normalizeg4mes({name:"Retro Bowl",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/retrobowl.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/retrobowl.html"}),
-        normalizeg4mes({name:"Rocket Goal",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/rocketgoalakarocketleague.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/rocketgoal.html"}),
-        normalizeg4mes({name:"Run 3",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/run3.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/run3.html"}),
-        normalizeg4mes({name:"Shadow Client 1.8.8",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/client188.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/shadow18.html"}),
-        normalizeg4mes({name:"Slime Rancher",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/slimerancher.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/slime.html"}),
-        normalizeg4mes({name:"Slope",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/slope.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/slope.html"}),
-        normalizeg4mes({name:"Slow Roads",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/slowroads.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/slowroads.html"}),
-        normalizeg4mes({name:"Snow Rider 3D",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/snowrider.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/snowrider.html"}),
-        normalizeg4mes({name:"Snowball.IO",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/snowballio.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/snowballio.html"}),
-        normalizeg4mes({name:"Soccer Random",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/soccerrandom.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/soccerrandom.html"}),
-        normalizeg4mes({name:"Soccer Bros",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/soccerbros.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/soccerbros.html"}),
-        normalizeg4mes({name:"Space Waves",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/spacewaves.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/spacewaves.html"}),
-        normalizeg4mes({name:"Spiral Roll",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/sprialroll.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/sprialroll.html"}),
-        normalizeg4mes({name:"Sprinter",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/sprinter.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/sprinter.html"}),
-        normalizeg4mes({name:"Steal a Brainrot",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/stealabrainrot.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/sab.html"}),
-        normalizeg4mes({name:"Steal a Brainrot Duel",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/stealabrainrot2player.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/sab2player.html"}),
-        normalizeg4mes({name:"Stickman Duel",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/stickmanduel.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/stickman.html"}),
-        normalizeg4mes({name:"Subway Surfers",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/subwaysurfers.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/subway.html"}),
-        normalizeg4mes({name:"Super Mario 63",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/supermario63.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/supermario63.html"}),
-        normalizeg4mes({name:"Super Market Simulator",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/supermarketsimulator.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/supermarketsim.html"}),
-        normalizeg4mes({name:"Survival Race",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/survivalrace.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/survivalrace.html"}),
-        normalizeg4mes({name:"t³ (t cubed)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/t3.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/t3.html"}),
-        normalizeg4mes({name:"The Math is Leaking",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/themathisleaking.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/themathisleaking.html"}),
-        normalizeg4mes({name:"The Ultimate Baldi's Basic's Decompile",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/baldisbasicsdecompile.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/baldisdecompile.html"}),
-        normalizeg4mes({name:"The World's Hardest Game",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/theworldshardestgame.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/hardestgame.html"}),
-        normalizeg4mes({name:"three",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/three.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/three.html"}),
-        normalizeg4mes({name:"Time Shooter 3 SWAT",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/timeshooterswat2.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/time.html"}),
-        normalizeg4mes({name:"Tomb of Mask",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/tombofmask.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/tombofmask.html"}),
-        normalizeg4mes({name:"Tung Tung Horror",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/tungtungtunghorror.jpg",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/triplethorror.html"}),
-        normalizeg4mes({name:"Tung Tung Sahur Obby",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/tripletobby.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/tripletobby.html"}),
-        normalizeg4mes({name:"Ultrakill",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/ultrakill.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/ultra.html"}),
-        normalizeg4mes({name:"Undertale",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/undertale.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/undertale.html"}),
-        normalizeg4mes({name:"Unfair Mario",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/unfairmario.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/unfairmario.html"}),
-        normalizeg4mes({name:"Untitled Goose Game",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/untitledgoosegame.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/goosegame.html"}),
-        normalizeg4mes({name:"UvuvwevwevweOnyetenvewveUgwemubwemOssas",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/UvuvwevwevweOnyetenvewveUgwemubwemOssas.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/UvuvwevwevweOnyetenvewveUgwemubwemOssas.html"}),
-        normalizeg4mes({name:"UwU Client 1.8.8",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/client188.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/uwu18.html"}),
-        normalizeg4mes({name:"Vice City",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/gtavicecity.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/vicecity.html"}),
-        normalizeg4mes({name:"Wave Dash",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/wavedash.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/gdwave.html"}),
-        normalizeg4mes({name:"Wave Road 3D",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/waveroad3d.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/gdwave3d.html"}),
-        normalizeg4mes({name:"Web Dashers (Updated)",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/main/webdashers.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/main/webdashers.html"}),
-        normalizeg4mes({name:"Where's Baldi",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/whereisbaldi.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/wheresbaldi.html"}),
-        normalizeg4mes({name:"Who's Your Daddy",img:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/main/whosyourdaddy.png",url:"https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/whosyourdaddy.html"})
-      ];
+      try {
+        const r = await fetch('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/data.json');
+        if (!r.ok) throw new Error('fetch failed');
+        const d = await r.json();
+        DATA.ubz = (Array.isArray(d) ? d : d.games || [])
+          .map(g => normalizeg4mes({
+            name: g.name || g.title,
+            img: g.img || g.image || g.cover,
+            url: g.url || g.file || g.html
+          }))
+          .filter(g => g.url && g.url !== '#');
+      } catch (e) { console.warn('UBZ load failed:', e); DATA.ubz = []; }
 
-      // mark CDN g4mes — they open in new tab (non-direct) unless still on Quizizz
+      // mark CDN games — they open in new tab (non-direct) unless still on Quizizz
       DATA.ubz.forEach(g => { if (g.url.indexOf('quizizz.com') !== -1) g._ubz = true; });
     }
 
-    // ─── Noah's Tutoring Hub ───
+// ─── Noah's Tutoring Hub ───
     const NOAH_BASE = _cdn + '/gh/NoahsAmazingTutoringHelp/Noahs-Calculus-Tutor@master';
 
     function noahUrl(url) {
@@ -6780,6 +6471,8 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
         return true;
       });
     }
+
+    
 
     // ─── Category switching ───
     document.querySelectorAll(".g4mes-cat").forEach(btn=>{
@@ -7163,13 +6856,15 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       g4mesCount.textContent = FILTERED.length + " g4m3s";
     }
 
-    // Initialize with UBZ g4mes
-    loadUBZ();
-    CURRENT = DATA.ubz;
-    FILTERED = CURRENT;
-    updateg4mesCount();
-    renderg4mes();
-    renderHomeG4mes();
+    // Initialize with UBZ games
+    (async function initUBZ() {
+      await loadUBZ();
+      CURRENT = DATA.ubz;
+      FILTERED = CURRENT;
+      updateg4mesCount();
+      renderg4mes();
+      renderHomeG4mes();
+    })();
 
     async function renderHomeG4mes() {
       const wrap = document.getElementById('home-g4mes-row');
@@ -7881,25 +7576,6 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
         document.head.appendChild(l);
       });
     }
-    var _vantaLibPromises = {};
-    function ensureVantaLib(name) {
-      var threeUrl = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js';
-      var modMap = { WAVES: 'waves', GLOBE: 'globe', DOTS: 'dots', FOG: 'fog' };
-      var mod = modMap[name];
-      if (!mod) return Promise.reject(new Error('Unknown vanta ' + name));
-      if (window.__vantaReady && window.__vantaReady[name]) return Promise.resolve();
-      if (!_vantaLibPromises[name]) {
-        var p = loadScript(threeUrl)
-          .catch(function() { return loadScript('https://quantil.jsdelivr.net/npm/three@0.121.0/build/three.min.js'); })
-          .then(function() { return loadScript('https://quantil.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.' + mod + '.min.js'); })
-          .then(function() {
-            window.__vantaReady = window.__vantaReady || {};
-            window.__vantaReady[name] = true;
-          });
-        _vantaLibPromises[name] = p;
-      }
-      return _vantaLibPromises[name];
-    }
     var _lunaPromise = null;
     function ensureLunaConsole() {
       if (window.__lunaReady) return Promise.resolve();
@@ -8107,7 +7783,8 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
   }
 
   // restore volume slider
-  var vol = parseInt(localStorage.getItem(HM_VOL_KEY) || '50');
+  var vol = 50;
+  try { vol = parseInt(localStorage.getItem(HM_VOL_KEY) || '50'); } catch (e) {}
   var volEl = document.getElementById('hm-volume');
   if (volEl) volEl.value = vol;
 
@@ -8115,6 +7792,12 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
   var pop = document.getElementById('music-popup');
   var mBtn = document.getElementById('music-btn');
   var showT = null, hideT = null;
+  // #sidebar has a transform (translateX(-50%)) + taskbar keyframe animation,
+  // which becomes the containing block for position:fixed descendants and
+  // would throw the popup off-screen. Give it a body parent so fixed = viewport.
+  if (pop && pop.parentNode && pop.parentNode !== document.body) {
+    document.body.appendChild(pop);
+  }
   function activeMusicTrigger() {
     var dockEl = document.getElementById('lq-music-btn');
     if (dockEl && dockEl.offsetParent !== null) return dockEl;
@@ -8124,23 +7807,57 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
     if (!pop) return;
     var trg = activeMusicTrigger();
     if (!trg) return;
+    var sidebar = document.getElementById('sidebar');
+    var onLeft = sidebar && sidebar.classList.contains('left-sidebar');
+    var onRight = sidebar && sidebar.classList.contains('right-sidebar');
+    var vertical = onLeft || onRight;
     var r = trg.getBoundingClientRect();
     pop.style.left = '0px'; pop.style.top = '0px';
     var w = pop.offsetWidth, h = pop.offsetHeight;
-    var left = r.left + r.width / 2 - w / 2;
-    var top = r.top - h - 12;
-    pop.classList.remove('arrow-down');
-    if (top < 8) { top = r.bottom + 12; pop.classList.add('arrow-down'); }
-    if (left < 8) left = 8;
-    if (left + w > window.innerWidth - 8) left = window.innerWidth - 8 - w;
+    var left, top;
+    var arrow = document.getElementById('music-popup-arrow');
+    pop.classList.remove('arrow-down', 'arrow-left', 'arrow-right');
+    if (vertical) {
+      // side taskbar → open the popup beside the button
+      var gap = 14;
+      if (onLeft) {
+        left = r.right + gap;
+        top = r.top + r.height / 2 - h / 2;
+        if (left + w > window.innerWidth - 8) { left = r.left - gap - w; pop.classList.add('arrow-right'); }
+        else pop.classList.add('arrow-left');
+      } else {
+        left = r.left - gap - w;
+        top = r.top + r.height / 2 - h / 2;
+        if (left < 8) { left = r.right + gap; pop.classList.add('arrow-left'); }
+        else pop.classList.add('arrow-right');
+      }
+      left = Math.max(8, Math.min(left, window.innerWidth - 8 - w));
+      top = Math.max(8, Math.min(top, window.innerHeight - 8 - h));
+      if (arrow) {
+        if (pop.classList.contains('arrow-down')) {
+          var btnCenterD = r.left + r.width / 2 - left;
+          arrow.style.left = Math.max(10, Math.min(w - 22, btnCenterD - 6)) + 'px';
+          arrow.style.top = '';
+        } else {
+          var btnCenterV = r.top + r.height / 2 - top;
+          arrow.style.top = Math.max(10, Math.min(h - 22, btnCenterV - 6)) + 'px';
+          arrow.style.left = '';
+        }
+      }
+    } else {
+      left = r.left + r.width / 2 - w / 2;
+      top = r.top - h - 12;
+      if (top < 8) { top = r.bottom + 12; pop.classList.add('arrow-down'); }
+      if (left < 8) left = 8;
+      if (left + w > window.innerWidth - 8) left = window.innerWidth - 8 - w;
+      if (arrow) {
+        var btnCenter = r.left + r.width / 2 - left;
+        arrow.style.left = Math.max(10, Math.min(w - 22, btnCenter - 6)) + 'px';
+        arrow.style.top = '';
+      }
+    }
     pop.style.left = left + 'px';
     pop.style.top = top + 'px';
-    // center arrow over button
-    var arrow = document.getElementById('music-popup-arrow');
-    if (arrow) {
-      var btnCenter = r.left + r.width / 2 - left;
-      arrow.style.left = Math.max(10, Math.min(w - 22, btnCenter - 6)) + 'px';
-    }
   }
   function openPopup() {
     if (!pop) return;
@@ -8255,91 +7972,108 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
 }
 
 /* ---------- LIQUID GLASS PILL DOCK ---------- */
-.lq-dock {
-  position: relative;
-  overflow: visible;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 999px;
-  background:
-    radial-gradient(120% 180% at 15% 0%, rgba(255,255,255,0.14), transparent 60%),
-    radial-gradient(120% 180% at 85% 100%, rgba(255,255,255,0.10), transparent 60%),
-    rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(5px) saturate(1.3);
-  -webkit-backdrop-filter: blur(5px) saturate(1.3);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255,255,255,0.08);
-  padding: 14px 34px;
-  font-family: inherit;
-  font-size: 28px;
-  letter-spacing: 5px;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-#sidebar.left-sidebar #glass-nav-wrap .lq-dock,
-#sidebar.right-sidebar #glass-nav-wrap .lq-dock {
-  flex-direction: column;
-  border-radius: 999px;
-}
-.lq-dock::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  border-radius: inherit;
-  padding: 1px;
-  background:
-    radial-gradient(circle 60px at 100% 0%, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.25) 40%, transparent 100%),
-    radial-gradient(circle 60px at 0% 100%, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.22) 40%, transparent 100%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-}
-.lq-dock::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  border-radius: inherit;
-  background:
-    radial-gradient(90% 90% at 10% 0%, rgba(255, 255, 255, 0.2), transparent 55%),
-    radial-gradient(90% 90% at 90% 0%, rgba(255, 255, 255, 0.2), transparent 55%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 55%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-}
-.lq-dock-btn {
-  display: flex; align-items: center; justify-content: center;
-  width: 42px; height: 42px; flex-shrink: 0;
-  border: none; border-radius: 999px;
-  background: transparent; color: #ffffff;
-  font-family: inherit;
-  cursor: pointer;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+  .lq-dock {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(24px) saturate(1.8) contrast(1.02) brightness(1.02);
+    -webkit-backdrop-filter: blur(24px) saturate(1.8) contrast(1.02) brightness(1.02);
+    box-shadow:
+      0 10px 24px rgba(0, 0, 0, 0.4),
+      0 3px 8px rgba(0, 0, 0, 0.25),
+      inset 0 0 7px rgba(255, 255, 255, 0.25),
+      inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    padding: 14px;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  #sidebar:not(.left-sidebar):not(.right-sidebar) #glass-nav-wrap .lq-dock {
+    padding: 22px 60px;
+  }
+  #sidebar.left-sidebar #glass-nav-wrap .lq-dock,
+  #sidebar.right-sidebar #glass-nav-wrap .lq-dock {
+    flex-direction: column;
+    border-radius: 999px;
+    padding: 14px;
+  }
+  .lq-dock::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    padding: 1px;
+    background:
+      radial-gradient(circle 60px at 100% 0%, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.6) 40%, transparent 100%),
+      radial-gradient(circle 60px at 0% 100%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.55) 40%, transparent 100%);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  .lq-dock::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+      radial-gradient(90% 90% at 10% 0%, rgba(255, 255, 255, 0.45), transparent 55%),
+      radial-gradient(90% 90% at 90% 0%, rgba(255, 255, 255, 0.45), transparent 55%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.28), transparent 55%);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  .lq-dock-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: #ffffff;
+    font-family: inherit;
+    cursor: pointer;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
               box-shadow 0.25s ease,
               background 0.25s ease;
-}
-.lq-dock-btn:hover {
-  transform: translateY(-14px);
-  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.5);
-}
-.lq-dock-btn:active {
-  transform: translateY(-6px) scale(0.94);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
-}
-.lq-dock-btn.active {
-  background: var(--accent);
-  color: #000000;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
-}
-.lq-dock-btn.active .lq-dock-icon { color: #000000; }
-.lq-dock-icon {
-  display: inline-flex; align-items: center; justify-content: center;
-  pointer-events: none; width: 22px; height: 22px;
-}
-.lq-dock-icon svg { width: 22px !important; height: 22px !important; display: block; }
+  }
+  .lq-dock-btn:hover {
+    transform: translateY(-8px) scale(1.08);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.4);
+  }
+  .lq-dock-btn:active {
+    transform: translateY(-2px) scale(0.96);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  .lq-dock-btn.active {
+    background: var(--accent);
+    color: #000000;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  }
+  .lq-dock-btn.active .lq-dock-icon { color: #000000; }
+  .lq-dock-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    width: 22px;
+    height: 22px;
+  }
+  .lq-dock-icon svg { width: 22px !important; height: 22px !important; display: block; }
 </style>
 <script>
 /* ============ Liquid Glass Sidebar (CSS pill dock) ============ */
