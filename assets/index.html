@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>window.onbeforeunload=function(e){e.preventDefault();e.returnValue='';};</script>
+  <script>window.onbeforeunload=function(e){if(window.__panicBypass)return;e.preventDefault();e.returnValue='';};</script>
   <!-- Performance Mode bootstrap: must run before the body parses -->
   <script>
     (function () {
@@ -50,16 +50,25 @@
     @font-face{font-family:'ApplePixel';src:url('https://quantil.jsdelivr.net/gh/bradardeletethis/apple/font.woff2') format('woff2');font-weight:400;font-style:normal;}
     html.page-hidden > body > *:not(#stealth-cover) { display: none !important; }
     #stealth-cover * {
-      all: revert;
       box-sizing: border-box !important;
     }
     #stealth-cover {
       display: none;
       position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh;
+      width: 100dvw; height: 100dvh;
+      margin: 0; padding: 0; border: none;
+      max-width: none; max-height: none;
       z-index: 999999;
       overflow: hidden;
       background: #f1f3f4;
+    }
+    #stealth-cover-img {
+      width: 100% !important; height: 100% !important;
+      min-width: 100%; min-height: 100%;
+      object-fit: fill !important; object-position: center !important;
+      display: block !important; border: none !important; margin: 0 !important;
     }
     html.page-hidden #stealth-cover { display: block; }
     :root{
@@ -1490,7 +1499,7 @@
 <body>
 
   <div id="stealth-cover">
-    <img id="stealth-cover-img" alt="" style="width:100%;height:100%;object-fit:cover;display:block;background:#fff;">
+    <img id="stealth-cover-img" alt="" style="width:100%;height:100%;object-fit:fill;display:block;background:#fff;">
   </div>
 </div>
 
@@ -2959,10 +2968,10 @@
             <a href="https://sites.google.com/view/novasremade" target="_blank">Visit Site</a>
           </div>
           <div class="partner-card">
-            <img class="partner-img" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/classroom.png" alt="classroomspot" loading="lazy">
+            <img class="partner-img" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/classroom2.png" alt="classroomspot" loading="lazy">
             <h3>classroomspot</h3>
             <p>Made by classroomspot.</p>
-            <a href="https://classroomspot.github.io/" target="_blank">Visit Site</a>
+            <a href="https://discord.gg/A4PhtpN5Q" target="_blank">Visit Site</a>
           </div>
           <div class="partner-card">
             <img class="partner-img" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/skylink.png" alt="Skylink" loading="lazy">
@@ -5557,7 +5566,6 @@ if (/<head/i.test(html)) html = html.replace(/<head([^>]*)>/i, '<head$1>' + ytSt
       d2.appendChild(hs);
       hookg4mesConsole(g4mesFrame.contentWindow);
       injectg4mesAudio(g4mesFrame.contentWindow, doc);
-      bindEscClose(g4mesFrame.contentWindow);
       finishLoading();
     }
 
@@ -5594,7 +5602,7 @@ if (/<head/i.test(html)) html = html.replace(/<head([^>]*)>/i, '<head$1>' + ytSt
         gvLoading.style.display = 'block';
         g4mesFrame.removeAttribute('srcdoc');
         g4mesFrame.src = cdnUrl;
-        g4mesFrame.onload = function() { finishLoading(); try { var fw = g4mesFrame.contentWindow; if (fw) bindEscClose(fw); if (fw && fw.document) injectg4mesAudio(fw, fw.document); } catch (e) {} };
+        g4mesFrame.onload = function() { finishLoading(); try { var fw = g4mesFrame.contentWindow; if (fw && fw.document) injectg4mesAudio(fw, fw.document); } catch (e) {} };
         g4mesFrame.onerror = function() { showg4mesError(currentg4mesName); };
         return;
       }
@@ -5623,20 +5631,6 @@ if (/<head/i.test(html)) html = html.replace(/<head([^>]*)>/i, '<head$1>' + ytSt
       }
       document.documentElement.classList.remove('loading-active');
     }
-
-    function bindEscClose(w) {
-      try {
-        w.addEventListener('keydown', function(e) {
-          if (e.key !== 'Escape') return;
-          if (g4mesViewer.classList.contains('active')) {
-            e.preventDefault();
-            e.stopPropagation();
-            closeg4mesViewer();
-          }
-        }, true);
-      } catch (e) {}
-    }
-    bindEscClose(window);
 
     function toggleConsoleOverlay() {
       if (window.__perfMode) return;
@@ -5953,7 +5947,6 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       localStorage.removeItem('accentColor');
       if (noiseInitialized) { stopNoise(); startNoise(); }
     }
-
     function setSiteTheme(theme) {
       var root = document.documentElement;
       root.classList.toggle('midnight-theme', theme === 'midnight');
