@@ -2218,6 +2218,18 @@
             <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/catclass.png" alt="Cat Class">
             <div class="overlay"><span>Cat Class</span></div>
           </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/ugs.html','UGS Stash');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/ugsdoc.png" alt="UGS Stash">
+            <div class="overlay"><span>UGS Stash</span></div>
+          </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/doswasmx.html','DOS WASM X');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/doswasmx.png" alt="DOS WASM X">
+            <div class="overlay"><span>DOS WASM X</span></div>
+          </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/scratch.html','Scratch Editor');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/scratch.png" alt="Scratch Editor">
+            <div class="overlay"><span>Scratch Editor</span></div>
+          </button>
         </div>
       </div>
 
@@ -3014,7 +3026,7 @@
       </div>
 
       <div class="tab-content" id="settings">
-        <div style="font-size:13px;color:#fff;font-weight:bold;margin-bottom:12px;">Version 2026.09.27</div>
+        <div style="font-size:13px;color:#fff;font-weight:bold;margin-bottom:12px;">Version 2026.09.30</div>
         <div class="g4mes-grid" style="display:grid;gap:16px;">
           <div class="g4mes-card" style="padding:20px;">
             <div class="settings-card-head">
@@ -3233,6 +3245,7 @@
               <option value="goguardian">GoGuardian</option>
               <option value="securly">Securly</option>
               <option value="classlink">ClassLink</option>
+              <option value="lightspeedclassroom">Lightspeed Classroom</option>
             </select>
             <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
             <p style="color:#aaa;font-size:13px;font-weight:bold;">Startup Options</p>
@@ -3362,6 +3375,7 @@
             <option value="goguardian">GoGuardian</option>
             <option value="securly">Securly</option>
             <option value="classlink">ClassLink</option>
+            <option value="lightspeedclassroom">Lightspeed Classroom</option>
           </select>
           <div class="setup-actions">
             <button class="setup-btn-ghost" onclick="setupGo(2)">Back</button>
@@ -5966,7 +5980,8 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       lightspeed: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/lightspeed.html',
       goguardian: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/goguardian.html',
       securly: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/securly.html',
-      classlink: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/classlink.html'
+      classlink: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/classlink.html',
+      lightspeedclassroom: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/lightspeedteach.html'
     };
     function loadBlockFromCdn(theme, slot) {
       var url = BLOCK_FRAMES[theme];
