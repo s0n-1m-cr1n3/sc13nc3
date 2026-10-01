@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+        :root {
+            --bg: #070b14;
+            --bg-2: #0b1020;
+
+            --panel: rgba(15, 23, 42, .72);
+            --panel-2: rgba(20, 28, 50, .82);
+
+            --border: rgba(255,255,255,.075);
+            --border-hover: rgba(129,140,248,.35);
+
+            --text: #f8fafc;
+            --text-2: #cbd5e1;
+            --muted: #64748b;
+
+            --blue: #6366f1;
+            --blue-light: #818cf8;
+            --cyan: #38bdf8;
+            --purple: #a855f7;
+
+            --radius: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            color: var(--text);
+
+            font-family:
+                Inter,
+                ui-sans-serif,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 15% 10%,
+                    rgba(99,102,241,.17),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 85% 15%,
+                    rgba(168,85,247,.13),
+                    transparent 25%
+                ),
+                radial-gradient(
+                    circle at 50% 100%,
+                    rgba(56,189,248,.08),
+                    transparent 30%
+                ),
+                var(--bg);
+
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+
+            position: fixed;
+            inset: 0;
+
+            pointer-events: none;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,.018) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.018) 1px,
+                    transparent 1px
+                );
+
+            background-size: 50px 50px;
+
+            mask-image: linear-gradient(
+                to bottom,
+                black,
+                transparent 80%
+            );
+
+            z-index: -1;
+        }
+
+        .sidebar {
+            position: fixed;
+
+            top: 16px;
+            left: 16px;
+            bottom: 16px;
+
+            width: 72px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            padding: 12px 10px;
+
+            gap: 9px;
+
+            background: rgba(9,14,27,.78);
+
+            border: 1px solid var(--border);
+            border-radius: 22px;
+
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+
+            box-shadow:
+                0 25px 70px rgba(0,0,0,.35);
+
+            z-index: 1000;
+        }
+
+        .sidebar::before {
+            content: "UGS";
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 48px;
+            height: 48px;
+
+            margin-bottom: 6px;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6366f1,
+                    #8b5cf6
+                );
+
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: .08em;
+
+            box-shadow:
+                0 10px 30px rgba(99,102,241,.3);
+        }
+
+        .sidebar-btn {
+            position: relative;
+
+            width: 48px;
+            height: 48px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid transparent;
+            border-radius: 14px;
+
+            background: transparent;
+
+            color: #94a3b8;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition:
+                color .2s,
+                background .2s,
+                border .2s,
+                transform .2s;
+        }
+
+        .sidebar-btn:hover {
+            color: white;
+
+            background: rgba(99,102,241,.12);
+
+            border-color: rgba(129,140,248,.15);
+
+            transform: translateY(-2px);
+        }
+
+        .sidebar-btn.active {
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(99,102,241,.95),
+                    rgba(79,70,229,.8)
+                );
+
+            border-color: rgba(255,255,255,.1);
+
+            box-shadow:
+                0 8px 25px rgba(79,70,229,.25);
+        }
+
+        .sidebar-btn.active::after {
+            content: "";
+
+            position: absolute;
+
+            right: -13px;
+
+            width: 3px;
+            height: 20px;
+
+            border-radius: 5px;
+
+            background: #818cf8;
+        }
+
+        .sidebar-btn.empty {
+            opacity: .2;
+            cursor: default;
+        }
+
+        .sidebar-btn.empty:hover {
+            background: transparent;
+            border-color: transparent;
+            transform: none;
+        }
+
+        .main-content {
+            width: min(1180px, calc(100% - 125px));
+
+            margin-left: 112px;
+
+            padding:
+                38px
+                35px
+                100px;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 30px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+
+            color: #cbd5e1;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            padding: 7px 11px;
+
+            border: 1px solid rgba(110,231,183,.12);
+            border-radius: 999px;
+
+            background: rgba(110,231,183,.05);
+
+            color: #86efac;
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: #4ade80;
+
+            box-shadow: 0 0 10px #4ade80;
+        }
+
+        .hero {
+            position: relative;
+
+            padding: 45px 42px 40px;
+
+            border: 1px solid var(--border);
+            border-radius: 26px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(30,41,75,.65),
+                    rgba(15,23,42,.58)
+                );
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,.22);
+
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 350px;
+            height: 350px;
+
+            right: -120px;
+            top: -170px;
+
+            background: #6366f1;
+
+            opacity: .13;
+
+            filter: blur(90px);
+
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-bottom: 16px;
+
+            color: #a5b4fc;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow span {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #818cf8;
+
+            box-shadow:
+                0 0 14px #818cf8;
+        }
+
+        h1 {
+            margin: 0;
+
+            font-size: clamp(42px, 6vw, 70px);
+            line-height: .95;
+
+            font-weight: 900;
+
+            letter-spacing: -.065em;
+
+            background:
+                linear-gradient(
+                    110deg,
+                    #ffffff 15%,
+                    #c7d2fe 55%,
+                    #818cf8 100%
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+        }
+
+        .hero-description {
+            max-width: 650px;
+
+            margin: 20px 0 0;
+
+            color: #94a3b8;
+
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 9px;
+
+            margin-top: 25px;
+        }
+
+        .quick-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 10px 14px;
+
+            border: 1px solid var(--border);
+            border-radius: 11px;
+
+            background: rgba(255,255,255,.035);
+
+            color: #cbd5e1;
+
+            text-decoration: none;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            transition: all .2s ease;
+        }
+
+        .quick-link:hover {
+            color: white;
+
+            background: rgba(99,102,241,.12);
+
+            border-color: rgba(129,140,248,.3);
+
+            transform: translateY(-2px);
+        }
+
+        .search-area {
+            position: sticky;
+
+            top: 15px;
+
+            z-index: 500;
+
+            margin: 24px 0 35px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+
+            left: 19px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #64748b;
+
+            font-size: 20px;
+
+            pointer-events: none;
+        }
+
+        #searchInput {
+            width: 100%;
+            height: 60px;
+
+            padding:
+                0
+                125px
+                0
+                53px;
+
+            outline: none;
+
+            border:
+                1px solid
+                rgba(255,255,255,.09);
+
+            border-radius: 17px;
+
+            background:
+                rgba(9,14,27,.88);
+
+            color: white;
+
+            font-family: inherit;
+            font-size: 14px;
+
+            box-shadow:
+                0 18px 45px rgba(0,0,0,.25);
+
+            backdrop-filter: blur(20px);
+
+            transition:
+                border .2s,
+                box-shadow .2s;
+        }
+
+        #searchInput:focus {
+            border-color:
+                rgba(129,140,248,.5);
+
+            box-shadow:
+                0 0 0 4px rgba(99,102,241,.08),
+                0 20px 50px rgba(0,0,0,.3);
+        }
+
+        #searchInput::placeholder {
+            color: #475569;
+        }
+
+        .search-shortcut {
+            position: absolute;
+
+            right: 15px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            padding: 5px 9px;
+
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 7px;
+
+            background: rgba(255,255,255,.035);
+
+            color: #64748b;
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        #lolbutton {
+            margin-top: 11px;
+
+            padding: 8px 12px;
+
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 9px;
+
+            background: rgba(255,255,255,.035);
+
+            color: #64748b;
+
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: all .2s;
+        }
+
+        #lolbutton:hover {
+            color: #cbd5e1;
+
+            background: rgba(255,255,255,.07);
+
+            border-color: rgba(255,255,255,.13);
+        }
+        
+        #sections-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .letter-section {
+            padding: 23px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: var(--radius);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(15,23,42,.72),
+                    rgba(15,23,42,.48)
+                );
+
+            backdrop-filter: blur(15px);
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,.15);
+
+            animation: sectionIn .45s ease both;
+
+            transition:
+                border .2s,
+                transform .2s;
+        }
+
+        .letter-section:hover {
+            border-color: rgba(255,255,255,.12);
+
+            transform: translateY(-1px);
+        }
+
+        @keyframes sectionIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .letter-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 18px;
+            padding-bottom: 15px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.06);
+
+            color: white;
+
+            font-size: 20px;
+            font-weight: 850;
+
+            letter-spacing: -.025em;
+        }
+
+        .letter-header::before {
+            content: "";
+
+            width: 4px;
+            height: 23px;
+
+            margin-right: 11px;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #818cf8,
+                    #6366f1
+                );
+
+            box-shadow:
+                0 0 14px rgba(99,102,241,.4);
+        }
+        
+        .buttons-container {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fill, minmax(240px, 1fr));
+
+            gap: 9px;
+        }
+
+        input[type="button"] {
+            position: relative;
+
+            width: 100%;
+            min-height: 52px;
+
+            padding:
+                13px
+                16px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.055);
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(30,41,75,.68),
+                    rgba(15,23,42,.55)
+                );
+
+            color: #dbe4f5;
+
+            font-family: inherit;
+
+            font-size: 13px;
+            font-weight: 650;
+
+            text-align: left;
+
+            cursor: pointer;
+
+            overflow: hidden;
+
+            transition:
+                transform .18s ease,
+                background .18s ease,
+                border .18s ease,
+                color .18s ease,
+                box-shadow .18s ease;
+        }
+
+        input[type="button"]::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(129,140,248,.10),
+                    transparent 60%
+                );
+
+            opacity: 0;
+
+            transition: opacity .2s;
+        }
+
+        input[type="button"]:hover {
+            transform: translateY(-2px);
+
+            color: white;
+
+            border-color:
+                rgba(129,140,248,.28);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(49,46,129,.45),
+                    rgba(30,41,75,.65)
+                );
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,.22);
+        }
+
+        input[type="button"]:hover::before {
+            opacity: 1;
+        }
+
+        input[type="button"]:active {
+            transform: translateY(0) scale(.99);
+        }
+
+        .empty-message {
+            padding: 20px;
+
+            color: #475569;
+
+            text-align: center;
+
+            font-size: 13px;
+            font-style: italic;
+        }
+        @media (max-width: 800px) {
+
+            .sidebar {
+                width: 62px;
+
+                left: 10px;
+                top: 10px;
+                bottom: 10px;
+
+                padding: 8px;
+            }
+
+            .sidebar::before {
+                width: 44px;
+                height: 44px;
+            }
+
+            .sidebar-btn {
+                width: 44px;
+                height: 44px;
+            }
+
+            .main-content {
+                width: calc(100% - 85px);
+
+                margin-left: 82px;
+
+                padding:
+                    22px
+                    14px
+                    80px;
+            }
+
+            .hero {
+                padding: 30px 24px;
+            }
+
+            .topbar {
+                display: none;
+            }
+
+            .buttons-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 520px) {
+
+            .sidebar {
+                position: fixed;
+
+                top: auto;
+                left: 8px;
+                right: 8px;
+                bottom: 8px;
+
+                width: auto;
+                height: 60px;
+
+                flex-direction: row;
+
+                overflow-x: auto;
+                overflow-y: hidden;
+
+                border-radius: 18px;
+            }
+
+            .sidebar::before {
+                display: none;
+            }
+
+            .sidebar-btn.active::after {
+                display: none;
+            }
+
+            .main-content {
+                width: 100%;
+                margin: 0;
+
+                padding:
+                    18px
+                    12px
+                    85px;
+            }
+
+            .hero {
+                padding: 27px 20px;
+
+                border-radius: 21px;
+            }
+
+            h1 {
+                font-size: 45px;
+            }
+
+            .hero-description {
+                font-size: 13px;
+            }
+
+            .quick-links {
+                flex-direction: column;
+            }
+
+            .quick-link {
+                justify-content: center;
+            }
+
+            .search-area {
+                top: 7px;
+            }
+
+            #searchInput {
+                height: 54px;
+            }
+
+            .letter-section {
+                padding: 17px;
+            }
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #070b14;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 20px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+
+        ::selection {
+            background: rgba(129,140,248,.3);
+        }
+    </style>
+</head>
+
+<body>
+    <aside class="sidebar" id="sidebar">
+    </aside>
+    <main class="main-content">
+        <div class="topbar">
+
+            <div class="brand">
+                <span>UGS FILE LIBRARY</span>
+            </div>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                ONLINE
+            </div>
+
+        </div>
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    <span></span>
+                    Ultimate Game Stash
+                </div>
+
+                <h1>UGS Files</h1>
+
+                <p class="hero-description">
+                  This is a modifed version of the orginal UGS Single File made to look better.
+                </p>
+
+
+                <div class="quick-links">
+
+                    <a
+                        class="quick-link"
+                        href="https://docs.google.com/document/d/1_FmH3BlSBQI7FGgAQL59-ZPe8eCxs35wel6JUyVaG8/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <span>📄</span>
+                        UGS Google Doc
+                    </a>
+
+                    <a
+                        class="quick-link"
+                        href="https://discord.gg/rmVsAqkpkA"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <span>💬</span>
+                        Discord Community
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SEARCH -->
+
+        <div class="search-area">
+
+            <div class="search-box">
+
+                <span class="search-icon">
+                    ⌕
+                </span>
+
+                <input
+                    id="searchInput"
+                    type="text"
+                    placeholder="Search games, files, titles..."
+                    autocomplete="off"
+                >
+
+                <span class="search-shortcut">
+                    SEARCH
+                </span>
+
+            </div>
+
+            <button
+                id="lolbutton"
+                onclick="
+                    const script = document.createElement('script');
+                    script.src = 'https://quantil.jsdelivr.net/gh/bubbls/ugs-singlefile@latest/game.js';
+                    document.body.appendChild(script);
+                "
+            >
+                ↻ Reload games
+            </button>
+
+        </div>
+
+
+        <!-- GAME LIST -->
+
+        <div id="sections-container"></div>
+
+    </main>
+
+    <script src="https://quantil.jsdelivr.net/gh/bubbls/ugs-singlefile@main/searchbut.js"></script>
+
+    <script src="https://quantil.jsdelivr.net/gh/bubbls/ugs-singlefile@main/games.js"></script>
+
+    <script>
+        const sections = document.querySelectorAll(".letter-section");
+        const sidebar = document.getElementById("sidebar");
+
+        const observer = new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (!entry.isIntersecting) return;
+
+                    const header =
+                        entry.target.querySelector(".letter-header");
+
+                    if (!header) return;
+
+                    const letter =
+                        header.textContent.trim().charAt(0).toUpperCase();
+
+                    document
+                        .querySelectorAll(".sidebar-btn")
+                        .forEach(btn => {
+                            btn.classList.remove("active");
+                        });
+
+                    const matchingButton =
+                        [...document.querySelectorAll(".sidebar-btn")]
+                            .find(btn =>
+                                btn.textContent.trim().toUpperCase() === letter
+                            );
+
+                    if (matchingButton) {
+                        matchingButton.classList.add("active");
+                    }
+
+                });
+
+            },
+            {
+                rootMargin: "-30% 0px -60% 0px"
+            }
+        );
+
+        sections.forEach(section => observer.observe(section));
+
+
+        /*
+         * Ctrl / Cmd + K focuses search.
+         */
+
+        document.addEventListener("keydown", event => {
+
+            if (
+                (event.ctrlKey || event.metaKey) &&
+                event.key.toLowerCase() === "k"
+            ) {
+
+                event.preventDefault();
+
+                const search =
+                    document.getElementById("searchInput");
+
+                if (search) {
+                    search.focus();
+                    search.select();
+                }
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
