@@ -18,10 +18,26 @@
   <!-- g4mes blob mode auto-detect: match it to how this page is loaded -->
   <script>
     (function () {
+      var isBlob = false;
       try {
-        var href = location.href;
-        localStorage.setItem('g4mesTabMode', href.indexOf('blob:') === 0 ? 'blob' : 'blank');
+        var href = String(location.href || '');
+        isBlob = href.indexOf('blob:') === 0;
+      } catch (e) { isBlob = false; }
+      window.__isBlobPage = isBlob;
+      try {
+        localStorage.setItem('g4mesTabMode', isBlob ? 'blob' : 'blank');
       } catch (e) {}
+      function syncBlobCheckbox() {
+        try {
+          var el = document.getElementById('g4mes-tab-blob-check');
+          if (!el) return;
+          var on = window.__isBlobPage === true;
+          if (!on) { try { on = localStorage.getItem('g4mesTabMode') === 'blob'; } catch (e2) {} }
+          el.checked = on;
+        } catch (e) {}
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', syncBlobCheckbox);
+      else syncBlobCheckbox();
     })();
   </script>
   <!-- Google tag (gtag.js) -->
@@ -3026,7 +3042,7 @@
       </div>
 
       <div class="tab-content" id="settings">
-        <div style="font-size:13px;color:#fff;font-weight:bold;margin-bottom:12px;">Version 2026.09.30</div>
+        <div style="font-size:13px;color:#fff;font-weight:bold;margin-bottom:12px;">Version 2026.10.01</div>
         <div class="g4mes-grid" style="display:grid;gap:16px;">
           <div class="g4mes-card" style="padding:20px;">
             <div class="settings-card-head">
@@ -3175,23 +3191,23 @@
             <div id="gradient-wallpaper-ui" style="display:none;margin-top:12px;">
               <p style="color:#aaa;font-size:13px;margin-bottom:6px;">Presets</p>
               <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                <button onclick="setGradientPreset(['#667eea','#764ba2'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#667eea,#764ba2);" title="Purple"></button>
-                <button onclick="setGradientPreset(['#f953c6','#b91d73'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#f953c6,#b91d73);" title="Neon Pink"></button>
-                <button onclick="setGradientPreset(['#f6d365','#fda085'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#f6d365,#fda085);" title="Sunset"></button>
-                <button onclick="setGradientPreset(['#30cfd0','#330867'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#30cfd0,#330867);" title="Ocean"></button>
-                <button onclick="setGradientPreset(['#a8edea','#fed6e3'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#a8edea,#fed6e3);" title="Mint"></button>
-                <button onclick="setGradientPreset(['#00c6ff','#0072ff'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#00c6ff,#0072ff);" title="Blue"></button>
-                <button onclick="setGradientPreset(['#f8ff00','#3ad59f'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#f8ff00,#3ad59f);" title="Lime"></button>
-                <button onclick="setGradientPreset(['#ff9966','#ff5e62'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#ff9966,#ff5e62);" title="Coral"></button>
-                <button onclick="setGradientPreset(['#7f00ff','#e100ff'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#7f00ff,#e100ff);" title="Electric"></button>
-                <button onclick="setGradientPreset(['#83a4d4','#b6fbff'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#83a4d4,#b6fbff);" title="Ice"></button>
+                <button onclick="setGradientPreset(['#3d4c8c','#472d61'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#3d4c8c,#472d61);" title="Purple"></button>
+                <button onclick="setGradientPreset(['#953277','#6f1145'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#953277,#6f1145);" title="Neon Pink"></button>
+                <button onclick="setGradientPreset(['#947f3d','#986050'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#947f3d,#986050);" title="Sunset"></button>
+                <button onclick="setGradientPreset(['#1d7c7d','#1f053e'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#1d7c7d,#1f053e);" title="Ocean"></button>
+                <button onclick="setGradientPreset(['#658e8c','#988088'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#658e8c,#988088);" title="Mint"></button>
+                <button onclick="setGradientPreset(['#007799','#004499'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#007799,#004499);" title="Blue"></button>
+                <button onclick="setGradientPreset(['#959900','#23805f'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#959900,#23805f);" title="Lime"></button>
+                <button onclick="setGradientPreset(['#995c3d','#99383b'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#995c3d,#99383b);" title="Coral"></button>
+                <button onclick="setGradientPreset(['#4c0099','#870099'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#4c0099,#870099);" title="Electric"></button>
+                <button onclick="setGradientPreset(['#4f627f','#6d9799'])" style="border:none;cursor:pointer;border-radius:6px;width:46px;height:30px;background:linear-gradient(135deg,#4f627f,#6d9799);" title="Ice"></button>
               </div>
               <p style="color:#aaa;font-size:13px;margin:10px 0 6px;">Custom</p>
               <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
                 <label style="color:#aaa;font-size:12px;">1</label>
-                <input type="color" id="gradient-c1" value="#667eea" onchange="applyGradientFromInputs()" style="width:40px;height:28px;border:none;background:none;cursor:pointer;padding:0;">
+                <input type="color" id="gradient-c1" value="#3d4c8c" onchange="applyGradientFromInputs()" style="width:40px;height:28px;border:none;background:none;cursor:pointer;padding:0;">
                 <label style="color:#aaa;font-size:12px;">2</label>
-                <input type="color" id="gradient-c2" value="#764ba2" onchange="applyGradientFromInputs()" style="width:40px;height:28px;border:none;background:none;cursor:pointer;padding:0;">
+                <input type="color" id="gradient-c2" value="#472d61" onchange="applyGradientFromInputs()" style="width:40px;height:28px;border:none;background:none;cursor:pointer;padding:0;">
                 <label style="color:#aaa;font-size:12px;margin-left:6px;">Angle</label>
                 <input type="range" id="gradient-angle" min="0" max="360" value="135" oninput="applyGradientFromInputs()" style="width:90px;">
                 <span id="gradient-angle-label" style="color:#aaa;font-size:12px;">135°</span>
@@ -4446,8 +4462,8 @@
         var _gc2 = document.getElementById('gradient-c2');
         var _ga = document.getElementById('gradient-angle');
         var _gal = document.getElementById('gradient-angle-label');
-        if (_gc1) _gc1.value = localStorage.getItem('gradientC1') || '#667eea';
-        if (_gc2) _gc2.value = localStorage.getItem('gradientC2') || '#764ba2';
+        if (_gc1) _gc1.value = localStorage.getItem('gradientC1') || '#3d4c8c';
+        if (_gc2) _gc2.value = localStorage.getItem('gradientC2') || '#472d61';
         if (_ga) _ga.value = localStorage.getItem('gradientAngle') || '135';
         if (_gal) _gal.textContent = (_ga ? _ga.value : '135') + '°';
       } catch (e) {}
@@ -4605,8 +4621,8 @@
 
     /* ─── GRADIENT WALLPAPER ─── */
     function getGradientCss() {
-      var c1 = localStorage.getItem('gradientC1') || '#667eea';
-      var c2 = localStorage.getItem('gradientC2') || '#764ba2';
+      var c1 = localStorage.getItem('gradientC1') || '#3d4c8c';
+      var c2 = localStorage.getItem('gradientC2') || '#472d61';
       var a = parseInt(localStorage.getItem('gradientAngle'), 10);
       if (isNaN(a)) a = 135;
       return 'linear-gradient(' + a + 'deg,' + c1 + ',' + c2 + ')';
@@ -5434,10 +5450,10 @@
       "var K='g4mesVolume';var g=function(){var v=parseInt(localStorage.getItem(K)||'100',10);v=isNaN(v)?100:Math.max(0,Math.min(1000,v));return v;};" +
       "var masters=[],media=[];var AC=window.AudioContext||window.webkitAudioContext;" +
       "var gainV=function(v){if(v<=100)return Math.max(0,v/100);return 1+9*Math.log10(v/100);};var boostV=function(v){if(v<=100)return 0;return Math.min(24,20*Math.log10(v/100));};if(AC&&!AC.prototype.__ubv){(function(){AC.prototype.__ubv=true;var ocg=AC.prototype.createGain;var bq=function(c){var f=c.createBiquadFilter();f.type='lowshelf';f.frequency.value=110;f.Q.value=0.8;f.gain.value=0;return f;};AC.prototype.createGain=function(){var n=ocg.call(this);var oc=n.connect.bind(n);n.connect=function(){var a=Array.prototype.slice.call(arguments);try{var ctx=n.context;if(a[0]===ctx.destination){if(!ctx.__ubc){var ch={g:ocg.call(ctx),f:bq(ctx)};ch.g.gain.value=gainV(g());ch.f.gain.value=boostV(g());ch.g.connect(ch.f);ch.f.connect(ctx.destination);ctx.__ubc=ch;masters.push(ch);}a[0]=ctx.__ubc.g;}}catch(e){}return oc.apply(n,a);};return n;};})();}" +
-      "function scan(){var RA=null,eco=function(){try{if(RA&&RA.state==='closed')RA=null;if(!RA)RA=new(window.AudioContext||window.webkitAudioContext)();}catch(e){}return RA;};var els=[].slice.call(document.querySelectorAll('audio,video'));els.forEach(function(el){if(el.__ubh)return;try{var ctx=eco();var src;try{src=ctx.createMediaElementSource(el);}catch(e){el.volume=Math.min(1,g()/100);el.__ubh=true;return;}var n=ctx.createGain();n.gain.value=1;src.connect(n);n.connect(ctx.destination);media.push(n);el.__ubh=true;}catch(e){}});try{document.addEventListener('pointerdown',function(e){try{if(RA&&RA.state==='suspended')RA.resume();}catch(x){}},true);}catch(e){}}" +
+      "function scan(){var RA=null,eco=function(){try{if(RA&&RA.state==='closed')RA=null;if(!RA)RA=new(window.AudioContext||window.webkitAudioContext)();}catch(e){}return RA;};var els=[].slice.call(document.querySelectorAll('audio,video'));els.forEach(function(el){if(el.__ubh)return;try{var ctx=eco();var src;try{src=ctx.createMediaElementSource(el);}catch(e){el.volume=Math.min(1,g()/100);el.__ubh=true;return;}var n=ctx.createGain();n.gain.value=gainV(g());src.connect(n);n.connect(ctx.destination);media.push(n);el.__ubh=true;}catch(e){}});try{document.addEventListener('pointerdown',function(e){try{if(RA&&RA.state==='suspended')RA.resume();}catch(x){}},true);}catch(e){}}" +
       "scan();window.addEventListener('load',function(){setTimeout(scan,300);});" +
       "try{new MutationObserver(scan).observe(document.documentElement,{childList:true,subtree:true});}catch(e){}" +
-      "window.onubvol=function(){var val=g();var gg=gainV(val),bb=boostV(val);masters.forEach(function(m){if(m){if(m.g&&m.g.gain)m.g.gain.value=gg;if(m.f&&m.f.gain)m.f.gain.value=bb;}});media.forEach(function(m){if(m&&m.gain)m.gain.value=1;});};" +
+      "window.onubvol=function(){var val=g();var gg=gainV(val),bb=boostV(val);masters.forEach(function(m){if(m){if(m.g&&m.g.gain)m.g.gain.value=gg;if(m.f&&m.f.gain)m.f.gain.value=bb;}});media.forEach(function(m){if(m&&m.gain)m.gain.value=gg;});};" +
       "window.onubvol();" +
       "}catch(e){}})();";
 function injectg4mesAudio(fw, doc) {
@@ -5583,16 +5599,31 @@ if (/<head/i.test(html)) html = html.replace(/<head([^>]*)>/i, '<head$1>' + ytSt
       finishLoading();
     }
 
-    function fetchg4mesAndPlay(url, depth, targetDoc, onHtml) {
+    function fetchWithTimeout(url, method, ms) {
+      var ctrl = null;
+      try { if (typeof AbortController !== 'undefined') ctrl = new AbortController(); } catch (e) {}
+      var p = null;
+      try { p = fetch(url, ctrl ? { method: method || 'GET', signal: ctrl.signal } : { method: method || 'GET' }); }
+      catch (e) { return Promise.reject(e); }
+      if (!ctrl) return p;
+      var timer = null;
+      var timeout = new Promise(function(_, rej) {
+        timer = setTimeout(function() { try { ctrl.abort(); } catch (e2) {} rej(new Error('timeout')); }, ms || 20000);
+      });
+      return Promise.race([p, timeout]).then(function(r) { try { clearTimeout(timer); } catch (e) {} return r; }, function(e) { try { clearTimeout(timer); } catch (e2) {} throw e; });
+    }
+
+    function fetchg4mesAndPlay(url, depth, targetDoc, onHtml, attempt) {
       if (depth > 3) {
         if (onHtml) { onHtml(null, url); return; }
         if (targetDoc) { writeg4mesIntoFrame(brandedPage('<div class="box"><div class="err-title">g4mes not found</div><div class="sub">Could not load this g4mes in a new tab.</div></div>'), 'about:blank', targetDoc); return; }
         showg4mesError(currentg4mesName);
         return;
       }
-      fetch(url, { method: 'HEAD' })
-        .then(function(r) { return r.ok ? fetch(url) : Promise.reject(new Error('head-failed')); })
-        .catch(function() { return fetch(url); })
+      attempt = attempt || 0;
+      fetchWithTimeout(url, 'HEAD', 15000)
+        .then(function(r) { return r.ok ? fetchWithTimeout(url, 'GET', 30000) : Promise.reject(new Error('head-failed')); })
+        .catch(function() { return fetchWithTimeout(url, 'GET', 30000); })
         .then(function(r) { if (!r.ok) throw new Error('get-failed'); return r.text(); })
         .then(function(html) {
           var embed = extractEmbedg4mes(html, url);
@@ -5604,6 +5635,10 @@ if (/<head/i.test(html)) html = html.replace(/<head([^>]*)>/i, '<head$1>' + ytSt
           writeg4mesIntoFrame(html, url, targetDoc);
         })
         .catch(function() {
+          if (attempt < 2 && !targetDoc && !onHtml) {
+            setTimeout(function() { fetchg4mesAndPlay(url, depth, targetDoc, onHtml, attempt + 1); }, 1500);
+            return;
+          }
           if (onHtml) { onHtml(null, url); return; }
           if (targetDoc) { writeg4mesIntoFrame(brandedPage('<div class="box"><div class="err-title">g4mes not found</div><div class="sub">Could not load this g4mes in a new tab.</div></div>'), 'about:blank', targetDoc); return; }
           showg4mesError(currentg4mesName);
@@ -5663,8 +5698,8 @@ if (/<head/i.test(html)) html = html.replace(/<head([^>]*)>/i, '<head$1>' + ytSt
 
     function openg4mesInTab(url, features) {
       if (!url) return;
-      var useBlob = false;
-      try { useBlob = localStorage.getItem('g4mesTabMode') === 'blob'; } catch (e) {}
+      var useBlob = window.__isBlobPage === true;
+      if (!useBlob) { try { useBlob = localStorage.getItem('g4mesTabMode') === 'blob'; } catch (e) {} }
       if (useBlob) { openg4mesInBlob(url, features); return; }
       var w = features ? window.open('', '_blank', features) : window.open('', '_blank');
       if (!w) return;
@@ -6196,7 +6231,8 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
     }
 
     // Load saved settings
-    var savedAccent = localStorage.getItem('accentColorV2');
+    var savedAccent = null;
+    try { savedAccent = localStorage.getItem('accentColorV2'); } catch (e) {}
     if (savedAccent) setAccent(savedAccent);
     localStorage.removeItem('siteTheme');
     var savedTheme = localStorage.getItem('loadingTheme') || 'lightspeed';
@@ -7406,8 +7442,8 @@ let DATA = {
         var _gc1 = document.getElementById('gradient-c1');
         var _gc2 = document.getElementById('gradient-c2');
         var _ga = document.getElementById('gradient-angle');
-        if (_gc1) _gc1.value = get('gradientC1') || '#667eea';
-        if (_gc2) _gc2.value = get('gradientC2') || '#764ba2';
+        if (_gc1) _gc1.value = get('gradientC1') || '#3d4c8c';
+        if (_gc2) _gc2.value = get('gradientC2') || '#472d61';
         if (_ga) _ga.value = get('gradientAngle') || '135';
       } catch (e) {}
 
@@ -7426,7 +7462,7 @@ let DATA = {
       } catch (e) {}
 
       try {
-        setCheck('g4mes-tab-blob-check', get('g4mesTabMode') === 'blob');
+        setCheck('g4mes-tab-blob-check', window.__isBlobPage === true || get('g4mesTabMode') === 'blob');
       } catch (e) {}
 
       try {
