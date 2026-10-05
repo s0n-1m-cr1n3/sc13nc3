@@ -119,7 +119,7 @@
     html.g4mes-open #custom-bg:not(.wallpaper){background-image:url('https://quantil.jsdelivr.net/gh/matheveryday25/math/UBbannerDarken.png') !important;background-size:cover;background-position:center;background-repeat:no-repeat}
     html.g4mes-open #custom-bg:not(.wallpaper)::after{content:'';position:absolute;inset:0;background:rgb(var(--accent-rgb));mix-blend-mode:color;opacity:0.85}
     html.perf-mode img,html.perf-mode picture{display:none !important}
-    html.perf-mode #bg-canvas,html.perf-mode #starfield-bg,html.perf-mode #topography-canvas,html.perf-mode #matrix-canvas,html.perf-mode #waves-bg,html.perf-mode #globe-bg,html.perf-mode #dots-bg,html.perf-mode #fog-bg,html.perf-mode #tunnel-bg,html.perf-mode #noise-bg,html.perf-mode #custom-bg,html.perf-mode #bg-canvas canvas{display:none !important}
+    html.perf-mode #bg-canvas,html.perf-mode #starfield-bg,html.perf-mode #topography-canvas,html.perf-mode #matrix-canvas,html.perf-mode #waves-bg,html.perf-mode #globe-bg,html.perf-mode #dots-bg,html.perf-mode #fog-bg,html.perf-mode #tunnel-bg,html.perf-mode #noise-bg,html.perf-mode #ember-bg,html.perf-mode #particles-bg,html.perf-mode #custom-bg,html.perf-mode #bg-canvas canvas{display:none !important}
     html.perf-mode body::after,html.perf-mode body:after{display:none !important}
     html.perf-mode #home,html.perf-mode .home-music-player,html.perf-mode .home-music-volume{display:none !important}
     html.perf-mode #loading-screen,html.perf-mode #boot-screen,html.perf-mode #gv-loading,html.perf-mode .loading-indicator{display:none !important}
@@ -633,6 +633,10 @@
       display: block;
     }
     .g4mes-cat:not(:has(img)) { padding: 10px 14px; }
+    .g4mes-cat:has(img) { padding: 0; overflow: hidden; }
+    .g4mes-cat:has(img) img.cat-logo {
+      width: 54px; height: 54px; border: none; border-radius: 6px; background: #000;
+    }
     .g4mes-cat:hover, .g4mes-cat.active {
       background: var(--accent); color: #000000;
       box-shadow: 0 0 12px rgba(var(--accent-rgb),0.4);
@@ -1616,6 +1620,69 @@
   <div class="starfield" id="starfield-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;"><div class="starfield-origin"></div></div>
 
   <div id="noise-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></div>
+  <style id="ember-style">
+    #ember-bg .ember-layer {
+      position: absolute; inset: -10%;
+      pointer-events: none; will-change: transform;
+    }
+    #ember-bg .ember-grid {
+      background-image:
+        linear-gradient(rgba(var(--accent-rgb), .22) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(var(--accent-rgb), .22) 1px, transparent 1px);
+      background-size: 56px 56px;
+      -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, transparent 68%);
+              mask-image: radial-gradient(ellipse at center, #000 0%, transparent 68%);
+    }
+    #ember-bg .ember-stars-a {
+      background-image:
+        radial-gradient(1px 1px at 12% 22%, rgba(var(--accent-rgb),.7), transparent 60%),
+        radial-gradient(1px 1px at 78% 14%, rgba(var(--accent-rgb),.5), transparent 60%),
+        radial-gradient(1.5px 1.5px at 34% 74%, rgba(var(--accent-rgb),.6), transparent 60%),
+        radial-gradient(1px 1px at 88% 66%, rgba(var(--accent-rgb),.55), transparent 60%),
+        radial-gradient(1px 1px at 55% 40%, rgba(var(--accent-rgb),.4), transparent 60%),
+        radial-gradient(1px 1px at 6% 88%, rgba(var(--accent-rgb),.5), transparent 60%);
+    }
+    #ember-bg .ember-stars-b {
+      background-image:
+        radial-gradient(2px 2px at 22% 48%, rgba(var(--accent-rgb),.85), transparent 60%),
+        radial-gradient(2px 2px at 68% 82%, rgba(var(--accent-rgb),.65), transparent 60%),
+        radial-gradient(1.5px 1.5px at 92% 36%, rgba(var(--accent-rgb),.75), transparent 60%),
+        radial-gradient(2px 2px at 44% 10%, rgba(var(--accent-rgb),.65), transparent 60%);
+    }
+    #ember-bg .ember-orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(70px); pointer-events: none; will-change: transform;
+    }
+    #ember-bg .ember-one {
+      width: 38vmax; height: 38vmax; left: -8vmax; top: -10vmax;
+      background: radial-gradient(circle, rgba(var(--accent-rgb), .22), transparent 65%);
+    }
+    #ember-bg .ember-two {
+      width: 34vmax; height: 34vmax; right: -10vmax; bottom: -12vmax;
+      background: radial-gradient(circle, rgba(var(--accent-rgb), .16), transparent 65%);
+    }
+    #ember-bg .ember-spot {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 40%), rgba(var(--accent-rgb), .10), transparent 60%);
+    }
+    #ember-bg .ember-vignette {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, .75) 100%);
+    }
+  </style>
+  <div id="ember-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden;">
+    <div class="ember-layer ember-grid" data-depth="4"></div>
+    <div class="ember-layer ember-stars-a" data-depth="8"></div>
+    <div class="ember-layer ember-stars-b" data-depth="18"></div>
+    <div class="ember-orb ember-one" data-depth="30"></div>
+    <div class="ember-orb ember-two" data-depth="-24"></div>
+    <div class="ember-spot"></div>
+    <div class="ember-vignette"></div>
+  </div>
+  <style id="particles-style">
+    #particles-bg canvas{position:absolute;top:0;left:0;width:100%!important;height:100%!important;display:block;}
+  </style>
+  <div id="particles-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden;"></div>
   <div id="custom-bg" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;background-size:cover;background-position:center;background-repeat:no-repeat;pointer-events:none;"></div>
 
 
@@ -2246,6 +2313,10 @@
             <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/scratch.png" alt="Scratch Editor">
             <div class="overlay"><span>Scratch Editor</span></div>
           </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/cine/index.html','Cine Cloud');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/cinecloud.png" alt="Cine Cloud">
+            <div class="overlay"><span>Cine Cloud</span></div>
+          </button>
         </div>
       </div>
 
@@ -2264,6 +2335,17 @@
 <button class="g4mes-cat" data-cat="ckv"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/chicken.png" alt="Chicken Kings Vault" title="Chicken Kings Vault"></button>
 <button class="g4mes-cat" data-cat="noah"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/noah.png" alt="Noah's Tutoring" title="Noah's Tutoring"></button>
 <button class="g4mes-cat" data-cat="lumin"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/lumin.png" alt="Lumin SDK" title="Lumin SDK"></button>
+<button class="g4mes-cat" data-cat="daknux"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/daknux.png" alt="Daknux" title="Daknux"></button>
+<button class="g4mes-cat" data-cat="kh0"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/3kho.png" alt="3kh0" title="3kh0"></button>
+<button class="g4mes-cat" data-cat="alexr"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/alexr.png" alt="Alexr" title="Alexr"></button>
+<button class="g4mes-cat" data-cat="hydra"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/hydra.png" alt="Hydra" title="Hydra"></button>
+<button class="g4mes-cat" data-cat="diesmos"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/diesmos.png" alt="Diesmos" title="Diesmos"></button>
+<button class="g4mes-cat" data-cat="gclass"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/classroomimage.png" alt="Google Class" title="Google Class"></button>
+<button class="g4mes-cat" data-cat="cc"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/ccported.png" alt="CCPorted" title="CCPorted"></button>
+<button class="g4mes-cat" data-cat="kh3"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/3kho.png" alt="3kh0" title="3kh0"></button>
+<button class="g4mes-cat" data-cat="bloxy"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/bloxy.png" alt="Bloxy" title="Bloxy"></button>
+<button class="g4mes-cat" data-cat="yt"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/youtube.png" alt="YouTube Playables" title="YouTube Playables"></button>
+<button class="g4mes-cat" data-cat="blox"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/blox.png" alt="Blox" title="Blox"></button>
         <button class="g4mes-cat" data-cat="all">All</button>
 <button class="g4mes-cat" data-cat="favs" style="color:#ff4444;">&#9829; Favs</button>
         </div>
@@ -2981,7 +3063,7 @@
             <img class="partner-img" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/epik.png" alt="Ale's Epik g4mes" loading="lazy">
             <h3>Ale's Epik Gаmеѕ</h3>
             <p>100+ Epik g4mes and tons of apps!</p>
-            <a href="https://sites.google.com/view/ales-epik-g4mes" target="_blank">Visit Site</a>
+            <a href="https://discord.gg/4cvSYWyA4y" target="_blank">Join Discord</a>
           </div>
           <div class="partner-card">
             <img class="partner-img" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/unite.png" alt="g4mes Unite" loading="lazy">
@@ -3042,7 +3124,7 @@
       </div>
 
       <div class="tab-content" id="settings">
-        <div style="font-size:13px;color:#fff;font-weight:bold;margin-bottom:12px;">Version 2026.10.01</div>
+        <div style="font-size:13px;color:#fff;font-weight:bold;margin-bottom:12px;">Version 2026.10.04</div>
         <div class="g4mes-grid" style="display:grid;gap:16px;">
           <div class="g4mes-card" style="padding:20px;">
             <div class="settings-card-head">
@@ -3088,6 +3170,40 @@
             <label style="display:flex;align-items:center;gap:10px;margin-top:8px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
               <input type="checkbox" id="g4mes-tab-blob-check" onchange="setg4mesTabBlob(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
               Open g4mes in blob
+            </label>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
+            <p style="color:#aaa;font-size:13px;font-weight:bold;">Home Screen Games</p>
+            <p style="color:#aaa;font-size:12px;margin-top:6px;">Search all stashes and pin games to always show on home. Empty slots fill with random games.</p>
+            <input type="text" id="home-pin-search" class="settings-input" placeholder="Search games to pin..." style="margin-top:8px;" oninput="searchHomePins(this.value)">
+            <div id="home-pin-results" style="display:none;margin-top:8px;max-height:180px;overflow-y:auto;background:rgba(0,0,0,0.3);border:1px solid rgba(var(--accent-rgb),0.3);border-radius:8px;padding:6px;"></div>
+            <p style="color:#aaa;font-size:13px;margin-top:12px;">Pinned (<span id="home-pinned-count">0</span>):</p>
+            <div id="home-pinned-list" style="margin-top:8px;max-height:180px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;"></div>
+            <div style="display:flex;gap:8px;margin-top:10px;align-items:center;flex-wrap:wrap;">
+              <label style="color:#aaa;font-size:13px;">Show:</label>
+              <input type="number" id="home-count" class="settings-input" min="1" max="10" value="5" style="width:64px;" onchange="setHomeCount(this.value)">
+              <label style="color:#aaa;font-size:13px;">games</label>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
+              <button class="settings-btn" onclick="fillHomeFromFavs()">Use My Favorites</button>
+              <button class="settings-btn" onclick="clearHomePins()">Clear Pins</button>
+            </div>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
+            <p style="color:#aaa;font-size:13px;font-weight:bold;">Home Sections</p>
+            <label style="display:flex;align-items:center;gap:10px;margin-top:10px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
+              <input type="checkbox" id="home-sec-search" checked onchange="setHomeSection('search', this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
+              Search bar
+            </label>
+            <label style="display:flex;align-items:center;gap:10px;margin-top:8px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
+              <input type="checkbox" id="home-sec-date" checked onchange="setHomeSection('date', this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
+              Date
+            </label>
+            <label style="display:flex;align-items:center;gap:10px;margin-top:8px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
+              <input type="checkbox" id="home-sec-quote" checked onchange="setHomeSection('quote', this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
+              Quote
+            </label>
+            <label style="display:flex;align-items:center;gap:10px;margin-top:8px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
+              <input type="checkbox" id="home-sec-social" checked onchange="setHomeSection('social', this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;">
+              Social links
             </label>
           </div>
           <div class="g4mes-card" style="padding:20px;">
@@ -3161,9 +3277,9 @@
               <button class="color-swatch" style="background:#cca44c;" onclick="setAccent('#cca44c')" title="Gold"></button>
               <button class="color-swatch" style="background:#ee204a;" onclick="setAccent('#ee204a')" title="Red"></button>
               <button class="color-swatch" style="background:#00ff9d;" onclick="setAccent('#00ff9d')" title="Green"></button>
-              <button class="color-swatch" style="background:#0678d2;" onclick="setAccent('#0678d2')" title="Blue"></button>
-              <button class="color-swatch" style="background:#7b2cbf;" onclick="setAccent('#7b2cbf')" title="Purple"></button>
-              <button class="color-swatch" style="background:#ff3399;" onclick="setAccent('#ff3399')" title="Pink"></button>
+              <button class="color-swatch" style="background:#317fd3;" onclick="setAccent('#317fd3')" title="Blue"></button>
+              <button class="color-swatch" style="background:#8651f3;" onclick="setAccent('#8651f3')" title="Purple"></button>
+              <button class="color-swatch" style="background:#f373b6;" onclick="setAccent('#f373b6')" title="Pink"></button>
               <button class="color-swatch" style="background:#ffffff;border-color:#666;" onclick="setAccent('#ffffff')" title="White"></button>
             </div>
             <div style="display:flex;gap:8px;margin-top:10px;">
@@ -3179,10 +3295,14 @@
               <option value="matrix">Matrix</option>
               <option value="lines">Lines</option>
               <option value="noise">Noise</option>
-              <option value="custom">Custom Image</option>
+              <option value="ember">Ember</option>
+              <option value="particles">Particles</option>
+                <option value="custom">Image</option>
               <option value="gradient">Gradient</option>
             </select>
             <div id="custom-wallpaper-ui" style="display:none;margin-top:12px;">
+              <p style="color:#aaa;font-size:13px;margin-bottom:6px;">Gallery</p>
+              <div id="wallpaper-presets" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:8px;margin-bottom:10px;max-height:220px;overflow-y:auto;padding-right:4px;"></div>
               <label for="wallpaper-file" style="display:inline-block;padding:8px 16px;background:#333;color:#fff;border-radius:6px;cursor:pointer;font-size:13px;margin-bottom:8px;">Choose Image</label>
               <input type="file" id="wallpaper-file" accept="image/*" style="display:none;" onchange="handleWallpaperFile(this)">
               <input type="text" id="wallpaper-url" class="settings-input" placeholder="Or paste image URL..." style="width:100%;margin-top:6px;" onchange="handleWallpaperUrl(this.value)">
@@ -3301,7 +3421,7 @@
                 <option value="diamond">Diamond</option>
                 <option value="x">X</option>
                 <option value="chevron">Chevron</option>
-                <option value="custom">Custom Image</option>
+              <option value="custom">Image</option>
               </select>
               <input type="color" id="crosshair-color" value="#ff6600" onchange="setCrosshairColor(this.value)" style="width:44px;height:36px;border:2px solid var(--accent);border-radius:6px;background:transparent;cursor:pointer;flex-shrink:0;">
             </div>
@@ -3330,9 +3450,9 @@
   <div id="g4mes-viewer">
     <div class="g4mes-viewer-bar">
       <div class="gv-left">
-        <button class="gv-btn" id="gv-newwindow" title="New Tab" onclick="openg4mesInTab(gvOrigUrl)" style="display:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19,2 C20.5976809,2 21.9036609,3.24891996 21.9949073,4.82372721 L22,5 L22,15 C22,16.5976809 20.75108,17.9036609 19.1762728,17.9949073 L19,18 L15,18 L15,16 L19,16 C19.5128358,16 19.9355072,15.6139598 19.9932723,15.1166211 L20,15 L20,6 L4,6 L4,15 C4,15.5128358 4.38604019,15.9355072 4.88337887,15.9932723 L5,16 L9,16 L9,18 L5,18 C3.40231912,18 2.09633912,16.75108 2.00509269,15.1762728 L2,15 L2,5 C2,3.40231912 3.24891996,2.09633912 4.82372721,2.00509269 L5,2 L19,2 Z M12.082,8.003 L12.079,8.002 L12.2335141,8.02742266 L12.2335141,8.02742266 L12.3416665,8.05989459 L12.3416665,8.05989459 L12.4232215,8.09367336 L12.5207088,8.14599545 L12.5207088,8.14599545 L12.5951593,8.19631351 L12.5951593,8.19631351 L12.7071068,8.29289322 L16.7071068,12.2928932 C17.0976311,12.6834175 17.0976311,13.3165825 16.7071068,13.7071068 C16.3466228,14.0675907 15.7793918,14.0953203 15.3871006,13.7902954 L15.2928932,13.7071068 L13,11.414 L13,21 C13,21.5522847 12.5522847,22 12,22 C11.4477153,22 11,21.5522847 11,21 L11,11.416 L8.70710678,13.7071068 C8.34662282,14.0675907 7.77939176,14.0953203 7.38710056,13.7902954 L7.29289322,13.7071068 C6.93240926,13.3466228 6.90467972,12.7793918 7.20970461,12.3871006 L7.29289322,12.2928932 L11.2928932,8.29289322 L11.336853,8.2514958 L11.336853,8.2514958 L11.4046934,8.19633458 L11.4046934,8.19633458 L11.5159379,8.12467117 L11.5769009,8.09365378 L11.5769009,8.09365378 L11.6583496,8.05988586 L11.6583496,8.05988586 L11.734007,8.03584514 L11.734007,8.03584514 L11.8825258,8.00683422 L11.8825258,8.00683422 L11.9667532,8.00054939 L11.9667532,8.00054939 L12.082,8.003 Z"/></svg></button>
-        <button class="gv-btn" id="gv-popout" title="Pop Out" onclick="openg4mesInTab(gvOrigUrl,'width=960,height=640,menubar=no,toolbar=no,location=no,status=no')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></button>
-        <span class="gv-vol" title="g4mes volume"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M11 5L6 9H3v6h3l5 4V5z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input type="range" class="gv-range" data-gv-slider min="0" max="10000" value="100"><span class="gv-vol-pct" data-gv-pct>100%</span></span>
+        <button class="gv-btn" id="gv-newwindow" title="New Tab" onclick="openg4mesInTab(gvOrigUrl)" style="display:none"><svg class="ico" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"></rect><path d="M3 9h18"></path></svg></button>
+        <button class="gv-btn" id="gv-popout" title="Pop Out" onclick="openg4mesInTab(gvOrigUrl,'width=960,height=640,menubar=no,toolbar=no,location=no,status=no')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></button>
+        <span class="gv-vol" title="g4mes volume"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M16.0004 9.00009C16.6281 9.83575 17 10.8745 17 12.0001C17 13.1257 16.6281 14.1644 16.0004 15.0001M18 5.29177C19.8412 6.93973 21 9.33459 21 12.0001C21 14.6656 19.8412 17.0604 18 18.7084M4.6 9.00009H5.5012C6.05213 9.00009 6.32759 9.00009 6.58285 8.93141C6.80903 8.87056 7.02275 8.77046 7.21429 8.63566C7.43047 8.48353 7.60681 8.27191 7.95951 7.84868L10.5854 4.69758C11.0211 4.17476 11.2389 3.91335 11.4292 3.88614C11.594 3.86258 11.7597 3.92258 11.8712 4.04617C12 4.18889 12 4.52917 12 5.20973V18.7904C12 19.471 12 19.8113 11.8712 19.954C11.7597 20.0776 11.594 20.1376 11.4292 20.114C11.239 20.0868 11.0211 19.8254 10.5854 19.3026L7.95951 16.1515C7.60681 15.7283 7.43047 15.5166 7.21429 15.3645C7.02275 15.2297 6.80903 15.1296 6.58285 15.0688C6.32759 15.0001 6.05213 15.0001 5.5012 15.0001H4.6C4.03995 15.0001 3.75992 15.0001 3.54601 14.8911C3.35785 14.7952 3.20487 14.6422 3.10899 14.4541C3 14.2402 3 13.9601 3 13.4001V10.6001C3 10.04 3 9.76001 3.10899 9.54609C3.20487 9.35793 3.35785 9.20495 3.54601 9.10908C3.75992 9.00009 4.03995 9.00009 4.6 9.00009Z"/></svg><input type="range" class="gv-range" data-gv-slider min="0" max="10000" value="100"><span class="gv-vol-pct" data-gv-pct>100%</span></span>
       </div>
       <span class="g4mes-title" id="gv-title"><span id="gv-title-text">Loading...</span></span>
       <div class="gv-right">
@@ -3406,9 +3526,9 @@
             <button class="color-swatch" style="background:#cca44c;" onclick="setAccent('#cca44c')" title="Gold"></button>
             <button class="color-swatch" style="background:#ee204a;" onclick="setAccent('#ee204a')" title="Red"></button>
             <button class="color-swatch" style="background:#00ff9d;" onclick="setAccent('#00ff9d')" title="Green"></button>
-            <button class="color-swatch" style="background:#0678d2;" onclick="setAccent('#0678d2')" title="Blue"></button>
-            <button class="color-swatch" style="background:#7b2cbf;" onclick="setAccent('#7b2cbf')" title="Purple"></button>
-            <button class="color-swatch" style="background:#ff3399;" onclick="setAccent('#ff3399')" title="Pink"></button>
+            <button class="color-swatch" style="background:#317fd3;" onclick="setAccent('#317fd3')" title="Blue"></button>
+            <button class="color-swatch" style="background:#8651f3;" onclick="setAccent('#8651f3')" title="Purple"></button>
+            <button class="color-swatch" style="background:#f373b6;" onclick="setAccent('#f373b6')" title="Pink"></button>
             <button class="color-swatch" style="background:#ffffff;border-color:#666;" onclick="setAccent('#ffffff')" title="White"></button>
           </div>
           <p>Background:</p>
@@ -3567,6 +3687,75 @@
       localStorage.setItem('cdnMirror', url);
       var sel = document.getElementById('cdn-select');
       if (sel) sel.value = url;
+      try { refreshCdnBases(); } catch (e) {}
+      var n = 0;
+      try { n = applyMirrorToDom(); } catch (e) {}
+      // Refetch stash data through the new mirror and re-render.
+      try {
+        if (typeof DATA !== 'undefined') Object.keys(DATA).forEach(function(k) { DATA[k] = []; });
+        var btn = document.querySelector('.g4mes-cat.active');
+        if (btn && typeof btn.click === 'function') btn.click();
+        if (typeof renderHomeG4mes === 'function') renderHomeG4mes();
+      } catch (e) {}
+      try { showToast('CDN mirror applied (' + n + ' urls rewritten)'); } catch (e) {}
+    }
+    function refreshCdnBases() {
+      NOAH_BASE = _cdn + '/gh/NoahsAmazingTutoringHelp/Noahs-Calculus-Tutor@master';
+      GN_HTML_URL = _cdn + '/gh/freebuisness/html@main';
+      GN_COVER_URL = _cdn + '/gh/freebuisness/covers@main';
+      DAKNUX_COVER = _cdn + '/gh/daknux/covers@main';
+      DAKNUX_HTML = _cdn + '/gh/daknux/html@main';
+      KH0_BASE = _cdn + '/gh/3kh0/3kh0-lite@main';
+      ALEXR_BASE = _cdn + '/gh/dskjfoisjfsjio/alexrsworld@main';
+      HYDRA_BASE = _cdn + '/gh/zennedu/hydra@main';
+      DIESMOS_BASE = _cdn + '/gh/aDiesmos/HTMLFILES@main';
+      DIESMOS_IMG = _cdn + '/gh/aDiesmos/images@main';
+      GCLASS_BASE = _cdn + '/gh/bloxcraft-st/google-class-files@main';
+      CC_BASE = _cdn + '/gh/tharun9772/game-assets@main';
+      KH3_BASE = _cdn + '/gh/tharun9772/3kh0-assets@main';
+      BLOXY_HTML = _cdn + '/gh/bloxys-playables/html-files@main';
+      BLOXY_EMU = _cdn + '/gh/bloxys-playables/emulator-files@main';
+      BLOX_BASE = _cdn + '/gh/tharun9772/Bloxcraft-UBG@main';
+      ELITE_BASE = _cdn + '/gh/1234chromebook1234-creator/ww@main';
+      CKV_BASE = _cdn + '/gh/carbonicality/ChickenKingsVault@main';
+    }
+    // Rewrite every jsdelivr-hosted page asset (images, audio, styles, links)
+    // to the active mirror. Game-viewer contents are left untouched.
+    function applyMirrorToDom() {
+      var count = 0;
+      function swap(u) {
+        if (!u || u.indexOf('jsdelivr.net') === -1 || typeof toCdnUrl !== 'function') return u;
+        var v = toCdnUrl(u);
+        if (v !== u) count++;
+        return v;
+      }
+      function inViewer(el) { try { return el.closest && el.closest('#g4mes-viewer'); } catch (e) { return false; } }
+      document.querySelectorAll('img[src], source[src], video[src], audio[src], track[src], script[src], link[href], a[href]').forEach(function(el) {
+        if (inViewer(el)) return;
+        var attr = el.hasAttribute('src') ? 'src' : 'href';
+        var cur = el.getAttribute(attr);
+        var nv = swap(cur);
+        if (nv !== cur) el.setAttribute(attr, nv);
+      });
+      document.querySelectorAll('img[srcset], source[srcset]').forEach(function(el) {
+        if (inViewer(el)) return;
+        var cur = el.getAttribute('srcset');
+        if (!cur || cur.indexOf('jsdelivr.net') === -1) return;
+        var nv = cur.split(',').map(function(p) {
+          var t = p.trim().split(/\s+/);
+          t[0] = swap(t[0]);
+          return t.join(' ');
+        }).join(', ');
+        if (nv !== cur) el.setAttribute('srcset', nv);
+      });
+      document.querySelectorAll('[style]').forEach(function(el) {
+        if (inViewer(el)) return;
+        var v = el.getAttribute('style');
+        if (!v || v.indexOf('jsdelivr.net') === -1) return;
+        var nv = v.replace(/https?:\/\/[^/)\s'"]*\.jsdelivr\.net\/[^)\s'"]*/g, function(m) { return swap(m); });
+        if (nv !== v) el.setAttribute('style', nv);
+      });
+      return count;
     }
 
     /* ─── BANNER ADS (disabled) ─── */
@@ -4321,6 +4510,8 @@
     let topographyInitialized = false;
     let matrixInitialized = false;
     let noiseInitialized = false;
+    let emberInitialized = false;
+    let particlesInitialized = false;
     var _shaderArtPromise = null;
     function ensureShaderArt() {
       if (!_shaderArtPromise) {
@@ -4340,6 +4531,7 @@
         shaderArt.setAttribute('dpr','1');
         shaderArt.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;';
         var hex=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#ff6600';
+        if (!/^#[0-9a-fA-F]{6}$/.test(hex)) hex = '#ff6600';
         var r=parseInt(hex.slice(1,3),16)/255,g=parseInt(hex.slice(3,5),16)/255,b=parseInt(hex.slice(5,7),16)/255;
         shaderArt.innerHTML='<script type="frag">precision highp float;\nuniform float time;\nuniform vec2 resolution;\n#define PI 3.141592654\n#define DEG PI/180.\nvec2 rotate(vec2 p,float a){return vec2(p.x*cos(a)-p.y*sin(a),p.x*sin(a)+p.y*cos(a));}\nfloat nooise(vec2 p){float n=.5+.5*(sin(p.x*.5+cos(p.y*4.+.2*cos(p.x*2.+time*.5)+time*.3)+time*.3)*cos(p.y*.7+sin(p.x*3.+.3*cos(p.y*2.+time*.6)+time*.4)+time*.7));return n;}\nvec3 bg(){vec2 p0=gl_FragCoord.xy/resolution.xy*2.-1.;p0.x*=resolution.x/resolution.y;vec2 p=rotate(p0*.8,time*.05);float n=(nooise(p)+nooise(p*2.)+nooise(p*5.))/3.;n=n*sin(n*n*23.+time*.2);n=clamp(smoothstep(.3,.35,n)-smoothstep(.4,.45,n),0.,1.);return vec3('+r.toFixed(4)+','+g.toFixed(4)+','+b.toFixed(4)+')*n;}\nvoid main(){float s=.8+.2*smoothstep(0.,4.,mod(gl_FragCoord.y,4.));gl_FragColor=vec4(bg()*s,1.);}\n<\/script>';
         el.appendChild(shaderArt);
@@ -4350,13 +4542,169 @@
       if (el) { el.innerHTML = ''; }
     }
 
+    function startEmber() {
+      if (emberInitialized) return;
+      emberInitialized = true;
+      window.__emberActive = true;
+      (function () {
+        'use strict';
+        var root = document.documentElement;
+        var reduceMotion = false, isTouch = false;
+        try {
+          reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+          isTouch = matchMedia('(hover: none)').matches;
+        } catch (e) {}
+        var layers = Array.prototype.map.call(document.querySelectorAll('#ember-bg [data-depth]'), function (el) {
+          return { el: el, d: parseFloat(el.getAttribute('data-depth')) || 0 };
+        });
+        var tx = 0, ty = 0, cx = 0, cy = 0, running = false;
+        function paint() {
+          for (var i = 0; i < layers.length; i++) {
+            var l = layers[i];
+            l.el.style.transform = 'translate3d(' + (-cx * l.d) + 'px,' + (-cy * l.d) + 'px,0)';
+          }
+        }
+        function frame(now) {
+          if (!window.__emberActive) { running = false; return; }
+          if (isTouch) { tx = Math.sin(now / 3000) * 0.5; ty = Math.cos(now / 3700) * 0.5; }
+          cx += (tx - cx) * 0.08;
+          cy += (ty - cy) * 0.08;
+          paint();
+          if (isTouch || Math.abs(tx - cx) > 0.0005 || Math.abs(ty - cy) > 0.0005) requestAnimationFrame(frame);
+          else running = false;
+        }
+        function kick() { if (!running) { running = true; requestAnimationFrame(frame); } }
+        window.addEventListener('mousemove', function (e) {
+          try {
+            root.style.setProperty('--mx', e.clientX + 'px');
+            root.style.setProperty('--my', e.clientY + 'px');
+          } catch (e2) {}
+          if (reduceMotion) return;
+          tx = e.clientX / innerWidth - 0.5;
+          ty = e.clientY / innerHeight - 0.5;
+          kick();
+        }, { passive: true });
+        if (isTouch && !reduceMotion) kick();
+        window.__emberKick = kick;
+      })();
+      try { if (window.__emberKick) window.__emberKick(); } catch (e) {}
+    }
+    function stopEmber() { window.__emberActive = false; }
+
+    var _particlesLibPromise = null;
+    var _particlesCDNs = [
+      'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js',
+      'https://gcore.jsdelivr.net/particles.js/2.0.0/particles.min.js',
+      'https://fastly.jsdelivr.net/particles.js/2.0.0/particles.min.js',
+      'https://jsdelivr.b-cdn.net/particles.js/2.0.0/particles.min.js'
+    ];
+    function ensureParticlesLib() {
+      if (typeof window.particlesJS !== 'undefined') return Promise.resolve();
+      if (!_particlesLibPromise) {
+        var _pi = 0;
+        var attempt = function() {
+          if (typeof window.particlesJS !== 'undefined') return Promise.resolve();
+          if (_pi >= _particlesCDNs.length) { _particlesLibPromise = null; return Promise.reject(new Error('all mirrors failed')); }
+          var u = _particlesCDNs[_pi++];
+          return loadScript(u).catch(function() { return attempt(); });
+        };
+        _particlesLibPromise = attempt();
+        _particlesLibPromise.catch(function() { _particlesLibPromise = null; });
+      }
+      return _particlesLibPromise;
+    }
+    function particlesConfig(color) {
+      return {
+        particles: {
+          number: { value: 80, density: { enable: true, value_area: 800 } },
+          color: { value: color },
+          shape: { type: 'circle', stroke: { width: 0, color: '#000000' }, polygon: { nb_sides: 5 } },
+          opacity: { value: 0.5, random: false, anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false } },
+          size: { value: 3, random: true, anim: { enable: false, speed: 40, size_min: 0.1, sync: false } },
+          line_linked: { enable: false, distance: 150, color: '#ffffff', opacity: 0.4, width: 1 },
+          move: { enable: true, speed: 1.578103233800683, direction: 'top', random: false, straight: false, out_mode: 'out', bounce: false, attract: { enable: false, rotateX: 600, rotateY: 1200 } }
+        },
+        interactivity: {
+          detect_on: 'canvas',
+          events: { onhover: { enable: false, mode: 'repulse' }, onclick: { enable: false, mode: 'push' }, resize: true },
+          modes: {
+            grab: { distance: 400, line_linked: { opacity: 1 } },
+            bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
+            repulse: { distance: 200, duration: 0.4 },
+            push: { particles_nb: 4 },
+            remove: { particles_nb: 2 }
+          }
+        },
+        retina_detect: true
+      };
+    }
+    function startParticles() {
+      var el = document.getElementById('particles-bg');
+      if (!el || el.querySelector('canvas')) return;
+      if (window.pJSDom === null || typeof window.pJSDom === 'undefined') window.pJSDom = [];
+      ensureParticlesLib().then(function() {
+        if (el.style.display === 'none' || el.querySelector('canvas')) return;
+        if (typeof window.particlesJS === 'undefined') return;
+        var hex = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#ff6600';
+        if (!/^#[0-9a-fA-F]{6}$/.test(hex)) hex = '#ff6600';
+        window.particlesJS('particles-bg', particlesConfig(hex));
+      }).catch(function() {});
+    }
+    function restartParticles() {
+      var el = document.getElementById('particles-bg');
+      if (!el || el.style.display === 'none') return;
+      ensureParticlesLib().then(function() {
+        if (typeof window.particlesJS === 'undefined') return;
+        var hex = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#ff6600';
+        if (!/^#[0-9a-fA-F]{6}$/.test(hex)) hex = '#ff6600';
+        window.particlesJS('particles-bg', particlesConfig(hex));
+        try {
+          var mine = [];
+          (window.pJSDom || []).forEach(function(p) {
+            try {
+              if (p && p.pJS && p.pJS.canvas && p.pJS.canvas.el && p.pJS.canvas.el.parentNode &&
+                  p.pJS.canvas.el.parentNode.id === 'particles-bg') mine.push(p);
+            } catch (e) {}
+          });
+          for (var i = 0; i < mine.length - 1; i++) {
+            (function(p) {
+              try { p.pJS.fn.vendors.destroypJS(); } catch (e) {}
+              try { var idx = window.pJSDom.indexOf(p); if (idx !== -1) window.pJSDom.splice(idx, 1); } catch (e) {}
+            })(mine[i]);
+          }
+          var cs = el.querySelectorAll('canvas');
+          for (var j = 0; j < cs.length - 1; j++) { try { cs[j].remove(); } catch (e) {} }
+        } catch (e) {}
+      }).catch(function() {});
+    }
+    function stopParticles() {
+      try {
+        var arr = (window.pJSDom && window.pJSDom.length) ? window.pJSDom.slice() : [];
+        for (var i = 0; i < arr.length; i++) {
+          try {
+            var p = arr[i];
+            if (p && p.pJS && p.pJS.canvas && p.pJS.canvas.el && p.pJS.canvas.el.parentNode &&
+                p.pJS.canvas.el.parentNode.id === 'particles-bg') {
+              p.pJS.fn.vendors.destroypJS();
+            }
+          } catch (e) {}
+        }
+      } catch (e) {}
+      if (window.pJSDom === null || typeof window.pJSDom === 'undefined') window.pJSDom = [];
+      var el = document.getElementById('particles-bg');
+      if (el) el.innerHTML = '';
+    }
+
     function setBackground(mode, silent) {
+      if (mode === 'flow') mode = 'starfield';
       if (mode !== 'perf-static') localStorage.setItem('bgMode', mode);
       const bgCanvas = document.getElementById('bg-canvas');
       const sfBg = document.getElementById('starfield-bg');
       const tCanvas = document.getElementById('topography-canvas');
       const mCanvas = document.getElementById('matrix-canvas');
       const noBg = document.getElementById('noise-bg');
+      const emBg = document.getElementById('ember-bg');
+      const paBg = document.getElementById('particles-bg');
       const cuBg = document.getElementById('custom-bg');
       // Hide all (safely — some elements may have been removed)
       if (bgCanvas) bgCanvas.style.display = 'none';
@@ -4364,6 +4712,8 @@
       if (tCanvas) tCanvas.style.display = 'none';
       if (mCanvas) mCanvas.style.display = 'none';
       if (noBg) noBg.style.display = 'none';
+      if (emBg) emBg.style.display = 'none';
+      if (paBg) paBg.style.display = 'none';
       if (cuBg) cuBg.style.display = 'none';
       // Toggle custom wallpaper UI
       var customUI = document.getElementById('custom-wallpaper-ui');
@@ -4374,6 +4724,8 @@
       if (topographyInitialized) { stopTopography(); topographyInitialized = false; }
       if (matrixInitialized) { stopMatrix(); matrixInitialized = false; }
       if (noiseInitialized) { stopNoise(); noiseInitialized = false; }
+      if (emberInitialized) { stopEmber(); emberInitialized = false; }
+      if (particlesInitialized) { stopParticles(); particlesInitialized = false; }
       // Show selected
       if (mode === 'starfield') {
         sfBg.style.display = 'block';
@@ -4387,11 +4739,23 @@
       } else if (mode === 'noise') {
         noBg.style.display = 'block';
         if (!noiseInitialized) { startNoise(); noiseInitialized = true; }
+      } else if (mode === 'ember') {
+        if (emBg) { emBg.style.display = 'block'; if (!emberInitialized) { startEmber(); emberInitialized = true; } }
+      } else if (mode === 'particles') {
+        if (paBg) { paBg.style.display = 'block'; if (!particlesInitialized) { startParticles(); particlesInitialized = true; } }
       } else if (mode === 'lines') {
         bgCanvas.style.display = 'block';
         if (window.__linesStart) window.__linesStart();
       } else if (mode === 'custom') {
         cuBg.style.display = 'block';
+        var hasWp = false;
+        try { hasWp = !!localStorage.getItem('customWallpaper'); } catch (e) {}
+        if (!hasWp) {
+          var drool = 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/cat8.png';
+          try { localStorage.setItem('customWallpaper', drool); } catch (e) {}
+          cuBg.style.backgroundImage = 'url(' + drool + ')';
+          if (typeof ubSyncWallpaperClass === 'function') ubSyncWallpaperClass();
+        }
       } else if (mode === 'gradient') {
         cuBg.style.display = 'block';
         cuBg.style.backgroundImage = getGradientCss() || '';
@@ -4421,6 +4785,7 @@
     }
     function bgShouldRun() {
       if (document.hidden) return false;
+      if (document.documentElement.classList.contains('page-hidden')) return false;
       var gv = document.getElementById('g4mes-viewer');
       if (gv && gv.classList.contains('active')) return false;
       return true;
@@ -4602,6 +4967,65 @@
       setBackground('custom');
       document.getElementById('bg-select').value = 'custom';
     }
+
+    var WALLPAPER_PRESETS = [
+      { n: 'Arch Linux', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/arch.png' },
+      { n: 'Attack On Titan', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/attackontitan.png' },
+      { n: 'Bazzite Linux', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/bazzite.png' },
+      { n: 'Meowl', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/cat1.png' },
+      { n: 'War Cat', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/cat2.png' },
+      { n: 'Explosion Cat', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/cat3.png' },
+      { n: 'Earth Cat', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/cat4.png' },
+      { n: 'Doorbell Cat', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/cat5.png' },
+      { n: 'Chef Cat', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/cat6.png' },
+      { n: 'Backrooms Cat', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/cat7.png' },
+      { n: 'Drool Cat', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/cat8.png' },
+      { n: 'Debian Linux', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/debian.png' },
+      { n: 'Dragon Ball', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/dragonball.png' },
+      { n: 'Fedora Linux', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/fedora.png' },
+      { n: 'Jujutsu Kaisen', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/jjk.png' },
+      { n: 'Kali Linux', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/kali.png' },
+      { n: 'Linux Mint', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/linuxmint.png' },
+      { n: 'Naruto', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/naruto.png' },
+      { n: 'One Piece', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/onepiece.png' },
+      { n: 'Pokemon', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/pokemon.png' },
+      { n: 'Ubuntu', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/ubuntu.png' },
+      { n: 'Windows 10 1809', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/win10.png' },
+      { n: 'Windows 10 22H2', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/win10dark.png' },
+      { n: 'Windows 11 (Light)', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/win11.png' },
+      { n: 'Windows 11 (Dark)', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/win11dark.png' },
+      { n: 'Windows 7', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/win7.png' },
+      { n: 'Windows 7 (Dark)', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/win7dark.png' },
+      { n: 'Windows 8', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/win8.png' },
+      { n: 'Windows 8.1', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/win8dark.png' },
+      { n: 'Windows XP', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/winxp.png' },
+      { n: 'Windows XP (Dark)', u: 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wallpaper/winxpdark.png' }
+    ];
+    function setWallpaperPreset(url) {
+      if (!url) return;
+      try { if (typeof toCdnUrl === 'function') url = toCdnUrl(url); } catch (e) {}
+      try { localStorage.setItem('customWallpaper', url); } catch (e) {}
+      var cuBg = document.getElementById('custom-bg');
+      if (cuBg) cuBg.style.backgroundImage = 'url(' + url + ')';
+      if (typeof ubSyncWallpaperClass === 'function') ubSyncWallpaperClass();
+      if (typeof setBackground === 'function') setBackground('custom');
+      var sel = document.getElementById('bg-select');
+      if (sel) sel.value = 'custom';
+    }
+    function buildWallpaperPresets() {
+      var wrap = document.getElementById('wallpaper-presets');
+      if (!wrap || wrap.childElementCount) return;
+      WALLPAPER_PRESETS.forEach(function(w) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.title = w.n;
+        b.setAttribute('aria-label', w.n);
+        b.style.cssText = 'border:1px solid rgba(255,255,255,0.15);cursor:pointer;border-radius:6px;width:100%;aspect-ratio:16/10;background-size:cover;background-position:center;padding:0;background-image:url(' + w.u + ');';
+        b.addEventListener('click', function() { setWallpaperPreset(w.u); });
+        wrap.appendChild(b);
+      });
+    }
+    buildWallpaperPresets();
 
     function ubSyncWallpaperClass() {
       var eq = document.getElementById('custom-bg');
@@ -4862,13 +5286,13 @@
         do { next = trackList[Math.floor(Math.random() * trackList.length)]; }
         while (next === bgAudio.src && trackList.length > 1);
         bgAudio.muted = false;
-        bgAudio.src = next;
+        bgAudio.src = toCdnUrl(next);
         bgAudio.play();
       };
       if (getMusicOnStartup()) {
         bgAudio.volume = 0;
         bgAudio.onended = window.playRandomTrack;
-        bgAudio.src = trackList[Math.floor(Math.random() * trackList.length)];
+        bgAudio.src = toCdnUrl(trackList[Math.floor(Math.random() * trackList.length)]);
         var playPromise = bgAudio.play();
         if (playPromise !== undefined) {
           playPromise.catch(function() {
@@ -5262,10 +5686,11 @@
     }
 
     function openg4mes(name, url, directSrc) {
+      url = String(url || '').trim();
+      try { if (typeof toCdnUrl === 'function') url = toCdnUrl(url); } catch (e) {}
       gvOrigUrl = url;
       currentg4mesName = name;
       currentg4mesDirectSrc = directSrc;
-      url = String(url || '').trim();
       var isDirect = directSrc || url.indexOf('quizizz.com') !== -1;
       document.getElementById('gv-newwindow').style.display = '';
       document.getElementById('gv-popout').style.display = '';
@@ -5569,6 +5994,32 @@ function injectg4mesAudio(fw, doc) {
       if (!/<base\b/i.test(html)) {
         html = html.replace(/<head(.*?)>/i, '<head$1><base href="' + base + '">');
       }
+      // Launcher pages that read config from their own query string (e.g. ?view=...)
+      // lose it under doc.write since the frame URL carries no query. Re-attach it
+      // first so location.search works as the page expects.
+      try {
+        var qi = String(url).indexOf('?');
+        if (qi !== -1) {
+          var qs = String(url).slice(qi);
+          if (/[?&][a-zA-Z]/.test(qs)) {
+            var qstub = '<scr' + 'ipt>try{history.replaceState(null,"",' + JSON.stringify(qs) + ');}catch(e){}</scr' + 'ipt>';
+            if (/<head/i.test(html)) html = html.replace(/<head([^>]*)>/i, '<head$1>' + qstub);
+            else html = qstub + html;
+          }
+        }
+      } catch (e) {}
+      // Host-root-relative asset paths (/js/x.js) break under doc.write since the
+      // document origin isn't the game host. CDN-hosted copies keep files relative
+      // to the repo dir, so resolve them against it (Blox-style app-viewer pages).
+      try {
+        var mRepo = base.match(/^(https?:\/\/[^/]+\/(?:gh\/[^/]+\/[^/@]+@[^/]+\/|[^/]+\/[^/]+\/[^/]+\/))/i);
+        if (mRepo) {
+          var repoBase = mRepo[1];
+          html = html.replace(/(\s(?:src|href))=(['"])\/(?!\/)/gi, function(mt, attr, q) {
+            return ' ' + attr + '=' + q + repoBase;
+          });
+        }
+      } catch (e) {}
       html = html.replace(/https?:\/\/[^/]*\.jsdelivr\.net\//g, _cdn + '/');
       if (_cdn.indexOf('cdn.staticdelivr.com') !== -1) html = html.replace(/@/g, '/');
       // Drop the YouTube Playables SDK: without a real host it mutes audio and nulls storage in an iframe.
@@ -5995,6 +6446,7 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       localStorage.setItem('accentColorV2', color);
       localStorage.removeItem('accentColor');
       if (noiseInitialized) { stopNoise(); startNoise(); }
+      if (particlesInitialized && typeof restartParticles === 'function') { restartParticles(); }
     }
     function setSiteTheme(theme) {
       var root = document.documentElement;
@@ -6263,20 +6715,37 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
 
     function normalizeg4mes(g) {
       const name = String(g.name || g.title || 'Unknown').trim();
-      const url = String(g.url || g.file || g.html || '').trim();
-      const img = String(g.img || g.image || '').trim();
+      var url = String(g.url || g.file || g.html || '').trim();
+      var img = String(g.img || g.image || '').trim() || 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/fallback.png';
+      try {
+        if (typeof toCdnUrl === 'function') {
+          if (url && url !== '#') url = toCdnUrl(url);
+          img = toCdnUrl(img);
+        }
+      } catch (e) {}
       const extra = {};
       for (const k in g) { if (!['name','title','url','file','html','img','image'].includes(k)) extra[k] = g[k]; }
       return Object.assign({}, extra, {
         name: name || 'Unknown',
         url: url || '#',
-        img: img || 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/fallback.png'
+        img: img
       });
     }
 
 let DATA = {
       ubz: [],
       gn: [],
+      daknux: [],
+      kh0: [],
+      alexr: [],
+      hydra: [],
+      diesmos: [],
+      gclass: [],
+      cc: [],
+      kh3: [],
+      bloxy: [],
+      yt: [],
+      blox: [],
       elite: [],
       ugs: [],
       seraph: [],
@@ -6291,6 +6760,17 @@ let DATA = {
     var STASH_NAMES = {
       ubz: 'UNBL0CKEDZ0NE',
       gn: 'GN-Math',
+      daknux: 'Daknux',
+      kh0: '3kh0 Lite',
+      alexr: 'Alexr',
+      hydra: 'Hydra',
+      diesmos: 'Diesmos',
+      gclass: 'Google Class',
+      cc: 'CCPorted',
+      kh3: '3kh0',
+      bloxy: 'Bloxy',
+      yt: 'YouTube Playables',
+      blox: 'Blox',
       elite: 'Elite g4mesz',
       ugs: 'Ultimate g4mes Stash',
       seraph: 'Seraph',
@@ -6306,7 +6786,7 @@ let DATA = {
     async function loadUBZ() {
       if(DATA.ubz.length) return;
       try {
-        const r = await fetch('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/data.json');
+        const r = await fetch(toCdnUrl('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/data.json'));
         if (!r.ok) throw new Error('fetch failed');
         const d = await r.json();
         DATA.ubz = (Array.isArray(d) ? d : d.games || [])
@@ -6323,7 +6803,7 @@ let DATA = {
     }
 
 // ─── Noah's Tutoring Hub ───
-    const NOAH_BASE = _cdn + '/gh/NoahsAmazingTutoringHelp/Noahs-Calculus-Tutor@master';
+    let NOAH_BASE = _cdn + '/gh/NoahsAmazingTutoringHelp/Noahs-Calculus-Tutor@master';
 
     function noahUrl(url) {
       if (!url) return '#';
@@ -6377,8 +6857,8 @@ let DATA = {
     }
 
     // ─── Other loaders ───
-    const GN_HTML_URL = _cdn + '/gh/freebuisness/html@main';
-    const GN_COVER_URL = _cdn + '/gh/freebuisness/covers@main';
+    let GN_HTML_URL = _cdn + '/gh/freebuisness/html@main';
+    let GN_COVER_URL = _cdn + '/gh/freebuisness/covers@main';
 
     async function loadGN(){
       if(DATA.gn.length) return;
@@ -6399,7 +6879,273 @@ let DATA = {
       } catch(e) { console.warn("GN load failed:", e); }
     }
 
-    const ELITE_BASE = _cdn + '/gh/1234chromebook1234-creator/ww@main';
+    let DAKNUX_COVER = _cdn + '/gh/daknux/covers@main';
+    let DAKNUX_HTML = _cdn + '/gh/daknux/html@main';
+
+    async function loadDaknux(){
+      if(DATA.daknux.length) return;
+      try {
+        let d = null;
+        try {
+          const r = await fetch(_cdn + '/gh/daknux/assets@latest/zones.json');
+          if (r.ok) d = await r.json();
+        } catch(e) {}
+        if (!d) {
+          const r2 = await fetch(_cdn + '/gh/daknux/assets@master/zones.json');
+          d = await r2.json();
+        }
+        DATA.daknux = d
+          .filter(g => g && g.id !== undefined && g.id >= 0 && g.name && !g.name.startsWith("[!]"))
+          .map(g => {
+            const gu = String(g.url || '').replace(/\{HTML_URL\}/g, DAKNUX_HTML).replace(/\{COVER_URL\}/g, DAKNUX_COVER).trim();
+            const rawCover = String(g.cover || '').replace(/\{COVER_URL\}/g, DAKNUX_COVER).trim();
+            return normalizeg4mes({
+              name: g.name,
+              img: rawCover.startsWith('http') ? rawCover : (DAKNUX_COVER + '/' + rawCover),
+              url: gu.startsWith('http') ? gu : (DAKNUX_HTML + '/' + g.id + '.html')
+            });
+          });
+      } catch(e) { console.warn("Daknux load failed:", e); }
+    }
+
+    let KH0_BASE = _cdn + '/gh/3kh0/3kh0-lite@main';
+
+    async function loadKh0(){
+      if(DATA.kh0.length) return;
+      try {
+        const r = await fetch('https://api.github.com/repos/3kh0/3kh0-lite/git/trees/main?recursive=1');
+        const d = await r.json();
+        const tree = Array.isArray(d.tree) ? d.tree : [];
+        const covers = {};
+        tree.forEach(function(f) {
+          if (!f || f.type !== 'blob' || typeof f.path !== 'string') return;
+          var m = f.path.match(/^projects\/([^/]+)\/([^/]+)$/);
+          if (!m) return;
+          if (!/\.(png|jpg|jpeg|webp|avif|gif)$/i.test(m[2])) return;
+          var fn = m[2].toLowerCase();
+          if (fn.indexOf('favicon') !== -1 || fn.indexOf('icon') !== -1) return;
+          (covers[m[1]] = covers[m[1]] || []).push(m[2]);
+        });
+        function pickCover(id) {
+          var list = covers[id] || [];
+          if (!list.length) return '';
+          var pick = list.find(function(f) { return /^thumb/i.test(f); })
+            || list.find(function(f) { return /^splash/i.test(f); })
+            || list.find(function(f) { return /^logo/i.test(f); })
+            || list[0];
+          return KH0_BASE + '/projects/' + id + '/' + pick;
+        }
+        DATA.kh0 = tree
+          .filter(function(f) { return f && f.type === 'blob' && /^projects\/[^/]+\/index\.html$/.test(f.path || ''); })
+          .map(function(f) {
+            var id = f.path.split('/')[1];
+            return normalizeg4mes({
+              name: id.replace(/[-_]+/g, ' '),
+              img: pickCover(id),
+              url: KH0_BASE + '/projects/' + id + '/index.html'
+            });
+          });
+      } catch(e) { console.warn("3kh0 load failed:", e); }
+    }
+
+    let ALEXR_BASE = _cdn + '/gh/dskjfoisjfsjio/alexrsworld@main';
+
+    async function loadAlexr(){
+      if(DATA.alexr.length) return;
+      try {
+        const r = await fetch(ALEXR_BASE + '/singlefilegames.json');
+        const d = await r.json();
+        DATA.alexr = (Array.isArray(d) ? d : []).map(function(g) {
+          return normalizeg4mes({
+            name: g.title || g.name,
+            img: g.img || g.image || '',
+            url: g.path || g.url || ''
+          });
+        }).filter(function(g) { return g.name && g.url && g.url !== '#'; });
+      } catch(e) { console.warn("Alexr load failed:", e); }
+    }
+
+    let HYDRA_BASE = _cdn + '/gh/zennedu/hydra@main';
+
+    async function loadHydra(){
+      if(DATA.hydra.length) return;
+      try {
+        const r = await fetch(HYDRA_BASE + '/gmes.json');
+        const d = await r.json();
+        DATA.hydra = (Array.isArray(d) ? d : []).map(function(g) {
+          var file = String(g.file_name || '').trim();
+          var thumb = String(g.thumb || '').trim();
+          return normalizeg4mes({
+            name: (g.title && String(g.title).trim()) || file.replace(/\.html$/i, ''),
+            img: thumb ? HYDRA_BASE + '/' + thumb.replace(/^\//, '') : '',
+            url: file ? HYDRA_BASE + '/gmes/' + file : ''
+          });
+        }).filter(function(g) { return g.name && g.url && g.url !== '#'; });
+      } catch(e) { console.warn("Hydra load failed:", e); }
+    }
+
+    let DIESMOS_BASE = _cdn + '/gh/aDiesmos/HTMLFILES@main';
+    let DIESMOS_IMG = _cdn + '/gh/aDiesmos/images@main';
+
+    async function loadDiesmos(){
+      if(DATA.diesmos.length) return;
+      try {
+        const r = await fetch('https://api.github.com/repos/aDiesmos/HTMLFILES/git/trees/main?recursive=1');
+        const d = await r.json();
+        const tree = Array.isArray(d.tree) ? d.tree : [];
+        var seen = {};
+        DATA.diesmos = [];
+        tree.forEach(function(f) {
+          if (!f || f.type !== 'blob' || typeof f.path !== 'string') return;
+          if (!/\.html$/i.test(f.path)) return;
+          var base = f.path.split('/').pop();
+          if (/^(index|404|test|testing|examples?|template)\.html$/i.test(base)) return;
+          var name = base.replace(/\.html$/i, '');
+          if (seen[name.toLowerCase()]) return;
+          seen[name.toLowerCase()] = true;
+          DATA.diesmos.push(normalizeg4mes({
+            name: name.replace(/[-_]+/g, ' '),
+            img: DIESMOS_IMG + '/' + name + '.jpg',
+            url: DIESMOS_BASE + '/' + f.path
+          }));
+        });
+      } catch(e) { console.warn("Diesmos load failed:", e); }
+    }
+
+    let GCLASS_BASE = _cdn + '/gh/bloxcraft-st/google-class-files@main';
+
+    async function loadGclass(){
+      if(DATA.gclass.length) return;
+      try {
+        const r = await fetch(GCLASS_BASE + '/assets/games.json');
+        const d = await r.json();
+        DATA.gclass = (Array.isArray(d) ? d : []).map(function(g) {
+          var file = String(g.url || '').trim();
+          return normalizeg4mes({
+            name: g.name,
+            img: g.img || g.image || '',
+            url: file ? (file.startsWith('http') ? file : GCLASS_BASE + '/' + file.replace(/^\//,'')) : ''
+          });
+        }).filter(function(g){ return g.name && g.url && g.url !== '#'; });
+      } catch(e) { console.warn("GClass load failed:", e); }
+    }
+
+    let CC_BASE = _cdn + '/gh/tharun9772/game-assets@main';
+
+    async function loadCc(){
+      if(DATA.cc.length) return;
+      try {
+        const r = await fetch(CC_BASE + '/ccported-stupid-game-lib.json');
+        const d = await r.json();
+        DATA.cc = (Array.isArray(d) ? d : []).map(function(g) {
+          var base = String(g.base || '').trim().replace(/\/+$/, '');
+          return normalizeg4mes({
+            name: g.name,
+            img: '',
+            url: base ? base + '/index.html' : ''
+          });
+        }).filter(function(g){ return g.name && g.url && g.url !== '#'; });
+      } catch(e) { console.warn("CCPorted load failed:", e); }
+    }
+
+    let KH3_BASE = _cdn + '/gh/tharun9772/3kh0-assets@main';
+
+    async function loadKh3(){
+      if(DATA.kh3.length) return;
+      try {
+        const r = await fetch(CC_BASE + '/3kh0/3kh0-assets.json');
+        const d = await r.json();
+        DATA.kh3 = (Array.isArray(d) ? d : []).filter(function(n) {
+          return typeof n === 'string' && n.trim();
+        }).map(function(nm) {
+          var enc = encodeURIComponent(nm);
+          return normalizeg4mes({
+            name: nm.replace(/[-_]+/g, ' '),
+            img: KH3_BASE + '/' + enc + '/splash.png',
+            url: KH3_BASE + '/' + enc + '/index.html'
+          });
+        });
+      } catch(e) { console.warn("3kh0 assets load failed:", e); }
+    }
+
+    let BLOXY_HTML = _cdn + '/gh/bloxys-playables/html-files@main';
+    let BLOXY_EMU = _cdn + '/gh/bloxys-playables/emulator-files@main';
+
+    async function loadBloxy(){
+      if(DATA.bloxy.length) return;
+      var out = [], seen = {};
+      async function one(base) {
+        try {
+          const r = await fetch(base + '/cdn-data/g.json');
+          const d = await r.json();
+          (Array.isArray(d) ? d : []).forEach(function(g) {
+            var nm = String(g.name || '').trim();
+            if (!nm) return;
+            var key = nm.toLowerCase();
+            if (seen[key]) return;
+            seen[key] = true;
+            out.push(normalizeg4mes({
+              name: nm,
+              img: '',
+              url: base + '/' + encodeURIComponent(nm) + '.html'
+            }));
+          });
+        } catch(e) { console.warn('Bloxy load failed:', base, e); }
+      }
+      await one(BLOXY_HTML);
+      await one(BLOXY_EMU);
+      DATA.bloxy = out;
+    }
+
+    async function loadYt(){
+      if(DATA.yt.length) return;
+      try {
+        const r = await fetch(CC_BASE + '/libraries/youtube/gms.json');
+        const d = await r.json();
+        DATA.yt = (Array.isArray(d) ? d : []).map(function(g) {
+          return normalizeg4mes({
+            name: g.name || g.title,
+            img: g.img || g.image || '',
+            url: g.url || ''
+          });
+        }).filter(function(g){ return g.name && g.url && g.url !== '#'; });
+      } catch(e) { console.warn("YouTube load failed:", e); }
+    }
+
+    let BLOX_BASE = _cdn + '/gh/tharun9772/Bloxcraft-UBG@main';
+
+    async function loadBlox(){
+      if(DATA.blox.length) return;
+      try {
+        const r = await fetch(toCdnUrl('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/blox.json'));
+        const d = await r.json();
+        DATA.blox = (Array.isArray(d) ? d : (d.games || [])).map(function(g) {
+          var u = String(g.url || '').trim();
+          var full = u ? (u.startsWith('http') ? u : BLOX_BASE + (u.startsWith('/') ? u : '/' + u)) : '';
+          if (full) {
+            // App-viewer shells (?view=/gameFiles/<slug>) can't resolve their inner
+            // game path under doc.write, so point straight at the game instead.
+            var vm = full.match(/[?&]view=(\/gameFiles\/[^&]*)/);
+            if (vm) {
+              full = BLOX_BASE + vm[1].replace(/\/+$/, '') + '/index.html';
+            } else {
+              var q = full.indexOf('?');
+              var path = q === -1 ? full : full.slice(0, q);
+              var qs = q === -1 ? '' : full.slice(q);
+              if (path.charAt(path.length - 1) === '/') path += 'index.html';
+              full = path + qs;
+            }
+          }
+          return normalizeg4mes({
+            name: g.name || g.title,
+            img: g.img || g.image || '',
+            url: full
+          });
+        }).filter(function(g){ return g.name && g.url && g.url !== '#'; });
+      } catch(e) { console.warn("Blox load failed:", e); }
+    }
+
+    let ELITE_BASE = _cdn + '/gh/1234chromebook1234-creator/ww@main';
 
     async function loadElite(){
       if(DATA.elite.length) return;
@@ -6456,7 +7202,7 @@ let DATA = {
       } catch(e) { console.warn("Seraph load failed:", e); }
     }
 
-    const CKV_BASE = _cdn + '/gh/carbonicality/ChickenKingsVault@main';
+    let CKV_BASE = _cdn + '/gh/carbonicality/ChickenKingsVault@main';
 
     async function loadCKV(){
       if(DATA.ckv.length) return;
@@ -6528,6 +7274,17 @@ let DATA = {
         const loaders = {
           ubz: loadUBZ,
           gn: loadGN,
+          daknux: loadDaknux,
+          kh0: loadKh0,
+          alexr: loadAlexr,
+          hydra: loadHydra,
+          diesmos: loadDiesmos,
+          gclass: loadGclass,
+          cc: loadCc,
+          kh3: loadKh3,
+          bloxy: loadBloxy,
+          yt: loadYt,
+          blox: loadBlox,
           elite: loadElite,
           ugs: loadUGS,
           seraph: loadSeraph,
@@ -6566,9 +7323,9 @@ let DATA = {
 
     function ubEnsureAllGames() {
       const loaders = {
-        ubz: loadUBZ, gn: loadGN, elite: loadElite, ugs: loadUGS,
-        seraph: loadSeraph, ckv: loadCKV, noah: loadNoah, lumin: loadLumin
-      };
+          ubz: loadUBZ, gn: loadGN, daknux: loadDaknux, kh0: loadKh0, alexr: loadAlexr, hydra: loadHydra, diesmos: loadDiesmos, gclass: loadGclass, cc: loadCc, kh3: loadKh3, bloxy: loadBloxy, yt: loadYt, blox: loadBlox, elite: loadElite, ugs: loadUGS,
+          seraph: loadSeraph, ckv: loadCKV, noah: loadNoah, lumin: loadLumin
+        };
       var anyMissing = false;
       for (var k in DATA) { if (!DATA[k].length) anyMissing = true; }
       if (!anyMissing) return Promise.resolve();
@@ -6755,11 +7512,15 @@ let DATA = {
       }
     });
 
+    let __searchT = null;
     g4mesearch.oninput = () => {
-      const v = g4mesearch.value.toLowerCase();
-      FILTERED = CURRENT.filter(g => g.name && g.name.toLowerCase().includes(v));
-      updateg4mesCount();
-      renderg4mes();
+      clearTimeout(__searchT);
+      __searchT = setTimeout(() => {
+        const v = g4mesearch.value.toLowerCase();
+        FILTERED = CURRENT.filter(g => g.name && g.name.toLowerCase().includes(v));
+        updateg4mesCount();
+        renderg4mes();
+      }, 150);
     };
 
     function getFavorites() {
@@ -6790,12 +7551,19 @@ let DATA = {
       });
     }
 
+    var __collator = null;
+    function getCollator() {
+      if (!__collator) { try { __collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' }); } catch (e) { __collator = null; } }
+      return __collator;
+    }
     function naturalCompare(a, b) {
+      var c = getCollator();
+      if (c) { try { return c.compare(String(a), String(b)); } catch (e) {} }
       return String(a).localeCompare(String(b), undefined, { numeric: true, sensitivity: 'base' });
     }
 
     function renderg4mes(){
-      const fallback = "https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/fallback.png";
+      const fallback = sc13nc3Url() + "/assets/img/fallback.png";
       const activeCat = document.querySelector(".g4mes-cat.active").dataset.cat;
 
       window.__renderToken = (window.__renderToken || 0) + 1; const renderToken = window.__renderToken;
@@ -6804,6 +7572,7 @@ let DATA = {
 
       if (window.__rndInt) { clearInterval(window.__rndInt); window.__rndInt = null; }
       if (window.__rndObs) { try { window.__rndObs.disconnect(); } catch(e) {} window.__rndObs = null; }
+      if (window.__moreObs) { try { window.__moreObs.disconnect(); } catch(e) {} window.__moreObs = null; }
       const rCard = document.createElement('div');
       rCard.className = 'g4mes-card';
       const rImgs = pool.map(g => g.img).filter(Boolean);
@@ -6852,21 +7621,29 @@ let DATA = {
       };
       g4mesGrid.appendChild(rCard);
 
-      const sorted = pool.slice().sort((x, y) => {
-        var xf = isFavorite(x.name, x._stash) ? 0 : 1, yf = isFavorite(y.name, y._stash) ? 0 : 1;
-        if (xf !== yf) return xf - yf;
-        return naturalCompare(x.name, y.name);
+      const favSet = {};
+      getFavorites().forEach(function(f) {
+        favSet[f.name + '|' + (f.stash || '')] = true;
+        favSet[f.name + '|'] = true;
       });
+      const favFlag = function(g) {
+        if (favSet[g.name + '|' + (g._stash || '')]) return 0;
+        return 1;
+      };
+      const decorated = pool.map(function(g, i) { return { g: g, f: favFlag(g), k: g.name.toLowerCase(), i: i }; });
+      decorated.sort(function(a, b) { return (a.f - b.f) || naturalCompare(a.k, b.k) || (a.i - b.i); });
+      const sorted = decorated.map(function(d) { return d.g; });
       let buildIdx = 0;
+      let renderLimit = Math.min(96, sorted.length);
       const CHUNK = 30;
       const buildFrame = function() {
         if (window.__renderToken !== renderToken) return;
-        const end = Math.min(buildIdx + CHUNK, sorted.length);
+        const end = Math.min(buildIdx + CHUNK, renderLimit, sorted.length);
         for (let j = buildIdx; j < end; j++) {
           const g = sorted[j];
           const card = document.createElement('div');
           card.className = 'g4mes-card';
-          const fav = isFavorite(g.name, g._stash);
+          const fav = favFlag(g) === 0;
           const showStash = (activeCat === 'favs' || activeCat === 'all') && stashLabel(g._stash);
           var heartSVG = fav
             ? '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#ff4444" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart w-4 h-4 fav-solid" aria-hidden="true" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" style="stroke-width: 2;"/></svg>'
@@ -6890,7 +7667,31 @@ let DATA = {
           g4mesGrid.appendChild(card);
         }
         buildIdx = end;
-        if (buildIdx < sorted.length) requestAnimationFrame(buildFrame);
+        if (buildIdx < renderLimit) { requestAnimationFrame(buildFrame); return; }
+        updateSentinel();
+      };
+      let sentinel = null;
+      const updateSentinel = function() {
+        if (sentinel) { sentinel.remove(); sentinel = null; }
+        if (renderLimit >= sorted.length) return;
+        sentinel = document.createElement('div');
+        sentinel.style.cssText = 'grid-column:1/-1;height:4px;';
+        g4mesGrid.appendChild(sentinel);
+        if (!('IntersectionObserver' in window)) {
+          renderLimit = sorted.length;
+          requestAnimationFrame(buildFrame);
+          return;
+        }
+        window.__moreObs = new IntersectionObserver(function(entries) {
+          if (window.__renderToken !== renderToken) return;
+          if (entries.some(function(e) { return e.isIntersecting; })) {
+            try { window.__moreObs.disconnect(); } catch(e) {}
+            window.__moreObs = null;
+            renderLimit = Math.min(renderLimit + 96, sorted.length);
+            requestAnimationFrame(buildFrame);
+          }
+        }, { rootMargin: '800px' });
+        window.__moreObs.observe(sentinel);
       };
       requestAnimationFrame(buildFrame);
     }
@@ -6910,30 +7711,230 @@ let DATA = {
       renderHomeG4mes();
     })();
 
+    // ─── Home screen customization ───
+    var HOME_STASH_KEYS = ['ubz', 'gn', 'daknux', 'kh0', 'alexr', 'hydra', 'diesmos', 'gclass', 'cc', 'kh3', 'bloxy', 'yt', 'blox', 'elite', 'seraph', 'noah', 'lumin'];
+    var _homePinResults = [];
+    function getHomePinned() {
+      try {
+        var v = JSON.parse(localStorage.getItem('homePinned') || '[]');
+        return Array.isArray(v) ? v.filter(function(p) { return p && p.name; }) : [];
+      } catch (e) { return []; }
+    }
+    function saveHomePinned(list) { try { localStorage.setItem('homePinned', JSON.stringify(list || [])); } catch (e) {} }
+    function getHomeCount() {
+      var n = 5;
+      try { n = parseInt(localStorage.getItem('homeCount') || '5', 10); } catch (e) {}
+      if (!(n >= 1 && n <= 10)) n = 5;
+      return n;
+    }
+    function setHomeCount(v) {
+      var n = parseInt(v, 10);
+      if (isNaN(n)) n = 5;
+      if (n < 1) n = 1;
+      if (n > 10) n = 10;
+      try { localStorage.setItem('homeCount', String(n)); } catch (e) {}
+      var inp = document.getElementById('home-count');
+      if (inp) inp.value = n;
+      renderHomeG4mes();
+    }
+    function getHomeSections() {
+      var out = { search: true, date: true, quote: true, social: true };
+      try {
+        var v = JSON.parse(localStorage.getItem('homeSections') || '{}');
+        ['search', 'date', 'quote', 'social'].forEach(function(k) { if (v && typeof v[k] === 'boolean') out[k] = v[k]; });
+      } catch (e) {}
+      return out;
+    }
+    function setHomeSection(key, on) {
+      var s = getHomeSections();
+      s[key] = !!on;
+      try { localStorage.setItem('homeSections', JSON.stringify(s)); } catch (e) {}
+      applyHomeSections();
+    }
+    function applyHomeSections() {
+      var s = getHomeSections();
+      var home = document.getElementById('home');
+      if (!home) return;
+      function toggle(sel, on) {
+        var el = home.querySelector(sel);
+        if (el) el.style.display = on ? '' : 'none';
+      }
+      toggle('.search-bar', s.search);
+      toggle('.date-section', s.date);
+      toggle('.quote-section', s.quote);
+      toggle('.social-links', s.social);
+    }
+    function findHomeGame(name, stash) {
+      function inArr(arr) {
+        arr = arr || [];
+        for (var i = 0; i < arr.length; i++) {
+          if (arr[i] && arr[i].name === name) return arr[i];
+        }
+        return null;
+      }
+      if (stash && DATA[stash]) { var g = inArr(DATA[stash]); if (g) return g; }
+      for (var k = 0; k < HOME_STASH_KEYS.length; k++) {
+        var gg = inArr(DATA[HOME_STASH_KEYS[k]]);
+        if (gg) return gg;
+      }
+      return null;
+    }
+    function loadAllHomeStashes() {
+      var fns = [loadUBZ, loadGN, loadDaknux, loadKh0, loadAlexr, loadHydra, loadDiesmos, loadGclass, loadCc, loadKh3, loadBloxy, loadYt, loadBlox, loadElite, loadSeraph, loadNoah, loadLumin];
+      return Promise.all(fns.map(function(f) { try { return f(); } catch (e) { return null; } }));
+    }
+    async function searchHomePins(q) {
+      var box = document.getElementById('home-pin-results');
+      q = String(q == null ? '' : q).trim().toLowerCase();
+      if (!box) return;
+      if (q.length < 2) { box.style.display = 'none'; box.innerHTML = ''; _homePinResults = []; return; }
+      box.style.display = 'block';
+      box.innerHTML = '<div style="color:#aaa;font-size:12px;padding:6px;">Searching...</div>';
+      try { await loadAllHomeStashes(); } catch (e) {}
+      var all = [];
+      HOME_STASH_KEYS.forEach(function(k) { all.push.apply(all, tagStash(DATA[k], k)); });
+      var pinned = getHomePinned();
+      function isPinned(g) { return pinned.some(function(p) { return p.name === g.name && (!p.stash || !g._stash || p.stash === g._stash); }); }
+      var hits = all.filter(function(g) { return g && g.name && g.url && g.url !== '#' && g.name.toLowerCase().indexOf(q) !== -1 && !isPinned(g); }).slice(0, 8);
+      _homePinResults = hits;
+      box.innerHTML = '';
+      if (!hits.length) { box.innerHTML = '<div style="color:#aaa;font-size:12px;padding:6px;">No matches.</div>'; return; }
+      hits.forEach(function(g, i) {
+        var row = document.createElement('div');
+        row.style.cssText = 'display:flex;align-items:center;gap:8px;padding:6px;border-radius:6px;';
+        var nm = document.createElement('span');
+        nm.style.cssText = 'flex:1;color:var(--accent);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;';
+        nm.textContent = g.name;
+        var st = document.createElement('span');
+        st.style.cssText = 'color:#777;font-size:11px;flex-shrink:0;';
+        st.textContent = stashLabel(g._stash);
+        var add = document.createElement('button');
+        add.className = 'settings-btn';
+        add.style.cssText = 'padding:4px 10px;font-size:12px;flex-shrink:0;';
+        add.textContent = 'Pin';
+        (function(idx) { add.addEventListener('click', function() { addHomePin(idx); }); })(i);
+        row.appendChild(nm); row.appendChild(st); row.appendChild(add);
+        box.appendChild(row);
+      });
+    }
+    function addHomePin(i) {
+      var g = _homePinResults[i];
+      if (!g) return;
+      var pinned = getHomePinned();
+      var dup = pinned.some(function(p) { return p.name === g.name && (!p.stash || !g._stash || p.stash === g._stash); });
+      if (!dup) {
+        pinned.push({ name: g.name, stash: g._stash || '' });
+        saveHomePinned(pinned);
+      }
+      renderHomePins();
+      renderHomeG4mes();
+      var inp = document.getElementById('home-pin-search');
+      if (inp) inp.value = '';
+      var box = document.getElementById('home-pin-results');
+      if (box) { box.style.display = 'none'; box.innerHTML = ''; }
+      _homePinResults = [];
+      showToast('Pinned to home: ' + g.name);
+    }
+    function removeHomePin(idx) {
+      var pinned = getHomePinned();
+      pinned.splice(idx, 1);
+      saveHomePinned(pinned);
+      renderHomePins();
+      renderHomeG4mes();
+    }
+    function renderHomePins() {
+      var list = document.getElementById('home-pinned-list');
+      var count = document.getElementById('home-pinned-count');
+      var pinned = getHomePinned();
+      if (count) count.textContent = pinned.length;
+      if (!list) return;
+      list.innerHTML = '';
+      if (!pinned.length) {
+        list.innerHTML = '<div style="color:#666;font-size:12px;">Nothing pinned — home shows random games.</div>';
+        return;
+      }
+      pinned.forEach(function(p, idx) {
+        var row = document.createElement('div');
+        row.style.cssText = 'display:flex;align-items:center;gap:8px;padding:6px 8px;background:rgba(0,0,0,0.3);border:1px solid rgba(var(--accent-rgb),0.25);border-radius:6px;';
+        var nm = document.createElement('span');
+        nm.style.cssText = 'flex:1;color:var(--accent);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;';
+        nm.textContent = p.name;
+        var st = document.createElement('span');
+        st.style.cssText = 'color:#777;font-size:11px;flex-shrink:0;';
+        st.textContent = stashLabel(p.stash);
+        var rm = document.createElement('button');
+        rm.className = 'settings-btn';
+        rm.style.cssText = 'padding:4px 10px;font-size:12px;flex-shrink:0;';
+        rm.textContent = 'Remove';
+        (function(j) { rm.addEventListener('click', function() { removeHomePin(j); }); })(idx);
+        row.appendChild(nm); row.appendChild(st); row.appendChild(rm);
+        list.appendChild(row);
+      });
+    }
+    function fillHomeFromFavs() {
+      try {
+        var favs = getFavorites();
+        var pins = favs.filter(function(f) { return f && f.name; }).slice(0, 10).map(function(f) { return { name: f.name, stash: f.stash || '' }; });
+        saveHomePinned(pins);
+        renderHomePins();
+        renderHomeG4mes();
+        showToast(pins.length ? ('Pinned ' + pins.length + ' favorite(s) to home') : 'No favorites to pin');
+      } catch (e) {}
+    }
+    function clearHomePins() {
+      saveHomePinned([]);
+      renderHomePins();
+      renderHomeG4mes();
+      showToast('Home pins cleared — showing random games');
+    }
+    function syncHomeSettingsUI() {
+      var hc = document.getElementById('home-count');
+      if (hc) hc.value = getHomeCount();
+      var s = getHomeSections();
+      ['search', 'date', 'quote', 'social'].forEach(function(k) {
+        var el = document.getElementById('home-sec-' + k);
+        if (el) el.checked = s[k] !== false;
+      });
+      renderHomePins();
+      applyHomeSections();
+    }
+    document.addEventListener('DOMContentLoaded', syncHomeSettingsUI);
+
     async function renderHomeG4mes() {
       const wrap = document.getElementById('home-g4mes-row');
       if (!wrap) return;
       try {
-        await Promise.all([loadUBZ(), loadGN(), loadElite(), loadSeraph(), loadNoah(), loadLumin()]);
+        await loadAllHomeStashes();
       } catch(e) { console.warn("home stash load failed:", e); }
       const all = [];
-      ['ubz', 'gn', 'elite', 'seraph', 'noah', 'lumin'].forEach(function(k) { all.push.apply(all, tagStash(DATA[k], k)); });
+      HOME_STASH_KEYS.forEach(function(k) { all.push.apply(all, tagStash(DATA[k], k)); });
       const pool = all.filter(function(g) { return g && g.name && g.url && g.url !== '#'; });
       if (!pool.length) return;
+      const count = getHomeCount();
+      const picks = [];
+      function alreadyPicked(g) { return picks.some(function(p) { return p.name === g.name && p._stash === g._stash; }); }
+      getHomePinned().forEach(function(p) {
+        if (picks.length >= count) return;
+        var g = findHomeGame(p.name, p.stash);
+        if (g && g.url && g.url !== '#' && !alreadyPicked(g)) picks.push(g);
+      });
       for (let i = pool.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         const t = pool[i]; pool[i] = pool[j]; pool[j] = t;
       }
-      const picks = pool.slice(0, wrap.querySelectorAll('.g4mes-btn').length || 5);
+      for (var pi = 0; pi < pool.length && picks.length < count; pi++) {
+        if (!alreadyPicked(pool[pi])) picks.push(pool[pi]);
+      }
+      const finalPicks = picks.slice(0, count);
       wrap.innerHTML = '';
-      picks.forEach(function(g) {
+      finalPicks.forEach(function(g) {
         const btn = document.createElement('button');
         btn.className = 'g4mes-btn';
         const img = document.createElement('img');
         img.loading = 'lazy';
-        img.src = g.img || 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/fallback.png';
+        img.src = g.img || (sc13nc3Url() + '/assets/img/fallback.png');
         img.alt = g.name;
-        img.onerror = function() { this.onerror = null; this.src = 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/img/fallback.png'; };
+        img.onerror = function() { this.onerror = null; this.src = sc13nc3Url() + '/assets/img/fallback.png'; };
         const ov = document.createElement('div');
         ov.className = 'overlay';
         const sp = document.createElement('span');
@@ -7345,9 +8346,8 @@ let DATA = {
       localStorage.removeItem('activeCursor');
       localStorage.removeItem('customCursor');
       if (typeof window.startTetoCursor === 'function') window.startTetoCursor();
-      resetCloak();
       var cloakSel = document.getElementById('cloak-preset');
-      if (cloakSel) cloakSel.value = '';
+      if (cloakSel) cloakSel.value = 'classroom';
       var fields = ['cursor-url-input','cloak-title-input','cloak-favicon-input','lightspeed-school-name','lightspeed-top-text','lightspeed-bottom-text','lightspeed-system-msg','gg-title-input','gg-message-input','sc-heading-input','sc-message-input','sc-url-input','sc-reason-input','sc-policy-input','sc-ip-input','custom-color-input'];
       fields.forEach(function(id) {
         var el = document.getElementById(id);
@@ -7355,6 +8355,7 @@ let DATA = {
       });
       var picker = document.getElementById('custom-color-picker');
       if (picker) picker.value = '#ff6600';
+      if (typeof applyCloakPreset === 'function') applyCloakPreset('classroom');
       alert('Site data cleared!');
     }
 
@@ -7509,6 +8510,11 @@ let DATA = {
         else if (document.getElementById('cloak-title-input')) {
           if (typeof _restoreCloak === 'function') _restoreCloak();
         }
+      } catch (e) {}
+
+      try {
+        if (typeof syncHomeSettingsUI === 'function') syncHomeSettingsUI();
+        if (typeof renderHomeG4mes === 'function') renderHomeG4mes();
       } catch (e) {}
     }
 
@@ -7979,21 +8985,24 @@ let DATA = {
     if (!stealthCovers[name]) name = 'classroom';
     try { localStorage.setItem('stealthCover', name); } catch (e) {}
     var img = document.getElementById('stealth-cover-img');
-    if (img) img.src = stealthCovers[name];
+    if (img) img.src = (typeof toCdnUrl === 'function') ? toCdnUrl(stealthCovers[name]) : stealthCovers[name];
     var sel = document.getElementById('stealth-cover-preset');
     if (sel) sel.value = name;
   }
   document.addEventListener('visibilitychange', function() {
     if (document.hidden) {
       document.documentElement.classList.add('page-hidden');
+      try { if (typeof pauseBackgrounds === 'function') pauseBackgrounds(); } catch (e) {}
     } else {
       document.documentElement.classList.remove('page-hidden');
+      try { if (typeof syncBackgrounds === 'function') syncBackgrounds(); } catch (e) {}
     }
   });
   document.addEventListener('keydown', function(e) {
     if (e.ctrlKey && e.shiftKey && e.key === 'D') {
       e.preventDefault();
       document.documentElement.classList.toggle('page-hidden');
+      try { if (typeof syncBackgrounds === 'function') syncBackgrounds(); } catch (e) {}
     }
   });
   try { setStealthCover(localStorage.getItem('stealthCover') || 'classroom'); } catch (e) {}
