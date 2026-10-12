@@ -1,0 +1,12 @@
+/* Viewer-only mode: show just the Phaser game canvas, hide all site chrome
+   (nav, settings panel, ads, guide dialog, buttons, banners). */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100% !important;
+  background: #0e0e0e !important;
+  overflow: hidden !important;
+}
+body > *:not(canvas) {
+  display: none !important;
+}

@@ -1,0 +1,37 @@
+/* Helvetica UI override for the stolen copy */
+/* NOTE: Helvetica-Light.ttf in this folder fails to parse, so weight 300
+   falls through to Regular (400) below. */
+@font-face {
+  font-family: 'Helvetica';
+  src: url('Helvetica.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helvetica';
+  src: url('Helvetica-Oblique.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helvetica';
+  src: url('Helvetica-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helvetica';
+  src: url('Helvetica-BoldOblique.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+body, body * {
+  font-family: 'Helvetica', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+
+/* Cydia package artwork */
+img.cydia-package-icon { object-fit: cover; padding: 0; }

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notification Tester</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: #e8e8ed;
+    color: #1f1f1f;
+    padding: 12px;
+    -webkit-text-size-adjust: 100%;
+  }
+  h1 { font-size: 20px; margin: 6px 2px 12px; }
+  .group {
+    background: #fff;
+    border: 1px solid #c8c8d0;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+  label { display: block; font-size: 13px; color: #666; margin: 10px 0 4px; }
+  label:first-child { margin-top: 0; }
+  input[type="text"], textarea {
+    width: 100%;
+    font: inherit;
+    font-size: 15px;
+    padding: 8px;
+    border: 1px solid #c8c8d0;
+    border-radius: 8px;
+    background: #fff;
+  }
+  textarea { min-height: 64px; resize: vertical; }
+  .row { display: flex; gap: 8px; margin-top: 12px; }
+  button.action {
+    flex: 1;
+    font: inherit;
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+    background: #007aff;
+    border: none;
+    border-radius: 10px;
+    padding: 11px 0;
+    cursor: pointer;
+  }
+  button.action:active { opacity: 0.7; }
+  button.preset {
+    font: inherit;
+    font-size: 13px;
+    color: #007aff;
+    background: none;
+    border: none;
+    padding: 8px 0 0;
+    cursor: pointer;
+  }
+  #status {
+    font-size: 13px;
+    color: #666;
+    margin-top: 10px;
+    min-height: 18px;
+  }
+  #nosdk {
+    display: none;
+    background: #fff3cd;
+    border: 1px solid #e0c36a;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+</style>
+</head>
+<body>
+<h1>Notification Tester</h1>
+<div id="nosdk">Install this app through Cydia in the iOS 6 simulator. The host injects its SDK.</div>
+<div class="group">
+  <label for="nt-title">Title</label>
+  <input type="text" id="nt-title" value="Low Battery" maxlength="80">
+  <label for="nt-body">Message</label>
+  <textarea id="nt-body" maxlength="500">20% of battery remaining</textarea>
+  <button class="preset" id="nt-preset" type="button">Use 20% battery preset</button>
+  <div class="row">
+    <button class="action" id="nt-popup" type="button">Pop Up Alert</button>
+    <button class="action" id="nt-send" type="button">Send Notification</button>
+  </div>
+  <div id="status"></div>
+</div>
+<script>
+(function () {
+  'use strict';
+  var titleEl = document.getElementById('nt-title');
+  var bodyEl = document.getElementById('nt-body');
+  var statusEl = document.getElementById('status');
+  function say(m) { statusEl.textContent = m; }
+  document.getElementById('nt-preset').addEventListener('click', function () {
+    titleEl.value = 'Low Battery';
+    bodyEl.value = '20% of battery remaining';
+    say('Preset loaded.');
+  });
+  var api = window.iOS6;
+  if (!api) {
+    document.getElementById('nosdk').style.display = 'block';
+    say('SDK unavailable.');
+    return;
+  }
+  document.getElementById('nt-popup').addEventListener('click', function () {
+    say('Showing popup...');
+    api.dialog.alert({
+      title: titleEl.value || 'Notification',
+      message: bodyEl.value || '',
+      button: 'OK'
+    }).then(function () { say('Popup dismissed.'); }, function (e) {
+      say('Popup failed: ' + (e && e.message || e));
+    });
+  });
+  document.getElementById('nt-send').addEventListener('click', function () {
+    say('Sending notification...');
+    api.notification.post({
+      title: titleEl.value || 'Notification',
+      body: bodyEl.value || ''
+    }).then(function () { say('Notification sent. Pull down Notification Center to see it.'); }, function (e) {
+      say('Send failed: ' + (e && e.message || e));
+    });
+  });
+})();
+</script>
+</body>
+</html>
