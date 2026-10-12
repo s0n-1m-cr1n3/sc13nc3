@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WinterBoard</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: #e8e8ed;
+    color: #1f1f1f;
+    padding: 12px;
+    -webkit-text-size-adjust: 100%;
+  }
+  h1 { font-size: 20px; margin: 6px 2px 4px; }
+  .sub { font-size: 12px; color: #888; margin: 0 2px 12px; }
+  .group {
+    background: #fff;
+    border: 1px solid #c8c8d0;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+  .group h2 { font-size: 15px; margin: 0 0 8px; }
+  .trow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    border-top: 1px solid #eee;
+  }
+  .trow:first-of-type { border-top: none; }
+  .trow .nm { flex: 1; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .trow .nm small { display: block; font-size: 11px; color: #888; }
+  .trow.sel .nm { font-weight: bold; }
+  button {
+    font: inherit;
+    font-size: 14px;
+    color: #fff;
+    background: #007aff;
+    border: none;
+    border-radius: 8px;
+    padding: 7px 12px;
+    cursor: pointer;
+  }
+  button:active { opacity: 0.7; }
+  button.ghost { background: #e8e8ed; color: #007aff; }
+  button.danger { background: #ff3b30; }
+  button:disabled { opacity: 0.4; }
+  .big { width: 100%; font-size: 16px; font-weight: bold; padding: 11px 0; margin-top: 4px; }
+  label { display: block; font-size: 13px; color: #666; margin: 10px 0 4px; }
+  input[type="text"], select {
+    width: 100%;
+    font: inherit;
+    font-size: 15px;
+    padding: 8px;
+    border: 1px solid #c8c8d0;
+    border-radius: 8px;
+    background: #fff;
+  }
+  .irow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 0;
+    border-top: 1px solid #eee;
+    font-size: 13px;
+  }
+  .irow img { width: 29px; height: 29px; border-radius: 7px; flex-shrink: 0; background: #eee; }
+  .irow .who { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .irow .who small { display: block; color: #888; font-size: 11px; overflow: hidden; text-overflow: ellipsis; }
+  .addrow { display: flex; gap: 6px; margin-top: 8px; }
+  .addrow select { flex: 1; }
+  .addrow input { flex: 2; }
+  #status { font-size: 13px; color: #666; margin-top: 8px; min-height: 18px; }
+  #nosdk {
+    display: none;
+    background: #fff3cd;
+    border: 1px solid #e0c36a;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+  input[type="checkbox"] { width: 20px; height: 20px; accent-color: #007aff; flex-shrink: 0; }
+</style>
+</head>
+<body>
+<h1>WinterBoard</h1>
+<p class="sub">Themes layer top-down. The highest enabled theme wins each slot.</p>
+<div id="nosdk">Install this app through Cydia in the iOS 6 simulator. The host injects its SDK.</div>
+<div class="group">
+  <h2>Themes</h2>
+  <div id="theme-list"></div>
+  <div style="display:flex;gap:8px;margin-top:10px;">
+    <input type="text" id="new-name" placeholder="New theme name" maxlength="40" style="flex:1;">
+    <button id="new-btn" type="button">Add</button>
+  </div>
+  <button class="big" id="apply-btn" type="button">Apply Themes</button>
+  <button class="big ghost" id="restore-btn" type="button">Restore Stock Look</button>
+  <div id="status"></div>
+</div>
+<div class="group" id="editor" style="display:none;">
+  <h2 id="ed-title">Edit Theme</h2>
+  <label for="ed-home">Home wallpaper</label>
+  <select id="ed-home"></select>
+  <label for="ed-lock">Lock wallpaper</label>
+  <select id="ed-lock"></select>
+  <label>Custom icons (app &rarr; image URL)</label>
+  <div id="icon-list"></div>
+  <div class="addrow">
+    <select id="icon-app"></select>
+    <input type="text" id="icon-url" placeholder="https://...png">
+    <button id="icon-add" type="button">Set</button>
+  </div>
+</div>
+<script>
+(function () {
+  'use strict';
+  var WALLS = [
+    { id: '', name: "(Don't change)" },
+    { id: 'droplets', name: 'Water Droplets' },
+    { id: 'ripples', name: 'Ripples' },
+    { id: 'shore', name: 'Shore' },
+    { id: 'grass', name: 'Grass' }
+  ];
+  var APPS = ['Messages', 'Calendar', 'Photos', 'Camera', 'Videos', 'Maps', 'Weather',
+    'Passbook', 'Notes', 'Reminders', 'Clock', 'Stocks', 'Newsstand', 'iTunes',
+    'App Store', 'Game Center', 'Settings', 'Contacts', 'Calculator', 'Compass',
+    'Voice Memos', 'FaceTime', 'Setup', 'Cydia', 'YouTube', 'Phone', 'Mail',
+    'Safari', 'Music', 'Doodle Jump', 'Notification Tester', 'WinterBoard'];
+  var state = null; // {winterboard:true, version:1, themes:[{id,name,enabled,home,lock,icons:{}}]}
+  var editId = null;
+  var api = window.iOS6 || null;
+
+  function $(id) { return document.getElementById(id); }
+  function say(m) { $('status').textContent = m; }
+  function uid() { return 't' + Date.now().toString(36) + Math.floor(Math.random() * 1e4); }
+  function theme(id) {
+    for (var i = 0; i < state.themes.length; i++) if (state.themes[i].id === id) return state.themes[i];
+    return null;
+  }
+  function presets() {
+    return { winterboard: true, version: 1, themes: [
+      { id: uid(), name: 'Ocean Breeze', enabled: true, home: 'shore', lock: 'ripples', icons: {} },
+      { id: uid(), name: 'Green Fields', enabled: false, home: 'grass', lock: 'droplets', icons: {} }
+    ]};
+  }
+  function save() {
+    if (!api) return;
+    api.storage.set('winterboard', state).then(function () {}, function (e) {
+      say('Save failed: ' + (e && e.message || e));
+    });
+  }
+  function summary(t) {
+    var bits = [];
+    if (t.home) bits.push('home:' + t.home);
+    if (t.lock) bits.push('lock:' + t.lock);
+    var n = Object.keys(t.icons || {}).length;
+    if (n) bits.push(n + ' icon' + (n > 1 ? 's' : ''));
+    if (!bits.length) bits.push('empty');
+    return bits.join(' · ');
+  }
+  function renderList() {
+    var box = $('theme-list');
+    box.innerHTML = '';
+    if (!state.themes.length) {
+      box.innerHTML = '<div style="color:#888;font-size:13px;">No themes yet. Add one above.</div>';
+    }
+    state.themes.forEach(function (t, i) {
+      var row = document.createElement('div');
+      row.className = 'trow' + (t.id === editId ? ' sel' : '');
+      var cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.checked = !!t.enabled;
+      cb.title = 'Enabled';
+      cb.addEventListener('change', function () { t.enabled = cb.checked; syncIcons(); renderList(); });
+      var nm = document.createElement('div');
+      nm.className = 'nm';
+      nm.textContent = (i + 1) + '. ' + t.name;
+      var sm = document.createElement('small');
+      sm.textContent = summary(t);
+      nm.appendChild(sm);
+      nm.style.cursor = 'pointer';
+      nm.addEventListener('click', function () { editId = t.id; renderList(); renderEditor(); });
+      var up = document.createElement('button');
+      up.className = 'ghost';
+      up.textContent = '\u25B2';
+      up.title = 'Move up (higher priority)';
+      up.disabled = i === 0;
+      up.addEventListener('click', function () {
+        state.themes.splice(i, 1);
+        state.themes.splice(i - 1, 0, t);
+        syncIcons(); renderList();
+      });
+      var dn = document.createElement('button');
+      dn.className = 'ghost';
+      dn.textContent = '\u25BC';
+      dn.title = 'Move down (lower priority)';
+      dn.disabled = i === state.themes.length - 1;
+      dn.addEventListener('click', function () {
+        state.themes.splice(i, 1);
+        state.themes.splice(i + 1, 0, t);
+        syncIcons(); renderList();
+      });
+      var del = document.createElement('button');
+      del.className = 'danger';
+      del.textContent = '\u00D7';
+      del.title = 'Delete theme';
+      del.addEventListener('click', function () {
+        state.themes.splice(i, 1);
+        if (editId === t.id) editId = null;
+        syncIcons(); renderList(); renderEditor();
+      });
+      row.appendChild(cb); row.appendChild(nm);
+      row.appendChild(up); row.appendChild(dn); row.appendChild(del);
+      box.appendChild(row);
+    });
+  }
+  function wallOptions(sel, val) {
+    sel.innerHTML = '';
+    WALLS.forEach(function (w) {
+      var o = document.createElement('option');
+      o.value = w.id;
+      o.textContent = w.name;
+      if (w.id === val) o.selected = true;
+      sel.appendChild(o);
+    });
+  }
+  function iconEntry(v) {
+    // Icons are {src, filter}; older stores kept a bare URL string.
+    if (v && typeof v === 'object') return { src: String(v.src || ''), filter: String(v.filter || '') };
+    return { src: String(v || ''), filter: '' };
+  }
+  function hueOf(entry) {
+    var m = /hue-rotate\((-?\d+)deg\)/.exec(entry.filter || '');
+    return m ? parseInt(m[1], 10) : 0;
+  }
+  function renderEditor() {
+    var t = theme(editId);
+    var ed = $('editor');
+    if (!t) { ed.style.display = 'none'; return; }
+    ed.style.display = 'block';
+    $('ed-title').textContent = 'Edit: ' + t.name;
+    wallOptions($('ed-home'), t.home || '');
+    wallOptions($('ed-lock'), t.lock || '');
+    var box = $('icon-list');
+    box.innerHTML = '';
+    var keys = Object.keys(t.icons || {});
+    if (!keys.length) box.innerHTML = '<div style="color:#888;font-size:13px;">No custom icons. Stock icons show.</div>';
+    keys.forEach(function (app) {
+      var ent = iconEntry(t.icons[app]);
+      var row = document.createElement('div');
+      row.className = 'irow';
+      var im = document.createElement('img');
+      im.src = ent.src;
+      im.alt = '';
+      if (ent.filter) { try { im.style.filter = ent.filter; } catch (e) {} }
+      im.onerror = function () { im.style.opacity = '0.25'; };
+      var who = document.createElement('div');
+      who.className = 'who';
+      who.textContent = app;
+      var sm = document.createElement('small');
+      sm.textContent = ent.src + (ent.filter ? ' · ' + ent.filter : '');
+      who.appendChild(sm);
+      var hue = document.createElement('input');
+      hue.type = 'range';
+      hue.min = '0';
+      hue.max = '360';
+      hue.step = '10';
+      hue.value = String(hueOf(ent));
+      hue.title = 'Tint color (0 = off)';
+      hue.style.cssText = 'width:90px;flex-shrink:0;accent-color:#007aff;';
+      hue.addEventListener('input', function () {
+        var n = parseInt(hue.value, 10) || 0;
+        var cur = iconEntry(t.icons[app]);
+        cur.filter = n ? 'hue-rotate(' + n + 'deg)' : '';
+        t.icons[app] = cur;
+        try { im.style.filter = cur.filter; } catch (e) {}
+        sm.textContent = cur.src + (cur.filter ? ' · ' + cur.filter : '');
+        syncIcons();
+      });
+      hue.addEventListener('change', function () { renderEditor(); renderList(); });
+      var rm = document.createElement('button');
+      rm.className = 'danger';
+      rm.textContent = '\u00D7';
+      rm.addEventListener('click', function () { delete t.icons[app]; syncIcons(); renderEditor(); renderList(); });
+      row.appendChild(im); row.appendChild(who); row.appendChild(hue); row.appendChild(rm);
+      box.appendChild(row);
+    });
+  }
+  function winners() {
+    // Topmost enabled theme wins each slot.
+    var home = '', lock = '', icons = {};
+    for (var i = state.themes.length - 1; i >= 0; i--) {
+      var t = state.themes[i];
+      if (!t.enabled) continue;
+      if (t.home && !home) home = t.home;
+      if (t.lock && !lock) lock = t.lock;
+      var ks = Object.keys(t.icons || {});
+      for (var j = 0; j < ks.length; j++) {
+        if (!icons[ks[j]]) icons[ks[j]] = t.icons[ks[j]];
+      }
+    }
+    return { home: home, lock: lock, icons: icons };
+  }
+  function syncIcons() {
+    // Push icon overrides live so the home screen picks them up
+    // without waiting for Apply (wallpapers still need Apply).
+    state.activeIcons = winners().icons;
+    save();
+  }
+  function apply() {
+    if (!api) { say('SDK unavailable.'); return; }
+    var w = winners();
+    state.activeIcons = w.icons;
+    save();
+    var jobs = [];
+    if (w.home) jobs.push(api.settings.setWallpaper({ target: 'home', source: { kind: 'builtin', id: w.home } }));
+    if (w.lock) jobs.push(api.settings.setWallpaper({ target: 'lock', source: { kind: 'builtin', id: w.lock } }));
+    say('Applying...');
+    Promise.all(jobs).then(function () {
+      var n = Object.keys(w.icons).length;
+      say('Applied.' + (n ? ' ' + n + ' custom icon' + (n > 1 ? 's' : '') + ' live.' : ' Stock icons.'));
+    }, function (e) {
+      say('Apply failed: ' + (e && e.message || e));
+    });
+  }
+  function restore() {
+    if (!api) { say('SDK unavailable.'); return; }
+    state.themes.forEach(function (t) { t.enabled = false; });
+    state.activeIcons = {};
+    save();
+    renderList();
+    say('Applying stock look...');
+    Promise.all([
+      api.settings.setWallpaper({ target: 'home', source: { kind: 'builtin', id: 'droplets' } }),
+      api.settings.setWallpaper({ target: 'lock', source: { kind: 'builtin', id: 'ripples' } })
+    ]).then(function () { say('Stock look restored.'); }, function (e) {
+      say('Restore failed: ' + (e && e.message || e));
+    });
+  }
+  // wire static controls
+  var appSel = $('icon-app');
+  APPS.forEach(function (a) {
+    var o = document.createElement('option');
+    o.value = a; o.textContent = a;
+    appSel.appendChild(o);
+  });
+  $('new-btn').addEventListener('click', function () {
+    var v = $('new-name').value.trim().slice(0, 40);
+    if (!v) { say('Name the theme first.'); return; }
+    var t = { id: uid(), name: v, enabled: true, home: '', lock: '', icons: {} };
+    state.themes.push(t);
+    editId = t.id;
+    $('new-name').value = '';
+    syncIcons(); renderList(); renderEditor();
+  });
+  $('apply-btn').addEventListener('click', apply);
+  $('restore-btn').addEventListener('click', restore);
+  $('ed-home').addEventListener('change', function () {
+    var t = theme(editId);
+    if (t) { t.home = $('ed-home').value; syncIcons(); renderList(); }
+  });
+  $('ed-lock').addEventListener('change', function () {
+    var t = theme(editId);
+    if (t) { t.lock = $('ed-lock').value; syncIcons(); renderList(); }
+  });
+  $('icon-add').addEventListener('click', function () {
+    var t = theme(editId);
+    var u = $('icon-url').value.trim();
+    if (!t || !u) { say('Pick an app and paste an image URL.'); return; }
+    t.icons[$('icon-app').value] = { src: u, filter: '' };
+    $('icon-url').value = '';
+    syncIcons(); renderEditor(); renderList();
+  });
+  // boot
+  if (!api) {
+    document.getElementById('nosdk').style.display = 'block';
+    state = presets();
+    renderList();
+    return;
+  }
+  api.storage.get('winterboard').then(function (s) {
+    // Deep-clone: the SDK bridge may hand back a frozen object.
+    try { s = JSON.parse(JSON.stringify(s)); } catch (e) {}
+    if (s && s.winterboard && Array.isArray(s.themes)) {
+      state = s;
+      if (!state.themes.length) state = presets();
+    } else {
+      state = presets();
+      save();
+    }
+    if (state.themes.length) editId = state.themes[0].id;
+    renderList(); renderEditor();
+    say('Ready.');
+  }, function (e) {
+    say('Storage failed: ' + (e && e.message || e));
+    state = presets();
+    renderList();
+  });
+})();
+</script>
+</body>
+</html>

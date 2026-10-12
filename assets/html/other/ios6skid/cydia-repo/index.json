@@ -1,0 +1,49 @@
+{
+  "format": "ios6-repo",
+  "schemaVersion": 1,
+  "name": "iOS 6 SDK Demo",
+  "description": "Self-contained HTML apps for this web simulator. Not a native iOS/APT repository.",
+  "packages": [
+    {
+      "id": "fun.doodlejump.game",
+      "name": "Doodle Jump",
+      "version": "1.0.1",
+      "description": "Endless doodle jumper: bounce as high as you can. Arrow keys to steer, click or Space to shoot.",
+      "entry": "../games/doodle/index.html",
+      "sha256": "adc5e30a5e0e272529ea8c9d4405ff18a7f8fe931ee6dd4dc6d3294c7fe2446e",
+      "permissions": [],
+      "category": "Games",
+      "author": "Doodle Jump",
+      "iconColor": "#58a83c"
+    },
+    {
+      "id": "local.notify.tester",
+      "name": "Notification Tester",
+      "version": "1.0.0",
+      "description": "Fire test alerts and notifications: 20%-battery-style popups or Notification Center banners with your own title and message.",
+      "entry": "./notification-tester.html",
+      "sha256": "693fc657bb6da1ab427aa049a489d97527b0bde10fec55cc6100b2706b15daaa",
+      "permissions": [
+        "notifications"
+      ],
+      "category": "Utilities",
+      "author": "iOS 6 Simulator",
+      "iconColor": "#ff3b30"
+    },
+    {
+      "id": "fun.winterboard",
+      "name": "WinterBoard",
+      "version": "1.0.3",
+      "description": "Theme manager: layer themes with priority order to change wallpapers and app icons. Topmost enabled theme wins each slot.",
+      "entry": "./winterboard.html",
+      "sha256": "a350b388446f1af03deb21a61b8f83a7e19880dbc3ed520c312e11875e759f11",
+      "permissions": [
+        "storage",
+        "settings"
+      ],
+      "category": "Themes",
+      "author": "Saurik Tribute",
+      "iconColor": "#6e6e73"
+    }
+  ]
+}

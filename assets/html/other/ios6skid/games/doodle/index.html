@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Doodle Jump</title>
+<link rel="icon" href="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/doodle/favicon.ico" />
+<meta name="theme-color" content="#0e0e0e" />
+<base href="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/doodle/" />
+<link rel="stylesheet" href="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/doodle/css/viewer-only.css" />
+<script>
+// In-memory localStorage fallback: the iOS simulator runs HTML apps in a
+// sandboxed iframe where localStorage throws. Standalone browsers keep
+// real persistence (probe succeeds, shim skipped).
+try { localStorage.getItem('__probe'); } catch (e) {
+  (function () {
+    var store = {};
+    var shim = {
+      getItem: function (k) { return Object.prototype.hasOwnProperty.call(store, k) ? store[k] : null; },
+      setItem: function (k, v) { store[k] = String(v); },
+      removeItem: function (k) { delete store[k]; },
+      clear: function () { store = {}; },
+      key: function (i) { return Object.keys(store)[i] || null; },
+      get length() { return Object.keys(store).length; }
+    };
+    try {
+      Object.defineProperty(window, 'localStorage', { value: shim, configurable: true, writable: true });
+    } catch (e2) {
+      try { window.localStorage = shim; } catch (e3) {}
+    }
+    try {
+      Object.defineProperty(window, 'sessionStorage', { value: shim, configurable: true, writable: true });
+    } catch (e4) {
+      try { window.sessionStorage = shim; } catch (e5) {}
+    }
+  })();
+}
+</script>
+<script>
+// Hide the simulator's top nav bar inside the iOS app (no-op standalone).
+(function () {
+  function hide() {
+    try {
+      var nav = window.iOS6 && window.iOS6.navigation;
+      if (nav && nav.set) nav.set({ title: 'Doodle Jump', hidden: true });
+    } catch (e) {}
+  }
+  hide();
+  setTimeout(hide, 1000);
+  setTimeout(hide, 2500);
+})();
+</script>
+</head>
+<body>
+<input id="highscore" type="text" style="display:none" />
+<script defer src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/doodle/js/phaser.min.js"></script>
+<script defer src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/doodle/js/fulltilt.min.js"></script>
+<script defer src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/doodle/js/doodle.min.js"></script>
+<script defer src="https://quantil.jsdelivr.net/gh/matheveryday25/math@latest/doodle/js/main.js"></script>
+</body>
+</html>
