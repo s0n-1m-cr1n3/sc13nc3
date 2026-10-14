@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>(function(s){s.dataset.zone='12027091',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+  <script>window.__vigT=null;try{if(localStorage.getItem('vignetteAds')!=='0'){window.__vigT=setTimeout(function(){(function(s){s.dataset.zone='12027148',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))},3000);}}catch(e){window.__vigT=setTimeout(function(){(function(s){s.dataset.zone='12027148',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))},3000);}</script>
+  <meta name="monetag" content="70d2c730da74c13dab1fbdb44395b87e">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>window.onbeforeunload=function(e){if(window.__panicBypass)return;e.preventDefault();e.returnValue='';};</script>
@@ -64,7 +67,6 @@
   <link rel="preconnect" href="https://quantil.jsdelivr.net">
   <style>
     @font-face{font-family:'ApplePixel';src:url('https://quantil.jsdelivr.net/gh/bradardeletethis/apple/font.woff2') format('woff2');font-weight:400;font-style:normal;}
-    html.page-hidden > body > *:not(#stealth-cover) { display: none !important; }
     #stealth-cover * {
       box-sizing: border-box !important;
     }
@@ -78,7 +80,6 @@
       max-width: none; max-height: none;
       z-index: 999999;
       overflow: hidden;
-      background: #f1f3f4;
     }
     #stealth-cover-img {
       width: 100% !important; height: 100% !important;
@@ -926,66 +927,82 @@
     }
 
     .home-music-player {
-      background: rgba(255,255,255,0.03); border: 1px solid rgba(var(--accent-rgb),0.2);
-      border-radius: 12px; padding: 16px; margin-top: 16px; max-width: 500px;
+      background: transparent;
+      border: 1px solid rgba(var(--accent-rgb),0.35);
+      border-radius: 16px; padding: 22px; margin-top: 16px; max-width: 820px;
     }
     .home-music-player h3 {
-      color: var(--accent); font-size: 15px; margin: 0 0 10px;
+      color: var(--accent); font-size: 16px; margin: 0 0 12px;
       display: flex; align-items: center; gap: 8px;
+      text-shadow: 0 0 12px rgba(var(--accent-rgb),0.5);
+      letter-spacing: 0.5px;
     }
     .home-music-now {
-      display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
-      background: rgba(var(--accent-rgb),0.08); border-radius: 8px; padding: 10px 12px;
+      display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+      background: linear-gradient(120deg, rgba(var(--accent-rgb),0.18), rgba(var(--accent-rgb),0.05));
+      border: 1px solid rgba(var(--accent-rgb),0.3); border-radius: 12px; padding: 12px 14px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 0 14px rgba(var(--accent-rgb),0.10);
     }
     .home-music-now .track-name {
-      color: #f4f4f5; font-size: 13px; flex: 1; overflow: hidden;
+      color: #f4f4f5; font-size: 14px; font-weight: 700; flex: 1; overflow: hidden;
       text-overflow: ellipsis; white-space: nowrap;
     }
     .home-music-now .track-name span { color: var(--accent); }
     .home-music-controls {
-      display: flex; align-items: center; gap: 6px;
+      display: flex; align-items: center; gap: 8px;
     }
     .home-music-controls button {
-      background: rgba(255,255,255,0.06); border: 1px solid rgba(var(--accent-rgb),0.2);
-      color: var(--accent); border-radius: 50%; width: 32px; height: 32px;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(var(--accent-rgb),0.3);
+      color: var(--accent); border-radius: 50%; width: 38px; height: 38px;
       display: flex; align-items: center; justify-content: center;
       cursor: pointer; transition: all 0.2s; padding: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.35);
     }
-    .home-music-controls button:hover { background: rgba(var(--accent-rgb),0.15); }
+    .home-music-controls button:hover { background: rgba(var(--accent-rgb),0.2); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 0 10px rgba(var(--accent-rgb),0.25); }
+    .home-music-controls button:active { transform: translateY(0); }
     .home-music-controls button.play-btn-main {
-      width: 38px; height: 38px;
-      background: var(--accent); color: #000; border-color: var(--accent);
+      width: 50px; height: 50px;
+      background: linear-gradient(145deg, var(--accent), var(--beez-gold-dark)); color: #fff !important; border-color: var(--accent);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.4), 0 0 16px rgba(var(--accent-rgb),0.45);
     }
     .home-music-controls button.play-btn-main:hover {
-      box-shadow: 0 0 10px var(--accent-glow);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 24px var(--accent-glow);
+      filter: brightness(1.1);
     }
     .home-music-volume {
-      display: flex; align-items: center; gap: 6px; margin-top: 8px;
+      display: flex; align-items: center; gap: 8px; margin-top: 10px;
     }
     .home-music-volume label {
       color: #a0a0aa; font-size: 12px; flex-shrink: 0;
     }
     .home-music-volume input[type=range] {
-      flex: 1; height: 3px; -webkit-appearance: none; appearance: none;
-      background: rgba(255,255,255,0.15); border-radius: 2px; outline: none;
+      flex: 1; height: 5px; -webkit-appearance: none; appearance: none;
+      background: linear-gradient(90deg, var(--accent) var(--vol-fill,50%), rgba(255,255,255,0.15) var(--vol-fill,50%));
+      border-radius: 3px; outline: none; cursor: pointer;
     }
     .home-music-volume input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none; width: 10px; height: 10px;
-      background: var(--accent); border-radius: 50%; cursor: pointer;
+      -webkit-appearance: none; width: 13px; height: 13px;
+      background: #fff; border: 2px solid var(--accent); border-radius: 50%; cursor: pointer;
+      box-shadow: 0 0 8px rgba(var(--accent-rgb),0.6);
     }
     .home-music-tracks {
-      margin-top: 10px; max-height: 140px; overflow-y: auto;
-      scrollbar-width: thin;
+      margin-top: 12px; max-height: 180px; overflow-y: auto;
+      scrollbar-width: thin; display: flex; flex-direction: column; gap: 3px;
     }
     .home-music-tracks::-webkit-scrollbar { width: 4px; }
     .home-music-tracks::-webkit-scrollbar-thumb { background: rgba(var(--accent-rgb),0.3); border-radius: 2px; }
     .home-music-track {
-      display: flex; align-items: center; gap: 8px; padding: 6px 8px;
-      border-radius: 6px; cursor: pointer; transition: background 0.15s;
-      font-size: 12px; color: #ccc;
+      display: flex; align-items: center; gap: 8px; padding: 7px 10px;
+      border-radius: 8px; cursor: pointer; transition: all 0.15s;
+      font-size: 12px; color: #ccc; border: 1px solid transparent;
     }
-    .home-music-track:hover { background: rgba(255,255,255,0.06); }
-    .home-music-track.active { background: rgba(var(--accent-rgb),0.12); color: var(--accent); }
+    .home-music-track:hover { background: rgba(255,255,255,0.06); border-color: rgba(var(--accent-rgb),0.15); }
+    .home-music-track.active {
+      background: linear-gradient(120deg, rgba(var(--accent-rgb),0.22), rgba(var(--accent-rgb),0.06));
+      color: var(--accent); border-color: rgba(var(--accent-rgb),0.35);
+      box-shadow: 0 0 12px rgba(var(--accent-rgb),0.15);
+      font-weight: 700;
+    }
     .home-music-track .track-label { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .home-music-track .track-type {
       font-size: 10px; color: #80868b; background: rgba(255,255,255,0.06);
@@ -1014,7 +1031,7 @@
     #music-popup {
       position: fixed;
       z-index: 99990;
-      width: 300px;
+      width: 380px;
       visibility: hidden;
       pointer-events: none;
       opacity: 0;
@@ -1031,7 +1048,7 @@
     #music-popup .home-music-player {
       margin-top: 0;
       max-width: none;
-      background: rgba(16,16,20,0.95);
+      background: transparent;
       backdrop-filter: blur(10px);
       box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 24px rgba(var(--accent-rgb),0.08);
       animation: popupGlow 2.4s ease-in-out infinite;
@@ -1202,8 +1219,8 @@
       transform: scale(1.15); box-shadow: 0 0 10px rgba(var(--accent-rgb),0.5);
     }
     .settings-card-head {
-      display: flex; align-items: center; gap: 10px;
-      padding-bottom: 10px; margin-bottom: 12px;
+      display: flex; align-items: center; gap: 8px;
+      padding-bottom: 6px; margin-bottom: 8px;
       border-bottom: 1px solid rgba(var(--accent-rgb),0.25);
     }
     .settings-card-head svg { flex: 0 0 auto; }
@@ -1219,11 +1236,26 @@
     }
     #settings { max-width: 1500px; }
     #settings .g4mes-grid {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
     }
-    @media (min-width: 1200px) { #settings .g4mes-grid { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); } }
-    @media (min-width: 1600px) { #settings .g4mes-grid { grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); } }
-    @media (max-width: 620px) { #settings .g4mes-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 1100px) {
+      #settings .g4mes-grid { gap: 10px; }
+      #settings .g4mes-card { padding: 14px !important; font-size: 13px; }
+      #settings .settings-card-head h3 { font-size: 14px; }
+      #settings .settings-btn { font-size: 12px; padding: 7px 12px; }
+      #settings .settings-input { font-size: 12px; }
+      #settings p { font-size: 12px; }
+    }
+    @media (max-width: 760px) {
+      #settings .g4mes-grid { gap: 6px; }
+      #settings .g4mes-card { padding: 8px !important; font-size: 11px; }
+      #settings .settings-card-head { gap: 5px; padding-bottom: 4px; margin-bottom: 5px; }
+      #settings .settings-card-head h3 { font-size: 11px; }
+      #settings .settings-card-head svg { width: 12px; height: 12px; }
+      #settings .settings-btn { font-size: 10px; padding: 5px 8px; }
+      #settings .settings-input { font-size: 10px; padding: 5px 8px; }
+      #settings p, #settings label { font-size: 10px; }
+    }
     #g4mes-frame-container {
       flex: 1; position: relative; background: rgba(0,0,0,0.6); order: 1;
       border: 2px solid rgba(var(--accent-rgb),0.6);
@@ -1365,13 +1397,6 @@
     #floating-logo{color:rgba(var(--accent-rgb),1);}
     #floating-logo img{opacity:1;}
 
-    .toast-container{position:fixed;bottom:24px;right:24px;z-index:99999;display:flex;flex-direction:column;gap:8px;pointer-events:none;}
-    .toast{background:rgba(10,6,2,0.92);border:1px solid var(--accent);border-radius:6px;padding:10px 18px;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:13px;box-shadow:0 4px 16px rgba(0,0,0,0.5);opacity:0;transform:translateY(12px);transition:all 0.3s ease;pointer-events:auto;max-width:320px;}
-    .toast.show{opacity:1;transform:translateY(0);}
-    .toast.hide{opacity:0;transform:translateX(80px);}
-
-    .luna-console-theme-dark .luna-console-log-item{border-bottom-color:rgba(var(--accent-rgb),0.15)!important;}
-
     /* ─── MIDNIGHT THEME (full dark overhaul) ─── */
     html.midnight-theme,html.midnight-theme body{background:#000;color:#e6e6e6;}
     html.midnight-theme #boot-screen{background-color:#000;}
@@ -1386,7 +1411,6 @@
     html.midnight-theme .home-music-player{background:#000;border-color:#222;}
     html.midnight-theme .music-tabpanel{background:#000;border-color:#222;}
     html.midnight-theme #g4mes-frame-container{background:#000;}
-    html.midnight-theme .toast{background:#000;border-color:#333;}
     html.midnight-theme .music-tabbar button{color:var(--accent);}
     html.midnight-theme .music-tabbar button.active{background:var(--accent-glow-soft);color:var(--accent);}
     html.midnight-theme .card-img,html.midnight-theme .card-img img{background:#000;}
@@ -1481,12 +1505,6 @@
       50%{text-shadow:0 0 28px rgba(var(--accent-rgb),0.85);}
     }
     .sidebar-btn .icon{transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1);}
-    .sidebar-btn:hover .icon{animation:iconNudge 0.4s ease;}
-    @keyframes iconNudge{
-      0%,100%{transform:translateX(0);}
-      30%{transform:translateX(-2px);}
-      60%{transform:translateX(2px);}
-    }
     .g4mes-cat:hover img.cat-logo{animation:logoBounce 0.4s ease;}
     @keyframes logoBounce{
       0%,100%{transform:scale(1);}
@@ -1735,13 +1753,13 @@
           <div class="home-music-now">
             <div class="home-music-controls">
               <button onclick="hmPrev()" title="Previous">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5.5v13m3.48-5.636 9.016 5.259A1 1 0 0 0 19 17.259V6.741a1 1 0 0 0-1.504-.864l-9.015 5.26a1 1 0 0 0 0 1.727Z"/></svg>
               </button>
               <button class="play-btn-main" onclick="hmTogglePlay()" id="hm-play-btn" title="Play/Pause">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" id="hm-play-icon"><path d="M8 5v14l11-7z"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" id="hm-play-icon"><path d="M8 5v14l11-7z"/></svg>
               </button>
               <button onclick="hmNext()" title="Next">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5.5v13m-3.48-5.636-9.016 5.259A1 1 0 0 1 5 17.259V6.741a1 1 0 0 1 1.504-.864l9.015 5.26a1 1 0 0 1 0 1.727Z"/></svg>
               </button>
             </div>
             <div class="track-name"><span id="hm-track-name">Select a track</span></div>
@@ -2317,6 +2335,14 @@
             <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/cinecloud.png" alt="Cine Cloud">
             <div class="overlay"><span>Cine Cloud</span></div>
           </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/ios6skid/index.html','iOS 6 Simulator');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/ios6skid/icons/ios6.png" alt="iOS 6 Simulator">
+            <div class="overlay"><span>iOS 6 Simulator</span></div>
+          </button>
+          <button class="g4mes-btn" onclick="event.preventDefault();fetchTool('https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/html/other/calc/index.html','Desmos');">
+            <img loading="lazy" decoding="async" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/desmos.jpg" alt="Desmos">
+            <div class="overlay"><span>Desmos</span></div>
+          </button>
         </div>
       </div>
 
@@ -2346,6 +2372,7 @@
 <button class="g4mes-cat" data-cat="bloxy"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/bloxy.png" alt="Bloxy" title="Bloxy"></button>
 <button class="g4mes-cat" data-cat="yt"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/youtube.png" alt="YouTube Playables" title="YouTube Playables"></button>
 <button class="g4mes-cat" data-cat="blox"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/blox.png" alt="Blox" title="Blox"></button>
+        <button class="g4mes-cat" data-cat="nebula"><img class="cat-logo" src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/nebula.PNG" alt="Nebula" title="Nebula"></button>
         <button class="g4mes-cat" data-cat="all">All</button>
 <button class="g4mes-cat" data-cat="favs" style="color:#ff4444;">&#9829; Favs</button>
         </div>
@@ -3124,7 +3151,7 @@
       </div>
 
       <div class="tab-content" id="settings">
-        <div style="font-size:13px;color:#fff;font-weight:bold;margin-bottom:12px;">Version 2026.10.04</div>
+        <div style="font-size:13px;color:#fff;font-weight:bold;margin-bottom:12px;">Version 2026.10.13</div>
         <div class="g4mes-grid" style="display:grid;gap:16px;">
           <div class="g4mes-card" style="padding:20px;">
             <div class="settings-card-head">
@@ -3173,7 +3200,6 @@
             </label>
             <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
             <p style="color:#aaa;font-size:13px;font-weight:bold;">Home Screen Games</p>
-            <p style="color:#aaa;font-size:12px;margin-top:6px;">Search all stashes and pin games to always show on home. Empty slots fill with random games.</p>
             <input type="text" id="home-pin-search" class="settings-input" placeholder="Search games to pin..." style="margin-top:8px;" oninput="searchHomePins(this.value)">
             <div id="home-pin-results" style="display:none;margin-top:8px;max-height:180px;overflow-y:auto;background:rgba(0,0,0,0.3);border:1px solid rgba(var(--accent-rgb),0.3);border-radius:8px;padding:6px;"></div>
             <p style="color:#aaa;font-size:13px;margin-top:12px;">Pinned (<span id="home-pinned-count">0</span>):</p>
@@ -3354,6 +3380,13 @@
               <button class="settings-btn" onclick="resetCustomCursor()">Teto</button>
               <button class="settings-btn" onclick="setSystemCursor()">None</button>
             </div>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
+            <p style="color:#aaa;font-size:13px;font-weight:bold;">Ads</p>
+            <label style="display:flex;align-items:center;gap:10px;margin-top:10px;cursor:pointer;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">
+              <input type="checkbox" id="ads-vignette-check" onchange="setVignetteAds(this.checked)" style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer;" checked>
+              Popup ad (vignette)
+            </label>
+            <a href="https://uplcm.com/4/12027074" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;color:var(--accent);font-family:'ApplePixel',sans-serif;font-size:14px;">Open An AD <span style="color:#888;">(please do this)</span></a>
           </div>
           <div class="g4mes-card" style="padding:20px;">
             <div class="settings-card-head">
@@ -3440,7 +3473,7 @@
       <div id="ad-slot-bottom" style="width:100%;max-width:970px;margin:12px auto 0;padding:0 12px;box-sizing:border-box;align-items:stretch;justify-content:center;"></div>
       <div id="ad-slot-sides" style="display:none;"></div>
     </main>
-    <div class="toast-container" id="toast-container"></div>
+    
   </div>
 
   <!-- ─── CROSSHAIR OVERLAY ─── -->
@@ -3697,7 +3730,7 @@
         if (btn && typeof btn.click === 'function') btn.click();
         if (typeof renderHomeG4mes === 'function') renderHomeG4mes();
       } catch (e) {}
-      try { showToast('CDN mirror applied (' + n + ' urls rewritten)'); } catch (e) {}
+      try {  } catch (e) {}
     }
     function refreshCdnBases() {
       NOAH_BASE = _cdn + '/gh/NoahsAmazingTutoringHelp/Noahs-Calculus-Tutor@master';
@@ -4764,7 +4797,7 @@
       } else {
         bgCanvas.style.display = 'block';
       }
-      if (!silent) showToast('Background set to ' + mode);
+      if (!silent) {}
     }
     var savedBgModeBeforeg4mes = null;
     var bgSuspended = false;
@@ -4841,6 +4874,26 @@
       try { localStorage.setItem('perfMode', on ? '1' : '0'); } catch (e) {}
       applyPerfMode(on);
     }
+    function setVignetteAds(on) {
+      on = !!on;
+      try { localStorage.setItem('vignetteAds', on ? '1' : '0'); } catch (e) {}
+      if (!on) {
+        try { if (window.__vigT) { clearTimeout(window.__vigT); window.__vigT = null; } } catch (e) {}
+        try { document.querySelectorAll('script[src*="n6wxm"], script[src*="vignette"]').forEach(function(s) { s.remove(); }); } catch (e) {}
+      } else {
+        try {
+          if (!document.querySelector('script[src*="n6wxm"]')) {
+            (function(s){s.dataset.zone='12027148',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+          }
+        } catch (e) {}
+      }
+    }
+    (function vignetteAdsInit() {
+      var on = true;
+      try { on = localStorage.getItem('vignetteAds') !== '0'; } catch (e) {}
+      var c = document.getElementById('ads-vignette-check');
+      if (c) c.checked = on;
+    })();
     function applyPerfMode(on) {
       on = !!on;
       window.__perfMode = on;
@@ -5088,21 +5141,6 @@
       ubSyncWallpaperClass();
       setBackground('starfield');
       document.getElementById('bg-select').value = 'starfield';
-    }
-
-    /* Toast notifications */
-    function showToast(msg) {
-      var c = document.getElementById('toast-container');
-      var t = document.createElement('div');
-      t.className = 'toast';
-      t.textContent = msg;
-      c.appendChild(t);
-      requestAnimationFrame(function() { t.classList.add('show'); });
-      setTimeout(function() {
-        t.classList.remove('show');
-        t.classList.add('hide');
-        setTimeout(function() { t.remove(); }, 300);
-      }, 2000);
     }
 
     /* Sidebar settings */
@@ -5985,7 +6023,7 @@ function injectg4mesAudio(fw, doc) {
       if (embedTimer) { clearTimeout(embedTimer); embedTimer = null; }
       gvLoading.style.display = 'none';
       document.documentElement.classList.remove('loading-active');
-      showToast(currentg4mesName + ' loaded');
+      // showToast(currentg4mesName + ' loaded');
       setTimeout(focusg4mesFrame, 50);
     }
 
@@ -6138,7 +6176,6 @@ if (/<head/i.test(html)) html = html.replace(/<head([^>]*)>/i, '<head$1>' + ytSt
       ov.classList.toggle('active');
       if (ov.classList.contains('active') && typeof ensureLunaConsole === 'function') {
         ensureLunaConsole().catch(function() {
-          if (typeof showToast === 'function') showToast('Console failed to load');
         });
       }
     }
@@ -6425,10 +6462,9 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
         '#quote{text-shadow:0 0 12px ' + glow + '!important}' +
         '.home-music-controls button{border-color:' + accentLine + '!important;color:' + color + '!important}' +
         '.home-music-controls button:hover{background:' + soft + '!important}' +
-        '.home-music-controls .play-btn-main{background:' + color + '!important;border-color:' + color + '!important}' +
+        '.home-music-controls .play-btn-main{border-color:' + color + '!important}' +
         '.home-music-controls .play-btn-main:hover{box-shadow:0 0 10px ' + glow + '!important}' +
-        '.home-music-now{background:' + soft + '!important}' +
-        '.home-music-track.active{background:' + soft + '!important;color:' + color + '!important}' +
+        '.home-music-track.active{color:' + color + '!important}' +
         '.home-music-volume input[type=range]::-webkit-slider-thumb{background:' + color + '!important}' +
         '.home-music-add label:hover{border-color:' + color + '!important;color:' + color + '!important}' +
         '.home-music-player{border-color:' + accentLine + '!important}' +
@@ -6542,7 +6578,7 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       document.documentElement.style.cursor = '';
       if (typeof window.stopTetoCursor === 'function') window.stopTetoCursor();
       if (typeof window.startTetoCursor === 'function') window.startTetoCursor();
-      showToast('Teto cursor enabled');
+      // showToast('Teto cursor enabled');
     }
     function setSystemCursor() {
       localStorage.setItem('activeCursor', 'default');
@@ -6554,7 +6590,7 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       if (typeof window.stopTetoCursor === 'function') window.stopTetoCursor();
       document.documentElement.style.cursor = '';
       document.getElementById('cursor-url-input').value = '';
-      showToast('System cursor enabled');
+      // showToast('System cursor enabled');
     }
     function setDefaultCursor() {
       var wiiUrl = 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/img/wiicursor.png';
@@ -6568,7 +6604,7 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
       document.documentElement.style.cursor = '';
       setCustomCursor(wiiUrl);
       document.getElementById('cursor-url-input').value = '';
-      showToast('Wii cursor enabled');
+      // showToast('Wii cursor enabled');
     }
 
     function resizeCursorImage(url, size, callback) {
@@ -6602,7 +6638,7 @@ var glow = 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
         s.id = 'custom-cursor-style';
         document.head.appendChild(s);
         s.textContent = 'a,button,.sidebar-btn,.card,.g4mes-card,.play-btn,.partner-card a,.media-cat,.g4mes-cat,.gv-btn,.link-item a,input,select,label,.settings-btn,.color-swatch,.submit-btn,.social-btn,.g4mes-btn,.gv-btn,.partner-card,.form-group input,.form-group textarea,.form-group select,.sidebar-btn,.link-item a,.media-cat,.g4mes-cat{ cursor:url("' + escaped + '") 16 16, auto!important; }a,button,.sidebar-btn,.card,.g4mes-card,.play-btn,.partner-card a,.media-cat,.g4mes-cat,.gv-btn,.link-item a{ cursor:url("' + escaped + '") 16 16, pointer!important; }.loading-cursor{ cursor:url("' + escaped + '") 16 16, wait!important; }html.loading-active{ cursor:url("' + escaped + '") 16 16, wait!important; }html.loading-active *{ cursor:url("' + escaped + '") 16 16, wait!important; }';
-        showToast('Cursor applied');
+        // showToast('Cursor applied');
       });
     }
 
@@ -6751,7 +6787,8 @@ let DATA = {
       seraph: [],
       ckv: [],
       noah: [],
-      lumin: []
+      lumin: [],
+      nebula: []
     };
 
     let CURRENT = [];
@@ -6776,7 +6813,8 @@ let DATA = {
       seraph: 'Seraph',
       ckv: 'Chicken Kings Vault',
       noah: "Noah's Tutoring",
-      lumin: 'Lumin SDK'
+      lumin: 'Lumin SDK',
+      nebula: 'Nebula'
     };
     function stashLabel(key) { return STASH_NAMES[key] || key || ''; }
     function tagStash(arr, key) {
@@ -6814,23 +6852,10 @@ let DATA = {
 
     async function loadNoah() {
       if(DATA.noah.length) return;
+      // Noah's own repo endpoints are gone (404) — load the catalog from
+      // Onex558/uranium-source nth.js instead; game files live on jsDelivr.
       try {
-        // Try JSON endpoint first
-        const r = await fetch(NOAH_BASE + '/games.json');
-        if (r.ok) {
-          const d = await r.json();
-          DATA.noah = (Array.isArray(d) ? d : (d.g4mes || [])).map(g => normalizeg4mes({
-            name: g.title || g.name,
-            img: (g.image || g.img || '').startsWith('http') ? (g.image || g.img) : (NOAH_BASE + '/images/' + (g.image || g.img || '')),
-            url: noahUrl(g.url)
-          })).filter(g => g.url && g.url !== '#');
-          if (DATA.noah.length) return;
-        }
-      } catch(e) { console.warn("Noah JSON failed:", e); }
-
-      // Fallback: load g4mes.js as text and extract array
-      try {
-        const r2 = await fetch(NOAH_BASE + '/games.js');
+        const r2 = await fetch(_cdn + '/gh/Onex558/uranium-source-@main/nth.js');
         const text = await r2.text();
         const g4mesObjects = [];
         const objRegex = /\{([^}]+)\}/g;
@@ -7167,21 +7192,42 @@ let DATA = {
       if(DATA.ugs.length) return;
       const repos = ["tharun9772/ugs-1", "tharun9772/ugs-2", "tharun9772/ugs-3"];
       let g4mes = [];
+      const seenUrls = new Set();
+      function pushUgs(name, url) {
+        if (!name || !url || url === '#') return;
+        if (seenUrls.has(url)) return;
+        seenUrls.add(url);
+        g4mes.push(normalizeg4mes({
+          name: name,
+          img: sc13nc3Url() + '/assets/img/fallback.png',
+          url: url
+        }));
+      }
       for(const repo of repos){
         try{
           const r = await fetch(`https://api.github.com/repos/${repo}/contents/`);
           const d = await r.json();
           d.forEach(f => {
             if(f.type === "file" && f.name.startsWith("cl") && f.name.endsWith(".html")){
-              g4mes.push(normalizeg4mes({
-                name: f.name.replace(/^cl/,"").replace(".html",""),
-                img: sc13nc3Url() + '/assets/img/fallback.png',
-                url: _cdn + `/gh/${repo}/${f.name}`
-              }));
+              pushUgs(
+                f.name.replace(/^cl/,"").replace(".html",""),
+                _cdn + `/gh/${repo}/${f.name}`
+              );
             }
           });
         }catch(e){ console.warn("UGS failed:", repo); }
       }
+      try {
+        const BUBBLS_BASE = _cdn + '/gh/bubbls/ugs-singlefile@main';
+        const t = await (await fetch(BUBBLS_BASE + '/games.js')).text();
+        const slugs = [...t.matchAll(/"(cl[^"]+)"/g)].map(m => m[1]);
+        slugs.forEach(function(s) {
+          pushUgs(
+            s.replace(/^cl/, ''),
+            BUBBLS_BASE + '/UGS-Files/' + s + '.html'
+          );
+        });
+      } catch(e) { console.warn("UGS singlefile failed:", e); }
       DATA.ugs = g4mes;
     }
 
@@ -7262,7 +7308,29 @@ let DATA = {
       });
     }
 
-    
+    let NEBULA_BASE = _cdn + '/gh/GoatTech-42/NEBULA-CDN@main';
+
+    async function loadNebula(){
+      if(DATA.nebula.length) return;
+      try {
+        const r = await fetch(NEBULA_BASE + '/games.json');
+        const d = await r.json();
+        const arr = Array.isArray(d) ? d : (d.games || []);
+        const seen = new Set();
+        DATA.nebula = [];
+        arr.forEach(function(g) {
+          var file = String((g && g.file) || '').trim();
+          var nm = String((g && (g.name || g.title)) || '').trim();
+          if (!nm || !file) return;
+          var url = NEBULA_BASE + '/' + file.replace(/^\//, '');
+          var key = url.toLowerCase();
+          if (seen.has(key)) return;
+          seen.add(key);
+          DATA.nebula.push(normalizeg4mes({ name: nm, img: '', url: url }));
+        });
+      } catch(e) { console.warn("Nebula load failed:", e); }
+    }
+
 
     // ─── Category switching ───
     document.querySelectorAll(".g4mes-cat").forEach(btn=>{
@@ -7290,7 +7358,8 @@ let DATA = {
           seraph: loadSeraph,
           ckv: loadCKV,
           noah: loadNoah,
-          lumin: loadLumin
+          lumin: loadLumin,
+          nebula: loadNebula
         };
 
         if (cat === "favs") {
@@ -7324,7 +7393,7 @@ let DATA = {
     function ubEnsureAllGames() {
       const loaders = {
           ubz: loadUBZ, gn: loadGN, daknux: loadDaknux, kh0: loadKh0, alexr: loadAlexr, hydra: loadHydra, diesmos: loadDiesmos, gclass: loadGclass, cc: loadCc, kh3: loadKh3, bloxy: loadBloxy, yt: loadYt, blox: loadBlox, elite: loadElite, ugs: loadUGS,
-          seraph: loadSeraph, ckv: loadCKV, noah: loadNoah, lumin: loadLumin
+          seraph: loadSeraph, ckv: loadCKV, noah: loadNoah, lumin: loadLumin, nebula: loadNebula
         };
       var anyMissing = false;
       for (var k in DATA) { if (!DATA[k].length) anyMissing = true; }
@@ -7537,10 +7606,10 @@ let DATA = {
       });
       if (idx === -1) {
         favs.push({ name: name, stash: stash });
-        showToast('Favorited: ' + name + (stash ? ' — ' + stashLabel(stash) : ''));
+        // showToast('Favorited: ' + name + (stash ? ' — ' + stashLabel(stash) : ''));
       } else {
         favs.splice(idx, 1);
-        showToast('Removed from favorites');
+        // showToast('Removed from favorites');
       }
       try { localStorage.setItem('favoriteg4mes', JSON.stringify(favs)); } catch(e) {}
       renderg4mes();
@@ -7569,57 +7638,6 @@ let DATA = {
       window.__renderToken = (window.__renderToken || 0) + 1; const renderToken = window.__renderToken;
       g4mesGrid.innerHTML = "";
       const pool = FILTERED.filter(g => g && g.name && g.url && g.url !== '#');
-
-      if (window.__rndInt) { clearInterval(window.__rndInt); window.__rndInt = null; }
-      if (window.__rndObs) { try { window.__rndObs.disconnect(); } catch(e) {} window.__rndObs = null; }
-      if (window.__moreObs) { try { window.__moreObs.disconnect(); } catch(e) {} window.__moreObs = null; }
-      const rCard = document.createElement('div');
-      rCard.className = 'g4mes-card';
-      const rImgs = pool.map(g => g.img).filter(Boolean);
-      rCard.innerHTML = '<img alt="Random"><h3>Random Gаme</h3><div class="play-btn">Play</div>';
-      const rImg = rCard.querySelector('img');
-      let rIdx = -1;
-      const rStep = function() {
-        rIdx = (rIdx + 1) % (rImgs.length || 1);
-        rImg.src = rImgs[rIdx] || fallback;
-      };
-      rStep();
-      if (rImgs.length > 1) {
-        rImg.onerror = function() { this.onerror = null; this.src = fallback; };
-        // Only fetch a new random thumbnail while this card is actually
-        // visible on screen — previously this ran on an unconditional
-        // setInterval, silently fetching a fresh image from the CDN every
-        // 3 seconds even while scrolled way out of view.
-        var startRandomRotation = function() {
-          if (!window.__rndInt) window.__rndInt = setInterval(rStep, 3000);
-        };
-        var stopRandomRotation = function() {
-          if (window.__rndInt) { clearInterval(window.__rndInt); window.__rndInt = null; }
-        };
-        if ('IntersectionObserver' in window) {
-          var rObs = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-              if (entry.isIntersecting) startRandomRotation();
-              else stopRandomRotation();
-            });
-          }, { threshold: 0.1 });
-          rObs.observe(rCard);
-          window.__rndObs = rObs;
-        } else {
-          startRandomRotation();
-        }
-      }
-      rCard.querySelector('.play-btn').onclick = () => {
-        const pick = pool.length ? pool[Math.floor(Math.random() * pool.length)] : null;
-        if (!pick) return;
-        openg4mes(pick.name, pick.url, !!pick._ubz);
-      };
-      rCard.onclick = () => {
-        const pick = pool.length ? pool[Math.floor(Math.random() * pool.length)] : null;
-        if (!pick) return;
-        openg4mes(pick.name, pick.url, !!pick._ubz);
-      };
-      g4mesGrid.appendChild(rCard);
 
       const favSet = {};
       getFavorites().forEach(function(f) {
@@ -7712,7 +7730,7 @@ let DATA = {
     })();
 
     // ─── Home screen customization ───
-    var HOME_STASH_KEYS = ['ubz', 'gn', 'daknux', 'kh0', 'alexr', 'hydra', 'diesmos', 'gclass', 'cc', 'kh3', 'bloxy', 'yt', 'blox', 'elite', 'seraph', 'noah', 'lumin'];
+    var HOME_STASH_KEYS = ['ubz', 'gn', 'daknux', 'kh0', 'alexr', 'hydra', 'diesmos', 'gclass', 'cc', 'kh3', 'bloxy', 'yt', 'blox', 'elite', 'seraph', 'noah', 'lumin', 'nebula'];
     var _homePinResults = [];
     function getHomePinned() {
       try {
@@ -7780,7 +7798,7 @@ let DATA = {
       return null;
     }
     function loadAllHomeStashes() {
-      var fns = [loadUBZ, loadGN, loadDaknux, loadKh0, loadAlexr, loadHydra, loadDiesmos, loadGclass, loadCc, loadKh3, loadBloxy, loadYt, loadBlox, loadElite, loadSeraph, loadNoah, loadLumin];
+      var fns = [loadUBZ, loadGN, loadDaknux, loadKh0, loadAlexr, loadHydra, loadDiesmos, loadGclass, loadCc, loadKh3, loadBloxy, loadYt, loadBlox, loadElite, loadSeraph, loadNoah, loadLumin, loadNebula];
       return Promise.all(fns.map(function(f) { try { return f(); } catch (e) { return null; } }));
     }
     async function searchHomePins(q) {
@@ -7833,7 +7851,7 @@ let DATA = {
       var box = document.getElementById('home-pin-results');
       if (box) { box.style.display = 'none'; box.innerHTML = ''; }
       _homePinResults = [];
-      showToast('Pinned to home: ' + g.name);
+      // showToast('Pinned to home: ' + g.name);
     }
     function removeHomePin(idx) {
       var pinned = getHomePinned();
@@ -7878,14 +7896,14 @@ let DATA = {
         saveHomePinned(pins);
         renderHomePins();
         renderHomeG4mes();
-        showToast(pins.length ? ('Pinned ' + pins.length + ' favorite(s) to home') : 'No favorites to pin');
+        // showToast(pins.length ? ('Pinned ' + pins.length + ' favorite(s) to home') : 'No favorites to pin');
       } catch (e) {}
     }
     function clearHomePins() {
       saveHomePinned([]);
       renderHomePins();
       renderHomeG4mes();
-      showToast('Home pins cleared — showing random games');
+      // showToast('Home pins cleared — showing random games');
     }
     function syncHomeSettingsUI() {
       var hc = document.getElementById('home-count');
@@ -8135,7 +8153,7 @@ let DATA = {
       try { localStorage.removeItem('cloakCustomTitle'); } catch(e) {}
       try { document.getElementById('cloak-favicon-input').value = preset.icon; } catch(e) {}
       try { document.getElementById('cloak-title-input').value = preset.title; } catch(e) {}
-      showToast('Cloak set to ' + preset.title);
+      // showToast('Cloak set to ' + preset.title);
     }
 
     function resetCloak() {
@@ -8701,7 +8719,7 @@ let DATA = {
   }
   function saveCustom(arr) {
     try { localStorage.setItem(HM_KEY, JSON.stringify(arr)); }
-    catch(e) { showToast('Storage full, could not save'); }
+    catch(e) {}
   }
 
   function buildList() {
@@ -8797,19 +8815,23 @@ let DATA = {
     var a = ensureAudio();
     if (a) a.volume = val / 100;
     localStorage.setItem(HM_VOL_KEY, val);
+    try {
+      var volEl = document.getElementById('hm-volume');
+      if (volEl) volEl.style.setProperty('--vol-fill', val + '%');
+    } catch (e) {}
   };
 
   window.hmAddFile = function(e) {
     var file = e.target.files[0];
     if (!file) return;
-    if (file.size > 10 * 1024 * 1024) { showToast('File too large (10MB max)'); return; }
+    if (file.size > 10 * 1024 * 1024) { return; }
     var reader = new FileReader();
     reader.onload = function(ev) {
       var custom = getCustom();
       custom.push({ name: file.name.replace(/\.[^.]+$/, ''), url: ev.target.result, type: 'custom' });
       saveCustom(custom);
       buildList();
-      showToast('Added: ' + file.name);
+      // showToast('Added: ' + file.name);
     };
     reader.readAsDataURL(file);
     e.target.value = '';
@@ -8823,20 +8845,13 @@ let DATA = {
   }
   window.hmUpdatePlayIcon = updatePlayIcon;
 
-  function showToast(msg) {
-    var t = document.getElementById('decoy-toast') || document.querySelector('.toast');
-    if (!t) { t = document.createElement('div'); t.className = 'toast'; document.body.appendChild(t); }
-    t.textContent = msg;
-    t.classList.add('show');
-    clearTimeout(t._tm);
-    t._tm = setTimeout(function() { t.classList.remove('show'); }, 3000);
-  }
+  
 
   // restore volume slider
   var vol = 50;
   try { vol = parseInt(localStorage.getItem(HM_VOL_KEY) || '50'); } catch (e) {}
   var volEl = document.getElementById('hm-volume');
-  if (volEl) volEl.value = vol;
+  if (volEl) { volEl.value = vol; try { volEl.style.setProperty('--vol-fill', vol + '%'); } catch (e) {} }
 
   /* ─── Music popup on sidebar icon hover ─── */
   var pop = document.getElementById('music-popup');
