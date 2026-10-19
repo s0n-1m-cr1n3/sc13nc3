@@ -1,223 +1,696 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#000000">
 <title>New Tab</title>
- <link rel="icon" id="page-favicon" type="image/svg+xml" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAYAAADtc08vAAAAAXNSR0IArs4c6QAAAz1JREFUOE9jZEAD68zMhBX8/EIl7OwCOMXEVP79+fPj+8tXd99euXzqyc6dq723bbuFrIURmXOurTlZztu/gFdBXouVk5OJkYUFLP3v92+G3z9+MHx9/PjW423bphiUlU2G6YMbcH323HZ5P598DhERTkYmJnSHgfn///1j+PPt2/dHO3cuVgkJSQeJwQ24OnNmvWpkZAMrDw/Dl+fP3z/bs2fijz17em7++PFDQkJCiO37d6Z/vLyffr5/z/711y9Gn2XL3oMN2ObpKeq1ffvr7QkJCobZ2fMZ//79eWvZsjTbSZMerQoNZePn4GB1X7z4K8xJV7OyeD5ycKh+/fTjh+ucadcZT9fWxnHJyChpp6c3ILv7xoJF1VKODhWMjAxML48dn64SEV5yuKhITTM2fgG3rLTpl+fPH95eurSW8dLEibVKISGld1aubDQoKuoFGXJt9uxSpaCgLnZBQbCZvz5+Yri3bn2lZnJix4NNm6bK+/pm/fn+neHWsmV9jNfmzOlUi44u+3D7zvXLfb1ejgsWPHiwefMSKQeHaCZYLPz5w/Ds0IH5Ct6+SddmzcrXSEqaAIqZOytXTmK8PGVKlVpsbCsrFxfDrSVLOjUSEysuTpgUpxoVsYBDSIiRgZGR4cfr1z9vrlqVbJiXt/Tehk1TFf18skCuurFkcQ3jqdJSe/X09MW8ioqyn+7ceXh1zpwA6+7uC1dmzMiStLIqZmBh4Xx99ESHRmrSpKMlJTp6Obl7eGRlxD/dv3/vxux5eeBovLt+/Xx5D48EJnZ2hrcXL569tXBhivWECRfQE8PDbdsWyHl4xIOc/+zg4fWybi5BYAOO5Re7a2Wlz+ZVVJBlZGZm+PbixZvnBw/OeXn69BKb/v6rIDWXensTlKOjp3EIi3B+efTwwY1588rMW1tXwxPSuZ6eDOXg4A4eaWl+WOB9vHv30c3589O+vXt3Uys+frawkZHLlydPnjzetq1HNzd3IkpKBHFO1tUFyrq65guoqJgxMDP/e7hpS5dmSlLTlRkziuTc3FM/3r9/7cme3Qst29s3YeQFZP+eamgIYuXllzQsLpwKEj/f1ZXy7/v378b19UvRwwUAV1dp6K1xMBgAAAAASUVORK5CYII=">
+<link rel="icon" id="page-favicon" type="image/svg+xml" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAYAAADtc08vAAAAAXNSR0IArs4c6QAAAz1JREFUOE9jZEAD68zMhBX8/EIl7OwCOMXEVP79+fPj+8tXd99euXzqyc6dq723bbuFrIURmXOurTlZztu/gFdBXouVk5OJkYUFLP3v92+G3z9+MHx9/PjW423bphiUlU2G6YMbcH323HZ5P598DhERTkYmJnSHgfn///1j+PPt2/dHO3cuVgkJSQeJwQ24OnNmvWpkZAMrDw/Dl+fP3z/bs2fijz17em7++PFDQkJCiO37d6Z/vLyffr5/z/711y9Gn2XL3oMN2ObpKeq1ffvr7QkJCobZ2fMZ//79eWvZsjTbSZMerQoNZePn4GB1X7z4K8xJV7OyeD5ycKh+/fTjh+ucadcZT9fWxnHJyChpp6c3ILv7xoJF1VKODhWMjAxML48dn64SEV5yuKhITTM2fgG3rLTpl+fPH95eurSW8dLEibVKISGld1aubDQoKuoFGXJt9uxSpaCgLnZBQbCZvz5+Yri3bn2lZnJix4NNm6bK+/pm/fn+neHWsmV9jNfmzOlUi44u+3D7zvXLfb1ejgsWPHiwefMSKQeHaCZYLPz5w/Ds0IH5Ct6+SddmzcrXSEqaAIqZOytXTmK8PGVKlVpsbCsrFxfDrSVLOjUSEysuTpgUpxoVsYBDSIiRgZGR4cfr1z9vrlqVbJiXt/Tehk1TFf18skCuurFkcQ3jqdJSe/X09MW8ioqyn+7ceXh1zpwA6+7uC1dmzMiStLIqZmBh4Xx99ESHRmrSpKMlJTp6Obl7eGRlxD/dv3/vxux5eeBovLt+/Xx5D48EJnZ2hrcXL569tXBhivWECRfQE8PDbdsWyHl4xIOc/+zg4fWybi5BYAOO5Re7a2Wlz+ZVVJBlZGZm+PbixZvnBw/OeXn69BKb/v6rIDWXensTlKOjp3EIi3B+efTwwY1588rMW1tXwxPSuZ6eDOXg4A4eaWl+WOB9vHv30c3589O+vXt3Uys+frawkZHLlydPnjzetq1HNzd3IkpKBHFO1tUFyrq65guoqJgxMDP/e7hpS5dmSlLTlRkziuTc3FM/3r9/7cme3Qst29s3YeQFZP+eamgIYuXllzQsLpwKEj/f1ZXy7/v378b19UvRwwUAV1dp6K1xMBgAAAAASUVORK5CYII=">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  body {
-    background: radial-gradient(ellipse at bottom, #35251b 0%, #090a0f 100%);
-    height: 100vh;
-    overflow: hidden;
-    margin: 0;
-    font-family: Roboto,'Segoe UI',Arial,sans-serif;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+  :root {
+    --accent: #ff6a00;
+    --accent-rgb: 255, 106, 0;
+    --ease: cubic-bezier(.2, .8, .2, 1);
+    color-scheme: dark;
   }
-  .star {
-    position: absolute;
-    background: white;
-    border-radius: 50%;
-    animation: twinkle 2s infinite alternate;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%; background: #000; color: var(--accent); overflow: hidden;
+    font-family: 'Newsreader', 'Iowan Old Style', Georgia, serif;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
   }
+
+  /* ───────── background ───────── */
+  .layer { position: fixed; inset: -10%; pointer-events: none; will-change: transform; }
+  .bggrid {
+    background-image:
+      linear-gradient(rgba(var(--accent-rgb), .07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(var(--accent-rgb), .07) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, transparent 68%);
+            mask-image: radial-gradient(ellipse at center, #000 0%, transparent 68%);
+  }
+  .stars-a { background-image:
+      radial-gradient(1px 1px at 12% 22%, rgba(var(--accent-rgb),.7), transparent 60%),
+      radial-gradient(1px 1px at 78% 14%, rgba(var(--accent-rgb),.5), transparent 60%),
+      radial-gradient(1.5px 1.5px at 34% 74%, rgba(var(--accent-rgb),.6), transparent 60%),
+      radial-gradient(1px 1px at 88% 66%, rgba(var(--accent-rgb),.55), transparent 60%),
+      radial-gradient(1px 1px at 55% 40%, rgba(var(--accent-rgb),.4), transparent 60%),
+      radial-gradient(1px 1px at 6% 88%, rgba(var(--accent-rgb),.5), transparent 60%); }
+  .stars-b { background-image:
+      radial-gradient(2px 2px at 22% 48%, rgba(var(--accent-rgb),.85), transparent 60%),
+      radial-gradient(2px 2px at 68% 82%, rgba(var(--accent-rgb),.65), transparent 60%),
+      radial-gradient(1.5px 1.5px at 92% 36%, rgba(var(--accent-rgb),.75), transparent 60%),
+      radial-gradient(2px 2px at 44% 10%, rgba(var(--accent-rgb),.65), transparent 60%); }
+  .orb { position: fixed; border-radius: 50%; filter: blur(70px); pointer-events: none; will-change: transform; }
+  .orb.one { width: 38vmax; height: 38vmax; left: -8vmax; top: -10vmax;
+    background: radial-gradient(circle, rgba(var(--accent-rgb), .22), transparent 65%); }
+  .orb.two { width: 34vmax; height: 34vmax; right: -10vmax; bottom: -12vmax;
+    background: radial-gradient(circle, rgba(var(--accent-rgb), .16), transparent 65%); }
+  .spot { position: fixed; inset: 0; pointer-events: none;
+    background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 40%), rgba(var(--accent-rgb), .10), transparent 60%); }
+  .vignette { position: fixed; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, .75) 100%); }
+
   .version {
-    position: fixed;
-    top: 16px;
-    left: 20px;
-    z-index: 5;
-    font-size: 13px;
-    color: #cfd8e3;
-    letter-spacing: .5px;
+    position: fixed; top: 16px; left: 20px; z-index: 5;
+    font-size: 13px; letter-spacing: .02em; color: rgba(var(--accent-rgb), .6);
   }
-  @keyframes twinkle {
-    0% { opacity: 0.2; transform: scale(0.8); }
-    100% { opacity: 1; transform: scale(1.2); }
+
+  /* ───────── views ───────── */
+  main {
+    position: relative; z-index: 2; height: 100%; overflow-y: auto;
+    display: flex; align-items: center; justify-content: center; padding: 24px;
   }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 26px;
-    max-width: 1080px;
-    width: 90%;
-    position: relative;
-    z-index: 2;
-    padding: 24px;
+  .view { margin: auto; width: 100%; display: flex; flex-direction: column; align-items: center; will-change: transform; }
+  .view[hidden] { display: none; }
+  .stack { display: flex; flex-direction: column; gap: 14px; width: min(380px, 100%); }
+  .view.enter .btn, .view.enter .card { animation: rise .8s var(--ease) backwards; animation-delay: calc(var(--i) * 90ms + 60ms); }
+
+  /* ───────── buttons ───────── */
+  .btn {
+    position: relative; display: flex; align-items: center; gap: 14px;
+    width: 100%; height: 62px; padding: 0 16px 0 18px; overflow: hidden; cursor: pointer;
+    font: inherit; font-size: 20px; letter-spacing: .01em; text-align: left; color: var(--accent);
+    background: linear-gradient(180deg, rgba(var(--accent-rgb), .08), rgba(var(--accent-rgb), .02));
+    border: 1px solid rgba(var(--accent-rgb), .28); border-radius: 16px;
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    box-shadow: inset 0 1px 0 rgba(var(--accent-rgb), .14), 0 14px 40px rgba(0, 0, 0, .7);
+    transition: transform .3s var(--ease), border-color .3s, box-shadow .3s, background .3s;
+    -webkit-tap-highlight-color: transparent;
   }
+  .btn::before, .card::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; opacity: 0; z-index: 2;
+    background: radial-gradient(170px circle at var(--bx, 50%) var(--by, 50%), rgba(var(--accent-rgb), .22), transparent 70%);
+    transition: opacity .3s;
+  }
+  .btn > * { position: relative; z-index: 1; }
+  .btn .ico { width: 22px; height: 22px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.6;
+    stroke-linecap: round; stroke-linejoin: round; opacity: .9; }
+  .btn .label { flex: 1; text-shadow: 0 0 14px rgba(var(--accent-rgb), .5); }
+  .btn kbd {
+    font: 500 12px/1 ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    padding: 5px 7px; border-radius: 7px; color: rgba(var(--accent-rgb), .75);
+    border: 1px solid rgba(var(--accent-rgb), .3); background: rgba(0, 0, 0, .45);
+  }
+  .btn:hover, .btn:focus-visible, .card:hover, .card:focus-visible {
+    transform: translateY(-2px); background: rgba(var(--accent-rgb), .09); border-color: rgba(var(--accent-rgb), .85);
+    box-shadow: inset 0 1px 0 rgba(var(--accent-rgb), .22), 0 0 28px rgba(var(--accent-rgb), .28), 0 18px 50px rgba(0, 0, 0, .8);
+  }
+  .btn:hover::before, .btn:focus-visible::before, .card:hover::before, .card:focus-visible::before { opacity: 1; }
+  .btn:focus-visible, .card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .btn:active, .card:active { transform: translateY(0) scale(.985); }
+
+  /* ───────── page cards ───────── */
+  .head { text-align: center; margin-bottom: 22px; }
+  .head h2 { font-size: 26px; font-weight: 400; text-shadow: 0 0 14px rgba(var(--accent-rgb), .5); }
+  .head span { font-size: 15px; color: rgba(var(--accent-rgb), .65); }
+  .grid { display: grid; gap: 26px; width: min(560px, 100%);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
   .card {
-    border-radius: 28px;
-    overflow: hidden;
-    background: rgba(255,255,255,.06);
-    border: 1px solid rgba(255,255,255,.12);
-    box-shadow: 0 8px 24px rgba(0,0,0,.4);
-    transition: transform .2s, box-shadow .2s;
-    cursor: pointer;
+    position: relative; overflow: hidden; cursor: pointer; border-radius: 20px;
+    background: linear-gradient(180deg, rgba(var(--accent-rgb), .08), rgba(var(--accent-rgb), .02));
+    border: 1px solid rgba(var(--accent-rgb), .28);
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    box-shadow: inset 0 1px 0 rgba(var(--accent-rgb), .14), 0 14px 40px rgba(0, 0, 0, .7);
+    transition: transform .3s var(--ease), border-color .3s, box-shadow .3s, background .3s;
+    -webkit-tap-highlight-color: transparent;
   }
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 32px rgba(0,0,0,.55);
+  .card img { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover;
+    background: rgba(var(--accent-rgb), .06); opacity: .92; transition: opacity .3s; }
+  .card:hover img { opacity: 1; }
+  .card p { padding: 14px 16px; font-size: 20px; letter-spacing: .01em; text-align: center;
+    text-shadow: 0 0 14px rgba(var(--accent-rgb), .5); }
+  .back {
+    margin-top: 26px; padding: 8px 14px; background: none; border: none; cursor: pointer;
+    font: inherit; font-size: 16px; color: rgba(var(--accent-rgb), .65); transition: color .2s;
   }
-  .card img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
+  .back:hover, .back:focus-visible { color: var(--accent); }
+  .back:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+
+  /* ───────── settings ───────── */
+  .gear {
+    position: fixed; top: 12px; right: 14px; z-index: 6; width: 42px; height: 42px;
+    display: grid; place-items: center; cursor: pointer; color: var(--accent);
+    background: linear-gradient(180deg, rgba(var(--accent-rgb), .08), rgba(var(--accent-rgb), .02));
+    border: 1px solid rgba(var(--accent-rgb), .28); border-radius: 12px;
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    transition: transform .3s var(--ease), border-color .3s, box-shadow .3s;
+    -webkit-tap-highlight-color: transparent;
   }
-  .card p {
-    padding: 12px 14px;
-    font-size: 14px;
-    text-align: center;
-    color: #cfd8e3;
+  .gear svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.6;
+    stroke-linecap: round; stroke-linejoin: round; transition: transform .5s var(--ease); }
+  .gear:hover, .gear:focus-visible { border-color: rgba(var(--accent-rgb), .85); box-shadow: 0 0 22px rgba(var(--accent-rgb), .28); }
+  .gear:hover svg { transform: rotate(60deg); }
+  .gear:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .set-bg {
+    position: fixed; inset: 0; z-index: 10; padding: 24px; display: flex; align-items: center; justify-content: center;
+    background: rgba(0, 0, 0, .7); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
   }
-  .pop-bg {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.55);
-    z-index: 10;
-    align-items: center;
-    justify-content: center;
+  .set-bg[hidden] { display: none; }
+  .set {
+    width: min(400px, 100%); padding: 26px 24px 18px; background: #0a0502; color: var(--accent);
+    border: 1px solid rgba(var(--accent-rgb), .4); border-radius: 20px;
+    box-shadow: 0 0 40px rgba(var(--accent-rgb), .18), 0 24px 60px rgba(0, 0, 0, .85);
+    animation: rise .35s var(--ease);
   }
-  .pop {
-    background: #151c28;
-    border: 1px solid rgba(255,255,255,.15);
-    border-radius: 16px;
-    padding: 28px 32px;
-    min-width: 300px;
-    text-align: center;
-    box-shadow: 0 16px 48px rgba(0,0,0,.6);
+  .set h3 { font-size: 24px; font-weight: 400; margin-bottom: 20px; text-shadow: 0 0 14px rgba(var(--accent-rgb), .5); }
+  .set .field { margin-bottom: 22px; }
+  .set .field > label, .set .field > .lbl { display: block; font-size: 16px; margin-bottom: 10px; color: rgba(var(--accent-rgb), .8); }
+  .swatches { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .sw {
+    width: 30px; height: 30px; border-radius: 50%; cursor: pointer; padding: 0;
+    border: 2px solid transparent; background: var(--c);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .15), 0 0 14px color-mix(in srgb, var(--c) 45%, transparent);
+    transition: transform .2s var(--ease), border-color .2s;
   }
-  .pop h3 { font-size: 16px; font-weight: 500; margin-bottom: 6px; }
-  .pop .who { font-size: 13px; color: #9aa7b5; margin-bottom: 22px; }
-  .pop .btns { display: flex; gap: 14px; justify-content: center; }
-  .pop button {
-    padding: 18px 44px;
-    border-radius: 999px;
-    border: 1px solid rgba(255,255,255,.2);
-    background: rgba(255,255,255,.06);
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background .15s, transform .15s;
+  .sw:hover { transform: scale(1.12); }
+  .sw[aria-pressed="true"] { border-color: #fff; }
+  .sw:focus-visible, .set select:focus-visible, .set .pick:focus-within { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .set .pick { position: relative; width: 30px; height: 30px; border-radius: 50%; overflow: hidden; cursor: pointer;
+    border: 1px dashed rgba(var(--accent-rgb), .6); display: grid; place-items: center; font-size: 18px; line-height: 1; }
+  .set .pick input { position: absolute; inset: -6px; width: 44px; height: 44px; opacity: 0; cursor: pointer; }
+  .set select {
+    width: 100%; height: 46px; padding: 0 12px; font: inherit; font-size: 17px; color: var(--accent);
+    background: #120a05; border: 1px solid rgba(var(--accent-rgb), .35); border-radius: 12px; cursor: pointer;
   }
-  .pop button:hover { background: rgba(255,255,255,.16); transform: translateY(-2px); }
-  .pop .close {
-    display: block;
-    margin: 18px auto 0;
-    background: none;
-    border: none;
-    color: #8d99a6;
-    font-size: 13px;
-    cursor: pointer;
+  .set select option, .set select optgroup { background: #120a05; color: var(--accent); }
+  .set .hint { margin-top: 8px; font-size: 14px; color: rgba(var(--accent-rgb), .55); }
+  .set .actions { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
+  .set .actions button { padding: 8px 12px; background: none; border: none; cursor: pointer; font: inherit; font-size: 16px;
+    color: rgba(var(--accent-rgb), .65); transition: color .2s; }
+  .set .actions button:hover, .set .actions button:focus-visible { color: var(--accent); }
+  .set .actions button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
+
+  .set .chk { padding: 9px 14px; font: inherit; font-size: 15px; color: var(--accent); cursor: pointer;
+    background: rgba(var(--accent-rgb), .08); border: 1px solid rgba(var(--accent-rgb), .35); border-radius: 10px; }
+  .set .chk:hover, .set .chk:focus-visible { border-color: var(--accent); }
+  .chk-out { margin-top: 10px; display: grid; gap: 8px; font-size: 14px; }
+  .chk-out .r { display: flex; align-items: center; gap: 10px; color: rgba(var(--accent-rgb), .8); }
+  .chk-out img { width: 20px; height: 20px; flex: none; border-radius: 4px; background: rgba(var(--accent-rgb), .12); }
+  .chk-out .r b { font-weight: 400; color: var(--accent); }
+  .autobar {
+    position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); z-index: 8;
+    display: flex; align-items: center; gap: 14px; padding: 10px 12px 10px 18px; white-space: nowrap; max-width: calc(100% - 32px);
+    background: #0a0502; border: 1px solid rgba(var(--accent-rgb), .4); border-radius: 14px;
+    box-shadow: 0 0 28px rgba(var(--accent-rgb), .2); font-size: 16px;
   }
+  .autobar[hidden] { display: none; }
+  .autobar button { padding: 6px 12px; font: inherit; font-size: 15px; color: var(--accent); cursor: pointer;
+    background: rgba(var(--accent-rgb), .08); border: 1px solid rgba(var(--accent-rgb), .35); border-radius: 9px; }
+  .autobar button:hover, .autobar button:focus-visible { border-color: var(--accent); }
+
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+
+  @media (hover: none) { .btn kbd { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .view.enter .btn, .view.enter .card { animation: none; } }
 </style>
+<script>
+try {
+  var c = localStorage.getItem('ub_accent');
+  if (c && /^#[0-9a-f]{6}$/i.test(c)) {
+    var st = document.documentElement.style;
+    st.setProperty('--accent', c);
+    st.setProperty('--accent-rgb', parseInt(c.substr(1,2),16)+', '+parseInt(c.substr(3,2),16)+', '+parseInt(c.substr(5,2),16));
+  }
+} catch (e) {}
+</script>
 </head>
 <body>
 
-<div class="version">v1.0.0 (9/23/2026)</div>
+<div class="layer bggrid" data-depth="4"></div>
+<div class="layer stars-a" data-depth="8"></div>
+<div class="layer stars-b" data-depth="18"></div>
+<div class="orb one" data-depth="30"></div>
+<div class="orb two" data-depth="-24"></div>
+<div class="spot"></div>
+<div class="vignette"></div>
 
-<div class="grid">
-  <!-- Card 1..4: click the image -> popup -> pick about:blank or blob -->
-  <div class="card" data-ab="a1.html" data-bb="b1.html">
-    <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/load/class.png" alt="Asset 1">
-    <p>Classroom</p>
-  </div>
-  <div class="card" data-ab="a2.html" data-bb="b2.html">
-    <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/load/test.png" alt="Asset 2">
-    <p>Desmos Testing</p>
-  </div>
-  <div class="card" data-ab="a3.html" data-bb="b3.html">
-    <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/load/calc.png" alt="Asset 3">
-    <p>Desmos</p>
-  </div>
-  <div class="card" data-direct="c1.html">
-    <img src="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/load/site.png" alt="Asset 4">
-    <p>Site</p>
-  </div>
+<div class="version">v1.0.1 (10/10/2026)</div>
+
+<button class="gear" id="gear" type="button" aria-label="Settings" title="Settings">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+</button>
+
+<div class="autobar" id="autobar" hidden role="status">
+  <span id="auto-text"></span>
+  <button id="auto-cancel" type="button">Cancel</button>
 </div>
 
-<div class="pop-bg" id="pop-bg">
-  <div class="pop">
-    <h3>Open with…</h3>
-    <div class="who" id="pop-name"></div>
-    <div class="btns">
-      <button id="ab-btn">about:blank</button>
-      <button id="bb-btn">blob</button>
+<div class="set-bg" id="set-bg" hidden>
+  <div class="set" role="dialog" aria-modal="true" aria-labelledby="set-title">
+    <h3 id="set-title">Settings</h3>
+    <div class="field">
+      <span class="lbl">Color</span>
+      <div class="swatches" id="swatches"></div>
     </div>
-    <button class="close" id="pop-close">Close</button>
+    <div class="field">
+      <label for="auto">Open on launch</label>
+      <select id="auto"></select>
+      <div class="hint">Saved on this device. Press Esc or Cancel during the countdown to stay on the menu.</div>
+    </div>
+    <div class="field">
+      <span class="lbl">Favicons</span>
+      <button class="chk" id="chk" type="button">Check what each page gives</button>
+      <div class="chk-out" id="chk-out"></div>
+    </div>
+    <div class="actions">
+      <button id="set-reset" type="button">Reset</button>
+      <button id="set-close" type="button">Done</button>
+    </div>
   </div>
 </div>
+
+<main>
+  <!-- view 1: choose how to open -->
+  <div class="view enter" id="view-modes" data-depth="-6">
+    <div class="stack">
+      <button class="btn" id="m-ab" type="button" style="--i:0">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18"/></svg>
+        <span class="label">about:blank</span>
+        <kbd>1</kbd>
+      </button>
+      <button class="btn" id="m-bb" type="button" style="--i:1">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg>
+        <span class="label">blob</span>
+        <kbd>2</kbd>
+      </button>
+      <button class="btn" id="m-nc" type="button" style="--i:2">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+        <span class="label">no cloak</span>
+        <kbd>3</kbd>
+      </button>
+    </div>
+  </div>
+
+  <!-- view 2: choose a page (opens in the mode picked above) -->
+  <div class="view" id="view-pages" data-depth="-6" hidden>
+    <div class="head"><h2 id="mode-name"></h2><span>Choose a page</span></div>
+    <div class="stack pages-stack">
+      <button class="btn" type="button" style="--i:0" data-ab="a1.html" data-bb="b1.html" data-icon="https://www.google.com/s2/favicons?domain=classroom.google.com&amp;sz=64">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 5v14a1 1 45 0 0 1 1h16a1 1 135 0 0 1-1V5a1 1 45 0 0-1-1H4a1 1 135 0 0-1 1Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+          <path d="M14 18h4v2h-4z" fill="currentColor" stroke="none"/>
+          <path d="M12 12a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 .75c-1.001 0-3 .502-3 1.5V15h6v-.75c0-.998-1.999-1.5-3-1.5z" fill="currentColor" stroke="none"/>
+          <path d="M15.75 10.5a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25zm0 2.813c-.17 0-.38.02-.602.058.203.235.352.537.352.879V15H18v-.563c0-.748-1.5-1.124-2.25-1.124zm-1.73.435c-.307.176-.52.407-.52.69v.062h1v-.25c0-.082-.032-.162-.168-.287a1.68 1.68 0 0 0-.312-.215zM8.25 10.5a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25zm0 2.813c-.75 0-2.25.376-2.25 1.124V15h2.5v-.75c0-.342.15-.644.352-.879a3.603 3.603 0 0 0-.602-.059zm1.73.435a1.68 1.68 0 0 0-.312.215c-.136.125-.168.205-.168.287v.25h1v-.063c0-.282-.213-.513-.52-.689z" fill="currentColor" stroke="none"/>
+        </svg>
+        <span class="label">Classroom</span>
+        <kbd>1</kbd>
+      </button>
+      <button class="btn" type="button" style="--i:1" data-ab="a2.html" data-bb="b2.html" data-icon="https://www.google.com/s2/favicons?domain=desmos.com&amp;sz=64">
+        <svg class="ico" viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M40.5,5.5H7.5a2,2,0,0,0-2,2v33a2,2,0,0,0,2,2h33a2,2,0,0,0,2-2V7.5A2,2,0,0,0,40.5,5.5Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M37.33,5.5C36,14.4,32.88,36.61,24,36.61S12,14.4,10.67,5.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M5.5,27.89c4.62,0,4.62,6,9.25,6s4.62-6,9.25-6,4.62,6,9.25,6,4.62-6,9.25-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="label">Desmos Testing</span>
+        <kbd>2</kbd>
+      </button>
+      <button class="btn" type="button" style="--i:2" data-ab="a3.html" data-bb="b3.html" data-icon="https://www.google.com/s2/favicons?domain=desmos.com&amp;sz=64">
+        <svg class="ico" viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M40.5,5.5H7.5a2,2,0,0,0-2,2v33a2,2,0,0,0,2,2h33a2,2,0,0,0,2-2V7.5A2,2,0,0,0,40.5,5.5Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M37.33,5.5C36,14.4,32.88,36.61,24,36.61S12,14.4,10.67,5.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M5.5,27.89c4.62,0,4.62,6,9.25,6s4.62-6,9.25-6,4.62,6,9.25,6,4.62-6,9.25-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="label">Desmos</span>
+        <kbd>3</kbd>
+      </button>
+    </div>
+    <button class="back" id="back" type="button">Back</button>
+  </div>
+</main>
 
 <script>
-  for (let i = 0; i < 100; i++) {
-    let s = document.createElement('div');
-    s.className = 'star';
-    s.style.top = Math.random() * 100 + 'vh';
-    s.style.left = Math.random() * 100 + 'vw';
-    s.style.width = s.style.height = (Math.random() * 3 + 1) + 'px';
-    s.style.animationDelay = (Math.random() * 2) + 's';
-    document.body.appendChild(s);
+(function () {
+  'use strict';
+
+  var root = document.documentElement;
+  var reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isTouch = matchMedia('(hover: none)').matches;
+
+  /* ═════════════ loader ═════════════ */
+  var viewModes = document.getElementById('view-modes');
+  var viewPages = document.getElementById('view-pages');
+  var modeName = document.getElementById('mode-name');
+  var cards = document.querySelectorAll('[data-ab]');
+  var mode = null; // 'data-ab' or 'data-bb'
+
+  function urlFor(file) {
+    if (/^(?:https?:|blob:|about:)/i.test(file)) return file;
+    return 'https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/load/' + file;
   }
 
-  var cards = document.querySelectorAll('.card');
-  var bg = document.getElementById('pop-bg');
-  var nameEl = document.getElementById('pop-name');
-  var cur = null;
-
-  function openUrl(file) {
-    if (file && /^(?:AB|BB|IMG|LINK)/i.test(file)) return;
-    var url;
-    if (/^(?:https?:|blob:|about:)/i.test(file)) {
-      url = file;
-    } else {
-      url = 'https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/load/' + file;
-    }
-    fetch(url)
-      .then(function (r) { return r.text(); })
+  // pages are fetched once when the launcher loads, with their favicon read up front.
+  // if cdn.jsdelivr.net fails, every other cdn mirror from ub.html is tried in order.
+  var MIRRORS = ['https://cdn.jsdelivr.net','https://quantil.jsdelivr.net','https://gcore.jsdelivr.net','https://originfastly.jsdelivr.net','https://fastly.jsdelivr.net','https://testingcf.jsdelivr.net','https://jsdelivr.b-cdn.net','https://jsd.onmicrosoft.cn','https://cdn.jsdmirror.com','https://cdn.statically.io','https://cdn.staticdelivr.com','https://jsd-proxy.ygxz.in','https://jsd.nmmsl.top','https://cdn.bili33.top','https://jsd.proxy.aks.moe','https://js.cdn.haah.net'];
+  function hostVariants(url) {
+    var m = String(url).match(/^https?:\/\/[^/]+/);
+    if (!m) return [url];
+    var out = [url];
+    MIRRORS.forEach(function (h) {
+      var v = url.replace(/^https?:\/\/[^/]+/, h);
+      if (out.indexOf(v) === -1) out.push(v);
+    });
+    return out;
+  }
+  var pageCache = {};
+  function fetchChain(urls, i, origUrl) {
+    return fetch(urls[i])
+      .then(function (r) { if (!r.ok) throw new Error('bad status'); return r.text(); })
       .then(function (html) {
-        document.open();
-        document.write(html);
-        document.close();
+        var info = findIconInfo(html, origUrl);
+        var icon = info.url;
+        if (icon && !/^data:/i.test(icon)) { new Image().src = icon; } // warm the browser's icon cache
+        return { html: html, icon: icon, how: info.how };
       })
-      .catch(function () { alert('Could not load ' + url); });
+      .catch(function (e) {
+        if (i + 1 < urls.length) return fetchChain(urls, i + 1, origUrl);
+        throw e;
+      });
+  }
+  function getPage(url) {
+    if (!pageCache[url]) {
+      pageCache[url] = fetchChain(hostVariants(url), 0, url);
+      pageCache[url].catch(function () { delete pageCache[url]; });
+    }
+    return pageCache[url];
+  }
+  function prefetch() {
+    var files = { 'c1.html': 1 };
+    document.querySelectorAll('[data-ab], [data-bb]').forEach(function (el) {
+      files[el.getAttribute('data-ab')] = 1;
+      files[el.getAttribute('data-bb')] = 1;
+    });
+    Object.keys(files).forEach(function (f) { getPage(urlFor(f)).catch(function () {}); });
+    document.querySelectorAll('[data-icon]').forEach(function (el) { new Image().src = el.getAttribute('data-icon'); });
+  }
+  prefetch();
+
+  // remember the launcher's own icon (only used to put it back if a load fails)
+  var launcherLink = document.querySelector('link[rel~="icon"]');
+  var LAUNCHER_ICON = launcherLink ? launcherLink.href : '';
+
+  function openUrl(file, fallbackIcon) {
+    if (file && /^(?:AB|BB|IMG|LINK)/i.test(file)) return;
+    var url = urlFor(file);
+    getPage(url)
+      .then(function (p) {
+        // 1) swap the launcher's icon for the target's while this page is still alive,
+        //    and give the browser a moment to adopt it
+        var icon = p.icon || fallbackIcon || BLANK_ICON;
+        removeIcons();
+        putIcon(icon);
+        return new Promise(function (res) { setTimeout(function () { res(p); }, 250); });
+      })
+      .then(function (p) {
+        // 2) now replace the page and re-apply the same icon to the new document
+        document.open();
+        document.write(p.html);
+        document.close();
+        if (p.icon) setIcon(p.icon, false); else setIcon(fallbackIcon, true);
+      })
+      .catch(function () {
+        if (LAUNCHER_ICON) { removeIcons(); putIcon(LAUNCHER_ICON); }
+        alert('Could not load ' + url);
+      });
   }
 
-  cards.forEach(function (card) {
-    card.addEventListener('click', function () {
-      var direct = card.getAttribute('data-direct');
-      if (direct !== null) {
-        openUrl(direct);
-        return;
+  // the generic "New Tab" icon some loader pages carry; never treated as the loaded page's real icon
+  var GENERIC_ICON = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAYAAADtc08vAAAAAXNSR0IArs4c6QAAAz1J';
+  function isGeneric(h) { return !h || h.indexOf(GENERIC_ICON) === 0; }
+
+  // look for the loaded page's favicon in its HTML: <link> tags, icons set by its scripts,
+  // then the favicon of a site it embeds in an iframe. Relative paths resolve against the page's URL.
+  function findIconInfo(html, base) {
+    var abs = /^(?:https?:|blob:|about:)/i.test(base) ? base : location.href;
+    function resolve(h) { try { return new URL(h, abs).href; } catch (e) { return ''; } }
+    var found = [];
+    function add(u, how) { if (u && !isGeneric(u)) found.push({ url: u, how: how }); }
+    try {
+      var d = new DOMParser().parseFromString(html, 'text/html');
+      d.querySelectorAll('link[rel~="icon"], link[rel="shortcut icon"], link[rel="apple-touch-icon"]').forEach(function (l) {
+        var h = l.getAttribute('href'); if (h) add(resolve(h), 'link tag');
+      });
+      var re1 = /rel\s*=\s*["']?(?:shortcut )?icon["']?[^>]*?href\s*=\s*["']([^"']+)["']/gi;
+      var re2 = /href\s*=\s*["']([^"']+)["'][^>]*?rel\s*=\s*["']?(?:shortcut )?icon/gi;
+      var re3 = /(?:favicon|\.href|icon)[^;\n]{0,40}?=\s*["']((?:data:image\/|https?:\/\/|\/\/)[^"']+)["']/gi;
+      [re1, re2, re3].forEach(function (re) {
+        var m; while ((m = re.exec(html))) add(resolve(m[1]), 'script or string');
+      });
+      var fr = d.querySelector('iframe[src^="http"], embed[src^="http"]');
+      if (fr) {
+        var host = new URL(fr.getAttribute('src')).hostname;
+        add('https://www.google.com/s2/favicons?domain=' + host + '&sz=64', 'embedded site (' + host + ')');
       }
-      cur = card;
-      nameEl.textContent = card.querySelector('p').textContent;
-      document.getElementById('ab-btn').textContent =
-          'about:blank — ' + card.getAttribute('data-ab');
-      document.getElementById('bb-btn').textContent =
-          'blob — ' + card.getAttribute('data-bb');
-      bg.style.display = 'flex';
+    } catch (e) {}
+    return found[0] || { url: '', how: '' };
+  }
+  function findIcon(html, base) { return findIconInfo(html, base).url; }
+  function removeIcons() {
+    document.querySelectorAll('link[rel~="icon"], link[rel="shortcut icon"], link[rel="apple-touch-icon"]')
+      .forEach(function (l) { l.remove(); });
+  }
+  // 1x1 transparent icon: replaces the launcher icon when the loaded page has none of its own
+  var BLANK_ICON = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+  var iconSeen = '';
+  function putIcon(href) {
+    removeIcons();
+    var l = document.createElement('link');
+    l.rel = 'icon';
+    l.href = href;
+    (document.head || document.documentElement).appendChild(l);
+  }
+  // insert a fresh icon element so the browser re-reads the tab icon after the page is rewritten
+  function setIcon(href, lock) {
+    var l = document.querySelector('link[rel~="icon"]');
+    href = href || (l && !isGeneric(l.href) && l.href) || BLANK_ICON;
+    iconSeen = href;
+    putIcon(href);
+    setTimeout(function () { putIcon(iconSeen); }, 150);
+    setTimeout(function () { putIcon(iconSeen); }, 700);
+    // loaded pages can rewrite themselves again (loader pages, scripts): keep the icon in step for a while
+    // lock = our chosen icon always wins; otherwise follow whatever icon the loaded page sets
+    var n = 0, t = setInterval(function () {
+      var cur = document.querySelector('link[rel~="icon"]');
+      if (!cur) putIcon(iconSeen);
+      else if (cur.href !== iconSeen) {
+        if (!lock && !isGeneric(cur.href)) iconSeen = cur.href;
+        putIcon(iconSeen);
+      }
+      if (++n > 25) clearInterval(t);
+    }, 400);
+  }
+
+  function show(view) {
+    viewModes.hidden = view !== viewModes;
+    viewPages.hidden = view !== viewPages;
+    view.classList.remove('enter'); void view.offsetWidth; view.classList.add('enter');
+    var first = view.querySelector('.btn, .card');
+    if (first) first.focus({ preventScroll: true });
+  }
+  function chooseMode(m, label) {
+    mode = m;
+    modeName.textContent = label;
+    show(viewPages);
+  }
+  function back() { mode = null; show(viewModes); }
+  function pickCard(card) { if (mode) openUrl(card.getAttribute(mode), card.getAttribute('data-icon')); }
+
+  document.getElementById('m-ab').addEventListener('click', function () { chooseMode('data-ab', 'about:blank'); });
+  document.getElementById('m-bb').addEventListener('click', function () { chooseMode('data-bb', 'blob'); });
+  document.getElementById('m-nc').addEventListener('click', function () { openUrl('c1.html'); });
+  document.getElementById('back').addEventListener('click', back);
+
+  cards.forEach(function (card, i) {
+    card.addEventListener('click', function () { pickCard(card); });
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pickCard(card); }
     });
   });
 
-  document.getElementById('ab-btn').addEventListener('click', function () {
-    if (cur) openUrl(cur.getAttribute('data-ab'));
-    bg.style.display = 'none';
+  window.addEventListener('keydown', function (e) {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (!setBg.hidden) { if (e.key === 'Escape') closeSettings(); return; }
+    if (autoTimer) { if (e.key === 'Escape') cancelAuto(); return; }
+    if (!viewModes.hidden) {
+      if (e.key === '1') chooseMode('data-ab', 'about:blank');
+      else if (e.key === '2') chooseMode('data-bb', 'blob');
+      else if (e.key === '3') openUrl('c1.html');
+    } else {
+      if (e.key === 'Escape' || e.key === 'Backspace') back();
+      else if (cards[+e.key - 1]) pickCard(cards[+e.key - 1]);
+    }
   });
-  document.getElementById('bb-btn').addEventListener('click', function () {
-    if (cur) openUrl(cur.getAttribute('data-bb'));
-    bg.style.display = 'none';
-  });
-  document.getElementById('pop-close').addEventListener('click', function () {
-    bg.style.display = 'none';
-  });
-  bg.addEventListener('click', function (e) {
-    if (e.target === bg) bg.style.display = 'none';
-  });
-</script>
 
+  /* ═════════════ settings ═════════════ */
+  var K_COLOR = 'ub_accent', K_AUTO = 'ub_auto';
+  var DEFAULT_COLOR = '#ff6a00';
+  var COLORS = ['#ff6a00', '#ff3b3b', '#ff4fa3', '#a56bff', '#3d8bff', '#19d3e6', '#2fe27a', '#ffd21f'];
+  var setBg = document.getElementById('set-bg');
+  var gear = document.getElementById('gear');
+  var autoSel = document.getElementById('auto');
+  var swWrap = document.getElementById('swatches');
+  var autobar = document.getElementById('autobar');
+  var autoTimer = null;
+
+  function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function save(k, v) { try { if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} }
+
+  function applyColor(hex, persist) {
+    root.style.setProperty('--accent', hex);
+    root.style.setProperty('--accent-rgb',
+      parseInt(hex.substr(1, 2), 16) + ', ' + parseInt(hex.substr(3, 2), 16) + ', ' + parseInt(hex.substr(5, 2), 16));
+    swWrap.querySelectorAll('.sw').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.c.toLowerCase() === hex.toLowerCase()));
+    });
+    if (persist) save(K_COLOR, hex);
+  }
+
+  COLORS.forEach(function (c) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'sw'; b.dataset.c = c; b.style.setProperty('--c', c);
+    b.setAttribute('aria-label', 'Color ' + c);
+    b.addEventListener('click', function () { applyColor(c, true); });
+    swWrap.appendChild(b);
+  });
+  var pick = document.createElement('label');
+  pick.className = 'pick'; pick.title = 'Custom color'; pick.textContent = '+';
+  var picker = document.createElement('input');
+  picker.type = 'color'; picker.setAttribute('aria-label', 'Custom color'); picker.value = DEFAULT_COLOR;
+  picker.addEventListener('input', function () { applyColor(picker.value, true); });
+  pick.appendChild(picker);
+  swWrap.appendChild(pick);
+
+  // launch options: Off, No cloak, then each page in about:blank and blob
+  var pageBtns = Array.prototype.slice.call(document.querySelectorAll('[data-ab]'));
+  function addOpt(parent, value, text) {
+    var o = document.createElement('option'); o.value = value; o.textContent = text; parent.appendChild(o);
+  }
+  addOpt(autoSel, '', 'Off (show menu)');
+  addOpt(autoSel, 'nc', 'No cloak');
+  [['ab', 'about:blank'], ['bb', 'blob']].forEach(function (m) {
+    var g = document.createElement('optgroup'); g.label = m[1];
+    pageBtns.forEach(function (b, i) { addOpt(g, m[0] + ':' + i, b.querySelector('.label').textContent); });
+    autoSel.appendChild(g);
+  });
+  autoSel.addEventListener('change', function () { save(K_AUTO, autoSel.value || null); });
+
+  function openSettings() { cancelAuto(); setBg.hidden = false; autoSel.focus(); }
+  function closeSettings() { setBg.hidden = true; gear.focus(); }
+  gear.addEventListener('click', openSettings);
+  document.getElementById('set-close').addEventListener('click', closeSettings);
+  setBg.addEventListener('click', function (e) { if (e.target === setBg) closeSettings(); });
+  document.getElementById('set-reset').addEventListener('click', function () {
+    save(K_COLOR, null); save(K_AUTO, null);
+    picker.value = DEFAULT_COLOR; applyColor(DEFAULT_COLOR, false); autoSel.value = '';
+  });
+
+  // show what icon each page would give, and where it was found
+  document.getElementById('chk').addEventListener('click', function () {
+    var out = document.getElementById('chk-out');
+    out.textContent = 'Checking…';
+    var items = pageBtns.map(function (b) {
+      return { name: b.querySelector('.label').textContent + ' (about:blank)', file: b.getAttribute('data-ab'), fb: b.getAttribute('data-icon') };
+    }).concat(pageBtns.map(function (b) {
+      return { name: b.querySelector('.label').textContent + ' (blob)', file: b.getAttribute('data-bb'), fb: b.getAttribute('data-icon') };
+    }), [{ name: 'No cloak', file: 'c1.html', fb: '' }]);
+    Promise.all(items.map(function (it) {
+      return getPage(urlFor(it.file)).then(function (p) { return { it: it, p: p }; }, function () { return { it: it, p: null }; });
+    })).then(function (rs) {
+      out.textContent = '';
+      rs.forEach(function (r) {
+        var row = document.createElement('div'); row.className = 'r';
+        var img = document.createElement('img'); img.alt = '';
+        var t = document.createElement('span');
+        var src = r.p && r.p.icon ? r.p.icon : (r.it.fb || '');
+        if (src) img.src = src; else img.style.visibility = 'hidden';
+        var how = !r.p ? 'could not load' : r.p.icon ? r.p.how : (r.it.fb ? 'nothing in page, using button icon' : 'no icon found');
+        t.innerHTML = '<b></b> ' ; t.querySelector('b').textContent = r.it.name;
+        t.appendChild(document.createTextNode(' — ' + how));
+        row.appendChild(img); row.appendChild(t); out.appendChild(row);
+      });
+    });
+  });
+
+  // restore saved values into the controls
+  var savedColor = load(K_COLOR);
+  if (savedColor && /^#[0-9a-f]{6}$/i.test(savedColor)) { picker.value = savedColor; applyColor(savedColor, false); }
+  else applyColor(DEFAULT_COLOR, false);
+  var savedAuto = load(K_AUTO) || '';
+  autoSel.value = savedAuto;
+  if (autoSel.value !== savedAuto) { autoSel.value = ''; savedAuto = ''; }
+
+  // auto launch with a short cancelable countdown
+  function cancelAuto() {
+    if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; }
+    autobar.hidden = true;
+  }
+  document.getElementById('auto-cancel').addEventListener('click', cancelAuto);
+
+  if (savedAuto) {
+    var file, text, icon;
+    if (savedAuto === 'nc') { file = 'c1.html'; text = 'No cloak'; }
+    else {
+      var parts = savedAuto.split(':'), b = pageBtns[+parts[1]];
+      if (b) {
+        file = b.getAttribute(parts[0] === 'ab' ? 'data-ab' : 'data-bb');
+        icon = b.getAttribute('data-icon');
+        text = b.querySelector('.label').textContent + ' (' + (parts[0] === 'ab' ? 'about:blank' : 'blob') + ')';
+      }
+    }
+    if (file) {
+      document.getElementById('auto-text').textContent = 'Opening ' + text + '…';
+      autobar.hidden = false;
+      autoTimer = setTimeout(function () { autoTimer = null; openUrl(file, icon); }, 1500);
+    }
+  }
+
+  // local mouse glow on cards + buttons
+  document.querySelectorAll('.card, .btn').forEach(function (el) {
+    el.addEventListener('pointermove', function (e) {
+      var r = el.getBoundingClientRect();
+      el.style.setProperty('--bx', (e.clientX - r.left) + 'px');
+      el.style.setProperty('--by', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  /* ═════════════ parallax ═════════════ */
+  var layers = Array.prototype.map.call(document.querySelectorAll('[data-depth]'), function (el) {
+    return { el: el, d: parseFloat(el.dataset.depth) };
+  });
+  var tx = 0, ty = 0, cx = 0, cy = 0, running = false;
+
+  function paint() {
+    for (var i = 0; i < layers.length; i++) {
+      var l = layers[i];
+      l.el.style.transform = 'translate3d(' + (-cx * l.d) + 'px,' + (-cy * l.d) + 'px,0)';
+    }
+  }
+  function frame(now) {
+    if (isTouch) { tx = Math.sin(now / 3000) * 0.5; ty = Math.cos(now / 3700) * 0.5; }
+    cx += (tx - cx) * 0.08;
+    cy += (ty - cy) * 0.08;
+    paint();
+    if (isTouch || Math.abs(tx - cx) > 0.0005 || Math.abs(ty - cy) > 0.0005) requestAnimationFrame(frame);
+    else running = false;
+  }
+  function kick() { if (!running) { running = true; requestAnimationFrame(frame); } }
+
+  window.addEventListener('mousemove', function (e) {
+    root.style.setProperty('--mx', e.clientX + 'px');
+    root.style.setProperty('--my', e.clientY + 'px');
+    if (reduceMotion) return;
+    tx = e.clientX / innerWidth - 0.5;
+    ty = e.clientY / innerHeight - 0.5;
+    kick();
+  }, { passive: true });
+  if (isTouch && !reduceMotion) kick();
+})();
+</script>
 </body>
 </html>

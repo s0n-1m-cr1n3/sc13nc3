@@ -16,7 +16,7 @@
 </html>
 <!DOCTYPE html>
 <html lang="en">
-        <base href="https://quantil.jsdelivr.net/gh/matheveryday25/math@main/goosegame/">
+        <base href="https://cdn.jsdelivr.net/gh/matheveryday25/math@main/goosegame/">
 <head>
         <title>Untitled Goose Game - UNBL0CKEDZ0NE</title>
         <meta charset="UTF-8">
@@ -85,7 +85,7 @@
                 <div id="game-container">
                         <canvas id="unity-canvas" tabindex="-1"></canvas>
                         <div id="loading">
-                                <img src="https://quantil.jsdelivr.net/gh/matheveryday25/math@main/goosegame/goose.png" alt="Goose Icon">
+                                <img src="https://cdn.jsdelivr.net/gh/matheveryday25/math@main/goosegame/goose.png" alt="Goose Icon">
                                 <span>UNTITLED GOOSE GAME</span>
                         </div>
                 </div>
@@ -107,13 +107,13 @@
                 }
                 async function init() {
                         try {
-                                const dataBlob = await mergeFiles('https://quantil.jsdelivr.net/gh/matheveryday25/math@main/goosegame/Build/Untitled Goose Game.data', 4);
-                                const wasmBlob = await mergeFiles('https://quantil.jsdelivr.net/gh/matheveryday25/math@main/goosegame/Build/Untitled Goose Game.wasm', 2);
+                                const dataBlob = await mergeFiles('https://cdn.jsdelivr.net/gh/matheveryday25/math@main/goosegame/Build/Untitled Goose Game.data', 4);
+                                const wasmBlob = await mergeFiles('https://cdn.jsdelivr.net/gh/matheveryday25/math@main/goosegame/Build/Untitled Goose Game.wasm', 2);
                                 const dataUrl = URL.createObjectURL(dataBlob);
                                 const wasmUrl = URL.createObjectURL(new Blob([wasmBlob], { type: 'application/wasm' }));
                                 createUnityInstance(document.querySelector("#unity-canvas"), {
                                         dataUrl: dataUrl,
-                                        frameworkUrl: "https://quantil.jsdelivr.net/gh/matheveryday25/math@main/goosegame/Build/Untitled Goose Game.framework.js",
+                                        frameworkUrl: "https://cdn.jsdelivr.net/gh/matheveryday25/math@main/goosegame/Build/Untitled Goose Game.framework.js",
                                         codeUrl: wasmUrl,
                                         streamingAssetsUrl: "StreamingAssets",
                                         companyName: "House House _ Bog",
