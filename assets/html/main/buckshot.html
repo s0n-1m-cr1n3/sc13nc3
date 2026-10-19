@@ -8,7 +8,7 @@
 <meta charset="utf-8"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-<link rel="stylesheet" href="https://quantil.jsdelivr.net/gh/matheveryday25/math/buckshot/style.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/matheveryday25/math/buckshot/style.css"/>
 <style>
     canvas:focus { outline: none; }
     html, body {
@@ -27,7 +27,7 @@
 </div>
 <div id="loading-cover" style="display:none;">
     <div id="unity-loading-bar">
-        <div id="unity-logo"><img src="https://quantil.jsdelivr.net/gh/matheveryday25/math@main/UNBL0CKEDZ0NE%20in%20Text.png"/></div>
+        <div id="unity-logo"><img src="https://cdn.jsdelivr.net/gh/matheveryday25/math@main/UNBL0CKEDZ0NE%20in%20Text.png"/></div>
         <div id="unity-progress-bar-empty" style="display: none;">
             <div id="unity-progress-bar-full"></div>
         </div>
@@ -161,7 +161,7 @@ var mergedFileCache = {};
 async function downloadAndMergeParts(fileName, partCount) {
     var parts = [], totalLoaded = 0;
     for (var i = 0; i < partCount; i++) {
-        var resp = await fetch("https://quantil.jsdelivr.net/gh/matheveryday25/math/buckshot/Build/parts/" + fileName + ".part" + i);
+        var resp = await fetch("https://cdn.jsdelivr.net/gh/matheveryday25/math/buckshot/Build/parts/" + fileName + ".part" + i);
         if (!resp.ok) throw new Error("Part hata: " + fileName + ".part" + i + " (" + resp.status + ")");
         var ab = await resp.arrayBuffer();
         parts.push(new Uint8Array(ab));
@@ -242,13 +242,13 @@ window.XMLHttpRequest = function PatchedXHR() {
 // OYUN KODU
 // ================================================================
 const hideFullScreenButton = "";
-const buildUrl = "https://quantil.jsdelivr.net/gh/matheveryday25/math/buckshot/Build";
+const buildUrl = "https://cdn.jsdelivr.net/gh/matheveryday25/math/buckshot/Build";
 const loaderUrl = buildUrl + "/6.loader.js";
 const config = {
     dataUrl: buildUrl + "/6.data.br",
     frameworkUrl: buildUrl + "/6.framework.js",
     codeUrl: buildUrl + "/6.wasm.br",
-    streamingAssetsUrl: "https://quantil.jsdelivr.net/gh/matheveryday25/math/buckshot/StreamingAssets",
+    streamingAssetsUrl: "https://cdn.jsdelivr.net/gh/matheveryday25/math/buckshot/StreamingAssets",
     companyName: "DoubleDTeam",
     productName: "BuckshotRoulette",
     productVersion: "1.1.0"
@@ -272,7 +272,7 @@ if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
     container.className = "unity-mobile";
 }
 
-loadingCover.style.background = "url('https://quantil.jsdelivr.net/gh/matheveryday25/math/buckshot/background.jpg') center / cover";
+loadingCover.style.background = "url('https://cdn.jsdelivr.net/gh/matheveryday25/math/buckshot/background.jpg') center / cover";
 loadingCover.style.display = "";
 
 document.addEventListener('contextmenu', event => event.preventDefault());
@@ -881,7 +881,7 @@ document.body.appendChild(script);
 &lt;meta charset="utf-8"/&gt;
 &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"/&gt;
 &lt;meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/&gt;
-&lt;link rel="stylesheet" href="https://quantil.jsdelivr.net/gh/matheveryday25/math/buckshot/style.css"/&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/matheveryday25/math/buckshot/style.css"/&gt;
 &lt;style&gt;
     canvas:focus { outline: none; }
     html, body {
@@ -900,7 +900,7 @@ document.body.appendChild(script);
 &lt;/div&gt;
 &lt;div id="loading-cover" style="display:none;"&gt;
     &lt;div id="unity-loading-bar"&gt;
-        &lt;div id="unity-logo"&gt;&lt;img src="https://quantil.jsdelivr.net/gh/matheveryday25/math@main/UNBL0CKEDZ0NE%20in%20Text.png"/&gt;&lt;/div&gt;
+        &lt;div id="unity-logo"&gt;&lt;img src="https://cdn.jsdelivr.net/gh/matheveryday25/math@main/UNBL0CKEDZ0NE%20in%20Text.png"/&gt;&lt;/div&gt;
         &lt;div id="unity-progress-bar-empty" style="display: none;"&gt;
             &lt;div id="unity-progress-bar-full"&gt;&lt;/div&gt;
         &lt;/div&gt;
@@ -1034,7 +1034,7 @@ var mergedFileCache = {};
 async function downloadAndMergeParts(fileName, partCount) {
     var parts = [], totalLoaded = 0;
     for (var i = 0; i &lt; partCount; i++) {
-        var resp = await fetch("https://quantil.jsdelivr.net/gh/matheveryday25/math/buckshot/Build/parts/" + fileName + ".part" + i);
+        var resp = await fetch("https://cdn.jsdelivr.net/gh/matheveryday25/math/buckshot/Build/parts/" + fileName + ".part" + i);
         if (!resp.ok) throw new Error("Part hata: " + fileName + ".part" + i + " (" + resp.status + ")");
         var ab = await resp.arrayBuffer();
         parts.push(new Uint8Array(ab));
@@ -1115,13 +1115,13 @@ window.XMLHttpRequest = function PatchedXHR() {
 // OYUN KODU
 // ================================================================
 const hideFullScreenButton = "";
-const buildUrl = "https://quantil.jsdelivr.net/gh/matheveryday25/math/buckshot/Build";
+const buildUrl = "https://cdn.jsdelivr.net/gh/matheveryday25/math/buckshot/Build";
 const loaderUrl = buildUrl + "/6.loader.js";
 const config = {
     dataUrl: buildUrl + "/6.data.br",
     frameworkUrl: buildUrl + "/6.framework.js",
     codeUrl: buildUrl + "/6.wasm.br",
-    streamingAssetsUrl: "https://quantil.jsdelivr.net/gh/matheveryday25/math/buckshot/StreamingAssets",
+    streamingAssetsUrl: "https://cdn.jsdelivr.net/gh/matheveryday25/math/buckshot/StreamingAssets",
     companyName: "DoubleDTeam",
     productName: "BuckshotRoulette",
     productVersion: "1.1.0"
@@ -1145,7 +1145,7 @@ if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
     container.className = "unity-mobile";
 }
 
-loadingCover.style.background = "url('https://quantil.jsdelivr.net/gh/matheveryday25/math/buckshot/background.jpg') center / cover";
+loadingCover.style.background = "url('https://cdn.jsdelivr.net/gh/matheveryday25/math/buckshot/background.jpg') center / cover";
 loadingCover.style.display = "";
 
 document.addEventListener('contextmenu', event =&gt; event.preventDefault());

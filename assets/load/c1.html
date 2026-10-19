@@ -37,19 +37,23 @@
       });
 
       var mirrors = [
-        "https://quantil.jsdelivr.net", 
-        "https://gcore.jsdelivr.net", 
-        "https://originfastly.jsdelivr.net", 
-        "https://fastly.jsdelivr.net", 
-        "https://testingcf.jsdelivr.net", 
-        "https://jsdelivr.b-cdn.net", 
-        "https://jsd.onmicrosoft.cn", 
-        "https://cdn.jsdmirror.com", 
-        "https://cdn.statically.io", 
-        "https://cdn.staticdelivr.com", 
-        "https://cdn.jsdelivr.net"
+        "https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/index.html",
+        "https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/index.html",
+        "https://gcore.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/index.html",
+        "https://originfastly.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/index.html",
+        "https://fastly.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/index.html",
+        "https://testingcf.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/index.html",
+        "https://jsdelivr.b-cdn.net/gh/s0n-1m-cr1n3/sc13nc3/assets/index.html",
+        "https://jsd.onmicrosoft.cn/gh/s0n-1m-cr1n3/sc13nc3/assets/index.html",
+        "https://cdn.jsdmirror.com/gh/s0n-1m-cr1n3/sc13nc3/assets/index.html",
+        "https://cdn.statically.io/gh/s0n-1m-cr1n3/sc13nc3@main/assets/index.html",
+        "https://cdn.staticdelivr.com/gh/s0n-1m-cr1n3/sc13nc3/main/assets/index.html",
+        "https://jsd-proxy.ygxz.in/gh/s0n-1m-cr1n3/sc13nc3/assets/index.html",
+        "https://jsd.nmmsl.top/gh/s0n-1m-cr1n3/sc13nc3/assets/index.html",
+        "https://cdn.bili33.top/gh/s0n-1m-cr1n3/sc13nc3@main/assets/index.html",
+        "https://jsd.proxy.aks.moe/gh/s0n-1m-cr1n3/sc13nc3/assets/index.html",
+        "https://js.cdn.haah.net/gh/s0n-1m-cr1n3/sc13nc3/assets/index.html"
       ];
-      var paths = ["/gh/", "s0n-1m-", "cr1n3/", "sc13nc3/", "assets/", "index.html"];
 
       function tryMirror(i) {
         if (i >= mirrors.length) {
@@ -65,7 +69,7 @@
           return;
         }
         
-        fetch(mirrors[i] + paths.join("")).then(function (r) {
+        fetch(mirrors[i]).then(function (r) {
           if (!r.ok) throw 0;
           return r.text();
         }).then(function (html) {

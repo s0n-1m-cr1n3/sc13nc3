@@ -16,7 +16,7 @@
 <html lang="en-us">
 
 <head>
-    <base href="https://quantil.jsdelivr.net/gh/matheveryday25/math@main/baldi/">
+    <base href="https://cdn.jsdelivr.net/gh/matheveryday25/math@main/baldi/">
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | Baldi's Basics Classic Remastered</title>
@@ -116,8 +116,8 @@
         }
 
         (async () => {
-            const dataParts = getParts("https://quantil.jsdelivr.net/gh/matheveryday25/math@main/baldi/Build/WebGL.data", 3);
-            const wasmParts = getParts("https://quantil.jsdelivr.net/gh/matheveryday25/math@main/baldi/Build/WebGL.wasm", 3);
+            const dataParts = getParts("https://cdn.jsdelivr.net/gh/matheveryday25/math@main/baldi/Build/WebGL.data", 3);
+            const wasmParts = getParts("https://cdn.jsdelivr.net/gh/matheveryday25/math@main/baldi/Build/WebGL.wasm", 3);
             const allParts = [...dataParts, ...wasmParts];
             const sizes = await Promise.all(allParts.map(getSize));
             totalBytes = sizes.reduce((a, b) => a + b, 0);
@@ -127,7 +127,7 @@
             ]);
             createUnityInstance(document.querySelector("#unity-canvas"), {
                 dataUrl: dataUrl,
-                frameworkUrl: "https://quantil.jsdelivr.net/gh/matheveryday25/math@main/baldi/Build/WebGL.framework.js",
+                frameworkUrl: "https://cdn.jsdelivr.net/gh/matheveryday25/math@main/baldi/Build/WebGL.framework.js",
                 codeUrl: wasmUrl,
                 streamingAssetsUrl: "StreamingAssets",
                 companyName: "Basically Games",

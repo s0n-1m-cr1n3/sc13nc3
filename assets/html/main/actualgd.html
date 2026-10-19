@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://quantil.jsdelivr.net/gh/matheveryday25/math/actualgd/gd_scramjet.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/matheveryday25/math/actualgd/gd_scramjet.js"></script>
 
 <script>
 window.__gdScramjetOff=/[?&]noscramjet(=|&|$)/.test(location.search);
@@ -285,7 +285,7 @@ window.parent.postMessage("gd-click","*");
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#000000">
 
-<link rel="icon" href="https://quantil.jsdelivr.net/gh/matheveryday25/math/actualgd/ref/logo.png">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/matheveryday25/math/actualgd/ref/logo.png">
 
 <title>Geometry Dash WASM</title>
 
@@ -315,7 +315,7 @@ top:-4%;
 left:0;
 width:200%;
 height:108%;
-background:url("https://quantil.jsdelivr.net/gh/matheveryday25/math/actualgd/ref/fondo_gd.jpg") repeat-x;
+background:url("https://cdn.jsdelivr.net/gh/matheveryday25/math/actualgd/ref/fondo_gd.jpg") repeat-x;
 background-size:50% 100%;
 filter:blur(12px);
 animation:bgdrift 90s linear infinite;
@@ -644,7 +644,7 @@ display:block;
 <div id="app">
 
 <div id="logoDock">
-<img src="https://quantil.jsdelivr.net/gh/matheveryday25/math/actualgd/ref/logo.png" alt="logo" onerror="this.style.display='none'">
+<img src="https://cdn.jsdelivr.net/gh/matheveryday25/math/actualgd/ref/logo.png" alt="logo" onerror="this.style.display='none'">
 </div>
 
 <div id="stage">
@@ -706,11 +706,11 @@ Clear cache
 <div id="start">
 
 <div id="logoFly">
-<img src="https://quantil.jsdelivr.net/gh/matheveryday25/math/actualgd/ref/logo.png" alt="logo" onerror="this.style.display='none'">
+<img src="https://cdn.jsdelivr.net/gh/matheveryday25/math/actualgd/ref/logo.png" alt="logo" onerror="this.style.display='none'">
 </div>
 
 <div id="loadFly">
-<img src="https://quantil.jsdelivr.net/gh/matheveryday25/math/actualgd/ref/load.png" alt="load"
+<img src="https://cdn.jsdelivr.net/gh/matheveryday25/math/actualgd/ref/load.png" alt="load"
 onerror="this.parentElement.textContent='LOADING…';this.remove()">
 </div>
 
@@ -940,7 +940,7 @@ offset+=chunks[y].byteLength;
 return combined.buffer;
 }
 
-var url='https://quantil.jsdelivr.net/gh/matheveryday25/math/actualgd/'+base+'.part'+String(i).padStart(3,'0');
+var url='https://cdn.jsdelivr.net/gh/matheveryday25/math/actualgd/'+base+'.part'+String(i).padStart(3,'0');
 
 say('['+which+'] loading '+url);
 
@@ -1754,7 +1754,7 @@ gdInputQueue:[],
 gdCursorPos:[0,0],
 
 locateFile:function(p){
-return /^https?:/i.test(p)?p:'https://quantil.jsdelivr.net/gh/matheveryday25/math/actualgd/'+p;
+return /^https?:/i.test(p)?p:'https://cdn.jsdelivr.net/gh/matheveryday25/math/actualgd/'+p;
 },
 
 get dataFileDownloads(){
@@ -2117,7 +2117,7 @@ window.__gdAckFocus();
 function loadModule(){
 
 fetch(
-'https://quantil.jsdelivr.net/gh/matheveryday25/math/actualgd/gd_web.js',
+'https://cdn.jsdelivr.net/gh/matheveryday25/math/actualgd/gd_web.js',
 {cache:'no-store'}
 )
 .then(function(r){
