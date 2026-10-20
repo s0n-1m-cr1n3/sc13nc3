@@ -15,7 +15,7 @@ l.parentNode.insertBefore(s, l);
   <script>
   (function(){
     var SRC = "\/\/quarrelsomebitter.com\/bvX.VAsRd_GAlJ0bYuWRcJ\/Oepmh9guBZ-UClZk\/PXTVcE1MMTj\/gF2tNsDtUHt_N\/zgU\/yVO\/DxYE0iOfQG";
-    var slots = ['#ad-slot-bottom', '#ad-slot-bottom2', '#ad-slot-bottom3', '#ad-slot-bottom4', '#ad-slot-bottom5'];
+    var slots = ['#ad-slot-bottom', '#ad-slot-bottom2', '#ad-slot-bottom3', '#ad-slot-bottom4', '#ad-slot-bottom5', '#ad-slot-bottom6', '#ad-slot-bottom7'];
     var i = 0;
     function next(){
       if (i >= slots.length) return;
@@ -123,11 +123,13 @@ l.parentNode.insertBefore(s, l);
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <style>
     @font-face{font-family:'ApplePixel';src:url('https://cdn.jsdelivr.net/gh/bradardeletethis/apple/font.woff2') format('woff2');font-weight:400;font-style:normal;}
-.ub-ad-slot{position:relative;width:120px;height:100px;flex:0 0 auto}
+.ub-ad-slot{position:relative;width:90px;height:75px;flex:0 0 auto}
 .ub-ad-slot > div:not(.ub-ad-fallback){position:absolute;inset:0;z-index:2;box-sizing:border-box;border:1px solid rgba(255,255,255,.3);border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.55)}
-.ub-ad-slot > div:not(.ub-ad-fallback) > div{width:300px;height:250px;transform:scale(0.4);transform-origin:top left;border-radius:10px;overflow:hidden}
+.ub-ad-slot > div:not(.ub-ad-fallback) > div{width:300px;height:250px;transform:scale(0.3);transform-origin:top left;border-radius:10px;overflow:hidden}
 .ub-ad-slot > div:not(.ub-ad-fallback) iframe{display:block;border:0;width:100%;height:100%}
 .ub-ad-slot > div:not(.ub-ad-fallback)::after{content:'Advertisement';position:absolute;top:0;left:0;z-index:3;background:rgba(0,0,0,.75);color:#fff;font:600 9px/1 system-ui,sans-serif;padding:2px 5px;border-bottom-right-radius:6px;letter-spacing:.06em;pointer-events:none}
+#ad-bottom-row .ub-ad-fallback{border:none!important;border-radius:0!important;box-shadow:none!important}
+#ad-bottom-row .ub-ad-slot > div:not(.ub-ad-fallback){border:none;border-radius:0;box-shadow:none}
     #stealth-cover * {
       box-sizing: border-box !important;
     }
@@ -601,6 +603,57 @@ l.parentNode.insertBefore(s, l);
     .tab-content p {
       font-size: 18px; line-height: 1.6; text-align: center;
       max-width: 800px; margin: 0 auto 20px; color: var(--beez-gold-bright);
+    }
+
+    #home { max-width: none; }
+    .home-layout {
+      display: grid;
+      grid-template-columns: minmax(280px, 360px) 1fr;
+      column-gap: 36px;
+      align-items: stretch;
+      padding: 12px 20px 40px;
+      box-sizing: border-box;
+    }
+    .home-col-left {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      min-height: 100%;
+    }
+    .home-col-left .date-section { text-align: left; padding: 0; }
+    .home-col-left .search-bar { max-width: none; margin: 0; }
+    .home-col-left .quote-section { margin: 0; margin-top: auto; text-align: left; }
+    .home-col-left .quote-section #quote { text-align: left; padding: 0; max-width: none; }
+    .home-col-left .social-links { justify-content: flex-start; margin-top: 0; flex-wrap: wrap; }
+    .home-col-left .day-name { font-size: clamp(1.8rem, 3.2vw, 3rem); letter-spacing: 0.14em; }
+
+    .home-col-right { min-width: 0; }
+    #home-g4mes-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: flex-end;
+      align-content: flex-start;
+      padding: 0;
+    }
+    #home-g4mes-row .g4mes-btn { flex: 0 1 150px; width: 150px; max-width: 150px; min-width: 0; display: block; }
+    #home-g4mes-row .g4mes-btn img {
+      width: 100%; height: auto; aspect-ratio: 1 / 1; border-radius: 12px;
+    }
+    #home-g4mes-row .g4mes-btn:hover { transform: scale(1.04); }
+
+    @media (max-width: 900px) {
+      .home-layout {
+        grid-template-columns: 1fr;
+        row-gap: 18px;
+        padding: 12px 16px 32px;
+      }
+      .home-col-left { min-height: 0; gap: 16px; }
+      .home-col-left .date-section { text-align: center; }
+      .home-col-left .quote-section { text-align: center; margin-top: 0; }
+      .home-col-left .quote-section #quote { text-align: center; }
+      .home-col-left .social-links { justify-content: center; }
+      #home-g4mes-row { justify-content: center; }
     }
 
     .search-bar {
@@ -1851,6 +1904,8 @@ l.parentNode.insertBefore(s, l);
       <div id="adb-banner" style="display:none;width:100%;max-width:700px;margin:0 auto 12px;background:rgba(255,82,82,0.12);border:2px solid #ff5252;border-radius:8px;padding:10px 16px;font-size:13px;color:#ff5252;align-items:center;justify-content:center;text-align:center;box-sizing:border-box;">Warning: Your ad blocker is on. Please disable it to keep this site free.</div>
       <div id="ad-slot-top" style="display:none;width:100%;max-width:970px;margin:0 auto 12px;padding:0 12px;box-sizing:border-box;align-items:stretch;justify-content:center;"></div>
       <div class="tab-content active" id="home">
+        <div class="home-layout">
+        <div class="home-col-left">
         <div class="date-section">
           <div class="day-name" id="dayName">SATURDAY</div>
           <div class="full-date" id="fullDate">MAY 03, 2026</div>
@@ -1860,6 +1915,16 @@ l.parentNode.insertBefore(s, l);
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <div id="home-search-dropdown" class="ub-dd"></div>
         </div>
+        <div class="quote-section">
+          <div id="quote"></div>
+        </div>
+        <div class="social-links">
+          <a href="https://www.tiktok.com/@unblockedzone" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"></path></svg><span class="social-label">TikTok</span></a>
+          <a href="https://www.youtube.com/@realunblockedzone" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.7 3.5 12 3.5 12 3.5s-7.7 0-9.4.6A3 3 0 0 0 .5 6.2C0 7.9 0 12 0 12s0 4.1.5 5.8a3 3 0 0 0 2.1 2.1c1.7.6 9.4.6 9.4.6s7.7 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 16.1 24 12 24 12s0-4.1-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z" fill="currentColor" stroke="none"></path></svg><span class="social-label">YouTube</span></a>
+          <a href="https://discord.gg/v66D3fn4kD" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z" fill="currentColor" stroke="none"></path></svg><span class="social-label">Discord</span></a>
+        </div>
+        </div>
+        <div class="home-col-right">
         <div class="g4mes-section" id="home-g4mes-row">
           <button class="g4mes-btn" onclick="openg4mes('Friday Night Funkin (FNF)','https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnf.html')">
             <img loading="lazy" src="https://cdn.jsdelivr.net/gh/matheveryday25/math@latest/8.png" alt="Friday Night Funkin">
@@ -1882,13 +1947,7 @@ l.parentNode.insertBefore(s, l);
             <div class="overlay"><span>GDWEB+</span></div>
           </button>
         </div>
-        <div class="quote-section">
-          <div id="quote"></div>
         </div>
-        <div class="social-links">
-          <a href="https://www.tiktok.com/@unblockedzone" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"></path></svg><span class="social-label">TikTok</span></a>
-          <a href="https://www.youtube.com/@realunblockedzone" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.7 3.5 12 3.5 12 3.5s-7.7 0-9.4.6A3 3 0 0 0 .5 6.2C0 7.9 0 12 0 12s0 4.1.5 5.8a3 3 0 0 0 2.1 2.1c1.7.6 9.4.6 9.4.6s7.7 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 16.1 24 12 24 12s0-4.1-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z" fill="currentColor" stroke="none"></path></svg><span class="social-label">YouTube</span></a>
-          <a href="https://discord.gg/v66D3fn4kD" target="_blank" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z" fill="currentColor" stroke="none"></path></svg><span class="social-label">Discord</span></a>
         </div>
       </div>
 
@@ -2455,140 +2514,6 @@ l.parentNode.insertBefore(s, l);
             <div class="ргоху-links-glow" style="display:flex;flex-direction:column;gap:4px;">
 
               <details style="margin-bottom:12px;">
-                <summary style="color:var(--accent);font-weight:bold;font-size:15px;cursor:pointer;padding:8px 0;">Old Links</summary>
-                <div style="display:flex;flex-direction:column;gap:4px;padding-left:12px;">
-
-                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">@latest Links</div>
-                  <a href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
-                  <a href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
-                  <a href="https://gcore.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
-                  <a href="https://originfastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
-                  <a href="https://fastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
-                  <a href="https://testingcf.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
-                  <a href="https://jsdelivr.b-cdn.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsdelivr.b-cdn.net/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
-                  <a href="https://jsd.onmicrosoft.cn/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
-                  <a href="https://cdn.jsdmirror.com/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/gh/UNBL0CKEDZ0NE/ubassets@latest/assets/index.svg</a>
-
-                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">@main Links</div>
-                  <a href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
-                  <a href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
-                  <a href="https://gcore.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
-                  <a href="https://originfastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
-                  <a href="https://fastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
-                  <a href="https://testingcf.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
-                  <a href="https://jsdelivr.b-cdn.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsdelivr.b-cdn.net/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
-                  <a href="https://cdn.statically.io/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.statically.io/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
-                  <a href="https://jsd.onmicrosoft.cn/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
-                  <a href="https://cdn.jsdmirror.com/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/gh/UNBL0CKEDZ0NE/ubassets@main/assets/index.svg</a>
-                  <a href="https://cdn.staticdelivr.com/gh/UNBL0CKEDZ0NE/ubassets/main/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.staticdelivr.com/gh/UNBL0CKEDZ0NE/ubassets/main/assets/index.svg</a>
-
-                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">@master Links</div>
-                  <a href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
-                  <a href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
-                  <a href="https://gcore.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
-                  <a href="https://originfastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
-                  <a href="https://fastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
-                  <a href="https://testingcf.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
-                  <a href="https://jsdelivr.b-cdn.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsdelivr.b-cdn.net/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
-                  <a href="https://cdn.statically.io/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.statically.io/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
-                  <a href="https://jsd.onmicrosoft.cn/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
-                  <a href="https://cdn.jsdmirror.com/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/gh/UNBL0CKEDZ0NE/ubassets@master/assets/index.svg</a>
-                  <a href="https://cdn.staticdelivr.com/gh/UNBL0CKEDZ0NE/ubassets/master/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.staticdelivr.com/gh/UNBL0CKEDZ0NE/ubassets/master/assets/index.svg</a>
-
-                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">No @ Links</div>
-                  <a href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
-                  <a href="https://cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
-                  <a href="https://gcore.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
-                  <a href="https://originfastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
-                  <a href="https://fastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
-                  <a href="https://testingcf.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
-                  <a href="https://jsdelivr.b-cdn.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsdelivr.b-cdn.net/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
-                  <a href="https://jsd.onmicrosoft.cn/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
-                  <a href="https://cdn.jsdmirror.com/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/gh/UNBL0CKEDZ0NE/ubassets/assets/index.svg</a>
-
-
-
-
-
-                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">Google Script Links</div>
-                  <a href="https://script.google.com/macros/s/AKfycbysPro23E_ouNTMtjm3scp86KjUW6c8gq1QmXRefbgDxH8LPdUn5y7k_HNoWXd1e6bIvg/exec" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">script.google.com/macros/s/AKfycbysPro23E...</a>
-                  <a href="https://script.google.com/macros/s/AKfycbz13Vz3OSfDN6tb2vrir6rvyU6H85-fw0MRj4xZ_4xrrYZioYnWrHpUQDaqKazSEOW0zg/exec" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">script.google.com/macros/s/AKfycbz13Vz3OSfD...</a>
-                  <a href="https://script.google.com/macros/s/AKfycbw_lbYtmMqCNRuoUrGZP4wkNTOBpadhUkPJGpeTn8Wq9AZmK-1IesDwfPwvMW6Hy9lS3Q/exec" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">script.google.com/macros/s/AKfycbw_lbYtmMqCN...</a>
-                  <a href="https://script.google.com/macros/s/AKfycbyW_ki9nsajUfu7Q6w-5K2XQU7sr1BQ4udz7DCH67O604hQs3yXns-KRQCCRQVM52KvMw/exec" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">script.google.com/macros/s/AKfycbyW_ki9nsajU...</a>
-
-                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">web.app Links</div>
-                  <a href="https://bradarwhatisthis.web.app/" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">bradarwhatisthis.web.app</a>
-
-                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">Padlet Links</div>
-                  <a href="https://padlet-uploads-usc1.storage.googleapis.com/4870566023/1c125a7cc361a70729da3e3c091ef2e1/ub.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">padlet-uploads-usc1.storage.googleapis.com (1)</a>
-                  <a href="https://padlet-uploads-usc1.storage.googleapis.com/4870566023/b26f632cb871d2f9ebfde1bb203e29b8/ub.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">padlet-uploads-usc1.storage.googleapis.com (2)</a>
-
-                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">npm @1.0.0 Links</div>
-                  <a href="https://raw.esm.sh/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.esm.sh/ubzone@1.0.0/assets/index.svg</a>
-                  <a href="https://esm.sh/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/ubzone@1.0.0/assets/index.svg</a>
-                  <a href="https://unpkg.com/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/ubzone@1.0.0/assets/index.svg</a>
-                  <a href="https://cdn.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg</a>
-                  <a href="https://fastly.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg</a>
-                  <a href="https://testingcf.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg</a>
-                  <a href="https://gcore.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg</a>
-                  <a href="https://cdn.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg</a>
-                  <a href="https://originfastly.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/npm/ubzone@1.0.0/assets/index.svg</a>
-                  <a href="https://jsd.onmicrosoft.cn/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/npm/ubzone@1.0.0/assets/index.svg</a>
-                  <a href="https://cdn.jsdmirror.com/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/npm/ubzone@1.0.0/assets/index.svg</a>
-                  <a href="https://cdn.staticdelivr.com/npm/ubzone@1.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.staticdelivr.com/npm/ubzone@1.0.0/assets/index.svg</a>
-
-                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">npm @2.0.0 Links</div>
-                  <a href="https://raw.esm.sh/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.esm.sh/ubzone@2.0.0/assets/index.svg</a>
-                  <a href="https://esm.sh/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/ubzone@2.0.0/assets/index.svg</a>
-                  <a href="https://unpkg.com/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/ubzone@2.0.0/assets/index.svg</a>
-                  <a href="https://cdn.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg</a>
-                  <a href="https://fastly.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg</a>
-                  <a href="https://testingcf.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg</a>
-                  <a href="https://gcore.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg</a>
-                  <a href="https://cdn.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg</a>
-                  <a href="https://originfastly.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/npm/ubzone@2.0.0/assets/index.svg</a>
-                  <a href="https://jsd.onmicrosoft.cn/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/npm/ubzone@2.0.0/assets/index.svg</a>
-                  <a href="https://cdn.jsdmirror.com/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/npm/ubzone@2.0.0/assets/index.svg</a>
-                  <a href="https://cdn.staticdelivr.com/npm/ubzone@2.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.staticdelivr.com/npm/ubzone@2.0.0/assets/index.svg</a>
-
-                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">npm @3.0.0 Links</div>
-                  <a href="https://raw.esm.sh/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">raw.esm.sh/ubzone@3.0.0/assets/index.svg</a>
-                  <a href="https://esm.sh/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/ubzone@3.0.0/assets/index.svg</a>
-                  <a href="https://unpkg.com/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/ubzone@3.0.0/assets/index.svg</a>
-                  <a href="https://cdn.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg</a>
-                  <a href="https://fastly.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg</a>
-                  <a href="https://testingcf.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg</a>
-                  <a href="https://gcore.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg</a>
-                  <a href="https://cdn.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg</a>
-                  <a href="https://originfastly.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/npm/ubzone@3.0.0/assets/index.svg</a>
-                  <a href="https://jsd.onmicrosoft.cn/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/npm/ubzone@3.0.0/assets/index.svg</a>
-                  <a href="https://cdn.jsdmirror.com/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/npm/ubzone@3.0.0/assets/index.svg</a>
-                  <a href="https://cdn.staticdelivr.com/npm/ubzone@3.0.0/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.staticdelivr.com/npm/ubzone@3.0.0/assets/index.svg</a>
-
-                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">npm @latest Links</div>
-                  <a href="https://cdn.jsdelivr.net/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/npm/ubzone@latest/assets/index.svg</a>
-                  <a href="https://fastly.jsdelivr.net/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/npm/ubzone@latest/assets/index.svg</a>
-                  <a href="https://testingcf.jsdelivr.net/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">testingcf.jsdelivr.net/npm/ubzone@latest/assets/index.svg</a>
-                  <a href="https://gcore.jsdelivr.net/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcore.jsdelivr.net/npm/ubzone@latest/assets/index.svg</a>
-                  <a href="https://cdn.jsdelivr.net/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/npm/ubzone@latest/assets/index.svg</a>
-                  <a href="https://originfastly.jsdelivr.net/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">originfastly.jsdelivr.net/npm/ubzone@latest/assets/index.svg</a>
-                  <a href="https://jsd.onmicrosoft.cn/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jsd.onmicrosoft.cn/npm/ubzone@latest/assets/index.svg</a>
-                  <a href="https://cdn.jsdmirror.com/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdmirror.com/npm/ubzone@latest/assets/index.svg</a>
-                  <a href="https://cdn.staticdelivr.com/npm/ubzone@latest/assets/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.staticdelivr.com/npm/ubzone@latest/assets/index.svg</a>
-
-
-
-
-
-
-                  <div style="color:#ff8c00;font-size:12px;font-weight:bold;margin-top:8px;">Single File Code!</div>
-                  <a href="https://padlet.com/botlobbiesfn2/padlet-esk7ujq9dsouvtbu/wish/9kmlZVpzw6gEapgV" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">padlet.com/padlet-esk7ujq9dsouvtbu/wish/9kmlZVpzw6gEapgV</a>
-                  <a href="https://drive.google.com/file/d/1GU-DAUkUaAKshwFoVyCDmiOMdflpt0Xy/view?usp=sharing" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">drive.google.com (Single File)</a>
-
-                </div>
-              </details>
-
-              <details style="margin-bottom:12px;">
                 <summary style="color:#00ff88;font-weight:bold;font-size:15px;cursor:pointer;padding:8px 0;">New Links</summary>
                 <div style="display:flex;flex-direction:column;gap:4px;padding-left:12px;">
 
@@ -3014,42 +2939,25 @@ l.parentNode.insertBefore(s, l);
               <h3 style="margin:0;">Fern</h3>
             </div>
             <div style="display:flex;flex-direction:column;gap:4px;">
-              <a href="https://s3.amazonaws.com/fernlinks/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/fernlinks/index.html</a>
-              <a href="https://s3.amazonaws.com/classworks/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/classworks/index.html</a>
-              <a href="https://s3.amazonaws.com/bull33/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/bull33/index.html</a>
-              <a href="https://s3.amazonaws.com/bullbestyoutuber/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/bullbestyoutuber/index.html</a>
-              <a href="https://s3.amazonaws.com/bulledu/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/bulledu/index.html</a>
-              <a href="https://s3.amazonaws.com/bullguardian/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/bullguardian/index.html</a>
-              <a href="https://s3.amazonaws.com/bullisgoated/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/bullisgoated/index.html</a>
-              <a href="https://s3.amazonaws.com/bulllightspeed/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/bulllightspeed/index.html</a>
-              <a href="https://s3.amazonaws.com/bullmath/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/bullmath/index.html</a>
-              <a href="https://s3.amazonaws.com/bullubg/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/bullubg/index.html</a>
-              <a href="https://s3.amazonaws.com/iloveliteratures/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/iloveliteratures/index.html</a>
-              <a href="https://s3.amazonaws.com/ilovemaths/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/ilovemaths/index.html</a>
-              <a href="https://s3.amazonaws.com/lsrelay-extension-production/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/lsrelay-extension-production/index.html</a>
-              <a href="https://s3.amazonaws.com/macrolo/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/macrolo/index.html</a>
-              <a href="https://s3.amazonaws.com/macrologoat/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/macrologoat/index.html</a>
-              <a href="https://s3.amazonaws.com/macrolomath/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/macrolomath/index.html</a>
-              <a href="https://s3.amazonaws.com/deaganfern/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/deaganfern/index.html</a>
-              <a href="https://bullbestyoutuber.s3.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">bullbestyoutuber.s3.amazonaws.com/index.html</a>
-              <a href="https://bulledu.s3.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">bulledu.s3.amazonaws.com/index.html</a>
-              <a href="https://bullguardian.s3.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">bullguardian.s3.amazonaws.com/index.html</a>
-              <a href="https://bullisgoated.s3.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">bullisgoated.s3.amazonaws.com/index.html</a>
-              <a href="https://bulllightspeed.s3.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">bulllightspeed.s3.amazonaws.com/index.html</a>
-              <a href="https://bullmath.s3.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">bullmath.s3.amazonaws.com/index.html</a>
-              <a href="https://bullubg.s3.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">bullubg.s3.amazonaws.com/index.html</a>
-              <a href="https://iloveliteratures.s3.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">iloveliteratures.s3.amazonaws.com/index.html</a>
-              <a href="https://ilovemaths.s3.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">ilovemaths.s3.amazonaws.com/index.html</a>
-              <a href="https://lsrelay-extension-production.s3.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">lsrelay-extension-production.s3.amazonaws.com/index.html</a>
-              <a href="https://macrolo.s3.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">macrolo.s3.amazonaws.com/index.html</a>
-              <a href="https://macrologoat.s3.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">macrologoat.s3.amazonaws.com/index.html</a>
-              <a href="https://macrolomath.s3.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">macrolomath.s3.amazonaws.com/index.html</a>
-              <a href="https://deaganfern.s3.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">deaganfern.s3.amazonaws.com/index.html</a>
-              <a href="https://2027g4mes.s3.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">2027g4mes.s3.amazonaws.com/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
-              <a href="https://s3.amazonaws.com/2027g4mes/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/2027g4mes/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
-              <a href="https://s3.amazonaws.com/writevc/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/writevc/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
-              <a href="https://bullbestyoutuber.s3.us-east-1.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">bullbestyoutuber.s3.us-east-1.amazonaws.com/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
-              <a href="https://s3.amazonaws.com/onelastlink/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/onelastlink/index.html <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+              <a href="https://ferndc.s3.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">ferndc.s3.amazonaws.com/index.html</a>
+              <a href="https://ferndc.s3.us-east-1.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">ferndc.s3.us-east-1.amazonaws.com/index.html</a>
+              <a href="https://ferndc.s3.dualstack.us-east-1.amazonaws.com/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">ferndc.s3.dualstack.us-east-1.amazonaws.com/index.html</a>
+              <a href="https://s3.amazonaws.com/ferndc/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/ferndc/index.html</a>
+              <a href="https://s3.us-east-1.amazonaws.com/ferndc/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.us-east-1.amazonaws.com/ferndc/index.html</a>
+              <a href="https://s3.dualstack.us-east-1.amazonaws.com/ferndc/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.dualstack.us-east-1.amazonaws.com/ferndc/index.html</a>
+              <a href="https://ferndc.s3.amazonaws.com/math.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">ferndc.s3.amazonaws.com/math.html</a>
+              <a href="https://ferndc.s3.us-east-1.amazonaws.com/math.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">ferndc.s3.us-east-1.amazonaws.com/math.html</a>
+              <a href="https://ferndc.s3.dualstack.us-east-1.amazonaws.com/math.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">ferndc.s3.dualstack.us-east-1.amazonaws.com/math.html</a>
+              <a href="https://s3.amazonaws.com/ferndc/math.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/ferndc/math.html</a>
+              <a href="https://s3.us-east-1.amazonaws.com/ferndc/math.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.us-east-1.amazonaws.com/ferndc/math.html</a>
+              <a href="https://s3.dualstack.us-east-1.amazonaws.com/ferndc/math.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.dualstack.us-east-1.amazonaws.com/ferndc/math.html</a>
+              <a href="https://ferndc.s3.amazonaws.com/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">ferndc.s3.amazonaws.com/index.svg</a>
+              <a href="https://ferndc.s3.us-east-1.amazonaws.com/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">ferndc.s3.us-east-1.amazonaws.com/index.svg</a>
+              <a href="https://ferndc.s3.dualstack.us-east-1.amazonaws.com/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">ferndc.s3.dualstack.us-east-1.amazonaws.com/index.svg</a>
+              <a href="https://s3.amazonaws.com/ferndc/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.amazonaws.com/ferndc/index.svg</a>
+              <a href="https://s3.us-east-1.amazonaws.com/ferndc/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.us-east-1.amazonaws.com/ferndc/index.svg</a>
+              <a href="https://s3.dualstack.us-east-1.amazonaws.com/ferndc/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">s3.dualstack.us-east-1.amazonaws.com/ferndc/index.svg</a>
+              <a href="https://gcs.instructure.com/files/62841615/download?inline=1&verifier=a0622353-f575-4e28-8d58-462872e7e602" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gcs.instructure.com/files/62841615/download <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
             </div>
           </div>
 
@@ -3091,6 +2999,61 @@ l.parentNode.insertBefore(s, l);
               <a href="https://duck.mytutors.top/" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">duck.mytutors.top <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
               <a href="https://clever-hub22.learningatschool.website/" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">clever-hub22.learningatschool.website <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
               <a href="https://silver-spark62.learningatschool.website/" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">silver-spark62.learningatschool.website <span style="background:#ff4444;color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-left:4px;text-decoration:none;">NEW</span></a>
+              <a href="https://cdn.jsdelivr.net/gh/freezenovasrl/cdn/duckmath.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cdn.jsdelivr.net/gh/freezenovasrl/cdn/duckmath.svg</a>
+              <a href="https://assets.editor.p5js.org/69f34707e1b8c4295655b517/6e528b37-2c24-457c-b1de-8b0964eacd2f.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">assets.editor.p5js.org/69f34707e1b8c4295655b517/6e528b37-2c24-457c-b1de-8b0964eacd2f.svg</a>
+              <a href="https://assets.editor.p5js.org/69f34707e1b8c4295655b517/e3a9881e-d76a-41f5-94bf-6df6bcea5ec2.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">assets.editor.p5js.org/69f34707e1b8c4295655b517/e3a9881e-d76a-41f5-94bf-6df6bcea5ec2.svg</a>
+              <a href="https://duckable.lovable.app" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">duckable.lovable.app</a>
+              <a href="https://duck.classroomcommunity.com" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">duck.classroomcommunity.com</a>
+              <a href="https://duck.classroom-community.com" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">duck.classroom-community.com</a>
+              <a href="https://duck.classroom.onl" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">duck.classroom.onl</a>
+              <a href="https://classroom.community" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">classroom.community</a>
+              <a href="https://gratis.ro" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gratis.ro</a>
+              <a href="https://xn--80afogilddr4i.com" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">xn--80afogilddr4i.com</a>
+              <a href="https://xn--c1ajz8b.io" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">xn--c1ajz8b.io</a>
+              <a href="https://xn--c1ajz8b.org" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">xn--c1ajz8b.org</a>
+              <a href="https://unblockedgamesfreezenova.com" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unblockedgamesfreezenova.com</a>
+              <a href="https://duck.classroomgeometry.com" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">duck.classroomgeometry.com</a>
+              <a href="https://gamesforpi.com" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gamesforpi.com</a>
+              <a href="https://duck.gameacademy.ro" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">duck.gameacademy.ro</a>
+              <a href="https://povesti.ro" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">povesti.ro</a>
+              <a href="https://steam.gift" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">steam.gift</a>
+              <a href="https://edysgames.com" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">edysgames.com</a>
+              <a href="https://creatii.ro" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">creatii.ro</a>
+              <a href="https://friv-2023.com" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">friv-2023.com</a>
+              <a href="https://duck.freezenova.ai" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">duck.freezenova.ai</a>
+              <a href="https://freezenova.ro" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">freezenova.ro</a>
+              <a href="https://gametube.io" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">gametube.io</a>
+              <a href="https://freegames.onl" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">freegames.onl</a>
+              <a href="https://freemathstudy.com" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">freemathstudy.com</a>
+              <a href="https://duck.freezenova.chat" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">duck.freezenova.chat</a>
+              <a href="https://duck.forcez.io" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">duck.forcez.io</a>
+              <a href="https://play.duckmath.games" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">play.duckmath.games</a>
+              <a href="https://duckmathgames.com" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">duckmathgames.com</a>
+              <a href="https://duck.adoluxgames.com" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">duck.adoluxgames.com</a>
+              <a href="https://duck.freezenova.blog" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">duck.freezenova.blog</a>
+              <a href="https://jocuripentrucopii.ro" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">jocuripentrucopii.ro</a>
+              <a href="https://lich.com" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">lich.com</a>
+              <a href="https://onlinegames.ro" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">onlinegames.ro</a>
+              <a href="https://car-simulator.com" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">car-simulator.com</a>
+              <a href="https://cargames.io" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">cargames.io</a>
+              <a href="https://mapsguesser.com" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">mapsguesser.com</a>
+              <a href="https://survev.top" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">survev.top</a>
+              <a href="https://duck.scienceunblocked.com" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">duck.scienceunblocked.com</a>
+              <a href="https://freezenova.net" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">freezenova.net</a>
+              <a href="https://duck.revenuegames.com" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">duck.revenuegames.com</a>
+              <a href="https://mathlessons.b-cdn.net" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">mathlessons.b-cdn.net</a>
+              <a href="https://adogames.com" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">adogames.com</a>
+              <a href="https://classroom.totallyscience.app" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">classroom.totallyscience.app</a>
+              <a href="https://freezenova.eu" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">freezenova.eu</a>
+              <a href="https://skynet.games" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">skynet.games</a>
+              <a href="https://unpkg.com/classroomduck/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/classroomduck/index.html</a>
+              <a href="https://unpkg.com/classroomduck/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">unpkg.com/classroomduck/index.svg</a>
+              <a href="https://esm.sh/classroomduck/index.html" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/classroomduck/index.html</a>
+              <a href="https://esm.sh/classroomduck/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">esm.sh/classroomduck/index.svg</a>
+              <a href="https://fastly.jsdelivr.net/npm/classroomduck/index.svg" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">fastly.jsdelivr.net/npm/classroomduck/index.svg</a>
+              <a href="https://study.jok.ro/" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">study.jok.ro/</a>
+              <a href="https://duck.biologycontest.com/" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">duck.biologycontest.com</a>
+              <a href="https://duck.bestmath.top/" target="_blank" style="color:var(--accent);text-decoration:underline;font-size:13px;">duck.bestmath.top</a>
             </div>
           </div>
 
@@ -3233,8 +3196,8 @@ l.parentNode.insertBefore(s, l);
             <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;">
             <p style="color:#aaa;font-size:13px;font-weight:bold;">CDN Mirror</p>
             <select id="cdn-select" class="settings-input" onchange="setCDN(this.value)" style="margin-top:6px;">
-              <option value="https://quantil.jsdelivr.net">quantil.jsdelivr.net</option>
               <option value="https://cdn.jsdelivr.net" selected>cdn.jsdelivr.net</option>
+              <option value="https://quantil.jsdelivr.net">quantil.jsdelivr.net</option>
               <option value="https://gcore.jsdelivr.net">gcore.jsdelivr.net</option>
               <option value="https://originfastly.jsdelivr.net">originfastly.jsdelivr.net</option>
               <option value="https://fastly.jsdelivr.net">fastly.jsdelivr.net</option>
@@ -3529,40 +3492,47 @@ l.parentNode.insertBefore(s, l);
         </div>
       </div>
 
-      <div id="ad-bottom-row" style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center;align-items:center;width:100%;max-width:970px;margin:12px auto 0;padding:0 12px;box-sizing:border-box;min-height:125px;">
+      <div id="ad-bottom-row" style="display:flex;gap:0;flex-wrap:wrap;justify-content:center;align-items:center;width:fit-content;max-width:100%;margin:10px auto 0;padding:0;box-sizing:border-box;min-height:75px;border:2px solid rgba(255,255,255,.25);border-radius:12px;background:#000000;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.4);">
         <div class="ub-ad-slot" id="ad-slot-bottom">
-          <div class="ub-ad-fallback" style="width:120px;height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#141414;border:2px dashed rgba(255,255,255,.25);border-radius:8px;color:#8a8a8a;font-family:system-ui,sans-serif;text-align:center;padding:8px;box-sizing:border-box;box-shadow:0 4px 20px rgba(0,0,0,.4);z-index:1;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:6px;"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
-            <div style="font-size:11px;font-weight:600;margin-bottom:2px;">A ad should've been here</div>
-            <div style="font-size:10px;opacity:.7;">120 × 100</div>
+          <div class="ub-ad-fallback" style="width:90px;height:75px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#000000;border:2px dashed rgba(255,255,255,.25);border-radius:0;color:#8a8a8a;font-family:system-ui,sans-serif;text-align:center;padding:6px;box-sizing:border-box;box-shadow:none;z-index:1;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:3px;"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
+            <div style="font-size:9px;font-weight:600;margin-bottom:1px;">A ad should've been here</div>
           </div>
         </div>
         <div class="ub-ad-slot" id="ad-slot-bottom2">
-          <div class="ub-ad-fallback" style="width:120px;height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#141414;border:2px dashed rgba(255,255,255,.25);border-radius:8px;color:#8a8a8a;font-family:system-ui,sans-serif;text-align:center;padding:8px;box-sizing:border-box;box-shadow:0 4px 20px rgba(0,0,0,.4);z-index:1;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:6px;"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
-            <div style="font-size:11px;font-weight:600;margin-bottom:2px;">A ad should've been here</div>
-            <div style="font-size:10px;opacity:.7;">120 × 100</div>
+          <div class="ub-ad-fallback" style="width:90px;height:75px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#000000;border:2px dashed rgba(255,255,255,.25);border-radius:0;color:#8a8a8a;font-family:system-ui,sans-serif;text-align:center;padding:6px;box-sizing:border-box;box-shadow:none;z-index:1;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:3px;"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
+            <div style="font-size:9px;font-weight:600;margin-bottom:1px;">A ad should've been here</div>
           </div>
         </div>
         <div class="ub-ad-slot" id="ad-slot-bottom3">
-          <div class="ub-ad-fallback" style="width:120px;height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#141414;border:2px dashed rgba(255,255,255,.25);border-radius:8px;color:#8a8a8a;font-family:system-ui,sans-serif;text-align:center;padding:8px;box-sizing:border-box;box-shadow:0 4px 20px rgba(0,0,0,.4);z-index:1;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:6px;"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
-            <div style="font-size:11px;font-weight:600;margin-bottom:2px;">A ad should've been here</div>
-            <div style="font-size:10px;opacity:.7;">120 × 100</div>
+          <div class="ub-ad-fallback" style="width:90px;height:75px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#000000;border:2px dashed rgba(255,255,255,.25);border-radius:0;color:#8a8a8a;font-family:system-ui,sans-serif;text-align:center;padding:6px;box-sizing:border-box;box-shadow:none;z-index:1;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:3px;"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
+            <div style="font-size:9px;font-weight:600;margin-bottom:1px;">A ad should've been here</div>
           </div>
         </div>
         <div class="ub-ad-slot" id="ad-slot-bottom4">
-          <div class="ub-ad-fallback" style="width:120px;height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#141414;border:2px dashed rgba(255,255,255,.25);border-radius:8px;color:#8a8a8a;font-family:system-ui,sans-serif;text-align:center;padding:8px;box-sizing:border-box;box-shadow:0 4px 20px rgba(0,0,0,.4);z-index:1;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:6px;"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
-            <div style="font-size:11px;font-weight:600;margin-bottom:2px;">A ad should've been here</div>
-            <div style="font-size:10px;opacity:.7;">120 × 100</div>
+          <div class="ub-ad-fallback" style="width:90px;height:75px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#000000;border:2px dashed rgba(255,255,255,.25);border-radius:0;color:#8a8a8a;font-family:system-ui,sans-serif;text-align:center;padding:6px;box-sizing:border-box;box-shadow:none;z-index:1;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:3px;"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
+            <div style="font-size:9px;font-weight:600;margin-bottom:1px;">A ad should've been here</div>
           </div>
         </div>
         <div class="ub-ad-slot" id="ad-slot-bottom5">
-          <div class="ub-ad-fallback" style="width:120px;height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#141414;border:2px dashed rgba(255,255,255,.25);border-radius:8px;color:#8a8a8a;font-family:system-ui,sans-serif;text-align:center;padding:8px;box-sizing:border-box;box-shadow:0 4px 20px rgba(0,0,0,.4);z-index:1;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:6px;"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
-            <div style="font-size:11px;font-weight:600;margin-bottom:2px;">A ad should've been here</div>
-            <div style="font-size:10px;opacity:.7;">120 × 100</div>
+          <div class="ub-ad-fallback" style="width:90px;height:75px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#000000;border:2px dashed rgba(255,255,255,.25);border-radius:0;color:#8a8a8a;font-family:system-ui,sans-serif;text-align:center;padding:6px;box-sizing:border-box;box-shadow:none;z-index:1;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:3px;"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
+            <div style="font-size:9px;font-weight:600;margin-bottom:1px;">A ad should've been here</div>
+          </div>
+        </div>
+        <div class="ub-ad-slot" id="ad-slot-bottom6">
+          <div class="ub-ad-fallback" style="width:90px;height:75px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#000000;border:2px dashed rgba(255,255,255,.25);border-radius:0;color:#8a8a8a;font-family:system-ui,sans-serif;text-align:center;padding:6px;box-sizing:border-box;box-shadow:none;z-index:1;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:3px;"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
+            <div style="font-size:9px;font-weight:600;margin-bottom:1px;">A ad should've been here</div>
+          </div>
+        </div>
+        <div class="ub-ad-slot" id="ad-slot-bottom7">
+          <div class="ub-ad-fallback" style="width:90px;height:75px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#000000;border:2px dashed rgba(255,255,255,.25);border-radius:0;color:#8a8a8a;font-family:system-ui,sans-serif;text-align:center;padding:6px;box-sizing:border-box;box-shadow:none;z-index:1;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:3px;"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
+            <div style="font-size:9px;font-weight:600;margin-bottom:1px;">A ad should've been here</div>
           </div>
         </div>
       </div>
@@ -5898,7 +5868,7 @@ l.parentNode.insertBefore(s, l);
       return _cdn + '/gh/s0n-1m-cr1n3/sc13nc3' + cdnBranch();
     }
 
-    var CDN_HOSTS = ['quantil.jsdelivr.net','cdn.jsdelivr.net','gcore.jsdelivr.net','originfastly.jsdelivr.net','fastly.jsdelivr.net','testingcf.jsdelivr.net','jsdelivr.b-cdn.net','jsd.onmicrosoft.cn','cdn.jsdmirror.com','cdn.statically.io','cdn.staticdelivr.com','jsd-proxy.ygxz.in','jsd.nmmsl.top','cdn.bili33.top','jsd.proxy.aks.moe','js.cdn.haah.net'];
+    var CDN_HOSTS = ['cdn.jsdelivr.net','quantil.jsdelivr.net','gcore.jsdelivr.net','originfastly.jsdelivr.net','fastly.jsdelivr.net','testingcf.jsdelivr.net','jsdelivr.b-cdn.net','jsd.onmicrosoft.cn','cdn.jsdmirror.com','cdn.statically.io','cdn.staticdelivr.com','jsd-proxy.ygxz.in','jsd.nmmsl.top','cdn.bili33.top','jsd.proxy.aks.moe','js.cdn.haah.net'];
     function cdnHostRe() { return new RegExp('https?://([^/]*\\.jsdelivr\\.net' + CDN_HOSTS.map(function(h){return '|'+h.replace(/\./g,'\\.');}).join('') + ')/', 'g'); }
     function toCdnUrl(url) {
       var result = String(url).replace(cdnHostRe(), _cdn + '/');
@@ -9285,7 +9255,7 @@ let DATA = {
 /* ---------- LIQUID GLASS PILL DOCK ---------- */
   .lq-dock {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.02);
@@ -9345,6 +9315,9 @@ let DATA = {
     mask-composite: exclude;
   }
   .lq-dock-btn {
+    --lq-scale: 1;
+    --lq-shift: 0px;
+    --lq-lift: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9357,17 +9330,20 @@ let DATA = {
     color: #ffffff;
     font-family: inherit;
     cursor: pointer;
-    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform: translate(var(--lq-shift), var(--lq-lift)) scale(var(--lq-scale));
+    transform-origin: center bottom;
+    will-change: transform;
+    transition: transform 0.12s cubic-bezier(0.2, 0.8, 0.2, 1),
               box-shadow 0.25s ease,
               background 0.25s ease;
   }
+  #sidebar.left-sidebar .lq-dock-btn { transform-origin: left center; }
+  #sidebar.right-sidebar .lq-dock-btn { transform-origin: right center; }
   .lq-dock-btn:hover {
-    transform: translateY(-8px) scale(1.08);
     background: rgba(255, 255, 255, 0.12);
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.4);
   }
   .lq-dock-btn:active {
-    transform: translateY(-2px) scale(0.96);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
   .lq-dock-btn.active {
@@ -9385,6 +9361,13 @@ let DATA = {
     height: 22px;
   }
   .lq-dock-icon svg { width: 22px !important; height: 22px !important; display: block; }
+  @keyframes lqDockBounce {
+    0%, 100% { transform: translate(var(--lq-shift), var(--lq-lift)) scale(var(--lq-scale)); }
+    30%      { transform: translate(var(--lq-shift), var(--lq-lift)) scale(calc(var(--lq-scale) * 1.18)); }
+    55%      { transform: translate(var(--lq-shift), var(--lq-lift)) scale(calc(var(--lq-scale) * 0.94)); }
+    75%      { transform: translate(var(--lq-shift), var(--lq-lift)) scale(calc(var(--lq-scale) * 1.06)); }
+  }
+  .lq-dock-btn.lq-bounce { animation: lqDockBounce 0.55s cubic-bezier(0.28, 0.84, 0.42, 1); }
 </style>
 <script>
 /* ============ Liquid Glass Sidebar (CSS pill dock) ============ */
@@ -9455,6 +9438,67 @@ let DATA = {
     return el;
   }
 
+  function initDockMagnify(dock) {
+    if (!dock || dock.__lqMagnify) return;
+    dock.__lqMagnify = true;
+
+    var MAX_SCALE = 1.65;
+    var RANGE = 120;
+    var SPREAD = 0.36;
+    var LIFT = 12;
+    var btns = Array.prototype.slice.call(dock.querySelectorAll('.lq-dock-btn'));
+
+    function isVertical() {
+      try { return getComputedStyle(dock).flexDirection === 'column'; } catch (e) { return false; }
+    }
+
+    function setVals(btn, scale, shift, lift) {
+      btn.style.setProperty('--lq-scale', scale.toFixed(3));
+      btn.style.setProperty('--lq-shift', shift.toFixed(2) + 'px');
+      btn.style.setProperty('--lq-lift', lift.toFixed(2) + 'px');
+    }
+
+    function reset() {
+      btns.forEach(function (btn) { setVals(btn, 1, 0, 0); });
+    }
+
+    dock.addEventListener('pointermove', function (e) {
+      var dr = dock.getBoundingClientRect();
+      var px = e.clientX - dr.left - dock.clientLeft;
+      var py = e.clientY - dr.top - dock.clientTop;
+      var vertical = isVertical();
+      btns.forEach(function (btn) {
+        var cx = btn.offsetLeft + btn.offsetWidth / 2;
+        var cy = btn.offsetTop + btn.offsetHeight / 2;
+        var d = vertical ? Math.abs(py - cy) : Math.abs(px - cx);
+        var t = 1 - Math.min(1, d / RANGE);
+        t = t * t * (3 - 2 * t);
+        var scale = 1 + (MAX_SCALE - 1) * t;
+        var sign = vertical ? (cy < py ? -1 : 1) : (cx < px ? -1 : 1);
+        var along = sign * (scale - 1) * (vertical ? btn.offsetHeight : btn.offsetWidth) * SPREAD;
+        var lift = LIFT * t;
+        if (vertical) setVals(btn, scale, 0, along);
+        else setVals(btn, scale, along, -lift);
+      });
+    });
+    dock.addEventListener('pointerleave', reset);
+    dock.addEventListener('pointercancel', reset);
+    window.addEventListener('blur', reset);
+
+    dock.addEventListener('pointerdown', function (e) {
+      var btn = e.target && e.target.closest ? e.target.closest('.lq-dock-btn') : null;
+      if (!btn) return;
+      btn.classList.remove('lq-bounce');
+      void btn.offsetWidth;
+      btn.classList.add('lq-bounce');
+    });
+    dock.addEventListener('animationend', function (e) {
+      if (e.animationName === 'lqDockBounce' && e.target && e.target.classList) {
+        e.target.classList.remove('lq-bounce');
+      }
+    });
+  }
+
   function enable() {
     if (glassEnabled) return;
     var sidebar = document.getElementById('sidebar');
@@ -9484,6 +9528,7 @@ let DATA = {
       glassButtons.push({ el: el, btn: btn });
     });
 
+    initDockMagnify(dock);
     syncActive();
 
     function syncIconToDock(item) {
