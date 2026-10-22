@@ -1,10 +1,10 @@
 var CORE_PATH = new URL("prox/fks12s.js", self.location.href).href;
 var CORE_CDN = "https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/assets/prox/fks12s.js";
 try {
-  importScripts(CORE_PATH);
+  importScripts(CORE_CDN);
 } catch (e) {
   try {
-    importScripts(CORE_CDN);
+    importScripts(CORE_PATH);
   } catch (e2) {
     console.warn("[sw] pr0xy core failed to load", e, e2);
   }
