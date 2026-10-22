@@ -1,13 +1,8 @@
-var CORE_PATH = new URL("prox/fks12s.js", self.location.href).href;
 var CORE_CDN = "https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/assets/prox/fks12s.js";
 try {
   importScripts(CORE_CDN);
 } catch (e) {
-  try {
-    importScripts(CORE_PATH);
-  } catch (e2) {
-    console.warn("[sw] pr0xy core failed to load", e, e2);
-  }
+  console.warn("[sw] pr0xy core failed to load", e);
 }
 if (!self._pnclg8f) {
   throw new Error("pr0xy core unavailable");
@@ -84,14 +79,8 @@ function isExternalHttp(request) {
   }
 }
 
-function shouldWispFetch(event) {
-  var request = event.request;
-  if (request.method !== "GET" && request.method !== "HEAD") return false;
-  if (!isExternalHttp(request)) return false;
-  var destination = request.destination;
-  if (destination === "document" || destination === "iframe" || destination === "frame") return false;
-  if (destination === "object" || destination === "embed" || destination === "serviceworker") return false;
-  return true;
+function shouldWispFetch() {
+  return false;
 }
 
 function responseHeaders(rawHeaders) {
