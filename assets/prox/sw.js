@@ -89,13 +89,9 @@ function shouldWispFetch(event) {
   if (request.method !== "GET" && request.method !== "HEAD") return false;
   if (!isExternalHttp(request)) return false;
   var destination = request.destination;
+  if (destination === "document" || destination === "iframe" || destination === "frame") return false;
   if (destination === "object" || destination === "embed" || destination === "serviceworker") return false;
-  try {
-    var path = new URL(request.url).pathname;
-    return /\.(?:html?|xhtml)$/i.test(path);
-  } catch (e) {
-    return false;
-  }
+  return true;
 }
 
 function responseHeaders(rawHeaders) {
