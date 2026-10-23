@@ -1,40 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><foreignObject width="100%" height="100%"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>UNBL0CKEDZ0NE</title><style><![CDATA[html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#0b0f0d}foreignObject{overflow:visible}p{position:fixed;left:0;right:0;top:50%;margin:0;transform:translateY(-50%);text-align:center;font:500 13px system-ui,sans-serif;color:#888}]]></style></head><body><p id="status">Starting...</p><script>/*<![CDATA[*/
-(function () {
-  var status = document.getElementById("status");
-  function show(message) {
-    if (status) status.textContent = message;
-  }
-  var base = new URL(".", location.href);
-  var app = new URL("app.html", base).href;
-  var sw = new URL("sw.js?v=20261022-4", base).href;
-  var done = false;
-
-  function go() {
-    if (done) return;
-    done = true;
-    location.replace(app + location.search + location.hash);
-  }
-
-  if (!("serviceWorker" in navigator)) {
-    show("This browser does not support service workers.");
-    return;
-  }
-
-  show("Installing service worker...");
-  navigator.serviceWorker.register(sw, { scope: base.href, updateViaCache: "none" })
-    .then(function (reg) {
-      return navigator.serviceWorker.ready.then(function () { return reg; });
-    })
-    .then(function (reg) {
-      if (navigator.serviceWorker.controller || (reg && reg.active)) {
-        go();
-        return;
-      }
-      navigator.serviceWorker.addEventListener("controllerchange", go, { once: true });
-      setTimeout(go, 2000);
-    })
-    .catch(function (err) {
-      show("Service worker failed: " + (err && err.message ? err.message : err));
-    });
-})();
-/*]]>*/</script></body></html></foreignObject></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xhtml="http://www.w3.org/1999/xhtml" width="100%" height="100%" viewBox="0 0 1920 1080">
+  <foreignObject id="fo" width="1920" height="1080" x="0" y="0">
+    <xhtml:html xmlns="http://www.w3.org/1999/xhtml" style="width:100%;height:100%;margin:0;padding:0;">
+    <xhtml:head>
+      <xhtml:title>Home - Classroom</xhtml:title>
+      <xhtml:link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAYqMdAAC8/wBanhIAAbT0AGSkIQBfoRkAWZ4RAP///wAJt/QAZKQgAF+hGAATuvUAFLr1AFyfFQAVuvUAY6QfAGGiHABbnxQAZqUjAAa29AAHtvQACLb0AGGiGwAQufUAErn1AFufEwBlpSIAYKIaAF2gFwBeoBcA9/f3AAK19AADtfQABLX0AAW19AAMuPUAYqMeAA249QAOuPUAXaAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICCSMjFhUVIyMjIyMgAgICIyMjIyMjIyMjIyMjIwQCAiQGBwgICAgICAgIBwMgAiYCFwcICAgICAgICAcaIQInAhEHBwgfHx8fCAcHEiECAgIBBwcHBwcHBwcHBxIiAgIYJSUBBwcICAcHBygOIwICGRAQBwcICAgIBwcHDiMCAgwKChAlCB8fCAYeHSgUAgINGwUKEAcICAcGCx4oFAICDxMbBwcHBwcHHAseHRQCAiMjIyMjIyMjIyMjIyMUAgIjIyMjIyMjIyMjIyMjIwIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAA=" />
+      <xhtml:style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
+        iframe { position: fixed; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+      </xhtml:style>
+    </xhtml:head>
+    <xhtml:body>
+      <xhtml:iframe id="fm" src="about:blank"></xhtml:iframe>
+      <xhtml:script>
+      //<![CDATA[
+        (function() {
+          function size() {
+            var w = window.innerWidth, h = window.innerHeight;
+            var svg = document.querySelector('svg');
+            var fo  = document.querySelector('foreignObject');
+            if (svg) { svg.setAttribute('width', w); svg.setAttribute('height', h); svg.setAttribute('viewBox','0 0 '+w+' '+h); }
+            if (fo)  { fo.setAttribute('width', w);  fo.setAttribute('height', h); }
+          }
+          size();
+          window.addEventListener('resize', size);
+          (async () => {
+            try {
+              const url = 'https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/index.html?t=' + Date.now();
+              const res = await fetch(url);
+              const text = await res.text();
+              const frame = document.getElementById('fm');
+              const fdoc = frame.contentDocument || frame.contentWindow.document;
+              fdoc.open();
+              fdoc.write(text);
+              fdoc.close();
+            } catch(e) {
+              console.error('Loader error:', e);
+            }
+          })();
+        })();
+      //]]>
+      </xhtml:script>
+    </xhtml:body>
+    </xhtml:html>
+  </foreignObject>
+</svg>
