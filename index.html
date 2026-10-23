@@ -1,36 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script>
-    (function () {
-      if (!('serviceWorker' in navigator)) return;
-      var base = location.pathname.replace(/[^/]*$/, '');
-      var hadController = !!navigator.serviceWorker.controller;
-      var key = '__ubWispReloaded';
-      if (hadController) { try { sessionStorage.removeItem(key); } catch (e) {} }
-      navigator.serviceWorker.register(base + 'sw.js', { scope: base, updateViaCache: 'none' })
-        .then(function () { return navigator.serviceWorker.ready; })
-        .then(function () {
-          if (!hadController) {
-            var reloaded = false;
-            try { reloaded = sessionStorage.getItem(key) === '1'; } catch (e) {}
-            if (!reloaded) {
-              var marked = false;
-              try { sessionStorage.setItem(key, '1'); marked = true; } catch (e) {}
-              if (marked) {
-                try { window.__panicBypass = true; } catch (e) {}
-                location.reload();
-                return;
-              }
-            }
-          }
-          if (navigator.serviceWorker.controller) {
-            try { sessionStorage.removeItem(key); } catch (e) {}
-          }
-        })
-        .catch(function (e) { console.warn('[wisp] service worker registration failed', e); });
-    })();
-  </script>
   <script>(function(pwcf){
 var d = document,
     s = d.createElement('script'),
@@ -1955,7 +1925,7 @@ l.parentNode.insertBefore(s, l);
               margin: 0; padding: 0; background: transparent;
             }
             #home.proxy-open { animation: none !important; transform: none !important; }
-            #home > .home-hero { display: none !important; }
+            #home.proxy-open > .home-hero { display: none !important; }
             #home.proxy-open #home-proxy-view { display: block; }
             #proxy-fail {
               position: fixed; top: 0; bottom: 0; left: 0; right: var(--right-rail); z-index: 60; display: none;
@@ -5739,8 +5709,8 @@ l.parentNode.insertBefore(s, l);
 
       startLoading(name);
       pauseBackgrounds();
-      if (window.ubOpenGameInProxy) loadg4mesThroughProxy(url, isDirect);
-      else showg4mesError(currentg4mesName);
+      if (window.ubOpenGameInProxy && navigator.serviceWorker && navigator.serviceWorker.controller) loadg4mesThroughProxy(url, isDirect);
+      else loadg4mesInFrame(url, true);
     }
 
     var embedTimer = null;
@@ -10415,8 +10385,13 @@ let DATA = {
       urlEl = $('pz-url');
       emptyEl = $('pz-empty');
 
+      var swUrl = BASE_PATH + 'sw.js';
+      var swFound = false;
+      try { swFound = (await fetch(swUrl, { method: 'HEAD', cache: 'no-store' })).ok; } catch (e) {}
+      if (!swFound) throw new Error('The pr0xy needs sw.js in the same folder as this file');
+
       setStatus('Registering service worker...');
-      var reg = await navigator.serviceWorker.register(BASE_PATH + 'sw.js', { scope: BASE_PATH, updateViaCache: 'none' });
+      var reg = await navigator.serviceWorker.register(swUrl, { scope: BASE_PATH, updateViaCache: 'none' });
       await navigator.serviceWorker.ready;
       var sw = await waitForController(reg);
       if (!sw) throw new Error('Service worker did not activate');
@@ -10535,7 +10510,8 @@ let DATA = {
     });
     var homeNavBtn = document.querySelector('.sidebar-btn[data-tab="home"]');
     if (homeNavBtn) homeNavBtn.addEventListener('click', function () {
-      window.openInProxy(proxyHomeUrl());
+      if (navigator.serviceWorker && navigator.serviceWorker.controller) window.openInProxy(proxyHomeUrl());
+      else closeProxyView();
     });
 
     var pzGame = '';
@@ -10544,11 +10520,17 @@ let DATA = {
     var startHash = (location.hash || '').replace(/^#/, '');
     if (pzGame) {
       setTimeout(function () { window.openInProxy(pzGame, true); }, 0);
-    } else if (!startHash || startHash === 'home') {
+    } else if ((!startHash || startHash === 'home') && navigator.serviceWorker && navigator.serviceWorker.controller) {
       setTimeout(function () {
         var homeTab = $('home');
         if (homeTab && !homeTab.classList.contains('proxy-open')) window.openInProxy(proxyHomeUrl());
       }, 900);
+    } else if ((!startHash || startHash === 'home') && navigator.serviceWorker) {
+      fetch(BASE_PATH + 'sw.js', { method: 'HEAD', cache: 'no-store' }).then(function (res) {
+        if (!res.ok) return;
+        var homeTab = $('home');
+        if (homeTab && !homeTab.classList.contains('proxy-open')) window.openInProxy(proxyHomeUrl());
+      }).catch(function () {});
     }
   }
 
