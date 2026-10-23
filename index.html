@@ -7169,7 +7169,9 @@ let DATA = {
       async function one(base) {
         try {
           const r = await fetch(base + '/cdn-data/g.json');
-          const d = await r.json();
+          const text = await r.text();
+          let d;
+          try { d = JSON.parse(text); } catch (e) { d = JSON.parse(text.replace(/,\s*([}\]])/g, '$1')); }
           (Array.isArray(d) ? d : []).forEach(function(g) {
             var nm = String(g.name || '').trim();
             if (!nm) return;
@@ -10495,7 +10497,7 @@ let DATA = {
     var newTabBtn = $('pz-new-tab');
     if (newTabBtn) newTabBtn.addEventListener('click', function () {
       if (controller && tabs.length) createTab(proxyHomeUrl());
-      else { pendingNewTab = true; initProxy(); }
+      else window.openInProxy(proxyHomeUrl(), true);
     });
     $('pz-back').addEventListener('click', function () { if (frame) frame.back(); });
     $('pz-forward').addEventListener('click', function () { if (frame) frame.forward(); });
@@ -10505,13 +10507,12 @@ let DATA = {
         e.preventDefault();
         var v = urlEl.value.trim();
         if (!v) return;
-        initProxy().then(function () { navigate(v); });
+        window.openInProxy(v);
       }
     });
     var homeNavBtn = document.querySelector('.sidebar-btn[data-tab="home"]');
     if (homeNavBtn) homeNavBtn.addEventListener('click', function () {
-      if (navigator.serviceWorker && navigator.serviceWorker.controller) window.openInProxy(proxyHomeUrl());
-      else closeProxyView();
+      window.openInProxy(proxyHomeUrl());
     });
 
     var pzGame = '';
@@ -10520,17 +10521,9 @@ let DATA = {
     var startHash = (location.hash || '').replace(/^#/, '');
     if (pzGame) {
       setTimeout(function () { window.openInProxy(pzGame, true); }, 0);
-    } else if ((!startHash || startHash === 'home') && navigator.serviceWorker && navigator.serviceWorker.controller) {
-      setTimeout(function () {
-        var homeTab = $('home');
-        if (homeTab && !homeTab.classList.contains('proxy-open')) window.openInProxy(proxyHomeUrl());
-      }, 900);
-    } else if ((!startHash || startHash === 'home') && navigator.serviceWorker) {
-      fetch(BASE_PATH + 'sw.js', { method: 'HEAD', cache: 'no-store' }).then(function (res) {
-        if (!res.ok) return;
-        var homeTab = $('home');
-        if (homeTab && !homeTab.classList.contains('proxy-open')) window.openInProxy(proxyHomeUrl());
-      }).catch(function () {});
+    } else if (!startHash || startHash === 'home') {
+      var homeTab = $('home');
+      if (homeTab && !homeTab.classList.contains('proxy-open')) window.openInProxy(proxyHomeUrl());
     }
   }
 
@@ -10563,12 +10556,36 @@ let DATA = {
     if (input) { try { input.focus(); } catch (e) {} }
   }
 
+  var CDN_PROXY_APP = 'https://fastly.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/index.svg?v=20261022-3';
+
+  function openCdnProxy(value) {
+    var target = value && value !== PROXY_HOME ? normalizeUrl(value) : '';
+    var overlay = document.getElementById('cdn-proxy-overlay');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.id = 'cdn-proxy-overlay';
+      overlay.style.cssText = 'position:fixed;inset:0;z-index:2147483000;background:#000;';
+      var cdnFrame = document.createElement('iframe');
+      cdnFrame.id = 'cdn-proxy-frame';
+      cdnFrame.style.cssText = 'display:block;width:100%;height:100%;border:0;background:#000;';
+      cdnFrame.setAttribute('allow', 'fullscreen; clipboard-write; autoplay');
+      overlay.appendChild(cdnFrame);
+      document.body.appendChild(overlay);
+    }
+    var cdnFrame = document.getElementById('cdn-proxy-frame');
+    cdnFrame.src = CDN_PROXY_APP + (target ? (CDN_PROXY_APP.indexOf('?') === -1 ? '?' : '&') + 'pzgame=' + encodeURIComponent(target) : '');
+  }
+
   window.openInProxy = function (value, newTab) {
     try {
       if (typeof window.switchTab === 'function') window.switchTab('home');
     } catch (e) {}
     showProxyView();
     showProxyHome(value === PROXY_HOME);
+    if (!navigator.serviceWorker || !navigator.serviceWorker.controller) {
+      openCdnProxy(value);
+      return Promise.resolve();
+    }
     if (frame) {
       if (newTab && controller) createTab(value);
       else navigate(value);
