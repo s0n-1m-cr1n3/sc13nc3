@@ -10387,10 +10387,10 @@ let DATA = {
       urlEl = $('pz-url');
       emptyEl = $('pz-empty');
 
-      var swUrl = BASE_PATH + 'sw.js';
+      var swUrl = BASE_PATH + 'x7q2.js';
       var swFound = false;
       try { swFound = (await fetch(swUrl, { method: 'HEAD', cache: 'no-store' })).ok; } catch (e) {}
-      if (!swFound) throw new Error('The pr0xy needs sw.js in the same folder as this file');
+      if (!swFound) throw new Error('The pr0xy needs its worker in the same folder as this file');
 
       setStatus('Registering service worker...');
       var reg = await navigator.serviceWorker.register(swUrl, { scope: BASE_PATH, updateViaCache: 'none' });
@@ -10556,7 +10556,7 @@ let DATA = {
     if (input) { try { input.focus(); } catch (e) {} }
   }
 
-  var CDN_PROXY_APP = 'https://fastly.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/index.svg?v=20261022-3';
+  var CDN_PROXY_APP = 'https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/index.svg?v=20261024-1';
 
   function openCdnProxy(value) {
     var target = value && value !== PROXY_HOME ? normalizeUrl(value) : '';
@@ -10569,7 +10569,32 @@ let DATA = {
       cdnFrame.id = 'cdn-proxy-frame';
       cdnFrame.style.cssText = 'display:block;width:100%;height:100%;border:0;background:#000;';
       cdnFrame.setAttribute('allow', 'fullscreen; clipboard-write; autoplay');
+      cdnFrame.setAttribute('allowfullscreen', '');
       overlay.appendChild(cdnFrame);
+      var fsBtn = document.createElement('button');
+      fsBtn.type = 'button';
+      fsBtn.id = 'cdn-proxy-fullscreen';
+      fsBtn.style.cssText = 'position:fixed;left:14px;bottom:14px;z-index:2147483600;width:38px;height:38px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.25);border-radius:10px;background:rgba(0,0,0,.72);color:#fff;cursor:pointer;';
+      var expandIcon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M8 21H5a2 2 0 0 1-2-2v-3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>';
+      var compressIcon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M16 3v3a2 2 0 0 0 2 2h3"/><path d="M8 21v-3a2 2 0 0 0-2-2H3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></svg>';
+      function syncFsBtn() {
+        var on = document.fullscreenElement === overlay;
+        fsBtn.innerHTML = on ? compressIcon : expandIcon;
+        fsBtn.title = on ? 'Exit fullscreen' : 'Fullscreen';
+        fsBtn.setAttribute('aria-label', fsBtn.title);
+      }
+      fsBtn.onclick = function () {
+        if (document.fullscreenElement) {
+          var ex = document.exitFullscreen && document.exitFullscreen();
+          if (ex && ex.catch) ex.catch(function () {});
+        } else if (overlay.requestFullscreen) {
+          var req = overlay.requestFullscreen();
+          if (req && req.catch) req.catch(function () {});
+        }
+      };
+      document.addEventListener('fullscreenchange', syncFsBtn);
+      syncFsBtn();
+      overlay.appendChild(fsBtn);
       document.body.appendChild(overlay);
     }
     var cdnFrame = document.getElementById('cdn-proxy-frame');

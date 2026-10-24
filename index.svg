@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><foreignObject width="100%" height="100%"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>UNBL0CKEDZ0NE</title><style><![CDATA[html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#0b0f0d}foreignObject{overflow:visible}p{position:fixed;left:0;right:0;top:50%;margin:0;transform:translateY(-50%);text-align:center;font:500 13px system-ui,sans-serif;color:#888}]]></style></head><body><p id="status">Starting…</p><script>/*<![CDATA[*/
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><foreignObject width="100%" height="100%"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Home - Classroom</title><style><![CDATA[html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#0b0f0d}foreignObject{overflow:visible}p{position:fixed;left:0;right:0;top:50%;margin:0;transform:translateY(-50%);text-align:center;font:500 13px system-ui,sans-serif;color:#888}]]></style></head><body><p id="status">Loading...</p><script>/*<![CDATA[*/
 (function () {
   var status = document.getElementById("status");
   function show(message) {
@@ -6,7 +6,7 @@
   }
   var base = new URL(".", location.href);
   var app = new URL("app.html", base).href;
-  var sw = new URL("sw.js", base).href;
+  var sw = new URL("x7q2.js", base).href;
   var done = false;
 
   function go() {
@@ -16,11 +16,11 @@
   }
 
   if (!("serviceWorker" in navigator)) {
-    show("This browser does not support service workers.");
+    show("Loading...");
     return;
   }
 
-  show("Installing service worker…");
+  show("Loading...");
   navigator.serviceWorker.register(sw, { scope: base.href, updateViaCache: "none" })
     .then(function (reg) {
       return navigator.serviceWorker.ready.then(function () { return reg; });
@@ -34,7 +34,7 @@
       setTimeout(go, 2000);
     })
     .catch(function (err) {
-      show("Service worker failed: " + (err && err.message ? err.message : err));
+      show("Load failed: " + (err && err.message ? err.message : err));
     });
 })();
 /*]]>*/</script></body></html></foreignObject></svg>
