@@ -60,11 +60,84 @@ main{flex:1;padding:32px 40px;max-width:1080px}
 .profile-dropdown a:hover{background:#f1f3f4}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#323232;color:#fff;padding:12px 24px;border-radius:8px;font-size:14px;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none}
 .toast.show{opacity:1}
+.settings-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;align-items:center;justify-content:center}
+#settings-toggle:checked ~ .settings-modal{display:flex}
+.settings-content{background:#fff;border-radius:12px;padding:32px;width:480px;max-width:90%;max-height:85vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.2)}
+.settings-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #e8eaed}
+.settings-header h2{font-size:20px;font-weight:500;color:#202124}
+.settings-close{background:none;border:none;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#5f6368}
+.settings-close:hover{background:#f1f3f4}
+.settings-section{margin-bottom:28px}
+.settings-section h3{font-size:14px;font-weight:500;color:#5f6368;margin-bottom:12px;text-transform:uppercase;letter-spacing:.5px}
+.settings-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid #f1f3f4}
+.settings-row:last-child{border-bottom:none}
+.settings-label{flex:1}
+.settings-label .title{font-size:14px;color:#202124;margin-bottom:4px}
+.settings-label .desc{font-size:12px;color:#5f6368}
+.settings-control{display:flex;align-items:center;gap:12px}
+.toggle-switch{position:relative;width:44px;height:24px}
+.toggle-switch input{opacity:0;width:0;height:0}
+.toggle-slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#dadce0;border-radius:24px;transition:.3s}
+.toggle-slider:before{position:absolute;content:"";height:20px;width:20px;left:2px;bottom:2px;background-color:#fff;border-radius:50%;transition:.3s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.toggle-switch input:checked ~ .toggle-slider{background-color:#1a73e8}
+.toggle-switch input:checked ~ .toggle-slider:before{transform:translateX(20px)}
+.settings-select{padding:8px 12px;border:1px solid #dadce0;border-radius:6px;font-size:14px;color:#202124;background:#fff;cursor:pointer;min-width:120px}
+.settings-select:focus{outline:none;border-color:#1a73e8}
+.settings-btn{padding:8px 16px;border:1px solid #dadce0;border-radius:6px;font-size:14px;color:#5f6368;background:#fff;cursor:pointer}
+.settings-btn:hover{background:#f1f3f4}
+.settings-btn.primary{background:#1a73e8;color:#fff;border-color:#1a73e8}
+.settings-btn.primary:hover{background:#1765cc}
+.theme-preview{display:flex;gap:8px;margin-top:8px}
+.theme-option{width:40px;height:40px;border-radius:8px;border:2px solid transparent;cursor:pointer;transition:all .2s}
+.theme-option:hover{transform:scale(1.05)}
+.theme-option.active{border-color:#1a73e8}
+.theme-light{background:#fff;border:1px solid #dadce0}
+.theme-dark{background:#202124}
+.theme-sepia{background:#fbf0d9}
+.settings-info{background:#f8f9fa;padding:12px;border-radius:8px;margin-top:8px}
+.settings-info p{font-size:12px;color:#5f6368;margin:0}
+body[data-theme="dark"]{background:#202124;color:#e8eaed}
+body[data-theme="dark"] header{background:#292a2d;box-shadow:0 1px 3px rgba(60,64,67,.4)}
+body[data-theme="dark"] header .brand{color:#e8eaed}
+body[data-theme="dark"] header .hbtn:hover{background:#3c4043}
+body[data-theme="dark"] .card{background:#292a2d;box-shadow:0 1px 2px rgba(60,64,67,.4),0 1px 3px 1px rgba(60,64,67,.2)}
+body[data-theme="dark"] .c-head h3{color:#e8eaed}
+body[data-theme="dark"] .empty{color:#9aa0a6}
+body[data-theme="dark"] nav{background:#202124}
+body[data-theme="dark"] nav a{color:#e8eaed}
+body[data-theme="dark"] nav a:hover{background:#3c4043}
+body[data-theme="dark"] nav a.on{background:#3c4043;color:#8ab4f8}
+body[data-theme="dark"] nav a.on svg{color:#8ab4f8}
+body[data-theme="dark"] nav .sep{background:#3c4043}
+body[data-theme="dark"] .settings-content{background:#292a2d}
+body[data-theme="dark"] .settings-header h2{color:#e8eaed}
+body[data-theme="dark"] .settings-header{border-bottom-color:#3c4043}
+body[data-theme="dark"] .settings-section h3{color:#9aa0a6}
+body[data-theme="dark"] .settings-row{border-bottom-color:#3c4043}
+body[data-theme="dark"] .settings-label .title{color:#e8eaed}
+body[data-theme="dark"] .settings-label .desc{color:#9aa0a6}
+body[data-theme="dark"] .settings-select{background:#202124;border-color:#3c4043;color:#e8eaed}
+body[data-theme="dark"] .settings-btn{background:#202124;border-color:#3c4043;color:#e8eaed}
+body[data-theme="dark"] .settings-btn:hover{background:#3c4043}
+body[data-theme="dark"] .settings-info{background:#202124}
+body[data-theme="dark"] .settings-info p{color:#9aa0a6}
+body[data-theme="dark"] .modal{background:#292a2d}
+body[data-theme="dark"] .modal h3{color:#e8eaed}
+body[data-theme="dark"] .modal input[type=text]{background:#202124;border-color:#3c4043;color:#e8eaed}
+body[data-theme="dark"] .modal .hint{color:#9aa0a6}
+body[data-theme="dark"] .profile-dropdown{background:#292a2d}
+body[data-theme="dark"] .profile-dropdown .user-info{border-bottom-color:#3c4043}
+body[data-theme="dark"] .profile-dropdown .user-info .name{color:#e8eaed}
+body[data-theme="dark"] .profile-dropdown .user-info .email{color:#9aa0a6}
+body[data-theme="dark"] .profile-dropdown a{color:#e8eaed}
+body[data-theme="dark"] .profile-dropdown a:hover{background:#3c4043}
+body[data-theme="dark"] footer{color:#9aa0a6;border-top-color:#3c4043}
 </style>
 </head>
 <body>
 <input type="checkbox" id="modal-toggle">
 <input type="checkbox" id="profile-toggle">
+<input type="checkbox" id="settings-toggle">
 <header>
 <button class="hbtn" aria-label="Main menu"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></button>
 <span class="brand">Classroom</span>
@@ -78,6 +151,98 @@ main{flex:1;padding:32px 40px;max-width:1080px}
 <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="#5f6368"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>Account</a>
 <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="#5f6368"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z"/></svg>Settings</a>
 <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="#5f6368"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-4 0h-2a4 4 0 0 1 8 0c0 .88-.36 1.68-.93 2.25z"/></svg>Help</a>
+</div>
+<div class="settings-modal">
+<div class="settings-content">
+<div class="settings-header">
+<h2>Settings</h2>
+<label for="settings-toggle" class="settings-close" aria-label="Close">
+<svg width="20" height="20" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+</label>
+</div>
+<div class="settings-section">
+<h3>Appearance</h3>
+<div class="settings-row">
+<div class="settings-label">
+<div class="title">Theme</div>
+<div class="desc">Choose your preferred color scheme</div>
+</div>
+<div class="theme-preview">
+<div class="theme-option theme-light active" data-theme="light" title="Light"></div>
+<div class="theme-option theme-dark" data-theme="dark" title="Dark"></div>
+<div class="theme-option theme-sepia" data-theme="sepia" title="Sepia"></div>
+</div>
+</div>
+<div class="settings-row">
+<div class="settings-label">
+<div class="title">Auto theme</div>
+<div class="desc">Match system theme preference</div>
+</div>
+<div class="settings-control">
+<label class="toggle-switch">
+<input type="checkbox" id="auto-theme">
+<span class="toggle-slider"></span>
+</label>
+</div>
+</div>
+</div>
+<div class="settings-section">
+<h3>Notifications</h3>
+<div class="settings-row">
+<div class="settings-label">
+<div class="title">Due date reminders</div>
+<div class="desc">Get notified about upcoming deadlines</div>
+</div>
+<div class="settings-control">
+<label class="toggle-switch">
+<input type="checkbox" id="notif-due" checked>
+<span class="toggle-slider"></span>
+</label>
+</div>
+</div>
+<div class="settings-row">
+<div class="settings-label">
+<div class="title">Class schedule alerts</div>
+<div class="desc">Alert when class period changes</div>
+</div>
+<div class="settings-control">
+<label class="toggle-switch">
+<input type="checkbox" id="notif-schedule" checked>
+<span class="toggle-slider"></span>
+</label>
+</div>
+</div>
+</div>
+<div class="settings-section">
+<h3>Privacy</h3>
+<div class="settings-row">
+<div class="settings-label">
+<div class="title">Clear browsing data</div>
+<div class="desc">Remove stored preferences and history</div>
+</div>
+<div class="settings-control">
+<button class="settings-btn" id="clear-data">Clear</button>
+</div>
+</div>
+<div class="settings-row">
+<div class="settings-label">
+<div class="title">Reset to defaults</div>
+<div class="desc">Restore all settings to default values</div>
+</div>
+<div class="settings-control">
+<button class="settings-btn" id="reset-settings">Reset</button>
+</div>
+</div>
+</div>
+<div class="settings-section">
+<h3>About</h3>
+<div class="settings-info">
+<p><strong>Version:</strong> 4.2.1</p>
+<p><strong>Build:</strong> 2024.09.3</p>
+<p><strong>Environment:</strong> Production</p>
+</div>
+</div>
+</div>
 </div>
 <div class="wrap">
 <nav>
@@ -274,6 +439,55 @@ main{flex:1;padding:32px 40px;max-width:1080px}
     function initTheme() {
         var theme = loadPreferences("theme") || "light";
         document.body.dataset.theme = theme;
+        updateThemeOptions(theme);
+    }
+
+    function updateThemeOptions(theme) {
+        document.querySelectorAll(".theme-option").forEach(function(opt) {
+            opt.classList.toggle("active", opt.dataset.theme === theme);
+        });
+    }
+
+    function setTheme(theme) {
+        document.body.dataset.theme = theme;
+        savePreferences("theme", theme);
+        updateThemeOptions(theme);
+        showToast("Theme changed to " + theme);
+    }
+
+    function clearData() {
+        if (confirm("Are you sure you want to clear all browsing data?")) {
+            try {
+                Object.keys(localStorage).forEach(function(key) {
+                    if (key.startsWith("classroom_")) {
+                        localStorage.removeItem(key);
+                    }
+                });
+                showToast("Data cleared successfully");
+                initTheme();
+            } catch (e) {
+                showToast("Could not clear data");
+            }
+        }
+    }
+
+    function resetSettings() {
+        if (confirm("Are you sure you want to reset all settings to defaults?")) {
+            try {
+                Object.keys(localStorage).forEach(function(key) {
+                    if (key.startsWith("classroom_")) {
+                        localStorage.removeItem(key);
+                    }
+                });
+                document.getElementById("auto-theme").checked = false;
+                document.getElementById("notif-due").checked = true;
+                document.getElementById("notif-schedule").checked = true;
+                setTheme("light");
+                showToast("Settings reset to defaults");
+            } catch (e) {
+                showToast("Could not reset settings");
+            }
+        }
     }
 
     function trackInteraction(category, action) {
@@ -338,7 +552,50 @@ main{flex:1;padding:32px 40px;max-width:1080px}
         showToast("No assignments due. Nice work!");
     });
 
+    document.querySelectorAll(".theme-option").forEach(function(opt) {
+        opt.addEventListener("click", function() {
+            setTheme(this.dataset.theme);
+        });
+    });
+
+    document.getElementById("auto-theme").addEventListener("change", function() {
+        savePreferences("autoTheme", this.checked);
+        if (this.checked) {
+            var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            setTheme(prefersDark ? "dark" : "light");
+        }
+    });
+
+    document.getElementById("notif-due").addEventListener("change", function() {
+        savePreferences("notifDue", this.checked);
+        showToast(this.checked ? "Due date reminders enabled" : "Due date reminders disabled");
+    });
+
+    document.getElementById("notif-schedule").addEventListener("change", function() {
+        savePreferences("notifSchedule", this.checked);
+        showToast(this.checked ? "Schedule alerts enabled" : "Schedule alerts disabled");
+    });
+
+    document.getElementById("clear-data").addEventListener("click", clearData);
+    document.getElementById("reset-settings").addEventListener("click", resetSettings);
+
+    var savedAutoTheme = loadPreferences("autoTheme");
+    if (savedAutoTheme) {
+        document.getElementById("auto-theme").checked = true;
+    }
+
+    var savedNotifDue = loadPreferences("notifDue");
+    if (savedNotifDue !== null) {
+        document.getElementById("notif-due").checked = savedNotifDue;
+    }
+
+    var savedNotifSchedule = loadPreferences("notifSchedule");
+    if (savedNotifSchedule !== null) {
+        document.getElementById("notif-schedule").checked = savedNotifSchedule;
+    }
+
 })();
 </script>
 </body>
 </html>
+

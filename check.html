@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connection Test</title>
+<style>
+  html, body { margin: 0; background: #111; color: #eee; font: 13px/1.45 system-ui, sans-serif; }
+  body { padding: 16px; }
+  h1 { font-size: 15px; margin: 0 0 4px; font-weight: 600; }
+  p.note { margin: 0 0 12px; color: #999; font-size: 11.5px; }
+  table { border-collapse: collapse; width: 100%; max-width: 920px; }
+  td, th { text-align: left; padding: 6px 8px; border-bottom: 1px solid #2a2a2a; vertical-align: top; }
+  th { font-size: 10px; text-transform: uppercase; letter-spacing: .05em; color: #888; font-weight: 600; }
+  .ok { color: #62d26f; } .warn { color: #e0b341; } .bad { color: #e0625f; } .dim { color: #888; }
+  td.size { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  a { color: #7fb2ff; }
+  button { margin-top: 12px; background: #2a2a2a; color: #eee; border: 1px solid #3d3d3d; border-radius: 6px; padding: 7px 12px; font: inherit; cursor: pointer; }
+  pre#report { margin: 12px 0 0; padding: 10px; background: #000; border: 1px solid #2a2a2a; border-radius: 6px; font-size: 11.5px; white-space: pre-wrap; max-width: 920px; }
+</style>
+</head>
+<body>
+<h1>Connection Test</h1>
+<p class="note">Checks each file the app loads. Open this on the school machine, wait for the rows to fill in, then press Copy report.</p>
+<table>
+  <thead>
+    <tr><th>Check</th><th>Result</th><th>Bytes</th><th>Detail</th></tr>
+  </thead>
+  <tbody id="rows"></tbody>
+</table>
+<button id="copy">Copy report</button>
+<pre id="report"></pre>
+<script>
+(function () {
+  var CDN = "https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/";
+  var bust = "?v=" + Date.now();
+  var checks = [
+    { label: "Reference SVG (other repo)", url: "https://cdn.jsdelivr.net/gh/frnlol/frn@main/index.svg" + bust, expect: 14326, kind: "svg" },
+    { label: "Our loader SVG", url: CDN + "index.svg" + bust, expect: 1773, kind: "svg" },
+    { label: "Our service worker", url: CDN + "sw.js" + bust, expect: 1213, kind: "js" },
+    { label: "Unrelated file, same repo", url: CDN + "x7q2.js" + bust, expect: 1227, kind: "js" },
+    { label: "Our app HTML", url: CDN + "index.html" + bust, expect: 1004370, kind: "plain" },
+    { label: "Our app HTML (worker path)", url: CDN + "assets/index.html" + bust, expect: 1016534, kind: "plain" },
+    { label: "Our worker helper", url: CDN + "assets/prox/sw.js" + bust, expect: 5239, kind: "js" }
+  ];
+  var TOLERANCE = 64;
+
+  function row(label) {
+    var tr = document.createElement("tr");
+    var cells = ["", "pending", "-", "-"].map(function (text, i) {
+      var td = document.createElement("td");
+      td.textContent = text;
+      if (i === 1) td.className = "v dim";
+      if (i === 2) td.className = "size dim";
+      if (i === 3) td.className = "d dim";
+      tr.appendChild(td);
+      return td;
+    });
+    cells[0].textContent = label;
+    document.getElementById("rows").appendChild(tr);
+    return {
+      verdict: function (cls, text) { cells[1].className = "v " + cls; cells[1].textContent = text; },
+      size: function (text) { cells[2].className = "size"; cells[2].textContent = text; },
+      detail: function (text, href) {
+        cells[3].className = "d";
+        cells[3].textContent = text;
+        if (href) {
+          cells[3].appendChild(document.createTextNode(" \u00b7 "));
+          var a = document.createElement("a");
+          a.href = href;
+          a.target = "_blank";
+          a.rel = "noopener";
+          a.textContent = "open";
+          cells[3].appendChild(a);
+        }
+      }
+    };
+  }
+
+  function verdictFor(check, bytes, type, head) {
+    var got = String(type || "").toLowerCase();
+    var htmlish = got.indexOf("text/html") === 0 || /^\s*<(?:!doctype|html|head|body)/i.test(head || "");
+    if (htmlish && check.kind !== "plain") return { cls: "bad", text: "html instead" };
+    if (check.kind === "plain" && /text\/html/i.test(got)) return { cls: "bad", text: "html instead" };
+    if (typeof check.expect === "number" && Math.abs(bytes - check.expect) > TOLERANCE) return { cls: "warn", text: "size differs" };
+    return { cls: "ok", text: "ok" };
+  }
+
+  function run(check) {
+    var view = row(check.label);
+    var started = Date.now();
+    return fetch(check.url, { cache: "no-store", credentials: "omit" })
+      .then(function (res) {
+        return res.arrayBuffer().then(function (buf) {
+          var bytes = buf.byteLength;
+          var type = res.headers.get("content-type") || "";
+          var head = "";
+          try { head = new TextDecoder("utf-8").decode(buf.slice(0, 300)); } catch (e) {}
+          var v = verdictFor(check, bytes, type, head);
+          view.verdict(v.cls, v.text);
+          view.size(bytes + " / " + check.expect);
+          view.detail(res.status + " " + (type || "no type") + " \u00b7 " + (Date.now() - started) + "ms", check.url);
+          return { label: check.label, verdict: v.text, bytes: bytes, status: res.status, type: type, head: head.slice(0, 100).replace(/\s+/g, " ") };
+        });
+      })
+      .catch(function (err) {
+        view.verdict("bad", "failed");
+        view.size("-");
+        view.detail((err && err.name) || "Error");
+        return { label: check.label, verdict: "FAILED", error: String((err && err.name) || err) };
+      });
+  }
+
+  function swCheck() {
+    var view = row("Service worker next to this page");
+    if (!("serviceWorker" in navigator)) {
+      view.verdict("bad", "unavailable");
+      view.size("-");
+      view.detail("navigator.serviceWorker missing");
+      return Promise.resolve({ label: "Service worker next to this page", verdict: "unavailable" });
+    }
+    return fetch("./sw.js", { method: "HEAD", cache: "no-store" })
+      .then(function (res) {
+        if (!res.ok) {
+          view.verdict("dim", "not present");
+          view.size("-");
+          view.detail("no sw.js in this folder (" + res.status + ")");
+          return { label: "Service worker next to this page", verdict: "not present" };
+        }
+        return navigator.serviceWorker.register("./sw.js", { scope: "./", updateViaCache: "none" })
+          .then(function (reg) {
+            view.verdict("ok", "registered");
+            view.size("-");
+            view.detail(reg.scope);
+            return { label: "Service worker next to this page", verdict: "registered", scope: reg.scope };
+          })
+          .catch(function (err) {
+            view.verdict("bad", "failed");
+            view.size("-");
+            view.detail(((err && err.name) || "Error") + " \u2014 " + ((err && err.message) || ""));
+            return { label: "Service worker next to this page", verdict: "FAILED", error: String((err && err.message) || err) };
+          });
+      })
+      .catch(function (err) {
+        view.verdict("dim", "not present");
+        view.size("-");
+        view.detail("sw.js could not be checked (" + ((err && err.name) || "Error") + ")");
+        return { label: "Service worker next to this page", verdict: "not present" };
+      });
+  }
+
+  function summarise(results) {
+    var out = ["Connection Test", "page: " + location.href, "time: " + new Date().toISOString(), "ua: " + navigator.userAgent, ""];
+    results.forEach(function (r) {
+      if (!r) return;
+      if (r.bytes != null) {
+        out.push(r.label + ": " + r.verdict + ", " + r.bytes + " bytes, " + r.status + " " + (r.type || ""));
+        if (r.head && r.verdict !== "ok") out.push("   starts: " + r.head);
+      } else {
+        out.push(r.label + ": " + r.verdict + (r.error ? " (" + r.error + ")" : "") + (r.scope ? " " + r.scope : ""));
+      }
+    });
+    var text = out.join("\n");
+    document.getElementById("report").textContent = text;
+    document.getElementById("copy").onclick = function () {
+      if (navigator.clipboard) navigator.clipboard.writeText(text);
+      else {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+      }
+    };
+  }
+
+  var all = [];
+  function next(i) {
+    if (i >= checks.length) return null;
+    return run(checks[i]).then(function (r) { all.push(r); return next(i + 1); });
+  }
+  Promise.resolve(next(0))
+    .then(function () { return swCheck(); })
+    .then(function (r) { all.push(r); })
+    .catch(function (err) { all.push({ label: "runner", verdict: "FAILED", error: String(err) }); })
+    .then(function () { summarise(all); });
+})();
+</script>
+</body>
+</html>
