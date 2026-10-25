@@ -1,8 +1,8 @@
 importScripts("https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/assets/prox/sw.js?v=20261022-3");
 
 var APP_PATHNAME = new URL("app.html", self.registration.scope).pathname;
-var APP_HTML = new URL("index.html?v=20261023-1", self.registration.scope).href;
-var CDN_APP_HTML = "https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/index.html?v=20261023-1";
+var APP_HTML = new URL("index.html?v=20261025-1", self.registration.scope).href;
+var CDN_APP_HTML = "https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/index.html?v=20261025-1";
 
 async function serveApp() {
   var res = null;
