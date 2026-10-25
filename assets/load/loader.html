@@ -342,7 +342,7 @@ try {
 
   function urlFor(file) {
     if (/^(?:https?:|blob:|about:)/i.test(file)) return file;
-    return 'https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3/assets/load/' + file;
+    return 'https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/assets/load/' + file;
   }
 
   // pages are fetched once when the launcher loads, with their favicon read up front.
@@ -360,7 +360,7 @@ try {
   }
   var pageCache = {};
   function fetchChain(urls, i, origUrl) {
-    return fetch(urls[i])
+    return fetch(urls[i], { cache: 'no-store' })
       .then(function (r) { if (!r.ok) throw new Error('bad status'); return r.text(); })
       .then(function (html) {
         var info = findIconInfo(html, origUrl);
