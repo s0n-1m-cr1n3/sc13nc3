@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Home - Classroom</title>
+<style>
+  html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #0b0f0d; }
+  p {
+    position: fixed; left: 0; right: 0; top: 50%; margin: 0;
+    transform: translateY(-50%); text-align: center;
+    font: 500 13px system-ui, sans-serif; color: #888;
+  }
+</style>
+</head>
+<body>
+<p id="status">Loading...</p>
+<script>
+(function () {
+  var status = document.getElementById("status");
+  function show(message) {
+    if (status) status.textContent = message;
+  }
+  var base = new URL(".", location.href);
+  var app = new URL("app.html", base).href;
+  var sw = new URL("sw.js", base).href;
+  var done = false;
+
+  function go() {
+    if (done) return;
+    done = true;
+    location.replace(app + location.search + location.hash);
+  }
+
+  if (!("serviceWorker" in navigator)) {
+    show("Loading...");
+    return;
+  }
+
+  show("Loading...");
+  navigator.serviceWorker.register(sw, { scope: base.href, updateViaCache: "none" })
+    .then(function (reg) {
+      return navigator.serviceWorker.ready.then(function () { return reg; });
+    })
+    .then(function (reg) {
+      if (navigator.serviceWorker.controller || (reg && reg.active)) {
+        go();
+        return;
+      }
+      navigator.serviceWorker.addEventListener("controllerchange", go, { once: true });
+      setTimeout(go, 2000);
+    })
+    .catch(function (err) {
+      show("Load failed: " + (err && err.message ? err.message : err));
+    });
+})();
+</script>
+</body>
+</html>
