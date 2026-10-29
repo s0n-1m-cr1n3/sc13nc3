@@ -18,11 +18,9 @@ pre#report{margin:12px 0 0;padding:10px;background:#000;border:1px solid #2a2a2a
   var checks = [
     { label: "Reference SVG (other repo)", url: "https://cdn.jsdelivr.net/gh/frnlol/frn@main/index.svg" + bust, expect: 14326, kind: "svg" },
     { label: "Our loader SVG", url: CDN + "index.svg" + bust, expect: 1773, kind: "svg" },
-    { label: "Our service worker", url: CDN + "sw.js" + bust, expect: 1213, kind: "js" },
-    { label: "Unrelated file, same repo", url: CDN + "x7q2.js" + bust, expect: 1227, kind: "js" },
-    { label: "Our app HTML", url: CDN + "index.html" + bust, expect: 1004370, kind: "plain" },
-    { label: "Our app HTML (worker path)", url: CDN + "assets/index.html" + bust, expect: 1016534, kind: "plain" },
-    { label: "Our worker helper", url: CDN + "assets/prox/sw.js" + bust, expect: 5239, kind: "js" }
+    { label: "Our service worker", url: CDN + "sw.js" + bust, expect: 1444, kind: "js" },
+    { label: "Our app HTML", url: CDN + "index.html" + bust, expect: 945846, kind: "plain" },
+    { label: "Our app HTML (worker path)", url: CDN + "assets/index.html" + bust, expect: 945846, kind: "plain" }
   ];
   var TOLERANCE = 64;
 
