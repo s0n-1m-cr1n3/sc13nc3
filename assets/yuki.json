@@ -1,0 +1,4354 @@
+{
+  "games": [
+    {
+      "name": "Antonblast",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/anton.html",
+      "thumbnail": "/games/anton.webp"
+    },
+    {
+      "name": "Arthur's Nightmare",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/arthur.html",
+      "thumbnail": "/games/arthursnight.webp"
+    },
+    {
+      "name": "Baldi's Fun New School Plus Ultimate Edition",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/bfs.html",
+      "thumbnail": "/games/bfs.webp"
+    },
+    {
+      "name": "Bart Blast",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/bart.html",
+      "thumbnail": "/games/bart.webp"
+    },
+    {
+      "name": "Basket Bros",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/basket.html",
+      "thumbnail": "/games/basketbro.webp"
+    },
+    {
+      "name": "Black Jack",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/BlackJack.html",
+      "thumbnail": "/games/blackjack.webp"
+    },
+    {
+      "name": "Bloon TD4",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/bloonstd4.html",
+      "thumbnail": "/games/btd4.webp"
+    },
+    {
+      "name": "Bombmerman",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/bomberman.html",
+      "thumbnail": "/games/bomberman.webp"
+    },
+    {
+      "name": "Bombmerman 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/bomberman2.html",
+      "thumbnail": "/games/bomberman2.webp"
+    },
+    {
+      "name": "Bop City",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/bopcity.html",
+      "thumbnail": "/games/bopcity.webp"
+    },
+    {
+      "name": "Boxing Random",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/boxing.html",
+      "thumbnail": "/games/boxing.webp"
+    },
+    {
+      "name": "Burrito Bison Revenge",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/bbe.html",
+      "thumbnail": "/games/bbe.webp"
+    },
+    {
+      "name": "Christmas Massacre",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/christmas.html",
+      "thumbnail": "/games/christmas.webp"
+    },
+    {
+      "name": "Cooking Mama",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/cookingmama.html",
+      "thumbnail": "/games/cookingmama.webp"
+    },
+    {
+      "name": "Cooking Mama 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/cookingmama2.html",
+      "thumbnail": "/games/cookingmama2.webp"
+    },
+    {
+      "name": "Cooking Mama 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/cookingmama3.html",
+      "thumbnail": "/games/cookingmama3.webp"
+    },
+    {
+      "name": "Crazy Balls",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/balls.html",
+      "thumbnail": "/games/balls.webp"
+    },
+    {
+      "name": "CrazyCattle3D",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/cc3ddevice.html",
+      "thumbnail": "/games/crazyca.webp"
+    },
+    {
+      "name": "Cut The Rope : Time Travel",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/time.html",
+      "thumbnail": "/games/time.webp"
+    },
+    {
+      "name": "Cut The Rope Holiday",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/hol.html",
+      "thumbnail": "/games/cut2.webp"
+    },
+    {
+      "name": "Dadish",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/dadish.html",
+      "thumbnail": "/games/dadish.webp"
+    },
+    {
+      "name": "Dadish 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/dadish2.html",
+      "thumbnail": "/games/dadish2.webp"
+    },
+    {
+      "name": "Dadish 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/dadish3.html",
+      "thumbnail": "/games/dadish3.webp"
+    },
+    {
+      "name": "Dadish 3d",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/dadish3d.html",
+      "thumbnail": "/games/dadish3d.webp"
+    },
+    {
+      "name": "Dadish Daily",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/daily.html",
+      "thumbnail": "/games/daily.webp"
+    },
+    {
+      "name": "DEAD PLATE",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/dead.html",
+      "thumbnail": "/games/deadp.webp"
+    },
+    {
+      "name": "Deltatraveler",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/deltatr.html",
+      "thumbnail": "/games/deltatr.webp"
+    },
+    {
+      "name": "Doge Miner 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/dm2.html",
+      "thumbnail": "/games/dogeminer2.webp"
+    },
+    {
+      "name": "Dr. Mario",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/drmario.html",
+      "thumbnail": "/games/drmario.webp"
+    },
+    {
+      "name": "Dreadhead Parkour",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/dread.html",
+      "thumbnail": "/games/dread.webp"
+    },
+    {
+      "name": "Drift Hunter",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/drift.html",
+      "thumbnail": "/games/hunt.webp"
+    },
+    {
+      "name": "Duck Life 8",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/ducklifeadv.html",
+      "thumbnail": "/games/ducklifeadc.webp"
+    },
+    {
+      "name": "Escape Road",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/escape.html",
+      "thumbnail": "/games/road.webp"
+    },
+    {
+      "name": "Escape Road 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/road2.html",
+      "thumbnail": "/games/escape2.webp"
+    },
+    {
+      "name": "Escape Road City 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/roadcity.html",
+      "thumbnail": "/games/roadcity.webp"
+    },
+    {
+      "name": "Fallout",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/falloutt.html",
+      "thumbnail": "/games/fallout.webp"
+    },
+    {
+      "name": "Fancy Pants Adventures 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/fpa3.html",
+      "thumbnail": "/games/fpa3.webp"
+    },
+    {
+      "name": "Final Fantasy VII",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/ffvii.html",
+      "thumbnail": "/games/ffvii.webp"
+    },
+    {
+      "name": "Five Nights At Candys",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/fnac.html",
+      "thumbnail": "/games/fnac.webp"
+    },
+    {
+      "name": "Five Nights At Candys 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/fnac2.html",
+      "thumbnail": "/games/fnac2.webp"
+    },
+    {
+      "name": "Five Nights At Last Breath",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/breath.html",
+      "thumbnail": "/games/breath.webp"
+    },
+    {
+      "name": "FNAF Sisters Location",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/fnafs.html",
+      "thumbnail": "/games/sister.webp"
+    },
+    {
+      "name": "FNAF4 Halloween",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/ween.html",
+      "thumbnail": "/games/hollowween.webp"
+    },
+    {
+      "name": "FNAW",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/fnaw.html",
+      "thumbnail": "/games/fnaw.webp"
+    },
+    {
+      "name": "FNF, Friday Night Funkin",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/fnf.html",
+      "thumbnail": "/games/fnf.webp"
+    },
+    {
+      "name": "Gacha Life",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/life.html",
+      "thumbnail": "/games/gachalife.webp"
+    },
+    {
+      "name": "Gacha Verse",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/verse.html",
+      "thumbnail": "/games/gachaverse.webp"
+    },
+    {
+      "name": "Gladihoppers",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/Gladihoppers.html",
+      "thumbnail": "/games/glad.webp"
+    },
+    {
+      "name": "Google Baseball",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/gbase.html",
+      "thumbnail": "/games/google.webp"
+    },
+    {
+      "name": "HUMAN EXPENDITURE PROGRAM",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/human.html",
+      "thumbnail": "/games/human.webp"
+    },
+    {
+      "name": "Jeffrey Epstein Basics In Education And Kidnapping",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/jeb.html",
+      "thumbnail": "/games/jeb.webp"
+    },
+    {
+      "name": "Jelly Drift",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/jelly.html",
+      "thumbnail": "/games/jelly.webp"
+    },
+    {
+      "name": "Karlson",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/Karlson.html",
+      "thumbnail": "/games/karlson.webp"
+    },
+    {
+      "name": "Lacey's Flash Games",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/lacy.html",
+      "thumbnail": "/games/lacey.webp"
+    },
+    {
+      "name": "Lego Star Wars",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/legostarwars.html",
+      "thumbnail": "/games/legostarwars.webp"
+    },
+    {
+      "name": "Mario party 1",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/marioparty.html",
+      "thumbnail": "/games/marioparty1.webp"
+    },
+    {
+      "name": "Mario party 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/marioparty2.html",
+      "thumbnail": "/games/marioparty2.webp"
+    },
+    {
+      "name": "Mario party 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/marioparty3.html",
+      "thumbnail": "/games/marioparty3.webp"
+    },
+    {
+      "name": "Megaman",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/megaman.html",
+      "thumbnail": "/games/megaman.webp"
+    },
+    {
+      "name": "Minesweeper Mania",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/minesweepermania.html",
+      "thumbnail": "/games/minese.webp"
+    },
+    {
+      "name": "Minesweeper Plus",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/mineplus.html",
+      "thumbnail": "/games/mineseplu.webp"
+    },
+    {
+      "name": "My teardrop, daniel",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/mytear.html",
+      "thumbnail": "/games/mytear.webp"
+    },
+    {
+      "name": "Nazi Zombies: Portable",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/nzp.html",
+      "thumbnail": "/games/nazi.webp"
+    },
+    {
+      "name": "Nubbys Number Factory",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/nubby.html",
+      "thumbnail": "/games/nubby.webp"
+    },
+    {
+      "name": "Om Nom Run",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/omnomrun.html",
+      "thumbnail": "/games/omnomrun.webp"
+    },
+    {
+      "name": "Orange Roulette",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/orange.html",
+      "thumbnail": "/games/orange.webp"
+    },
+    {
+      "name": "Oshi Oshi Punch",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/onshi.html",
+      "thumbnail": "/games/oshi.webp"
+    },
+    {
+      "name": "Paper Mario",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/papermario.html",
+      "thumbnail": "/games/papermario.webp"
+    },
+    {
+      "name": "Papers, Please",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/papers.html",
+      "thumbnail": "/games/papers.webp"
+    },
+    {
+      "name": "Peaks of Yore",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/peaksofyore.html",
+      "thumbnail": "/games/peaksofyore.webp"
+    },
+    {
+      "name": "Peggle",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/Peggle.html",
+      "thumbnail": "/games/peggle.webp"
+    },
+    {
+      "name": "Plants VS Zombies",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/pvs.html",
+      "thumbnail": "/games/pvz.webp"
+    },
+    {
+      "name": "Pokemon Blue",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/blue.html",
+      "thumbnail": "/games/blue.webp"
+    },
+    {
+      "name": "Pokemon Crystal",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/blob.html",
+      "thumbnail": "/games/crystal.webp"
+    },
+    {
+      "name": "Pokemon Emerald",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/em.html",
+      "thumbnail": "/games/em.webp"
+    },
+    {
+      "name": "Pokemon Gold",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/red.html",
+      "thumbnail": "/games/gold.webp"
+    },
+    {
+      "name": "Pokemon Red",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/red.html",
+      "thumbnail": "/games/pokemonfirered.webp"
+    },
+    {
+      "name": "Postal",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/postal.html",
+      "thumbnail": "/games/postal.webp"
+    },
+    {
+      "name": "Quake III",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/quakeiii.html",
+      "thumbnail": "/games/quakeiii.webp"
+    },
+    {
+      "name": "Resident Evil 1",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/res1.html",
+      "thumbnail": "/games/res1.webp"
+    },
+    {
+      "name": "Resident Evil 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/res2.html",
+      "thumbnail": "/games/res2.webp"
+    },
+    {
+      "name": "Run",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/run.html",
+      "thumbnail": "/games/run1.webp"
+    },
+    {
+      "name": "Run 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/run2.html",
+      "thumbnail": "/games/run2.webp"
+    },
+    {
+      "name": "Run 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/run3.html",
+      "thumbnail": "/games/run3.webp"
+    },
+    {
+      "name": "Sandboxels",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/Sandboxels.html",
+      "thumbnail": "/games/sand.webp"
+    },
+    {
+      "name": "Shift At Midnight",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/shift.html",
+      "thumbnail": "/games/shift.webp"
+    },
+    {
+      "name": "Slient Hill",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/slienthill.html",
+      "thumbnail": "/games/slienthill.webp"
+    },
+    {
+      "name": "Slither.io",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/sfge.html",
+      "thumbnail": "/games/sli.webp"
+    },
+    {
+      "name": "Snow Battle",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/snow.html",
+      "thumbnail": "/games/snowio.webp"
+    },
+    {
+      "name": "Sonic 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/sonic3.html",
+      "thumbnail": "/games/sonic3.webp"
+    },
+    {
+      "name": "Sonic CD",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/soniccd.html",
+      "thumbnail": "/games/soniccd.webp"
+    },
+    {
+      "name": "Space waves",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/spacewaves.html",
+      "thumbnail": "/games/space.webp"
+    },
+    {
+      "name": "Spank the monkey, bogs favorites",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/monkey.html",
+      "thumbnail": "/games/monk.webp"
+    },
+    {
+      "name": "Super Monkey Ball 1 & 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/monk.html",
+      "thumbnail": "/games/monkb.webp"
+    },
+    {
+      "name": "Super Monkey Ball JR",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/supermonkey.html",
+      "thumbnail": "/games/supermonkey.webp"
+    },
+    {
+      "name": "Super Smash Flash",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/ssf.html",
+      "thumbnail": "/games/supersmash.webp"
+    },
+    {
+      "name": "Super Smash Flash 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/ssf2.html",
+      "thumbnail": "/games/ssf2.webp"
+    },
+    {
+      "name": "Survivor.io",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/survivor.html",
+      "thumbnail": "/games/survivorio.webp"
+    },
+    {
+      "name": "The Legend of Zelda Ocarina of Time",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/tloz.html",
+      "thumbnail": "/games/tloz.webp"
+    },
+    {
+      "name": "Time Shooter 1",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/time1.html",
+      "thumbnail": "/games/tim1.webp"
+    },
+    {
+      "name": "Tomodachi Collection",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/tomo.html",
+      "thumbnail": "/games/tomo.webp"
+    },
+    {
+      "name": "Tube Jumpers",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/tube.html",
+      "thumbnail": "/games/tube.webp"
+    },
+    {
+      "name": "Tung Tung Horror",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/tung.html",
+      "thumbnail": "/games/tung.webp"
+    },
+    {
+      "name": "Vex 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/vex2.html",
+      "thumbnail": "/games/vex2.webp"
+    },
+    {
+      "name": "Vex 6",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/vex6.html",
+      "thumbnail": "/games/vex6.webp"
+    },
+    {
+      "name": "Vex 7",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/vex7.html",
+      "thumbnail": "/games/vex7.webp"
+    },
+    {
+      "name": "Vex 8",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/vex8.html",
+      "thumbnail": "/games/vex8.webp"
+    },
+    {
+      "name": "Warioware D.I.Y",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/wariowarediy.html",
+      "thumbnail": "/games/wariowarediy.webp"
+    },
+    {
+      "name": "We Become What We behold",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/wbwwb.html",
+      "thumbnail": "/games/wbwwb.webp"
+    },
+    {
+      "name": "Webfishing",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/webfishing.html",
+      "thumbnail": "/games/web.webp"
+    },
+    {
+      "name": "Worlds Hardest Game",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/twhg.html",
+      "thumbnail": "/games/wrdd.webp"
+    },
+    {
+      "name": "Yoked",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/yoked.html",
+      "thumbnail": "/games/yoked.webp"
+    },
+    {
+      "name": "Yume Nikki",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/truf/yume.html",
+      "thumbnail": "/games/yumi.webp"
+    },
+    {
+      "name": "Five Nights at Winstons",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fnaw.html",
+      "thumbnail": "semag/fnaw/favicon.ico"
+    },
+    {
+      "name": "UNTITLED GOOSE GAME",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/untitledgoosegame.html",
+      "thumbnail": "semag/untitledgoosegame/goose.png"
+    },
+    {
+      "name": "Danganronpa: Trigger Happy Havoc",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/danganronpa.html",
+      "thumbnail": "semag/danganronpa/image.webp"
+    },
+    {
+      "name": "Iron Lung",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/iron-lung.html",
+      "thumbnail": "semag/iron-lung/image.webp"
+    },
+    {
+      "name": "Anton Blast",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/antonblast.html",
+      "thumbnail": "semag/antonblast/image.webp"
+    },
+    {
+      "name": "Jumbo Mario",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/jumbo-mario.html",
+      "thumbnail": "semag/jumbo-mario/image.jpg"
+    },
+    {
+      "name": "Peaks of Yore",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/peaks-of-yore.html",
+      "thumbnail": "semag/peaks-of-yore/splash.png"
+    },
+    {
+      "name": "Bacon May Die",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/baconmaydie.html",
+      "thumbnail": "semag/baconmaydie/splash.png"
+    },
+    {
+      "name": "Elevator Hitch",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/elevatorhitch.html",
+      "thumbnail": "semag/elevatorhitch/icon/icon.png"
+    },
+    {
+      "name": "Level Devil",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/leveldevil.html",
+      "thumbnail": "semag/leveldevil/TemplateData/logo.png"
+    },
+    {
+      "name": "Super Liquid Soccer",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/superliquidsoccer.html",
+      "thumbnail": "semag/superliquidsoccer/index.144x144.png"
+    },
+    {
+      "name": "ABANDONED",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/abandoned.html",
+      "thumbnail": "semag/abandoned/TemplateData/logo.png"
+    },
+    {
+      "name": "Gorilla Tag",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/gorillatag.html",
+      "thumbnail": "semag/gorillatag/TemplateData/logo.png"
+    },
+    {
+      "name": "The Kid at the Back",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/tkatb.html",
+      "thumbnail": "semag/tkatb/app.ico"
+    },
+    {
+      "name": "osu!mania",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/osumaniaweb.html",
+      "thumbnail": "semag/osumaniaweb/app.ico"
+    },
+    {
+      "name": "osu!",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/webosu.html",
+      "thumbnail": "semag/webosu/app.ico"
+    },
+    {
+      "name": "Ace Attorney Investigations",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/aceattorneyinvestigations.html",
+      "thumbnail": "semag/aceattorneyinvestigations/logo.png"
+    },
+    {
+      "name": "Ace Attorney: Trials and Tribulations",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/aceattorneytnt.html",
+      "thumbnail": "semag/aceattorneytnt/logo.png"
+    },
+    {
+      "name": "Ace Attorney: Justice for All",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/aceattorneyjusticeforall.html",
+      "thumbnail": "semag/aceattorneyjusticeforall/logo.png"
+    },
+    {
+      "name": "Ace Attorney: Apollo Justice",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/aceattorneyapollojustice.html",
+      "thumbnail": "semag/aceattorneyapollojustice/logo.png"
+    },
+    {
+      "name": "Deltatraveler",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/deltatraveler.html",
+      "thumbnail": "semag/deltatraveler/logo.jpg"
+    },
+    {
+      "name": "Apes VS Helium",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/apesvshelium.html",
+      "thumbnail": "semag/apesvshelium/logo.jpg"
+    },
+    {
+      "name": "RE:RUN",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/rerun.html",
+      "thumbnail": "semag/rerun/logo.jpg"
+    },
+    {
+      "name": "Duck Life 8",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ducklife8.html",
+      "thumbnail": "semag/ducklife8/logo.jpg"
+    },
+    {
+      "name": "Customer Support",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/customersupport.html",
+      "thumbnail": "semag/customersupport/logo.jpg"
+    },
+    {
+      "name": "Baldurs Gate 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/baldurs-gate-2.html",
+      "thumbnail": "semag/baldurs-gate-2/logo.jpg"
+    },
+    {
+      "name": "Block Blast",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/blockblast.html",
+      "thumbnail": "semag/blockblast/logo.jpg"
+    },
+    {
+      "name": "Fears to Fathom: Home Alone",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fearstofathom.html",
+      "thumbnail": "semag/fearstofathom/logo.jpg"
+    },
+    {
+      "name": "Black Navy War 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/blacknavywar2.html",
+      "thumbnail": "semag/blacknavywar2/logo.jpg"
+    },
+    {
+      "name": "They Are Coming",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/theyarecoming.html",
+      "thumbnail": "semag/theyarecoming/theyarecoming.webp"
+    },
+    {
+      "name": "Schoolboy Runaway",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/schoolboyrunaway.html",
+      "thumbnail": "semag/schoolboyrunaway/schoolboyrunaway.webp"
+    },
+    {
+      "name": "Pokemon Yellow",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pokemonyellow.html",
+      "thumbnail": "semag/pokemonyellow/pokemon-yellow---button-1558057648010.webp"
+    },
+    {
+      "name": "Pokemon Unbound",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pokemonunbound.html",
+      "thumbnail": "semag/pokemonunbound/pokemon-unbound.jpg"
+    },
+    {
+      "name": "Pokemon Stadium",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pokemonstadium.html",
+      "thumbnail": "semag/pokemonstadium/pokemonstadium.jpeg"
+    },
+    {
+      "name": "Pokemon Emerald Crest",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pokemonemeraldcrest.html",
+      "thumbnail": "semag/pokemonemeraldcrest/pokemonemerald-sq-1644346782465.webp"
+    },
+    {
+      "name": "Pokemon HeartGold",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pokemonheartgold.html",
+      "thumbnail": "semag/pokemonheartgold/heart.jpg"
+    },
+    {
+      "name": "Pokemon SoulSilver",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pokemonsoulsilver.html",
+      "thumbnail": "semag/pokemonsoulsilver/pokemon-soulsilver-version_cmaq.600.webp"
+    },
+    {
+      "name": "Pokemon Snap",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pokemonsnap.html",
+      "thumbnail": "semag/pokemonsnap/pokemonsnap.jpeg"
+    },
+    {
+      "name": "Pokemon Silver",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pokemonsilver.html",
+      "thumbnail": "semag/pokemonsilver/pokemon-silver---button-1558057647925.jpg"
+    },
+    {
+      "name": "Pokemon Sapphire",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pokemonsapphire.html",
+      "thumbnail": "semag/pokemonsapphire/pokemonsapphire.jpg"
+    },
+    {
+      "name": "Pokemon Ruby",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pokemonruby.html",
+      "thumbnail": "semag/pokemonruby/pokemonruby.jpeg"
+    },
+    {
+      "name": "Pokemon Red",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pokemonred.html",
+      "thumbnail": "semag/pokemonred/pokemonred.jpg"
+    },
+    {
+      "name": "Pokemon Platinum",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pokemonplatinum.html",
+      "thumbnail": "semag/pokemonplatinum/pokemonplatinum.jpeg"
+    },
+    {
+      "name": "Pokemon Mystery Dungeon",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pokemonmysterydungeon.html",
+      "thumbnail": "semag/pokemonmysterydungeon/pokemonmysterydungeon.png"
+    },
+    {
+      "name": "Pokemon Diamond",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pokemondiamond.html",
+      "thumbnail": "semag/pokemondiamond/logo.avif"
+    },
+    {
+      "name": "Pokemon LeafGreen",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pokemonleafgreen.html",
+      "thumbnail": "semag/pokemonleafgreen/leafgreen.jpeg"
+    },
+    {
+      "name": "Pokemon Gold",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pokemongold.html",
+      "thumbnail": "semag/pokemongold/pokemongold.jpg"
+    },
+    {
+      "name": "Pokemon FireRed",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pokemonfirered.html",
+      "thumbnail": "semag/pokemonfirered/pokemonfirered.jpg"
+    },
+    {
+      "name": "Pokemon Emerald",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pokemonemerald.html",
+      "thumbnail": "semag/pokemonemerald/pokemonemerald-sq-1644346782465.webp"
+    },
+    {
+      "name": "Pokemon Crystal",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pokemoncrystal.html",
+      "thumbnail": "semag/pokemoncrystal/pokemoncrystal-1639519080473.webp"
+    },
+    {
+      "name": "Pokemon Blue",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pokemonblue.html",
+      "thumbnail": "semag/pokemonblue/pokemonblue.jpg"
+    },
+    {
+      "name": "wipEout",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/wipegame.html",
+      "thumbnail": "semag/wipegame/cover.webp"
+    },
+    {
+      "name": "Traffic Jam 3D",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/trafficjam3d.html",
+      "thumbnail": "semag/trafficjam3d/cover.jpeg"
+    },
+    {
+      "name": "Tanuki Sunset",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/tanukisunset.html",
+      "thumbnail": "semag/tanukisunset/cover.jpeg"
+    },
+    {
+      "name": "Super Smash Flash 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supersmashflash2.html",
+      "thumbnail": "semag/supersmashflash2/cover.jpg"
+    },
+    {
+      "name": "Stick War",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/stickwar.html",
+      "thumbnail": "semag/stickwar/cover.jpeg"
+    },
+    {
+      "name": "SONIC.EXE",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/sonic.exe.html",
+      "thumbnail": "semag/sonic.exe/cover.jpg"
+    },
+    {
+      "name": "Penrose",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/penrose.html",
+      "thumbnail": "semag/penrose/assets/icons/android-icon-144x144.png"
+    },
+    {
+      "name": "Mortal Kombat 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/mk3.html",
+      "thumbnail": "semag/mk3/cover.jpg"
+    },
+    {
+      "name": "Cooking Mama 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/cookingmama2.html",
+      "thumbnail": "semag/cookingmama2/cookingmama2-1669747571380.resized.jpg"
+    },
+    {
+      "name": "Cooking Mama",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/cookingmama.html",
+      "thumbnail": "semag/cookingmama/cookingmama-1652736908091.webp"
+    },
+    {
+      "name": "Cave Story",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/cavestory.html",
+      "thumbnail": "semag/cavestory/cover.webp"
+    },
+    {
+      "name": "Agario Lite",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/agariolite.html",
+      "thumbnail": "semag/agariolite/cover.png"
+    },
+    {
+      "name": "Achilles",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/achilles.html",
+      "thumbnail": "semag/achilles/cover.jpg"
+    },
+    {
+      "name": "Jedi Knight: Dark Forces II",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/openjkdf2.html",
+      "thumbnail": "semag/openjkdf2/jkdf.jpeg"
+    },
+    {
+      "name": "Super Mario Construct",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supermarioconstruct.html",
+      "thumbnail": "semag/supermarioconstruct/icons/loading-logo.png"
+    },
+    {
+      "name": "Processor Tycoon",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/processortycoon.html",
+      "thumbnail": "semag/processortycoon/proctyc.png"
+    },
+    {
+      "name": "Vex X3M 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/vex-x3m2.html",
+      "thumbnail": "semag/vex-x3m2/vexx3m2.jpg"
+    },
+    {
+      "name": "Vex X3M",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/vex-x3m.html",
+      "thumbnail": "semag/vex-x3m/vexx3m.jpg"
+    },
+    {
+      "name": "Vex Challenges",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/vex-challenges.html",
+      "thumbnail": "semag/vex-challenges/vexchal.jpeg"
+    },
+    {
+      "name": "Plants vs. Zombies 2: Gardenless",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pvzge.html",
+      "thumbnail": "semag/pvzge/pvz.png"
+    },
+    {
+      "name": "Moto X3M 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/motox3m3.html",
+      "thumbnail": "semag/motox3m3/moto-x3m3.avif"
+    },
+    {
+      "name": "Idle Dice",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/idledice.html",
+      "thumbnail": "semag/idledice/assets/img/smallicon/smallIcon72.png"
+    },
+    {
+      "name": "Jackpot Crash Course",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/jackpot-crash-course.html",
+      "thumbnail": "semag/jackpot-crash-course/rip.png"
+    },
+    {
+      "name": "MY BOYFRIEND",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/myboyfriend.html",
+      "thumbnail": "semag/myboyfriend/cover.png"
+    },
+    {
+      "name": "Rot In Paradise",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/rotinparadise.html",
+      "thumbnail": "semag/rotinparadise/rip.png"
+    },
+    {
+      "name": "Married In Red",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/marriedinred.html",
+      "thumbnail": "semag/marriedinred/mir.png"
+    },
+    {
+      "name": "BFB 5B",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bfb5b.html",
+      "thumbnail": "semag/bfb5b/bfb5b.jpg"
+    },
+    {
+      "name": "Vex 8",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/vex-8.html",
+      "thumbnail": "semag/vex-8/v8.jpeg"
+    },
+    {
+      "name": "Indian Truck Driving Simulator",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/indian-truck.html",
+      "thumbnail": "semag/indian-truck/itds.png"
+    },
+    {
+      "name": "Mad Shark",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/mad-shark.html",
+      "thumbnail": "semag/mad-shark/ms.jpg"
+    },
+    {
+      "name": "Moto X3M 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/motox3m2.html",
+      "thumbnail": "semag/motox3m2/motox3m2.png"
+    },
+    {
+      "name": "Minesweeper Plus",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/minesweeperplus.html",
+      "thumbnail": "semag/minesweeperplus/mp.jpeg"
+    },
+    {
+      "name": "Succubox",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/succubox.html",
+      "thumbnail": "semag/succubox/succubox.ico"
+    },
+    {
+      "name": "Punch-Out!!",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/punchout.html",
+      "thumbnail": "semag/punchout/punchout.jpg"
+    },
+    {
+      "name": "PaRappa the Rapper",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/parappatherapper.html",
+      "thumbnail": "semag/parappatherapper/ptr.jpeg"
+    },
+    {
+      "name": "Legend of Zelda",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/legendofzelda.html",
+      "thumbnail": "semag/legendofzelda/loz.jpg"
+    },
+    {
+      "name": "The Impossible Quiz 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/theimpossiblequiz2.html",
+      "thumbnail": "semag/theimpossiblequiz2/the-impossible-quiz-2.avif"
+    },
+    {
+      "name": "Tanks",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/tanks.html",
+      "thumbnail": "semag/tanks/logo.jpeg"
+    },
+    {
+      "name": "Super Mario Flash 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supermarioflash2.html",
+      "thumbnail": "semag/supermarioflash2/smf2.jpg"
+    },
+    {
+      "name": "Super Mario Flash",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supermarioflash.html",
+      "thumbnail": "semag/supermarioflash/smf.png"
+    },
+    {
+      "name": "Stick RPG",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/stickrpg.html",
+      "thumbnail": "semag/stickrpg/srpg.webp"
+    },
+    {
+      "name": "Red Ball 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/redball2.html",
+      "thumbnail": "semag/redball2/rb2.png"
+    },
+    {
+      "name": "Interactive Buddy",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/interactivebuddy.html",
+      "thumbnail": "semag/interactivebuddy/ib.jpeg"
+    },
+    {
+      "name": "Fancy Pants Adventures 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fancypantsadventure3.html",
+      "thumbnail": "semag/fancypantsadventure3/fp3.avif"
+    },
+    {
+      "name": "Factory Balls 4",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/factoryballs4.html",
+      "thumbnail": "semag/factoryballs4/fb4.png"
+    },
+    {
+      "name": "Factory Balls 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/factoryballs3.html",
+      "thumbnail": "semag/factoryballs3/fb3.jpg"
+    },
+    {
+      "name": "Factory Balls 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/factoryballs2.html",
+      "thumbnail": "semag/factoryballs2/fb2.png"
+    },
+    {
+      "name": "Earn to Die 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/earntodie2.html",
+      "thumbnail": "semag/earntodie2/image.png"
+    },
+    {
+      "name": "American Racing 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/americanracing2.html",
+      "thumbnail": "semag/americanracing2/images.jpeg"
+    },
+    {
+      "name": "American Racing",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/americanracing1.html",
+      "thumbnail": "semag/americanracing1/american-racing.jpg"
+    },
+    {
+      "name": "Achievement Unlocked 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/achievementunlocked3.html",
+      "thumbnail": "semag/achievementunlocked3/cover.png"
+    },
+    {
+      "name": "Conway's Game Of Life",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/life.html",
+      "thumbnail": "semag/life/logo.jpg"
+    },
+    {
+      "name": "Jelly Drift",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/jelly-drift.html",
+      "thumbnail": "semag/jelly-drift/jd.png"
+    },
+    {
+      "name": "Taisei Project",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/talsei.html",
+      "thumbnail": "semag/talsei/scythe.webp"
+    },
+    {
+      "name": "Factorish",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/factorish.html",
+      "thumbnail": "semag/factorish/image.png"
+    },
+    {
+      "name": "Football Bros",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/footballbros.html",
+      "thumbnail": "semag/footballbros/assets/favicon.png"
+    },
+    {
+      "name": "Love Angel Syndrome",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/loveangelsyndrome.html",
+      "thumbnail": "semag/loveangelsyndrome/las.jpeg"
+    },
+    {
+      "name": "Tower Game",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/tower-game.html",
+      "thumbnail": "semag/tower-game/assets/block-rope.png"
+    },
+    {
+      "name": "UNDERRUN",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/underrun.html",
+      "thumbnail": "semag/underrun/logo.png"
+    },
+    {
+      "name": "Stack Bounce",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/stackbounce.html",
+      "thumbnail": "semag/stackbounce/sb.jpeg"
+    },
+    {
+      "name": "Learn to Fly 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fly3.html",
+      "thumbnail": "semag/fly3/cover.png"
+    },
+    {
+      "name": "Papers, Please",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/papersplease.html",
+      "thumbnail": "semag/papersplease/logo.png"
+    },
+    {
+      "name": "Ballistic Chickens",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ballisticchickens.html",
+      "thumbnail": "semag/ballisticchickens/logo.png"
+    },
+    {
+      "name": "FIRST KISS AT A SPOOKY SOIREE",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/spookysoiree.html",
+      "thumbnail": "semag/spookysoiree/fkaass.png"
+    },
+    {
+      "name": "BIOTOMATA",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/biotomata.html",
+      "thumbnail": "semag/biotomata/favicon.ico"
+    },
+    {
+      "name": "Lo-Fi Room",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/lofi-room.html",
+      "thumbnail": "semag/lofi-room/lfr.jpeg"
+    },
+    {
+      "name": "Basketball FRVR",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/basketball-frvr.html",
+      "thumbnail": "semag/basketball-frvr/unnamed.png"
+    },
+    {
+      "name": "Bridge Race",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bridge-race.html",
+      "thumbnail": "semag/bridge-race/unnamed (1).png"
+    },
+    {
+      "name": "NGU Idle",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/nguidle.html",
+      "thumbnail": "semag/nguidle/nguidle.png"
+    },
+    {
+      "name": "Cold Front",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/coldfront.html",
+      "thumbnail": "semag/coldfront/img/weather/snow.png"
+    },
+    {
+      "name": "Nazi Zombies: Portable",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/nzp.html",
+      "thumbnail": "semag/nzp/nzportable.ico"
+    },
+    {
+      "name": "Rhythm Heaven",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/rhythmheaven.html",
+      "thumbnail": "semag/rhythmheaven/rh.jpeg"
+    },
+    {
+      "name": "JellyTruck",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/jellytruck.html",
+      "thumbnail": "semag/jellytruck/assets/truck/truck2_icon.png"
+    },
+    {
+      "name": "Friday Night Funkin: VS Tricky",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fnf-tricky.html",
+      "thumbnail": "semag/fnf-tricky/logo.png"
+    },
+    {
+      "name": "Friday Night Funkin: VS Sky",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fnf-sky.html",
+      "thumbnail": "semag/fnf-sky/logo.png"
+    },
+    {
+      "name": "Friday Night Funkin: Mid-fight Masses",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fnf-sarventes.html",
+      "thumbnail": "semag/fnf-sarventes/logo.png"
+    },
+    {
+      "name": "Friday Night Funkin: Neo",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fnf-neo.html",
+      "thumbnail": "semag/fnf-neo/logo.png"
+    },
+    {
+      "name": "Friday Night Funkin: X Miku",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fnf-miku.html",
+      "thumbnail": "semag/fnf-miku/logo.png"
+    },
+    {
+      "name": "Friday Night Funkin: Vs Hex",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fnf-hex.html",
+      "thumbnail": "semag/fnf-hex/logo.png"
+    },
+    {
+      "name": "Friday Night Funkin: B-Sides",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fnf-bside.html",
+      "thumbnail": "semag/fnf-bside/logo.png"
+    },
+    {
+      "name": "Friday Night Funkin: VS Whitty",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fnf-whitty.html",
+      "thumbnail": "semag/fnf-whitty/logo.png"
+    },
+    {
+      "name": "Amanda the Adventurer",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/amanda-the-adventurer.html",
+      "thumbnail": "semag/amanda-the-adventurer/logo.jpg"
+    },
+    {
+      "name": "Papa Louie 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/papalouie2.html",
+      "thumbnail": "semag/papalouie2/logo.png"
+    },
+    {
+      "name": "Papa Louie 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/papalouie3.html",
+      "thumbnail": "semag/papalouie3/logo.jpg"
+    },
+    {
+      "name": "Kingsley's Customer Palooza",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/customerpalooza.html",
+      "thumbnail": "semag/customerpalooza/logo.jpg"
+    },
+    {
+      "name": "Guppy Guard Express",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/guppyguardexpress.html",
+      "thumbnail": "semag/guppyguardexpress/logo.jpg"
+    },
+    {
+      "name": "Steak and Jake: Midnight March",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/midnightmarch.html",
+      "thumbnail": "semag/midnightmarch/logo.jpg"
+    },
+    {
+      "name": "Papa's Cupcakeria",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/papascupcakeria.html",
+      "thumbnail": "semag/papascupcakeria/logo.jpg"
+    },
+    {
+      "name": "Papa Louie",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/papalouie.html",
+      "thumbnail": "semag/papalouie/logo.jpg"
+    },
+    {
+      "name": "Spacebar Clicker",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/spacebar-clicker.html",
+      "thumbnail": "semag/spacebar-clicker/logo.jpg"
+    },
+    {
+      "name": "OvO Dimensions",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ovo3.html",
+      "thumbnail": "semag/ovo3/img.webp"
+    },
+    {
+      "name": "OvO 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ovo2.html",
+      "thumbnail": "semag/ovo2/img.webp"
+    },
+    {
+      "name": "Fish Rescue",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fish-rescue.html",
+      "thumbnail": "semag/fish-rescue/logo.png"
+    },
+    {
+      "name": "Speed Stars",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/speed-stars.html",
+      "thumbnail": "semag/speed-stars/logo.png"
+    },
+    {
+      "name": "Tomodachi Life",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/tomodachilife.html",
+      "thumbnail": "semag/tomodachilife/logo.jpg"
+    },
+    {
+      "name": "Human Expenditure Program",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/human-expenditure-program.html",
+      "thumbnail": "semag/human-expenditure-program/logo.webp"
+    },
+    {
+      "name": "Hotline Miami",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/hotline-miami.html",
+      "thumbnail": "semag/hotline-miami/logo.png"
+    },
+    {
+      "name": "The Deadseat",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/deadseat.html",
+      "thumbnail": "semag/deadseat/logo.png"
+    },
+    {
+      "name": "Eat The Rich",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/eattherich.html",
+      "thumbnail": "semag/eattherich/logo.png"
+    },
+    {
+      "name": "BERGENTRUCK",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bergentruck.html",
+      "thumbnail": "semag/bergentruck/BERGENTRUCK_201X.apple-touch-icon.png"
+    },
+    {
+      "name": "Bloodmoney",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bloodmoney.html",
+      "thumbnail": "semag/bloodmoney/logo.png"
+    },
+    {
+      "name": "Do NOT Take This Cat Home",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/donottakethiscathome.html",
+      "thumbnail": "semag/donottakethiscathome/icons/icon.png"
+    },
+    {
+      "name": "Mousepoint",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/mousepoint.html",
+      "thumbnail": "semag/mousepoint/images/logo.png"
+    },
+    {
+      "name": "Surf Go",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/surf.html",
+      "thumbnail": "semag/surf/logo.webp"
+    },
+    {
+      "name": "Slender",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/slender.html",
+      "thumbnail": "semag/slender/logo.png"
+    },
+    {
+      "name": "Bouncy Motors",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bouncymotors.html",
+      "thumbnail": "semag/bouncymotors/icon.png"
+    },
+    {
+      "name": "Frostpunk Pico",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/frostpunkpico.html",
+      "thumbnail": "semag/frostpunkpico/logo.png"
+    },
+    {
+      "name": "Class of '09: The Flip Side",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/co09flipside.html",
+      "thumbnail": "semag/co09flipside/logo.png"
+    },
+    {
+      "name": "Class of '09: The Re-Up",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/co09reup.html",
+      "thumbnail": "semag/co09reup/logo.png"
+    },
+    {
+      "name": "Class of '09",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/co09.html",
+      "thumbnail": "semag/co09/logo.png"
+    },
+    {
+      "name": "Civ Clicker",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/civclicker.html",
+      "thumbnail": "semag/civclicker/images/piety.png"
+    },
+    {
+      "name": "Stick With It",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/stickwithit.html",
+      "thumbnail": "semag/stickwithit/logo.png"
+    },
+    {
+      "name": "Lacey's Flash Games",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/lacysflashgames.html",
+      "thumbnail": "semag/lacysflashgames/icon.png"
+    },
+    {
+      "name": "Six Cats Under",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/sixcatsunder.html",
+      "thumbnail": "semag/sixcatsunder/logo.png"
+    },
+    {
+      "name": "The Circle",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/thecircle.html",
+      "thumbnail": "semag/thecircle/img/ico144.png"
+    },
+    {
+      "name": "Hardware Tycoon",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/hardwaretycoon.html",
+      "thumbnail": "semag/hardwaretycoon/icon-114.png"
+    },
+    {
+      "name": "Bloons Player Pack 1",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bloonspp1.html",
+      "thumbnail": "semag/bloonspp1/logo.jpg"
+    },
+    {
+      "name": "Bloons Player Pack 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bloonspp2.html",
+      "thumbnail": "semag/bloonspp2/logo.jpg"
+    },
+    {
+      "name": "Bloons Player Pack 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bloonspp3.html",
+      "thumbnail": "semag/bloonspp3/logo.jpg"
+    },
+    {
+      "name": "Bloons Player Pack 4",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bloonspp4.html",
+      "thumbnail": "semag/bloonspp4/logo.jpg"
+    },
+    {
+      "name": "Bloons Player Pack 5",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bloonspp5.html",
+      "thumbnail": "semag/bloonspp5/logo.jpg"
+    },
+    {
+      "name": "Crazy Cattle 3D",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/crazycattle.html",
+      "thumbnail": "semag/crazycattle/CrazyCattle3D.icon.png"
+    },
+    {
+      "name": "Volley Random",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/volleyrandom.html",
+      "thumbnail": "semag/volleyrandom/cover.webp"
+    },
+    {
+      "name": "Yumi Nikki",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/yume-nikki.html",
+      "thumbnail": "semag/yume-nikki/cover.png"
+    },
+    {
+      "name": "Webfishing",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/web-fishing.html",
+      "thumbnail": "semag/web-fishing/logo.png"
+    },
+    {
+      "name": "That's not my Neighbor",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/thats-not-my-neighbor.html",
+      "thumbnail": "semag/thats-not-my-neighbor/thats-not-my-neighbor.icon.png"
+    },
+    {
+      "name": "People Playground",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/peopleplayground.html",
+      "thumbnail": "semag/peopleplayground/logo.jpg"
+    },
+    {
+      "name": "Milkman Karlson",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/milkman-karlson.html",
+      "thumbnail": "semag/milkman-karlson/Build/MILKMAN.jpg"
+    },
+    {
+      "name": "Ace Attorney: Pheonix Wright",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/aceattorneyphoenixwright.html",
+      "thumbnail": "semag/aceattorneyphoenixwright/logo.png"
+    },
+    {
+      "name": "Antimatter Dimensions",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/antimatterdimensions.html",
+      "thumbnail": "semag/antimatterdimensions/icon.png"
+    },
+    {
+      "name": "Mega Man",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/megaman.html",
+      "thumbnail": "semag/megaman/icon.png"
+    },
+    {
+      "name": "Mega Man 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/megaman2.html",
+      "thumbnail": "semag/megaman2/icon.png"
+    },
+    {
+      "name": "Mega Man 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/megaman3.html",
+      "thumbnail": "semag/megaman3/icon.png"
+    },
+    {
+      "name": "Mega Man 4",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/megaman4.html",
+      "thumbnail": "semag/megaman4/icon.png"
+    },
+    {
+      "name": "Mega Man 5",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/megaman5.html",
+      "thumbnail": "semag/megaman5/icon.png"
+    },
+    {
+      "name": "Mega Man 6",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/megaman6.html",
+      "thumbnail": "semag/megaman6/icon.png"
+    },
+    {
+      "name": "Happy Sheepies",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/happy-sheepies.html",
+      "thumbnail": "semag/happy-sheepies/logo.jpg"
+    },
+    {
+      "name": "Final Ninja",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/final.html",
+      "thumbnail": "semag/final/cover.png"
+    },
+    {
+      "name": "SimCity 2000",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/2000si.html",
+      "thumbnail": "semag/2000si/cover.png"
+    },
+    {
+      "name": "SimCity",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/simcity.html",
+      "thumbnail": "semag/simcity/cover.png"
+    },
+    {
+      "name": "Donkey Kong",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/kong.html",
+      "thumbnail": "semag/kong/cover.png"
+    },
+    {
+      "name": "Sonic & Knuckles",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/knuck.html",
+      "thumbnail": "semag/knuck/cover.png"
+    },
+    {
+      "name": "Sonic 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/3sonic.html",
+      "thumbnail": "semag/3sonic/cover.png"
+    },
+    {
+      "name": "Hobo 7",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/7hobo.html",
+      "thumbnail": "semag/7hobo/cover.png"
+    },
+    {
+      "name": "Hobo 6",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/6hobo.html",
+      "thumbnail": "semag/6hobo/cover.png"
+    },
+    {
+      "name": "Hobo 5",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/5hobo.html",
+      "thumbnail": "semag/5hobo/cover.png"
+    },
+    {
+      "name": "Hobo 4",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/4hobo.html",
+      "thumbnail": "semag/4hobo/cover.png"
+    },
+    {
+      "name": "Hobo 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/3hobo.html",
+      "thumbnail": "semag/3hobo/cover.png"
+    },
+    {
+      "name": "3 Lines",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/3line.html",
+      "thumbnail": "semag/3line/cover.png"
+    },
+    {
+      "name": "Crazy Flasher 6",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/6flash.html",
+      "thumbnail": "semag/6flash/cover.png"
+    },
+    {
+      "name": "Crazy Flasher 5",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/5flash.html",
+      "thumbnail": "semag/5flash/cover.png"
+    },
+    {
+      "name": "Crazy Flasher 4",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/4flash.html",
+      "thumbnail": "semag/4flash/cover.png"
+    },
+    {
+      "name": "Crazy Flasher 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/2flash.html",
+      "thumbnail": "semag/2flash/cover.png"
+    },
+    {
+      "name": "Crazy Flasher 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/3flash.html",
+      "thumbnail": "semag/3flash/cover.png"
+    },
+    {
+      "name": "GTA 1",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/gta1.html",
+      "thumbnail": "semag/gta1/cover.png"
+    },
+    {
+      "name": "GTA 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/gta2.html",
+      "thumbnail": "semag/gta2/cover.png"
+    },
+    {
+      "name": "Quake 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/quake3.html",
+      "thumbnail": "semag/quake3/logo.avif"
+    },
+    {
+      "name": "Sonic 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/2sonic.html",
+      "thumbnail": "semag/2sonic/cover.svg"
+    },
+    {
+      "name": "Plants vs. Zombies",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pvz.html",
+      "thumbnail": "semag/pvz/cover.png"
+    },
+    {
+      "name": "Pyongyang Racer",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pyong.html",
+      "thumbnail": "semag/pyong/cover.png"
+    },
+    {
+      "name": "Hobo 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/2hobo.html",
+      "thumbnail": "semag/2hobo/cover.png"
+    },
+    {
+      "name": "Hobo 1",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/1hobo.html",
+      "thumbnail": "semag/1hobo/cover.png"
+    },
+    {
+      "name": "Super Auto Pets",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/auto.html",
+      "thumbnail": "semag/auto/cover.png"
+    },
+    {
+      "name": "Sonic 1",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/sonic.html",
+      "thumbnail": "semag/sonic/cover.svg"
+    },
+    {
+      "name": "Earn to Die",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ern.html",
+      "thumbnail": "semag/ern/cover.png"
+    },
+    {
+      "name": "Temple of Boom",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/temple.html",
+      "thumbnail": "semag/temple/cover.png"
+    },
+    {
+      "name": "Backrooms 2D",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/2d.html",
+      "thumbnail": "semag/2d/cover.png"
+    },
+    {
+      "name": "Superhero Drop",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/superhero.html",
+      "thumbnail": "semag/superhero/superhero drop.webp"
+    },
+    {
+      "name": "Jake's Jingle Quest",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/jake.html",
+      "thumbnail": "semag/jake/cover.png"
+    },
+    {
+      "name": "Bouncy Flappy",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bounce.html",
+      "thumbnail": "semag/bounce/cover.png"
+    },
+    {
+      "name": "Real Flying Truck 3D",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/trk.html",
+      "thumbnail": "semag/trk/logo.png"
+    },
+    {
+      "name": "Crazy Tunnel 3D",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/crazy.html",
+      "thumbnail": "semag/crazy/cover.png"
+    },
+    {
+      "name": "Two Ball 3D",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/two.html",
+      "thumbnail": "semag/two/cover.png"
+    },
+    {
+      "name": "Slope City",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ballslo.html",
+      "thumbnail": "semag/ballslo/cover.png"
+    },
+    {
+      "name": "Shapez",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/shapez.html",
+      "thumbnail": "semag/shapez/cover.png"
+    },
+    {
+      "name": "Sudoku",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/sudo.html",
+      "thumbnail": "semag/sudo/cover.png"
+    },
+    {
+      "name": "Rocket Bot Royale",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/rocket.html",
+      "thumbnail": "semag/rocket/cover.png"
+    },
+    {
+      "name": "Slope 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/slope3.html",
+      "thumbnail": "semag/slope3/cover.png"
+    },
+    {
+      "name": "Mine Blocks",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/minors.html",
+      "thumbnail": "semag/minors/cover.png"
+    },
+    {
+      "name": "Wubzzy's Amazing Adventure",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/wubz.html",
+      "thumbnail": "semag/wubz/cover.png"
+    },
+    {
+      "name": "Bus & Subway Runner",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/subway.html",
+      "thumbnail": "semag/subway/cover.png"
+    },
+    {
+      "name": "Drift King",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/king.html",
+      "thumbnail": "semag/king/cover.png"
+    },
+    {
+      "name": "Pako Highway",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pako.html",
+      "thumbnail": "semag/pako/cover.png"
+    },
+    {
+      "name": "Snowball.io",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/snow.html",
+      "thumbnail": "semag/snow/cover.png"
+    },
+    {
+      "name": "Balloon Run",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bal.html",
+      "thumbnail": "semag/bal/cover.png"
+    },
+    {
+      "name": "Gunfest",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fest.html",
+      "thumbnail": "semag/fest/cover.png"
+    },
+    {
+      "name": "Run 3 Editor",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/editor.html",
+      "thumbnail": "semag/editor/cover.png"
+    },
+    {
+      "name": "Train Surfers",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/train.html",
+      "thumbnail": "semag/train/cover.png"
+    },
+    {
+      "name": "Fruit Cuts 3D",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fruit.html",
+      "thumbnail": "semag/fruit/cover.png"
+    },
+    {
+      "name": "Grand Shift Auto",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/gsa.html",
+      "thumbnail": "semag/gsa/cover.png"
+    },
+    {
+      "name": "Unfair Mario",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/unfmar.html",
+      "thumbnail": "semag/unfmar/cover.png"
+    },
+    {
+      "name": "Talking Tom Cat",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/tom2.html",
+      "thumbnail": "semag/tom2/logo.avif"
+    },
+    {
+      "name": "9007199254740992",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/9007199254740992.html",
+      "thumbnail": "semag/9007199254740992/cover.png"
+    },
+    {
+      "name": "1",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/1.html",
+      "thumbnail": "semag/1/cover.png"
+    },
+    {
+      "name": "Wheely 4",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/whe4.html",
+      "thumbnail": "semag/whe4/cover.png"
+    },
+    {
+      "name": "Wheely 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/whe3.html",
+      "thumbnail": "semag/whe3/cover.png"
+    },
+    {
+      "name": "Wheely 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/whe2.html",
+      "thumbnail": "semag/whe2/cover.png"
+    },
+    {
+      "name": "Wheely 1",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/whe.html",
+      "thumbnail": "semag/whe/cover.png"
+    },
+    {
+      "name": "Glassworks",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/glass.html",
+      "thumbnail": "semag/glass/cover.png"
+    },
+    {
+      "name": "Mutiny",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/mut.html",
+      "thumbnail": "semag/mut/cover.png"
+    },
+    {
+      "name": "Snotput",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/snot.html",
+      "thumbnail": "semag/snot/cover.png"
+    },
+    {
+      "name": "Headcase",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/headcase.html",
+      "thumbnail": "semag/headcase/cover.png"
+    },
+    {
+      "name": "Bubble Shooter",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bub.html",
+      "thumbnail": "semag/bub/cover.png"
+    },
+    {
+      "name": "Skywire VIP (Extended)",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/sky.html",
+      "thumbnail": "semag/sky/cover.png"
+    },
+    {
+      "name": "Plunger",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/plu.html",
+      "thumbnail": "semag/plu/cover.png"
+    },
+    {
+      "name": "Gunbrick",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/brick.html",
+      "thumbnail": "semag/brick/cover.png"
+    },
+    {
+      "name": "Nitrome Must Die",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/nitme.html",
+      "thumbnail": "semag/nitme/cover.png"
+    },
+    {
+      "name": "Robo Run",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/robo.html",
+      "thumbnail": "semag/robo/cover.png"
+    },
+    {
+      "name": "Meteor Game",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/meteor.html",
+      "thumbnail": "semag/meteor/cover.png"
+    },
+    {
+      "name": "Skateboarding Simulator",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/skate.html",
+      "thumbnail": "semag/skate/cover.png"
+    },
+    {
+      "name": "CrossNRoad",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/crossnroad.html",
+      "thumbnail": "semag/crossnroad/cover.png"
+    },
+    {
+      "name": "Tappy Plane",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/tappyplane.html",
+      "thumbnail": "semag/tappyplane/cover.png"
+    },
+    {
+      "name": "Putin on the Ritz",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ritz.html",
+      "thumbnail": "semag/ritz/cover.png"
+    },
+    {
+      "name": "Sandboxels",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/box.html",
+      "thumbnail": "semag/box/cover.png"
+    },
+    {
+      "name": "Flappy Race",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/flappyrace.html",
+      "thumbnail": "semag/flappyrace/cover.png"
+    },
+    {
+      "name": "The Heist",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/heist.html",
+      "thumbnail": "semag/heist/cover.png"
+    },
+    {
+      "name": "Age of War 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/aow2.html",
+      "thumbnail": "semag/aow2/cover.png"
+    },
+    {
+      "name": "Star Clicker",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/star.html",
+      "thumbnail": "semag/star/cover.png"
+    },
+    {
+      "name": "Racer",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/racer.html",
+      "thumbnail": "semag/racer/cover.png"
+    },
+    {
+      "name": "Fort@dmin",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fort.html",
+      "thumbnail": "semag/fort/cover.png"
+    },
+    {
+      "name": "Flappy Dino",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fld.html",
+      "thumbnail": "semag/fld/cover.png"
+    },
+    {
+      "name": "Connect Four",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/c4.html",
+      "thumbnail": "semag/c4/cover.png"
+    },
+    {
+      "name": "13 Days of Hell",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/13.html",
+      "thumbnail": "semag/13/cover.png"
+    },
+    {
+      "name": "Mindustry",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/mind.html",
+      "thumbnail": "semag/mind/cover.png"
+    },
+    {
+      "name": "House of Hazards",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/houseofhazards.html",
+      "thumbnail": "semag/houseofhazards/favicon.ico"
+    },
+    {
+      "name": "Shape Shipper",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/shape.html",
+      "thumbnail": "semag/shape/cover.png"
+    },
+    {
+      "name": "Rough Dino",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/roughdino.html",
+      "thumbnail": "semag/roughdino/cover.png"
+    },
+    {
+      "name": "Geometry Meltdown",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/geomelt.html",
+      "thumbnail": "semag/geomelt/cover.png"
+    },
+    {
+      "name": "Geometry Jump",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/geojump.html",
+      "thumbnail": "semag/geojump/cover.png"
+    },
+    {
+      "name": "Counter Strike: DS",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/cds.html",
+      "thumbnail": "semag/cds/cover.png"
+    },
+    {
+      "name": "Terri-Fried",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/terrifried.html",
+      "thumbnail": "semag/terrifried/cover.png"
+    },
+    {
+      "name": "The Minions: Resurrection",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/minion.html",
+      "thumbnail": "semag/minion/cover.png"
+    },
+    {
+      "name": "Drift Mania",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/drift.html",
+      "thumbnail": "semag/drift/cover.png"
+    },
+    {
+      "name": "Driving Force 4",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/driving.html",
+      "thumbnail": "semag/driving/cover.png"
+    },
+    {
+      "name": "Red Ball 1",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/redball.html",
+      "thumbnail": "semag/redball/cover.png"
+    },
+    {
+      "name": "Recoil",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/recoil.html",
+      "thumbnail": "semag/recoil/cover.png"
+    },
+    {
+      "name": "Deepest Sword",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/deepestsword.html",
+      "thumbnail": "semag/deepestsword/logo.png"
+    },
+    {
+      "name": "Tomb of The Mask",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/tombofthemask.html",
+      "thumbnail": "semag/tombofthemask/cover.png"
+    },
+    {
+      "name": "Gladihoppers",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/gladihoppers.html",
+      "thumbnail": "semag/gladihoppers/cover.png"
+    },
+    {
+      "name": "Flappy Copter",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/flappycopter.html",
+      "thumbnail": "semag/flappycopter/cover.png"
+    },
+    {
+      "name": "Kick That Buddy",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/kickthatbuddy.html",
+      "thumbnail": "semag/kickthatbuddy/cover.png"
+    },
+    {
+      "name": "Grand Truckismo",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/grandtruckismo.html",
+      "thumbnail": "semag/grandtruckismo/cover.png"
+    },
+    {
+      "name": "Turbo Racing 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/turboracing3.html",
+      "thumbnail": "semag/turboracing3/cover.png"
+    },
+    {
+      "name": "Gun Knight",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/gunknight.html",
+      "thumbnail": "semag/gunknight/cover.png"
+    },
+    {
+      "name": "The Oregon Trail",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/oregon.html",
+      "thumbnail": "semag/oregon/cover.png"
+    },
+    {
+      "name": "Windows 98",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/windows98.html",
+      "thumbnail": "semag/windows98/cover.png"
+    },
+    {
+      "name": "Block Zappers 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/blockzappers.html",
+      "thumbnail": "semag/blockzappers/logo.png"
+    },
+    {
+      "name": "Frogger",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/frogger.html",
+      "thumbnail": "semag/frogger/cover.png"
+    },
+    {
+      "name": "Simon",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/simon.html",
+      "thumbnail": "semag/simon/cover.png"
+    },
+    {
+      "name": "Super Mario 63",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/mario63.html",
+      "thumbnail": "semag/mario63/cover.png"
+    },
+    {
+      "name": "Bike Champ 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bikechamp2.html",
+      "thumbnail": "semag/bikechamp2/logo.jpg"
+    },
+    {
+      "name": "Bike Champ",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bikechamp.html",
+      "thumbnail": "semag/bikechamp/logo.png"
+    },
+    {
+      "name": "Gloom",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/gloom.html",
+      "thumbnail": "semag/gloom/cover.png"
+    },
+    {
+      "name": "Copter",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/copter.html",
+      "thumbnail": "semag/copter/cover.png"
+    },
+    {
+      "name": "Minesweeper",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/minesweeper.html",
+      "thumbnail": "semag/minesweeper/cover.png"
+    },
+    {
+      "name": "POOM",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/poom.html",
+      "thumbnail": "semag/poom/cover.png"
+    },
+    {
+      "name": "Solitaire",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/solitaire.html",
+      "thumbnail": "semag/solitaire/cover.png"
+    },
+    {
+      "name": "Spank the Monkey",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/spankthemonkey.html",
+      "thumbnail": "semag/spankthemonkey/cover.png"
+    },
+    {
+      "name": "Pool",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pool.html",
+      "thumbnail": "semag/pool/cover.png"
+    },
+    {
+      "name": "Yohoho.io",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/yohoho.html",
+      "thumbnail": "semag/yohoho/cover.png"
+    },
+    {
+      "name": "Tube Jumpers",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/tube-jumpers.html",
+      "thumbnail": "semag/tube-jumpers/cover.png"
+    },
+    {
+      "name": "Awesome Tanks",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/awesometanks.html",
+      "thumbnail": "semag/awesometanks/cover.png"
+    },
+    {
+      "name": "Pong",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pong.html",
+      "thumbnail": "semag/pong/cover.png"
+    },
+    {
+      "name": "A Dance of Fire & Ice",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/adofai.html",
+      "thumbnail": "semag/adofai/splash.png"
+    },
+    {
+      "name": "Friday Night Funkin",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fridaynightfunkin.html",
+      "thumbnail": "semag/fridaynightfunkin/favicon.png"
+    },
+    {
+      "name": "Mario",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/mario.html",
+      "thumbnail": "semag/mario/icon.png"
+    },
+    {
+      "name": "60s Burger Run",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/60sburgerrun.html",
+      "thumbnail": "semag/60sburgerrun/icon.png"
+    },
+    {
+      "name": "Vex 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/vex3.html",
+      "thumbnail": "semag/vex3/icon.png"
+    },
+    {
+      "name": "Adventure Capitalist",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/adventure-capitalist.html",
+      "thumbnail": "semag/adventure-capitalist/logo.webp"
+    },
+    {
+      "name": "Bloons Tower Defense 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/btd3.html",
+      "thumbnail": "semag/btd3/icon.png"
+    },
+    {
+      "name": "Avalanche",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/avalanche.html",
+      "thumbnail": "semag/avalanche/icon.png"
+    },
+    {
+      "name": "Slope",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/slope.html",
+      "thumbnail": "semag/slope/slope4.jpeg"
+    },
+    {
+      "name": "Cell Machine",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/cell-machine.html",
+      "thumbnail": "semag/cell-machine/img/icon.png"
+    },
+    {
+      "name": "Run 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/run2.html",
+      "thumbnail": "semag/run2/icon.jpg"
+    },
+    {
+      "name": "Vex 5",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/vex5.html",
+      "thumbnail": "semag/vex5/icon.png"
+    },
+    {
+      "name": "Vex 4",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/vex4.html",
+      "thumbnail": "semag/vex4/vex4.png"
+    },
+    {
+      "name": "Vex 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/vex2.html",
+      "thumbnail": "semag/vex2/icon.png"
+    },
+    {
+      "name": "Crossy Road",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/crossyroad.html",
+      "thumbnail": "semag/crossyroad/chicken.png"
+    },
+    {
+      "name": "Wall Smash",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/wallsmash.html",
+      "thumbnail": "semag/wallsmash/icon.png"
+    },
+    {
+      "name": "Death Run 3D",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/death-run-3d.html",
+      "thumbnail": "semag/death-run-3d/img/death.png"
+    },
+    {
+      "name": "CircloO",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/circloo.html",
+      "thumbnail": "semag/circloo/icon.png"
+    },
+    {
+      "name": "Vex",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/vex.html",
+      "thumbnail": "semag/vex/icon.png"
+    },
+    {
+      "name": "Stack",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/stack.html",
+      "thumbnail": "semag/stack/icon.png"
+    },
+    {
+      "name": "xx142-b2.exe",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/xx142-b2.exe.html",
+      "thumbnail": "semag/xx142-b2.exe/icon.png"
+    },
+    {
+      "name": "paper.io",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/paperio.html",
+      "thumbnail": "semag/paperio/icon.png"
+    },
+    {
+      "name": "Chibi Knight",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/chibiknight.html",
+      "thumbnail": "semag/chibiknight/icon.png"
+    },
+    {
+      "name": "1v1.lol",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/1v1lol.html",
+      "thumbnail": "semag/1v1lol/splash.png"
+    },
+    {
+      "name": "Dino",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/dino.html",
+      "thumbnail": "semag/dino/icon.png"
+    },
+    {
+      "name": "Sand Game",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/sand.html",
+      "thumbnail": "semag/sand/icon.png"
+    },
+    {
+      "name": "Dante",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/dante.html",
+      "thumbnail": "semag/dante/icon.png"
+    },
+    {
+      "name": "Wordle",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/wordle.html",
+      "thumbnail": "semag/wordle/icon.png"
+    },
+    {
+      "name": "Offline Paradise",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/offlineparadise.html",
+      "thumbnail": "semag/offlineparadise/icon.png"
+    },
+    {
+      "name": "Doodle Jump",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/doodlejump.html",
+      "thumbnail": "semag/doodlejump/icon.png"
+    },
+    {
+      "name": "Weave Silk",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/weavesilk.html",
+      "thumbnail": "semag/weavesilk/icon.png"
+    },
+    {
+      "name": "Super Meat Boy",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supermeatboy.html",
+      "thumbnail": "semag/supermeatboy/icon.png"
+    },
+    {
+      "name": "Vex 6",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/vex6.html",
+      "thumbnail": "semag/vex6/icon.png"
+    },
+    {
+      "name": "WebGL Fluid Sim",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fluidsim.html",
+      "thumbnail": "semag/fluidsim/icon.png"
+    },
+    {
+      "name": "Basketball Stars",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/basketball-stars.html",
+      "thumbnail": "semag/basketball-stars/icon.png"
+    },
+    {
+      "name": "osu! (Scratch)",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/osu.html",
+      "thumbnail": "semag/osu/icon.png"
+    },
+    {
+      "name": "Cookie Clicker",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/cookieclicker.html",
+      "thumbnail": "semag/cookieclicker/img/perfectCookie.png"
+    },
+    {
+      "name": "Superhot",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/superhot.html",
+      "thumbnail": "semag/superhot/icon.png"
+    },
+    {
+      "name": "Super Mario 64",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supermario64.html",
+      "thumbnail": "semag/supermario64/icon.png"
+    },
+    {
+      "name": "I Wanna Be Thy Copy",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/iwbtc.html",
+      "thumbnail": "semag/iwbtc/icon.png"
+    },
+    {
+      "name": "HexGL",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/hexgl.html",
+      "thumbnail": "semag/hexgl/icon_128.png"
+    },
+    {
+      "name": "Champion Island",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/championisland.html",
+      "thumbnail": "semag/championisland/icon.png"
+    },
+    {
+      "name": "Learn to Fly",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/learntofly.html",
+      "thumbnail": "semag/learntofly/icon.png"
+    },
+    {
+      "name": "Wordle Bot",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/wordlebot.html",
+      "thumbnail": "semag/wordlebot/icon.png"
+    },
+    {
+      "name": "Chess",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/chess.html",
+      "thumbnail": "semag/chess/icon.png"
+    },
+    {
+      "name": "Lows Adventures 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/lowsadventures2.html",
+      "thumbnail": "semag/lowsadventures2/icon.png"
+    },
+    {
+      "name": "Drift Boss",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/drift-boss.html",
+      "thumbnail": "semag/drift-boss/icon.png"
+    },
+    {
+      "name": "Fireboy & Watergirl 1",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fireboywatergirl.html",
+      "thumbnail": "semag/fireboywatergirl/icon.png"
+    },
+    {
+      "name": "Duck Life 4",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ducklife4.html",
+      "thumbnail": "semag/ducklife4/icon.png"
+    },
+    {
+      "name": "Achievement Unlocked",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/achieveunlocked.html",
+      "thumbnail": "semag/achieveunlocked/icon.png"
+    },
+    {
+      "name": "Achievement Unlocked 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/achieveunlocked2.html",
+      "thumbnail": "semag/achieveunlocked2/icon.png"
+    },
+    {
+      "name": "This Is The Only Level",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/thisistheonlylevel.html",
+      "thumbnail": "semag/thisistheonlylevel/logo.png"
+    },
+    {
+      "name": "This Is The Only Level 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/thisistheonlylevel2.html",
+      "thumbnail": "semag/thisistheonlylevel2/icon.png"
+    },
+    {
+      "name": "Bitlife",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bitlife.html",
+      "thumbnail": "semag/bitlife/bitlife.png"
+    },
+    {
+      "name": "Duck Life 1",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ducklife1.html",
+      "thumbnail": "semag/ducklife1/ducklife1.png"
+    },
+    {
+      "name": "Duck Life 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ducklife2.html",
+      "thumbnail": "semag/ducklife2/ducklife2.png"
+    },
+    {
+      "name": "Duck Life 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ducklife3.html",
+      "thumbnail": "semag/ducklife3/ducklife3.png"
+    },
+    {
+      "name": "OvO",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ovo.html",
+      "thumbnail": "semag/ovo/ovo3.png"
+    },
+    {
+      "name": "Universal Paperclips",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/universal-paperclips.html",
+      "thumbnail": "semag/universal-paperclips/universal-paperclips.png"
+    },
+    {
+      "name": "Learn to Fly 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/learntofly2.html",
+      "thumbnail": "semag/learntofly2/logo.jpg"
+    },
+    {
+      "name": "Vex 7",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/vex7.html",
+      "thumbnail": "semag/vex7/icon.jpeg"
+    },
+    {
+      "name": "Slope Ball",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/slope-ball.html",
+      "thumbnail": "semag/slope-ball/icon.jpg"
+    },
+    {
+      "name": "Slope 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/slope2.html",
+      "thumbnail": "semag/slope2/slope-2-logo.png"
+    },
+    {
+      "name": "Learn to Fly Idle",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/learntoflyidle.html",
+      "thumbnail": "semag/learntoflyidle/icon.jpg"
+    },
+    {
+      "name": "Red Ball 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/redball3.html",
+      "thumbnail": "semag/redball3/redball3.png"
+    },
+    {
+      "name": "Snake",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/snake.html",
+      "thumbnail": "semag/snake/snake.png"
+    },
+    {
+      "name": "Color Switch",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/colorswitch.html",
+      "thumbnail": "semag/colorswitch/colorswitch.png"
+    },
+    {
+      "name": "Game Maker Doodle",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/gamemaker.html",
+      "thumbnail": "semag/gamemaker/images.jpeg"
+    },
+    {
+      "name": "The Impossible Game",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/theimpossiblegame.html",
+      "thumbnail": "semag/theimpossiblegame/image.jpg"
+    },
+    {
+      "name": "Papas Freezeria",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/papasfreezeria.html",
+      "thumbnail": "semag/papasfreezeria/images.jpeg"
+    },
+    {
+      "name": "Papas Pizzeria",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/papaspizzeria.html",
+      "thumbnail": "semag/papaspizzeria/images.jpeg"
+    },
+    {
+      "name": "Idle Breakout",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/idlebreakout.html",
+      "thumbnail": "semag/idlebreakout/image.png"
+    },
+    {
+      "name": "Stickman Hook",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/stickman-hook.html",
+      "thumbnail": "semag/stickman-hook/icon.jpg"
+    },
+    {
+      "name": "Drift Hunters",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/drifthunters.html",
+      "thumbnail": "semag/drifthunters/icon.png"
+    },
+    {
+      "name": "Rocket League",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/rocketleague.html",
+      "thumbnail": "semag/rocketleague/splash.webp"
+    },
+    {
+      "name": "Retro Bowl",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/retrobowl.html",
+      "thumbnail": "semag/retrobowl/img/icon.jpg"
+    },
+    {
+      "name": "Tunnel Rush",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/tunnelrush.html",
+      "thumbnail": "semag/tunnelrush/tunnel.jpg"
+    },
+    {
+      "name": "Moto X3M",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/motox3m.html",
+      "thumbnail": "semag/motox3m/splash.jpg"
+    },
+    {
+      "name": "Moto X3M Winter",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/motox3m-winter.html",
+      "thumbnail": "semag/motox3m-winter/download.jpeg"
+    },
+    {
+      "name": "Moto X3M Pool Party",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/motox3m-pool.html",
+      "thumbnail": "semag/motox3m-pool/splash.jpg"
+    },
+    {
+      "name": "Five Nights at Freddy's",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fnaf.html",
+      "thumbnail": "semag/fnaf/splash.jpg"
+    },
+    {
+      "name": "Burrito Bison",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/burritobison.html",
+      "thumbnail": "semag/burritobison/Build/logo.png"
+    },
+    {
+      "name": "Cut The Rope Holday",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/cuttherope-holiday.html",
+      "thumbnail": "semag/cuttherope-holiday/Holiday_Gift.webp"
+    },
+    {
+      "name": "Helix Jump",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/helixjump.html",
+      "thumbnail": "semag/helixjump/gameIcon.png"
+    },
+    {
+      "name": "Clicker Heroes",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/clickerheroes.html",
+      "thumbnail": "semag/clickerheroes/clicker-heroes.png"
+    },
+    {
+      "name": "Thirty Dollar Website",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/thirtydollarwebsite.html",
+      "thumbnail": "semag/thirtydollarwebsite/assets/🗿.png"
+    },
+    {
+      "name": "Madalin Cars",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/madalincars.html",
+      "thumbnail": "semag/madalincars/icon.png"
+    },
+    {
+      "name": "Run 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/run3.html",
+      "thumbnail": "semag/run3/icon.jpeg"
+    },
+    {
+      "name": "Run",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/run.html",
+      "thumbnail": "semag/run/icon.jpeg"
+    },
+    {
+      "name": "Super Smash Flash",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supersmashflash.html",
+      "thumbnail": "semag/supersmashflash/ssf.jpg"
+    },
+    {
+      "name": "Stickman Climb",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/stickmanclimb.html",
+      "thumbnail": "semag/stickmanclimb/icon.avif"
+    },
+    {
+      "name": "Getaway Shooter",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/getawayshooter.html",
+      "thumbnail": "semag/getawayshooter/Untitled.jpeg"
+    },
+    {
+      "name": "Riddle School",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/riddleschool.html",
+      "thumbnail": "semag/riddleschool/RiddleSchool2.png"
+    },
+    {
+      "name": "Riddle School 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/riddleschool2.html",
+      "thumbnail": "semag/riddleschool2/icon.png"
+    },
+    {
+      "name": "Riddle School 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/riddleschool3.html",
+      "thumbnail": "semag/riddleschool3/riddle-school-3.webp"
+    },
+    {
+      "name": "Riddle School 4",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/riddleschool4.html",
+      "thumbnail": "semag/riddleschool4/Untitled.jpeg"
+    },
+    {
+      "name": "Riddle School 5",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/riddleschool5.html",
+      "thumbnail": "semag/riddleschool5/Untitled.jpeg"
+    },
+    {
+      "name": "Riddle Transfer",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/riddleschooltransfer.html",
+      "thumbnail": "semag/riddleschooltransfer/Untitled.jpeg"
+    },
+    {
+      "name": "Riddle Transfer 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/riddleschooltransfer2.html",
+      "thumbnail": "semag/riddleschooltransfer2/aUntitled.jpeg"
+    },
+    {
+      "name": "Zombocalypse",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/zombocalypse.html",
+      "thumbnail": "semag/zombocalypse/zombocalypse-2.webp"
+    },
+    {
+      "name": "Papas Burgeria",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/papasburgeria.html",
+      "thumbnail": "semag/papasburgeria/images.jpeg"
+    },
+    {
+      "name": "Duck Life 5",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ducklife5.html",
+      "thumbnail": "semag/ducklife5/ducklife5.png"
+    },
+    {
+      "name": "Duck Life 6",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ducklife6.html",
+      "thumbnail": "semag/ducklife6/ducklife5.png"
+    },
+    {
+      "name": "webretro",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/webretro.html",
+      "thumbnail": "semag/webretro/assets/icons/icon204.png"
+    },
+    {
+      "name": "osu!mania (Scratch)",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/osumania.html",
+      "thumbnail": "semag/osumania/mania.jpg"
+    },
+    {
+      "name": "Five Nights at Freddy's 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fnaf2.html",
+      "thumbnail": "semag/fnaf2/project/splash.webp"
+    },
+    {
+      "name": "Five Nights at Freddy's 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fnaf3.html",
+      "thumbnail": "semag/fnaf3/project/splash.webp"
+    },
+    {
+      "name": "Five Nights at Freddy's 4",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fnaf4.html",
+      "thumbnail": "semag/fnaf4/project/splash.webp"
+    },
+    {
+      "name": "Temple Run 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/templerun2.html",
+      "thumbnail": "semag/templerun2/img/icons/icon-128x128.png"
+    },
+    {
+      "name": "Fireboy & Watergirl 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fireboywatergirl2.html",
+      "thumbnail": "semag/fireboywatergirl2/Untitled.jpeg"
+    },
+    {
+      "name": "Fireboy & Watergirl 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fireboywatergirl3.html",
+      "thumbnail": "semag/fireboywatergirl3/icon.png"
+    },
+    {
+      "name": "Fireboy & Watergirl 4",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fireboywatergirl4.html",
+      "thumbnail": "semag/fireboywatergirl4/300.jpg"
+    },
+    {
+      "name": "Rise Higher",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/risehigher.html",
+      "thumbnail": "semag/risehigher/media/graphics/promo/Icons/128x128.png"
+    },
+    {
+      "name": "Hextris",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/hextris.html",
+      "thumbnail": "semag/hextris/images/icons/apple-touch-152.png"
+    },
+    {
+      "name": "Sprinter",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/sprinter.html",
+      "thumbnail": "semag/sprinter/icon.jpeg"
+    },
+    {
+      "name": "Amazing Rope Police",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/amazing-rope-police.html",
+      "thumbnail": "semag/amazing-rope-police/splash.jpeg"
+    },
+    {
+      "name": "Geometry Rash",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/geometryrash.html",
+      "thumbnail": "semag/geometryrash/icon-114.png"
+    },
+    {
+      "name": "Bloons Tower Defense",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/btd.html",
+      "thumbnail": "semag/btd/logo.webp"
+    },
+    {
+      "name": "Bloons Tower Defense 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/btd2.html",
+      "thumbnail": "semag/btd2/logo.webp"
+    },
+    {
+      "name": "Bloons Tower Defense 4",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/btd4.html",
+      "thumbnail": "semag/btd4/logo.jpg"
+    },
+    {
+      "name": "Bloons Tower Defense 5",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/btd5.html",
+      "thumbnail": "semag/btd5/wogo.png"
+    },
+    {
+      "name": "Last Horizon",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/lasthorizon.html",
+      "thumbnail": "semag/lasthorizon/wogo owo.jpg"
+    },
+    {
+      "name": "1 on 1 Soccer",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/1on1soccer.html",
+      "thumbnail": "semag/1on1soccer/logo.jpg"
+    },
+    {
+      "name": "Sandtrix",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/sandtrix.html",
+      "thumbnail": "semag/sandtrix/assets/sprites/appicon.png"
+    },
+    {
+      "name": "Blood Tournament",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bloodtournament.html",
+      "thumbnail": "semag/bloodtournament/blood-tournament.jpg"
+    },
+    {
+      "name": "Gold Digger FRVR",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/golddiggerfrvr.html",
+      "thumbnail": "semag/golddiggerfrvr/images.jpeg"
+    },
+    {
+      "name": "Retro Bowl College",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/retrobowlcollege.html",
+      "thumbnail": "semag/retrobowlcollege/unnamed.png"
+    },
+    {
+      "name": "We Become What We Behold",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/wbwwb.html",
+      "thumbnail": "semag/wbwwb/wbwwb.webp"
+    },
+    {
+      "name": "Nut Simulator",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/nutsim.html",
+      "thumbnail": "semag/nutsim/images/icon.png"
+    },
+    {
+      "name": "Super Smash Bros",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supersmashbros.html",
+      "thumbnail": "semag/supersmashbros/logo.jpg"
+    },
+    {
+      "name": "Skibidi 1 v 100",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/skibiditoilet.html",
+      "thumbnail": "semag/skibiditoilet/logo.png"
+    },
+    {
+      "name": "Drive Mad",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/drivemad.html",
+      "thumbnail": "semag/drivemad/icons/icon-128.png"
+    },
+    {
+      "name": "Rooftop Snipers",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/rooftopsnipers.html",
+      "thumbnail": "semag/rooftopsnipers/logo.png"
+    },
+    {
+      "name": "Funny Shooter",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/funnyshooter.html",
+      "thumbnail": "semag/funnyshooter/icon.jpeg"
+    },
+    {
+      "name": "Monkey Mart",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/monkeymart.html",
+      "thumbnail": "semag/monkeymart/unnamed.png"
+    },
+    {
+      "name": "Factory Balls",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/factoryballs.html",
+      "thumbnail": "semag/factoryballs/fac.png"
+    },
+    {
+      "name": "Factory Balls Forever",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/factoryballsforever.html",
+      "thumbnail": "semag/factoryballsforever/fac.png"
+    },
+    {
+      "name": "Funny Shooter 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/funnyshooter2.html",
+      "thumbnail": "semag/funnyshooter2/894abba63a6b23fed823f404831f444f.jpeg"
+    },
+    {
+      "name": "Bad Time Simulator",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/badtimesimulator.html",
+      "thumbnail": "semag/badtimesimulator/icon-114.png"
+    },
+    {
+      "name": "Commodore 64 Clicker",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/commodoreclicker.html",
+      "thumbnail": "semag/commodoreclicker/test.jpg"
+    },
+    {
+      "name": "Stickman Boost",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/stickmanboost.html",
+      "thumbnail": "semag/stickmanboost/base/img1.jpg"
+    },
+    {
+      "name": "Stickman Golf",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/stickmangolf.html",
+      "thumbnail": "semag/stickmangolf/gold.png"
+    },
+    {
+      "name": "Basket Bros",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/basketbros.html",
+      "thumbnail": "semag/basketbros/thumb.jpg"
+    },
+    {
+      "name": "justfall.lol",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/justfalllol.html",
+      "thumbnail": "semag/justfalllol/unnamed.png"
+    },
+    {
+      "name": "Doge Miner",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/dogeminer.html",
+      "thumbnail": "semag/dogeminer/img/dogeminer_300x300.png"
+    },
+    {
+      "name": "Soccer Random",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/soccerrandom.html",
+      "thumbnail": "semag/soccerrandom/test.png"
+    },
+    {
+      "name": "Basket Random",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/basketrandom.html",
+      "thumbnail": "semag/basketrandom/test.png"
+    },
+    {
+      "name": "Boxing Random",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/boxingrandom.html",
+      "thumbnail": "semag/boxingrandom/512x512.jpg"
+    },
+    {
+      "name": "Funny Mad Racing",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/funnymadracing.html",
+      "thumbnail": "semag/funnymadracing/logo.webp"
+    },
+    {
+      "name": "Time Shooter",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/timeshooter1.html",
+      "thumbnail": "semag/timeshooter1/logo.png"
+    },
+    {
+      "name": "Time Shooter 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/timeshooter2.html",
+      "thumbnail": "semag/timeshooter2/ts2.jpg"
+    },
+    {
+      "name": "Time Shooter 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/timeshooter3.html",
+      "thumbnail": "semag/timeshooter3/logo.png"
+    },
+    {
+      "name": "Townscaper",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/townscaper.html",
+      "thumbnail": "semag/townscaper/icon.png"
+    },
+    {
+      "name": "Boxing Physics 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/boxingphysics2.html",
+      "thumbnail": "semag/boxingphysics2/icon.png"
+    },
+    {
+      "name": "Burger and Frights",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/burgerandfrights.html",
+      "thumbnail": "semag/burgerandfrights/icon.png"
+    },
+    {
+      "name": "Flippy Fish",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/flippyfish.html",
+      "thumbnail": "semag/flippyfish/icon.png"
+    },
+    {
+      "name": "Knife Hit",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/knifehit.html",
+      "thumbnail": "semag/knifehit/icon.png"
+    },
+    {
+      "name": "Lazy Jump 3D",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/lazyjump3d.html",
+      "thumbnail": "semag/lazyjump3d/icon.png"
+    },
+    {
+      "name": "Moto X3M Spooky",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/motox3m-spooky.html",
+      "thumbnail": "semag/motox3m-spooky/icon.png"
+    },
+    {
+      "name": "Rooftop Snipers 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/rooftopsnipers2.html",
+      "thumbnail": "semag/rooftopsnipers2/icon.png"
+    },
+    {
+      "name": "Skibidi Toilet Attack",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/skibiditoiletattack.html",
+      "thumbnail": "semag/skibiditoiletattack/logo.png"
+    },
+    {
+      "name": "TU-95",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/tu95.html",
+      "thumbnail": "semag/tu95/tu-95.webp"
+    },
+    {
+      "name": "TU-46",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/tu46.html",
+      "thumbnail": "semag/tu46/tu-46.webp"
+    },
+    {
+      "name": "Russian Car Driver",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/russiancardriver.html",
+      "thumbnail": "semag/russiancardriver/russian-car-driver.webp"
+    },
+    {
+      "name": "Legend of Zelda - Ocarina of Time",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ocarinaoftime.html",
+      "thumbnail": "semag/ocarinaoftime/oc.jpg"
+    },
+    {
+      "name": "Metroid: Zero Mission",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/metroidzeromission.html",
+      "thumbnail": "semag/metroidzeromission/zero.jpeg"
+    },
+    {
+      "name": "Guilty Gear",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/guiltygear.html",
+      "thumbnail": "semag/guiltygear/ggx.jpg"
+    },
+    {
+      "name": "A Dark Room",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/adarkroom.html",
+      "thumbnail": "semag/adarkroom/favicon.ico"
+    },
+    {
+      "name": "Fancy Pants Adventures",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fancypantsadventures.html",
+      "thumbnail": "semag/fancypantsadventures/fpa.webp"
+    },
+    {
+      "name": "Fancy Pants Adventures 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fancypantsadventures2.html",
+      "thumbnail": "semag/fancypantsadventures2/fpa2.avif"
+    },
+    {
+      "name": "Line Rider",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/linerider.html",
+      "thumbnail": "semag/linerider/boosh.png"
+    },
+    {
+      "name": "Funny Ball Game",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/funnyballgame.html",
+      "thumbnail": "semag/funnyballgame/ball.jpg"
+    },
+    {
+      "name": "Henry Stickmin - Stealing the Diamond",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/stealingthediamond.html",
+      "thumbnail": "semag/stealingthediamond/diamante.avif"
+    },
+    {
+      "name": "Henry Stickmin - Breaking the Bank",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/breakingthebank.html",
+      "thumbnail": "semag/breakingthebank/balling.avif"
+    },
+    {
+      "name": "Henry Stickmin - Escaping the Prison",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/escapingtheprison.html",
+      "thumbnail": "semag/escapingtheprison/pwison.avif"
+    },
+    {
+      "name": "Henry Stickmin - Fleeing the Complex",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fleeingthecomplex.html",
+      "thumbnail": "semag/fleeingthecomplex/flee.jpg"
+    },
+    {
+      "name": "Henry Stickmin - Infiltrating the Airship",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/infiltratingtheairship.html",
+      "thumbnail": "semag/infiltratingtheairship/air.avif"
+    },
+    {
+      "name": "Pandemic",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pandemic.html",
+      "thumbnail": "semag/pandemic/sddefault.jpg"
+    },
+    {
+      "name": "Pandemic 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/pandemic2.html",
+      "thumbnail": "semag/pandemic2/pan2.webp"
+    },
+    {
+      "name": "Age of War",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ageofwar.html",
+      "thumbnail": "semag/ageofwar/warofage.jpg"
+    },
+    {
+      "name": "Soundboard",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/soundboard.html",
+      "thumbnail": "semag/soundboard/bleep.png"
+    },
+    {
+      "name": "The Impossible Quiz",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/theimpossiblequiz.html",
+      "thumbnail": "semag/theimpossiblequiz/tiq.avif"
+    },
+    {
+      "name": "2D Rocket League",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/2drocketleague.html",
+      "thumbnail": "semag/2drocketleague/unnamed.png"
+    },
+    {
+      "name": "Monster Tracks",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/monstertracks.html",
+      "thumbnail": "semag/monstertracks/webapp/cover.jpg"
+    },
+    {
+      "name": "CSGO Case Clicker",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/csgoclicker.html",
+      "thumbnail": "semag/csgoclicker/images/case1.png"
+    },
+    {
+      "name": "The Final Earth 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/thefinalearth2.html",
+      "thumbnail": "semag/thefinalearth2/icons/favicon.png"
+    },
+    {
+      "name": "Cubefield",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/cubefield.html",
+      "thumbnail": "semag/cubefield/assets/unnamed.png"
+    },
+    {
+      "name": "Bit Planes",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bit-planes.html",
+      "thumbnail": "semag/bit-planes/bitplanes.png"
+    },
+    {
+      "name": "Snow Rider 3D",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/snowrider3d.html",
+      "thumbnail": "semag/snowrider3d/snow.png"
+    },
+    {
+      "name": "Dadish",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/dadish.html",
+      "thumbnail": "semag/dadish/favicon.png"
+    },
+    {
+      "name": "Dadish 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/dadish2.html",
+      "thumbnail": "semag/dadish2/favicon.png"
+    },
+    {
+      "name": "Dadish 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/dadish3.html",
+      "thumbnail": "semag/dadish3/splash.png"
+    },
+    {
+      "name": "Watermelon Game",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/watermelongame.html",
+      "thumbnail": "semag/watermelongame/assets/sprites/tittle.png"
+    },
+    {
+      "name": "Crimson Fantasia",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/crimsonfantasia.html",
+      "thumbnail": "semag/crimsonfantasia/14qAOu.png"
+    },
+    {
+      "name": "Idle Research",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/idleresearch.html",
+      "thumbnail": "semag/idleresearch/cover-1660205761867.png"
+    },
+    {
+      "name": "10 Minutes Till Dawn",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/10minutestilldawn.html",
+      "thumbnail": "semag/10minutestilldawn/splash.png"
+    },
+    {
+      "name": "Papas Donuteria",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/papasdonuteria.html",
+      "thumbnail": "semag/papasdonuteria/papasdonuteria.png"
+    },
+    {
+      "name": "Papas Pancakeria",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/papaspancakeria.html",
+      "thumbnail": "semag/papaspancakeria/logo.avif"
+    },
+    {
+      "name": "Papas Scooperia",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/papasscooperia.html",
+      "thumbnail": "semag/papasscooperia/logo.avif"
+    },
+    {
+      "name": "Papas Tacomia",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/papastacomia.html",
+      "thumbnail": "semag/papastacomia/logo.avif"
+    },
+    {
+      "name": "Territorial.io",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/territorialio.html",
+      "thumbnail": "semag/territorialio/territorialio.png"
+    },
+    {
+      "name": "Theme Hotel",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/themehotel.html",
+      "thumbnail": "semag/themehotel/themehotel.png"
+    },
+    {
+      "name": "Thumb Fighter",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/thumbfighter.html",
+      "thumbnail": "semag/thumbfighter/thumbfighter.png"
+    },
+    {
+      "name": "The Enchanted Cave 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/enchantedcave2.html",
+      "thumbnail": "semag/enchantedcave2/icon.png"
+    },
+    {
+      "name": "Animal Crossing Wild World",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/animalcrossingwildworld.html",
+      "thumbnail": "semag/animalcrossingwildworld/animalcrossingwildworld.png"
+    },
+    {
+      "name": "Banjo Kazooie",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/banjokazooie.html",
+      "thumbnail": "semag/banjokazooie/banjokazooie.png"
+    },
+    {
+      "name": "Donkey Kong 64",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/donkeykong64.html",
+      "thumbnail": "semag/donkeykong64/donkeykong64.png"
+    },
+    {
+      "name": "Goldeneye 007",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/goldeneye.html",
+      "thumbnail": "semag/goldeneye/goldeneye007.png"
+    },
+    {
+      "name": "Majora's Mask",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/majorasmask.html",
+      "thumbnail": "semag/majorasmask/majorasmask.png"
+    },
+    {
+      "name": "Mario Kart DS",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/mariokartds.html",
+      "thumbnail": "semag/mariokartds/mariokartds.png"
+    },
+    {
+      "name": "Mario Party",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/marioparty.html",
+      "thumbnail": "semag/marioparty/marioparty.png"
+    },
+    {
+      "name": "Mario Party 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/marioparty2.html",
+      "thumbnail": "semag/marioparty2/logo.avif"
+    },
+    {
+      "name": "Mario Party 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/marioparty3.html",
+      "thumbnail": "semag/marioparty3/marioparty3.png"
+    },
+    {
+      "name": "Mario Party DS",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/mariopartyds.html",
+      "thumbnail": "semag/mariopartyds/mariopartyds.png"
+    },
+    {
+      "name": "Nintendogs",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/nintendogs.html",
+      "thumbnail": "semag/nintendogs/nintendogs.png"
+    },
+    {
+      "name": "Papas Bakeria",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/papasbakeria.html",
+      "thumbnail": "semag/papasbakeria/papasbakeria.png"
+    },
+    {
+      "name": "Papas Cheeseria",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/papascheeseria.html",
+      "thumbnail": "semag/papascheeseria/papascheeseria.png"
+    },
+    {
+      "name": "Papas Pastaria",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/papaspastaria.html",
+      "thumbnail": "semag/papaspastaria/papaspastaria.png"
+    },
+    {
+      "name": "Papas Sushiria",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/papassushiria.html",
+      "thumbnail": "semag/papassushiria/papassushiria.png"
+    },
+    {
+      "name": "Papas Wingeria",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/papaswingeria.html",
+      "thumbnail": "semag/papaswingeria/logo.avif"
+    },
+    {
+      "name": "Paper Mario",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/papermario.html",
+      "thumbnail": "semag/papermario/papermario.png"
+    },
+    {
+      "name": "Star Fox 64",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/starfox64.html",
+      "thumbnail": "semag/starfox64/starfox64.png"
+    },
+    {
+      "name": "Super Mario 64 DS",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supermario64ds.html",
+      "thumbnail": "semag/supermario64ds/supermario64ds.png"
+    },
+    {
+      "name": "state.io",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/stateio.html",
+      "thumbnail": "semag/stateio/icon.webp"
+    },
+    {
+      "name": "Draw Climber",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/drawclimber.html",
+      "thumbnail": "semag/drawclimber/assets/gameLogo.png"
+    },
+    {
+      "name": "Polytrack",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/polytrack.html",
+      "thumbnail": "semag/polytrack/logo.jpg"
+    },
+    {
+      "name": "Abuda The Alien",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/abudathealien.html",
+      "thumbnail": "semag/abudathealien/placeholder.png"
+    },
+    {
+      "name": "Advance Wars",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/advancewars.html",
+      "thumbnail": "semag/advancewars/placeholder.png"
+    },
+    {
+      "name": "Advance Wars 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/advancewars2.html",
+      "thumbnail": "semag/advancewars2/placeholder.png"
+    },
+    {
+      "name": "Advance Wars: Days of Ruin",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/advancewarsdayofruin.html",
+      "thumbnail": "semag/advancewarsdayofruin/placeholder.png"
+    },
+    {
+      "name": "Adventure Time: Hey Ice King",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/adventuretime.html",
+      "thumbnail": "semag/adventuretime/placeholder.png"
+    },
+    {
+      "name": "Altered Beast",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/alteredbeast.html",
+      "thumbnail": "semag/alteredbeast/placeholder.png"
+    },
+    {
+      "name": "Amorphous",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/amorphous.html",
+      "thumbnail": "semag/amorphous/placeholder.png"
+    },
+    {
+      "name": "Aquapark Slides",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/aquaparkslides.html",
+      "thumbnail": "semag/aquaparkslides/splash.png"
+    },
+    {
+      "name": "Banjo Pilot",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/banjopilot.html",
+      "thumbnail": "semag/banjopilot/banjopilot-sq-1643391580626.jpg"
+    },
+    {
+      "name": "Banjo Tooie",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/banjotooie.html",
+      "thumbnail": "semag/banjotooie/banjo-tooie_7htk.128.webp"
+    },
+    {
+      "name": "Baseball",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/baseball.html",
+      "thumbnail": "semag/baseball/CTA.png"
+    },
+    {
+      "name": "Battle Beavers",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/battlebeavers.html",
+      "thumbnail": "semag/battlebeavers/battlebeavers.jpeg"
+    },
+    {
+      "name": "Battleships",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/battleships.html",
+      "thumbnail": "semag/battleships/placeholder.png"
+    },
+    {
+      "name": "Battletoads",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/battletoads.html",
+      "thumbnail": "semag/battletoads/placeholder.png"
+    },
+    {
+      "name": "Big Red Button",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bigredbutton.html",
+      "thumbnail": "semag/bigredbutton/placeholder.png"
+    },
+    {
+      "name": "Blocky",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/blocky.html",
+      "thumbnail": "semag/blocky/placeholder.png"
+    },
+    {
+      "name": "Bloxorz",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bloxors.html",
+      "thumbnail": "semag/bloxors/placeholder.png"
+    },
+    {
+      "name": "Bomberman",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bomberman.html",
+      "thumbnail": "semag/bomberman/placeholder.png"
+    },
+    {
+      "name": "Mario and Luigi: Bowser's Inside Story",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bowsersinsidestory.html",
+      "thumbnail": "semag/bowsersinsidestory/placeholder.png"
+    },
+    {
+      "name": "Bubble Tanks 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/bubbletanks2.html",
+      "thumbnail": "semag/bubbletanks2/placeholder.png"
+    },
+    {
+      "name": "Canopy",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/canopy.html",
+      "thumbnail": "semag/canopy/placeholder.png"
+    },
+    {
+      "name": "Cars 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/cars2.html",
+      "thumbnail": "semag/cars2/placeholder.png"
+    },
+    {
+      "name": "Castlevania",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/castlevania.html",
+      "thumbnail": "semag/castlevania/placeholder.png"
+    },
+    {
+      "name": "Castlevania: Aria of Sorrow",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/castlevaniaariaofsorrow.html",
+      "thumbnail": "semag/castlevaniaariaofsorrow/placeholder.png"
+    },
+    {
+      "name": "Castlevania: Dawn of Sorrow",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/castlevaniadawnofsorrow.html",
+      "thumbnail": "semag/castlevaniadawnofsorrow/placeholder.png"
+    },
+    {
+      "name": "Castlevania III",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/castlevaniaiii.html",
+      "thumbnail": "semag/castlevaniaiii/placeholder.png"
+    },
+    {
+      "name": "Castlevania: Order of Ecclesia",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/castlevaniaorderofecclesia.html",
+      "thumbnail": "semag/castlevaniaorderofecclesia/placeholder.png"
+    },
+    {
+      "name": "Cave Chaos",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/cavechaos.html",
+      "thumbnail": "semag/cavechaos/placeholder.png"
+    },
+    {
+      "name": "changetype",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/changetype.html",
+      "thumbnail": "semag/changetype/placeholder.png"
+    },
+    {
+      "name": "Cheese Dreams",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/cheesedreams.html",
+      "thumbnail": "semag/cheesedreams/placeholder.png"
+    },
+    {
+      "name": "Chisel",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/chisel.html",
+      "thumbnail": "semag/chisel/placeholder.png"
+    },
+    {
+      "name": "Chisel 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/chisel2.html",
+      "thumbnail": "semag/chisel2/placeholder.png"
+    },
+    {
+      "name": "Choose Your Weapon",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/chooseyourweapon.html",
+      "thumbnail": "semag/chooseyourweapon/placeholder.png"
+    },
+    {
+      "name": "Choose Your Weapon 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/chooseyourweapon2.html",
+      "thumbnail": "semag/chooseyourweapon2/placeholder.png"
+    },
+    {
+      "name": "Choose Your Weapon 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/chooseyourweapon3.html",
+      "thumbnail": "semag/chooseyourweapon3/placeholder.png"
+    },
+    {
+      "name": "Chrono Trigger",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/chronotrigger.html",
+      "thumbnail": "semag/chronotrigger/placeholder.png"
+    },
+    {
+      "name": "Comix Zone",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/comixzone.html",
+      "thumbnail": "semag/comixzone/placeholder.png"
+    },
+    {
+      "name": "Contra",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/contra.html",
+      "thumbnail": "semag/contra/placeholder.png"
+    },
+    {
+      "name": "Contra III",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/contraiii.html",
+      "thumbnail": "semag/contraiii/placeholder.png"
+    },
+    {
+      "name": "Crush The Castle",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/crushthecastle.html",
+      "thumbnail": "semag/crushthecastle/placeholder.png"
+    },
+    {
+      "name": "Crush The Castle 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/crushthecastle2.html",
+      "thumbnail": "semag/crushthecastle2/placeholder.png"
+    },
+    {
+      "name": "Daggerfall",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/daggerfall.html",
+      "thumbnail": "semag/daggerfall/placeholder.png"
+    },
+    {
+      "name": "Dragon Ball Z: Supersonic Warriors",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/dbzsupersonicwarriors.html",
+      "thumbnail": "semag/dbzsupersonicwarriors/placeholder.png"
+    },
+    {
+      "name": "Defend the Tank",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/defendthetank.html",
+      "thumbnail": "semag/defendthetank/landscape.jpg"
+    },
+    {
+      "name": "Diddy Kong Racing",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/diddykongracing.html",
+      "thumbnail": "semag/diddykongracing/placeholder.png"
+    },
+    {
+      "name": "Ditto",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ditto.html",
+      "thumbnail": "semag/ditto/placeholder.png"
+    },
+    {
+      "name": "Doge Miner 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/dogeminer2.html",
+      "thumbnail": "semag/dogeminer2/dogeloader.svg"
+    },
+    {
+      "name": "Donkey Kong Country",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/donkeykongcountry.html",
+      "thumbnail": "semag/donkeykongcountry/placeholder.png"
+    },
+    {
+      "name": "Donkey Kong Country 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/donkeykongcountry2.html",
+      "thumbnail": "semag/donkeykongcountry2/placeholder.png"
+    },
+    {
+      "name": "Donkey Kong Country 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/donkeykongcountry3.html",
+      "thumbnail": "semag/donkeykongcountry3/placeholder.png"
+    },
+    {
+      "name": "Donkey Kong Land",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/donkeykongland.html",
+      "thumbnail": "semag/donkeykongland/placeholder.png"
+    },
+    {
+      "name": "Doodle Defender",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/doodledefender.html",
+      "thumbnail": "semag/doodledefender/placeholder.png"
+    },
+    {
+      "name": "Dragon Boy 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/dragonboy2.html",
+      "thumbnail": "semag/dragonboy2/placeholder.png"
+    },
+    {
+      "name": "Drill Dozer",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/drilldozer.html",
+      "thumbnail": "semag/drilldozer/placeholder.png"
+    },
+    {
+      "name": "Dr Mario",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/drmario.html",
+      "thumbnail": "semag/drmario/placeholder.png"
+    },
+    {
+      "name": "Duck Life 7",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ducklifebattle.html",
+      "thumbnail": "semag/ducklifebattle/logo.png"
+    },
+    {
+      "name": "DuckTales",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ducktales.html",
+      "thumbnail": "semag/ducktales/placeholder.png"
+    },
+    {
+      "name": "Duke Nukem 64",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/dukenukem64.html",
+      "thumbnail": "semag/dukenukem64/placeholder.png"
+    },
+    {
+      "name": "Duke Nukem Advance",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/dukenukemadvance.html",
+      "thumbnail": "semag/dukenukemadvance/placeholder.png"
+    },
+    {
+      "name": "Earthbound",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/earthbound.html",
+      "thumbnail": "semag/earthbound/placeholder.png"
+    },
+    {
+      "name": "Ecco the Dolphin",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/eccothedolphin.html",
+      "thumbnail": "semag/eccothedolphin/placeholder.png"
+    },
+    {
+      "name": "Electric Box",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/electricbox.html",
+      "thumbnail": "semag/electricbox/placeholder.png"
+    },
+    {
+      "name": "Electric Man 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/electricman2.html",
+      "thumbnail": "semag/electricman2/placeholder.png"
+    },
+    {
+      "name": "Epic Battle Fantasy",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/epicbattlefantasy.html",
+      "thumbnail": "semag/epicbattlefantasy/placeholder.png"
+    },
+    {
+      "name": "Epic Battle Fantasy 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/epicbattlefantasy2.html",
+      "thumbnail": "semag/epicbattlefantasy2/placeholder.png"
+    },
+    {
+      "name": "Epic Battle Fantasy 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/epicbattlefantasy3.html",
+      "thumbnail": "semag/epicbattlefantasy3/placeholder.png"
+    },
+    {
+      "name": "Excitebike 64",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/excitebike64.html",
+      "thumbnail": "semag/excitebike64/placeholder.png"
+    },
+    {
+      "name": "Extreme Run 3D",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/extremerun.html",
+      "thumbnail": "semag/extremerun/logo.png"
+    },
+    {
+      "name": "Fallout",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fallout.html",
+      "thumbnail": "semag/fallout/placeholder.png"
+    },
+    {
+      "name": "Feed Me",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/feedme.html",
+      "thumbnail": "semag/feedme/placeholder.png"
+    },
+    {
+      "name": "Fire Fantasy: Tactics Advance",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/finalfantasytacticsadvance.html",
+      "thumbnail": "semag/finalfantasytacticsadvance/placeholder.png"
+    },
+    {
+      "name": "Final Fantasy VI",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/finalfantasyvi.html",
+      "thumbnail": "semag/finalfantasyvi/placeholder.png"
+    },
+    {
+      "name": "Final Ninja",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/finalninja.html",
+      "thumbnail": "semag/finalninja/placeholder.png"
+    },
+    {
+      "name": "Fire Emblem",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fireemblem.html",
+      "thumbnail": "semag/fireemblem/placeholder.png"
+    },
+    {
+      "name": "Flood Runner 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/floodrunner2.html",
+      "thumbnail": "semag/floodrunner2/placeholder.png"
+    },
+    {
+      "name": "Flood Runner 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/floodrunner3.html",
+      "thumbnail": "semag/floodrunner3/placeholder.png"
+    },
+    {
+      "name": "Five Nights at Freddy's Pizzeria Simulator",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fnaf-ps.html",
+      "thumbnail": "semag/fnaf-ps/favicon.ico"
+    },
+    {
+      "name": "Five Nights at Freddy's Sister Location",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fnaf-sl.html",
+      "thumbnail": "semag/fnaf-sl/logo.png"
+    },
+    {
+      "name": "Five Nights at Freddy's UCN",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fnaf-ucn.html",
+      "thumbnail": "semag/fnaf-ucn/logo.avif"
+    },
+    {
+      "name": "Five Nights at Freddy's 4 Halloween",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fnaf4-halloween.html",
+      "thumbnail": "semag/fnaf4-halloween/logo.avif"
+    },
+    {
+      "name": "Five Nights at Freddy's World",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fnafworld.html",
+      "thumbnail": "semag/fnafworld/favicon.ico"
+    },
+    {
+      "name": "Frostbite",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/frostbite.html",
+      "thumbnail": "semag/frostbite/placeholder.png"
+    },
+    {
+      "name": "Frostbite 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/frostbite2.html",
+      "thumbnail": "semag/frostbite2/placeholder.png"
+    },
+    {
+      "name": "F-Zero",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fzero.html",
+      "thumbnail": "semag/fzero/placeholder.png"
+    },
+    {
+      "name": "F-Zero X",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/fzerox.html",
+      "thumbnail": "semag/fzerox/placeholder.png"
+    },
+    {
+      "name": "Garfield Gets Real",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/garfieldgetsreal.html",
+      "thumbnail": "semag/garfieldgetsreal/placeholder.png"
+    },
+    {
+      "name": "Gex 64",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/gex64.html",
+      "thumbnail": "semag/gex64/placeholder.png"
+    },
+    {
+      "name": "Go Ball",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/goball.html",
+      "thumbnail": "semag/goball/game.jpg"
+    },
+    {
+      "name": "Golden Axe",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/goldenaxe.html",
+      "thumbnail": "semag/goldenaxe/placeholder.png"
+    },
+    {
+      "name": "Golden Sun",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/goldensun.html",
+      "thumbnail": "semag/goldensun/placeholder.png"
+    },
+    {
+      "name": "Gunstar Heroes",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/gunstarheroes.html",
+      "thumbnail": "semag/gunstarheroes/placeholder.png"
+    },
+    {
+      "name": "Harvest Moon",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/harvestmoon.html",
+      "thumbnail": "semag/harvestmoon/placeholder.png"
+    },
+    {
+      "name": "Harvest Moon 64",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/harvestmoon64.html",
+      "thumbnail": "semag/harvestmoon64/placeholder.png"
+    },
+    {
+      "name": "Hero 3: Flying Robot",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/hero3.html",
+      "thumbnail": "semag/hero3/logo.avif"
+    },
+    {
+      "name": "Icebreaker",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/icebreaker.html",
+      "thumbnail": "semag/icebreaker/placeholder.png"
+    },
+    {
+      "name": "Ice Climber",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/iceclimber.html",
+      "thumbnail": "semag/iceclimber/placeholder.png"
+    },
+    {
+      "name": "Illusion of Gaia",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/illusionofgaia.html",
+      "thumbnail": "semag/illusionofgaia/placeholder.png"
+    },
+    {
+      "name": "Jet Force Gemini",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/jetforcegemini.html",
+      "thumbnail": "semag/jetforcegemini/placeholder.png"
+    },
+    {
+      "name": "Jetski Race",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/jetskirace.html",
+      "thumbnail": "semag/jetskirace/loading.png"
+    },
+    {
+      "name": "Just Hit The Button",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/justhitthebutton.html",
+      "thumbnail": "semag/justhitthebutton/placeholder.png"
+    },
+    {
+      "name": "Kid Icarus",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/kidicarus.html",
+      "thumbnail": "semag/kidicarus/placeholder.png"
+    },
+    {
+      "name": "Kirby 64",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/kirby64.html",
+      "thumbnail": "semag/kirby64/placeholder.png"
+    },
+    {
+      "name": "Kirby and the Amazing Mirror",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/kirbyamazingmirror.html",
+      "thumbnail": "semag/kirbyamazingmirror/placeholder.png"
+    },
+    {
+      "name": "Kirby Mass Attack",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/kirbymassattack.html",
+      "thumbnail": "semag/kirbymassattack/placeholder.png"
+    },
+    {
+      "name": "Kirby's Dream Land",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/kirbysdreamland.html",
+      "thumbnail": "semag/kirbysdreamland/placeholder.png"
+    },
+    {
+      "name": "Kirby's Dream Land 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/kirbysdreamland2.html",
+      "thumbnail": "semag/kirbysdreamland2/placeholder.png"
+    },
+    {
+      "name": "Lego Batman",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/legobatman.html",
+      "thumbnail": "semag/legobatman/placeholder.png"
+    },
+    {
+      "name": "Links Awakening DX",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/linksawakeningdx.html",
+      "thumbnail": "semag/linksawakeningdx/placeholder.png"
+    },
+    {
+      "name": "The Legend of Zelda: A Link To The Past",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/linktothepast.html",
+      "thumbnail": "semag/linktothepast/alinktothepast.png"
+    },
+    {
+      "name": "Mario and Luigi: Partners in Time",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/marioandluigipartnersintime.html",
+      "thumbnail": "semag/marioandluigipartnersintime/placeholder.png"
+    },
+    {
+      "name": "Mario Combat",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/mariocombat.html",
+      "thumbnail": "semag/mariocombat/placeholder.png"
+    },
+    {
+      "name": "Mario Golf",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/mariogolf.html",
+      "thumbnail": "semag/mariogolf/placeholder.png"
+    },
+    {
+      "name": "Mario Kart 64",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/mariokart64.html",
+      "thumbnail": "semag/mariokart64/placeholder.png"
+    },
+    {
+      "name": "Mario Kart Super Circuit",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/mariokartsupercircuit.html",
+      "thumbnail": "semag/mariokartsupercircuit/placeholder.png"
+    },
+    {
+      "name": "Mario Paint",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/mariopaint.html",
+      "thumbnail": "semag/mariopaint/placeholder.png"
+    },
+    {
+      "name": "Mario Party Advance",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/mariopartyadvance.html",
+      "thumbnail": "semag/mariopartyadvance/placeholder.png"
+    },
+    {
+      "name": "Mario Pinball Land",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/mariopinballland.html",
+      "thumbnail": "semag/mariopinballland/placeholder.png"
+    },
+    {
+      "name": "Mario Tennis",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/mariotennis.html",
+      "thumbnail": "semag/mariotennis/placeholder.png"
+    },
+    {
+      "name": "Mega Man X",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/megamanx.html",
+      "thumbnail": "semag/megamanx/megamanx.jpg"
+    },
+    {
+      "name": "Mega Man Zero",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/megamanzero.html",
+      "thumbnail": "semag/megamanzero/Mega_Man_Zero_cover.jpg"
+    },
+    {
+      "name": "Metal Gear Solid",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/metalgearsolid.html",
+      "thumbnail": "semag/metalgearsolid/Metal_Gear_Solid_cover_art.png"
+    },
+    {
+      "name": "Metroid",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/metroid.html",
+      "thumbnail": "semag/metroid/metroi.jpg"
+    },
+    {
+      "name": "Metroid Fusion",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/metroidfusion.html",
+      "thumbnail": "semag/metroidfusion/Metroid_Fusion_box.jpg"
+    },
+    {
+      "name": "Metroid II",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/metroidii.html",
+      "thumbnail": "semag/metroidii/metroid2.png"
+    },
+    {
+      "name": "Minisho",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/minisho.html",
+      "thumbnail": "semag/minisho/512.png"
+    },
+    {
+      "name": "Monopoly",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/monopoly.html",
+      "thumbnail": "semag/monopoly/monopoly.jpg"
+    },
+    {
+      "name": "Monster Brawl",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/monsterbrawl.html",
+      "thumbnail": "semag/monsterbrawl/monsterbrawl.jpeg"
+    },
+    {
+      "name": "Mortal Kombat 4",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/mortalkombat4.html",
+      "thumbnail": "semag/mortalkombat4/Mortal_Kombat_4_cover.jpg"
+    },
+    {
+      "name": "Mother 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/mother3.html",
+      "thumbnail": "semag/mother3/mother3.jpg"
+    },
+    {
+      "name": "Multitask",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/multitask.html",
+      "thumbnail": "semag/multitask/multittaks.png"
+    },
+    {
+      "name": "Mystical Ninja Starring Goemon",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/mysticalninja.html",
+      "thumbnail": "semag/mysticalninja/mysticalninja.jpeg"
+    },
+    {
+      "name": "Neon Rider",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/neonrider.html",
+      "thumbnail": "semag/neonrider/neonrider.png"
+    },
+    {
+      "name": "New Super Mario Bros",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/newsupermariobros.html",
+      "thumbnail": "semag/newsupermariobros/newsupermariobros.jpg"
+    },
+    {
+      "name": "Ninja Gaiden",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ninjagaiden.html",
+      "thumbnail": "semag/ninjagaiden/ninjagaiden.jpeg"
+    },
+    {
+      "name": "Oodlegobs",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/oodlegobs.html",
+      "thumbnail": "semag/oodlegobs/oddlegobs.jpeg"
+    },
+    {
+      "name": "Papa's Hotdoggeria",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/papashotdoggeria.html",
+      "thumbnail": "semag/papashotdoggeria/papashotdoggeria.png"
+    },
+    {
+      "name": "Phantasy Star IV",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/phantasystariv.html",
+      "thumbnail": "semag/phantasystariv/phantasystar4-sq-1643743320841.jpg"
+    },
+    {
+      "name": "Picross DS",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/picrossds.html",
+      "thumbnail": "semag/picrossds/picrossds-1649613023700.jpg"
+    },
+    {
+      "name": "Professor Layton and the Curious Village",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/professorlayton.html",
+      "thumbnail": "semag/professorlayton/professor-layton-and-the-curious-village-button-1641604221842.jpg"
+    },
+    {
+      "name": "Quest 64",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/quest64.html",
+      "thumbnail": "semag/quest64/quest64.jpg"
+    },
+    {
+      "name": "Rabbit Samurai",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/rabbitsamurai.html",
+      "thumbnail": "semag/rabbitsamurai/icon-256.png"
+    },
+    {
+      "name": "Raft Wars",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/raftwars.html",
+      "thumbnail": "semag/raftwars/raft-wars.avif"
+    },
+    {
+      "name": "Raft Wars 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/raftwars2.html",
+      "thumbnail": "semag/raftwars2/raft-wars-2.avif"
+    },
+    {
+      "name": "Ranger X",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/rangerx.html",
+      "thumbnail": "semag/rangerx/rangerx-1660932921478.jpg"
+    },
+    {
+      "name": "Rayman 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/rayman3.html",
+      "thumbnail": "semag/rayman3/rayman3.jpeg"
+    },
+    {
+      "name": "Ristar",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/ristar.html",
+      "thumbnail": "semag/ristar/ristart.jpeg"
+    },
+    {
+      "name": "Rocket Soccer",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/rocketsoccer.html",
+      "thumbnail": "semag/rocketsoccer/splash.webp"
+    },
+    {
+      "name": "Rogue",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/rogue.html",
+      "thumbnail": "semag/rogue/rogue.png"
+    },
+    {
+      "name": "Sandboxcity",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/sandboxcity.html",
+      "thumbnail": "semag/sandboxcity/Icon_512x512.png"
+    },
+    {
+      "name": "Scribblenauts",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/scribblenauts.html",
+      "thumbnail": "semag/scribblenauts/scribblenauts.jpg"
+    },
+    {
+      "name": "Shift",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/shift.html",
+      "thumbnail": "semag/shift/shift.png"
+    },
+    {
+      "name": "Shift 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/shift2.html",
+      "thumbnail": "semag/shift2/shift2.jpeg"
+    },
+    {
+      "name": "Shift 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/shift3.html",
+      "thumbnail": "semag/shift3/shift3.png"
+    },
+    {
+      "name": "Shift 4",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/shift4.html",
+      "thumbnail": "semag/shift4/Shift-4.webp"
+    },
+    {
+      "name": "Shining Force",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/shiningforce.html",
+      "thumbnail": "semag/shiningforce/shiningforce-1650610401497.jpg"
+    },
+    {
+      "name": "Shinobi III - Return of the Ninja Master",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/shinobiiii.html",
+      "thumbnail": "semag/shinobiiii/shinobi3-sq-1643745022344.jpg"
+    },
+    {
+      "name": "Shop Empire",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/shopempire.html",
+      "thumbnail": "semag/shopempire/shopempire.jpg"
+    },
+    {
+      "name": "Shop Empire Fable",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/shopempirefable.html",
+      "thumbnail": "semag/shopempirefable/Shop-Empire-Fable.jpg"
+    },
+    {
+      "name": "Shrek 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/shrek2.html",
+      "thumbnail": "semag/shrek2/shrek2.jpg"
+    },
+    {
+      "name": "The Simpsons: Road Rage",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/simpsonsroadrage.html",
+      "thumbnail": "semag/simpsonsroadrage/simpsonsroadrage.jpeg"
+    },
+    {
+      "name": "Skywire",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/skywire.html",
+      "thumbnail": "semag/skywire/skywire.png"
+    },
+    {
+      "name": "Skywire 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/skywire2.html",
+      "thumbnail": "semag/skywire2/skywire-2-html5.avif"
+    },
+    {
+      "name": "Sonic Rush",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/sonicrush.html",
+      "thumbnail": "semag/sonicrush/sonicrush.jpeg"
+    },
+    {
+      "name": "Sort the Court",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/sortthecourt.html",
+      "thumbnail": "semag/sortthecourt/img/logo.avif"
+    },
+    {
+      "name": "Space Invaders",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/spaceinvaders.html",
+      "thumbnail": "semag/spaceinvaders/spaceinvaders.png"
+    },
+    {
+      "name": "The Legend of Zelda: Spirit Tracks",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/spirittracks.html",
+      "thumbnail": "semag/spirittracks/The_Legend_of_Zelda_Spirit_Tracks_box_art.jpg"
+    },
+    {
+      "name": "Stair Race 3D",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/stairrace3d.html",
+      "thumbnail": "semag/stairrace3d/favicon.ico"
+    },
+    {
+      "name": "Steak and Jake",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/steakandjake.html",
+      "thumbnail": "semag/steakandjake/steakandjake.png"
+    },
+    {
+      "name": "Stick Kombat",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/stickkombat.html",
+      "thumbnail": "semag/stickkombat/stickman-kombat.avif"
+    },
+    {
+      "name": "Stick War 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/stickwar2.html",
+      "thumbnail": "semag/stickwar2/stickwar2.avif"
+    },
+    {
+      "name": "Street Fighter 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/streetfighter2.html",
+      "thumbnail": "semag/streetfighter2/streetfighter2.png"
+    },
+    {
+      "name": "Streets of Rage",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/streetsofrage.html",
+      "thumbnail": "semag/streetsofrage/streetsofrage.jpeg"
+    },
+    {
+      "name": "Streets of Rage 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/streetsofrage2.html",
+      "thumbnail": "semag/streetsofrage2/streetsofrage2.jpeg"
+    },
+    {
+      "name": "Super Bomberman",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/superbomberman.html",
+      "thumbnail": "semag/superbomberman/superbomberman.png"
+    },
+    {
+      "name": "Superhero Drop",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/superherodrop.html",
+      "thumbnail": "semag/superherodrop/superhero drop.webp"
+    },
+    {
+      "name": "Super Mario Bros",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supermariobros.html",
+      "thumbnail": "semag/supermariobros/supermariobros.webp"
+    },
+    {
+      "name": "Super Mario Bros 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supermariobros2.html",
+      "thumbnail": "semag/supermariobros2/supermariobros2.jpeg"
+    },
+    {
+      "name": "Super Mario Bros 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supermariobros3.html",
+      "thumbnail": "semag/supermariobros3/smb3-1709899677898.webp"
+    },
+    {
+      "name": "Super Mario Kart",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supermariokart.html",
+      "thumbnail": "semag/supermariokart/logo.avif"
+    },
+    {
+      "name": "Super Mario Land",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supermarioland.html",
+      "thumbnail": "semag/supermarioland/supermarioland.jpeg"
+    },
+    {
+      "name": "Super Mario Land 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supermarioland2.html",
+      "thumbnail": "semag/supermarioland2/supermarioland2.jpg"
+    },
+    {
+      "name": "Super Mario RPG",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supermariorpg.html",
+      "thumbnail": "semag/supermariorpg/super-mario-rpg-remake_krwz.128.webp"
+    },
+    {
+      "name": "Super Mario World",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supermarioworld.html",
+      "thumbnail": "semag/supermarioworld/super-mario-world-1709899758057.webp"
+    },
+    {
+      "name": "Super Metroid",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supermetroid.html",
+      "thumbnail": "semag/supermetroid/supermetroid.jpeg"
+    },
+    {
+      "name": "Super Monkey Ball Jr",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supermonkeyballjr.html",
+      "thumbnail": "semag/supermonkeyballjr/monkeyballjr-1675104123999.jpg"
+    },
+    {
+      "name": "Super Princess Peach",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/superprincesspeach.html",
+      "thumbnail": "semag/superprincesspeach/superprincesspeach-1650156712858.jpg"
+    },
+    {
+      "name": "Mario and Luigi Superstar Saga",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/superstarsaga.html",
+      "thumbnail": "semag/superstarsaga/placeholder.png"
+    },
+    {
+      "name": "Super Tennis",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supertennis.html",
+      "thumbnail": "semag/supertennis/supertennis.jpeg"
+    },
+    {
+      "name": "Super Treadmill",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/supertreadmill.html",
+      "thumbnail": "semag/supertreadmill/super-treadmill.png"
+    },
+    {
+      "name": "Swindler",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/swindler.html",
+      "thumbnail": "semag/swindler/swindler-updates-22-02-12.png"
+    },
+    {
+      "name": "Swords And Sandals",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/swordsandsandals.html",
+      "thumbnail": "semag/swordsandsandals/Swords_and_Sandals_I-_Gladiator.webp"
+    },
+    {
+      "name": "Swords And Sandals 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/swordsandsandals2.html",
+      "thumbnail": "semag/swordsandsandals2/swordsandsandles2.webp"
+    },
+    {
+      "name": "Tap Road",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/taproad.html",
+      "thumbnail": "semag/taproad/taproad.jpeg"
+    },
+    {
+      "name": "Test Subject Arena",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/testsubjectarena.html",
+      "thumbnail": "semag/testsubjectarena/testsubjectarena.jpeg"
+    },
+    {
+      "name": "Test Subject Complete",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/testsubjectcomplete.html",
+      "thumbnail": "semag/testsubjectcomplete/testsubjectcomplete.png"
+    },
+    {
+      "name": "The Sims 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/thesims2.html",
+      "thumbnail": "semag/thesims2/thesims2.jpeg"
+    },
+    {
+      "name": "The Sims 3",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/thesims3.html",
+      "thumbnail": "semag/thesims3/thesims3.webp"
+    },
+    {
+      "name": "Turok: Dinosaur Hunter",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/turokdinosaurhunter.html",
+      "thumbnail": "semag/turokdinosaurhunter/turok.jpeg"
+    },
+    {
+      "name": "Twin Shot",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/twinshot.html",
+      "thumbnail": "semag/twinshot/logo.avif"
+    },
+    {
+      "name": "Twin Shot 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/twinshot2.html",
+      "thumbnail": "semag/twinshot2/twinshot2.jpeg"
+    },
+    {
+      "name": "Vectorman",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/vectorman.html",
+      "thumbnail": "semag/vectorman/vectorman-1648596388439.jpg"
+    },
+    {
+      "name": "Vectorman 2",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/vectorman2.html",
+      "thumbnail": "semag/vectorman2/Vectorman2.jpg"
+    },
+    {
+      "name": "Wario Land 4",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/warioland4.html",
+      "thumbnail": "semag/warioland4/warioland4-1654102202160.jpg"
+    },
+    {
+      "name": "Wario Land II",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/wariolandii.html",
+      "thumbnail": "semag/wariolandii/Wario_Land_II_NA_Box_Art.jpg"
+    },
+    {
+      "name": "Wario's Woods",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/warioswoods.html",
+      "thumbnail": "semag/warioswoods/placeholder.png"
+    },
+    {
+      "name": "WarioWare",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/warioware.html",
+      "thumbnail": "semag/warioware/Warioware1box.jpg"
+    },
+    {
+      "name": "WarioWare: DIY",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/wariowarediy.html",
+      "thumbnail": "semag/wariowarediy/wariowarediy-sq-1644007189616.jpg"
+    },
+    {
+      "name": "WarioWare: Touched",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/wariowaretouched.html",
+      "thumbnail": "semag/wariowaretouched/wariowaretouched.jpeg"
+    },
+    {
+      "name": "Waterworks",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/waterworks.html",
+      "thumbnail": "semag/waterworks/banner.png"
+    },
+    {
+      "name": "Wave Race 64",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/waverace64.html",
+      "thumbnail": "semag/waverace64/cover.jpg"
+    },
+    {
+      "name": "Worms: World Party",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/wormsworldparty.html",
+      "thumbnail": "semag/wormsworldparty/wormsworldparty.jpg"
+    },
+    {
+      "name": "Yoshi's Island",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/yoshisisland.html",
+      "thumbnail": "semag/yoshisisland/yoshisisland.jpg"
+    },
+    {
+      "name": "Yoshi's Story",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/yoshisstory.html",
+      "thumbnail": "semag/yoshisstory/yoshisstory.jpeg"
+    },
+    {
+      "name": "Peggle",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/peggle.html",
+      "thumbnail": "semag/peggle/peggle.jpeg"
+    },
+    {
+      "name": "Gacha Life",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/gachalife.html",
+      "thumbnail": "semag/gachalife/gachalife.png"
+    },
+    {
+      "name": "Gacha Club",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/gachaclub.html",
+      "thumbnail": "semag/gachaclub/gachaclub.png"
+    },
+    {
+      "name": "Gachaverse",
+      "url": "https://cdn.jsdelivr.net/gh/Reeyuki/scc/gachaverse.html",
+      "thumbnail": "semag/gachaverse/gachaverse.png"
+    }
+  ]
+}
