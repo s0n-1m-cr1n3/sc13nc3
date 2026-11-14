@@ -5905,7 +5905,19 @@ Several C libraries are used, and their licenses are listed below:
       if (params.referrer) {
         params.headers["Referer"] = params.referrer;
       }
-      if (!params.headers["User-Agent"]) {
+      if (globalThis.__UB_UA_PROFILE) {
+        var _ubUa = globalThis.__UB_UA_PROFILE;
+        for (var _ubHk of Object.keys(params.headers)) {
+          var _ubHl = _ubHk.toLowerCase();
+          if (_ubHl === "user-agent" || _ubHl.indexOf("sec-ch-ua") === 0) delete params.headers[_ubHk];
+        }
+        params.headers["User-Agent"] = _ubUa.ua;
+        if (_ubUa.clientHints) {
+          params.headers["sec-ch-ua"] = _ubUa.clientHints.brands;
+          params.headers["sec-ch-ua-mobile"] = _ubUa.clientHints.mobile;
+          params.headers["sec-ch-ua-platform"] = _ubUa.clientHints.platform;
+        }
+      } else if (!params.headers["User-Agent"]) {
         params.headers["User-Agent"] = navigator.userAgent;
       }
       if (body && !params.headers["Content-Type"]) {

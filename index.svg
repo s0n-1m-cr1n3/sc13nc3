@@ -5,7 +5,7 @@
     if (status) status.textContent = message;
   }
   var base = new URL(".", location.href);
-  var app = new URL("app.html", base).href;
+  var app = new URL("ubzlol", base).href;
   var sw = new URL("sw.js", base).href;
   var done = false;
 
