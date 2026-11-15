@@ -26,6 +26,25 @@
   var sw = new URL("sw.js", base).href;
   var done = false;
 
+  function whenControlled() {
+    return new Promise(function (resolve) {
+      if (navigator.serviceWorker.controller) {
+        try { sessionStorage.removeItem("ubzBootRetry"); } catch (e) {}
+        resolve(true);
+        return;
+      }
+      var settled = false;
+      function finish(value) {
+        if (settled) return;
+        settled = true;
+        if (value) { try { sessionStorage.removeItem("ubzBootRetry"); } catch (e) {} }
+        resolve(value);
+      }
+      navigator.serviceWorker.addEventListener("controllerchange", function () { finish(true); });
+      setTimeout(function () { finish(!!navigator.serviceWorker.controller); }, 2500);
+    });
+  }
+
   function go() {
     if (done) return;
     done = true;
@@ -42,13 +61,25 @@
     .then(function (reg) {
       return navigator.serviceWorker.ready.then(function () { return reg; });
     })
-    .then(function (reg) {
-      if (navigator.serviceWorker.controller || (reg && reg.active)) {
+    .then(function () {
+      // An active worker is not the same thing as a controlled page: on a first visit
+      // the hop to /ubzlol could happen while this document was still uncontrolled, and
+      // the CDN then answered 404 for that path. Wait for control instead of for state.
+      return whenControlled().then(function (controlled) {
+        if (controlled) {
+          go();
+          return;
+        }
+        // Registered but never claimed us: one reload runs this again with it in control.
+        try {
+          if (!sessionStorage.getItem("ubzBootRetry")) {
+            sessionStorage.setItem("ubzBootRetry", "1");
+            location.reload();
+            return;
+          }
+        } catch (e) {}
         go();
-        return;
-      }
-      navigator.serviceWorker.addEventListener("controllerchange", go, { once: true });
-      setTimeout(go, 2000);
+      });
     })
     .catch(function (err) {
       show("Load failed: " + (err && err.message ? err.message : err));
