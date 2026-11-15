@@ -2,9 +2,9 @@
 // stays small: the worker itself (app serving + pr0xy) is fetched from jsDelivr at install time.
 // The inline copy below only runs if every CDN mirror is unreachable.
 var SOURCES = [
-  "https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/assets/prox/sw-app.js?v=20261114-1",
-  "https://gcore.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/assets/prox/sw-app.js?v=20261114-1",
-  "https://fastly.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/assets/prox/sw-app.js?v=20261114-1"
+  "https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/assets/prox/sw-app.js?v=20261115-1",
+  "https://gcore.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/assets/prox/sw-app.js?v=20261115-1",
+  "https://fastly.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/assets/prox/sw-app.js?v=20261115-1"
 ];
 
 var loaded = false;
@@ -22,6 +22,9 @@ if (!loaded) {
   } catch (e) {}
 
   var APP_PATHNAME = new URL("ubzlol", self.registration.scope).pathname;
+  var APP_ALIASES = ["app.html", "ubzlol.html"].map(function (name) {
+    return new URL(name, self.registration.scope).pathname;
+  });
   var APP_HTML = new URL("index.html?v=20261114-1", self.registration.scope).href;
   var CDN_APP_HTML = "https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/index.html?v=20261114-1";
 
@@ -33,7 +36,7 @@ if (!loaded) {
     } catch (e) {
       return;
     }
-    if (url.pathname !== APP_PATHNAME) return;
+    if (url.pathname !== APP_PATHNAME && APP_ALIASES.indexOf(url.pathname) === -1) return;
     event.respondWith((async function () {
       var res = null;
       try { res = await fetch(APP_HTML, { cache: "no-store" }); } catch (e) {}
