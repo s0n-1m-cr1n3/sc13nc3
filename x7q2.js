@@ -1,9 +1,9 @@
 // Prefer the worker that ships beside this file (local preview and the deploy folder both have
 // assets/prox); fall back to jsDelivr when the host does not serve it.
 try {
-  importScripts(new URL("assets/prox/sw.js", self.location).href);
+  importScripts(new URL("assets/prox/t4k7m.js", self.location).href);
 } catch (e) {
-  importScripts("https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/assets/prox/sw.js?v=20261022-3");
+  importScripts("https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/assets/prox/t4k7m.js?v=20261022-3");
 }
 
 var APP_PATHNAME = new URL("ubzlol", self.registration.scope).pathname;

@@ -282,7 +282,7 @@ try {
       </button>
       <button class="btn" id="m-nc" type="button" style="--i:2">
         <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
-        <span class="label">no cloak</span>
+        <span class="label">no cover</span>
         <kbd>3</kbd>
       </button>
     </div>
@@ -566,13 +566,13 @@ try {
   pick.appendChild(picker);
   swWrap.appendChild(pick);
 
-  // launch options: Off, No cloak, then each page in about:blank and blob
+  // launch options: Off, No cover, then each page in about:blank and blob
   var pageBtns = Array.prototype.slice.call(document.querySelectorAll('[data-ab]'));
   function addOpt(parent, value, text) {
     var o = document.createElement('option'); o.value = value; o.textContent = text; parent.appendChild(o);
   }
   addOpt(autoSel, '', 'Off (show menu)');
-  addOpt(autoSel, 'nc', 'No cloak');
+  addOpt(autoSel, 'nc', 'No cover');
   [['ab', 'about:blank'], ['bb', 'blob']].forEach(function (m) {
     var g = document.createElement('optgroup'); g.label = m[1];
     pageBtns.forEach(function (b, i) { addOpt(g, m[0] + ':' + i, b.querySelector('.label').textContent); });
@@ -598,7 +598,7 @@ try {
       return { name: b.querySelector('.label').textContent + ' (about:blank)', file: b.getAttribute('data-ab'), fb: b.getAttribute('data-icon') };
     }).concat(pageBtns.map(function (b) {
       return { name: b.querySelector('.label').textContent + ' (blob)', file: b.getAttribute('data-bb'), fb: b.getAttribute('data-icon') };
-    }), [{ name: 'No cloak', file: 'c1.html', fb: '' }]);
+    }), [{ name: 'No cover', file: 'c1.html', fb: '' }]);
     Promise.all(items.map(function (it) {
       return getPage(urlFor(it.file)).then(function (p) { return { it: it, p: p }; }, function () { return { it: it, p: null }; });
     })).then(function (rs) {
@@ -634,7 +634,7 @@ try {
 
   if (savedAuto) {
     var file, text, icon;
-    if (savedAuto === 'nc') { file = 'c1.html'; text = 'No cloak'; }
+    if (savedAuto === 'nc') { file = 'c1.html'; text = 'No cover'; }
     else {
       var parts = savedAuto.split(':'), b = pageBtns[+parts[1]];
       if (b) {

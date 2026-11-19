@@ -1,5 +1,5 @@
 // A folder on the host still needs a same-origin script for the browser to register, so this file
-// stays small: the worker itself (app serving + pr0xy) is fetched from jsDelivr at install time.
+// stays small: the worker itself (app serving + prxy) is fetched from jsDelivr at install time.
 // The inline copy below only runs if every CDN mirror is unreachable.
 var SOURCES = [
   "https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/assets/prox/sw-app.js?v=20261115-1",
@@ -18,7 +18,7 @@ for (var i = 0; i < SOURCES.length; i++) {
 
 if (!loaded) {
   try {
-    importScripts("https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/assets/prox/sw.js?v=20261022-3");
+    importScripts("https://cdn.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@main/assets/prox/t4k7m.js?v=20261022-3");
   } catch (e) {}
 
   var APP_PATHNAME = new URL("ubzlol", self.registration.scope).pathname;
